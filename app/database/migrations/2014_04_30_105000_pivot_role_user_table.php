@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class PivotRoleUserTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		// Create the `Comments` table
+		Schema::create('role_user', function(Blueprint $table)
+		{
+            $table->engine = 'InnoDB';
+			$table->increments('id')->unsigned();
+			
+			$table->integer('role_id')->unsigned()->index();
+			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+
+			$table->integer('user_id')->unsigned()->index();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		// Delete the `role_user` table
+		Schema::drop('role_user');
+	}
+
+}

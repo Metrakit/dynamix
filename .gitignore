@@ -1,0 +1,14 @@
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.env.*.php
+.env.php
+.DS_Store
+Thumbs.db
+/src/.sass-cache/*
+.sass-cache
+node_modules
+.vagrant
+/app/storage/*
+launcher_grunt.bat

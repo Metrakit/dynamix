@@ -1,0 +1,46 @@
+#-------------------------------------
+#Empêche l'exploitation des ressources du site sur d'autre site
+#-------------------------------------
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteCond %{HTTP_REFERER} !^http://www.votredomaine.net/.*$ [NC]
+#ReWriteRule .*\.(gif|png|jpe?g)$ - [F]
+
+
+
+#-------------------------------------
+#Configuration du Cache 
+#-------------------------------------
+#<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+#  Header set Cache-Control "max-age=30000000, public"
+#</FilesMatch>
+
+
+
+#-------------------------------------
+#Module Rewrite
+#-------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteBase /cms-0.0.1
+
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+
+#-------------------------------------
+#Gestion des fichier compressé en gzip
+#-------------------------------------
+#<IfModule mod_deflate.c>
+#  SetOutputFilter DEFLATE
+#</IfModule>
