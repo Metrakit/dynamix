@@ -24,7 +24,7 @@ class CreateUrlsTable extends Migration {
 			$table->foreign('resource_id')->references('id')->on('resources');
 
 			$table->string('locale_id', 5);
-			$table->foreign('locale_id')->references('id')->on('locale');
+			$table->foreign('locale_id')->references('id')->on('locales');
 
 			$table->text('text');
 		});

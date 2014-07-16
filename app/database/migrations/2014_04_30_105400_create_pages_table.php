@@ -21,20 +21,23 @@ class CreatePagesTable extends Migration {
 			$table->integer('i18n_name')->unsigned();
 			$table->foreign('i18n_name')->references('id')->on('i18n');//For menu
 
-			$table->integer('i18n_title')->unsigned();
-			$table->foreign('i18n_title')->references('id')->on('i18n');
+			$table->integer('structure_id')->unsigned();
+			$table->foreign('structure_id')->references('id')->on('structures');
 
-			$table->integer('i18n_url')->unsigned();
-			$table->foreign('i18n_url')->references('id')->on('i18n');
+			//$table->integer('i18n_title')->unsigned();
+			//$table->foreign('i18n_title')->references('id')->on('i18n');
+
+			//$table->integer('i18n_url')->unsigned();
+			//$table->foreign('i18n_url')->references('id')->on('i18n');
 
 			//$table->integer('i18n_content')->unsigned();
 			//$table->foreign('i18n_content')->references('id')->on('i18n');
 
-			$table->integer('i18n_meta_title')->unsigned();
-			$table->foreign('i18n_meta_title')->references('id')->on('i18n');
+			//$table->integer('i18n_meta_title')->unsigned();
+			//$table->foreign('i18n_meta_title')->references('id')->on('i18n');
 
-			$table->integer('i18n_meta_description')->unsigned();
-			$table->foreign('i18n_meta_description')->references('id')->on('i18n');
+			//$table->integer('i18n_meta_description')->unsigned();
+			//$table->foreign('i18n_meta_description')->references('id')->on('i18n');
 
 			$table->timestamps();
 		});

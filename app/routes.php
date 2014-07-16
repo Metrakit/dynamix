@@ -8,7 +8,6 @@
 |	Home Page
 |
 */
-
 //Index of website
 Route::get('/', array('uses' => 'HomeController@index'));
 
@@ -25,8 +24,19 @@ Route::get('/', array('uses' => 'HomeController@index'));
 */
 Route::get('{slug}', array('uses' => 'DynamixController@master'));
 
-//Route::get('{blogPost}', 'BlogController@getView');
-//Route::post('{blogPost}', 'BlogController@postView');
+
+/*
+|--------------------------------------------------------------------------
+| Migration
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/migrate', function(){
+  Artisan::call("migrate:reset");
+  Artisan::call("migrate");
+  Artisan::call("db:seed");
+  return "migrated";
+});
 
 
 

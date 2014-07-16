@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration {
+class CreateGalleriesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,16 @@ class CreateBlogsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('blogs', function(Blueprint $table) {
-
-			$table->engine = 'InnoDB';
+		// Create the `Posts` table
+		Schema::create('galleries', function(Blueprint $table)
+		{
+            $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
+
+			$table->integer('i18n_description')->unsigned();
+			$table->foreign('i18n_description')->references('id')->on('i18n');
+
+			$table->integer('cover_id');
 
 			$table->integer('structure_id')->unsigned();
 			$table->foreign('structure_id')->references('id')->on('structures');
@@ -43,7 +49,8 @@ class CreateBlogsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('blogs');
+		// Delete the `galleries` table
+		Schema::drop('galleries');
 	}
 
 }

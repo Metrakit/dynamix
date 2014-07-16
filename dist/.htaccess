@@ -20,7 +20,7 @@
 #Module Rewrite
 #-------------------------------------
 <IfModule mod_rewrite.c>
-    RewriteBase /cms-0.0.1
+    RewriteBase /
 
     <IfModule mod_negotiation.c>
         Options -MultiViews

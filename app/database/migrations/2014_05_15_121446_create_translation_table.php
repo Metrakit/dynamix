@@ -21,7 +21,7 @@ class CreateTranslationTable extends Migration {
 			$table->foreign('i18n_id')->references('id')->on('i18n');
 
 			$table->string('locale_id', 5);
-			$table->foreign('locale_id')->references('id')->on('locale');
+			$table->foreign('locale_id')->references('id')->on('locales');
 
 			$table->text('text');
 		});

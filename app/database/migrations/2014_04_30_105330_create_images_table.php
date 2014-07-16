@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocaleTable extends Migration {
+class CreateImagesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,16 @@ class CreateLocaleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('locale', function(Blueprint $table)
+		// Create the `Posts` table
+		Schema::create('images', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
-			$table->string('id',5)->primary();		
-			$table->string('name', 50);			
-			$table->boolean('enable')->default(true);		
+			$table->increments('id')->unsigned();
+
+			$table->string('file_name');
+			$table->string('file_ext');
+
+			$table->timestamps();
 		});
 	}
 
@@ -28,8 +32,8 @@ class CreateLocaleTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `locale` table
-		Schema::drop('locale');
+		// Delete the `images` table
+		Schema::drop('images');
 	}
 
 }

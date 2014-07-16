@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMapsTable extends Migration {
+class CreateThemesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,18 +13,17 @@ class CreateMapsTable extends Migration {
 	public function up()
 	{
 		// Create the `Posts` table
-		Schema::create('maps', function(Blueprint $table)
+		Schema::create('themes', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			
-			$table->integer('page_id')->unsigned();
-			$table->foreign('page_id')->references('id')->on('pages');
+			$table->integer('i18n_name')->unsigned();
+			$table->foreign('i18n_name')->references('id')->on('i18n');
 
-			$table->integer('view_id')->unsigned();
-			$table->foreign('view_id')->references('id')->on('views');
-
-			$table->integer('order')->unsigned();
+			$table->string('path');
+			
+			$table->boolean('active')->default(false);
 
 			$table->timestamps();
 		});
@@ -37,8 +36,8 @@ class CreateMapsTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `maps` table
-		Schema::drop('maps');
+		// Delete the `themes` table
+		Schema::drop('themes');
 	}
 
 }

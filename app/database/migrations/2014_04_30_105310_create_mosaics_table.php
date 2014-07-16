@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration {
+class CreateMosaicsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,15 @@ class CreateBlogsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('blogs', function(Blueprint $table) {
-
-			$table->engine = 'InnoDB';
+		// Create the `Posts` table
+		Schema::create('mosaics', function(Blueprint $table)
+		{
+            $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
+
+
+			$table->integer('i18n_description')->unsigned();
+			$table->foreign('i18n_description')->references('id')->on('i18n');
 
 			$table->integer('structure_id')->unsigned();
 			$table->foreign('structure_id')->references('id')->on('structures');
@@ -43,7 +48,8 @@ class CreateBlogsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('blogs');
+		// Delete the `mosaics` table
+		Schema::drop('mosaics');
 	}
 
 }

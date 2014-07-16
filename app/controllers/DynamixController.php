@@ -3,7 +3,7 @@
 class DynamixController extends BaseController {
 
 	/**
-	 * This method test if the route passed is in the urls array to show the good resource (page|post|category)
+	 * This method test if t   he route passed is in the urls array to show the good resource (page|post|category)
 	 *
 	 * @param  int  $id
 	 * @return Response
