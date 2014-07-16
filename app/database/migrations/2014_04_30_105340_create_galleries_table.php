@@ -21,7 +21,8 @@ class CreateGalleriesTable extends Migration {
 			$table->integer('i18n_description')->unsigned();
 			$table->foreign('i18n_description')->references('id')->on('i18n');
 
-			$table->integer('cover_id');
+			$table->integer('cover_image_id')->unsigned();
+			$table->foreign('cover_image_id')->references('id')->on('images');
 
 			$table->integer('structure_id')->unsigned();
 			$table->foreign('structure_id')->references('id')->on('structures');

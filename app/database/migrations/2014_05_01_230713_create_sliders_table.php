@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusTable extends Migration {
+class CreateSlidersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateMenusTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('menus', function(Blueprint $table)
+		Schema::create('sliders', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
@@ -20,10 +20,12 @@ class CreateMenusTable extends Migration {
 			$table->integer('i18n_title')->unsigned();
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 
-			$table->integer('parent_id')->unsigned();
-			//$table->foreign('parent_id')->references('id')->on('menus');
+			$table->integer('image_id')->unsigned();
+			$table->foreign('image_id')->references('id')->on('images');
 
-			$table->boolean('is_published')->default(true);
+			$table->string('background_color',6);
+
+			$table->integer('order')->unsigned();
 
 			$table->timestamps();
 		});
@@ -36,8 +38,8 @@ class CreateMenusTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `menus` table
-		Schema::drop('menus');
+		// Delete the `sliders` table
+		Schema::drop('sliders');
 	}
 
 }

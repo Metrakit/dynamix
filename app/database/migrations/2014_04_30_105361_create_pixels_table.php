@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateI18nTable extends Migration {
+class CreatePixelsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,16 @@ class CreateI18nTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('i18n', function(Blueprint $table)
+		// Create the `Comments` table
+		Schema::create('pixels', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
-
-			$table->integer('i18n_type_id')->unsigned();
-			$table->foreign('i18n_type_id')->references('id')->on('i18n_types');
+			
+			$table->text('script');
+		
+			$table->integer('form_id')->unsigned()->index();
+			$table->foreign('form_id')->references('id')->on('forms');
 		});
 	}
 
@@ -29,8 +32,8 @@ class CreateI18nTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `i18n` table
-		Schema::drop('i18n');
+		// Delete the `pixels` table
+		Schema::drop('pixels');
 	}
 
 }
