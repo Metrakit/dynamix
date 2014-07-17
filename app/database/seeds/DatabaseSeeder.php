@@ -6,9 +6,38 @@ class DatabaseSeeder extends Seeder {
     {
         Eloquent::unguard();
 
-        // Add calls to Seeders here
+        //Resources (idependant)
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
+        $this->call('I18nTypesTableSeeder');
+        $this->call('ThemesTableSeeder');
+
+
+
+        //Blogs
+
+        //Pages
+
+        //Views & Datas
+
+        //Forms
+
+        //Sliders
+        
+        //Galleries
+        
+        //Mosaics
+        
+        //Images
+
+        //Users
+
+
+
+
+
+
+
 
         //User
         $this->call('RolesTableSeeder');

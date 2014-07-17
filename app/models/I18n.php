@@ -14,21 +14,33 @@ class I18n extends Eloquent{
      *
      * @return mixed
      */
-	public function translations() {
+    public function translations() {
         return $this->hasMany('Translation');
     }
 
-   	/**
-     * An i48n has many urls
+    /**
+     * An i48n has one type
      *
      * @return mixed
      */
-	public function urls() {
-        return $this->hasMany('Urls');
+    public function types() {
+        return $this->hasOne('I18nType');
     }
 
 
-
-
-    
+    /**
+     * Method to translate some text with the locale_id
+     * @param $locale_id
+     * @param $text
+     * @return mixed
+     */
+	public function translate( $locale_id, $text ) {
+        $translation            = new Translation;
+        $translation->locale_id =  $locale_id;
+        $translation->text      =  $text;
+        if($translation->save()){
+            return true;
+        }
+        return false;
+    }
 }
