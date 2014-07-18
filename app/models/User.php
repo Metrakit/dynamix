@@ -33,8 +33,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      * @return mixed
      */
-    public function posts() {
-        return $this->hasMany('Post');
+    public function articles() {
+        return $this->hasMany('Article');
+    }
+
+    /**
+     * A User have many Trackings
+     *
+     * @return mixed
+     */
+    public function trackings() {
+        return $this->hasMany('Tracking');
     }
 
 

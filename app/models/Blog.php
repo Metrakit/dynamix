@@ -13,7 +13,7 @@ class Blog extends Eloquent{
      *
      * @return mixed
      */
-	public function permissions() {
-        return $this->hasMany('Article');
+	public function articles() {
+        return $this->belongsToMany('Article');
     }
 }

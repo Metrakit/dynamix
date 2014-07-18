@@ -16,4 +16,13 @@ class Action extends Eloquent{
 	public function permissions() {
         return $this->hasMany('Permission');
     }
+
+    /**
+     * A Role is on many Permission
+     *
+     * @return mixed
+     */
+    public function trackings() {
+        return $this->hasMany('Tracking');
+    }
 }

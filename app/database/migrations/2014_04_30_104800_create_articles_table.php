@@ -21,8 +21,7 @@ class CreateArticlesTable extends Migration {
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
 
-
-			$table->string('img');
+			$table->string('img')->nullable();
 
 			$table->integer('i18n_content')->unsigned();
 			$table->foreign('i18n_content')->references('id')->on('i18n');

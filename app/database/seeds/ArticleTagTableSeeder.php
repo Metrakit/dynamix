@@ -14,12 +14,12 @@ class ArticleTagTableSeeder extends Seeder {
 
         DB::table('article_tag')->insert( array(
             array(
-                'article_id'       => $article1,
-                'tag_id'        => $tag1
+                'article_id'        => $article1,
+                'tag_id'            => $tag1
             ),
             array(
-                'article_id'       => $article2,
-                'tag_id'        => $tag2
+                'article_id'        => $article2,
+                'tag_id'            => $tag2
             ))
         );
     }

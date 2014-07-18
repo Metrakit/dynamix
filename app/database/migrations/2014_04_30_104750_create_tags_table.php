@@ -21,8 +21,8 @@ class CreateTagsTable extends Migration {
 			$table->integer('i18n_name')->unsigned();
 			$table->foreign('i18n_name')->references('id')->on('i18n');
 
-			$table->integer('i18n_slug')->unsigned();
-			$table->foreign('i18n_slug')->references('id')->on('i18n');
+			$table->integer('i18n_url')->unsigned();
+			$table->foreign('i18n_url')->references('id')->on('i18n');
 
 			$table->timestamps();
 		});

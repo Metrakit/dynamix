@@ -18,13 +18,13 @@ class Article extends Eloquent {
     }
 
 	/**
-     * A article have One author
+     * A article have many Blog
      *
      * @return mixed
      */
-	/*public function blog() {
-        return $this->hasOne('Blog');
-    }*/
+	public function blogs() {
+        return $this->belongsToMany('Blog');
+    }
 
 	/**
      * A article is on many Categories
@@ -42,6 +42,15 @@ class Article extends Eloquent {
      */
 	public function tags() {
         return $this->belongsToMany('Tag');
+    }
+
+	/**
+     * A article has one structure
+     *
+     * @return mixed
+     */
+	public function structure() {
+        return $this->hasOne('Structure');
     }
 
 

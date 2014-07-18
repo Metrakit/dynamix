@@ -6,27 +6,44 @@ class BlogsTableSeeder extends Seeder {
     {
         DB::table('blogs')->delete();
 
-        //blog /
-        $i18n_title              = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title, 'locale_id' => 'fr', 'text' => 'Blog à Patrick'));
-            Translation::create(array('i18n_id' => $i18n_title, 'locale_id' => 'en', 'text' => 'Patrick\'s blog'));
-        $i18n_url               = I18N::create(array())->id;
-            Urls::create(array('i18n_id' => $i18n_url, 'resource_id' => 4, 'locale_id' => 'fr', 'text' => '/'.Str::slug('Blog à Patrick')));
-            Urls::create(array('i18n_id' => $i18n_url, 'resource_id' => 4, 'locale_id' => 'en', 'text' => '/'.Str::slug('Patrick\'s blog')));
-        $i18n_meta_title        = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_meta_title, 'locale_id' => 'fr', 'text' => 'Blog à Patrick'));
-            Translation::create(array('i18n_id' => $i18n_meta_title, 'locale_id' => 'en', 'text' => 'Patrick\'s blog'));
-        $i18n_meta_description  = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_meta_description, 'locale_id' => 'fr', 'text' => 'Description du blog'));
-            Translation::create(array('i18n_id' => $i18n_meta_description, 'locale_id' => 'en', 'text' => 'Blog description'));
+        $t_fr = 'Blog de David';
+        $t_en = 'David\'s Blog';
 
+        $title = new I18N;
+        $title->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title->save();
+        $title->translate('fr',$t_fr);
+        $title->translate('en',$t_en);
+
+        $url = new I18N;
+        $url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url->save();
+        $url->translate('fr',Str::slug($t_fr));
+        $url->translate('en',Str::slug($t_en));
+
+        $meta_title = new I18N;
+        $meta_title->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title->save();
+        $meta_title->translate('fr',$t_fr);
+        $meta_title->translate('en',$t_en);
+
+        $meta_description = new I18N;
+        $meta_description->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description->save();
+        $meta_description->translate('fr','Description du blog');
+        $meta_description->translate('en','Blog description');
+
+        $structure = Structure::create(array(
+                'i18n_title'                => $title->id,
+                'i18n_url'                  => $url->id,
+                'i18n_meta_title'           => $meta_title->id,
+                'i18n_meta_description'     => $meta_description->id
+            ));
+            
 
         DB::table('blogs')->insert( array(
             array(
-                'i18n_title'                => $i18n_title,
-                'i18n_url'                  => $i18n_url,
-                'i18n_meta_title'           => $i18n_meta_title,
-                'i18n_meta_description'     => $i18n_meta_description,
+                'structure_id'              => $structure->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ))

@@ -6,16 +6,33 @@ class DatabaseSeeder extends Seeder {
     {
         Eloquent::unguard();
 
-        //Resources (idependant)
+        //Resources (independant)
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
+
         $this->call('ThemesTableSeeder');
 
 
+        //Users
+        $this->call('UsersTableSeeder');
+        $this->call('RolesTableSeeder');
+
+        $this->call('RoleUserTableSeeder');
+        $this->call('PermissionsTableSeeder');
+
 
         //Blogs
+        $this->call('BlogsTableSeeder');
+        $this->call('ArticlesTableSeeder');
+        $this->call('TagsTableSeeder');
+        $this->call('ArticleCategoriesTableSeeder');
 
+        $this->call('ArticleBlogTableSeeder');
+        $this->call('ArticleCategoryTableSeeder');
+        $this->call('ArticleTagTableSeeder');
+        
+        
         //Pages
 
         //Views & Datas
@@ -39,20 +56,12 @@ class DatabaseSeeder extends Seeder {
 
 
 
-        //User
-        $this->call('RolesTableSeeder');
-        $this->call('UsersTableSeeder');
-        $this->call('RoleUserTableSeeder');
-        $this->call('PermissionsTableSeeder');
+
 
         //i18n
         $this->call('LocaleTableSeeder');
 
-        //BLOG System
-        $this->call('BlogsTableSeeder');
-        $this->call('ArticlesTableSeeder');
-        $this->call('TagsTableSeeder');
-        $this->call('ArticleCategoriesTableSeeder');
+
         
         $this->call('ArticleBlogTableSeeder');
         $this->call('ArticleCategoryTableSeeder');

@@ -14,7 +14,7 @@ class Permission extends Eloquent
      *
      * @return mixed
      */
-	public function roles() {
+	public function role() {
         return $this->hasOne('Role');
     }
 
@@ -23,7 +23,7 @@ class Permission extends Eloquent
      *
      * @return mixed
      */
-    public function actions() {
+    public function action() {
         return $this->hasOne('Action');
     }
 
@@ -32,7 +32,7 @@ class Permission extends Eloquent
      *
      * @return mixed
      */
-    public function resources() {
+    public function resource() {
         return $this->hasOne('Resource');
     }
 }

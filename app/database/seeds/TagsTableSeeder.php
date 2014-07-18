@@ -6,35 +6,61 @@ class TagsTableSeeder extends Seeder {
     {
         DB::table('tags')->delete();
 
-        $i18n_name1                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_name1, 'locale_id' => 'fr', 'text' => 'TestTagFR'));
-            Translation::create(array('i18n_id' => $i18n_name1, 'locale_id' => 'en', 'text' => 'TestTagEN'));
-        
-        $i18n_slug1                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_slug1, 'locale_id' => 'fr', 'text' => Str::slug('TestTagFR')));
-            Translation::create(array('i18n_id' => $i18n_slug1, 'locale_id' => 'en', 'text' => Str::slug('TestTagEN')));
+        $tag1 = new I18N;
+        $tag1->i18n_type_id = I18nType::where('name','=','tag')->first()->id;
+        $tag1->save();
+        $tag1->translate('fr','HTML');
+        $tag1->translate('en','HTML');
+
+        $tag1_url = new I18N;
+        $tag1_url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $tag1_url->save();
+        $tag1_url->translate('fr','html');
+        $tag1_url->translate('en','html');
 
 
-        $i18n_name2                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_name2, 'locale_id' => 'fr', 'text' => 'Test2TagFR'));
-            Translation::create(array('i18n_id' => $i18n_name2, 'locale_id' => 'en', 'text' => 'Test2TagEn'));
-        
-        $i18n_slug2                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_slug2, 'locale_id' => 'fr', 'text' => Str::slug('Test2TagFR')));
-            Translation::create(array('i18n_id' => $i18n_slug2, 'locale_id' => 'en', 'text' => Str::slug('Test2TagEN')));
+        $tag2 = new I18N;
+        $tag2->i18n_type_id = I18nType::where('name','=','tag')->first()->id;
+        $tag2->save();
+        $tag2->translate('fr','PHP');
+        $tag2->translate('en','PHP');
 
+        $tag2_url = new I18N;
+        $tag2_url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $tag2_url->save();
+        $tag2_url->translate('fr','php');
+        $tag2_url->translate('en','php');
+
+
+        $tag3 = new I18N;
+        $tag3->i18n_type_id = I18nType::where('name','=','tag')->first()->id;
+        $tag3->save();
+        $tag3->translate('fr','Laravel');
+        $tag3->translate('en','Laravel');
+
+        $tag3_url = new I18N;
+        $tag3_url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $tag3_url->save();
+        $tag3_url->translate('fr','laravel');
+        $tag3_url->translate('en','laravel');
 
 
         DB::table('tags')->insert( array(
             array(
-                'i18n_name'     => $i18n_name1,
-                'i18n_slug'     => $i18n_slug1,
+                'i18n_name'     => $tag1,
+                'i18n_url'      => $tag1_url,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ),
             array(
-                'i18n_name'     => $i18n_name2,
-                'i18n_slug'     => $i18n_slug2,
+                'i18n_name'     => $tag2,
+                'i18n_url'      => $tag2_url,
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime
+            ),
+            array(
+                'i18n_name'     => $tag3,
+                'i18n_url'      => $tag3_url,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ))

@@ -9,11 +9,11 @@ class Tag extends Eloquent{
 	protected $table = 'tags';
 
 	/**
-     * An Tag has belong to many Post
+     * An Tag has belong to many article
      *
      * @return mixed
      */
-	public function posts() {
-        return $this->belongsToMany('Post');
+	public function articles() {
+        return $this->belongsToMany('Article');
     }
 }
