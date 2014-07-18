@@ -10,6 +10,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
+        $this->call('LocalesTableSeeder');
+        $this->call('ImagesTableSeeder');
 
         $this->call('ThemesTableSeeder');
 
@@ -32,47 +34,37 @@ class DatabaseSeeder extends Seeder {
         $this->call('ArticleCategoryTableSeeder');
         $this->call('ArticleTagTableSeeder');
         
-        
+
         //Pages
-
-        //Views & Datas
-
-        //Forms
-
-        //Sliders
-        
-        //Galleries
-        
-        //Mosaics
-        
-        //Images
-
-        //Users
-
-
-
-
-
-
-
-
-
-
-        //i18n
-        $this->call('LocaleTableSeeder');
-
-
-        
-        $this->call('ArticleBlogTableSeeder');
-        $this->call('ArticleCategoryTableSeeder');
-        $this->call('ArticleTagTableSeeder');
-
-        //Page
-        $this->call('PagesTableSeeder');
+       /* $this->call('PagesTableSeeder');
         $this->call('ViewsTableSeeder');
         $this->call('DatasTableSeeder');
         $this->call('DataViewTableSeeder');
-        $this->call('MapsTableSeeder');
+        $this->call('MapsTableSeeder');*/
+
+        //Forms
+       /* $this->call('PagesTableSeeder');
+        $this->call('ViewsTableSeeder');
+        $this->call('DatasTableSeeder');
+        $this->call('DataViewTableSeeder');
+        $this->call('MapsTableSeeder');*/
+
+
+        //Sliders
+        $this->call('SlidesTableSeeder');
+        $this->call('SlidersTableSeeder');
+        
+        //Galleries
+        $this->call('GalleriesTableSeeder');
+        $this->call('GalleryImageTableSeeder');
+        
+        //Mosaics
+        $this->call('MosaicsTableSeeder');
+        $this->call('GalleryMosaicTableSeeder');
+
+
+
+
 
         //Menu
         $this->call('MenusTableSeeder');

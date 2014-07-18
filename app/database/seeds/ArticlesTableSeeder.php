@@ -70,18 +70,21 @@ class ArticlesTableSeeder extends Seeder {
                 'i18n_meta_description'     => $meta_description1->id
             ));
 
+        $t_fr2 = 'Exemple article 2';
+        $t_en2 = 'Article exemple 2';
+
         //article1
         $title2 = new I18N;
         $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title2->save();
-        $title2->translate('fr',$t_fr);
-        $title2->translate('en',$t_en);
+        $title2->translate('fr',$t_fr2);
+        $title2->translate('en',$t_en2);
         
         $url2 = new I18N;
         $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url2->save();
-        $url2->translate('fr',Str::slug($t_fr));
-        $url2->translate('en',Str::slug($t_en));
+        $url2->translate('fr',Str::slug($t_fr2));
+        $url2->translate('en',Str::slug($t_en2));
 
         $content2 = new I18N;
         $content2->i18n_type_id = I18nType::where('name','=','content')->first()->id;
@@ -92,14 +95,14 @@ class ArticlesTableSeeder extends Seeder {
         $meta_title2 = new I18N;
         $meta_title2->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
         $meta_title2->save();
-        $meta_title2->translate('fr',$t_fr);
-        $meta_title2->translate('en',$t_en);
+        $meta_title2->translate('fr',$t_fr2);
+        $meta_title2->translate('en',$t_en2);
 
         $meta_description2 = new I18N;
         $meta_description2->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
         $meta_description2->save();
-        $meta_description2->translate('fr','Description '.$t_fr);
-        $meta_description2->translate('en',$t_en.' Description');
+        $meta_description2->translate('fr','Description '.$t_fr2);
+        $meta_description2->translate('en',$t_en2.' Description');
 
         $structure2 = Structure::create(array(
                 'i18n_title'                => $title2->id,

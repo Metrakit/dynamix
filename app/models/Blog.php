@@ -9,11 +9,20 @@ class Blog extends Eloquent{
 	protected $table = 'blogs';
 
 	/**
-     * An Action is on many Permission
+     * A Blog has many Permission
      *
      * @return mixed
      */
 	public function articles() {
         return $this->belongsToMany('Article');
+    }
+
+    /**
+     * A Blog has one structure
+     *
+     * @return mixed
+     */
+	public function structure() {
+        return $this->belongsToMany('Structure');
     }
 }

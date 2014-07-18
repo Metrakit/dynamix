@@ -20,13 +20,6 @@ class CreateSlidersTable extends Migration {
 			$table->integer('i18n_title')->unsigned();
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 
-			$table->integer('image_id')->unsigned();
-			$table->foreign('image_id')->references('id')->on('images');
-
-			$table->string('background_color',6);
-
-			$table->integer('order')->unsigned();
-
 			$table->timestamps();
 		});
 	}

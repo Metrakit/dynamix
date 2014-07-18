@@ -26,64 +26,114 @@ class PagesTableSeeder extends Seeder {
     {
         DB::table('pages')->delete();
 
-        //Page /
-        $i18n_name              = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_name, 'locale_id' => 'fr', 'text' => 'Bonjour'));
-            Translation::create(array('i18n_id' => $i18n_name, 'locale_id' => 'en', 'text' => 'Hello'));
-        $i18n_title              = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title, 'locale_id' => 'fr', 'text' => 'Bonjour tous le monde !'));
-            Translation::create(array('i18n_id' => $i18n_title, 'locale_id' => 'en', 'text' => 'Hello world !'));
-        $i18n_url               = I18N::create(array())->id;
-            Urls::create(array('i18n_id' => $i18n_url, 'resource_id' => 4, 'locale_id' => 'fr', 'text' => '/'));
-            Urls::create(array('i18n_id' => $i18n_url, 'resource_id' => 4, 'locale_id' => 'en', 'text' => '/'));
-        $i18n_content            = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_content, 'locale_id' => 'fr', 'text' => $this->content));
-            Translation::create(array('i18n_id' => $i18n_content, 'locale_id' => 'en', 'text' => $this->content));
-        $i18n_meta_title        = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_meta_title, 'locale_id' => 'fr', 'text' => 'Bonjour tous le monde !'));
-            Translation::create(array('i18n_id' => $i18n_meta_title, 'locale_id' => 'en', 'text' => 'Hello world !'));
-        $i18n_meta_description  = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_meta_description, 'locale_id' => 'fr', 'text' => 'Bonjour tous le monde ! description'));
-            Translation::create(array('i18n_id' => $i18n_meta_description, 'locale_id' => 'en', 'text' => 'Hello world ! description'));
+        $t_fr = 'Bonjour';
+        $t_en = 'Hello';
+
+        //article1
+        $name1 = new I18N;
+        $name1->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name1->save();
+        $name1->translate('fr',$t_fr);
+        $name1->translate('en',$t_en);
         
-        //Page /page-1
-        $i18n_name2              = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_name2, 'locale_id' => 'fr', 'text' => 'Page 1'));
-            Translation::create(array('i18n_id' => $i18n_name2, 'locale_id' => 'en', 'text' => 'Page 1'));
-        $i18n_title2              = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title2, 'locale_id' => 'fr', 'text' => 'Exemple page 2'));
-            Translation::create(array('i18n_id' => $i18n_title2, 'locale_id' => 'en', 'text' => 'Page exemple 2'));
-        $i18n_url2               = I18N::create(array())->id;
-            Urls::create(array('i18n_id' => $i18n_url2, 'resource_id' => 4, 'locale_id' => 'fr', 'text' => '/exemple-page-2'));
-            Urls::create(array('i18n_id' => $i18n_url2, 'resource_id' => 4, 'locale_id' => 'en', 'text' => '/page-exemple-2'));
-        $i18n_content2            = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_content2, 'locale_id' => 'fr', 'text' => $this->content));
-            Translation::create(array('i18n_id' => $i18n_content2, 'locale_id' => 'en', 'text' => $this->content));
-        $i18n_meta_title2        = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_meta_title2, 'locale_id' => 'fr', 'text' => 'Exemple page 2'));
-            Translation::create(array('i18n_id' => $i18n_meta_title2, 'locale_id' => 'en', 'text' => 'Page exemple 2'));
-        $i18n_meta_description2  = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_meta_description2, 'locale_id' => 'fr', 'text' => 'Exemple page 2 description'));
-            Translation::create(array('i18n_id' => $i18n_meta_description2, 'locale_id' => 'en', 'text' => 'Page exemple 2 description'));
+        $title1 = new I18N;
+        $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title1->save();
+        $title1->translate('fr',$t_fr);
+        $title1->translate('en',$t_en);
+        
+        $url1 = new I18N;
+        $url1->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url1->save();
+        $url1->translate('fr',Str::slug($t_fr));
+        $url1->translate('en',Str::slug($t_en));
+
+        $content1 = new I18N;
+        $content1->i18n_type_id = I18nType::where('name','=','content')->first()->id;
+        $content1->save();
+        $content1->translate('fr',$this->content);
+        $content1->translate('en',$this->content);
+
+        $meta_title1 = new I18N;
+        $meta_title1->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title1->save();
+        $meta_title1->translate('fr',$t_fr);
+        $meta_title1->translate('en',$t_en);
+
+        $meta_description1 = new I18N;
+        $meta_description1->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description1->save();
+        $meta_description1->translate('fr','Description '.$t_fr);
+        $meta_description1->translate('en',$t_en.' Description');
+
+        $structure1 = Structure::create(array(
+                'i18n_title'                => $title1->id,
+                'i18n_url'                  => $url1->id,
+                'i18n_meta_title'           => $meta_title1->id,
+                'i18n_meta_description'     => $meta_description1->id
+            ));
+
+
+        $t_fr2 = 'Aurevoir';
+        $t_en2 = 'Goodbye';
+
+        //article1
+        $name2 = new I18N;
+        $name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name2->save();
+        $name2->translate('fr',$t_fr2);
+        $name2->translate('en',$t_en2);
+
+        $title2 = new I18N;
+        $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title2->save();
+        $title2->translate('fr',$t_fr2);
+        $title2->translate('en',$t_en2);
+        
+        $url2 = new I18N;
+        $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url2->save();
+        $url2->translate('fr',Str::slug($t_fr2));
+        $url2->translate('en',Str::slug($t_en2));
+
+        $content2 = new I18N;
+        $content2->i18n_type_id = I18nType::where('name','=','content')->first()->id;
+        $content2->save();
+        $content2->translate('fr',$this->content);
+        $content2->translate('en',$this->content);
+
+        $meta_title2 = new I18N;
+        $meta_title2->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title2->save();
+        $meta_title2->translate('fr',$t_fr2);
+        $meta_title2->translate('en',$t_en2);
+
+        $meta_description2 = new I18N;
+        $meta_description2->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description2->save();
+        $meta_description2->translate('fr','Description '.$t_fr2);
+        $meta_description2->translate('en',$t_en2.' Description');
+
+        $structure2 = Structure::create(array(
+                'i18n_title'                => $title2->id,
+                'i18n_url'                  => $url2->id,
+                'i18n_meta_title'           => $meta_title2->id,
+                'i18n_meta_description'     => $meta_description2->id
+            ));
+
 
         DB::table('pages')->insert( array(
             array(
-                'i18n_name'                 => $i18n_name,
-                'i18n_title'                => $i18n_title,
-                'i18n_url'                  => $i18n_url,
-                'i18n_content'              => $i18n_content,
-                'i18n_meta_title'           => $i18n_meta_title,
-                'i18n_meta_description'     => $i18n_meta_description,
+                'structure_id'              => $structure1->id,
+                'i18n_name'                 => $name1->id,
+                'i18n_content'              => $content1->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
-                'i18n_name'                 => $i18n_name2,
-                'i18n_title'                => $i18n_title2,
-                'i18n_url'                  => $i18n_url2,
-                'i18n_content'              => $i18n_content2,
-                'i18n_meta_title'           => $i18n_meta_title2,
-                'i18n_meta_description'     => $i18n_meta_description2,
+                'structure_id'              => $structure2->id,
+                'i18n_name'                 => $name2->id,
+                'i18n_content'              => $content2->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ))

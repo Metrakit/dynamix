@@ -1,19 +1,14 @@
 <?php
 
-class UsersTableSeeder extends Seeder {
+class ViewsTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('users')->delete();
+        DB::table('views')->delete();
 
-        DB::table('users')->insert( array(
+        DB::table('views')->insert( array(
             array(
-                'firstname' => 'david',
-                'lastname'  => 'lepaux',
-                'pseudo'    => 'dlepaux',
-                'email'     => 'd.lepaux@gmail.com',
-                'password'  => Hash::make('admin'),
-                'last_visit_at' => new DateTime,
+                'path'       => 'public.pages.content',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ))

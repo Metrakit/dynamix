@@ -8,18 +8,25 @@ class Page extends Eloquent {
 	 */
 	protected $table = 'pages';
 
+	
+    /**
+     * A Page has one structure
+     *
+     * @return mixed
+     */
+	public function structure() {
+        return $this->belongsToMany('Structure');
+    }
+
 	/**
-	 * Get the comment's content.
-	 *
-	 * @return string
-	 */
-	/*public function content()
-	{
-		return Translation::where('i18n_id','=',$this->i18n_content)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
-	}*/
+     * A Page has one structure
+     *
+     * @return mixed
+     */
+	public function maps() {
+        return $this->hasMany('PageMap');
+    }
+
 
 	public function i18n_name()
 	{

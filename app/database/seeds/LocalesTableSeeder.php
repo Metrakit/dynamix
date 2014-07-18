@@ -1,6 +1,6 @@
 <?php
 
-class LocaleTableSeeder extends Seeder {
+class LocalesTableSeeder extends Seeder {
 
     public function run()
     {
