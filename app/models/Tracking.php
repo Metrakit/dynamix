@@ -7,6 +7,7 @@ class Tracking extends Eloquent{
 	 * @var string
 	 */
 	protected $table = 'trackings';
+    public $timestamps = false;
 
 	/**
      * An tracking has belong to many user

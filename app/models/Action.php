@@ -7,6 +7,7 @@ class Action extends Eloquent{
 	 * @var string
 	 */
 	protected $table = 'actions';
+    public $timestamps = false;
 
 	/**
      * An Action is on many Permission

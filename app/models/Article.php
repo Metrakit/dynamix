@@ -32,7 +32,7 @@ class Article extends Eloquent {
      * @return mixed
      */
 	public function categories() {
-        return $this->belongsToMany('Category');
+        return $this->belongsToMany('ArticleCategory');
     }
 
 	/**

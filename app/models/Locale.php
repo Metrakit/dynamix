@@ -7,6 +7,7 @@ class Locale extends Eloquent{
 	 * @var string
 	 */
 	protected $table = 'locale';
+	public $timestamps = false;
 
 	/**
      * A Locale has many i48n

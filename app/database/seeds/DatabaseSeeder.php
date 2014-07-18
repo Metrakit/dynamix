@@ -6,14 +6,12 @@ class DatabaseSeeder extends Seeder {
     {
         Eloquent::unguard();
 
-        //Resources (independant)
+        //Resources
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
         $this->call('LocalesTableSeeder');
         $this->call('ImagesTableSeeder');
-
-        $this->call('ThemesTableSeeder');
 
 
         //Users
@@ -36,40 +34,46 @@ class DatabaseSeeder extends Seeder {
         
 
         //Pages
-       /* $this->call('PagesTableSeeder');
+        /*
+        $this->call('PagesTableSeeder');
         $this->call('ViewsTableSeeder');
         $this->call('DatasTableSeeder');
         $this->call('DataViewTableSeeder');
-        $this->call('MapsTableSeeder');*/
+        $this->call('MapsTableSeeder');
+        */
+
 
         //Forms
-       /* $this->call('PagesTableSeeder');
+        /*
+        $this->call('PagesTableSeeder');
         $this->call('ViewsTableSeeder');
         $this->call('DatasTableSeeder');
         $this->call('DataViewTableSeeder');
-        $this->call('MapsTableSeeder');*/
+        $this->call('MapsTableSeeder');
+        */
 
 
         //Sliders
         $this->call('SlidesTableSeeder');
         $this->call('SlidersTableSeeder');
         
+
         //Galleries
         $this->call('GalleriesTableSeeder');
         $this->call('GalleryImageTableSeeder');
         
+
         //Mosaics
         $this->call('MosaicsTableSeeder');
         $this->call('GalleryMosaicTableSeeder');
 
 
-
-
-
         //Menu
-        $this->call('MenusTableSeeder');
+        $this->call('MenusTableSeeder');//Need Page module OK
 
-        //Options
+
+        //Autonomous
+        $this->call('ThemesTableSeeder');
         $this->call('OptionsTableSeeder');
 
     }

@@ -6,61 +6,125 @@ class TagsTableSeeder extends Seeder {
     {
         DB::table('tags')->delete();
 
-        $tag1 = new I18N;
-        $tag1->i18n_type_id = I18nType::where('name','=','tag')->first()->id;
-        $tag1->save();
-        $tag1->translate('fr','HTML');
-        $tag1->translate('en','HTML');
+        $t_fr1 = 'PHP';
+        $t_en1 = 'PHP';
 
-        $tag1_url = new I18N;
-        $tag1_url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
-        $tag1_url->save();
-        $tag1_url->translate('fr','html');
-        $tag1_url->translate('en','html');
+        $title1 = new I18N;
+        $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title1->save();
+        $title1->translate('fr',$t_fr1);
+        $title1->translate('en',$t_en1);
+
+        $url1 = new I18N;
+        $url1->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url1->save();
+        $url1->translate('fr',Str::slug($t_fr1));
+        $url1->translate('en',Str::slug($t_en1));
+
+        $meta_title1 = new I18N;
+        $meta_title1->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title1->save();
+        $meta_title1->translate('fr',$t_fr1);
+        $meta_title1->translate('en',$t_en1);
+
+        $meta_description1 = new I18N;
+        $meta_description1->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description1->save();
+        $meta_description1->translate('fr','Description du blog');
+        $meta_description1->translate('en','Blog description');
+
+        $structure1 = Structure::create(array(
+                'i18n_title'                => $title1->id,
+                'i18n_url'                  => $url1->id,
+                'i18n_meta_title'           => $meta_title1->id,
+                'i18n_meta_description'     => $meta_description1->id
+            ));
 
 
-        $tag2 = new I18N;
-        $tag2->i18n_type_id = I18nType::where('name','=','tag')->first()->id;
-        $tag2->save();
-        $tag2->translate('fr','PHP');
-        $tag2->translate('en','PHP');
+        $t_fr2 = 'PHP';
+        $t_en2 = 'PHP';
 
-        $tag2_url = new I18N;
-        $tag2_url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
-        $tag2_url->save();
-        $tag2_url->translate('fr','php');
-        $tag2_url->translate('en','php');
+        $title2 = new I18N;
+        $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title2->save();
+        $title2->translate('fr',$t_fr2);
+        $title2->translate('en',$t_en2);
 
+        $url2 = new I18N;
+        $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url2->save();
+        $url2->translate('fr',Str::slug($t_fr2));
+        $url2->translate('en',Str::slug($t_en2));
 
-        $tag3 = new I18N;
-        $tag3->i18n_type_id = I18nType::where('name','=','tag')->first()->id;
-        $tag3->save();
-        $tag3->translate('fr','Laravel');
-        $tag3->translate('en','Laravel');
+        $meta_title2 = new I18N;
+        $meta_title2->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title2->save();
+        $meta_title2->translate('fr',$t_fr2);
+        $meta_title2->translate('en',$t_en2);
 
-        $tag3_url = new I18N;
-        $tag3_url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
-        $tag3_url->save();
-        $tag3_url->translate('fr','laravel');
-        $tag3_url->translate('en','laravel');
+        $meta_description2 = new I18N;
+        $meta_description2->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description2->save();
+        $meta_description2->translate('fr','Description du blog');
+        $meta_description2->translate('en','Blog description');
+
+        $structure2 = Structure::create(array(
+                'i18n_title'                => $title2->id,
+                'i18n_url'                  => $url2->id,
+                'i18n_meta_title'           => $meta_title2->id,
+                'i18n_meta_description'     => $meta_description2->id
+            ));
+            
+
+        $t_fr3 = 'Laravel';
+        $t_en3 = 'Laravel';
+
+        $title3 = new I18N;
+        $title3->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title3->save();
+        $title3->translate('fr',$t_fr3);
+        $title3->translate('en',$t_en3);
+
+        $url3 = new I18N;
+        $url3->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url3->save();
+        $url3->translate('fr',Str::slug($t_fr3));
+        $url3->translate('en',Str::slug($t_en3));
+
+        $meta_title3 = new I18N;
+        $meta_title3->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title3->save();
+        $meta_title3->translate('fr',$t_fr3);
+        $meta_title3->translate('en',$t_en3);
+
+        $meta_description3 = new I18N;
+        $meta_description3->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description3->save();
+        $meta_description3->translate('fr','Description du blog');
+        $meta_description3->translate('en','Blog description');
+
+        $structure3 = Structure::create(array(
+                'i18n_title'                => $title3->id,
+                'i18n_url'                  => $url3->id,
+                'i18n_meta_title'           => $meta_title3->id,
+                'i18n_meta_description'     => $meta_description3->id
+            ));
+            
 
 
         DB::table('tags')->insert( array(
             array(
-                'i18n_name'     => $tag1,
-                'i18n_url'      => $tag1_url,
+                'structure_id'      => $structure1->id,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ),
             array(
-                'i18n_name'     => $tag2,
-                'i18n_url'      => $tag2_url,
+                'structure_id'      => $structure2->id,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ),
             array(
-                'i18n_name'     => $tag3,
-                'i18n_url'      => $tag3_url,
+                'structure_id'      => $structure3->id,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ))

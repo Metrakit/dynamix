@@ -7,6 +7,7 @@ class Resource extends Eloquent{
 	 * @var string
 	 */
 	protected $table = 'resources';
+    public $timestamps = false;
 
 	/**
      * A Resource is on many Permission

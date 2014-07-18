@@ -6,29 +6,32 @@ class MenusTableSeeder extends Seeder {
     {
         DB::table('menus')->delete();
 
-        $i18n_title1                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title1, 'locale_id' => 'fr', 'text' => 'Accueil'));
-            Translation::create(array('i18n_id' => $i18n_title1, 'locale_id' => 'en', 'text' => 'Home'));
+        $title1 = new I18N;
+        $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title1->save();
+        $title1->translate('fr','Accueil');
+        $title1->translate('en','Home');
 
-        $i18n_title2                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title2, 'locale_id' => 'fr', 'text' => 'Page 1'));
-            Translation::create(array('i18n_id' => $i18n_title2, 'locale_id' => 'en', 'text' => 'Page 1'));
 
-        $i18n_title3                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title3, 'locale_id' => 'fr', 'text' => 'Actualités'));
-            Translation::create(array('i18n_id' => $i18n_title3, 'locale_id' => 'en', 'text' => 'News'));
+        $title2                 = I18N::create(array())->id;
+            Translation::create(array('i18n_id' => $title2, 'locale_id' => 'fr', 'text' => 'Page 1'));
+            Translation::create(array('i18n_id' => $title2, 'locale_id' => 'en', 'text' => 'Page 1'));
+
+        $title3                 = I18N::create(array())->id;
+            Translation::create(array('i18n_id' => $title3, 'locale_id' => 'fr', 'text' => 'Actualités'));
+            Translation::create(array('i18n_id' => $title3, 'locale_id' => 'en', 'text' => 'News'));
         
-        $i18n_title4                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title4, 'locale_id' => 'fr', 'text' => 'Article Ex1'));
-            Translation::create(array('i18n_id' => $i18n_title4, 'locale_id' => 'en', 'text' => 'Article Ex1'));
+        $title4                 = I18N::create(array())->id;
+            Translation::create(array('i18n_id' => $title4, 'locale_id' => 'fr', 'text' => 'Article Ex1'));
+            Translation::create(array('i18n_id' => $title4, 'locale_id' => 'en', 'text' => 'Article Ex1'));
 
-        $i18n_title5                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title5, 'locale_id' => 'fr', 'text' => 'Article Ex2'));
-            Translation::create(array('i18n_id' => $i18n_title5, 'locale_id' => 'en', 'text' => 'Article Ex2'));
+        $title5                 = I18N::create(array())->id;
+            Translation::create(array('i18n_id' => $title5, 'locale_id' => 'fr', 'text' => 'Article Ex2'));
+            Translation::create(array('i18n_id' => $title5, 'locale_id' => 'en', 'text' => 'Article Ex2'));
         
-        $i18n_title6                 = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_title6, 'locale_id' => 'fr', 'text' => 'Articles'));
-            Translation::create(array('i18n_id' => $i18n_title6, 'locale_id' => 'en', 'text' => 'Articles'));
+        $title6                 = I18N::create(array())->id;
+            Translation::create(array('i18n_id' => $title6, 'locale_id' => 'fr', 'text' => 'Articles'));
+            Translation::create(array('i18n_id' => $title6, 'locale_id' => 'en', 'text' => 'Articles'));
 
         $r_category         = Resource::find(1)->id;
         $r_post             = Resource::find(2)->id;
@@ -44,44 +47,32 @@ class MenusTableSeeder extends Seeder {
 
         DB::table('menus')->insert( array(
             array(
-                'i18n_title'        => $i18n_title1,
-                'resource_id'       => $r_page,
-                'element_id'        => $home,
+                'i18n_title'        => $title1,
                 'order'             => 1,
                 'parent_id'         => 0
             ),
             array(
-                'i18n_title'        => $i18n_title2,
-                'resource_id'       => $r_page,
-                'element_id'        => $page1,
+                'i18n_title'        => $title2,
                 'order'             => 2,
                 'parent_id'         => 0
             ),
             array(
-                'i18n_title'        => $i18n_title3,
-                'resource_id'       => $r_category,
-                'element_id'        => $category,
+                'i18n_title'        => $title3,
                 'order'             => 3,
                 'parent_id'         => 0
             ),
             array(
-                'i18n_title'        => $i18n_title6,
-                'resource_id'       => $r_linkcontainer,
-                'element_id'        => null,
+                'i18n_title'        => $title6,
                 'order'             => 4,
                 'parent_id'         => 0
             ),
             array(
-                'i18n_title'        => $i18n_title4,
-                'resource_id'       => $r_post,
-                'element_id'        => $article1,
+                'i18n_title'        => $title4,
                 'order'             => 1,
                 'parent_id'         => 4
             ),
             array(
-                'i18n_title'        => $i18n_title5,
-                'resource_id'       => $r_post,
-                'element_id'        => $article2,
+                'i18n_title'        => $title5,
                 'order'             => 2,
                 'parent_id'         => 4
             ))

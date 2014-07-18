@@ -17,7 +17,8 @@ class LocalesTableSeeder extends Seeder {
             ),
             array(
                 'id' 	=> 'en_US',
-                'name'	=> 'United States'
+                'name'	=> 'United States',
+                'enable'=> 0
             ))
         );
     }

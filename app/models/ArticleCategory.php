@@ -13,9 +13,19 @@ class ArticleCategory extends Eloquent{
      *
      * @return mixed
      */
-	public function posts() {
-        return $this->belongsToMany('Post');
+	public function articles() {
+        return $this->belongsToMany('Article');
     }
+
+    /**
+     * A article has one structure
+     *
+     * @return mixed
+     */
+	public function structure() {
+        return $this->hasOne('Structure');
+    }
+
 
 
 	public function i18n_url()
