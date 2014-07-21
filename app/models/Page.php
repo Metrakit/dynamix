@@ -19,12 +19,12 @@ class Page extends Eloquent {
     }
 
 	/**
-     * A Page has one structure
+     * A Page has may block
      *
      * @return mixed
      */
-	public function maps() {
-        return $this->hasMany('PageMap');
+	public function blocks() {
+        return $this->hasMany('Block');
     }
 
 

@@ -30,9 +30,6 @@ class CreatePagesTable extends Migration {
 			//$table->integer('i18n_url')->unsigned();
 			//$table->foreign('i18n_url')->references('id')->on('i18n');
 
-			//$table->integer('i18n_content')->unsigned();
-			//$table->foreign('i18n_content')->references('id')->on('i18n');
-
 			//$table->integer('i18n_meta_title')->unsigned();
 			//$table->foreign('i18n_meta_title')->references('id')->on('i18n');
 

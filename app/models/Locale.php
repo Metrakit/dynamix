@@ -6,7 +6,7 @@ class Locale extends Eloquent{
 	 *
 	 * @var string
 	 */
-	protected $table = 'locale';
+	protected $table = 'locales';
 	public $timestamps = false;
 
 	/**
@@ -14,7 +14,7 @@ class Locale extends Eloquent{
      *
      * @return mixed
      */
-	public function i18n() {
-        return $this->hasMany('I18n');
+	public function translations() {
+        return $this->hasMany('Translation');
     }
 }

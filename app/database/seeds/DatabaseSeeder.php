@@ -7,11 +7,13 @@ class DatabaseSeeder extends Seeder {
         Eloquent::unguard();
 
         //Resources
+        $this->call('LocalesTableSeeder');
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
-        $this->call('LocalesTableSeeder');
         $this->call('ImagesTableSeeder');
+        $this->call('ResponsiveWidthsTableSeeder');
+        $this->call('ResponsiveTriggersTableSeeder');
 
 
         //Users
@@ -34,23 +36,17 @@ class DatabaseSeeder extends Seeder {
         
 
         //Pages
-        /*
         $this->call('PagesTableSeeder');
-        $this->call('ViewsTableSeeder');
-        $this->call('DatasTableSeeder');
-        $this->call('DataViewTableSeeder');
-        $this->call('MapsTableSeeder');
-        */
+        $this->call('BlocksTableSeeder');
+        $this->call('BlockResponsiveTableSeeder');
 
 
         //Forms
-        /*
-        $this->call('PagesTableSeeder');
-        $this->call('ViewsTableSeeder');
-        $this->call('DatasTableSeeder');
-        $this->call('DataViewTableSeeder');
-        $this->call('MapsTableSeeder');
-        */
+        //$this->call('PagesTableSeeder');
+        //$this->call('ViewsTableSeeder');
+        //$this->call('DatasTableSeeder');
+        //$this->call('DataViewTableSeeder');
+        //$this->call('MapsTableSeeder');
 
 
         //Sliders

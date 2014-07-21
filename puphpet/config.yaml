@@ -9,7 +9,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.102
             forwarded_port:
-                ZV2DTPBDK77q:
+                TzYkOSAZrFcc:
                     host: '5460'
                     guest: '19'
         provider:
@@ -32,7 +32,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            W52gu0rIZqbH:
+            xhsXps72aAeT:
                 source: ./
                 target: /var/www
                 sync_type: default
@@ -54,6 +54,7 @@ vagrantfile-local:
 server:
     packages:
         - phpmyadmin
+        - mcrypt
     dot_files:
         -
             bash_aliases: null
@@ -88,7 +89,7 @@ apache:
         - rewrite
         - vhost_alias
     vhosts:
-        p7UubJOvwEyV:
+        cOYJODAYy728:
             servername: dynam.ix
             serveraliases:
                 - '*.dynam.ix'
@@ -107,7 +108,7 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        y1EJrFNCfH4e:
+        g9Dzc0ReDnM4:
             servername: phpmyadmin.com
             serveraliases:
                 - www.phpmyadmin.com
@@ -131,7 +132,7 @@ nginx:
         proxy_buffer_size: 128k
         proxy_buffers: '4 256k'
     vhosts:
-        xMKfAQSSMEf2:
+        xWjQvq94UmPJ:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -183,7 +184,7 @@ mysql:
     root_password: '123'
     adminer: 0
     databases:
-        9HWaB5n0IXxS:
+        FGFO2ovZAVgn:
             grant:
                 - ALL
             name: project

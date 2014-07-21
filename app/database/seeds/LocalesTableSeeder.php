@@ -4,16 +4,18 @@ class LocalesTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('locale')->delete();
+        DB::table('locales')->delete();
 
-        DB::table('locale')->insert( array(
+        DB::table('locales')->insert( array(
             array(
-                'id' 	=> 'fr',
-                'name'	=> 'France'
+                'id' 	=> 'fr_FR',
+                'name'	=> 'France',
+                'enable'=> 1
             ),
             array(
-                'id'    => 'en',
-                'name'  => 'United Kingdom'
+                'id'    => 'en_EN',
+                'name'  => 'United Kingdom',
+                'enable'=> 1
             ),
             array(
                 'id' 	=> 'en_US',
@@ -22,5 +24,4 @@ class LocalesTableSeeder extends Seeder {
             ))
         );
     }
-
 }

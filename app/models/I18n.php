@@ -32,13 +32,10 @@ class I18n extends Eloquent{
      * Method to translate some text with the locale_id
      * @param $locale_id
      * @param $text
-     * @return mixed
+     * @return bool
      */
 	public function translate( $locale_id, $text ) {
-        $translation            = new Translation;
-        $translation->locale_id =  $locale_id;
-        $translation->text      =  $text;
-        if($translation->save()){
+        if( Translation::create( array('i18n_id' => $this->id, 'locale_id' => $locale_id, 'text' => $text ) ) ){
             return true;
         }
         return false;

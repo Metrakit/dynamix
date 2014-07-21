@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePageMapsTable extends Migration {
+class CreateBlocksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePageMapsTable extends Migration {
 	public function up()
 	{
 		// Create the `Posts` table
-		Schema::create('page_maps', function(Blueprint $table)
+		Schema::create('blocks', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
@@ -21,8 +21,8 @@ class CreatePageMapsTable extends Migration {
 			$table->integer('page_id')->unsigned();
 			$table->foreign('page_id')->references('id')->on('pages');
 
-			$table->integer('view_id')->unsigned();
-			$table->foreign('view_id')->references('id')->on('views');
+			$table->integer('i18n_content')->unsigned();
+			$table->foreign('i18n_content')->references('id')->on('i18n');
 
 			$table->integer('order')->unsigned();
 
@@ -37,8 +37,8 @@ class CreatePageMapsTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `page_maps` table
-		Schema::drop('page_maps');
+		// Delete the `blocks` table
+		Schema::drop('blocks');
 	}
 
 }

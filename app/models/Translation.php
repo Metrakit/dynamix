@@ -6,7 +6,7 @@ class Translation extends Eloquent{
 	 *
 	 * @var string
 	 */
-	protected $table = 'translation';
+	protected $table = 'translations';
     public $timestamps = false;
 
 	/**

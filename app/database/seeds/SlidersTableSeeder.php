@@ -9,8 +9,8 @@ class SlidersTableSeeder extends Seeder {
         $title = new I18N;
         $title->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title->save();
-        $title->translate('fr','Slider Démo');
-        $title->translate('en','Demo Slider');
+        $title->translate('fr_FR','Slider Démo');
+        $title->translate('en_EN','Demo Slider');
 
         DB::table('sliders')->insert( array(
             array(

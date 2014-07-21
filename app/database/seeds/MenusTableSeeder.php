@@ -9,8 +9,8 @@ class MenusTableSeeder extends Seeder {
         $title1 = new I18N;
         $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title1->save();
-        $title1->translate('fr','Accueil');
-        $title1->translate('en','Home');
+        $title1->translate('fr_FR','Accueil');
+        $title1->translate('en_EN','Home');
 
 
         $title2                 = I18N::create(array())->id;

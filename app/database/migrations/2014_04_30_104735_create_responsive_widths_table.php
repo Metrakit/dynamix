@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocalesTable extends Migration {
+class CreateResponsiveWidthsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,14 @@ class CreateLocalesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('locales', function(Blueprint $table)
+		Schema::create('responsive_widths', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
-			$table->string('id',5);		
-			$table->string('name', 50);			
-			$table->boolean('enable')->default(true);		
+			$table->increments('id')->unsigned();
 
-			$table->primary('id');
+			$table->string('name');
+			
+			$table->string('value');
 		});
 	}
 
@@ -30,8 +30,8 @@ class CreateLocalesTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `locale` table
-		Schema::drop('locales');
+		// Delete the `responsive_widths` table
+		Schema::drop('responsive_widths');
 	}
 
 }

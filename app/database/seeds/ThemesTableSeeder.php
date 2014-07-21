@@ -11,8 +11,8 @@ class ThemesTableSeeder extends Seeder {
         $name->i18n_type_id = I18nType::where('name','=','name')->first()->id;
         $name->save();
 
-        $name->translate('fr','Défaut');
-        $name->translate('en','Default');
+        $name->translate('fr_FR','Défaut');
+        $name->translate('en_EN','Default');
 
         DB::table('themes')->insert( array(
             array(
