@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder {
 
 
         //Autonomous
-        $this->call('ThemesTableSeeder');
+        //$this->call('ThemesTableSeeder');
         $this->call('OptionsTableSeeder');
 
     }

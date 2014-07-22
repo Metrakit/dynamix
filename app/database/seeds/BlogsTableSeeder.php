@@ -18,8 +18,8 @@ class BlogsTableSeeder extends Seeder {
         $url = new I18N;
         $url->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url->save();
-        $url->translate('fr_FR',Str::slug($t_fr));
-        $url->translate('en_EN',Str::slug($t_en));
+        $url->translate('fr_FR','/'.Str::slug($t_fr));
+        $url->translate('en_EN','/'.Str::slug($t_en));
 
         $meta_title = new I18N;
         $meta_title->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;

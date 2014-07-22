@@ -22,7 +22,8 @@ App::before(function($route, $request, $lang = 'auto')
     | Detect the browser language.
     |
     */
-    Session::forget('lang');
+    //Session::forget('lang');
+    Session::put('lang','fr_FR');
     if(!Session::has('lang')){
         //get all enable langage
         $available_langages = Locale::where('enable','=',1)->get();

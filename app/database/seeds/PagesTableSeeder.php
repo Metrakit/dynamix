@@ -25,8 +25,8 @@ class PagesTableSeeder extends Seeder {
         $url1 = new I18N;
         $url1->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url1->save();
-        $url1->translate('fr_FR',Str::slug($t_fr));
-        $url1->translate('en_EN',Str::slug($t_en));
+        $url1->translate('fr_FR','/');
+        $url1->translate('en_EN','/');
 
         $meta_title1 = new I18N;
         $meta_title1->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
@@ -67,8 +67,8 @@ class PagesTableSeeder extends Seeder {
         $url2 = new I18N;
         $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url2->save();
-        $url2->translate('fr_FR',Str::slug($t_fr2));
-        $url2->translate('en_EN',Str::slug($t_en2));
+        $url2->translate('fr_FR','/'.Str::slug($t_fr2));
+        $url2->translate('en_EN','/'.Str::slug($t_en2));
 
 
         $meta_title2 = new I18N;

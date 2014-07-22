@@ -205,4 +205,4 @@ Route::post('{blogPost}', 'BlogController@postView');
 |	Composer
 |
 */
-View::composer('*', 'MasterComposer');
+//View::composer('*', 'MasterComposer');

@@ -42,8 +42,8 @@ class ArticlesTableSeeder extends Seeder {
         $url1 = new I18N;
         $url1->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url1->save();
-        $url1->translate('fr_FR',Str::slug($t_fr));
-        $url1->translate('en_EN',Str::slug($t_en));
+        $url1->translate('fr_FR','/'.Str::slug($t_fr));
+        $url1->translate('en_EN','/'.Str::slug($t_en));
 
         $content1 = new I18N;
         $content1->i18n_type_id = I18nType::where('name','=','content')->first()->id;
@@ -83,8 +83,8 @@ class ArticlesTableSeeder extends Seeder {
         $url2 = new I18N;
         $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url2->save();
-        $url2->translate('fr_FR',Str::slug($t_fr2));
-        $url2->translate('en_EN',Str::slug($t_en2));
+        $url2->translate('fr_FR','/'.Str::slug($t_fr2));
+        $url2->translate('en_EN','/'.Str::slug($t_en2));
 
         $content2 = new I18N;
         $content2->i18n_type_id = I18nType::where('name','=','content')->first()->id;

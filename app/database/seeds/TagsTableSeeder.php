@@ -18,8 +18,8 @@ class TagsTableSeeder extends Seeder {
         $url1 = new I18N;
         $url1->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url1->save();
-        $url1->translate('fr_FR',Str::slug($t_fr1));
-        $url1->translate('en_EN',Str::slug($t_en1));
+        $url1->translate('fr_FR','/'.Str::slug($t_fr1));
+        $url1->translate('en_EN','/'.Str::slug($t_en1));
 
         $meta_title1 = new I18N;
         $meta_title1->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
@@ -53,8 +53,8 @@ class TagsTableSeeder extends Seeder {
         $url2 = new I18N;
         $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url2->save();
-        $url2->translate('fr_FR',Str::slug($t_fr2));
-        $url2->translate('en_EN',Str::slug($t_en2));
+        $url2->translate('fr_FR','/'.Str::slug($t_fr2));
+        $url2->translate('en_EN','/'.Str::slug($t_en2));
 
         $meta_title2 = new I18N;
         $meta_title2->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
@@ -88,8 +88,8 @@ class TagsTableSeeder extends Seeder {
         $url3 = new I18N;
         $url3->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url3->save();
-        $url3->translate('fr_FR',Str::slug($t_fr3));
-        $url3->translate('en_EN',Str::slug($t_en3));
+        $url3->translate('fr_FR','/'.Str::slug($t_fr3));
+        $url3->translate('en_EN','/'.Str::slug($t_en3));
 
         $meta_title3 = new I18N;
         $meta_title3->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
