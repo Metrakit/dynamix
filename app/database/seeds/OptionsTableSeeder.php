@@ -6,29 +6,39 @@ class OptionsTableSeeder extends Seeder {
     {
         DB::table('options')->delete();
 
-        $i18n_site_name              = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_site_name, 'locale_id' => 'fr', 'text' => 'Dynamix'));
-            Translation::create(array('i18n_id' => $i18n_site_name, 'locale_id' => 'en', 'text' => 'Dynamix'));
+        $i18n_site_name = new I18N;
+        $i18n_site_name->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $i18n_site_name->save();
+        $i18n_site_name->translate('fr_FR','Dynamix');
+        $i18n_site_name->translate('en_EN','Dynamix');
 
         //$i18n_site_description       = I18N::create(array())->id;
             //Translation::create(array('i18n_id' => $i18n_site_description, 'locale_id' => 'fr', 'text' => 'An awesome CMS for developer'));
             //Translation::create(array('i18n_id' => $i18n_site_description, 'locale_id' => 'en', 'text' => 'An awesome CMS for developer'));
 
-        $i18n_blog_charset            = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_blog_charset, 'locale_id' => 'fr', 'text' => 'UTF-8'));
-            Translation::create(array('i18n_id' => $i18n_blog_charset, 'locale_id' => 'en', 'text' => 'UTF-8'));
+        $i18n_blog_charset = new I18N;
+        $i18n_blog_charset->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $i18n_blog_charset->save();
+        $i18n_blog_charset->translate('fr_FR','UTF-8');
+        $i18n_blog_charset->translate('en_EN','UTF-8');
 
-        $i18n_timezone             = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_timezone, 'locale_id' => 'fr', 'text' => 'Europe/Paris'));
-            Translation::create(array('i18n_id' => $i18n_timezone, 'locale_id' => 'en', 'text' => 'j F Y'));
+        $i18n_timezone = new I18N;
+        $i18n_timezone->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $i18n_timezone->save();
+        $i18n_timezone->translate('fr_FR','Europe/Paris');
+        $i18n_timezone->translate('en_EN','Europe/Paris');
 
-        $i18n_date_format             = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_date_format, 'locale_id' => 'fr', 'text' => 'j F Y'));
-            Translation::create(array('i18n_id' => $i18n_date_format, 'locale_id' => 'en', 'text' => 'j F Y'));
+        $i18n_date_format = new I18N;
+        $i18n_date_format->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $i18n_date_format->save();
+        $i18n_date_format->translate('fr_FR','j F Y');
+        $i18n_date_format->translate('en_EN','j F Y');
 
-        $i18n_time_format             = I18N::create(array())->id;
-            Translation::create(array('i18n_id' => $i18n_time_format, 'locale_id' => 'fr', 'text' => 'G \h i \m\i\n'));
-            Translation::create(array('i18n_id' => $i18n_time_format, 'locale_id' => 'en', 'text' => 'G \h i \m\i\n'));
+        $i18n_time_format = new I18N;
+        $i18n_time_format->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $i18n_time_format->save();
+        $i18n_time_format->translate('fr_FR','G \h i \m\i\n');
+        $i18n_time_format->translate('en_EN','G \h i \m\i\n');
 
 
 
@@ -37,8 +47,8 @@ class OptionsTableSeeder extends Seeder {
 
         DB::table('options')->insert( array(
             array(
-                'site_url'              => 'http://localhost/cms-0.0.1',
-                'i18n_site_name'        => $i18n_site_name,
+                'site_url'              => 'http://dynam.ix',
+                'i18n_site_name'        => $i18n_site_name->id,
                 //'i18n_site_description' => $i18n_site_description,
 
                 'admin_email'           => 'd.lepaux@gmail.com',
@@ -48,11 +58,11 @@ class OptionsTableSeeder extends Seeder {
                 'mailserver_pass'       => '',
                 'mailserver_port'       => '',
 
-                'i18n_blog_charset'     => $i18n_blog_charset,
+                'i18n_blog_charset'     => $i18n_blog_charset->id,
 
-                'i18n_timezone'         => $i18n_timezone,
-                'i18n_date_format'      => $i18n_date_format,
-                'i18n_time_format'      => $i18n_time_format,
+                'i18n_timezone'         => $i18n_timezone->id,
+                'i18n_date_format'      => $i18n_date_format->id,
+                'i18n_time_format'      => $i18n_time_format->id,
                 
                 'disqus_config'         => '',
                 'analytics'             => '',
