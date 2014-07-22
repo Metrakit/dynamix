@@ -22,19 +22,6 @@ class BlocksTableSeeder extends Seeder {
 
     Te his dolorem adversarium? Pri eu rebum viris, tation molestie id pri. Mel ei stet inermis dissentias. Sed ea dolorum detracto vituperata. Possit oportere similique cu nec, ridens animal quo ex?';
 
-    //Blocks
-    $content1 = new I18N;
-    $content1->i18n_type_id = I18nType::where('name','=','content')->first()->id;
-    $content1->save();
-    $content1->translate('fr_FR',$this->content);
-    $content1->translate('en_EN',$this->content);
-    
-    //Blocks
-    $content2 = new I18N;
-    $content2->i18n_type_id = I18nType::where('name','=','content')->first()->id;
-    $content2->save();
-    $content2->translate('fr_FR',$this->content);
-    $content2->translate('en_EN',$this->content);
 
 
 
@@ -42,6 +29,20 @@ class BlocksTableSeeder extends Seeder {
     public function run()
     {
         DB::table('blocks')->delete();
+        
+        //Blocks
+        $content1 = new I18N;
+        $content1->i18n_type_id = I18nType::where('name','=','content')->first()->id;
+        $content1->save();
+        $content1->translate('fr_FR',$this->content);
+        $content1->translate('en_EN',$this->content);
+        
+        //Blocks
+        $content2 = new I18N;
+        $content2->i18n_type_id = I18nType::where('name','=','content')->first()->id;
+        $content2->save();
+        $content2->translate('fr_FR',$this->content);
+        $content2->translate('en_EN',$this->content);
 
         DB::table('blocks')->insert( array(
             array(

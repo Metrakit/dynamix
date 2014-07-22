@@ -50,8 +50,8 @@ class DatabaseSeeder extends Seeder {
 
 
         //Sliders
-        $this->call('SlidesTableSeeder');
         $this->call('SlidersTableSeeder');
+        $this->call('SlidesTableSeeder');
         
 
         //Galleries

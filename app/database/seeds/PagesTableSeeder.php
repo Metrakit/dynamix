@@ -95,14 +95,12 @@ class PagesTableSeeder extends Seeder {
             array(
                 'structure_id'              => $structure1->id,
                 'i18n_name'                 => $name1->id,
-                'i18n_content'              => $content1->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
                 'structure_id'              => $structure2->id,
                 'i18n_name'                 => $name2->id,
-                'i18n_content'              => $content2->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ))

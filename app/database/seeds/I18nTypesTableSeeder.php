@@ -23,6 +23,9 @@ class I18nTypesTableSeeder extends Seeder {
                 'name' => 'meta_description'
             ),
             array(
+                'name' => 'content'
+            ),
+            array(
                 'name' => 'name'
             ),
             array(

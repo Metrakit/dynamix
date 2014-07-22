@@ -116,17 +116,17 @@ class ArticlesTableSeeder extends Seeder {
         DB::table('articles')->insert( array(
             array(
                 'user_id'               => $user_id,
-                'structure'             => $structure1->id,
+                'structure_id'             => $structure1->id,
                 'img'                   => null,
-                'i18n_content'          => $i18n_content1,
+                'i18n_content'          => $content1->id,
                 'created_at'            => new DateTime,
                 'updated_at'            => new DateTime
             ),
             array(
                 'user_id'               => $user_id,
-                'structure'             => $structure2->id,
+                'structure_id'             => $structure2->id,
                 'img'                   => null,
-                'i18n_content'          => $i18n_content2,
+                'i18n_content'          => $content2->id,
                 'created_at'            => new DateTime,
                 'updated_at'            => new DateTime
             ))
