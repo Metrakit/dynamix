@@ -10,45 +10,34 @@ class Structure extends Eloquent {
 	public $timestamps = false;
 
 	/**
-	 * structurable polymorphic
+	 * Polymorphic relation
 	 *
 	 * @var string
 	 */
-	public function pages()
+	public function structurable()
     {
-        return $this->morphedByMany('Page', 'structurable');
+        return $this->morphTo();
     }
 
 
-	public function i18n_title()
+
+	public function title()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_title)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return 'text';
 	}
 
-	public function i18n_url()
+	public function url()
 	{
-		return Urls::where('i18n_id','=',$this->i18n_url)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return 'text';
 	}
 
-	public function i18n_meta_title()
+	public function meta_title()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_title)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return 'text';
 	}
 
-	public function i18n_meta_description()
+	public function meta_description()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_description)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return 'text';
 	}
 }

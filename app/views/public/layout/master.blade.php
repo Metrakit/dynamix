@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
 @section('meta_title')
-{{ Cache::get('DB_Option')->i18n_site_name() }}
+
 @show
         </title>
         <meta name="author" content="{{Config::get('app.author')}}">
@@ -92,7 +92,7 @@
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
-                            @include('site.menu.menu-link', array('menu' => Cache::get('DB_Menu')))
+                            
                         </ul>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
 
                 <aside class="col-sm-2 navigation-right hidden-xs" role="navigation">
                     <ul class="nav nav-pills nav-stacked aside-right">
-                        @include('site.menu.menu-link', array('menu' => Cache::get('DB_Menu')))
+                        
                     </ul>
                 </aside>
 

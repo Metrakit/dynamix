@@ -23,9 +23,9 @@ class URLManagerController extends BaseController {
                     })
                     ->first();*/
 
-                $structure = Structure::where('i18n_url','=',$url['i18n_id'])->first();
-                
-                $page = $structure->pages();
+                $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
+                //return var_dump($page->i18n_name);
+
                 return View::make( 'public.pages.page' , compact('page') );
             }
         }

@@ -7,5 +7,5 @@
 
 
 @section('content')
-{{ $page->i18n_content() }}
+{{ $page->getBlocks() }}
 @stop
