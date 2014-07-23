@@ -15,7 +15,7 @@ class Page extends Eloquent {
      * @return mixed
      */
 	public function structure() {
-        return $this->morphOne('Structure', 'structurable');
+        return $this->morphToMany('Structure', 'structurable');
     }
 
 	/**
@@ -28,7 +28,7 @@ class Page extends Eloquent {
     }
 
 
-	/*public function i18n_name()
+	public function i18n_name()
 	{
 		return Translation::where('i18n_id','=',$this->i18n_name)
 						  ->where('locale_id','=',App::getLocale())
@@ -52,14 +52,6 @@ class Page extends Eloquent {
 						  ->text;
 	}
 
-	public function i18n_content()
-	{
-		return Translation::where('i18n_id','=',$this->i18n_content)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
-	}
-
 	public function i18n_meta_title()
 	{
 		return Translation::where('i18n_id','=',$this->i18n_meta_title)
@@ -76,13 +68,6 @@ class Page extends Eloquent {
 						  ->text;
 	}
 
-	public function i18n_meta_keywords()
-	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_keywords)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
-	}*/
 
 
 }

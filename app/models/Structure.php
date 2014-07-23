@@ -14,9 +14,9 @@ class Structure extends Eloquent {
 	 *
 	 * @var string
 	 */
-	public function structurable()
+	public function pages()
     {
-        return $this->morphTo();
+        return $this->morphedByMany('Page', 'structurable');
     }
 
 

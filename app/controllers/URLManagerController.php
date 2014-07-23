@@ -15,14 +15,17 @@ class URLManagerController extends BaseController {
         {
             if( $url['url'] == '/' ){
 
-                $page = DB::table('pages')
+                /*$page = DB::table('pages')
                     ->join('structures', function($join) use ($url)
                     {
                         $join->on('pages.structure_id', '=', 'structures.id')
                              ->where('structures.i18n_url', '=', $url['i18n_id']);
                     })
-                    ->first();
+                    ->first();*/
 
+                $structure = Structure::where('i18n_url','=',$url['i18n_id'])->first();
+                
+                $page = $structure->pages();
                 return View::make( 'public.pages.page' , compact('page') );
             }
         }
