@@ -22,28 +22,34 @@ App::before(function($route, $request, $lang = 'auto')
     | Detect the browser language.
     |
     */
-    //Session::forget('lang');
-    Session::put('lang','fr_FR');
-    if(!Session::has('lang')){
+
+    Session::forget('locale');
+    if( !Session::has('locale') )
+    {
         //get all enable langage
-        $available_langages = Locale::where('enable','=',1)->get();
+        $available_langages = DB::table('locales')->where('enable','=',1)->get();
+        
         $available_langage = array();
-        foreach($available_langages as $a){
-            $available_langage[] = $a->lang;
+        foreach($available_langages as $a)
+        {
+            $available_langage[] = $a->id;
         }
 
-
+        Log::info('lang :: '.$lang);
+        
         if($lang != "auto" && in_array($lang , $available_langage))
         {
             Config::set('app.locale', $lang);
-        }else{
-            $browser_lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',') : '';
+        }
+        else
+        {
+            $browser_lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',') : '';          
             $browser_lang = substr($browser_lang, 0,2);
             $userLang = (in_array($browser_lang, $available_langage)) ? $browser_lang : Config::get('app.locale');
             Config::set('app.locale', $userLang);
             App::setLocale($userLang);
         }
-        Session::put('lang',Config::get('app.locale'));
+        Session::put('locale',Config::get('app.locale'));
     }
 });
 
