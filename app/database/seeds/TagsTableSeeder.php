@@ -38,6 +38,9 @@ class TagsTableSeeder extends Seeder {
                 'i18n_url'                  => $url1->id,
                 'i18n_meta_title'           => $meta_title1->id,
                 'i18n_meta_description'     => $meta_description1->id,
+            ));
+        $structurable1 = Structurable::create(array(
+                'structure_id'              => $structure1->id,
                 'structurable_id'           => 1,
                 'structurable_type'         => 'tags'
             ));
@@ -75,6 +78,9 @@ class TagsTableSeeder extends Seeder {
                 'i18n_url'                  => $url2->id,
                 'i18n_meta_title'           => $meta_title2->id,
                 'i18n_meta_description'     => $meta_description2->id,
+            ));
+        $structurable2 = Structurable::create(array(
+                'structure_id'              => $structure2->id,
                 'structurable_id'           => 2,
                 'structurable_type'         => 'tags'
             ));
@@ -112,6 +118,9 @@ class TagsTableSeeder extends Seeder {
                 'i18n_url'                  => $url3->id,
                 'i18n_meta_title'           => $meta_title3->id,
                 'i18n_meta_description'     => $meta_description3->id,
+            ));
+        $structurable3 = Structurable::create(array(
+                'structure_id'              => $structure3->id,
                 'structurable_id'           => 3,
                 'structurable_type'         => 'tags'
             ));

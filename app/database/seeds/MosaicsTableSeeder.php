@@ -43,7 +43,10 @@ class MosaicsTableSeeder extends Seeder {
                 'i18n_title'                => $title->id,
                 'i18n_url'                  => $url->id,
                 'i18n_meta_title'           => $meta_title->id,
-                'i18n_meta_description'     => $meta_description->id,
+                'i18n_meta_description'     => $meta_description->id
+            ));
+        $structurable = Structurable::create(array(
+                'structure_id'              => $structure->id,
                 'structurable_id'           => 1,
                 'structurable_type'         => 'mosaics'
             ));

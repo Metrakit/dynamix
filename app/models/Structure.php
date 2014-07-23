@@ -9,6 +9,16 @@ class Structure extends Eloquent {
 	protected $table = 'structures';
 	public $timestamps = false;
 
+	/**
+	 * structurable polymorphic
+	 *
+	 * @var string
+	 */
+	public function structurable()
+    {
+        return $this->morphTo();
+    }
+
 
 	public function i18n_title()
 	{

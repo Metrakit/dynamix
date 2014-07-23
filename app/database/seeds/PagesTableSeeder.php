@@ -45,6 +45,10 @@ class PagesTableSeeder extends Seeder {
                 'i18n_url'                  => $url1->id,
                 'i18n_meta_title'           => $meta_title1->id,
                 'i18n_meta_description'     => $meta_description1->id,
+            ));
+
+        $structurable1 = Structurable::create(array(
+                'structure_id'              => $structure1->id,
                 'structurable_id'           => 1,
                 'structurable_type'         => 'pages'
             ));
@@ -89,7 +93,11 @@ class PagesTableSeeder extends Seeder {
                 'i18n_title'                => $title2->id,
                 'i18n_url'                  => $url2->id,
                 'i18n_meta_title'           => $meta_title2->id,
-                'i18n_meta_description'     => $meta_description2->id,
+                'i18n_meta_description'     => $meta_description2->id
+            ));
+
+        $structurable2 = Structurable::create(array(
+                'structure_id'              => $structure2->id,
                 'structurable_id'           => 2,
                 'structurable_type'         => 'pages'
             ));

@@ -15,7 +15,7 @@ class Page extends Eloquent {
      * @return mixed
      */
 	public function structure() {
-        return $this->belongsToMany('Structure');
+        return $this->morphOne('Structure', 'structurable');
     }
 
 	/**
@@ -28,7 +28,7 @@ class Page extends Eloquent {
     }
 
 
-	public function i18n_name()
+	/*public function i18n_name()
 	{
 		return Translation::where('i18n_id','=',$this->i18n_name)
 						  ->where('locale_id','=',App::getLocale())
@@ -82,7 +82,7 @@ class Page extends Eloquent {
 						  ->where('locale_id','=',App::getLocale())
 						  ->first()
 						  ->text;
-	}
+	}*/
 
 
 }

@@ -28,11 +28,6 @@ class CreateStructuresTable extends Migration {
 
 			$table->integer('i18n_meta_description')->unsigned();
 			$table->foreign('i18n_meta_description')->references('id')->on('i18n');
-
-			$table->integer('structurable_id')->unsigned();
-
-			$table->string('structurable_type');
-
 		});
 	}
 
