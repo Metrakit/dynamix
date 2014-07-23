@@ -7,5 +7,6 @@
 
 
 @section('content')
+@include('includes.session-message')
 {{ Pager::render($page) }}
 @stop

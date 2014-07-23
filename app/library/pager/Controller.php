@@ -26,7 +26,7 @@ class Pager {
 
 
 	/**
-	 * display a Block
+	 * Compose Block DOM
 	 *
 	 * @var Page
 	 */
@@ -39,11 +39,10 @@ class Pager {
     		$css .= 'col-' . $responsive->trigger->value . '-' . $responsive->width->value . ' ';
     	}
 
+        //Content Block
     	$content = $block->translate( $block->i18n_content );
 
+        //Fusiiion
         return '<div class="'.$css.'">'.$content.'</div>';
     }
-
-
-
 }
