@@ -109,6 +109,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'PagerServiceProvider',
 
 		//Role based & permission
 		'mnshankar\RoleBasedAuthority\RoleBasedAuthorityServiceProvider',

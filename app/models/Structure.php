@@ -1,13 +1,13 @@
 <?php
 
 class Structure extends Eloquent {
+	
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'structures';
 	public $timestamps = false;
+
 
 	/**
 	 * Polymorphic relation
@@ -20,24 +20,39 @@ class Structure extends Eloquent {
     }
 
 
+    /**
+	 * Additional Method
+	 *
+	 * @var string
+	 */
+	public function translate( $i18n_id )
+	{
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
 
+
+	/**
+	 * Accessor Method
+	 *
+	 * @var string
+	 */
 	public function title()
 	{
-		return 'text';
+		return $this->translate( $this->i18n_title );
 	}
 
 	public function url()
 	{
-		return 'text';
+		return $this->translate( $this->i18n_url );
 	}
 
 	public function meta_title()
 	{
-		return 'text';
+		return $this->translate( $this->i18n_meta_title );
 	}
 
 	public function meta_description()
 	{
-		return 'text';
+		return $this->translate( $this->i18n_meta_description );
 	}
 }

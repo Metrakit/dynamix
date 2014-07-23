@@ -1,12 +1,22 @@
 <?php
 
 class Page extends Eloquent {
+
 	/**
-	 * The database table used by the model.
+	 * Parameters
+	 */
+	protected $table = 'pages';
+
+
+	/**
+	 * Relations
 	 *
 	 * @var string
 	 */
-	protected $table = 'pages';
+	public function blocks() {
+        return $this->hasMany('Block');
+    }
+
 
 	/**
 	 * Polymorphic relation
@@ -17,21 +27,18 @@ class Page extends Eloquent {
     {
         return $this->morphMany('Structure', 'structurable');
     }
-
-	/**
-     * A Page has may block
-     *
-     * @return mixed
-     */
-	public function blocks() {
-        return $this->hasMany('Block');
-    }
-
-	public function getBlocks()
-	{
-		return 'text';
-	}
+    
 	
+	/**
+	 * Additional Method
+	 *
+	 * @var string
+	 */
+	public function translate( $i18n_id )
+	{
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
+
 
 	/**
      * Attributes
@@ -50,22 +57,22 @@ class Page extends Eloquent {
      */
 	public function title()
 	{
-		return $this->structure->first()->i18n_title;
+		return $this->structure->first()->title();
 	}
 
 	public function url()
 	{
-		return $this->structure->first()->i18n_url;
+		return $this->structure->first()->url();
 	}
 
 	public function meta_title()
 	{
-		return $this->structure->first()->i18n_meta_title;
+		return $this->structure->first()->meta_title();
 	}
 
 	public function meta_description()
 	{
-		return $this->structure->first()->i18n_meta_description;
+		return $this->structure->first()->meta_description();
 	}
 
 

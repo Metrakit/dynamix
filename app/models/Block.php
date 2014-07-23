@@ -1,20 +1,40 @@
 <?php
 
 class Block extends Eloquent{
+	
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'blocks';
 
+	
 	/**
-     * A Blog has many Permission
-     *
-     * @return mixed
-     */
+	 * Relations
+	 *
+	 * @var string
+	 */
 	public function page() {
         return $this->hasOne('Page');
     }
 
+	public function responsives() {
+        return $this->hasMany('Responsive');
+    }
+
+
+    /**
+     * Attributes
+     *
+     * @return mixed
+     */
+
+	/**
+	 * Additional Method
+	 *
+	 * @var string
+	 */
+	public function translate( $i18n_id )
+	{
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
 }

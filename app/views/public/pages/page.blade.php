@@ -7,5 +7,5 @@
 
 
 @section('content')
-{{ $page->getBlocks() }}
+{{ Pager::render($page) }}
 @stop
