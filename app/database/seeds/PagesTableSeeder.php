@@ -44,7 +44,9 @@ class PagesTableSeeder extends Seeder {
                 'i18n_title'                => $title1->id,
                 'i18n_url'                  => $url1->id,
                 'i18n_meta_title'           => $meta_title1->id,
-                'i18n_meta_description'     => $meta_description1->id
+                'i18n_meta_description'     => $meta_description1->id,
+                'structurable_id'           => 1,
+                'structurable_type'         => 'pages'
             ));
 
 
@@ -87,19 +89,19 @@ class PagesTableSeeder extends Seeder {
                 'i18n_title'                => $title2->id,
                 'i18n_url'                  => $url2->id,
                 'i18n_meta_title'           => $meta_title2->id,
-                'i18n_meta_description'     => $meta_description2->id
+                'i18n_meta_description'     => $meta_description2->id,
+                'structurable_id'           => 2,
+                'structurable_type'         => 'pages'
             ));
 
 
         DB::table('pages')->insert( array(
             array(
-                'structure_id'              => $structure1->id,
                 'i18n_name'                 => $name1->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
-                'structure_id'              => $structure2->id,
                 'i18n_name'                 => $name2->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime

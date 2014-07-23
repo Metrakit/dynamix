@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusTable extends Migration {
+class CreateNavigationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateMenusTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('menus', function(Blueprint $table)
+		Schema::create('navigations', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
@@ -21,9 +21,15 @@ class CreateMenusTable extends Migration {
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 
 			$table->integer('parent_id')->unsigned();
-			//$table->foreign('parent_id')->references('id')->on('menus');
+			//$table->foreign('parent_id')->references('id')->on('navigations');
 
 			$table->boolean('is_published')->default(true);
+			
+			$table->integer('order')->unsigned();
+
+			$table->integer('naviggable_id')->unsigned();
+
+			$table->string('naviggable_type');
 
 			$table->timestamps();
 		});
@@ -36,8 +42,8 @@ class CreateMenusTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `menus` table
-		Schema::drop('menus');
+		// Delete the `navigations` table
+		Schema::drop('navigations');
 	}
 
 }

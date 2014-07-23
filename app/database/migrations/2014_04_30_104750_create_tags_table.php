@@ -18,9 +18,6 @@ class CreateTagsTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->integer('structure_id')->unsigned();
-			$table->foreign('structure_id')->references('id')->on('structures');
-
 			$table->timestamps();
 		});
 	}

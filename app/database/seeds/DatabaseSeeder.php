@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('ArticleBlogTableSeeder');
         $this->call('ArticleCategoryTableSeeder');
-        $this->call('ArticleTagTableSeeder');
+        $this->call('TaggablesTableSeeder');
         
 
         //Pages
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder {
 
 
         //Menu
-        $this->call('MenusTableSeeder');//Need Page module OK
+        $this->call('NavigationsTableSeeder');//Need Page module OK
 
 
         //Autonomous

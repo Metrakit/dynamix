@@ -37,13 +37,14 @@ class BlogsTableSeeder extends Seeder {
                 'i18n_title'                => $title->id,
                 'i18n_url'                  => $url->id,
                 'i18n_meta_title'           => $meta_title->id,
-                'i18n_meta_description'     => $meta_description->id
+                'i18n_meta_description'     => $meta_description->id,
+                'structurable_id'           => 1,
+                'structurable_type'         => 'blogs'
             ));
             
 
         DB::table('blogs')->insert( array(
             array(
-                'structure_id'              => $structure->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ))

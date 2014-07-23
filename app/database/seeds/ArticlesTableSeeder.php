@@ -67,7 +67,9 @@ class ArticlesTableSeeder extends Seeder {
                 'i18n_title'                => $title1->id,
                 'i18n_url'                  => $url1->id,
                 'i18n_meta_title'           => $meta_title1->id,
-                'i18n_meta_description'     => $meta_description1->id
+                'i18n_meta_description'     => $meta_description1->id,
+                'structurable_id'           => 1,
+                'structurable_type'         => 'articles'
             ));
 
         $t_fr2 = 'Exemple article 2';
@@ -108,7 +110,9 @@ class ArticlesTableSeeder extends Seeder {
                 'i18n_title'                => $title2->id,
                 'i18n_url'                  => $url2->id,
                 'i18n_meta_title'           => $meta_title2->id,
-                'i18n_meta_description'     => $meta_description2->id
+                'i18n_meta_description'     => $meta_description2->id,
+                'structurable_id'           => 2,
+                'structurable_type'         => 'articles'
             ));
 
         
@@ -116,7 +120,6 @@ class ArticlesTableSeeder extends Seeder {
         DB::table('articles')->insert( array(
             array(
                 'user_id'               => $user_id,
-                'structure_id'             => $structure1->id,
                 'img'                   => null,
                 'i18n_content'          => $content1->id,
                 'created_at'            => new DateTime,
@@ -124,7 +127,6 @@ class ArticlesTableSeeder extends Seeder {
             ),
             array(
                 'user_id'               => $user_id,
-                'structure_id'             => $structure2->id,
                 'img'                   => null,
                 'i18n_content'          => $content2->id,
                 'created_at'            => new DateTime,
