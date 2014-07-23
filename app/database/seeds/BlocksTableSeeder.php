@@ -34,15 +34,15 @@ class BlocksTableSeeder extends Seeder {
         $content1 = new I18N;
         $content1->i18n_type_id = I18nType::where('name','=','content')->first()->id;
         $content1->save();
-        $content1->translate('fr_FR',$this->content);
-        $content1->translate('en_EN',$this->content);
+        $content1->translate('fr',$this->content);
+        $content1->translate('en',$this->content);
         
         //Blocks
         $content2 = new I18N;
         $content2->i18n_type_id = I18nType::where('name','=','content')->first()->id;
         $content2->save();
-        $content2->translate('fr_FR',$this->content);
-        $content2->translate('en_EN',$this->content);
+        $content2->translate('fr',$this->content);
+        $content2->translate('en',$this->content);
 
         DB::table('blocks')->insert( array(
             array(

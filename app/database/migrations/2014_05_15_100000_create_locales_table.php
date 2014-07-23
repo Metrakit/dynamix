@@ -15,7 +15,7 @@ class CreateLocalesTable extends Migration {
 		Schema::create('locales', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
-			$table->string('id',5);		
+			$table->char('id',5);		
 			$table->string('name', 50);			
 			$table->boolean('enable')->default(true);		
 

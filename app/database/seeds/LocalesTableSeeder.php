@@ -454,12 +454,7 @@ class LocalesTableSeeder extends Seeder {
             ),
             array( 
                 'id'    => 'no',
-                'name'  => 'Norvégien (bokmal)',
-                'enable'=> 0
-            ),
-            array( 
-                'id'    => 'no',
-                'name'  => 'Norvégien (Nynorsk)',
+                'name'  => 'Norvégien',
                 'enable'=> 0
             ),
             array( 
@@ -510,11 +505,6 @@ class LocalesTableSeeder extends Seeder {
             array( 
                 'id'    => 'ru-mo',
                 'name'  => 'Russe (Moldavie)',
-                'enable'=> 0
-            ),
-            array( 
-                'id'    => 'sr',
-                'name'  => 'Serbe (Cyrillic)',
                 'enable'=> 0
             ),
             array( 
@@ -612,13 +602,6 @@ class LocalesTableSeeder extends Seeder {
                 'name'  => 'Zulu (Afrique)',
                 'enable'=> 0
             ))
-
-
-
-
-
-
-
         );
     }
 }

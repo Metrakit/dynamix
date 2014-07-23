@@ -13,32 +13,32 @@ class PagesTableSeeder extends Seeder {
         $name1 = new I18N;
         $name1->i18n_type_id = I18nType::where('name','=','name')->first()->id;
         $name1->save();
-        $name1->translate('fr_FR',$t_fr);
-        $name1->translate('en_EN',$t_en);
+        $name1->translate('fr',$t_fr);
+        $name1->translate('en',$t_en);
         
         $title1 = new I18N;
         $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title1->save();
-        $title1->translate('fr_FR',$t_fr);
-        $title1->translate('en_EN',$t_en);
+        $title1->translate('fr',$t_fr);
+        $title1->translate('en',$t_en);
         
         $url1 = new I18N;
         $url1->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url1->save();
-        $url1->translate('fr_FR','/');
-        $url1->translate('en_EN','/');
+        $url1->translate('fr','/');
+        $url1->translate('en','/');
 
         $meta_title1 = new I18N;
         $meta_title1->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
         $meta_title1->save();
-        $meta_title1->translate('fr_FR',$t_fr);
-        $meta_title1->translate('en_EN',$t_en);
+        $meta_title1->translate('fr',$t_fr);
+        $meta_title1->translate('en',$t_en);
 
         $meta_description1 = new I18N;
         $meta_description1->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
         $meta_description1->save();
-        $meta_description1->translate('fr_FR','Description '.$t_fr);
-        $meta_description1->translate('en_EN',$t_en.' Description');
+        $meta_description1->translate('fr','Description '.$t_fr);
+        $meta_description1->translate('en',$t_en.' Description');
 
         $structure1 = Structure::create(array(
                 'i18n_title'                => $title1->id,
@@ -57,33 +57,33 @@ class PagesTableSeeder extends Seeder {
         $name2 = new I18N;
         $name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
         $name2->save();
-        $name2->translate('fr_FR',$t_fr2);
-        $name2->translate('en_EN',$t_en2);
+        $name2->translate('fr',$t_fr2);
+        $name2->translate('en',$t_en2);
 
         $title2 = new I18N;
         $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title2->save();
-        $title2->translate('fr_FR',$t_fr2);
-        $title2->translate('en_EN',$t_en2);
+        $title2->translate('fr',$t_fr2);
+        $title2->translate('en',$t_en2);
         
         $url2 = new I18N;
         $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
         $url2->save();
-        $url2->translate('fr_FR','/'.Str::slug($t_fr2));
-        $url2->translate('en_EN','/'.Str::slug($t_en2));
+        $url2->translate('fr','/'.Str::slug($t_fr2));
+        $url2->translate('en','/'.Str::slug($t_en2));
 
 
         $meta_title2 = new I18N;
         $meta_title2->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
         $meta_title2->save();
-        $meta_title2->translate('fr_FR',$t_fr2);
-        $meta_title2->translate('en_EN',$t_en2);
+        $meta_title2->translate('fr',$t_fr2);
+        $meta_title2->translate('en',$t_en2);
 
         $meta_description2 = new I18N;
         $meta_description2->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
         $meta_description2->save();
-        $meta_description2->translate('fr_FR','Description '.$t_fr2);
-        $meta_description2->translate('en_EN',$t_en2.' Description');        
+        $meta_description2->translate('fr','Description '.$t_fr2);
+        $meta_description2->translate('en',$t_en2.' Description');        
 
         $structure2 = Structure::create(array(
                 'i18n_title'                => $title2->id,
