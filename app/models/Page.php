@@ -14,7 +14,7 @@ class Page extends Eloquent {
 	 * @var string
 	 */
 	public function blocks() {
-        return $this->hasMany('Block');
+        return $this->hasMany('Block')->orderBy('order','ASC');
     }
 
 

@@ -13,6 +13,11 @@ class BlockResponsiveTableSeeder extends Seeder {
                 'responsive_trigger_id'       => 3
             ),
             array(
+                'block_id'      => 1,
+                'responsive_width_id'       => 3,
+                'responsive_trigger_id'       => 1
+            ),
+            array(
                 'block_id'      => 2,
                 'responsive_width_id'       => 12,
                 'responsive_trigger_id'       => 3

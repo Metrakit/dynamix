@@ -21,6 +21,21 @@ class Block extends Eloquent{
         return $this->hasMany('Responsive');
     }
 
+    public function responsivesByPriority(){
+    	$countR = count($this->responsives);
+    	
+    	if(count($this->responsives) == 1){
+    		return $this->responsives;
+    	}else{
+    		$datas = array($this->responsives);
+    		for( $i = 0 ; $i < $countR ; $i++ ){
+
+    		}
+    	}
+
+    	
+	}
+
 
     /**
      * Attributes
