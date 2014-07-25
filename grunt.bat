@@ -1,2 +1,3 @@
 grunt watch --force
+
 pause
