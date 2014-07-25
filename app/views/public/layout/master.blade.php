@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
 @section('meta_title')
-{{App::make('CacheController')->getCache('DB_Option')->i18n_site_name}}
+{{App::make('CacheController')->getCache('DB_Option')->site_name()}}
 @show
         </title>
         <meta name="author" content="{{Config::get('app.author')}}">
@@ -73,6 +73,7 @@
     </head>
     <body>
         <div id="wrapper">
+            Locale : {{App::getLocale()}}
 
             <!--[if lt IE 8]>
             <p class="chromeframe">Vous utilizes une version <strong>obsolète</strong> de votre navigateur. S'il vous plait, veuillez <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a> ou <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activez Google Chrome Frame</a> pour améliorer votre expérience.</p>

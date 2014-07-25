@@ -3,14 +3,31 @@
 class Option extends Eloquent
 {
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'options';
 
-	public function i18n_site_name()
+
+	/**
+	 * Additional Method
+	 *
+	 * @var string
+	 */
+	public function translate( $i18n_id )
 	{
-		return Translation::where('i18n_id','=',$this->i18n_site_name)->where('locale_id','=',App::getLocale())->first()->text;
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
 	}
+
+
+	/**
+     * Attributes
+     *
+     * @return mixed
+     */
+	public function site_name()
+	{
+		return $this->translate( $this->i18n_site_name );
+	}
+
+
 }
