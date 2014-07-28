@@ -1,17 +1,19 @@
-Dynamix
+# Dynamix
 =======
 
 CMS Based on Laravel 4.2
 
-=== Native functionality ===
+## Native functionality
+=======
 
-Multilingual (119 languages)
-Page / Block
+... Multilingual (119 languages)
+... Page / Block
 
-=== Module ===
+## Module 
+=======
 
-Mosaic
-Slider / Slide / Image
-Gallery / Image
-Blog / Category / Article / Tag
-Form (comming soon)
+... Mosaic
+... Slider / Slide / Image
+... Gallery / Image
+... Blog / Category / Article / Tag
+... Form (comming soon)
