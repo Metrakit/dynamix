@@ -27,17 +27,5 @@ class Translation extends Eloquent{
         return $this->hasOne('Locale');
     }
 
-    /**
-     * A translation has one locale
-     *
-     * @return mixed
-     */
-    public function urls() {
-        $i18n_type_id = I18nType::whereCached('name','=','url')->first()->id;
-
-        
-        return $this->hasOne('Locale');
-    }
-
 
 }

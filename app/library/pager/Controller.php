@@ -7,15 +7,15 @@ class Pager {
 	 *
 	 * @var Page
 	 */
-    public function render( $eloquent )
+    public function render( $page )
     {
         //test if is a Page Object
-        if( get_class( $eloquent ) == 'Page' )
+        if( get_class( $page ) == 'Page' )
         {
         	$view = '';
 
         	//for all blocks show the content
-        	foreach( $eloquent->blocks as $block )
+        	foreach( $page->blocks as $block )
         	{
         		$view .= $this->displayBlock( $block );
 			}
@@ -34,7 +34,7 @@ class Pager {
     {
     	//Compose CSS
     	$css = '';
-    	foreach( $block->responsives as $responsive )
+    	foreach( $block->responsivesByPriority as $responsive )
     	{
     		$css .= 'col-' . $responsive->trigger->value . '-' . $responsive->width->value . ' ';
     	}

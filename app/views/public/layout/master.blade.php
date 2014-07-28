@@ -73,8 +73,7 @@
     </head>
     <body>
         <div id="wrapper">
-            Locale : {{App::getLocale()}}
-
+            
             <!--[if lt IE 8]>
             <p class="chromeframe">Vous utilizes une version <strong>obsolète</strong> de votre navigateur. S'il vous plait, veuillez <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a> ou <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activez Google Chrome Frame</a> pour améliorer votre expérience.</p>
             <![endif]-->
@@ -111,27 +110,19 @@
 
             <!-- container.main -->
             <div class="container main">
+                Locale : {{App::getLocale()}}<br>
 
-                <section class="col-sm-10 content">
-                    <p class="row">
-                    @section('ariane')
-                        @if(!isset($isIndex))
+                <p class="row">
+                @section('ariane')
+                    @if(!isset($isIndex))
 <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-                        @endif
-                    @show
-                    </p>
-                    <div class="row">
-                        @yield('content')
-                    </div>
-                </section>
+                    @endif
+                @show
+                </p>
+                <div class="row">
+                    @yield('content')
+                </div>
 
-                <aside class="col-sm-2 navigation-right hidden-xs" role="navigation">
-                    <ul class="nav nav-pills nav-stacked aside-right">
-                        
-                    </ul>
-                </aside>
-
-                <div class="clearfix"></div>
             </div>
             <!-- ./ container.main -->
             @yield('container')

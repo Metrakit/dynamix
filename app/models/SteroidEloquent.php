@@ -8,11 +8,12 @@ class SteroidEloquent extends Model{
 	* @var int
 	*/
 	protected static $expireCache = 5;
- 
- 	/**
+
+	/**
 	* Get with condition cached eloquent object's
-	* @param $id
-	* @param $columns
+	* @param $field
+	* @param $operator
+	* @param $value
 	* @return Eloquent
 	*/
 	public static function whereCached($field, $operator, $value)

@@ -1,38 +1,32 @@
 <?php
 
 class I18n extends Eloquent{
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+	
+    /**
+     * Parameters
+     */
 	protected $table = 'i18n';
     public $timestamps = false;
 
 	/**
-     * An i48n has many translation
+     * Relations
      *
-     * @return mixed
+     * @var string
      */
     public function translations() {
         return $this->hasMany('Translation');
     }
 
-    /**
-     * An i48n has one type
-     *
-     * @return mixed
-     */
     public function types() {
         return $this->hasOne('I18nType');
     }
 
 
+
     /**
-     * Method to translate some text with the locale_id
-     * @param $locale_id
-     * @param $text
-     * @return bool
+     * Additional Method
+     *
+     * @var string
      */
 	public function translate( $locale_id, $text ) {
         if( Translation::create( array('i18n_id' => $this->id, 'locale_id' => $locale_id, 'text' => $text ) ) ){
@@ -40,4 +34,17 @@ class I18n extends Eloquent{
         }
         return false;
     }
+
+    /*public static function urls() {   DONT WORK
+        $instance = new static;
+
+        $instance->join('i18n_types', function($join)
+            {
+                $join->on('i18n_types.id', '=', 'i18n.i18n_type_id')
+                     ->where('i18n_types.name', '=', 'url');
+            })
+            ->join('translations', 'translations.i18n_id', '=', 'i18n.id');
+
+        return $instance;
+    }*/
 }

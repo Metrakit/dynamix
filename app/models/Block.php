@@ -21,19 +21,12 @@ class Block extends Eloquent{
         return $this->hasMany('Responsive');
     }
 
-    public function responsivesByPriority(){
-    	$countR = count($this->responsives);
-    	
-    	if(count($this->responsives) == 1){
-    		return $this->responsives;
-    	}else{
-    		$datas = array($this->responsives);
-    		for( $i = 0 ; $i < $countR ; $i++ ){
-
-    		}
-    	}
-
-    	
+    public function responsivesByPriority()
+    {
+    	return $this->responsives()
+    		->join('responsive_triggers','block_responsive.responsive_trigger_id','=','responsive_triggers.id')
+    		->join('responsive_widths','block_responsive.responsive_width_id','=','responsive_widths.id')
+    		->orderBy('responsive_triggers.priority','ASC');
 	}
 
 

@@ -1,28 +1,24 @@
 <?php
 
 class Blog extends Eloquent{
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+	
+    /**
+     * Parameters
+     */
 	protected $table = 'blogs';
 
 	/**
-     * A Blog has many Permission
+     * Relations
      *
-     * @return mixed
+     * @var string
      */
 	public function articles() {
         return $this->belongsToMany('Article');
     }
 
-    /**
-     * A Blog has one structure
-     *
-     * @return mixed
-     */
 	public function structure() {
         return $this->belongsToMany('Structure');
     }
+
+    
 }
