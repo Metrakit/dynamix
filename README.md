@@ -14,6 +14,10 @@ And private package for anything we can have to need for customers. For exemple,
        Concept : use view file width each form input, select and textera possibilities
        See migration files for more info
        
+       OR
+       
+       use package !
+       
     Grunt Config with new :
        LiveReload, 
        Separated task (optimisation) for front and back end,
