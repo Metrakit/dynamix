@@ -19,11 +19,12 @@ CMS Based on Laravel 4.2
        Compass
     
     Module:Slider
+    Module:Tracker
     
     Modify RoleBasedAuthority
        http://packalyst.com/packages/package/mnshankar/role-based-authority
        use Resource and Action IN DATABASE not in text... (see Permission Table)
-    
+       
 
 ## Native functionality
 
