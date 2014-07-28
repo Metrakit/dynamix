@@ -54,5 +54,6 @@ And private package for anything we can have to need for customers. For exemple,
        Migration & Seed OK
        
 ## Credit
+Inspirate by :
 https://github.com/andrewelkins/Laravel-4-Bootstrap-Starter-Site
     
