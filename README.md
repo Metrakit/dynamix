@@ -20,6 +20,10 @@ CMS Based on Laravel 4.2
     
     Module:Slider
     
+    Modify RoleBasedAuthority
+       http://packalyst.com/packages/package/mnshankar/role-based-authority
+       use Resource and Action IN DATABASE not in text... (see Permission Table)
+    
 
 ## Native functionality
 
@@ -30,6 +34,8 @@ CMS Based on Laravel 4.2
        
     Form (comming soon)
        Facade:Former
+       
+    User Management
 
 ## Module 
 
@@ -43,4 +49,7 @@ CMS Based on Laravel 4.2
        
     Blog / Category / Article / Tag
        Migration & Seed OK
+       
+## Credit
+https://github.com/andrewelkins/Laravel-4-Bootstrap-Starter-Site
     
