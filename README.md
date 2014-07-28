@@ -2,6 +2,18 @@
 
 CMS Based on Laravel 4.2
 
+## TODO List
+    
+    Facade::Pager (add functionnality to add form (resource) as a Block)
+    Facade::Former
+    Grunt Config with new :
+       LiveReload, 
+       Separated task (optimisation) for front and back end,
+       Clear
+       Compass
+    
+    
+
 ## Native functionality
 
     Multilingual (119 languages)
