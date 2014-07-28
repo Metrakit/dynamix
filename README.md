@@ -1,6 +1,8 @@
 # Dynamix
 
-CMS Based on Laravel 4.2
+Dynamix is private CMS for developer. The concept is to make a solid core with User/Role, Multilingual and Page/Block system.
+And private package for anything we can have to need for customers. For exemple, a Mosaic/Gallery/Image module, a Slider/Slide/Image module, a Blog/Category/Article/Tag module...
+
 
 ## TODO List
     
