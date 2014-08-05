@@ -1,5 +1,10 @@
 /vendor
+
+/app/storage
+
 /bootstrap/compiled.php
+
+
 
 
 
