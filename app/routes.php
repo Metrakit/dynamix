@@ -24,7 +24,7 @@ Route::get('/migrate', function(){
   //Artisan::call("migrate:reset");
   define('STDIN',fopen("php://stdin","r"));
   Artisan::call("migrate");
-  Artisan::call("db:seed");
+  //Artisan::call("db:seed");
   return "migrated";
 });
 
