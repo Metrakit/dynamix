@@ -1,22 +1,27 @@
 {
 	"name": "dlepaux/dynamix",
-	"description": "Based on the Laravel Framework, it is a CMS for anyone !",
-	"keywords": ["david", "lepaux", "cms", "framework", "laravel"],
+	"description": "Based on the Laravel Framework, it is an awesome CMS for anyone !",
+	"keywords": ["cms", "framework", "laravel", "dynamix"],
+	"author": [
+		{ 
+			"firstname": "david", 
+		  	"lastname": "lepaux"
+		} , {
+		  	"firstname": "jordane", 
+		  	"lastname": "jouffroy"
+		}
+	],
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
+		"nesbot/Carbon": "*",
 		"mnshankar/role-based-authority": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
-			"app/commands",
-			"app/controllers",
-			"app/composer",
-			"app/models",
-			"app/library",
+			"core/**",
 			"app/database/migrations",
-			"app/database/seeds",
-			"app/tests/TestCase.php"
+			"app/database/seeds"
 		]
 	},
 	"scripts": {
