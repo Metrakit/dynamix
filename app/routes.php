@@ -16,6 +16,23 @@ Route::get('/', array('uses' => 'HomeController@index'));
 
 /*
 |--------------------------------------------------------------------------
+| Migration
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/migrate', function(){
+  //Artisan::call("migrate:reset");
+  define('STDIN',fopen("php://stdin","r"));
+  Artisan::call("migrate");
+  Artisan::call("db:seed");
+  return "migrated";
+});
+
+
+
+
+/*
+|--------------------------------------------------------------------------
 | Element (Category|Post|Page)
 |--------------------------------------------------------------------------
 |
@@ -23,20 +40,6 @@ Route::get('/', array('uses' => 'HomeController@index'));
 |
 */
 Route::get('{slug}', array('uses' => 'DynamixController@master'));
-
-
-/*
-|--------------------------------------------------------------------------
-| Migration
-|--------------------------------------------------------------------------
-|
-*/
-Route::get('/migrate', function(){
-  Artisan::call("migrate:reset");
-  Artisan::call("migrate");
-  Artisan::call("db:seed");
-  return "migrated";
-});
 
 
 

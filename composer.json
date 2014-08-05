@@ -19,7 +19,7 @@
 	},
 	"autoload": {
 		"classmap": [
-			"core/**",
+			"core",
 			"app/database/migrations",
 			"app/database/seeds"
 		]

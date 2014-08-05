@@ -24,7 +24,7 @@ App::before(function($route, $request, $lang = 'auto')
     */
 
     Session::forget('locale');
-    if( !Session::has('locale') )
+    if( Schema::hasTable('locales') && !Session::has('locale') )
     {
         //get all enable langage
         $available_langages = DB::table('locales')->where('enable','=',1)->get();

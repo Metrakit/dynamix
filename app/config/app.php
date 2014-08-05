@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/cms-0.0.1',
+	'url' => 'http://dynam.ix',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -188,5 +188,5 @@ return array(
 	),
 
 
-	'author'			=> 'David Lepaux'
+	'author'			=> 'David Lepaux & Jordane Jouffroy'
 );
