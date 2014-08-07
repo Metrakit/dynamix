@@ -4,10 +4,10 @@
 	"keywords": ["cms", "framework", "laravel", "dynamix"],
 	"author": [
 		{ 
-			"firstname": "david", 
+			"firstname": "david",
 		  	"lastname": "lepaux"
 		} , {
-		  	"firstname": "jordane", 
+		  	"firstname": "jordane",
 		  	"lastname": "jouffroy"
 		}
 	],
@@ -19,7 +19,9 @@
 	},
 	"autoload": {
 		"classmap": [
-			"core",
+			"app/models",
+			"core/controllers",
+			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds"
 		]

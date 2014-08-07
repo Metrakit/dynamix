@@ -1,4 +1,4 @@
-@extends('site.layout.master')
+@extends('public.layout.master')
 
 {{-- Index Title --}}
 @section('title')

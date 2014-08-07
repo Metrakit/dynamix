@@ -24,7 +24,7 @@ App::before(function($route, $request, $lang = 'auto')
     */
 
     Session::forget('locale');
-    if ( Schema::hasTable('locales') && !Session::has('locale') ) {
+    if ( Schema::hasTable('migrations') && !Session::has('locale') ) {
         //get all enable langage
         $available_langages = DB::table('locales')->where('enable','=',1)->get();
         
@@ -46,7 +46,7 @@ App::before(function($route, $request, $lang = 'auto')
             App::setLocale($userLang);
         }
         Session::put('locale',Config::get('app.locale'));
-    } else if (!Schema::hasTable('locales')) {
+    } else if (!Schema::hasTable('migrations')) {
         define('STDIN',fopen("php://stdin","r"));
         Artisan::call("migrate");
         Artisan::call("db:seed");
