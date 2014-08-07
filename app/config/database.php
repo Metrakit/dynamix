@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost:33060',
+			'host'      => 'localhost',
 			'database'  => 'homestead',
 			'username'  => 'homestead',
 			'password'  => 'secret',

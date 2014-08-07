@@ -47,6 +47,7 @@ App::before(function($route, $request, $lang = 'auto')
         }
         Session::put('locale',Config::get('app.locale'));
     } else if (!Schema::hasTable('locales')) {
+        define('STDIN',fopen("php://stdin","r"));
         Artisan::call("migrate");
         Artisan::call("db:seed");
     }
