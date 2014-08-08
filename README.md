@@ -9,11 +9,13 @@ And private package for anything we can have to need for customers. For exemple,
   * Clone the homestead repository to the "dev" folder : git clone https://github.com/laravel/homestead.git Homestead
   * Configure the Homestead.yaml in the homestead folder
   * Change the environment name for "homestead" here : bootstrap/start.php :
+
      $env = $app->detectEnvironment(array(
     
     	  'local' => array('homestead'),
     
      ));
+     
 2. Composer Instgallation : composer install
 
 
