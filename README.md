@@ -13,7 +13,7 @@ And private package for anything we can have to need for customers. For exemple,
 ```php 
 $env = $app->detectEnvironment(array(
  
-'local' => array('homestead'),
+ 'local' => array('homestead'),
  
 ));
 ```     
