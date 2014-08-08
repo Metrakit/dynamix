@@ -10,11 +10,11 @@ And private package for anything we can have to need for customers. For exemple,
   * Configure the Homestead.yaml in the homestead folder
   * Change the environment name for "homestead" here : bootstrap/start.php :
 
-     $env = $app->detectEnvironment(array(
-    
-    	  'local' => array('homestead'),
-    
-     ));
+ $env = $app->detectEnvironment(array(
+ 
+  'local' => array('homestead'),
+ 
+ ));
      
 2. Composer Instgallation : composer install
 
