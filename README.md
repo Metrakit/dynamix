@@ -3,6 +3,21 @@
 Dynamix is private CMS for developer. The concept is to make a solid core with User/Role, Multilingual and Page/Block system.
 And private package for anything we can have to need for customers. For exemple, a Mosaic/Gallery/Image module, a Slider/Slide/Image module, a Blog/Category/Article/Tag module...
 
+## Installation (local)
+1. Homestead installation (VM Vagrant)
+  * Add the homestead box to our local environment : vagrant box add laravel/homestead
+  * Clone the homestead repository to the "dev" folder : git clone https://github.com/laravel/homestead.git Homestead
+  * Configure the Homestead.yaml in the homestead folder
+  * Change the environment name for "homestead" here : bootstrap/start.php :
+    $env = $app->detectEnvironment(array(
+    
+    	'local' => array('homestead'),
+    
+    ));
+2. Composer Instgallation : composer install
+
+
+
 
 ## TODO List
     
