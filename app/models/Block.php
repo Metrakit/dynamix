@@ -7,7 +7,7 @@ class Block extends Eloquent{
 	 */
 	protected $table = 'blocks';
 
-	
+
 	/**
 	 * Relations
 	 *
@@ -30,19 +30,21 @@ class Block extends Eloquent{
 	}
 
 
+	/**
+	 * Polymorphic relation
+	 *
+	 * @var string
+	 */
+	public function blockable()
+    {
+        return $this->morphTo();
+    }
+
+
+
     /**
      * Attributes
      *
      * @return mixed
      */
-
-	/**
-	 * Additional Method
-	 *
-	 * @var string
-	 */
-	public function translate( $i18n_id )
-	{
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
-	}
 }

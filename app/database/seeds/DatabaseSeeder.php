@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder {
         //Pages
         $this->call('PagesTableSeeder');
         $this->call('BlocksTableSeeder');
+        $this->call('BlockContentsTableSeeder');
         $this->call('BlockResponsiveTableSeeder');
 
 

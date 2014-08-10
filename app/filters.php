@@ -23,8 +23,8 @@ App::before(function($route, $request, $lang = 'auto')
     |
     */
 
-    Session::forget('locale');
-    if ( Schema::hasTable('migrations') && !Session::has('locale') ) {
+    //Session::forget('locale');
+    /*if ( Schema::hasTable('migrations') && !Session::has('locale') ) {
         //get all enable langage
         $available_langages = DB::table('locales')->where('enable','=',1)->get();
         
@@ -50,7 +50,7 @@ App::before(function($route, $request, $lang = 'auto')
         define('STDIN',fopen("php://stdin","r"));
         Artisan::call("migrate");
         Artisan::call("db:seed");
-    }
+    }*/
 });
 
 

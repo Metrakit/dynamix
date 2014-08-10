@@ -2,6 +2,26 @@
 
 class Pager {
 
+    /**
+     * The application instance.
+     *
+     * @var \Illuminate\Foundation\Application
+     */
+    protected $app;
+
+
+    /**
+     * Create a new manager instance.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    public function __construct($app)
+    {
+        $this->app = $app;
+    }
+
+
 	/**
 	 * display a Page, and his Blocks
 	 *
@@ -9,19 +29,16 @@ class Pager {
 	 */
     public function render( $page )
     {
-        //test if is a Page Object
-        if( get_class( $page ) == 'Page' )
-        {
-        	$view = '';
+        //return var_dump( $page->blocks->first()->blockable->render );
+        $view = '';
 
-        	//for all blocks show the content
-        	foreach( $page->blocks as $block )
-        	{
-        		$view .= $this->displayBlock( $block );
-			}
+        //for all blocks show the content
+    	foreach( $page->blocks as $block )
+    	{
+    		$view .= $this->blockable( $block );
+		}
 
-        	return $view;
-        }
+        return $view;
     }
 
 
@@ -30,7 +47,7 @@ class Pager {
 	 *
 	 * @var Page
 	 */
-    public function displayBlock( $block )
+    public function blockable( $block )
     {
     	//Compose CSS
     	$css = '';
@@ -39,8 +56,8 @@ class Pager {
     		$css .= 'col-' . $responsive->trigger->value . '-' . $responsive->width->value . ' ';
     	}
 
-        //Content Block
-    	$content = $block->translate( $block->i18n_content );
+        //Block Content
+    	$content = $block->blockable->first()->renderResource();
 
         //Fusiiion
         return '<div class="'.$css.'">'.$content.'</div>';

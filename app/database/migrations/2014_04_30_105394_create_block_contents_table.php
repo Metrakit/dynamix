@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlocksTable extends Migration {
+class CreateBlockContentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,19 +13,13 @@ class CreateBlocksTable extends Migration {
 	public function up()
 	{
 		// Create the `Posts` table
-		Schema::create('blocks', function(Blueprint $table)
+		Schema::create('block_contents', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->integer('blockable_id')->unsigned();
-
-			$table->string('blockable_type',45);
-			
-			$table->integer('page_id')->unsigned();
-			$table->foreign('page_id')->references('id')->on('pages');
-
-			$table->integer('order')->unsigned();
+			$table->integer('i18n_content')->unsigned();
+			$table->foreign('i18n_content')->references('id')->on('i18n');
 
 			$table->timestamps();
 		});
@@ -38,8 +32,8 @@ class CreateBlocksTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `blocks` table
-		Schema::drop('blocks');
+		// Delete the `block_contents` table
+		Schema::drop('block_contents');
 	}
 
 }
