@@ -57,7 +57,7 @@ class Pager {
     	}
 
         //Block Content
-    	$content = $block->blockable->first()->renderResource();
+    	$content = $block->blockable->renderResource();
 
         //Fusiiion
         return '<div class="'.$css.'">'.$content.'</div>';
