@@ -88,7 +88,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Daniel C.</a>
+                        <a class="navbar-brand" href="#">{{App::make('CacheController')->getCache('DB_Option')->site_name()}}</a>
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
@@ -107,6 +107,18 @@
                 @yield('header')
             </header>
             <!-- ./ header -->
+
+            <!-- navbar-desktop-->
+            <div class="navbar navbar-default navbar-inverse hidden-xs" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-collapse navbar-top collapse">
+                        <ul class="nav navbar-nav">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- ./ navbar-desktop -->
 
             <!-- container.main -->
             <div class="container main">

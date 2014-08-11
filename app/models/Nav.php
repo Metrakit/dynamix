@@ -1,12 +1,12 @@
 <?php
 
-class Menu extends Eloquent{
+class Nav extends Eloquent{
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'menus';
+	protected $table = 'navigations';
 
 	/**
      * A Menu hasOne resource
