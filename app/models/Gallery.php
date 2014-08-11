@@ -3,27 +3,39 @@
 class Gallery extends Eloquent
 {
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+     * Parameters
+     */    
 	protected $table = 'galleries';
 
+
 	/**
-     * A Role is on one slider
+     * Relations
      *
-     * @return mixed
-     */
+     * @var string
+     */    
     public function images() {
         return $this->belongsToMany('Image');
     }
 
-    /**
-     * A Role is on many Permission
-     *
-     * @return mixed
-     */
     public function structure() {
         return $this->hasOne('Structure');
     }
+
+    
+    /**
+     * Polymorphic relation
+     *
+     * @var string
+     */
+    public function navigation()
+    {
+        return $this->morphMany('Nav', 'naviggable');
+    }
+
+
+    /**
+     * Attributes
+     *
+     * @return mixed
+     */
 }

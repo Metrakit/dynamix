@@ -27,6 +27,11 @@ class Page extends Eloquent {
     {
         return $this->morphMany('Structure', 'structurable');
     }
+
+    public function navigation()
+    {
+        return $this->morphMany('Nav', 'naviggable');
+    }
     
 	
 	/**

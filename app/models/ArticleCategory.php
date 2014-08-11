@@ -1,33 +1,43 @@
 <?php
 
 class ArticleCategory extends Eloquent{
+
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'article_categories';
 
+
 	/**
-     * A Category is on many Posts
-     *
-     * @return mixed
-     */
+	 * Relations
+	 *
+	 * @var string
+	 */
 	public function articles() {
         return $this->belongsToMany('Article');
     }
 
-    /**
-     * A article has one structure
-     *
-     * @return mixed
-     */
 	public function structure() {
         return $this->hasOne('Structure');
     }
 
 
+    /**
+	 * Polymorphic relation
+	 *
+	 * @var string
+	 */	
+    public function navigation()
+    {
+        return $this->morphMany('Nav', 'naviggable');
+    }
+    
 
+	/**
+	 * Attributes
+	 *
+	 * @var string
+	 */
 	public function i18n_url()
 	{
 		return Urls::where('i18n_id','=',$this->i18n_url)

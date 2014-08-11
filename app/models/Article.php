@@ -1,60 +1,55 @@
 <?php
 
 class Article extends Eloquent {
+
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'articles';
 
+
 	/**
-     * A article have One author
-     *
-     * @return mixed
-     */
+	 * Relations
+	 *
+	 * @var string
+	 */
 	public function user() {
         return $this->hasOne('User');
     }
 
-	/**
-     * A article have many Blog
-     *
-     * @return mixed
-     */
 	public function blogs() {
         return $this->belongsToMany('Blog');
     }
 
-	/**
-     * A article is on many Categories
-     *
-     * @return mixed
-     */
 	public function categories() {
         return $this->belongsToMany('ArticleCategory');
     }
 
-	/**
-     * A article has belong to many Tags
-     *
-     * @return mixed
-     */
 	public function tags() {
         return $this->belongsToMany('Tag');
     }
 
-	/**
-     * A article has one structure
-     *
-     * @return mixed
-     */
 	public function structure() {
         return $this->hasOne('Structure');
     }
 
+	
+	/**
+	 * Polymorphic relation
+	 *
+	 * @var string
+	 */
 
-
+    public function navigation()
+    {
+        return $this->morphMany('Nav', 'naviggable');
+    }
+    
+    /**
+     * Attributes
+     *
+     * @return mixed
+     */
 	public function i18n_title()
 	{
 		return Translation::where('i18n_id','=',$this->i18n_title)->where('locale_id','=',App::getLocale())->first()->text;

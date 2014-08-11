@@ -20,5 +20,21 @@ class Blog extends Eloquent{
         return $this->belongsToMany('Structure');
     }
 
+    /**
+     * Polymorphic relation
+     *
+     * @var string
+     */
+    public function navigation()
+    {
+        return $this->morphMany('Nav', 'naviggable');
+    }
+
+
+    /**
+     * Attributes
+     *
+     * @return mixed
+     */
     
 }

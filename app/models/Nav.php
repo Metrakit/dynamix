@@ -1,76 +1,52 @@
 <?php
 
 class Nav extends Eloquent{
+
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'navigations';
 
+
 	/**
-     * A Menu hasOne resource
-     *
-     * @return mixed
-     */
+	 * Relation
+	 *
+	 * @var string
+	 */
 	public function resource() {
         return $this->hasOne('Resource');
     }
 
-	/**
-     * get all children for a menu
-     *
-     * @return mixed
-     */
-	public function children() {
-        return Menu::where('parent_id','=',$this->id)->orderBy('order','ASC')->get();
+
+    /**
+	 * Polymorphic relation
+	 *
+	 * @var string
+	 */
+	public function naviggable(){
+        return $this->morphTo();
     }
 
-
-
 	
-	/**
-     * i18n Title
-     *
-     * @return mixed
-     */
-	public function i18n_title(){
-		return Translation::where('i18n_id','=',$this->i18n_title)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+	public function children() {
+        return Nav::where('parent_id','=',$this->id)->orderBy('order','ASC')->get();
+    }
+
+	public function title(){
+		return $this->translate( $this->i18n_title );
 	}
 
 	/**
-     * Get Url of dynamix Element
-     *
-     * @return mixed
-     */
+	 * Additional Method
+	 *
+	 * @var string
+	 */
+	public function translate( $i18n_id ){
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
+
 	public function url(){
-		$resource_id 	= $this->resource_id;
-		$url 			= null;
-
-		switch ( $resource_id ) {
-		    case 1://Category
-		    	$url = Category::find($this->element_id)->i18n_url();
-		        break;
-		    case 2://Post
-		    	$url = Post::find($this->element_id)->i18n_url();
-		        break;
-		    case 4://Page
-		    	$url = Page::find($this->element_id)->i18n_url();
-		        break;
-		    case 6://LinkContainer
-		    	$url = '#';
-		        break;
-		}
-
-		if($url !== null){
-			return $url;
-		}
+		return 'hello';
+		return $this->naviggable->structure->url();
 	}
-
-
-
-
 }

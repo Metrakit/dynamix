@@ -92,13 +92,13 @@
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
-                            
+                            @include('public.nav.nav')
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- ./ navbar-mobile -->
-
+            
             <!-- header -->
             <header class="main-header">
                 <figure>
@@ -113,7 +113,7 @@
                 <div class="container-fluid">
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
-                            
+                            @include('public.nav.nav')
                         </ul>
                     </div>
                 </div>

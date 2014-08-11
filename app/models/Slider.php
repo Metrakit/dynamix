@@ -18,4 +18,14 @@ class Slider extends Eloquent
         return $this->hasMany('Slide');
     }
 
+
+    /**
+     * Polymorphic relation
+     *
+     * @var string
+     */
+    public function navigation()
+    {
+        return $this->morphMany('Nav', 'naviggable');
+    }
 }

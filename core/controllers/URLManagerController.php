@@ -11,21 +11,9 @@ class URLManagerController extends BaseController {
     {
         $urls = App::make('CacheController')->getCache( 'DB_Urls' );
 
-        foreach( $urls as $url )
-        {
-            if( $url['url'] == '/' ){
-
-                /*$page = DB::table('pages')
-                    ->join('structures', function($join) use ($url)
-                    {
-                        $join->on('pages.structure_id', '=', 'structures.id')
-                             ->where('structures.i18n_url', '=', $url['i18n_id']);
-                    })
-                    ->first();*/
-
+        foreach ( $urls as $url ) {
+            if ( $url['url'] == '/' ) {
                 $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
-                //return var_dump($page->i18n_name);
-
                 return View::make( 'public.pages.page' , compact('page') );
             }
         }
