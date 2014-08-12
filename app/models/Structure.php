@@ -32,7 +32,7 @@ class Structure extends Eloquent {
 
 
 	/**
-	 * Accessor Method
+	 * Attributes
 	 *
 	 * @var string
 	 */
