@@ -29,56 +29,89 @@ class Article extends Eloquent {
         return $this->belongsToMany('Tag');
     }
 
-	public function structure() {
-        return $this->hasOne('Structure');
-    }
-
 	
 	/**
 	 * Polymorphic relation
 	 *
 	 * @var string
 	 */
+	public function structure()
+    {
+        return $this->morphMany('Structure', 'structurable');
+    }
 
     public function navigation()
     {
         return $this->morphMany('Nav', 'naviggable');
     }
     
+
+    /**
+	 * Additional Method
+	 *
+	 * @var string
+	 */
+	public function translate( $i18n_id )
+	{
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
+
+
     /**
      * Attributes
      *
      * @return mixed
      */
-	public function i18n_title()
+	public function content()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_title)->where('locale_id','=',App::getLocale())->first()->text;
+		return $this->translate( $this->i18n_content );
 	}
 
-	public function i18n_url()
+    
+    /**
+     * Herited attributes
+     *
+     * @return mixed
+     */
+	public function title()
 	{
-		return Urls::where('i18n_id','=',$this->i18n_url)->where('locale_id','=',App::getLocale())->first()->text;
+		return $this->structure->first()->title();
 	}
 
-	public function i18n_content()
+	public function url()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_content)->where('locale_id','=',App::getLocale())->first()->text;
+		return $this->structure->first()->url();
 	}
 
-	public function i18n_meta_title()
+	public function meta_title()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_title)->where('locale_id','=',App::getLocale())->first()->text;
+		return $this->structure->first()->meta_title();
 	}
 
-	public function i18n_meta_description()
+	public function meta_description()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_description)->where('locale_id','=',App::getLocale())->first()->text;
+		return $this->structure->first()->meta_description();
 	}
 
-	public function i18n_meta_keywords()
-	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_keywords)->where('locale_id','=',App::getLocale())->first()->text;
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

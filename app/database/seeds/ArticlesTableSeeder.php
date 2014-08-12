@@ -69,7 +69,7 @@ class ArticlesTableSeeder extends Seeder {
                 'i18n_meta_title'           => $meta_title1->id,
                 'i18n_meta_description'     => $meta_description1->id,
                 'structurable_id'           => 1,
-                'structurable_type'         => 'articles'
+                'structurable_type'         => 'Article'
             ));
 
         $t_fr2 = 'Exemple article 2';
@@ -112,7 +112,7 @@ class ArticlesTableSeeder extends Seeder {
                 'i18n_meta_title'           => $meta_title2->id,
                 'i18n_meta_description'     => $meta_description2->id,
                 'structurable_id'           => 2,
-                'structurable_type'         => 'articles'
+                'structurable_type'         => 'Article'
             ));
 
         

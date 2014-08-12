@@ -45,7 +45,7 @@ class MosaicsTableSeeder extends Seeder {
                 'i18n_meta_title'           => $meta_title->id,
                 'i18n_meta_description'     => $meta_description->id,
                 'structurable_id'           => 1,
-                'structurable_type'         => 'mosaics'
+                'structurable_type'         => 'Mosaic'
             ));
 
         DB::table('mosaics')->insert( array(

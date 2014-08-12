@@ -45,7 +45,7 @@ class GalleriesTableSeeder extends Seeder {
                 'i18n_meta_title'           => $meta_title->id,
                 'i18n_meta_description'     => $meta_description->id,
                 'structurable_id'           => 1,
-                'structurable_type'         => 'galleries'
+                'structurable_type'         => 'Gallery'
             ));
 
         DB::table('galleries')->insert( array(

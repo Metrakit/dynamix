@@ -24,8 +24,12 @@ class Slider extends Eloquent
      *
      * @var string
      */
-    public function navigation()
-    {
-        return $this->morphMany('Nav', 'naviggable');
-    }
+
+
+    /**
+     * Additional Method
+     *
+     * @var string
+     */
+
 }

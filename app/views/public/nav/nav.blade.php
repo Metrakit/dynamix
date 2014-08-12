@@ -3,7 +3,7 @@
 ?>
 @foreach( $navigations as $nav )
 		@if( count( $nav->children() ) != 0 )
-			<li class="dropdown" id="{{$nav->id}}">
+			<li class="dropdown">
 				<a href="{{ URL::to( $nav->url() ) }}" class="dropdown-toggle" data-toggle="dropdown">{{ $nav->title() }} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 				@foreach( $nav->children() as $child )

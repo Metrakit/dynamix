@@ -17,64 +17,56 @@ class ArticleCategory extends Eloquent{
         return $this->belongsToMany('Article');
     }
 
-	public function structure() {
-        return $this->hasOne('Structure');
-    }
-
 
     /**
 	 * Polymorphic relation
 	 *
 	 * @var string
 	 */	
+	public function structure()
+    {
+        return $this->morphMany('Structure', 'structurable');
+    }
+    
     public function navigation()
     {
         return $this->morphMany('Nav', 'naviggable');
     }
-    
 
-	/**
-	 * Attributes
+
+    /**
+	 * Additional Method
 	 *
 	 * @var string
 	 */
-	public function i18n_url()
+	public function translate( $i18n_id )
 	{
-		return Urls::where('i18n_id','=',$this->i18n_url)
-				   ->where('locale_id','=',App::getLocale())
-				   ->first()
-				   ->text;
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
+    
+
+	/**
+     * Herited attributes
+     *
+     * @return mixed
+     */
+	public function title()
+	{
+		return $this->structure->first()->title();
 	}
 
-	public function i18n_title()
+	public function url()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_title)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
-	}
-	
-	public function i18n_meta_title()
-	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_title)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return $this->structure->first()->url();
 	}
 
-	public function i18n_meta_description()
+	public function meta_title()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_description)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return $this->structure->first()->meta_title();
 	}
 
-	public function i18n_meta_keywords()
+	public function meta_description()
 	{
-		return Translation::where('i18n_id','=',$this->i18n_meta_keywords)
-						  ->where('locale_id','=',App::getLocale())
-						  ->first()
-						  ->text;
+		return $this->structure->first()->meta_description();
 	}
 }

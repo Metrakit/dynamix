@@ -30,10 +30,10 @@
         <!--[if IE]><link rel="shortcut icon" href="{{URL::to('../favicon/favicon.ico')}}"/><![endif]-->
 
         @yield('head')
-        <script src="{{ asset('js/vendor/head.min.js') }}"></script>
+        <script src="{{ asset('/src/js/vendor/head.min.js') }}"></script>
         <script>
            head.js(
-              '{{ asset("js/vendor/modernizr.min.js") }}',
+              '{{ asset("/src/js/vendor/modernizr.min.js") }}',
               function() {                
                 /* DOM Ready */
                 yepnope([
@@ -44,20 +44,20 @@
                       if ( !window.jQuery ) 
                       {
                         console.log('CDN Failed - Loading local version of jQuery.');
-                        yepnope("{{ asset('/js/vendor/jquery-1.10.2.min.js') }}");
+                        yepnope("{{ asset('/src/js/vendor/jquery-1.10.2.min.js') }}");
                       }else{
                         console.log('CDN Succeed');
                       };
                     }
                   } , {
                     test: 320 < screen.width // devices 320 and up
-                    , yep: [ '{{ asset("js/vendor/response.min.js") }}' ]
+                    , yep: [ '{{ asset("/src/js/vendor/response.min.js") }}' ]
                   } , {
                     test: window.matchMedia,
-                    nope: ["{{ asset('/js/vendor/media.match.min.js') }}"]
+                    nope: ["{{ asset('/src/js/vendor/media.match.min.js') }}"]
                   } , {
                     test: Modernizr.input.placeholder,
-                    nope: ["{{ asset('/js/vendor/placehold.min.js') }}"],
+                    nope: ["{{ asset('/src/js/vendor/placehold.min.js') }}"],
                     load: ["{{ asset('') }}{{ Bassets::show('js/main.min.js') }}"],
                     complete: function(){                                        
                         @yield('script')
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <!-- ./ navbar-mobile -->
-            
+
             <!-- header -->
             <header class="main-header">
                 <figure>

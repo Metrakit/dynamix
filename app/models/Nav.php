@@ -46,7 +46,6 @@ class Nav extends Eloquent{
 	}
 
 	public function url(){
-		return 'hello';
-		return $this->naviggable->structure->url();
+		return $this->naviggable->url();
 	}
 }
