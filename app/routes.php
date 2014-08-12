@@ -39,7 +39,7 @@ Route::get('/migrate', function(){
 |	Element (Category|Post|Page)
 |
 */
-Route::get('{slug}', array('uses' => 'DynamixController@master'));
+Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 
 
 
