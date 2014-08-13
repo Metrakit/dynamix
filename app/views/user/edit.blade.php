@@ -1,8 +1,8 @@
-@extends('site.layout.master')
+@extends('public.layout.master')
 
 
 @section('meta_title')
-{{{ Lang::get('user/user.settings') }}} |
+{{{ Lang::get('user.edit_account') }}} |
 @parent
 @stop
 
@@ -12,7 +12,7 @@
 {{-- Content --}}
 @section('content')
 <div class="page-header">
-	<h3>{{{Lang::get('user/user.edit_your_settings')}}}</h3>
+	<h3>{{{ Lang::get('user.edit_account')}}}</h3>
 </div>
 <form class="form-horizontal" method="post" action="{{ URL::to('user/'.$user->id) }}"  autocomplete="off">
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -20,7 +20,7 @@
     <fieldset>
         <!-- pseudo -->
         <div class="form-group {{{ $errors->has('pseudo') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="pseudo">{{{Lang::get('user/user.pseudo')}}}</label>
+            <label class="col-sm-2 control-label" for="pseudo">{{{ Lang::get('user.pseudo') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="pseudo" id="pseudo" value="{{{ Input::old('pseudo', $user->pseudo) }}}" />
                 {{ $errors->first('pseudo', '<div class="alert alert-danger">:message</div>') }}
@@ -30,7 +30,7 @@
 
         <!-- firstname -->
         <div class="form-group {{{ $errors->has('firstname') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="firstname">{{{Lang::get('user/user.firstname')}}}</label>
+            <label class="col-sm-2 control-label" for="firstname">{{{ Lang::get('user.firstname') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="firstname" id="firstname" value="{{{ Input::old('firstname', $user->firstname) }}}" />
                 {{ $errors->first('firstname', '<div class="alert alert-danger">:message</div>') }}
@@ -40,7 +40,7 @@
 
         <!-- lastname -->
         <div class="form-group {{{ $errors->has('lastname') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="lastname">{{{Lang::get('user/user.lastname')}}}</label>
+            <label class="col-sm-2 control-label" for="lastname">{{{ Lang::get('user.lastname') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="lastname" id="lastname" value="{{{ Input::old('lastname', $user->lastname) }}}" />
                 {{ $errors->first('lastname', '<div class="alert alert-danger">:message</div>') }}
@@ -50,7 +50,7 @@
 
         <!-- Email -->
         <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="email">{{{Lang::get('user/user.email')}}}</label>
+            <label class="col-sm-2 control-label" for="email">{{{ Lang::get('user.email') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="email" id="email" value="{{{ Input::old('email', $user->email) }}}" />
                 {{ $errors->first('email', '<div class="alert alert-danger">:message</div>') }}
@@ -60,7 +60,7 @@
 
         <!-- Password -->
         <div class="form-group {{{ $errors->has('oldpassword') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="oldpassword">{{{Lang::get('user/user.oldpassword')}}}</label>
+            <label class="col-sm-2 control-label" for="oldpassword">{{{ Lang::get('user.oldpassword') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="password" name="oldpassword" id="oldpassword" value="" />
                 {{ $errors->first('oldpassword', '<div class="alert alert-danger">:message</div>') }}
@@ -70,7 +70,7 @@
 
         <!-- Password -->
         <div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="password">{{{Lang::get('user/user.password')}}}</label>
+            <label class="col-sm-2 control-label" for="password">{{{ Lang::get('user.password') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="password" name="password" id="password" value="" />
                 {{ $errors->first('password', '<div class="alert alert-danger">:message</div>') }}
@@ -100,7 +100,7 @@
         <!-- Form Actions -->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">{{{Lang::get('user/user.update')}}}</button>
+                <button type="submit" class="btn btn-success">{{{ Lang::get('user.update') }}}</button>
             </div>
         </div>
         <!-- ./ form actions -->

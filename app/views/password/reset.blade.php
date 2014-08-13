@@ -1,18 +1,19 @@
-@extends('site.layout.master')
+@extends('public.layout.master')
 
 
 @section('meta_title')
-Réinitialisation du mot de passe |
+{{{ Lang::get('user.password_reset') }}} |
 @parent
 @stop
+
 
 @section('ariane')
 @stop
 
-{{-- Content --}}
+
 @section('content')
 <div class="page-header">
-	<h3>Réinitialisation du mot de passe</h3>
+	<h3>{{{ Lang::get('user.password_reset') }}}</h3>
 </div>
 <form class="form-horizontal" method="post" action="{{ action('RemindersController@postReset') }}"  autocomplete="off">
     <input type="hidden" name="token" value="{{ $token }}">
@@ -20,7 +21,7 @@ Réinitialisation du mot de passe |
 
         <!-- Email -->
         <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="email">{{{Lang::get('user/user.email')}}}</label>
+            <label class="col-sm-2 control-label" for="email">{{{ Lang::get('user.email') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="email" id="email" value="{{{ Input::old('email') }}}" />
                 {{ $errors->first('email', '<div class="alert alert-danger">:message</div>') }}
@@ -30,7 +31,7 @@ Réinitialisation du mot de passe |
 
         <!-- Password -->
         <div class="form-group {{{ $errors->has('oldpassword') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="oldpassword">{{{Lang::get('user/user.newpassword')}}}</label>
+            <label class="col-sm-2 control-label" for="oldpassword">{{{ Lang::get('user.newpassword') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="password" name="password" id="password" value="" />
                 {{ $errors->first('oldpassword', '<div class="alert alert-danger">:message</div>') }}
@@ -40,7 +41,7 @@ Réinitialisation du mot de passe |
 
         <!-- Password -->
         <div class="form-group {{{ $errors->has('password_confirmation') ? 'error' : '' }}}">
-            <label class="col-sm-2 control-label" for="password_confirmation">{{{Lang::get('user/user.password_confirmation')}}}</label>
+            <label class="col-sm-2 control-label" for="password_confirmation">{{{ Lang::get('user.password_confirmation') }}}</label>
             <div class="col-sm-10">
                 <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" value="" />
                 {{ $errors->first('password_confirmation', '<div class="alert alert-danger">:message</div>') }}
@@ -70,7 +71,7 @@ Réinitialisation du mot de passe |
         <!-- Form Actions -->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Valider</button>
+                <button type="submit" class="btn btn-success">{{{ Lang::get('public.validate') }}}</button>
             </div>
         </div>
         <!-- ./ form actions -->

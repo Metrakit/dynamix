@@ -78,20 +78,16 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 |	User
 |
 */
-//Login
 Route::get('user/login', 'UserController@login');
 Route::post('user/login', 'UserController@post_login');
-//Logout
 Route::get('user/logout', 'UserController@logout');
 
-//Forgot password
 Route::get('user/remind', 'RemindersController@getRemind');
 Route::post('user/remind', 'RemindersController@postRemind');
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset','as' => 'password.reset'));
 Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset','as' => 'password.update'));
 
-Route::resource('user','UserController',
-		array('except' => array('create')) );
+Route::resource('user','UserController', array('only' => array('edit','update')) );
 
 
 

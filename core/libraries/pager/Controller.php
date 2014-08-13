@@ -11,9 +11,8 @@ class Pager {
 
 
     /**
-     * Create a new manager instance.
+     * Constructor
      *
-     * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
     public function __construct($app)
@@ -33,8 +32,7 @@ class Pager {
         $view = '';
 
         //for all blocks show the content
-    	foreach( $page->blocks as $block )
-    	{
+    	foreach ( $page->blocks as $block ) {
     		$view .= $this->blockable( $block );
 		}
 
@@ -51,8 +49,7 @@ class Pager {
     {
     	//Compose CSS
     	$css = '';
-    	foreach( $block->responsivesByPriority as $responsive )
-    	{
+    	foreach ( $block->responsivesByPriority as $responsive ) {
     		$css .= 'col-' . $responsive->trigger->value . '-' . $responsive->width->value . ' ';
     	}
 
