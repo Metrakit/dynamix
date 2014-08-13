@@ -2,11 +2,6 @@
 
 class AdminController extends BaseController {
 
-	public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -14,78 +9,95 @@ class AdminController extends BaseController {
 	 */
 	public function index()
 	{
-		list($user,$redirect) = $this->user->checkAdminAndRedirect('user');
-        if($redirect){return $redirect;}
+		$user = Auth::user();
 
-        $posts = Post::where('isStatic','=',false)->orderBy('created_at','DESC')->get()->take(5);
-        $pages = Post::where('isStatic','=',true)->orderBy('created_at','DESC')->get()->take(5);
-        $comments = Comment::orderBy('created_at','DESC')->get()->take(5);
-        $registers = User::orderBy('created_at','DESC')->get()->take(5);
-
-		return View::make('admin.index', compact('user', 'posts', 'pages', 'comments', 'registers'));
+		return View::make('admin.index', compact('user'));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * get All User in base
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getUser()
 	{
+		$users = User::all();
+
+		return View::make('admin.user.index', compact('users'));
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * get All User in base
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function getMosaiques()
 	{
-		
+		$mosaiques = Mosaique::all();
+
+		return View::make('admin.mosaique.index', compact('mosaiques'));
+	}
+
+
+	/**
+	 * get the Filemanager
+	 *
+	 * @return Response
+	 */
+	public function getMedia()
+	{
+		$noAriane = true;
+		return View::make('admin.media.index', compact('noAriane'));
+	}
+
+
+	/**
+	 * get All Option in base
+	 *
+	 * @return Response
+	 */
+	public function getOption()
+	{
+		$option = Option::first();
+
+		return View::make('admin.option.index', compact('option'));
 	}
 
 	/**
-	 * Display the specified resource.
+	 * post All Option in base
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function postOption()
 	{
-		
-	}
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.option'));
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		
-	}
+        
+        // Check if the form validates with success
+        if ($validator->passes())
+        {
+        	$option = Option::first();
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		
-	}
+        	$option->site_url		= Input::get('site_url');
+        	$option->site_name		= Input::get('site_name');
+        	$option->admin_email	= Input::get('admin_email');
+        	$option->analytics		= Input::get('analytics');
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		
-	}
+        	//if no error when save
+        	if($option->save()){
+        		Cache::forget('DB_Option');
+        		
+            	return Redirect::to('admin/option')->with( 'success', 'Les réglages ont été enregistré avec succès !' );
+        	}
+	        else
+	        {
+	        	return Redirect::to('admin/option')->with( 'error', 'Ouuups !!! Les réglages n\'ont pas été enregistré !' );
+	        }
 
+	    }
+	    
+		// Show the page
+		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
+	}
 }

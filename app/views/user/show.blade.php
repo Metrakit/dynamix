@@ -1,24 +1,23 @@
 @extends('site.layout.master')
 
-{{-- Web site Title --}}
-@section('title')
+
+@section('meta_title')
 {{{ Lang::get('user/user.profile') }}} |
 @parent
 @stop
 
-{{-- Ariane --}}
+
 @section('ariane')
 @parent
 &nbsp;<span class="icon-custom chevron-right"></span>&nbsp;<a href="{{ asset( 'user/'.$user->id ) }}">Profil de {{$user->pseudo}}</a>
 @stop
 
 
-{{-- Content --}}
 @section('content')
 <div class="page-header">
 	<h1>User Profile</h1>
 </div>
-<table class="table table-striped">
+<table class="table">
     <thead>
     <tr>
         <th>#</th>
@@ -29,8 +28,8 @@
     <tbody>
     <tr>
         <td>{{{$user->id}}}</td>
-        <td>{{{$user->firstname()}}}</td>
-        <td>{{{$user->lastname()}}}</td>
+        <td>{{{$user->firstname}}}</td>
+        <td>{{{$user->lastname}}}</td>
         <td>{{{$user->pseudo}}}</td>
     </tr>
     </tbody>

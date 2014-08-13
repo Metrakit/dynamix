@@ -1,20 +1,30 @@
-@extends('site.layout.master')
+@extends('admin.layout.master')
 
-{{-- Web site Title --}}
-@section('title')
-{{{ Lang::get('user/user.user') }}} |
+
+@section('meta_title')
+{{{ Lang::get('admin/admin.dashboard') }}} |
 @parent
 @stop
 
-{{-- Ariane --}}
+
 @section('ariane')
 @parent
-&nbsp;<span class="icon-custom chevron-right"></span>&nbsp;<a href="{{ asset( 'user' ) }}">{{$user->firstname()}} {{$user->lastname()}}</a>
+&nbsp;<a href="{{URL::to('admin')}}">{{{ Lang::get('admin/admin.dashboard') }}}</a>
 @stop
 
 
-{{-- Content --}}
+
 @section('content')
+    <h1>Hello {{ $user->firstname }},</h1>
+    <h2>{{{ Lang::get('admin/admin.dashboard') }}}</h2>
+
+    <div class="col-sm-3">
+        <h3>Google Analytics</h3>
+        <a href="http://www.google.com/analytics/">
+            <img src="{{asset('img/google-analytics-icon.png')}}" alt="g-analytics" width="100%"/>
+        </a>
+    </div>
+
     @if ( Session::get('error') )
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -33,20 +43,4 @@
         {{ Session::get('success') }}
     </div>
     @endif
-
-    <h1>Hello {{$user->firstname()}},</h1>
-    <table>
-    	<tr>
-    		<th>Nom</th><td>{{$user->lastname()}}</td>
-    	</tr>
-    	<tr>
-    		<th>Prénom</th><td>{{$user->firstname()}}</td>
-    	</tr>
-    	<tr>
-    		<th>Pseudo</th><td>{{$user->pseudo}}</td>
-    	</tr>
-    	<tr>
-    		<th>Email</th><td>{{$user->email}}</td>
-    	</tr>
-    </table>
 @stop

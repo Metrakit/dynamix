@@ -4,12 +4,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdminPageController extends BaseController {
 
-	public function __construct(User $user, Post $post)
-    {
-        $this->user = $user;
-        $this->post = $post;
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -17,107 +11,65 @@ class AdminPageController extends BaseController {
 	 */
 	public function index()
 	{
-		list($user,$redirect) = $this->user->checkAdminAndRedirect('user');
-        if($redirect){return $redirect;}
+        $pages = Page::all();
 
-        $pages = Post::where('isStatic','=',true)->paginate(15);
-
-		return View::make('admin.page.index', compact('user','pages'));
+		return View::make('admin.page.index', compact('pages'));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Show the form for create a resource.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		list($page) = $this->post;
-
-		return View::make('admin.page.create', compact('user', 'page'));
+		return View::make('admin.page.create');
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store the new resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-        // Validate the inputs
-        $validator = Validator::make(Input::all(), Config::get('validator.post'));
-        
+		$inputs = Input::all();
+		$inputs['url'] = '/'.Str::slug($inputs['url']);
+
+		//return var_dump($inputs);
+
+        $validator = Validator::make($inputs, Config::get('validator.page.deletable'));
+		
         // Check if the form validates with success
         if ($validator->passes())
         {
-            // Create a new blog post
-            $user = Auth::user();
-            if(empty($user)){
-            	return Redirect::to('user/login')->with('error','Vous devez êtres connecté !');
-            }
+			$page = new Page();
+            $page->title     		= $inputs['title'];
+            $page->url 				= $inputs['url'];
+            $page->content          = $inputs['content'];
 
-            //Image storing
-            $file = Input::file('image');
-            if(!empty($file)){        
-	            $destinationPath	= 'img/uploads/'.Str::random(5);
-				$fileName 			= md5( Input::get('title') );
-	            $uploadSuccess = $file->move($destinationPath, $fileName);
+            $page->meta_title       = $inputs['meta_title'];
+            $page->meta_description = $inputs['meta_description'];
 
-	            if( empty($uploadSuccess) ){
-	            	return Redirect::to('admin/page/create')->with('error','L\'image n\' pas pu être téléchargée...');
-	            }
-            	$this->post->img          	  = $destinationPath.'/'.$fileName;
-			}
-            // Update the blog post data
-            $this->post->title            = Input::get('title');
-            $this->post->slug             = Str::slug(Input::get('title'));
-            $this->post->content          = Input::get('content');
-            $this->post->footer           = Input::get('footer');
-            $this->post->meta_title       = Input::get('meta-title');
-            $this->post->meta_description = Input::get('meta-description');
-            $this->post->meta_keywords    = Input::get('meta-keywords');
-            $this->post->created_at    	  = new DateTime();
-            $this->post->user_id          = $user->id;
+            $page->created_at    	= new DateTime();
+            $page->updated_at    	= new DateTime();
 
             // Was the blog post created?
-            if($this->post->save())
+            if($page->save())
             {
-                // Redirect to the new blog page page
-                return Redirect::to('admin/page')->with('success', 'La page à bien été créé !');
+            	Cache::forget('DB_Urls');
+                // Redirect to the new blog post page
+                return Redirect::to('admin/page')->with('success','La page à bien été créée !');
             }
 
-            // Redirect to the blog page create page
-            return Redirect::to('admin/page/create')->with('error', 'La page n\'a pas pu être enregistré...');
+            // Redirect to the blog post create page
+            return Redirect::to('admin/page/create')->with('error', 'La page n\'a pas pu être enregistrée...');
         }
 
         // Form validation failed
         return Redirect::to('admin/page/create')->withInput()->withErrors($validator);
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$page = Post::find($id);
-		if(empty($page) || !isset($page)){
-			return Redirect::to('admin/page')->with('error','Cette page est introuvable !');
-		}
-
-		$comments = $page->comments()->orderBy('created_at', 'ASC')->get();
-
-        // Get current user and check permission
-        $canComment = false;
-        //return var_dump($user);
-        if(Auth::check()) {
-            $canComment = Auth::user()->hasRole('comment');
-        }
-
-		return View::make('admin.page.show', compact('page', 'comments', 'canComment'));
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -128,14 +80,12 @@ class AdminPageController extends BaseController {
 	public function edit($id)
 	{
 		// get the post
-		$page = Post::find($id);
+		$page = Page::find($id);
 
-		if(empty($page) || !isset($page)){
-			//Session::flash('error', 'Ce post est introuvable !');
+		if(empty($page)){
 			return Redirect::back()->with('error', 'Cette page est introuvable !');
 		}
 
-		// show the edit form and pass the post
 		return View::make('admin.page.edit', compact('page') );
 	}
 
@@ -147,55 +97,51 @@ class AdminPageController extends BaseController {
 	 */
 	public function update($id)
 	{
+		$page = Page::find($id);
+
+		if(empty($page)){
+			return Redirect::to('admin/page')->with('error','Cette page est introuvable !');
+		}
+
 		// Validate the inputs
-        $validator = Validator::make(Input::all(), Config::get('validator.post'));
+		$validator = null;
+		if(!$page->is_deletable){
+        	$validator = Validator::make(Input::all(), Config::get('validator.page.no-deletable'));
+		}else{			
+        	$validator = Validator::make(Input::all(), Config::get('validator.page.deletable'));
+		}
 		
         // Check if the form validates with success
         if ($validator->passes())
         {
-            $page = Post::find($id);
-            if(empty($page) || !isset($page)){
-				return Redirect::to('admin/page')->with('error','Cette page est introuvable !');
-			}
-
-             //Image storing
-            $file = Input::file('image');
-            if(!empty($file)){        
-	            $destinationPath	= 'img/uploads/'.Str::random(5);
-				$fileName 			= md5( Input::get('title') );
-	            $uploadSuccess = $file->move($destinationPath, $fileName);
-
-	            if( empty($uploadSuccess) ){
-	            	return Redirect::to('admin/page/create')->with('error','L\'image n\' pas pu être téléchargée...');
-	            }
-
-				$page->img          	= $destinationPath.'/'.$fileName;
-			}
-
-
-            // Update the blog post data
+            // Update the page data
             $page->title            = Input::get('title');
-            $page->slug             = Str::slug(Input::get('title'));
+            // If is not index
+            if($page->url != '/'){
+            	$url = Str::slug(Input::get('url'));
+            	$page->url          = '/'.$url;
+        	}
             $page->content          = Input::get('content');
-            $page->footer           = Input::get('footer');
-            $page->meta_title       = Input::get('meta-title');
-            $page->meta_description = Input::get('meta-description');
-            $page->meta_keywords    = Input::get('meta-keywords');
+
+            $page->meta_title       = Input::get('meta_title');
+            $page->meta_description = Input::get('meta_description');
+
             $page->updated_at    	= new DateTime();
 
             // Was the blog post created?
             if($page->save())
             {
+            	Cache::forget('DB_Urls');
                 // Redirect to the new blog post page
                 return Redirect::to('admin/page')->with('success','La page à bien été mise à jour !');
             }
 
             // Redirect to the blog post create page
-            return Redirect::to('admin/page/' . $id . '/edit')->with('error', 'La page n\'a pas pu être enregistré...');
+            return Redirect::to('admin/page/' . $id . '/edit')->with('error', 'La page n\'a pas pu être enregistrée...');
         }
 
         // Form validation failed
-        return Redirect::to('admin/page/' . $id . '/edit')->withInput()->withErrors($validator);;
+        return Redirect::to('admin/page/' . $id . '/edit')->withInput()->withErrors($validator);
 	}
 
 	/**
@@ -206,16 +152,31 @@ class AdminPageController extends BaseController {
 	 */
 	public function destroy($id)
 	{
+		$success = 'La page a bien été supprimée !';
 		// delete
-		$page = Post::find($id);
+		$page = Page::find($id);
 		if(empty($page)){
-			Session::flash('error', 'Ce page est introuvable !');
-			return Redirect::back();
+			return Redirect::to('admin/page')->with('error', 'Cette page est introuvable !');
 		}
+
+		//Protect index
+		if(!$page->is_deletable){
+			return Redirect::to('admin/page')->with('notice', 'Cette page ne peut être supprimée !');
+		}
+
+		//Used in menu?
+		$id = Menu::where('resource_id','=',Resource::where('name','=','page')->first()->id)->where('element_id','=',$page->id)->first();
+		if(!empty($id)){
+			$success = 'La page ainsi que le menu associé ont été supprimé avec succès !';
+			App::make('AdminMenuController')->destroy($id->id);
+		}
+
+		Cache::forget('DB_Urls');
+		
+		
 		$page->delete();
 
 		// redirect
-		Session::flash('success', 'Le page a bien été supprimé !');
-		return Redirect::back();
+		return Redirect::to('admin/page')->with('success', $success);
 	}
 }

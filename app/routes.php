@@ -13,6 +13,87 @@ Route::get('/', array('uses' => 'HomeController@index'));
 
 
 
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+|
+|	Admin
+|
+*/
+Route::get('filemanager/show', function () {
+
+    return View::make('plugin/filemanager');
+})->before('auth.admin');
+
+Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function (){
+	//Index / Dashboard
+	Route::get('/','AdminController@index');
+
+	//PAGE
+	Route::resource('page','AdminPageController',
+		array('except' => array('show')) );
+
+	//MENU
+	Route::resource('menu','AdminMenuController',
+		array('except' => array('create','store','show')) );
+	Route::post('menu/{id}/move','AdminMenuController@move');
+	
+	Route::get('menu/create-new-menu','AdminMenuController@createNewMenu');
+	Route::post('menu/create-new-menu','AdminMenuController@postCreateNewMenu');
+	Route::get('menu/create-menu','AdminMenuController@createMenu');
+	Route::post('menu/create-menu','AdminMenuController@postCreateMenu');
+
+	//MOSAIQUES
+	Route::resource('mosaique','AdminMosaiqueController',
+		array('only' => array('index','edit','update')) );
+
+	//GALLERY
+	Route::resource('gallery','AdminGalleryController');
+	Route::post('gallery/add-image','AdminGalleryController@postAddImage');
+	Route::post('gallery/{order}/move','AdminGalleryController@move');
+
+	//ARTICLE
+	Route::resource('image','AdminImageController',
+		array('only' => array('destroy')) );
+
+	//USER
+	Route::get('/user', 'AdminController@getUser');
+	
+	//MEDIA
+	Route::get('/media', 'AdminController@getMedia');
+	
+	//OPTION
+	Route::get('/option', 'AdminController@getOption');
+	Route::post('/option', 'AdminController@postOption');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| User
+|--------------------------------------------------------------------------
+|
+|	User
+|
+*/
+//Login
+Route::get('user/login', 'UserController@login');
+Route::post('user/login', 'UserController@post_login');
+//Logout
+Route::get('user/logout', 'UserController@logout');
+
+//Forgot password
+Route::get('user/remind', 'RemindersController@getRemind');
+Route::post('user/remind', 'RemindersController@postRemind');
+Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset','as' => 'password.reset'));
+Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset','as' => 'password.update'));
+
+Route::resource('user','UserController',
+		array('except' => array('create')) );
+
+
 
 /*
 |--------------------------------------------------------------------------

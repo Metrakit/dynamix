@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
 			$table->string('pseudo');
 			$table->string('email');
 			$table->string('password');
+			$table->string('remember_token')->nullable();
 			$table->dateTime('last_visit_at');
 			$table->timestamps();
 		});

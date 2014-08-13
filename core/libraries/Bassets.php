@@ -18,9 +18,9 @@ class Bassets {
 	    //});
     	//retourne la valeur de la clé, si elle existe, passé en params!
     	if(isset($json[$url_key])){
-    		echo $json[$url_key];
+    		return $json[$url_key];
     	}else{
-    		echo 'error_assets';
+    		return 'error_assets';
     	}
     }
 

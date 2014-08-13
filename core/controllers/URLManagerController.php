@@ -23,10 +23,13 @@ class URLManagerController extends BaseController {
 
     public function getSlug( $slug )
     {
-        $urls = App::make('CacheController')->getCache( 'DB_Urls' );
-
-        foreach ( $urls as $url ) {
+        foreach ( App::make('CacheController')->getCache( 'DB_Urls' ) as $url ) {
             if ( $url['url'] == '/' . $slug ) {
+                //Check current locale
+                if ( App::getLocale() != $url['locale_id'] ) {
+                    App::setLocale($url['locale_id']);
+                }
+
                 $structure = Structure::where('i18n_url','=',$url['i18n_id'])->first();
 
                 $resourceName = strtolower ( $structure->structurable_type );

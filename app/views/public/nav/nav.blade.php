@@ -15,3 +15,4 @@
 		@endif
 			</li>
 @endforeach
+			<li><a href="#">Locale : {{App::getLocale()}}</a></li>

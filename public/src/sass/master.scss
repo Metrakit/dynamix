@@ -60,6 +60,14 @@
 //Slideshow
 @import "slideshow/responsiveslideshow";
 
+//Fix bootstrap nav hover
+@media only screen and (min-width : 768px) {
+    /* Make Navigation Toggle on Desktop Hover */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
 
 //Custom stylesheet
 //General Design

@@ -1,23 +1,23 @@
 @extends('site.layout.master')
 
-{{-- Web site Title --}}
-@section('title')
+
+@section('meta_title')
 {{{ Lang::get('user/user.forgot_password') }}} |
 @parent
 @stop
 
-{{-- Ariane --}}
+
 @section('ariane')
 @parent
 &nbsp;<span class="icon-custom chevron-right"></span>&nbsp;<a href="{{ asset( 'user/forgot' ) }}">Mot de passe oublié</a>
 @stop
 
-{{-- Content --}}
+
 @section('content')
 <div class="page-header">
     <h1>{{{ Lang::get('user/user.forgot_password') }}}</h1>
 </div>
-<form class="form-horizontal" method="POST" action="{{ URL::to('user/forgot') }}" accept-charset="UTF-8">
+<form class="form-horizontal" method="POST" action="{{ action('RemindersController@postRemind') }}" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
     	<div class="form-group">

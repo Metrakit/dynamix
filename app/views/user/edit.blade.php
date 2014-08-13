@@ -1,15 +1,12 @@
 @extends('site.layout.master')
 
-{{-- Web site Title --}}
-@section('title')
+
+@section('meta_title')
 {{{ Lang::get('user/user.settings') }}} |
 @parent
 @stop
 
-{{-- Ariane --}}
 @section('ariane')
-@parent
-&nbsp;<span class="icon-custom chevron-right"></span>&nbsp;<a href="{{ asset( 'user/' . $user->id . '/edit' ) }}">Modifier profil</a>
 @stop
 
 {{-- Content --}}
@@ -23,9 +20,8 @@
     <fieldset>
         <!-- pseudo -->
         <div class="form-group {{{ $errors->has('pseudo') ? 'error' : '' }}}">
-            <div class="col-sm-2 center"><a href="https://fr.gravatar.com/"><img src="http://www.gravatar.com/avatar/{{ md5( strtolower( trim( $user->email ) ) ) }}" alt="Gravatar"></a></div>
-            <div class="col-sm-10 form-group">
-                <label class="control-label" for="pseudo">{{{Lang::get('user/user.pseudo')}}}</label>
+            <label class="col-sm-2 control-label" for="pseudo">{{{Lang::get('user/user.pseudo')}}}</label>
+            <div class="col-sm-10">
                 <input class="form-control" type="text" name="pseudo" id="pseudo" value="{{{ Input::old('pseudo', $user->pseudo) }}}" />
                 {{ $errors->first('pseudo', '<div class="alert alert-danger">:message</div>') }}
             </div>
@@ -36,7 +32,7 @@
         <div class="form-group {{{ $errors->has('firstname') ? 'error' : '' }}}">
             <label class="col-sm-2 control-label" for="firstname">{{{Lang::get('user/user.firstname')}}}</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="firstname" id="firstname" value="{{{ Input::old('firstname', $user->firstname()) }}}" />
+                <input class="form-control" type="text" name="firstname" id="firstname" value="{{{ Input::old('firstname', $user->firstname) }}}" />
                 {{ $errors->first('firstname', '<div class="alert alert-danger">:message</div>') }}
             </div>
         </div>
@@ -46,7 +42,7 @@
         <div class="form-group {{{ $errors->has('lastname') ? 'error' : '' }}}">
             <label class="col-sm-2 control-label" for="lastname">{{{Lang::get('user/user.lastname')}}}</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="lastname" id="lastname" value="{{{ Input::old('lastname', $user->lastname()) }}}" />
+                <input class="form-control" type="text" name="lastname" id="lastname" value="{{{ Input::old('lastname', $user->lastname) }}}" />
                 {{ $errors->first('lastname', '<div class="alert alert-danger">:message</div>') }}
             </div>
         </div>
