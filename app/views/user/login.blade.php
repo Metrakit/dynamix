@@ -60,7 +60,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button tabindex="3" type="submit" class="btn btn-primary">{{{ Lang::get('user.validate') }}}</button>
+                <button tabindex="3" type="submit" class="btn btn-primary">{{{ Lang::get('public.validate') }}}</button>
                 <a class="btn btn-default" href="{{URL::to('user/remind')}}">{{{ Lang::get('user.forgot_password') }}}</a>
             </div>
         </div>

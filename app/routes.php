@@ -87,7 +87,7 @@ Route::post('user/remind', 'RemindersController@postRemind');
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset','as' => 'password.reset'));
 Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset','as' => 'password.update'));
 
-Route::resource('user','UserController', array('only' => array('edit','update')) );
+Route::resource('user','UserController', array('except' => array('index', 'show')) );
 
 
 
@@ -139,16 +139,25 @@ Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 
 /*
 |--------------------------------------------------------------------------
-| Error 404...
+| Error...
 |--------------------------------------------------------------------------
 |
 |
 */
-App::missing(function($exception)
+App::error(function($exception, $code)
 {
-    return Response::view('errors.404', array(), 404);
-});
+    switch ($code)
+    {
+        case 403:
+            return Response::view('errors.403', array(), 403);
 
+        case 404:
+            return Response::view('errors.404', array(), 404);
+
+        case 500:
+            return Response::view('errors.500', array(), 500);
+    }
+});
 
 
 
