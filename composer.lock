@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a320fcc214d23713a22044cac08a10b1",
+    "hash": "f453e7996610aa11ae0a78ff96ad4bda",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -346,101 +346,6 @@
                 "laravel"
             ],
             "time": "2014-08-05 19:52:17"
-        },
-        {
-            "name": "machuga/authority",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/machuga/authority.git",
-                "reference": "b5f111d503e32c02aa07693c84a88ee0db3ee5a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/machuga/authority/zipball/b5f111d503e32c02aa07693c84a88ee0db3ee5a7",
-                "reference": "b5f111d503e32c02aa07693c84a88ee0db3ee5a7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/events": "~4",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.7.*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Authority": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "mit"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Machuga",
-                    "email": "machuga@gmail.com"
-                },
-                {
-                    "name": "Koen Schmeets",
-                    "email": "hello@koenschmeets.nl"
-                },
-                {
-                    "name": "Jesse O'Brien",
-                    "email": "jesse@jesse-obrien.ca"
-                }
-            ],
-            "description": "A simple and flexible authorization system for PHP",
-            "time": "2014-01-21 05:35:49"
-        },
-        {
-            "name": "mnshankar/role-based-authority",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mnshankar/RoleBasedAuthority.git",
-                "reference": "e696c39ccc39272d7f28b69fd62c052c23374a03"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mnshankar/RoleBasedAuthority/zipball/e696c39ccc39272d7f28b69fd62c052c23374a03",
-                "reference": "e696c39ccc39272d7f28b69fd62c052c23374a03",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "4.2.*",
-                "machuga/authority": "2.1.*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "mnshankar\\RoleBasedAuthority": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Shankar Manamalkav",
-                    "email": "mnshankar@yahoo.com"
-                }
-            ],
-            "description": "Modifies Authority-L4 to use Roles (instead of users) as the central unit of previlege management",
-            "keywords": [
-                "authorization",
-                "laravel4",
-                "rbac",
-                "roles"
-            ],
-            "time": "2014-06-21 07:08:34"
         },
         {
             "name": "monolog/monolog",
@@ -1721,13 +1626,21 @@
             "time": "2014-07-28 13:20:46"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mnshankar/role-based-authority": 20
-    },
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
 }
