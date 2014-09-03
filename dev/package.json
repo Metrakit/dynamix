@@ -1,12 +1,15 @@
 {
-  "name": "laravel-4-master-template",
+  "name": "Dynamix",
+  "description": "An awesome CMS",
+  "author": "David Lepaux <d.lepaux@gmail.com>", 
+  "contributors": [{
+    "name": "Jordane Jouffroy",
+    "email": "contact@jordane.net"
+  }],
   "version": "0.0.1",
   "devDependencies": {
     "grunt": "~0.4.3",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-csslint": "~0.1.2",
     "grunt-contrib-cssmin": "~0.6.2",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-imagemin": "~0.3.0",
