@@ -3,12 +3,14 @@
 return array(
 
 	//General (User)
-	'validate'              	=> 'Valider',
 	'connexion'              	=> 'Connexion',
 	'edit_account'				=> 'Modifiez son profil',
-	'update' 					=> 'Mettre à jour',
+	'create_account'			=> 'Création de compte',
 	'account_updated'       	=> 'Compte mis à jour',
 	'error_saving'				=> 'Il y a eu un problème lors de l\'inscription... Veuillez, s\'il vous plaît, recommencer.',
+	'account_created'			=> 'Votre compte a bien été créé.',
+	'you_must_be_logged'		=> 'Vous devez être connecté !',
+	'you_are_not_authorized'	=> "Authorisation refusé !",
 	
 	//Login
 	'login'                 	=> 'Se connecter',

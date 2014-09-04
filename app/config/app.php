@@ -110,11 +110,6 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'PagerServiceProvider',
-
-		//Role based & permission
-		'mnshankar\RoleBasedAuthority\RoleBasedAuthorityServiceProvider',
-		//'Davidlepaux\Cms\CmsServiceProvider',
-
 	),
 
 	/*
@@ -181,10 +176,6 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
-		//Role based & Permission
-		'Authority'        => 'mnshankar\RoleBasedAuthority\Facades\Authority',
-
 	),
 
 

@@ -8,7 +8,7 @@ class RolesTableSeeder extends Seeder {
 
         DB::table('roles')->insert( array(
             array(
-                'name'              => 'visitor',
+                'name'              => 'moderator',
                 'inherited_role_id' => null,
                 'created_at'        => new DateTime,
                 'updated_at'        => new DateTime

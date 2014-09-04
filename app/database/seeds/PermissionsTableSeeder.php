@@ -8,7 +8,7 @@ class PermissionsTableSeeder extends Seeder {
 
         $roles = array();
         $roles[0] = Role::where('name','=','admin')->first()->id;
-        $roles[1] = Role::where('name','=','visitor')->first()->id;
+        $roles[1] = Role::where('name','=','moderator')->first()->id;
 
         $resources = Resource::all();
 
@@ -25,7 +25,7 @@ class PermissionsTableSeeder extends Seeder {
                 foreach($actions as $action){
                     $data[] = array(
                         'role_id'       => $role,
-                        'type'          => ( $role == $roles[0] || ( $action == $actions[1] && $resource->name != 'role' ) ? 'allow' : 'deny'),
+                        'type'          => ( $role == $roles[0] || ( $action == $actions[1] && $resource->name != 'role' && $resource->name != 'user' ) ? 'allow' : 'deny'),
                         'action_id'     => $action,
                         'resource_id'   => $resource->id
                     );

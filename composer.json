@@ -14,8 +14,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"nesbot/Carbon": "*",
-		"mnshankar/role-based-authority": "dev-master"
+		"nesbot/Carbon": "*"
 	},
 	"autoload": {
 		"classmap": [

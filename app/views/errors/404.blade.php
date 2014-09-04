@@ -1,18 +1,12 @@
 @extends('public.layout.master')
 
-{{-- Index Title --}}
+
 @section('title')
-Page inexistante ! | 
+{{{ Lang::get('public.page_moved_or_deleted') }}} | 
 @parent
 @stop
 
-{{-- Update the Meta Description --}}
-@section('meta_description')
 
-@stop
-
-
-{{-- Content --}}
 @section('content')
-	<h1>Ouuups !!! Cette page n'existe pas...</h1>
+	<h1>Ouuups !!! {{{ Lang::get('public.page_moved_or_deleted') }}}</h1>
 @stop

@@ -1,18 +1,12 @@
 @extends('public.layout.master')
 
-{{-- Index Title --}}
+
 @section('title')
-Erreur system !!!
+{{{ Lang::get('public.fatal_error') }}} | 
 @parent
 @stop
 
-{{-- Update the Meta Description --}}
-@section('meta_description')
 
-@stop
-
-
-{{-- Content --}}
 @section('content')
-	<h1>Ouuups !!! Une erreur s'est produite... :(</h1>
+	<h1>Ouuups !!! {{{ Lang::get('public.fatal_error') }}}</h1>
 @stop

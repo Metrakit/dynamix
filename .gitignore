@@ -4,6 +4,8 @@
 
 /bootstrap/compiled.php
 
+/dev/node_modules
+/dev/.sass-cache
 
 
 

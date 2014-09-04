@@ -6850,18 +6850,25 @@ ol.linenums li {
   width: 100%;
 }
 
-/* line 66, ../sass/master.scss */
+@media only screen and (min-width: 768px) {
+  /* Make Navigation Toggle on Desktop Hover */
+  /* line 66, ../sass/master.scss */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+/* line 74, ../sass/master.scss */
 body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 71, ../sass/master.scss */
+/* line 79, ../sass/master.scss */
 header {
   background: url(../../img/sources/background-cms.png) no-repeat center center #00a99d;
   color: white;
 }
-/* line 75, ../sass/master.scss */
+/* line 83, ../sass/master.scss */
 header figure {
   display: block;
   position: relative;
@@ -6872,13 +6879,13 @@ header figure {
   vertical-align: middle;
 }
 
-/* line 86, ../sass/master.scss */
+/* line 94, ../sass/master.scss */
 .container.main {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-/* line 91, ../sass/master.scss */
+/* line 99, ../sass/master.scss */
 footer {
   padding-top: 10px;
   padding-bottom: 10px;

@@ -1,214 +1,274 @@
 module.exports = function(grunt) {
-	//Code grunt
+	// Code grunt
 	grunt.initConfig({
-		//Configuration du projet et des tâches
+
+		// Configuration du projet et des tâches
 		pkg: grunt.file.readJSON('package.json'),
 
-		//Clean old hashed files !
-		clean: {
-			//Clean JS Hashed Files
-			jsfront:
-				["www/js/assets/main.min*"]
-			,
-			jsback:
-				["www/js/assets/main.back.min*"]
-			,
-			//Clean CSS Hashed Files
-			css:
-				["www/css/assets/*"]
-			
-		},
+		// Paths
+		path: '../',
+		srcPath: 'src/',
+		distPath: '../public/',
 
-		//Convertio SCSS => CSS
+
+
+		/**
+		 *
+		 *  CSS Tasks
+		 *
+		 */
+
+		// Compilation
 		compass: {
 		    dist: {
 		      options: {
-		        config: 'www/config.rb',
-		        sassDir: 'www/sass',
-        		cssDir: 'www/css',
+		        config: '<%= srcPath %>config.rb',
+		        sassDir: '<%= srcPath %>sass',
+        		cssDir: '<%= srcPath %>css',
 		      }
 		    }
 		},
 
 
-		//Concaténation des feuilles de styles CSS
+		// Je ne sais pas à quoi ça sert
+		/*csslint: {
+			// Config de la tâche csslint
+			options:{
+				'adjoining-classes' : false,
+				'empty-rules'       : false, 
+				// Générateur automatique d'un rapport XML
+				formatters: [{
+					id: 'csslint-xml',
+					dest: 'report/csslint.xml' 
+				}]
+			},
+			src: ['<%= srcPath %>css/*.css']
+		},	*/	
+
+
+		// Concaténation des feuilles de styles
 		cssmin:{
-			combine:{
-				//Feuilles de style principale
-				front: {
-					files:{
-						'www/css/main.min.css':
-						[
-						 	'www/css/master.css'
-						]
-					}
-				},
-				//Feuilles de style du back office (complete la main)
-				back: {
-					files:{
-						'www/css/main.back.min.css':
-						[
-						 	'www/css/backoffice/summernote.css',
-						 	'www/css/backoffice/summernote-bs3.css',				 
-						 	'www/css/backoffice/font-awesome.min.css'
-						]
-					}
+			combine: {
+				files: {
+					// Feuilles de style principale
+					'<%= srcPath %>css/main.min.css':
+					[
+						//'<%= srcPath %>css/vendor.css',
+						'<%= srcPath %>css/master.css'
+					],
+
+					// Feuilles de style du back office (complete la main)
+					'<%= srcPath %>css/main.back.min.css':
+					[
+          				'<%= srcPath %>css/master-admin.css'
+					]
 				}
 			},
-			//Config de la tâche cssmin
-			options:{
-				'keepSpecialComments' : 0
+			// Config de la tâche cssmin
+			options: {
+
 			}
 		},
 
 
-		//Concatene les fchiers js
-		concat:{
-			front:{
-				//Fichier à concaténer
-				src:[
-					//'www/js/vendor/jquery-migrate-1.2.1.min.js',
-					'www/js/vendor/unveil.js',
-					//'www/js/vendor/mustache.js',
-					'www/js/vendor/jquery.cycle.all.js',
-					'www/js/vendor/responsiveslideshow.js',
-					'www/js/vendor/bootstrap.min.js',
-			        'www/js/master.js'
+
+		/**
+		 *
+		 *  JS Tasks
+		 *
+		 */
+
+		// Concatene les fchiers js
+		concat: {
+			main: {
+				// Fichiers à concaténer
+				src: [
+					 '<%= srcPath %>js/vendor/bootstrap.min.js',
+					 '<%= srcPath %>js/vendor/jquery.imageloaded.min.js',
+					 '<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
+			         '<%= srcPath %>js/master.js'
 			    ],
-				//Fichier de destination
-				dest:'www/js/main.min.js'
+				// Fichier de destination
+				dest:'<%= srcPath %>js/main.min.js'
 			},
-			back:{
-				//Fichier à concaténer
-				src:[
-					'www/js/vendor/summernote.min.js'
+			back: {
+				// Fichiers à concaténer
+				src: [
+					 '<%= srcPath %>js/vendor/jquery.fancybox.js',
 			    ],
-				//Fichier de destination
-				dest:'www/js/main.back.min.js'
+				// Fichier de destination
+				dest:'<%= srcPath %>js/main.back.min.js'
+			}
+		},
+
+		// Minification
+		uglify: {
+			options: {
+				// la date et le nom des fichiers minifiés sont insérés en commentaire en début de fichier
+				banner:'/* <%= grunt.template.today("dd-mm-yyyy, HH:MM") %> \n'
+			},
+
+			main: {
+				files:{
+					// Fichier de destination
+					'<%= srcPath %>js/main.min.js':
+					// Fichier minifié
+					['<%= concat.main.dest %>']
+				}
+			},
+
+			back: {
+				files: {
+					// Fichier de destination
+					'<%= srcPath %>js/main.back.min.js':
+					// Fichier minifié
+					['<%= concat.back.dest %>']
+				}
 			}
 		},
 
 
-		//I watch you guy
-		watch:{
-			//JS
-			jsfront: {
-				files: [
-					//'www/js/vendor/jquery-migrate-1.2.1.min.js',
-					'www/js/vendor/unveil.js',
-					//'www/js/vendor/mustache.js',
-					'www/js/vendor/jquery.cycle.all.js',
-					'www/js/vendor/responsiveslideshow.js',
-					'www/js/vendor/bootstrap.min.js',
-			        'www/js/master.js'
-			    ],
-				tasks:['clean:jsfront','concat:front','hash:js'],
-				
-			},
-			jsback: {
-				files: [
-					'www/js/vendor/summernote.min.js'
-			    ],
-				tasks:['clean:jsback','concat:back','hash:js'],
-				
-			},
-			scss: {
-				files: [
-					'www/sass/**/*.scss'
-				],
-				tasks:['clean:css','compass','cssmin','hash:css'],
-			}
-		},
 
+		/**
+		 *
+		 *  Other Tasks
+		 *
+		 */
 
-		//I will hash you face!!!
+		// Hashage des fichiers minimifié
 		hash: {
 	        options: {
-	            mapping: 'app/config/assets/assets.json', //mapping file so your server can serve the right files
-	            srcBasePath: 'www/', // the base Path you want to remove from the `key` string in the mapping file
-	            destBasePath: 'www/', // the base Path you want to remove from the `value` string in the mapping file
+	            mapping: '<%= path %>app/config/assets/assets.json', //mapping file so your server can serve the right files
+	            srcBasePath: '<%= srcPath %>', // the base Path you want to remove from the `key` string in the mapping file
+	            destBasePath: '<%= distPath %>', // the base Path you want to remove from the `value` string in the mapping file
 	            flatten: false // Set to true if you don't want to keep folder structure in the `key` value in the mapping file
 	        },
 	        js: {
-	            src: ['www/js/main.min.js','www/js/main.back.min.js'],  //all your js that needs a hash appended to it
-	            dest: 'www/js/assets' //where the new files will be created
+	            src: ['<%= srcPath %>js/main.min.js','<%= srcPath %>js/main.back.min.js'],
+	            dest: '<%= distPath %>js'
 	        },
 	        css: {
-	            src: ['www/css/main.min.css','www/css/main.back.min.css'],  //all your css that needs a hash appended to it
-	            dest: 'www/css/assets' //where the new files will be created
+	            src: ['<%= srcPath %>css/main.min.css','<%= srcPath %>css/main.back.min.css'],
+	            dest: '<%= distPath %>css'
 	        }
-	    }
+	    },
+
+
+	    // Nettoyage des dossiers publics
+		clean: {
+		  js: ["<%= distPath %>js/*.js"],
+		  css: ["<%= distPath %>css/*.css"],
+		  options: {
+		      force: true
+		  }
+		},
+
+
+		// Compression des images
+		imagemin:{
+			dynamic:{
+				files: [{
+					// Mode de ciblage dynamqiue
+					expand:true,
+					// Dossier contenant les sources
+					cwd:'<%= srcPath %>img/sources',
+					// Fichiers à prendre en compte
+					src:['*.{png,jpg,gif}'],
+					// Dossier de destination
+					dest:'<%= distPath %>img'
+				}]
+			}
+		},		
+
+
+		// Watchs
+		watch: {
+			
+			js: 
+			{
+				files: [
+					'<%= srcPath %>js/vendor/bootstrap.min.js',
+					'<%= srcPath %>js/vendor/jquery.imageloaded.min.js',
+					'<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
+					'<%= srcPath %>js/master.js'
+				],
+				tasks:['concat:main', 'uglify:main', 'clean:js', 'hash:js'],
+				options: {
+	              livereload: true
+	          	}	
+          	},
+
+ 			vendorJs: 
+			{
+				files: [
+					'<%= srcPath %>js/vendor/bootstrap.min.js',
+					'<%= srcPath %>js/vendor/jquery.imageloaded.min.js',
+					'<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
+					'<%= srcPath %>js/master.js'
+				],
+				tasks:['concat:back', 'uglify:back', 'clean:js', 'hash:js'],
+				options: {
+	              livereload: true
+	          	}	
+          	},         	
+
+			scss: 
+			{
+				files: [
+					'<%= srcPath %>sass/**/*.scss',
+			    ],
+				tasks:['compass', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},     	
+
+			blade: 
+			{
+				files: ['<%= path %>app/**/*.blade.php'],
+				options: {
+	              livereload: true
+	          	}	
+          	}
+
+		}		
+
+
 	});
 
 
 
-	//Chargement des plugins
-	grunt.loadNpmTasks('grunt-contrib-clean');
+	// Chargement des plugins
 	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-csslint');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-hash');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	//Tâche par défaut
+
+	// Tâche par défaut
 	grunt.registerTask('default',
-						['csslint'],
+						['compass'],
 						['cssmin'],
-						['jshint'],
 						['concat'],
 						['uglify'],
 						['imagemin'],
 						['watch']);
 
-	//Tâche personnalisée pour le développement
+	// Tâche personnalisée pour le développement
 	grunt.registerTask('dev',
-						['csslint'],
+						['compass'],
 						['cssmin'],
-						['jshint'],
 						['concat'],
 						['uglify'],
+						['imagemin'],
 						['watch']);
 
-	//Tâche personnalisée pour la mise en prod
-	grunt.registerTask('prod',['imagemin']);
+	// Tâche personnalisée pour la mise en prod
+	 grunt.registerTask('prod', 
+	 					 ['imagemin']);
+
 }
-
-
-
-
-
-
-/*uglify:{
-	options:{
-		//la date et le nom des fichiers minifiés sont insérés en commentaire en début de fichier
-		banner:'/* <%= grunt.template.today("dd-mm-yyyy, HH:MM") %> \n <%= concat.dist.src %> *\/n'
-	},
-	dist:{
-		files:{
-			//Fichier de destination
-			'www/js/main.min.js':
-			//Fichier minifié
-			['<%= concat.dist.dest %>']
-		}
-	}
-},*/
-
-
-/*imagemin:{
-	dynamic:{
-		files: [{
-			//Mode de ciblage dynamqiue
-			expand:true,
-			//Dossier contenant les sources
-			cwd:'www/img/sources',
-			//Fichiers à prendre en compte
-			src:['*.{png,jpg,gif}'],
-			//Dossier de destination
-			dest:'www/img'
-		}]
-	}
-},*/
