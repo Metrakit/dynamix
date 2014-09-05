@@ -12,7 +12,7 @@ class CreateFormsTable extends Migration {
 	 */
 	public function up()
 	{
-		// Create the `Comments` table
+		// Create the `Forms` table
 		Schema::create('forms', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
