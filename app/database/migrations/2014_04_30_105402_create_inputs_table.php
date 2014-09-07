@@ -12,7 +12,7 @@ class CreateInputsTable extends Migration {
 	 */
 	public function up()
 	{
-		// Create the `Comments` table
+		// Create the `inputs` table
 		Schema::create('inputs', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';

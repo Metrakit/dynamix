@@ -8,5 +8,5 @@ class I18nType extends Eloquent{
 	 */
 	protected $table   = 'i18n_types';
     public $timestamps = false;
-    
+
 }

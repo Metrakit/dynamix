@@ -6,6 +6,8 @@ class Form extends Eloquent{
 	 * Parameters
 	 */
 	protected $table = 'forms';
+	public $timestamps = false;
+	protected $fillable = ['finish_on', 'i18n_title', 'i18n_description'];
 
 	
 	/**

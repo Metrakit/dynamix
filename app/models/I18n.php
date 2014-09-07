@@ -7,6 +7,7 @@ class I18n extends Eloquent{
      */
 	protected $table = 'i18n';
     public $timestamps = false;
+    protected $fillable = ['i18n_type_id'];
 
 	/**
      * Relations

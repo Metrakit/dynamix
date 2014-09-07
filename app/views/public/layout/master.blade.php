@@ -2,6 +2,7 @@
 <html>
     @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')) ))
     <body>
+
         <div id="wrapper">
             
             <!--[if lt IE 8]>

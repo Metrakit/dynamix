@@ -8,6 +8,7 @@ class Translation extends Eloquent{
 	 */
 	protected $table = 'translations';
     public $timestamps = false;
+    protected $fillable = ['i18n_id', 'locale_id', 'text'];
 
 	/**
      * A translation has one i18n
