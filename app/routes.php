@@ -98,10 +98,10 @@ Route::resource('user','UserController', array('except' => array('index', 'show'
 |
 */
 Route::get('/migrate', function(){
-  define('STDIN',fopen("php://stdin","r"));
-  Artisan::call("migrate:reset");
-  Artisan::call("migrate");
-  Artisan::call("db:seed");
+  //define('STDIN',fopen("php://stdin","r"));
+  //Artisan::call("migrate:reset");
+  //Artisan::call("migrate");
+  //Artisan::call("db:seed");
   return "migrated";
 });
 
