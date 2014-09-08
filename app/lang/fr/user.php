@@ -3,6 +3,7 @@
 return array(
 
 	//General (User)
+	'profile'              		=> 'Profil',
 	'connexion'              	=> 'Connexion',
 	'edit_account'				=> 'Modifiez son profil',
 	'create_account'			=> 'Création de compte',
@@ -13,6 +14,7 @@ return array(
 	'you_are_not_authorized'	=> "Authorisation refusé !",
 	
 	//Login
+	'logout'                 	=> 'Se déconnecter',
 	'login'                 	=> 'Se connecter',
 	'password'					=> 'Mot de passe',
 

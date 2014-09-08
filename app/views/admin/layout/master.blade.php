@@ -10,32 +10,38 @@
             <p class="chromeframe">Vous utilizes une version <strong>obsolète</strong> de votre navigateur. S'il vous plait, veuillez <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a> ou <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activez Google Chrome Frame</a> pour améliorer votre expérience.</p>
             <![endif]-->
 
+            <!-- navbar -->
+            @include('admin.includes.nav')
+            <!-- ./ navbar -->
 
-            <!-- navbar left -->
-            @include('admin.includes.menu-left-link')
-            <!-- ./ navbar left -->
-
-            <!-- content -->
-            <div class="col-sm-10 main-content">
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Dashboard</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
                 
-                @include('admin.includes.nav')
-
                 @yield('filemanager')
 
-                <!-- main-container -->
-                <div class="admin-container">
+                <!-- /.row -->
+                <div class="row">
                     <p>
-                    @section('ariane')
-                        @if(!isset($noAriane))
-    <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-                        @endif
-                    @show
+                        @section('ariane')
+                            @if(!isset($noAriane))
+        <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                            @endif
+                        @show
                     </p>
-                    @yield('content')
                 </div>
+
+                <!-- main-container -->
+                @yield('content')
                 <!-- ./ main-container -->
+
             </div>
             <div class="clearfix"></div>
+            
             @yield('container')
             <!-- ./ content -->
 

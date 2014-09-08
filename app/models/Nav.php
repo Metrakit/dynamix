@@ -6,6 +6,7 @@ class Nav extends Eloquent{
 	 * Parameters
 	 */
 	protected $table = 'navigations';
+	public $timestamps = false;
 
 
 	/**

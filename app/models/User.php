@@ -93,4 +93,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return $this->getKey();
     }
+
+    /**
+     * Additionnal method
+     *
+     */
+    public function getAuthorizedNavigations() {
+        $resources = array();
+        $navigations = '';
+        
+        foreach ($this->roles as $role) {
+            foreach ($role->permissions as $permission) {
+                $resources[] = $permission->resource_id;
+            }
+        }
+        
+        $resources = array_unique($resources);
+
+        foreach ( $resources as $resource_id ) {
+            $resource = Resource::find($resource_id);
+            $data = array(
+                'name'  => $resource->name,
+                'icon'  => $resource->icon);
+            $navigations .= Response::view('admin.nav.nav', $data )->getOriginalContent();
+        }
+        
+        return $navigations;
+    }
 }

@@ -7,47 +7,80 @@ class ResourcesTableSeeder extends Seeder {
         DB::table('resources')->delete();
 
         DB::table('resources')->insert( array(
-            //Blog system
+            //Blog
             array(
-                'name' => 'blog'
+                'name' => 'blog',
+                'icon' => 'glyphicon glyphicon-book'
             ),
             array(
-                'name' => 'article'
+                'name' => 'article',
+                'icon' => 'glyphicon glyphicon-book'
             ),
             array(
-                'name' => 'article_category'
+                'name' => 'article_category',
+                'icon' => 'glyphicon glyphicon-book'
+            ),
+            
+            //Media
+            array(
+                'name' => 'media',
+                'icon' => 'glyphicon glyphicon-picture'
+            ),
+            /*array(
+                'name' => 'image',
+                'icon' => 'glyphicon glyphicon-picture'
             ),
             array(
-                'name' => 'tag'
+                'name' => 'video',
+                'icon' => 'glyphicon glyphicon-film'
             ),
+            array(
+                'name' => 'audio',
+                'icon' => 'glyphicon glyphicon-music'
+            ),*/
 
             //Gallery Image
             array(
-                'name' => 'mosaic'
+                'name' => 'mosaic',
+                'icon' => 'glyphicon glyphicon-picture'
             ),
             array(
-                'name' => 'gallery'
-            ),
-            array(
-                'name' => 'image'
+                'name' => 'gallery',
+                'icon' => 'glyphicon glyphicon-picture'
             ),
 
             //Page
             array(
-                'name' => 'page'
+                'name' => 'page',
+                'icon' => 'glyphicon glyphicon-book'
+            ),
+
+            //Conector
+            array(
+                'name' => 'tag',
+                'icon' => 'glyphicon glyphicon-tag'
             ),
 
             //Menu
             array(
-                'name' => 'menu'
+                'name' => 'navigation',
+                'icon' => 'glyphicon glyphicon-list'
             ),
             
             //User
             array(
-                'name' => 'role'
+                'name' => 'role',
+                'icon' => 'glyphicon glyphicon-lock'
             ),
             array(
-                'name' => 'user'
+                'name' => 'user',
+                'icon' => 'glyphicon glyphicon-user'
+            ),
+
+            //Setting
+            array(
+                'name' => 'setting',
+                'icon' => 'glyphicon glyphicon-cog'
             ))
         );
     }

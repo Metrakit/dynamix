@@ -1,0 +1,1 @@
+<li {{(Request::is( $name ) ? 'class="active"' : '')}}><a href="{{URL::to($name)}}"><span class="{{$icon}}"></span> {{Lang::get('admin.nav_'.$name)}}</a></li>

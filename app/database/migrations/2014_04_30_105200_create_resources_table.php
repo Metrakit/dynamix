@@ -18,6 +18,7 @@ class CreateResourcesTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('name');
+			$table->string('icon',30);
 		});
 	}
 

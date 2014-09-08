@@ -1,10 +1,39 @@
 <?php
 
 class Image extends Eloquent{
+	
 	/**
-	 * The database table used by the model.
+	 * Parameters
+	 */
+	protected $table = 'images';
+
+	/**
+	 * Relation
 	 *
 	 * @var string
 	 */
-	protected $table = 'images';
+	public function gallery () {
+        return $this->belongsTo('Gallery');
+    }
+
+    public function scopeOrderAsc ($query) {
+        return $query->orderBy('order','ASC');
+    } 
+
+	/**
+	 * Additional Method
+	 *
+	 * @var string
+	 */	
+	public function getThumb () {
+        return asset('/uploads_thumbs/' . $this->file_name . '.' . $this->file_ext);
+    }
+
+	public function getImage () {
+        return asset('/uploads/' . $this->file_name . '.' . $this->file_ext);
+    }
+
+    public function getMaxOrder () {
+        return Image::where('gallery_id','=',$this->gallery_id)->max('order');
+    }
 }

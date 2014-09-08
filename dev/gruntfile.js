@@ -54,13 +54,13 @@ module.exports = function(grunt) {
 					'<%= srcPath %>css/main.min.css':
 					[
 						//'<%= srcPath %>css/vendor.css',
-						'<%= srcPath %>css/master.css'
+						'<%= srcPath %>css/core.css'
 					],
 
 					// Feuilles de style du back office (complete la main)
 					'<%= srcPath %>css/main.back.min.css':
 					[
-          				'<%= srcPath %>css/master-admin.css'
+          				'<%= srcPath %>css/core-admin.css'
 					]
 				}
 			},
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				// la date et le nom des fichiers minifiés sont insérés en commentaire en début de fichier
-				banner:'/* <%= grunt.template.today("dd-mm-yyyy, HH:MM") %> \n'
+				banner:'/* <%= grunt.template.today("dd-mm-yyyy, HH:MM") %> */\n'
 			},
 
 			main: {

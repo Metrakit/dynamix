@@ -12,7 +12,11 @@ class Gallery extends Eloquent
      * Relations
      *
      * @var string
-     */    
+     */   
+    public function mosaique() {
+        return $this->belongsTo('Mosaique');
+    }
+
     public function images() {
         return $this->belongsToMany('Image');
     }
@@ -39,11 +43,21 @@ class Gallery extends Eloquent
      *
      * @var string
      */
-    public function translate( $i18n_id )
-    {
+    public function translate( $i18n_id ) {
         return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
     }
 
+    public function cover() {
+        return Image::find($this->cover_id)->getThumb();
+    }
+    
+    public function getUrlCover() {
+        return Image::find($this->cover_id)->getImage();
+    }
+    
+    public function hasMosaique() {
+        return ( $this->mosaique_id == null ? false : true );
+    }
   
     /**
      * Herited attributes
