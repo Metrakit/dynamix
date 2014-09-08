@@ -16,6 +16,26 @@ class UsersTableSeeder extends Seeder {
                 'last_visit_at' => new DateTime,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
+            ),
+            array(
+                'firstname' => 'jordane',
+                'lastname'  => 'jouffroy',
+                'pseudo'    => 'jjouffroy',
+                'email'     => 'j.jouffroy@outlouk.com',
+                'password'  => Hash::make('admin'),
+                'last_visit_at' => new DateTime,
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime
+            ),
+            array(
+                'firstname' => 'moder',
+                'lastname'  => 'ator',
+                'pseudo'    => 'mator',
+                'email'     => 'm.ator@gmail.com',
+                'password'  => Hash::make('moderator'),
+                'last_visit_at' => new DateTime,
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime
             ))
         );
     }

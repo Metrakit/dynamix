@@ -14,9 +14,13 @@ class AdminGalleryController extends BaseController {
 	{
 		// get all the nerds
 		$mosaiques = Mosaique::all();
+		$gallery_autonomous = Gallery::whereNull('mosaique_id')->get();
+		$gallery_autonomous->toArray();
+
+		//return var_dump($gallery_autonomous);
 
 		// load the view and pass the nerds
-		return View::make('admin.gallery.index', compact('mosaiques'));
+		return View::make('admin.gallery.index', compact('mosaiques', 'gallery_autonomous'));
 	}
 
 	/**
@@ -53,7 +57,9 @@ class AdminGalleryController extends BaseController {
             $gallery->meta_description = $inputs['meta_description'];
 
             $gallery->cover_id = 0;
-            $gallery->mosaique_id = $inputs['mosaique_id'];
+            if ($inputs['mosaique_id'] != '' ) {
+            	$gallery->mosaique_id = $inputs['mosaique_id'];
+            }
 
             $gallery->created_at    	= new DateTime();
             $gallery->updated_at    	= new DateTime();
@@ -178,7 +184,9 @@ class AdminGalleryController extends BaseController {
             $gallery->meta_description = $inputs['meta_description'];
 
             //$gallery->cover_id = 0;
-            $gallery->mosaique_id = $inputs['mosaique_id'];
+            if ($inputs['mosaique_id'] != '' ) {
+            	$gallery->mosaique_id = $inputs['mosaique_id'];
+            }
 
             $gallery->updated_at    	= new DateTime();
 

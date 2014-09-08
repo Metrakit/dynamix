@@ -9,12 +9,12 @@ class AdminMenuController extends BaseController {
 	 */
 	public function index()
 	{
-		$menus = Menu::where('parent_id','=',0)->orderBy('order','ASC')->get();
+		$menus 					= Menu::where('parent_id','=',0)->orderBy('order','ASC')->get();
+		$page_not_allowed 		= parent::getNotAllowedPage();
+		$mosaique_not_allowed 	= parent::getNotAllowedMosaique();
+		$gallery_not_allowed 	= parent::getNotAllowedGallery();
 
-		$page_not_allowed = parent::getNotAllowedPage();
-		$mosaique_not_allowed = parent::getNotAllowedMosaique();
-
-		return View::make('admin.menu.index', compact('menus', 'page_not_allowed', 'mosaique_not_allowed') );
+		return View::make('admin.menu.index', compact('menus', 'page_not_allowed', 'mosaique_not_allowed', 'gallery_not_allowed') );
 	}
 
 	/**
@@ -27,6 +27,7 @@ class AdminMenuController extends BaseController {
 		$data['order']						= Input::get('order');
 		$data['page_not_allowed']			= parent::getNotAllowedPage();
 		$data['mosaique_not_allowed']		= parent::getNotAllowedMosaique();
+		$data['gallery_not_allowed'] 		= parent::getNotAllowedGallery();
 
 		// load the create form (app/views/nerds/create.blade.php)
 		return View::make('admin.menu.create-new-menu', $data);
@@ -43,6 +44,7 @@ class AdminMenuController extends BaseController {
 		$data['parent_id']					= Input::get('parent_id');
 		$data['page_not_allowed']			= parent::getNotAllowedPage();
 		$data['mosaique_not_allowed']		= parent::getNotAllowedMosaique();
+		$data['gallery_not_allowed'] 		= parent::getNotAllowedGallery();
 
 		// load the create form (app/views/nerds/create.blade.php)
 		return View::make('admin.menu.create-menu', $data);
@@ -79,6 +81,9 @@ class AdminMenuController extends BaseController {
 	                break;
 	            case 2://mosaique
 	                $menu->url = Mosaique::find($element_id)->url;
+	                break;
+	            case 3://gallery
+	                $menu->url = Gallery::find($element_id)->url;
 	                break;
 	        }
 
@@ -161,6 +166,9 @@ class AdminMenuController extends BaseController {
 	            case 2://Mosaique
 	                $newMenu->url = Mosaique::find($element_id)->url;
 	                break;
+	        	case 3://Gallery
+	                $newMenu->url = Gallery::find($element_id)->url;
+	                break;
 	        }
 
             // Was the blog post created?
@@ -196,6 +204,7 @@ class AdminMenuController extends BaseController {
 
 		$page_not_allowed			= parent::getNotAllowedPage();
 		$mosaique_not_allowed		= parent::getNotAllowedMosaique();
+		$gallery_not_allowed		= parent::getNotAllowedGallery();
 
 		if($menu->resource_id != 4){
 			switch ( $menu->resource_id ) {
@@ -205,11 +214,14 @@ class AdminMenuController extends BaseController {
 	            case 2://mosaique
 	                $mosaique_not_allowed[] = Mosaique::find( $menu->element_id );
 	                break;
+	        	case 3://galley
+	                $gallery_not_allowed[] = Gallery::find( $menu->element_id );
+	                break;
 	        }
 		}			
 
 		// show the edit form and pass the nerd
-		return View::make('admin.menu.edit', compact('menu','page_not_allowed','mosaique_not_allowed'));
+		return View::make('admin.menu.edit', compact('menu','page_not_allowed','mosaique_not_allowed','gallery_not_allowed'));
 	}
 
 	/**
