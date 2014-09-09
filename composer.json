@@ -14,7 +14,9 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"nesbot/Carbon": "*"
+		"nesbot/Carbon": "*",
+		"google/apiclient": "1.0.*@beta",
+		"thujohn/analytics": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

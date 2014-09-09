@@ -10,8 +10,9 @@ class AdminController extends BaseController {
 	public function index()
 	{
 		$user = Auth::user();
+		$noAriane = true;
 
-		return View::make('admin.index', compact('user'));
+		return View::make('admin.index', compact('user', 'noAriane'));
 	}
 
 	/**

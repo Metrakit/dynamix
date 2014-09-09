@@ -16,4 +16,7 @@ return array(
 	'nav_user'				=> 'Utilisateurs',
 	'nav_setting'			=> 'Options',
 
+	//Dashbooard
+	'dashboard'				=> 'Tableau de bord',
+
 );

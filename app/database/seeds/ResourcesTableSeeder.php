@@ -77,7 +77,12 @@ class ResourcesTableSeeder extends Seeder {
                 'icon' => 'glyphicon glyphicon-user'
             ),
 
-            //Setting
+
+            //System
+            array(
+                'name' => 'log',
+                'icon' => 'glyphicon glyphicon-list'
+            ),
             array(
                 'name' => 'setting',
                 'icon' => 'glyphicon glyphicon-cog'

@@ -109,7 +109,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		
 		'PagerServiceProvider',
+		'Thujohn\Analytics\AnalyticsServiceProvider',
 	),
 
 	/*
@@ -176,6 +178,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+
+		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 	),
 
 

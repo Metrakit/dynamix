@@ -19,10 +19,10 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ URL::to('/user/' . $user->id) }}"><i class="fa fa-user fa-fw"></i> {{ Lang::get('user.profile') }}</a>
+                <li><a href="{{ URL::to('/user/' . $user->id) }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('user.profile') }}}</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="{{ URL::to('/user/logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{ Lang::get('user.logout') }}</a>
+                <li><a href="{{ URL::to('/user/logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{{ Lang::get('user.logout') }}}</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -36,7 +36,7 @@
         <div class="sidebar-nav navbar-collapse collapse">
             <ul class="nav" id="side-menu">
                 <li {{(Request::is( 'admin' ) ? 'class="active"' : '')}}>
-                    <a href="{{ URL::to('/admin/') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="{{ URL::to('/admin/') }}"><i class="fa fa-dashboard fa-fw"></i> {{{ Lang::get('admin.dashboard') }}}</a>
                 </li>
                 {{ $user->getAuthorizedNavigations() }}
             </ul>

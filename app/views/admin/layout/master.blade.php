@@ -17,7 +17,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Dashboard</h1>
+                        <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -25,15 +25,15 @@
                 @yield('filemanager')
 
                 <!-- /.row -->
+                @section('ariane')
+                @if(!isset($noAriane))
                 <div class="row">
                     <p>
-                        @section('ariane')
-                            @if(!isset($noAriane))
         <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-                            @endif
-                        @show
                     </p>
                 </div>
+                @endif
+                @show
 
                 <!-- main-container -->
                 @yield('content')
