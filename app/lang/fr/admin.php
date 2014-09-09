@@ -14,7 +14,6 @@ return array(
 	'nav_navigation'		=> 'Navigations',
 	'nav_role'				=> 'Rôles',
 	'nav_user'				=> 'Utilisateurs',
-	'nav_environment'		=> 'Environnement',
 	'nav_log'				=> 'Logs',
 	'nav_setting'			=> 'Options',
 

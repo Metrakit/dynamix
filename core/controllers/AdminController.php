@@ -9,14 +9,10 @@ class AdminController extends BaseController {
 	 */
 	public function index()
 	{
-		$data['user'] = Auth::user();
-		$data['noAriane'] = true;
+		$user = Auth::user();
+		$noAriane = true;
 
-		$data['ga_sessionsPerDay'] = App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-
-	    
-
-		return View::make('admin.index', $data );
+		return View::make('admin.index', compact('user', 'noAriane'));
 	}
 
 	/**

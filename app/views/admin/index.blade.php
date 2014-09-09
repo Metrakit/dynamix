@@ -17,7 +17,14 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div id="ga-sessionsPerDay"></div>
+            <?php
+
+            $site_id = Analytics::getSiteIdByUrl('http://metra-concept.fr'); // return something like 'ga:11111111'
+
+            $stats = Analytics::query($site_id, '7daysAgo', 'yesterday', 'ga:visits,ga:pageviews');
+
+            echo var_dump($stats);
+            ?>
             </div>
             <!-- /.panel-body -->
         </div>
@@ -37,18 +44,4 @@
     </div>
     <div class="col-lg-8">
     </div>
-    <div class="clearfix"></div>
-@stop
-
-@section('scriptOnReady')
-/*ga-sessionsPerDay*/
-Morris.Area({
-    element: 'ga-sessionsPerDay',
-    data: {{ $ga_sessionsPerDay }},
-    xkey: 'date',
-    ykeys: ['sessions'],
-    labels: ['Sessions'],
-    hideHover: 'auto',
-    resize: true
-  });
 @stop
