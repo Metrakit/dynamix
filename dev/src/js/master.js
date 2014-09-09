@@ -1,7 +1,7 @@
 //Object Master
 var Master = function (){
 	this.start = function (){
-
+		
 	}
 }
 

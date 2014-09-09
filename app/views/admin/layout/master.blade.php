@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')), asset(Bassets::show('css/main.back.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')).'","'.asset(Bassets::show('js/main.back.min.js')).'","'.asset('src/js/vendor/tinymce/tinymce.min.js') ))
+    @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')), asset(Bassets::show('css/main.back.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')).'","'.asset(Bassets::show('js/main.back.min.js')) ))
 
     <body id="admin" class="@yield('classBody')">
         @yield('beforeWrapper')
@@ -40,7 +40,6 @@
                 <!-- ./ main-container -->
 
             </div>
-            <div class="clearfix"></div>
             
             @yield('container')
             <!-- ./ content -->

@@ -80,6 +80,10 @@ class ResourcesTableSeeder extends Seeder {
 
             //System
             array(
+                'name' => 'environment',
+                'icon' => 'glyphicon glyphicon-list'
+            ),
+            array(
                 'name' => 'log',
                 'icon' => 'glyphicon glyphicon-list'
             ),
