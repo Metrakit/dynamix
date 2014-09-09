@@ -2,7 +2,7 @@
 
 NI HAO !
 
-@foreach (Former::render($inputs) as $input)
+@foreach ($inputs as $input)
 	{{ $input->view }}
 @endforeach
 
