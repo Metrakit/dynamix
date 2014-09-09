@@ -27,6 +27,10 @@ http://packalyst.com/packages/package/thujohn/analytics
 
 Run php artisan config:publish thujohn/analytics and modify the config file with your own informations.
 
+4. Migrates
+
+For Test the Former you should user the example Form seeder :
+php artisan db:seed --class=FullFormSeeder
 
 
 ## TODO List
