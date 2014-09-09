@@ -14,9 +14,19 @@ return array(
 	'nav_navigation'		=> 'Navigations',
 	'nav_role'				=> 'Rôles',
 	'nav_user'				=> 'Utilisateurs',
+	'nav_log'				=> 'Logs',
 	'nav_setting'			=> 'Options',
 
 	//Dashbooard
 	'dashboard'				=> 'Tableau de bord',
+
+	//Google Analytics
+	'sessions'				=> 'Sessions',
+	/*
+	'sessions'				=> 'Sessions',
+	'sessions'				=> 'Sessions',
+	'sessions'				=> 'Sessions',
+	'sessions'				=> 'Sessions',
+	*/
 
 );

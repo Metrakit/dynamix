@@ -144,7 +144,7 @@ Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 |
 |
 */
-App::error(function($exception, $code)
+/*App::error(function($exception, $code)
 {
     switch ($code)
     {
@@ -157,7 +157,7 @@ App::error(function($exception, $code)
         case 500:
             return Response::view('errors.500', array(), 500);
     }
-});
+});*/
 
 
 
