@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="{{URL::to('/')}}"><img src="{{asset('favicon/favicon32-white.png')}}" alt="Logo"> {{ App::make('CacheController')->getCache('DB_Option')->site_name }}</a>
+        <a class="navbar-brand" href="{{URL::to('/')}}"><img src="{{asset('favicon/favicon32-white.png')}}" alt="Logo"> {{ App::make('CacheController')->getCache('DB_Option')->site_name }}</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -33,7 +33,7 @@
 
     <!-- /.navbar-static-side -->
     <div class="navbar-default sidebar" role="navigation">
-        <div class="sidebar-nav navbar-collapse">
+        <div class="sidebar-nav navbar-collapse collapse">
             <ul class="nav" id="side-menu">
                 <li {{(Request::is( 'admin' ) ? 'class="active"' : '')}}>
                     <a href="{{ URL::to('/admin/') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>

@@ -95,6 +95,11 @@ module.exports = function(grunt) {
 				// Fichiers à concaténer
 				src: [
 					 '<%= srcPath %>js/vendor/jquery.fancybox.js',
+					 '<%= srcPath %>js/admin/metisMenu/metisMenu.min.js',
+					 '<%= srcPath %>js/admin/morris/raphael.min.js',
+					 '<%= srcPath %>js/admin/morris/morris.min.js',
+					 '<%= srcPath %>js/admin/morris/morris-data.js',
+					 '<%= srcPath %>js/admin/sb-admin-2.js',
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
@@ -192,7 +197,7 @@ module.exports = function(grunt) {
 					'<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
 					'<%= srcPath %>js/master.js'
 				],
-				tasks:['concat:main', 'uglify:main', 'clean:js', 'hash:js'],
+				tasks:['concat:main', /*'uglify:main',*/ 'clean:js', 'hash:js'],
 				options: {
 	              livereload: true
 	          	}	
@@ -206,7 +211,7 @@ module.exports = function(grunt) {
 					'<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
 					'<%= srcPath %>js/master.js'
 				],
-				tasks:['concat:back', 'uglify:back', 'clean:js', 'hash:js'],
+				tasks:['concat:back', /*'uglify:back',*/ 'clean:js', 'hash:js'],
 				options: {
 	              livereload: true
 	          	}	

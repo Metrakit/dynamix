@@ -44,13 +44,13 @@
             /* DOM Ready */
             yepnope([
               {
-                load: '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+                load: '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
                 complete: function()
                 {
                   if ( !window.jQuery ) 
                   {
                     console.log('CDN Failed - Loading local version of jQuery.');
-                    yepnope("{{ asset('js/vendor/jquery-1.10.2.min.js') }}");
+                    yepnope("{{ asset('js/vendor/jquery-1.11.0.min.js') }}");
                   }else{
                     console.log('CDN Succeed');
                   };
