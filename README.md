@@ -20,6 +20,12 @@ $env = $app->detectEnvironment(array(
      
 2. Composer Instgallation : composer install
 
+3. Run Configuration Module
+
+Google Analytics
+http://packalyst.com/packages/package/thujohn/analytics
+
+Run php artisan config:publish thujohn/analytics and modify the config file with your own informations.
 
 
 
