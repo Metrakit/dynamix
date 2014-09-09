@@ -9,5 +9,4 @@ class FormMap extends Eloquent{
 	public $timestamps = false;
 	protected $fillable = ['form_id', 'input_id', 'order'];
 
-	
 }

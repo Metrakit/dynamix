@@ -111,6 +111,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		
 		'PagerServiceProvider',
+		'FormerServiceProvider',
 		'Thujohn\Analytics\AnalyticsServiceProvider',
 	),
 

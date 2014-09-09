@@ -29,4 +29,14 @@ class Translation extends Eloquent{
     }
 
 
+    /**
+     * Additional Method
+     *
+     * @var string
+     */
+    public static function exec( $i18n_id )
+    {
+        return static::where('i18n_id', '=', $i18n_id)->where('locale_id', '=', App::getLocale())->first()->text;
+    }
+
 }

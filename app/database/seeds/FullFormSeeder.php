@@ -6,7 +6,7 @@ class FullFormSeeder extends Seeder {
     public function run()
     {
         // Create a View (radio)
-        $view = Viewer::create(array(
+        $view = Viewr::create(array(
             'path'              => 'public.form.input.radio',
         ));
 
@@ -18,7 +18,19 @@ class FullFormSeeder extends Seeder {
             'name'              => 'radio',
         ));
 
-        $this->command->info('Input type created => next step');
+        $InputType['textarea'] = InputType::create(array(
+            'name'              => 'textarea',
+        ));
+
+        $InputType['text'] = InputType::create(array(
+            'name'              => 'text',
+        ));     
+
+        $InputType['password'] = InputType::create(array(
+            'name'              => 'password',
+        ));  
+
+        $this->command->info('Input types created => next step');
 
 
         // i18n : Placeholder 1
@@ -108,11 +120,32 @@ class FullFormSeeder extends Seeder {
             'type_id'           => $InputType['radio']->id,
         ));
 
+        $input[2] = InputView::create(array(
+            'view_id'           => $view->id,
+            'i18n_placeholder'  => $i18n['placeholder'][1]->id,
+            'i18n_helper'       => $i18n['helper'][1]->id,
+            'type_id'           => $InputType['textarea']->id,
+        ));
+
+        $input[3] = InputView::create(array(
+            'view_id'           => $view->id,
+            'i18n_placeholder'  => $i18n['placeholder'][1]->id,
+            'i18n_helper'       => $i18n['helper'][1]->id,
+            'type_id'           => $InputType['text']->id,
+        ));
+
+        $input[4] = InputView::create(array(
+            'view_id'           => $view->id,
+            'i18n_placeholder'  => $i18n['placeholder'][1]->id,
+            'i18n_helper'       => $i18n['helper'][1]->id,
+            'type_id'           => $InputType['password']->id,
+        ));
+
         $this->command->info('Inputs created => next step');
 
 
         // Form
-        $form = Form::create(array(
+        $form = Formr::create(array(
             'finish_on'         => 'database',
             'i18n_title'        => $i18n['title']->id,
             'i18n_description'  => $i18n['description']->id,
@@ -127,6 +160,25 @@ class FullFormSeeder extends Seeder {
             'input_id'          => $input[1]->id,
             'order'             => 1,
         ));
+
+        $formMap[2] = FormMap::create(array(
+            'form_id'           => $form->id,
+            'input_id'          => $input[2]->id,
+            'order'             => 2,
+        ));
+
+        $formMap[3] = FormMap::create(array(
+            'form_id'           => $form->id,
+            'input_id'          => $input[3]->id,
+            'order'             => 3,
+        ));
+
+        $formMap[4] = FormMap::create(array(
+            'form_id'           => $form->id,
+            'input_id'          => $input[4]->id,
+            'order'             => 4,
+        ));
+
 
         $this->command->info('Form maps created');
 

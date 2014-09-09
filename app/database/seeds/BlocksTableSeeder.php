@@ -33,13 +33,13 @@ class BlocksTableSeeder extends Seeder {
                 'blockable_type'=> 'BlockContent',
                 'page_id'       => 2,
                 'order'         => 0
-            )/*, Former
+            ),
             array(
                 'blockable_id'  => 1,
-                'blockable_type'=> 'Former',
+                'blockable_type'=> 'Formr',
                 'page_id'       => 2,
                 'order'         => 1
-            )*/)
+            ))
         );
     }
 

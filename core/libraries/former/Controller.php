@@ -1,6 +1,10 @@
 <?php namespace FormGenerator;
 
-class Former {
+use Config;
+use Illuminate\View\Environment;
+use Illuminate\Config\Repository;
+
+class Former extends \Controller {
 
     /**
      * The application instance.
@@ -9,6 +13,8 @@ class Former {
      */
     protected $app;
 
+    protected $translate;
+    protected $formMap;
 
     /**
      * Constructor
@@ -18,6 +24,16 @@ class Former {
     public function __construct($app)
     {
         $this->app = $app;
+
+        // Initialisation des objets
+        $this->translate  = Config::get('model.translation');
+        $this->formMap    = Config::get('model.formMap');
+        $this->inputs     = Config::get('model.input');
+
+        // If a model doesnt exist we display an error in the debugger
+        if (!$this->translate || !$this->formMap || !$this->inputs) {
+            throw new \Exception(get_called_class() . ' did not find a model in the Config file !');
+        }
     }
 
 
@@ -26,37 +42,35 @@ class Former {
 	 *
 	 * @var Page
 	 */
-    public function render( $page )
+    public function render($id)
     {
-        //return var_dump( $page->blocks->first()->blockable->render );
-        $view = '';
+        // Form mapping
+        $formMap = $this->formMap->where('form_id', $id)->get();
 
-        //for all blocks show the content
-    	foreach ( $page->blocks as $block ) {
-    		$view .= $this->blockable( $block );
-		}
+        // We make the query
+        foreach ($formMap as $input) {
+            $inputs = $this->inputs->orWhere('id', $input->input_id);
+        }
 
-        return $view;
+        // Getting input objects
+        $inputs = $this->inputs->get();
+
+        // Boucle on inputs
+        foreach ($inputs as $key => $input) {
+
+            // Getting texts translated
+            $inputs[$key]->i18n_placeholder = $this->translate->exec($input['i18n_placeholder']);
+            $inputs[$key]->i18n_helper = $this->translate->exec($input['i18n_helper']);
+
+            // Getting type
+            $inputs[$key]->type = $inputs[$key]->getType()->name; 
+
+            // Getting path
+            $inputView = $input->getView()->path;
+            $inputs[$key]->view = \Response::view($inputView, $inputs[$key])->getOriginalContent();
+        }
+
+        return $inputs;
     }
 
-
-	/**
-	 * Compose Block DOM
-	 *
-	 * @var Page
-	 */
-    public function blockable( $block )
-    {
-    	//Compose CSS
-    	$css = '';
-    	foreach ( $block->responsivesByPriority as $responsive ) {
-    		$css .= 'col-' . $responsive->trigger->value . '-' . $responsive->width->value . ' ';
-    	}
-
-        //Block Content
-    	$content = $block->blockable->renderResource();
-
-        //Fusiiion
-        return '<div class="'.$css.'">'.$content.'</div>';
-    }
 }

@@ -8,7 +8,7 @@ class FormerServiceProvider extends ServiceProvider {
     {
         $this->app->bind('former', function($app)
         {
-            return new \FomGenerator\Pager($app);
+            return new \FormGenerator\Former($app);
         });
     }
 
