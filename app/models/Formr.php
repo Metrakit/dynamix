@@ -1,6 +1,6 @@
 <?php
 
-class Form extends Eloquent{
+class Formr extends Eloquent{
 	
 	/**
 	 * Parameters
@@ -31,8 +31,9 @@ class Form extends Eloquent{
      */
     public function renderResource()
     {
-    	$data['data'] = $this->translate( $this->i18n_content );
-        return Response::view('public.blockcontent.blockcontent', $data )->getOriginalContent();
+    	//$data['inputs'] = FormMap::render($this->id); 
+    	$data['inputs'] = Former::render($this->id);
+        return Response::view('public.form.form', $data )->getOriginalContent();
     }
 
 
