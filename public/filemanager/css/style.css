@@ -1085,3 +1085,10 @@ form {
 .list-view1.grid .img-precontainer-mini .filetype.accdb {
   background: #B61C19;
 }
+
+
+/*Fix nav too large*/
+body .container-fluid .navbar.navbar-fixed-top {
+  margin-left: -10px;
+  margin-right: -10px;
+}

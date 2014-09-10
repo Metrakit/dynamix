@@ -26,9 +26,6 @@ class CreateTracksTable extends Migration {
 			$table->integer('action_id')->unsigned();
 			$table->foreign('action_id')->references('id')->on('actions');
 
-			$table->integer('resource_id')->unsigned();
-			$table->foreign('resource_id')->references('id')->on('resources');
-
 			$table->integer('trackable_id')->unsigned();
 			$table->string('trackable_type');
 		});

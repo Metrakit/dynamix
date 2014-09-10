@@ -6,6 +6,11 @@
 @parent
 @stop
 
+@section('page-header')
+    <div class="row">
+        <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
+    </div>
+@stop
 
 @section('content')
     @include('includes.session-message')
@@ -22,7 +27,7 @@
     </div>
     <div class="col-lg-8">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-4 col-xs-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -34,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-xs-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -46,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-xs-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -58,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-xs-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -70,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-xs-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -82,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-xs-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">

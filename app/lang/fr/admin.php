@@ -21,24 +21,20 @@ return array(
 	//Dashbooard
 	'dashboard'				=> 'Tableau de bord',
 
-	//Google Analytics
-	'sessions'				=> 'Sessions',
+		//Google Analytics
+		'sessions'				=> 'Sessions',
 
-	'sessionsCount'			=> 'Sessions',
-	'userCount'				=> 'Utilisateurs',
-	'pageSeenCount'			=> 'Pages vues',
-	'pagesBySession'		=> 'Pages/Session',
-	'timeBySession'			=> 'Durée moyenne des sessions',
-	'rebound'				=> 'Taux de rebond',
+		'sessionsCount'			=> 'Sessions',
+		'userCount'				=> 'Utilisateurs',
+		'pageSeenCount'			=> 'Pages vues',
+		'pagesBySession'		=> 'Pages/Session',
+		'timeBySession'			=> 'Durée moyenne des sessions',
+		'rebound'				=> 'Taux de rebond',
 
-	'newOnReturningVisitor' => 'Nouveau visiteur / Visiteur régulier',
-	'newVisitor'			=> 'Nouveau visiteur',
-	'returningVisitor'		=> 'Visiteur régulier',
-	/*
-	'sessions'				=> 'Sessions',
-	'sessions'				=> 'Sessions',
-	'sessions'				=> 'Sessions',
-	'sessions'				=> 'Sessions',
-	*/
-
+		'newOnReturningVisitor' => 'Nouveau visiteur / Visiteur régulier',
+		'newVisitor'			=> 'Nouveau visiteur',
+		'returningVisitor'		=> 'Visiteur régulier',
+	
+	//Media
+	'medias'			=> 'Médias',
 );

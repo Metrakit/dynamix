@@ -9,9 +9,12 @@ class AdminController extends BaseController {
 	 */
 	public function index()
 	{
+		//User
 		$data['user'] = Auth::user();
+		//Interface
 		$data['noAriane'] = true;
 
+		//Google Analytics
 		$data['ga_sessionsPerDay'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
 		
 		$data['ga_sessionsCount'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsCount();
@@ -58,8 +61,12 @@ class AdminController extends BaseController {
 	 */
 	public function getMedia()
 	{
+		//User
+		$user = Auth::user();
+		//Interface
 		$noAriane = true;
-		return View::make('admin.media.index', compact('noAriane'));
+
+		return View::make('admin.media.index', compact('user','noAriane'));
 	}
 
 

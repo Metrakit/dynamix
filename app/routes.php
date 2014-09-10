@@ -22,7 +22,6 @@ Route::get('/', array('uses' => 'HomeController@index'));
 |
 */
 Route::get('filemanager/show', function () {
-
     return View::make('plugin/filemanager');
 })->before('auth.admin');
 
