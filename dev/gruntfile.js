@@ -80,6 +80,9 @@ module.exports = function(grunt) {
 
 		// Concatene les fchiers js
 		concat: {
+			options: {
+			  separator: ';\n',
+			},
 			main: {
 				// Fichiers à concaténer
 				src: [
@@ -94,12 +97,11 @@ module.exports = function(grunt) {
 			back: {
 				// Fichiers à concaténer
 				src: [
-					 '<%= srcPath %>js/vendor/jquery.fancybox.js',
 					 '<%= srcPath %>js/admin/metisMenu/metisMenu.min.js',
-					 '<%= srcPath %>js/admin/morris/raphael.min.js',
-					 '<%= srcPath %>js/admin/morris/morris.min.js',
-					 '<%= srcPath %>js/admin/morris/morris-data.js',
+					 '<%= srcPath %>js/vendor/jquery.fancybox.js',
 					 '<%= srcPath %>js/admin/sb-admin-2.js',
+					 '<%= srcPath %>js/vendor/raphaeljs.2.1.2.min.js',
+					 '<%= srcPath %>js/admin/morris/morris.js',
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'

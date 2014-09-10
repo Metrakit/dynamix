@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')), asset(Bassets::show('css/main.back.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')).'","'.asset(Bassets::show('js/main.back.min.js')).'","'.asset('src/js/vendor/tinymce/tinymce.min.js') ))
+    @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')), asset(Bassets::show('css/main.back.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')).'","'.asset(Bassets::show('js/main.back.min.js')) ))
 
     <body id="admin" class="@yield('classBody')">
         @yield('beforeWrapper')
@@ -15,12 +15,7 @@
             <!-- ./ navbar -->
 
             <div id="page-wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
+                @yield('page-header')
                 
                 @yield('filemanager')
 
@@ -40,7 +35,6 @@
                 <!-- ./ main-container -->
 
             </div>
-            <div class="clearfix"></div>
             
             @yield('container')
             <!-- ./ content -->
