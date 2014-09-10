@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrackingsTable extends Migration {
+class CreateTracksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTrackingsTable extends Migration {
 	public function up()
 	{
 		// Create the `Posts` table
-		Schema::create('trackings', function(Blueprint $table)
+		Schema::create('tracks', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
@@ -29,7 +29,8 @@ class CreateTrackingsTable extends Migration {
 			$table->integer('resource_id')->unsigned();
 			$table->foreign('resource_id')->references('id')->on('resources');
 
-			$table->integer('element_id')->nullable()->unsigned();
+			$table->integer('trackable_id')->unsigned();
+			$table->string('trackable_type');
 		});
 	}
 
@@ -40,8 +41,8 @@ class CreateTrackingsTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `trackings` table
-		Schema::drop('trackings');
+		// Delete the `tracks` table
+		Schema::drop('tracks');
 	}
 
 }

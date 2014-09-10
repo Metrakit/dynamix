@@ -23,6 +23,17 @@ return array(
 
 	//Google Analytics
 	'sessions'				=> 'Sessions',
+
+	'sessionsCount'			=> 'Sessions',
+	'userCount'				=> 'Utilisateurs',
+	'pageSeenCount'			=> 'Pages vues',
+	'pagesBySession'		=> 'Pages/Session',
+	'timeBySession'			=> 'Durée moyenne des sessions',
+	'rebound'				=> 'Taux de rebond',
+
+	'newOnReturningVisitor' => 'Nouveau visiteur / Visiteur régulier',
+	'newVisitor'			=> 'Nouveau visiteur',
+	'returningVisitor'		=> 'Visiteur régulier',
 	/*
 	'sessions'				=> 'Sessions',
 	'sessions'				=> 'Sessions',
