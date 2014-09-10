@@ -20,6 +20,7 @@
                 <div id="ga-sessionsPerDay"></div>
             </div>
             <!-- /.panel-body -->
+            
         </div>
         <!-- /.panel -->
     </div>

@@ -5,4 +5,5 @@ var Master = function (){
 	}
 }
 
+
 var masterClass = new Master();
