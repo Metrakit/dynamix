@@ -1,8 +1,6 @@
 <?php namespace FormGenerator;
 
 use Config;
-use Illuminate\View\Environment;
-use Illuminate\Config\Repository;
 
 class Former extends \Controller {
 
@@ -64,6 +62,16 @@ class Former extends \Controller {
 
             // Getting type
             $inputs[$key]->type = $inputs[$key]->getType()->name; 
+
+            // If the input type is "Radio" we get the select options
+            if ($inputs[$key]->type == "select") {
+                $inputs[$key]->options = $input->getOptions();
+                // Translate the Options
+                foreach ($inputs[$key]->options as $optKey => $option) {
+                    $inputs[$key]->options[$optKey]->i18n_key = $this->translate->exec($option->i18n_key);
+                    $inputs[$key]->options[$optKey]->i18n_value = $this->translate->exec($option->i18n_value);
+                }
+            }
 
             // Getting path
             $inputView = $input->getView()->path;

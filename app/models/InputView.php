@@ -23,12 +23,24 @@ class InputView extends Eloquent{
 
     /**
      * Input type relation
-     * @return [type] [description]
+     * @return Query
      */
     public function getType()
     {
     	return $this->belongsTo('InputType', 'type_id')->first();
     }
+
+
+    /**
+     * Select Options relation
+     * @return Query
+     */
+    public function getOptions()
+    {
+        return $this->hasMany('SelectOption', 'input_id')->get();
+    }
+
+
 
 
 	/**
