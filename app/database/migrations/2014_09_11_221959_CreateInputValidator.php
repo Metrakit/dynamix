@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInputTypesTable extends Migration {
+class CreateInputValidator extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class CreateInputTypesTable extends Migration {
 	 */
 	public function up()
 	{
-		// Create the `Comments` table
-		Schema::create('input_types', function(Blueprint $table)
+		// Create the `input_validators` table
+		Schema::create('input_validators', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			
-			$table->string('name');
+			$table->string('rules');
 
-			$table->integer('i18n_title')->unsigned()->index();
-			$table->foreign('i18n_title')->references('id')->on('i18n');
+			$table->integer('type_id')->unsigned()->index();
+			$table->foreign('type_id')->references('id')->on('input_types');
 
 		});
 	}
@@ -33,8 +33,7 @@ class CreateInputTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `input_types` table
-		Schema::drop('input_types');
+		//
 	}
 
 }

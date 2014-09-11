@@ -41,37 +41,381 @@ class FullFormSeeder extends Seeder {
         $this->command->info('View created => next step');
 
 
+
+        /**
+         * 
+         * Title translation
+         * 
+         */
+
+
+        // i18n radio title
+        $i18n['title']['radio'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : radio title
+        $translation['title']['radio']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['radio']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du radion',
+        ));   
+
+        // Translation EN : radio title
+        $translation['title']['radio']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['radio']->id,
+            'locale_id'         => 'en',
+            'text'              => 'Radio title',
+        ));   
+
+
+        // i18n textarea title
+        $i18n['title']['textarea'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : textarea title
+        $translation['title']['textarea']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['textarea']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du Textarea',
+        ));   
+
+        // Translation EN : textarea title
+        $translation['title']['textarea']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['textarea']->id,
+            'locale_id'         => 'en',
+            'text'              => 'Textarea title',
+        ));   
+
+
+        // i18n text title
+        $i18n['title']['text'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : text title
+        $translation['title']['text']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['text']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du text',
+        ));   
+
+        // Translation EN : text title
+        $translation['title']['text']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['text']->id,
+            'locale_id'         => 'en',
+            'text'              => 'Text title',
+        ));   
+
+
+        // i18n password title
+        $i18n['title']['password'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : password title
+        $translation['title']['password']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['password']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du password',
+        ));   
+
+        // Translation EN : password title
+        $translation['title']['password']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['password']->id,
+            'locale_id'         => 'en',
+            'text'              => 'PAssword title',
+        ));   
+
+
+        // i18n hidden title
+        $i18n['title']['hidden'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : hidden title
+        $translation['title']['hidden']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['hidden']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du hidden',
+        ));   
+
+        // Translation EN : hidden title
+        $translation['title']['hidden']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['hidden']->id,
+            'locale_id'         => 'en',
+            'text'              => 'hidden title',
+        ));   
+
+
+        // i18n checkbox title
+        $i18n['title']['checkbox'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : checkbox title
+        $translation['title']['checkbox']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['checkbox']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du checkbox',
+        ));   
+
+        // Translation EN : checkbox title
+        $translation['title']['checkbox']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['checkbox']->id,
+            'locale_id'         => 'en',
+            'text'              => 'checkbox title',
+        ));  
+
+
+        // i18n submit title
+        $i18n['title']['submit'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : submit title
+        $translation['title']['submit']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['submit']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du submit',
+        ));   
+
+        // Translation EN : submit title
+        $translation['title']['submit']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['submit']->id,
+            'locale_id'         => 'en',
+            'text'              => 'submit title',
+        ));  
+        
+
+        // i18n select title
+        $i18n['title']['select'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = title
+        ));      
+
+        // Translation FR : select title
+        $translation['title']['select']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['title']['select']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du select',
+        ));   
+
+        // Translation EN : select title
+        $translation['title']['select']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['title']['select']->id,
+            'locale_id'         => 'en',
+            'text'              => 'select title',
+        ));  
+
+
+        /**
+         *
+         * label translation
+         * 
+         */
+        
+        // i18n radio label
+        $i18n['label']['radio'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : radio label
+        $translation['label']['radio']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['radio']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du radion',
+        ));   
+
+        // Translation EN : radio label
+        $translation['label']['radio']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['radio']->id,
+            'locale_id'         => 'en',
+            'text'              => 'Radio label',
+        ));   
+
+
+        // i18n textarea label
+        $i18n['label']['textarea'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : textarea label
+        $translation['label']['textarea']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['textarea']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du Textarea',
+        ));   
+
+        // Translation EN : textarea label
+        $translation['label']['textarea']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['textarea']->id,
+            'locale_id'         => 'en',
+            'text'              => 'Textarea label',
+        ));   
+
+
+        // i18n text label
+        $i18n['label']['text'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : text label
+        $translation['label']['text']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['text']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du text',
+        ));   
+
+        // Translation EN : text label
+        $translation['label']['text']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['text']->id,
+            'locale_id'         => 'en',
+            'text'              => 'Text label',
+        ));   
+
+
+        // i18n password label
+        $i18n['label']['password'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : password label
+        $translation['label']['password']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['password']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du password',
+        ));   
+
+        // Translation EN : password label
+        $translation['label']['password']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['password']->id,
+            'locale_id'         => 'en',
+            'text'              => 'PAssword label',
+        ));   
+
+
+        // i18n hidden label
+        $i18n['label']['hidden'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : hidden label
+        $translation['label']['hidden']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['hidden']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du hidden',
+        ));   
+
+        // Translation EN : hidden label
+        $translation['label']['hidden']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['hidden']->id,
+            'locale_id'         => 'en',
+            'text'              => 'hidden label',
+        ));   
+
+
+        // i18n checkbox label
+        $i18n['label']['checkbox'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : checkbox label
+        $translation['label']['checkbox']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['checkbox']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du checkbox',
+        ));   
+
+        // Translation EN : checkbox label
+        $translation['label']['checkbox']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['checkbox']->id,
+            'locale_id'         => 'en',
+            'text'              => 'checkbox label',
+        ));  
+
+
+        // i18n submit label
+        $i18n['label']['submit'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : submit label
+        $translation['label']['submit']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['submit']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du submit',
+        ));   
+
+        // Translation EN : submit label
+        $translation['label']['submit']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['submit']->id,
+            'locale_id'         => 'en',
+            'text'              => 'submit label',
+        ));  
+        
+
+        // i18n select label
+        $i18n['label']['select'] = I18n::create(array(
+            'i18n_type_id'      => 2 // 2 = label
+        ));      
+
+        // Translation FR : select label
+        $translation['label']['select']['FR'] = Translation::create(array(
+            'i18n_id'           => $i18n['label']['select']->id,
+            'locale_id'         => 'fr',
+            'text'              => 'Titre du select',
+        ));   
+
+        // Translation EN : select label
+        $translation['label']['select']['EN']= Translation::create(array(
+            'i18n_id'           => $i18n['label']['select']->id,
+            'locale_id'         => 'en',
+            'text'              => 'select label',
+        ));  
+        
+
+
+
         // Input types
         $InputType['radio'] = InputType::create(array(
             'name'              => 'radio',
+            'i18n_title'        => $i18n['title']['radio']->id,
         ));
 
         $InputType['textarea'] = InputType::create(array(
             'name'              => 'textarea',
+            'i18n_title'        => $i18n['title']['textarea']->id,
         ));
 
         $InputType['text'] = InputType::create(array(
             'name'              => 'text',
+            'i18n_title'        => $i18n['title']['text']->id,
         ));     
 
         $InputType['password'] = InputType::create(array(
             'name'              => 'password',
+            'i18n_title'        => $i18n['title']['password']->id,
         ));  
 
         $InputType['hidden'] = InputType::create(array(
             'name'              => 'hidden',
+            'i18n_title'        => $i18n['title']['hidden']->id,
         ));  
 
         $InputType['checkbox'] = InputType::create(array(
             'name'              => 'checkbox',
+            'i18n_title'        => $i18n['title']['checkbox']->id,
         ));  
 
          $InputType['submit'] = InputType::create(array(
             'name'              => 'submit',
+            'i18n_title'        => $i18n['title']['submit']->id,
         ));                 
 
         $InputType['select'] = InputType::create(array(
             'name'              => 'select',
+            'i18n_title'        => $i18n['title']['select']->id,
         ));   
 
         $this->command->info('Input types created => next step');
@@ -158,58 +502,74 @@ class FullFormSeeder extends Seeder {
 
         // Inputs
         $input[1] = InputView::create(array(
+            'name'              => "myRadio",
             'view_id'           => $view['radio']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['radio']->id,
             'type_id'           => $InputType['radio']->id,
         ));
 
         $input[2] = InputView::create(array(
+            'name'              => "description",
             'view_id'           => $view['textarea']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['textarea']->id,
             'type_id'           => $InputType['textarea']->id,
         ));
 
         $input[3] = InputView::create(array(
+            'name'              => "address",
             'view_id'           => $view['text']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['text']->id,
             'type_id'           => $InputType['text']->id,
         ));
 
         $input[4] = InputView::create(array(
+            'name'              => "password",
             'view_id'           => $view['password']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['password']->id,
             'type_id'           => $InputType['password']->id,
         ));
 
         $input[5] = InputView::create(array(
+            'name'              => "mytoken",
             'view_id'           => $view['hidden']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['hidden']->id,
             'type_id'           => $InputType['hidden']->id,
         ));
 
         $input[6] = InputView::create(array(
+            'name'              => "mycheckbox",
             'view_id'           => $view['checkbox']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['checkbox']->id,
             'type_id'           => $InputType['checkbox']->id,
         ));
 
         $input[7] = InputView::create(array(
+            'name'              => "submit",
             'view_id'           => $view['submit']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['submit']->id,
             'type_id'           => $InputType['submit']->id,
         ));        
 
         $input[8] = InputView::create(array(
+            'name'              => "myselect",
             'view_id'           => $view['select']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
+            'i18n_label'        => $i18n['label']['select']->id,
             'type_id'           => $InputType['select']->id,
         ));        
 
@@ -259,9 +619,9 @@ class FullFormSeeder extends Seeder {
             'order'             => 5,
         ));
 
-        $formMap[6] = FormMap::create(array(
+        $formMap[8] = FormMap::create(array(
             'form_id'           => $form->id,
-            'input_id'          => $input[6]->id,
+            'input_id'          => $input[8]->id,
             'order'             => 6,
         ));
 
@@ -271,12 +631,11 @@ class FullFormSeeder extends Seeder {
             'order'             => 7,
         ));
 
-        $formMap[8] = FormMap::create(array(
+        $formMap[6] = FormMap::create(array(
             'form_id'           => $form->id,
-            'input_id'          => $input[8]->id,
+            'input_id'          => $input[6]->id,
             'order'             => 8,
         ));
-
 
 
         // Text for options
@@ -388,9 +747,6 @@ class FullFormSeeder extends Seeder {
             'text'              => 'value here 3',
         ));   
 
-
-
-
         // Options of select
         SelectOption::create(array(
             'input_id'          => $input[8]->id,
@@ -408,6 +764,49 @@ class FullFormSeeder extends Seeder {
             'input_id'          => $input[8]->id,
             'i18n_key'          => $option18n[3]['key']->id,
             'i18n_value'        => $option18n[3]['value']->id
+        ));
+
+
+        // Rules validator
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[1]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[2]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[3]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[4]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[5]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[6]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[7]->id,
+        ));
+
+        InputValidator::create(array(
+            'rules' => 'required',
+            'type_id' => $input[8]->id,
         ));
 
         $this->command->info('Form maps created');

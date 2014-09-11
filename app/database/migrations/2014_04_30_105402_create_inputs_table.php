@@ -17,6 +17,8 @@ class CreateInputsTable extends Migration {
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
+
+			$table->string('name', 30);
 			
 			$table->integer('view_id')->unsigned()->index();
 			$table->foreign('view_id')->references('id')->on('views');
@@ -26,6 +28,9 @@ class CreateInputsTable extends Migration {
 
 			$table->integer('i18n_helper')->unsigned()->index();
 			$table->foreign('i18n_helper')->references('id')->on('i18n');
+
+			$table->integer('i18n_label')->unsigned()->index()->nullable();
+			$table->foreign('i18n_label')->references('id')->on('i18n');			
 
 			$table->integer('type_id')->unsigned()->index();
 			$table->foreign('type_id')->references('id')->on('input_types');

@@ -43,7 +43,9 @@ class Former extends \Controller {
     public function render($id)
     {
         // Form mapping
-        $formMap = $this->formMap->where('form_id', $id)->get();
+        $formMap = $this->formMap->where('form_id', $id)
+                                 ->orderBy('order', 'asc')
+                                 ->get();
 
         // We make the query
         foreach ($formMap as $input) {
@@ -57,19 +59,37 @@ class Former extends \Controller {
         foreach ($inputs as $key => $input) {
 
             // Getting texts translated
-            $inputs[$key]->i18n_placeholder = $this->translate->exec($input['i18n_placeholder']);
-            $inputs[$key]->i18n_helper = $this->translate->exec($input['i18n_helper']);
+            if (isset($input['i18n_placeholder'])) {
+                $inputs[$key]->placeholder = $this->translate->exec($input['i18n_placeholder']);
+            } else {
+                $inputs[$key]->placeholder = null;
+            }
 
+            if (isset($input['i18n_helper'])) {
+                $inputs[$key]->helper = $this->translate->exec($input['i18n_helper']);
+            } else {
+                $inputs[$key]->helper = null;
+            }
+
+            if (isset($input['i18n_label'])) {
+                $inputs[$key]->label = $this->translate->exec($input['i18n_label']);
+            } else {
+                $inputs[$key]->label = null;
+            }
+            
             // Getting type
             $inputs[$key]->type = $inputs[$key]->getType()->name; 
+
+            // Get and translate the title
+            $inputs[$key]->title = $this->translate->exec($inputs[$key]->getType()->i18n_title); 
 
             // If the input type is "Radio" we get the select options
             if ($inputs[$key]->type == "select") {
                 $inputs[$key]->options = $input->getOptions();
                 // Translate the Options
                 foreach ($inputs[$key]->options as $optKey => $option) {
-                    $inputs[$key]->options[$optKey]->i18n_key = $this->translate->exec($option->i18n_key);
-                    $inputs[$key]->options[$optKey]->i18n_value = $this->translate->exec($option->i18n_value);
+                    $inputs[$key]->options[$optKey]->key = $this->translate->exec($option->i18n_key);
+                    $inputs[$key]->options[$optKey]->value = $this->translate->exec($option->i18n_value);
                 }
             }
 

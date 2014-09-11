@@ -8,7 +8,7 @@ class InputView extends Eloquent{
 	 */
 	protected $table = 'inputs';
     public $timestamps = false;
-    protected $fillable = ['view_id', 'i18n_placeholder', 'i18n_helper', 'type_id'];
+    protected $fillable = ['name', 'view_id', 'i18n_placeholder', 'i18n_helper', 'i18n_label', 'type_id'];
 
 
     /**

@@ -1,7 +1,9 @@
 <form action="" class="form-horizontal">
 
 	@foreach ($inputs as $input)
-		{{ $input->view }}
+		<div class="form-group row">
+			{{ $input->view }}
+		</div>
 	@endforeach
 
 </form>

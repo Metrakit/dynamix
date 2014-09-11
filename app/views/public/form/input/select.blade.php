@@ -1,8 +1,13 @@
-<div class="form-group">
-	<select class="form-control" name="">
+@if($label)
+	<label class="col-sm-2 control-label">{{ $label }}</label>
+	<div class="col-sm-6">
+@endif
+	<select name="{{ $name }}" title="{{ $title }}" class="form-control" name="">
 		@foreach ($options as $option)	
-			<option value="{{ $option->i18n_value }}"> {{ $option->i18n_key }} </option>
+			<option value="{{ $option->value }}"> {{ $option->key }} </option>
 		@endforeach
 	</select>
-	<p class="help-block"> {{ $i18n_helper }} </p>
-</div>
+	<p class="help-block"> {{ $helper }} </p>
+@if($label)	
+	</div>
+@endif
