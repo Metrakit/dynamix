@@ -193,7 +193,7 @@ class UserController extends BaseController {
 			// redirect the user back to the intended page
 			// or defaultpage if there isn't one
 			if (Auth::attempt($credentials,true)) {
-			    return Redirect::intended('/user');
+			    return Redirect::intended('/');
 			} else {
         		$user = User::where('email','=', Input::get( 'email' ) )->first();
         		
