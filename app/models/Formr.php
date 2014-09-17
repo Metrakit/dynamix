@@ -33,6 +33,7 @@ class Formr extends Eloquent{
     {
     	//$data['inputs'] = FormMap::render($this->id); 
     	$data['inputs'] = Former::render($this->id);
+    	$data['formId'] = $this->id;
         return Response::view('public.form.form', $data )->getOriginalContent();
     }
 

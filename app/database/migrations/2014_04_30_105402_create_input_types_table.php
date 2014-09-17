@@ -20,6 +20,10 @@ class CreateInputTypesTable extends Migration {
 			
 			$table->string('name');
 
+			$table->string('rules');
+
+			$table->string('defaultValue')->nullable();
+
 			$table->integer('i18n_title')->unsigned()->index();
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 

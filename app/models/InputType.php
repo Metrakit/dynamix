@@ -3,6 +3,6 @@
 class InputType extends Eloquent {
 
 	public $timestamps = false;
-	protected $fillable = ['name', 'i18n_title'];
+	protected $fillable = ['name', 'rules', 'defaultValue', 'i18n_title'];
 	
 }

@@ -1,1 +1,1 @@
-<input name="{{ $name }}" type="{{ $type }}" value=""/>
+<input name="{{ $name }}" type="{{ $type }}" value="{{ $value }}"/>

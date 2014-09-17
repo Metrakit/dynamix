@@ -10,9 +10,22 @@ class Former extends \Controller {
      * @var \Illuminate\Foundation\Application
      */
     protected $app;
-
+    /**
+     * @var Object
+     */
     protected $translate;
+    /**
+     * @var Object
+     */    
     protected $formMap;
+    /**
+     * @var Object
+     */
+    protected $inputs;
+    /**
+     * @var Integer
+     */
+    protected $formId;
 
     /**
      * Constructor
@@ -34,26 +47,39 @@ class Former extends \Controller {
         }
     }
 
-
-	/**
-	 * display a Page, and his Blocks
-	 *
-	 * @var Page
-	 */
-    public function render($id)
+    /**
+     * Get all Inputs
+     * @return Aray
+     */
+    public function getInputs()
     {
         // Form mapping
-        $formMap = $this->formMap->where('form_id', $id)
+        
+        /*$formMap = $this->formMap->where('form_id', $this->formId)
                                  ->orderBy('order', 'asc')
                                  ->get();
-
         // We make the query
         foreach ($formMap as $input) {
             $inputs = $this->inputs->orWhere('id', $input->input_id);
         }
-
         // Getting input objects
-        $inputs = $this->inputs->get();
+        return $this->inputs->get();*/
+
+        return $this->inputs->join('form_maps', 'form_maps.input_id', '=', 'inputs.id')
+         ->where('form_maps.form_id', $this->formId)
+         ->orderBy('form_maps.order', 'asc')
+         ->get();
+    }
+
+    /**
+     * Display the form
+     * @param  Integer $id
+     * @return Object
+     */
+    public function render($id)
+    {    
+        $this->formId = $id;
+        $inputs = $this->getInputs();
 
         // Boucle on inputs
         foreach ($inputs as $key => $input) {
@@ -77,8 +103,23 @@ class Former extends \Controller {
                 $inputs[$key]->label = null;
             }
             
-            // Getting type
-            $inputs[$key]->type = $inputs[$key]->getType()->name; 
+            // Set type
+            $inputs[$key]->type = $input->name; 
+
+            // InputType - relation
+            $inputType = $input->getType();
+
+            // Getting and set name
+            $inputs[$key]->name = $inputType->name; 
+
+            // Set the Inputs value
+            if (\Input::old($inputType->type)) {
+                $inputs[$key]->value = \Input::old($inputType->name);
+            } else if($inputType->defaultValue) {
+                $inputs[$key]->value = $inputType->defaultValue;
+            } else {
+                $inputs[$key]->value = null;
+            }
 
             // Get and translate the title
             $inputs[$key]->title = $this->translate->exec($inputs[$key]->getType()->i18n_title); 
@@ -100,5 +141,25 @@ class Former extends \Controller {
 
         return $inputs;
     }
+
+    /**
+     * Get rules for the validator
+     * @param  Integer $id 
+     * @return Array
+     */
+    public function getRules($id)
+    {
+        $this->formId = $id;
+        $inputs = $this->getInputs();
+        
+        foreach ($inputs as $key => $input) {
+            $inputType = $input->getType();
+            $rules[$inputType->name] = $inputType->rules;
+        }
+        
+        return $rules;
+    }
+
+
 
 }
