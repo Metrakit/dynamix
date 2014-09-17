@@ -21,10 +21,6 @@ Route::get('/', array('uses' => 'HomeController@index'));
 |	Admin
 |
 */
-Route::get('filemanager/show', function () {
-    return View::make('plugin/filemanager');
-})->before('auth.admin');
-
 Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function (){
 	//Index / Dashboard
 	Route::get('/','AdminController@index');

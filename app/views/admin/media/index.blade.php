@@ -9,6 +9,6 @@
 
 @section('filemanager')
 <div class="filemanager-container">
-<iframe width="100%" height="100%" src="{{URL::to('filemanager/dialog.php?type=2')}}"></iframe>
+<iframe width="100%" height="100%" src="{{URL::to('filemanager/dialog.php?type=2&akey='.Config::get('app.key'))}}"></iframe>
 </div>
 @stop

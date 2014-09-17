@@ -36,7 +36,8 @@ $thumbs_base_path = '../uploads_thumbs/'; // relative path from filemanager fold
 // filemanager_title:"Filemanager" ,
 // filemanager_access_key:"myPrivateKey" ,
 // ...
-define('USE_ACCESS_KEYS', FALSE); // TRUE or FALSE
+define('USE_ACCESS_KEYS', TRUE); // TRUE or FALSE
+
 
 // add access keys eg: array('myPrivateKey', 'someoneElseKey');
 // keys should only containt (a-z A-Z 0-9 \ . _ -) characters
@@ -46,7 +47,11 @@ define('USE_ACCESS_KEYS', FALSE); // TRUE or FALSE
 // $akey = md5($username.$salt);
 // DO NOT use 'key' as access key!
 // Keys are CASE SENSITIVE!
-$access_keys = array('myPrivateKey','someoneElseKey');
+include __DIR__ . '/../../../vendor/autoload.php';
+$app = require_once __DIR__ . '/../../../bootstrap/start.php';
+$app->boot();
+
+$access_keys = array(Config::get('app.key'));
 
 //--------------------------------------------------------------------------------------------------------
 // YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS

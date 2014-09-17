@@ -4,7 +4,7 @@
     <body>
 
         <div id="wrapper">
-            
+        
             <!--[if lt IE 8]>
             <p class="chromeframe">Vous utilizes une version <strong>obsolète</strong> de votre navigateur. S'il vous plait, veuillez <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a> ou <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activez Google Chrome Frame</a> pour améliorer votre expérience.</p>
             <![endif]-->
