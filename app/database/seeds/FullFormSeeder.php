@@ -379,42 +379,51 @@ class FullFormSeeder extends Seeder {
 
         // Input types
         $InputType['radio'] = InputType::create(array(
-            'name'              => 'radio',
+            'name'              => 'maradio',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['radio']->id,
         ));
 
         $InputType['textarea'] = InputType::create(array(
-            'name'              => 'textarea',
+            'name'              => 'monTextarea',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['textarea']->id,
         ));
 
         $InputType['text'] = InputType::create(array(
-            'name'              => 'text',
+            'name'              => 'blabla',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['text']->id,
         ));     
 
         $InputType['password'] = InputType::create(array(
-            'name'              => 'password',
+            'name'              => 'passwd',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['password']->id,
         ));  
 
         $InputType['hidden'] = InputType::create(array(
-            'name'              => 'hidden',
+            'name'              => 'testhidden',
+            'rules'             => 'required',
+            'defaultValue'      => 'Je suis une valeur requise',
             'i18n_title'        => $i18n['title']['hidden']->id,
         ));  
 
         $InputType['checkbox'] = InputType::create(array(
-            'name'              => 'checkbox',
+            'name'              => 'test',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['checkbox']->id,
         ));  
 
          $InputType['submit'] = InputType::create(array(
             'name'              => 'submit',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['submit']->id,
         ));                 
 
         $InputType['select'] = InputType::create(array(
-            'name'              => 'select',
+            'name'              => 'aselect',
+            'rules'             => 'required',
             'i18n_title'        => $i18n['title']['select']->id,
         ));   
 
@@ -502,7 +511,7 @@ class FullFormSeeder extends Seeder {
 
         // Inputs
         $input[1] = InputView::create(array(
-            'name'              => "myRadio",
+            'name'              => "radio",
             'view_id'           => $view['radio']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
@@ -511,7 +520,7 @@ class FullFormSeeder extends Seeder {
         ));
 
         $input[2] = InputView::create(array(
-            'name'              => "description",
+            'name'              => "textarea",
             'view_id'           => $view['textarea']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
@@ -520,7 +529,7 @@ class FullFormSeeder extends Seeder {
         ));
 
         $input[3] = InputView::create(array(
-            'name'              => "address",
+            'name'              => "text",
             'view_id'           => $view['text']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
@@ -538,7 +547,7 @@ class FullFormSeeder extends Seeder {
         ));
 
         $input[5] = InputView::create(array(
-            'name'              => "mytoken",
+            'name'              => "hidden",
             'view_id'           => $view['hidden']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
@@ -547,7 +556,7 @@ class FullFormSeeder extends Seeder {
         ));
 
         $input[6] = InputView::create(array(
-            'name'              => "mycheckbox",
+            'name'              => "checkbox",
             'view_id'           => $view['checkbox']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
@@ -565,7 +574,7 @@ class FullFormSeeder extends Seeder {
         ));        
 
         $input[8] = InputView::create(array(
-            'name'              => "myselect",
+            'name'              => "select",
             'view_id'           => $view['select']->id,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
@@ -764,49 +773,6 @@ class FullFormSeeder extends Seeder {
             'input_id'          => $input[8]->id,
             'i18n_key'          => $option18n[3]['key']->id,
             'i18n_value'        => $option18n[3]['value']->id
-        ));
-
-
-        // Rules validator
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[1]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[2]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[3]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[4]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[5]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[6]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[7]->id,
-        ));
-
-        InputValidator::create(array(
-            'rules' => 'required',
-            'type_id' => $input[8]->id,
         ));
 
         $this->command->info('Form maps created');
