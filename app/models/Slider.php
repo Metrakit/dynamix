@@ -3,14 +3,13 @@
 class Slider extends Eloquent
 {
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'sliders';
+     * Parameters
+     */
+    protected $table = 'sliders';
 
-	/**
-     * A Role is on one slider
+
+    /**
+     * Relations
      *
      * @return mixed
      */
@@ -24,7 +23,9 @@ class Slider extends Eloquent
      *
      * @var string
      */
-
+    public function trackable() {
+        return $this->morphTo();
+    }
 
     /**
      * Additional Method

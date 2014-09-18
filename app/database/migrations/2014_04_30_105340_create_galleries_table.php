@@ -22,7 +22,7 @@ class CreateGalleriesTable extends Migration {
 			$table->foreign('i18n_description')->references('id')->on('i18n');
 
 			$table->integer('cover_image_id')->unsigned();
-			$table->foreign('cover_image_id')->references('id')->on('images');
+			$table->foreign('cover_image_id')->references('id')->on('files');
 
 			$table->timestamps();
 		});

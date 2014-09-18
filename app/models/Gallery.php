@@ -37,6 +37,11 @@ class Gallery extends Eloquent
         return $this->morphMany('Nav', 'naviggable');
     }
 
+    public function trackable()
+    {
+        return $this->morphTo();
+    }
+
 
     /**
      * Additional Method

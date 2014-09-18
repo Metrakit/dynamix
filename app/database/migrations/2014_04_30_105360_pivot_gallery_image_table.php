@@ -22,7 +22,7 @@ class PivotGalleryImageTable extends Migration {
 			$table->foreign('gallery_id')->references('id')->on('galleries');
 
 			$table->integer('image_id')->unsigned()->index();
-			$table->foreign('image_id')->references('id')->on('images');
+			$table->foreign('image_id')->references('id')->on('files');
 		});
 	}
 

@@ -1,6 +1,7 @@
 <?php
 
-class Responsive extends Eloquent{
+class Responsive extends Eloquent
+{
 	
 	/**
 	 * Parameters

@@ -3,7 +3,6 @@ include('config/config.php');
 if ($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager") die('forbiden');
 include('include/utils.php');
 
-
 $thumb_pos  = strpos($_POST['path_thumb'], $thumbs_base_path);
 
 if ($thumb_pos !=0
@@ -61,6 +60,7 @@ if (isset($_GET['action']))
     {
         case 'delete_file':
             if ($delete_files){
+                App::make('FileController')->delete($path);
                 unlink($path);
                 if (file_exists($path_thumb)) unlink($path_thumb);
 		    
@@ -117,24 +117,24 @@ if (isset($_GET['action']))
         case 'create_folder':
             if ($create_folders)
             {
-                create_folder(fix_path($path,$transliteration),fix_path($path_thumb,$transliteration));
+                create_folder(fix_path($path,$transliteration,$convert_spaces),fix_path($path_thumb,$transliteration,$convert_spaces));
             }
             break;
         case 'rename_folder':
             if ($rename_folders){
-                $name=fix_filename($name,$transliteration);
+                $name=fix_filename($name,$transliteration,$convert_spaces);
                 $name=str_replace('.','',$name);
 		
                 if (!empty($name)){
-                    if (!rename_folder($path,$name,$transliteration)) die(lang_Rename_existing_folder);
+                    if (!rename_folder($path,$name,$transliteration,$convert_spaces)) die(lang_Rename_existing_folder);
 
-                    rename_folder($path_thumb,$name,$transliteration);
+                    rename_folder($path_thumb,$name,$transliteration,$convert_spaces);
         		    if ($fixed_image_creation){
             			foreach($fixed_path_from_filemanager as $k=>$paths){
             			    if ($paths!="" && $paths[strlen($paths)-1] != "/") $paths.="/";
             			    
                             $base_dir=$paths.substr_replace($path, '', 0, strlen($current_path));
-            			    rename_folder($base_dir,$name,$transliteration);
+            			    rename_folder($base_dir,$name,$transliteration,$convert_spaces);
             			}
 		           }
                 }
@@ -159,7 +159,7 @@ if (isset($_GET['action']))
 
             // correct name
             $old_name = $name;
-            $name = fix_filename($name, $transliteration);
+            $name=fix_filename($name,$transliteration,$convert_spaces);
             if (empty($name))
             {
                 die(lang_Empty_name);
@@ -189,13 +189,14 @@ if (isset($_GET['action']))
                 if (is_function_callable('chmod') !== FALSE){
                     chmod($path, 0644);
                 }
+                App::make('FileController')->create($path);
                 echo lang_File_Save_OK;
             }
 
             break;
         case 'rename_file':
             if ($rename_files){
-                $name=fix_filename($name,$transliteration);
+                $name=fix_filename($name,$transliteration,$convert_spaces);
                 if (!empty($name))
                 {
                     if (!rename_file($path,$name,$transliteration)) die(lang_Rename_existing_file);
@@ -226,7 +227,7 @@ if (isset($_GET['action']))
 	   case 'duplicate_file':
             if ($duplicate_files)
             {
-                $name = fix_filename($name,$transliteration);
+                $name=fix_filename($name,$transliteration,$convert_spaces);
                 if (!empty($name))
                 {
                     if (!duplicate_file($path,$name)) die(lang_Rename_existing_file);
@@ -286,7 +287,7 @@ if (isset($_GET['action']))
 
             // check for writability
             if (is_really_writable($path) === FALSE || is_really_writable($path_thumb) === FALSE){
-                die($path.'--'.$path_thumb.'--'.lang_Dir_No_Write);
+                die(lang_Dir_No_Write.'<br/>'.str_replace('../','',$path).'<br/>'.str_replace('../','',$path_thumb));
             }
 
             // check if server disables copy or rename

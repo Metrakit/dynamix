@@ -19,7 +19,12 @@ mb_internal_encoding('UTF-8');
 //    |   |   |   |- responsivefilemanager
 //    |   |   |   |   |- plugin.min.js
 
-$base_url ="http://".$_SERVER['HTTP_HOST'];  // DON'T TOUCH (base url (only domain) of site (without final /)).
+$base_url =
+	// Get HTTP/HTTPS
+	((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && !in_array(strtolower($_SERVER['HTTPS']),array('off','no'))) ? 'https' : 'http').
+	'://'.
+// Get domain portion
+$_SERVER['HTTP_HOST']; // DON'T TOUCH (base url (only domain) of site (without final /)).
 $upload_dir = '/uploads/'; // path from base_url to base of upload folder (with start and final /)
 $current_path = '../uploads/'; // relative path from filemanager folder to upload folder (with final /)
 //thumbs folder can't put inside upload folder
@@ -66,10 +71,14 @@ if ((int)(ini_get('post_max_size')) < $MaxSizeUpload){
 
 $default_language 	= "en_EN"; //default language file name
 $icon_theme 		= "ico"; //ico or ico_dark you can cusatomize just putting a folder inside filemanager/img
-$show_folder_size 	= TRUE; //Show or not show folder size in list view feature in filemanager (is possible, if there is a large folder, to greatly increase the calculations)
-$show_sorting_bar 	= TRUE; //Show or not show sorting feature in filemanager
-$loading_bar 		= TRUE; //Show or not show loading bar
+$show_folder_size	= TRUE; //Show or not show folder size in list view feature in filemanager (is possible, if there is a large folder, to greatly increase the calculations)
+$show_sorting_bar	= TRUE; //Show or not show sorting feature in filemanager
 $transliteration 	= FALSE; //active or deactive the transliteration (mean convert all strange characters in A..Za..z0..9 characters)
+$convert_spaces  	= FALSE; //convert all spaces on files name and folders name with _
+
+// -1: There is no lazy loading at all, 0: Always lazy-load images, 0+: The minimum number of the files in a directory
+// when lazy loading should be turned on.
+$lazy_loading_file_number_threshold = 0;
 
 //*******************************************
 //Images limit and resizing configuration
@@ -80,14 +89,26 @@ $transliteration 	= FALSE; //active or deactive the transliteration (mean conver
 // if you don't need a limit set both to 0
 $image_max_width  = 0;
 $image_max_height = 0;
+$image_max_mode   = 'auto';
+/*
+#  $option:  0 / exact = defined size;
+#            1 / portrait = keep aspect set height;
+#            2 / landscape = keep aspect set width;
+#            3 / auto = auto;
+#            4 / crop= resize and crop;
+ */
 
 //Automatic resizing //
 // If you set $image_resizing to TRUE the script converts all uploaded images exactly to image_resizing_width x image_resizing_height dimension
 // If you set width or height to 0 the script automatically calculates the other dimension
 // Is possible that if you upload very big images the script not work to overcome this increase the php configuration of memory and time limit
-$image_resizing = FALSE;
-$image_resizing_width  = 0;
-$image_resizing_height = 0;
+$image_resizing 			= FALSE;
+$image_resizing_width 		= 0;
+$image_resizing_height 		= 0;
+$image_resizing_mode 		= 'auto'; // same as $image_max_mode
+$image_resizing_override 	= FALSE; 
+// If set to TRUE then you can specify bigger images than $image_max_width & height otherwise if image_resizing is 
+// bigger than $image_max_width or height then it will be converted to those values  
 
 //******************
 // Default layout setting
@@ -106,19 +127,19 @@ $ellipsis_title_after_first_row = TRUE;
 //*************************
 //Permissions configuration
 //******************
-$delete_files	 	  = TRUE;
-$create_folders	 	= TRUE;
-$delete_folders	 	= TRUE;
-$upload_files	 	  = TRUE;
-$rename_files	 	  = TRUE;
-$rename_folders	 	= TRUE;
-$duplicate_files 	= TRUE;
-$copy_cut_files	 	= TRUE; // for copy/cut files
-$copy_cut_dirs	 	= TRUE; // for copy/cut directories
-$chmod_files 	 	  = FALSE; // change file permissions
-$chmod_dirs		 	  = FALSE; // change folder permissions
-$preview_text_files = TRUE; // eg.: txt, log etc.
-$edit_text_files 	  = TRUE; // eg.: txt, log etc.
+$delete_files		= TRUE;
+$create_folders		= TRUE;
+$delete_folders		= TRUE;
+$upload_files		= TRUE;
+$rename_files		= TRUE;
+$rename_folders		= TRUE;
+$duplicate_files	= TRUE;
+$copy_cut_files		= TRUE; // for copy/cut files
+$copy_cut_dirs		= TRUE; // for copy/cut directories
+$chmod_files		= FALSE; // change file permissions
+$chmod_dirs			= FALSE; // change folder permissions
+$preview_text_files	= TRUE; // eg.: txt, log etc.
+$edit_text_files 	= TRUE; // eg.: txt, log etc.
 $create_text_files 	= TRUE; // only create files with exts. defined in $editable_text_file_exts
 
 // you can preview these type of files if $preview_text_files is true
@@ -132,31 +153,31 @@ $editable_text_file_exts = array('txt', 'log', 'xml');
 
 // defines size limit for paste in MB / operation
 // set 'FALSE' for no limit
-$copy_cut_max_size	 = 100;
+$copy_cut_max_size = 100;
 // defines file count limit for paste / operation
 // set 'FALSE' for no limit
-$copy_cut_max_count	 = 200;
+$copy_cut_max_count = 200;
 //IF any of these limits reached, operation won't start and generate warning
 
 //**********************
 //Allowed extensions (lowercase insert)
 //**********************
-$ext_img = array('jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'svg'); //Images
-$ext_file = array('doc', 'docx','rtf', 'pdf', 'xls', 'xlsx', 'txt', 'csv','html','xhtml','psd','sql','log','fla','xml','ade','adp','mdb','accdb','ppt','pptx','odt','ots','ott','odb','odg','otp','otg','odf','ods','odp','css','ai'); //Files
-$ext_video = array('mov', 'mpeg', 'mp4', 'avi', 'mpg','wma',"flv","webm"); //Video 
-$ext_music = array('mp3', 'm4a', 'ac3', 'aiff', 'mid','ogg','wav'); //Audio
-$ext_misc = array('zip', 'rar','gz','tar','iso','dmg'); //Archives
+$ext_img 	= array('jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'svg'); //Images
+$ext_file 	= array('doc', 'docx','rtf', 'pdf', 'xls', 'xlsx', 'txt', 'csv','html','xhtml','psd','sql','log','fla','xml','ade','adp','mdb','accdb','ppt','pptx','odt','ots','ott','odb','odg','otp','otg','odf','ods','odp','css','ai'); //Files
+$ext_video 	= array('mov', 'mpeg', 'm4v', 'mp4', 'avi', 'mpg','wma',"flv","webm"); //Video 
+$ext_music 	= array('mp3', 'm4a', 'ac3', 'aiff', 'mid','ogg','wav'); //Audio
+$ext_misc 	= array('zip', 'rar','gz','tar','iso','dmg'); //Archives
 
 $ext = array_merge($ext_img, $ext_file, $ext_misc, $ext_video,$ext_music); //allowed extensions
 
 /******************
  * AVIARY config
 *******************/
-$aviary_active 	= FALSE;
+$aviary_active 	= TRUE;
 $aviary_key 	= "dvh8qudbp6yx2bnp";
 $aviary_secret	= "m6xaym5q42rpw433";
 $aviary_version	= 3;
-$aviary_language= 'fr';
+$aviary_language= 'en';
 
 
 //The filter and sorter are managed through both javascript and php scripts because if you have a lot of
@@ -173,7 +194,7 @@ $hidden_folders = array();
 $hidden_files = array('config.php');
 
 /*******************
- * JAVA upload 
+ * JAVA upload
  *******************/
 $java_upload = TRUE;
 $JAVAMaxSizeUpload = 200; //Gb
@@ -198,11 +219,11 @@ $fixed_image_creation_to_append         = array('_test',''); //name to appendon 
 $fixed_image_creation_width             = array(300,400); //width of image (you can leave empty if you set height)
 $fixed_image_creation_height            = array(200,''); //height of image (you can leave empty if you set width)
 /*
-  #             $option:     0 / exact = defined size;
-  #                          1 / portrait = keep aspect set height;
-  #                          2 / landscape = keep aspect set width;
-  #                          3 / auto = auto;
-  #                          4 / crop= resize and crop;
+#             $option:     0 / exact = defined size;
+#                          1 / portrait = keep aspect set height;
+#                          2 / landscape = keep aspect set width;
+#                          3 / auto = auto;
+#                          4 / crop= resize and crop;
  */
 $fixed_image_creation_option            = array('crop','auto'); //set the type of the crop
 
@@ -219,11 +240,11 @@ $relative_image_creation_name_to_append = array('_test',''); //name to append on
 $relative_image_creation_width          = array(300,400); //width of image (you can leave empty if you set height)
 $relative_image_creation_height         = array(200,''); //height of image (you can leave empty if you set width)
 /*
-  #             $option:     0 / exact = defined size;
-  #                          1 / portrait = keep aspect set height;
-  #                          2 / landscape = keep aspect set width;
-  #                          3 / auto = auto;
-  #                          4 / crop= resize and crop;
+#             $option:     0 / exact = defined size;
+#                          1 / portrait = keep aspect set height;
+#                          2 / landscape = keep aspect set width;
+#                          3 / auto = auto;
+#                          4 / crop= resize and crop;
  */
 $relative_image_creation_option         = array('crop','crop'); //set the type of the crop
 

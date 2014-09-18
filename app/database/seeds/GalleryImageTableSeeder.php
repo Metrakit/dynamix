@@ -8,17 +8,17 @@ class GalleryImageTableSeeder extends Seeder {
 
         $gallery1 = Gallery::find(1)->id;
 
-        $image1 = Image::find(1)->id;
-        $image2 = Image::find(2)->id;
+        $file1 = Files::find(1)->id;
+        $file2 = Files::find(2)->id;
 
         DB::table('gallery_image')->insert( array(
             array(
                 'gallery_id'        => $gallery1,
-                'image_id'            => $image1
+                'image_id'            => $file1
             ),
             array(
                 'gallery_id'        => $gallery1,
-                'image_id'            => $image2
+                'image_id'            => $file2
             ))
         );
     }

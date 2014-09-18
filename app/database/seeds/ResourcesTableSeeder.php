@@ -11,84 +11,116 @@ class ResourcesTableSeeder extends Seeder {
             array(
                 'name' => 'blog',
                 'icon' => 'glyphicon glyphicon-book',
-                'model' => 'Blog'
+                'model' => 'Blog',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'article',
                 'icon' => 'glyphicon glyphicon-book',
-                'model' => 'Article'
+                'model' => 'Article',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'article_category',
                 'icon' => 'glyphicon glyphicon-book',
-                'model' => 'ArticleCategory'
+                'model' => 'ArticleCategory',
+                'in_admin_ui'   => true
             ),
             
             //Media
             array(
                 'name' => 'media',
                 'icon' => 'glyphicon glyphicon-picture',
-                'model' => null
+                'model' => null,
+                'in_admin_ui'   => true
             ),
             /*array(
                 'name' => 'image',
                 'icon' => 'glyphicon glyphicon-picture',
-                'model' => 'Image'
+                'model' => 'Image',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'video',
                 'icon' => 'glyphicon glyphicon-film',
-                'model' => 'Video'
+                'model' => 'Video',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'audio',
                 'icon' => 'glyphicon glyphicon-music',
-                'model' => 'Audio'
+                'model' => 'Audio',
+                'in_admin_ui'   => true
             ),*/
 
             //Gallery Image
             array(
                 'name' => 'mosaic',
                 'icon' => 'glyphicon glyphicon-picture',
-                'model' => 'Mosaic'
+                'model' => 'Mosaic',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'gallery',
                 'icon' => 'glyphicon glyphicon-picture',
-                'model' => 'Gallery'
+                'model' => 'Gallery',
+                'in_admin_ui'   => true
             ),
 
             //Page
             array(
                 'name' => 'page',
                 'icon' => 'glyphicon glyphicon-book',
-                'model' => 'Page'
+                'model' => 'Page',
+                'in_admin_ui'   => true
+            ),
+            array(
+                'name' => 'block',
+                'icon' => 'glyphicon glyphicon-book',
+                'model' => 'Block',
+                'in_admin_ui'   => false
+            ),
+            array(
+                'name' => 'block_content',
+                'icon' => 'glyphicon glyphicon-book',
+                'model' => 'BlockContent',
+                'in_admin_ui'   => false
             ),
 
             //Conector
             array(
                 'name' => 'tag',
                 'icon' => 'glyphicon glyphicon-tag',
-                'model' => 'Tag'
+                'model' => 'Tag',
+                'in_admin_ui'   => true
             ),
 
             //Menu
             array(
                 'name' => 'navigation',
                 'icon' => 'glyphicon glyphicon-list',
-                'model' => 'Nav'
+                'model' => 'Nav',
+                'in_admin_ui'   => true
             ),
             
             //User
             array(
                 'name' => 'role',
                 'icon' => 'glyphicon glyphicon-lock',
-                'model' => 'Role'
+                'model' => 'Role',
+                'in_admin_ui'   => true
+            ),
+            array(
+                'name' => 'permission',
+                'icon' => 'glyphicon glyphicon-lock',
+                'model' => 'Permission',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'user',
                 'icon' => 'glyphicon glyphicon-user',
-                'model' => 'User'
+                'model' => 'User',
+                'in_admin_ui'   => true
             ),
 
 
@@ -96,17 +128,20 @@ class ResourcesTableSeeder extends Seeder {
             array(
                 'name' => 'environment',
                 'icon' => 'glyphicon glyphicon-list',
-                'model' => null
+                'model' => null,
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'log',
                 'icon' => 'glyphicon glyphicon-list',
-                'model' => 'Track'
+                'model' => 'Track',
+                'in_admin_ui'   => true
             ),
             array(
                 'name' => 'setting',
                 'icon' => 'glyphicon glyphicon-cog',
-                'model' => 'Option'
+                'model' => 'Option',
+                'in_admin_ui'   => true
             ))
         );
     }

@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{URL::to('/')}}"><img src="{{asset('favicon/favicon32-white.png')}}" alt="Logo"> {{ App::make('CacheController')->getCache('DB_Option')->site_name }}</a>
+        <a class="navbar-brand" href="{{URL::to('/')}}"><img src="{{asset('favicon/favicon32.png')}}" alt="Logo"> {{ App::make('CacheController')->getCache('DB_Option')->site_name }}</a>
     </div>
     <!-- /.navbar-header -->
 

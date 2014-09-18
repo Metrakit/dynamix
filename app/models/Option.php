@@ -9,6 +9,16 @@ class Option extends Eloquent
 
 
 	/**
+	 * Polymorphic Relation
+	 *
+	 * @var string
+	 */
+	public function trackable()
+    {
+        return $this->morphTo();
+    }
+
+	/**
 	 * Additional Method
 	 *
 	 * @var string

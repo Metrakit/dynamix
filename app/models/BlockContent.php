@@ -24,6 +24,11 @@ class BlockContent extends Eloquent{
     {
         return $this->morphMany('Block', 'blockable');
     }
+    
+    public function trackable()
+    {
+        return $this->morphTo();
+    }
 
 
     /**

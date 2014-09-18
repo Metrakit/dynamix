@@ -100,7 +100,9 @@ Route::get('/migrate', function(){
   return "migrated";
 });
 
-
+Route::get('/getfiles', function(){
+  return View::make('test', array('files'=>Files::all()));
+});
 
 
 /*

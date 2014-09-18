@@ -3,14 +3,13 @@
 class Slide extends Eloquent
 {
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'slides';
+     * Parameters
+     */
+    protected $table = 'slides';
 
-	/**
-     * A Role is on one slider
+    
+    /**
+     * Relations
      *
      * @return mixed
      */
@@ -18,12 +17,16 @@ class Slide extends Eloquent
         return $this->belongsTo('Slider');
     }
 
+    public function image() {
+        return $this->belongsTo('Image');
+    }
+    
     /**
-     * A Role is on many Permission
+     * Polymorphic Relations
      *
      * @return mixed
      */
-    public function image() {
-        return $this->belongsTo('Image');
+    public function trackable() {
+        return $this->morphTo();
     }
 }
