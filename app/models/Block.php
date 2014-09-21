@@ -39,6 +39,10 @@ class Block extends Eloquent{
     {
         return $this->morphTo();
     }
+    public function trackable()
+    {
+        return $this->morphTo();
+    }
 
 
 

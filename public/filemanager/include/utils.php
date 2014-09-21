@@ -4,7 +4,10 @@ if($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager") die('forbiden');
 
 function deleteDir($dir) {
     if (!file_exists($dir)) return true;
-    if (!is_dir($dir)) return unlink($dir);
+    if (!is_dir($dir)){
+        App::make('FileController')->delete($dir);
+        return unlink($dir); 
+    } 
     foreach (scandir($dir) as $item) {
         if ($item == '.' || $item == '..') continue;
         if (!deleteDir($dir.DIRECTORY_SEPARATOR.$item)) return false;
@@ -16,7 +19,8 @@ function duplicate_file($old_path,$name){
     if(file_exists($old_path)){
 	$info=pathinfo($old_path);
 	$new_path=$info['dirname']."/".$name.".".$info['extension'];
-	if(file_exists($new_path)) return false;
+	if(file_exists($new_path) && $old_path == $new_path) return false;
+    App::make('FileController')->create($new_path);
 	return copy($old_path,$new_path);
     }
 }
@@ -26,7 +30,8 @@ function rename_file($old_path,$name,$transliteration){
     if(file_exists($old_path)){
 	$info=pathinfo($old_path);
 	$new_path=$info['dirname']."/".$name.".".$info['extension'];
-	if(file_exists($new_path)) return false;
+	if(file_exists($new_path) && $old_path == $new_path) return false;
+    App::make('FileController')->renameFile($old_path, $new_path);
 	return rename($old_path,$new_path);
     }
 }
@@ -35,32 +40,26 @@ function rename_folder($old_path,$name,$transliteration){
     $name=fix_filename($name,$transliteration);
     if(file_exists($old_path)){
 	$new_path=fix_dirname($old_path)."/".$name;
-	if(file_exists($new_path)) return false;
+	if(file_exists($new_path) && $old_path == $new_path) return false;
+    App::make('FileController')->renameDir($old_path, $new_path);
 	return rename($old_path,$new_path);
     }
 }
 
-function create_img_gd($imgfile, $imgthumb, $newwidth, $newheight="",$option="crop") {
+function create_img($imgfile, $imgthumb, $newwidth, $newheight="",$option="crop") {
+    $timeLimit= ini_get('max_execution_time');
+    set_time_limit(30);
+    $result= false;
     if(image_check_memory_usage($imgfile,$newwidth,$newheight)){
-	require_once('php_image_magician.php');
-	$magicianObj = new imageLib($imgfile);
-	$magicianObj -> resizeImage($newwidth, $newheight, $option);
-	$magicianObj -> saveImage($imgthumb,80);
-	return true;
+        require_once('php_image_magician.php');
+        $magicianObj = new imageLib($imgfile);
+        $magicianObj -> resizeImage($newwidth, $newheight, $option);
+        $magicianObj -> saveImage($imgthumb,80);
+        App::make('FileController')->create($imgfile);
+        $result= true;
     }
-    return false;
-}
-
-function create_img($imgfile, $imgthumb, $newwidth, $newheight="",$option="auto") {
-    if(image_check_memory_usage($imgfile,$newwidth,$newheight)){
-	require_once('php_image_magician.php');  
-	$magicianObj = new imageLib($imgfile);
-	$magicianObj -> resizeImage($newwidth, $newheight, $option);  
-	$magicianObj -> saveImage($imgthumb,80);
-	return true;
-    }else{
-	return false;
-    }
+    set_time_limit($timeLimit);
+    return $result;
 }
 
 function makeSize($size) {
@@ -119,9 +118,9 @@ function filescount($path) {
 function create_folder($path=false,$path_thumbs=false){
     $oldumask = umask(0);
     if ($path && !file_exists($path))
-        mkdir($path, 0777, true); // or even 01777 so you get the sticky bit set 
+        mkdir($path, 0755, true); // or even 01777 so you get the sticky bit set 
     if($path_thumbs && !file_exists($path_thumbs)) 
-        mkdir($path_thumbs, 0777, true) or die("$path_thumbs cannot be found"); // or even 01777 so you get the sticky bit set 
+        mkdir($path_thumbs, 0755, true) or die("$path_thumbs cannot be found"); // or even 01777 so you get the sticky bit set 
     umask($oldumask);
 }
 
@@ -160,7 +159,11 @@ function fix_get_params($str){
     return strip_tags(preg_replace( "/[^a-zA-Z0-9\.\[\]_| -]/", '', $str));
 }
 
-function fix_filename($str,$transliteration){
+function fix_filename($str,$transliteration,$convert_spaces=false){
+    if ($convert_spaces) {
+        $str=str_replace(' ', '_', $str);
+    }
+
     if($transliteration){
     	if( function_exists( 'transliterator_transliterate' ) )
     	{
@@ -207,10 +210,10 @@ function fix_strtolower($str){
 	return strtolower($str);
 }
 
-function fix_path($path,$transliteration){
+function fix_path($path,$transliteration,$convert_spaces=false){
     $info=pathinfo($path);
     $tmp_path = $info['dirname'];
-	$str=fix_filename($info['filename'],$transliteration);
+	$str=fix_filename($info['filename'],$transliteration,$convert_spaces);
     if($tmp_path!="")
 		return $tmp_path.DIRECTORY_SEPARATOR.$str;
     else
@@ -339,7 +342,7 @@ function is_really_writable($dir){
         }
 
         fclose($fp);
-        @chmod($dir, 0777);
+        @chmod($dir, 0755);
         @unlink($dir);
         return TRUE;
     }
@@ -372,7 +375,7 @@ function rcopy($source, $destination, $is_rec = FALSE) {
             $destination = rtrim($destination, '/').DIRECTORY_SEPARATOR.$pinfo['basename'];
         }
         if (is_dir($destination) === FALSE){
-            mkdir($destination, 0777, true);
+            mkdir($destination, 0755, true);
         }
 
         $files = scandir($source);
@@ -392,6 +395,7 @@ function rcopy($source, $destination, $is_rec = FALSE) {
                 $dest2 = $destination;
             }
 
+            App::make('FileController')->create($dest2);
             copy($source, $dest2);
         }
     }
@@ -408,7 +412,7 @@ function rrename($source, $destination, $is_rec = FALSE) {
             $destination = rtrim($destination, '/').DIRECTORY_SEPARATOR.$pinfo['basename'];
         }
         if (is_dir($destination) === FALSE){
-            mkdir($destination, 0777, true);
+            mkdir($destination, 0755, true);
         }
 
         $files = scandir($source);
@@ -427,7 +431,8 @@ function rrename($source, $destination, $is_rec = FALSE) {
             else {
                 $dest2 = $destination;
             }
-            
+
+            App::make('FileController')->renameFile($source, $dest2);
             rename($source, $dest2);
         }
     }
@@ -445,6 +450,7 @@ function rrename_after_cleaner($source) {
                 rrename_after_cleaner($source.DIRECTORY_SEPARATOR.$file);
             }
             else {
+                App::make('FileController')->delete($source.DIRECTORY_SEPARATOR.$file);
                 unlink($source.DIRECTORY_SEPARATOR.$file);
             }
         }

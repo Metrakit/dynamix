@@ -1,17 +1,5 @@
-var version = "9.5.0";
+var version = "9.7.2";
 var active_contextmenu = true;
-if (loading_bar){   
-	if (!(/MSIE (\d+\.\d+);/.test(navigator.userAgent))){ 
-	    window.addEventListener('DOMContentLoaded', function() {
-	        $("body").queryLoader2({ 'backgroundColor':'none','minimumTime':100,'percentage':true});
-	    });
-	}
-	else {
-	    $(document).ready(function () {
-	        $("body").queryLoader2({ 'backgroundColor':'none','minimumTime':100,'percentage':true});
-	    });
-	}
-}
 $(document).ready(function(){
 	// Right click menu
     if (active_contextmenu) {
@@ -28,13 +16,13 @@ $(document).ready(function(){
 			    m+=$('#base_url').val()+$('#cur_dir').val();
 			    add=$trigger.find('a.link').attr('data-file');
 			    if (add!="" && add!=null) {
-				m+=add;
+						m+=add;
 			    }
 			    add=$trigger.find('h4 a.folder-link').attr('data-file');
 			    if (add!="" && add!=null) {
-				m+=add;
+						m+=add;
 			    }
-			    bootbox.alert('URL:<br/><br/><input type="text" style="height:30px; width:100%;" value="'+m+'" />'); 	
+			    bootbox.alert('URL:<br/><br/><input type="text" style="height:30px; width:100%;" value="'+encodeURL(m)+'" />'); 	
 			    break;
 			case "unzip":
 			    var m=$('#sub_folder').val()+$('#fldr_value').val()+$trigger.find('a.link').attr('data-file');
@@ -299,8 +287,13 @@ $(document).ready(function(){
     var sortDescending=$('#descending').val()=== 'true';
     $('.sorter').on('click',function(){
 	_this=$(this);
-	
-	sortDescending=!sortDescending;
+
+	if($('#sort_by').val() === _this.attr('data-sort')){
+		sortDescending = !sortDescending;
+	} else {
+		sortDescending = true;
+	}
+
 	if (js_script) {
 	    $.ajax({
 		url: "ajax_calls.php?action=sort&sort_by="+_this.attr('data-sort')+"&descending="+sortDescending
@@ -313,6 +306,9 @@ $(document).ready(function(){
 		$('.sort-'+_this.attr('data-sort')).addClass("descending");
 	    else
 		$('.sort-'+_this.attr('data-sort')).addClass("ascending");
+
+		$('#sort_by').val(_this.attr('data-sort'));
+		$('#descending').val(sortDescending);
 	}else {
 	    window.location.href=$('#current_url').val()+"&sort_by="+_this.attr('data-sort')+"&descending="+sortDescending;
 	}
@@ -445,6 +441,7 @@ $(document).ready(function(){
 		$('ul.grid li').css( "width",126);
 		$('ul.grid figure').css( "width",122);
 	    }
+        lazyLoad();
 	});
 	
 	if (!Modernizr.touch) {
@@ -496,13 +493,30 @@ $(document).ready(function(){
 	
 	$(window).resize(function(){fix_colums(28); });
 	fix_colums(14);
-	
-	$('ul.grid').on('click','.link',function(){
-		var _this = $(this);
-		
-		window[_this.attr('data-function')](_this.attr('data-file'),_this.attr('data-field_id'));
+
+	// New link handler
+	function handleFileLink($el) {
+		window[$el.attr('data-function')]($el.attr('data-file'), $el.attr('data-field_id'));
+	}
+
+	$('ul.grid .link').on('click',function(){
+		handleFileLink($(this));
 	});
-	
+
+	$('ul.grid div.box').on('click',function(e){
+
+		var fileLink = $(this).find(".link");
+			if (fileLink.length!==0) {
+				handleFileLink(fileLink);
+		}
+		else {
+			var folderLink = $(this).find(".folder-link");
+			if (folderLink.length!==0)
+				document.location = $(folderLink).prop("href");
+		}
+	});
+	// End of link handler
+
 	if ($('#clipboard').val() == 1){
 		toggle_clipboard(true);
 	}
@@ -512,7 +526,6 @@ $(document).ready(function(){
 
 	// Drag & Drop
 	$('li.dir, li.file').draggable({ 
-		revert: true, 
 		distance: 20,
 		cursor: "move",
 
@@ -537,13 +550,13 @@ $(document).ready(function(){
 		}
 	});
 
-	$('li.dir').droppable({
-      accept: "ul.grid li",
-      activeClass: "ui-state-highlight",  
-  	hoverClass: "ui-state-highlight",
-	drop: function(event, ui){
-		drag_n_drop_paste(ui.draggable.find('figure'), $(this).find('figure'));
-	}
+	$('li.dir,li.back').droppable({
+    accept: "ul.grid li",
+    activeClass: "ui-state-highlight",  
+  	hoverClass: "ui-state-hover",
+		drop: function(event, ui){
+			drag_n_drop_paste(ui.draggable.find('figure'), $(this).find('figure'));
+		}
 	});
 
 	// file permissions window
@@ -900,26 +913,31 @@ function paste_to_this_dir(dnd) {
 // because of feedback and on error bahhhhh...
 function drag_n_drop_paste($trigger, dnd){
 	if (!$trigger.hasClass('directory')){
-    	var thumb_path = $trigger.find('.rename-file').attr('data-thumb');
-    	var full_path = $trigger.find('.rename-file').attr('data-path');
-    }
-    else {
-    	var thumb_path = $trigger.find('.rename-folder').attr('data-thumb');
-    	var full_path = $trigger.find('.rename-folder').attr('data-path');
-    }
+  	var thumb_path = $trigger.find('.rename-file').attr('data-thumb');
+  	var full_path = $trigger.find('.rename-file').attr('data-path');
+  }
+  else {
+  	var thumb_path = $trigger.find('.rename-folder').attr('data-thumb');
+  	var full_path = $trigger.find('.rename-folder').attr('data-path');
+  }
 
-    $.ajax({
-	type: "POST",
-	url: "ajax_calls.php?action=copy_cut",
-	data: { path: full_path, path_thumb: thumb_path, sub_action: 'cut' }
-    }).done(function( msg ) {
+	$.ajax({
+		type: "POST",
+		url: "ajax_calls.php?action=copy_cut",
+		data: { path: full_path, path_thumb: thumb_path, sub_action: 'cut' }
+	}).done(function( msg ) {
 		if (msg!=""){
-		    bootbox.alert(msg);
+		  bootbox.alert(msg);
 		}
 		else {
-		   if (typeof dnd != 'undefined'){
-				var folder_path = dnd.find('.rename-folder').attr('data-path');
-				var folder_path_thumb = dnd.find('.rename-folder').attr('data-thumb');
+		  if (typeof dnd != 'undefined'){
+		  	if(dnd.hasClass('back-directory')){
+		  		var folder_path=dnd.find('.path').val();
+		  		var folder_path_thumb=dnd.find('.path_thumb').val();
+		  	}else{
+		  		var folder_path = dnd.find('.rename-folder').attr('data-path');
+					var folder_path_thumb = dnd.find('.rename-folder').attr('data-thumb');	
+		  	}				
 			}
 			else {
 				var folder_path = $('#sub_folder').val()+$('#fldr_value').val();
@@ -927,9 +945,9 @@ function drag_n_drop_paste($trigger, dnd){
 			}
 
 			$.ajax({
-			type: "POST",
-			url: "execute.php?action=paste_clipboard",
-			data: {path: folder_path, path_thumb: folder_path_thumb}
+				type: "POST",
+				url: "execute.php?action=paste_clipboard",
+				data: {path: folder_path, path_thumb: folder_path_thumb}
 			}).done(function( msg ) {
 				if (msg!=""){
 					bootbox.alert(msg);
@@ -937,11 +955,11 @@ function drag_n_drop_paste($trigger, dnd){
 				else {
 					$('#clipboard').val('0');
 					toggle_clipboard(false);
-					setTimeout(function(){window.location.href = $('#refresh').attr('href') + '&' + new Date().getTime();},300);
+					$trigger.parent().remove();
 				}
 			});
 		}
-    });
+	});
 }
 
 function toggle_clipboard(lever) {
@@ -990,157 +1008,268 @@ function swipe_reaction(event, direction, distance, duration, fingerCount) {
     }
 }
 
+function encodeURL(url){
+	var tmp=url.split('/');
+	for(var i=3;i<tmp.length;i++){
+		tmp[i]=encodeURIComponent(tmp[i]);
+	}
+	return tmp.join('/');
+}
+
 function apply(file,external){
-    if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
-    var path = $('#cur_dir').val();    
-    //path = path.replace('\\', '/');
-    var base_url = $('#base_url').val();
-    var alt_name=file.substr(0, file.lastIndexOf('.'));
-    var ext=file.split('.').pop();
-    ext=ext.toLowerCase();
-    var fill='';
-    var ext_audio=new Array('ogg','mp3','wav');
-    var ext_video=new Array('mp4','ogg','webm');
-    if (external!=""){
-			var target = $('#'+external,window_parent.document);
-			target.val(base_url+path+file).trigger('change');
+  if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
+  var path = $('#cur_dir').val();
+  //path = path.replace('\\', '/');
+  var subdir = $('#subdir').val();
+  var base_url = $('#base_url').val();
+  var alt_name=file.substr(0, file.lastIndexOf('.'));
+  var ext=file.split('.').pop();
+  ext=ext.toLowerCase();
+  var fill='';
+  var ext_audio=new Array('ogg','mp3','wav');
+  var ext_video=new Array('mp4','ogg','webm');
+  var is_return_relative_url = $('#return_relative_url').val();
+  var url= encodeURL((is_return_relative_url == 1 ? subdir : base_url+path)+file);
+
+  if (external!=""){
+		if ($('#crossdomain').val()==1){
+			window_parent.postMessage({
+				sender: 'responsivefilemanager',
+				url: url,
+				field_id : external
+			},
+			'*'
+			);
+    } else {
+			var target = $('#'+external, window_parent.document);
+			target.val(url).trigger('change');
+			if(typeof window_parent.responsive_filemanager_callback == 'function'){
+				window_parent.responsive_filemanager_callback(external);
+			}
 			close_window();
+		}
+  }else{
+	  if ($.inArray(ext, ext_img) > -1){
+	    fill='<img src="'+url+'" alt="'+alt_name+'" />';
+	  }else {
+			if ($.inArray(ext, ext_video) > -1){
+			  fill='<video controls source src="'+url+'" type="video/'+ext+'">'+alt_name+'</video>';
+			}else {
+			  if ($.inArray(ext, ext_audio) > -1 ){
+					if (ext=='mp3') { ext='mpeg'; }
+					fill='<audio controls src="'+url+'" type="audio/'+ext+'">'+alt_name+'</audio>';
+			  }else {
+					fill='<a href="'+url+'" title="'+alt_name+'">'+alt_name+'</a>';
+			  }
+			}
+		
 	  }
-    if ($.inArray(ext, ext_img) > -1){
-        fill='<img src="'+base_url+path+file+'" alt="'+alt_name+'" />';
-    }else {
-	if ($.inArray(ext, ext_video) > -1){
-	    fill='<video controls source src="'+base_url+path+file+'" type="video/'+ext+'">'+alt_name+'</video>';
-	}else {
-	    if ($.inArray(ext, ext_audio) > -1 ){
-		if (ext=='mp3') { ext='mpeg'; }
-		fill='<audio controls src="'+base_url+path+file+'" type="audio/'+ext+'">'+alt_name+'</audio>';
-	    }else {
-		fill='<a href="'+base_url+path+file+'" title="'+alt_name+'">'+alt_name+'</a>';
-	    }
-	}
-	
-    }
-	
-	// tinymce 3.X
-    if ( parent.tinymce.majorVersion < 4 )
-    {
-		parent.tinymce.activeEditor.execCommand('mceInsertContent', false, fill); 
-		parent.tinymce.activeEditor.windowManager.close( parent.tinymce.activeEditor.windowManager.params.mce_window_id );
-	}
-	// tinymce 4.X
-	else 
-	{
-		parent.tinymce.activeEditor.insertContent(fill);
-		parent.tinymce.activeEditor.windowManager.close();
+
+		if ($('#crossdomain').val()==1){
+			window_parent.postMessage({
+					sender: 'responsivefilemanager',
+					url: url,
+					field_id : null,
+					html: fill
+				},
+				'*'
+			);
+
+		} else {
+			// tinymce 3.X
+			if ( parent.tinymce.majorVersion < 4 )
+			{
+				parent.tinymce.activeEditor.execCommand('mceInsertContent', false, fill); 
+				parent.tinymce.activeEditor.windowManager.close( parent.tinymce.activeEditor.windowManager.params.mce_window_id );
+			}
+			// tinymce 4.X
+			else 
+			{
+				parent.tinymce.activeEditor.insertContent(fill);
+				parent.tinymce.activeEditor.windowManager.close();
+			}
+		}
 	}
 }
 
 
 
 function apply_link(file,external){
-    if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
-    var path = $('#cur_dir').val();
-    path = path.replace('\\', '/');
-    var base_url = $('#base_url').val();
-    if (external!=""){
-			var target = $('#'+external,window_parent.document);
-			target.val(base_url+path+file).trigger('change');
+  if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
+  var path = $('#cur_dir').val();
+  path = path.replace('\\', '/');
+  var subdir = $('#subdir').val();
+  subdir = subdir.replace('\\', '/');
+  var base_url = $('#base_url').val();
+  var is_return_relative_url = $('#return_relative_url').val();
+  var url= encodeURL((is_return_relative_url == 1 ? subdir : base_url+path)+file);
+
+	if (external!=""){    	
+		if ($('#crossdomain').val()==1){
+			window_parent.postMessage({
+					sender: 'responsivefilemanager',
+					url: url,
+					field_id : external
+				},
+				'*'
+			);
+	  } else {
+			var target = $('#'+external, window_parent.document);
+			target.val(url).trigger('change');
+			if(typeof window_parent.responsive_filemanager_callback == 'function'){
+				window_parent.responsive_filemanager_callback(external);
+			}
 			close_window();
-    }
-    else
-	apply_any(base_url+path, file);
+		}
+	}else{
+		apply_any(url);
+	}
 }
 
 function apply_img(file,external){
-    if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
-    var path = $('#cur_dir').val();
-    path = path.replace('\\', '/');
-    var base_url = $('#base_url').val();
-    
-    if (external!=""){
-		var target = $('#'+external, window_parent.document);
-		target.val(base_url+path+file).trigger( "change" );
-		close_window();
-    }
-    else
-        apply_any(base_url+path, file);
+  if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
+  var path = $('#cur_dir').val();
+  path = path.replace('\\', '/');
+  var subdir = $('#subdir').val();
+  subdir = subdir.replace('\\', '/');
+  var base_url = $('#base_url').val();
+  var is_return_relative_url = $('#return_relative_url').val();
+  var url= encodeURL((is_return_relative_url == 1 ? subdir : base_url+path)+file);
+
+  if (external!=""){
+		if ($('#crossdomain').val()==1){
+			window_parent.postMessage({
+					sender: 'responsivefilemanager',
+					url: url,
+					field_id : external
+				},
+				'*'
+			);
+      } else {
+			var target = $('#'+external, window_parent.document);
+			target.val(url).trigger('change');
+			if(typeof window_parent.responsive_filemanager_callback == 'function'){
+				window_parent.responsive_filemanager_callback(external);
+			}
+			close_window();
+		}
+  }else{
+    apply_any(url);
+  }
 }
 
 function apply_video(file,external){
-    if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
-    var path = $('#cur_dir').val();
-    path = path.replace('\\', '/');
-    var base_url = $('#base_url').val();
-    if (external!=""){
-		var target = $('#'+external,window_parent.document);
-		target.val(base_url+path+file).trigger('change');
-		close_window();
-    }
-    else
-	apply_any(path, file);
+  if ($('#popup').val()==1) var window_parent=window.opener; else var window_parent=window.parent;
+  var path = $('#cur_dir').val();
+  path = path.replace('\\', '/');
+  var subdir = $('#subdir').val();
+  subdir = subdir.replace('\\', '/');
+  var base_url = $('#base_url').val();
+  var is_return_relative_url = $('#return_relative_url').val();
+  var url= encodeURL((is_return_relative_url == 1 ? subdir : base_url+path)+file);
+
+  if (external!=""){
+		if ($('#crossdomain').val()==1){
+			window_parent.postMessage({
+					sender: 'responsivefilemanager',
+					url: url,
+					field_id : external
+				},
+				'*'
+			);
+    } else {
+			var target = $('#'+external, window_parent.document);
+			target.val(url).trigger('change');
+			if(typeof window_parent.responsive_filemanager_callback == 'function'){
+				window_parent.responsive_filemanager_callback(external);
+			}
+			close_window();
+		}
+  }else{
+		apply_any(url);
+	}
 }
 
 function apply_none(file,external){	
 	var _this=$('li[data-name="'+file+'"]').find('.preview');
-	
-	if (_this.html()!="" && _this.html()!==undefined) {
-	    
-	    $('#full-img').attr('src',decodeURIComponent(_this.attr('data-url')));
-	    if (_this.hasClass('disabled')==false){
-		show_animation();
-		$('#previewLightbox').lightbox();
-	    }
-	}else {
-	    var _this=$('li[data-name="'+file+'"]').find('.modalAV');
 
-	    $('#previewAV').removeData("modal");
-	    $('#previewAV').modal({
-		backdrop: 'static',
-		keyboard: false
-	    });
-	    if (_this.hasClass('audio')) {
-		$(".body-preview").css('height','80px');
-	    }else {
-		$(".body-preview").css('height','345px');
-	    }
-	    
-	    $.ajax({
-		url: decodeURIComponent(_this.attr('data-url')),
-		success: function(data) {
-		    $(".body-preview").html(data);
+	if (_this.html()!="" && _this.html()!==undefined){
+	  $('#full-img').attr('src',decodeURIComponent(_this.attr('data-url')));
+	  if (_this.hasClass('disabled')==false){
+			show_animation();
+			$('#previewLightbox').lightbox();
+	  }
+	}else {
+	  var _this=$('li[data-name="'+file+'"]').find('a.file-preview-btn');
+	  if (_this.html()!="" && _this.html()!==undefined){
+      $.ajax({
+          url: _this.attr('data-url'),
+          success: function(data) {
+						bootbox.alert(data);
+    			}
+      });
+		}else{
+			var _this=$('li[data-name="'+file+'"]').find('.modalAV');
+		  $('#previewAV').removeData("modal");
+		  $('#previewAV').modal({
+				backdrop: 'static',
+				keyboard: false
+		  });
+		  if (_this.hasClass('audio')) {
+				$(".body-preview").css('height','80px');
+		  }else {
+				$(".body-preview").css('height','345px');
+		  }
+		    
+		  $.ajax({
+				url: decodeURIComponent(_this.attr('data-url')),
+				success: function(data) {
+			  	$(".body-preview").html(data);
+				}
+		  });
 		}
-	    });
 	}
 	return;
 }
 
-function apply_any(path, file) {
-	path = path.replace('\\', '/');
-	// tinymce 3.X
-	if ( parent.tinymce.majorVersion < 4 )
-	{
-		parent.tinymce.activeEditor.windowManager.params.setUrl(path+file);
-		parent.tinymce.activeEditor.windowManager.close( parent.tinymce.activeEditor.windowManager.params.mce_window_id );
+function apply_any(url) {
+	if ($('#crossdomain').val()==1){
+		window.parent.postMessage({
+				sender: 'responsivefilemanager',
+				url: url,
+				field_id : null
+			},
+			'*'
+		);
+
+	} else {
+		// tinymce 3.X
+		if ( parent.tinymce.majorVersion < 4 )
+		{
+			parent.tinymce.activeEditor.windowManager.params.setUrl(url);
+			parent.tinymce.activeEditor.windowManager.close( parent.tinymce.activeEditor.windowManager.params.mce_window_id );
+		}
+		// tinymce 4.X
+		else
+		{
+			parent.tinymce.activeEditor.windowManager.getParams().setUrl(url);
+			parent.tinymce.activeEditor.windowManager.close();
+		}
 	}
-	// tinymce 4.X
-	else
-	{
-		parent.tinymce.activeEditor.windowManager.getParams().setUrl(path+file);
-		parent.tinymce.activeEditor.windowManager.close();
-	}
+
 	return false;	
 }
 
 function close_window() {
-   if ($('#popup').val()==1) window.close();
-   else {
-	if ( typeof parent.jQuery !== "undefined" && parent.jQuery) {
-	    parent.jQuery.fancybox.close();   
-	}else {
-	    parent.$.fancybox.close();
+	if ($('#popup').val()==1){
+		window.close();
+	}else{
+		if(typeof parent.jQuery !== "undefined" && parent.jQuery) {
+		  parent.jQuery.fancybox.close();   
+		}else{
+		  parent.$.fancybox.close();
+		}
 	}
-   }
 }
 
 function apply_file_duplicate(container,name){
@@ -1265,19 +1394,22 @@ function replaceDiacritics(s)
 }
 
 function fix_filename(stri) {
-    if (stri!=null) {
-	if ($('#transliteration').val()=="true") {
-	    stri=replaceDiacritics(stri);
-	    stri=stri.replace(/[^A-Za-z0-9\.\-\[\]\ \_]+/g, '');
-	}
-	stri=stri.replace('"','');
-	stri=stri.replace("'",'');
-	stri=stri.replace("/",'');
-	stri=stri.replace("\\",'');
-	stri=stri.replace(/<\/?[^>]+(>|$)/g, "");
-	return $.trim(stri);
-    }
-    return null;
+  if (stri!=null) {
+		if ($('#transliteration').val()=="true") {
+		    stri=replaceDiacritics(stri);
+		    stri=stri.replace(/[^A-Za-z0-9\.\-\[\]\ \_]+/g, '');
+		}
+		if ($('#convert_spaces').val()=="true") {
+	      stri=stri.replace(' ','_');
+	  }
+		stri=stri.replace('"','');
+		stri=stri.replace("'",'');
+		stri=stri.replace("/",'');
+		stri=stri.replace("\\",'');
+		stri=stri.replace(/<\/?[^>]+(>|$)/g, "");
+		return $.trim(stri);
+  }
+  return null;
 }
 
 function execute_action(action,file1,file2,name,container,function_name){
@@ -1388,4 +1520,10 @@ function launchEditor(id, src) {
 	url: src
     });
    return false;
+}
+
+function lazyLoad() {
+    $(".lazy-loaded").lazyload({
+        event: 'scrollstop'
+    });
 }

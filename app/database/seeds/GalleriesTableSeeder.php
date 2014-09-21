@@ -50,7 +50,7 @@ class GalleriesTableSeeder extends Seeder {
 
         DB::table('galleries')->insert( array(
             array(
-                'cover_image_id'          => Image::find(1)->id,
+                'cover_image_id'          => Files::find(1)->id,
                 'i18n_description'  => $description->id,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime

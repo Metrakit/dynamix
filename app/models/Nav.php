@@ -24,18 +24,26 @@ class Nav extends Eloquent{
 	 *
 	 * @var string
 	 */
-	public function naviggable(){
+	public function naviggable()
+	{
         return $this->morphTo();
     }
-
 	
-	public function children() {
+	public function children() 
+	{
         return Nav::where('parent_id','=',$this->id)->orderBy('order','ASC')->get();
     }
 
-	public function title(){
+	public function title()
+	{
 		return $this->translate( $this->i18n_title );
 	}
+
+	public function trackable()
+    {
+        return $this->morphTo();
+    }
+    
 
 	/**
 	 * Additional Method

@@ -27,7 +27,7 @@ class CreateSlidesTable extends Migration {
 			$table->foreign('slider_id')->references('id')->on('sliders');
 
 			$table->integer('image_id')->unsigned();
-			$table->foreign('image_id')->references('id')->on('images');
+			$table->foreign('image_id')->references('id')->on('files');
 
 			$table->string('background_color',6)->nullable();//refer to post, page or category to get the url etc..
 

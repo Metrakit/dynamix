@@ -3,14 +3,13 @@
 class Role extends Eloquent
 {
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+     * Parameters
+     */
 	protected $table = 'roles';
 
+
 	/**
-     * A Role is on many Permission
+     * Relations
      *
      * @return mixed
      */
@@ -18,12 +17,17 @@ class Role extends Eloquent
         return $this->belongsToMany('User');
     }
 
+    public function permissions() {
+        return $this->hasMany('Permission');
+    }
+
     /**
-     * A Role is on many Permission
+     * Polymorphic Relations
      *
      * @return mixed
      */
-    public function permissions() {
-        return $this->hasMany('Permission');
+    public function trackable()
+    {
+        return $this->morphTo();
     }
 }

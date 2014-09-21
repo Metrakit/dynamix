@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
-        $this->call('ImagesTableSeeder');
+        $this->call('FileTypesTableSeeder');
+        $this->call('FilesTableSeeder');
         $this->call('ResponsiveWidthsTableSeeder');
         $this->call('ResponsiveTriggersTableSeeder');
 
@@ -51,8 +52,8 @@ class DatabaseSeeder extends Seeder {
 
 
         //Sliders
-        $this->call('SlidersTableSeeder');
-        $this->call('SlidesTableSeeder');
+        //$this->call('SlidersTableSeeder');
+        //$this->call('SlidesTableSeeder');
         
 
         //Galleries

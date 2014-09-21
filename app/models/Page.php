@@ -23,14 +23,16 @@ class Page extends Eloquent {
 	 *
 	 * @var string
 	 */
-	public function structure()
-    {
+	public function structure() {
         return $this->morphMany('Structure', 'structurable');
     }
 
-    public function navigation()
-    {
+    public function navigation() {
         return $this->morphMany('Nav', 'naviggable');
+    }
+
+    public function trackable() {
+        return $this->morphTo();
     }
     
 	
@@ -39,8 +41,7 @@ class Page extends Eloquent {
 	 *
 	 * @var string
 	 */
-	public function translate( $i18n_id )
-	{
+	public function translate( $i18n_id ) {
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
 	}
 
@@ -50,8 +51,7 @@ class Page extends Eloquent {
      *
      * @return mixed
      */
-	public function name()
-	{
+	public function name() {
 		return $this->i18n_name;
 	}
 
@@ -60,23 +60,19 @@ class Page extends Eloquent {
      *
      * @return mixed
      */
-	public function title()
-	{
+	public function title() {
 		return $this->structure->first()->title();
 	}
 
-	public function url()
-	{
+	public function url() {
 		return $this->structure->first()->url();
 	}
 
-	public function meta_title()
-	{
+	public function meta_title() {
 		return $this->structure->first()->meta_title();
 	}
 
-	public function meta_description()
-	{
+	public function meta_description() {
 		return $this->structure->first()->meta_description();
 	}
 

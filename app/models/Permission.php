@@ -2,37 +2,35 @@
 
 class Permission extends Eloquent
 {
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+    /**
+     * Parameters
+     */
 	protected $table = 'permissions';
 
-	/**
-     * A permission have one Role
+
+    /**
+     * Relations
      *
-     * @return mixed
+     * @var string
      */
 	public function role() {
         return $this->hasOne('Role');
     }
 
-    /**
-     * A permission have one Action
-     *
-     * @return mixed
-     */
     public function action() {
         return $this->hasOne('Action');
     }
 
-    /**
-     * A permission have one Resource
-     *
-     * @return mixed
-     */
     public function resource() {
         return $this->hasOne('Resource');
+    }
+
+    /**
+     * Polymorphic relation
+     *
+     * @var string
+     */
+    public function trackable() {
+        return $this->morphTo();
     }
 }
