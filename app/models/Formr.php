@@ -7,7 +7,7 @@ class Formr extends Eloquent{
 	 */
 	protected $table = 'forms';
 	public $timestamps = false;
-	protected $fillable = ['finish_on', 'i18n_title', 'i18n_description'];
+	protected $fillable = ['finish_on', 'i18n_title', 'i18n_description', 'type'];
 
 	
 	/**
@@ -31,9 +31,8 @@ class Formr extends Eloquent{
      */
     public function renderResource()
     {
-    	//$data['inputs'] = FormMap::render($this->id); 
-    	$data['inputs'] = Former::render($this->id);
-    	$data['formId'] = $this->id;
+    	$data['form'] = $this;
+    	$data['inputs'] = Former::render($data['form']);
         return Response::view('public.form.form', $data )->getOriginalContent();
     }
 

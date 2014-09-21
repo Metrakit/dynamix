@@ -18,7 +18,8 @@ class CreateFormsTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			
-			$table->enum('finish_on',array('email','database'));
+			$table->enum('finish_on', array('email','database', 'method'));
+			$table->enum('type', array('horizontal', 'inline', 'normal'))->default('normal');
 
 			$table->integer('i18n_title')->unsigned()->index();
 			$table->foreign('i18n_title')->references('id')->on('i18n');

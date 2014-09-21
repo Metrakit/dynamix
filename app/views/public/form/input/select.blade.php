@@ -1,19 +1,33 @@
-@if($label)
-	<label class="col-sm-2 control-label">{{ $label }}</label>
-	<div class="col-sm-6">
+@if($input->label)
+
+	@if($form->type != 'inline')
+		<label class="@if($form->type == 'horizontal') col-sm-2 @endif control-label">{{ $input->label }}</label>
+	@endif
+
+	@if($form->type == 'horizontal')
+		<div class="col-sm-6">
+	@endif
+
 @endif
-	<select name="{{ $name }}" title="{{ $title }}" class="form-control"  value="{{ $value }}">
-		@foreach ($options as $option)	
-			<option value="{{ $option->value }}" @if($value == $option->value) selected @endif> {{ $option->key }} </option>
-		@endforeach
-	</select>
+
+<select name="{{ $input->name }}" title="{{ $input->title }}" class="form-control"  value="{{ $input->value }}">
+	@foreach ($input->options as $option)	
+		<option value="{{ $option->value }}" @if($input->value == $option->value) selected @endif> {{ $option->key }} </option>
+	@endforeach
+</select>
+
+@if($form->type != 'inline')
 	<p class="help-block"> 
-		@if($errors->has($name)) 
-			{{ $errors->first($name) }}
+		@if($errors->has($input->name)) 
+			{{ $errors->first($input->name) }}
 		@else
-			{{ $helper }} 
+			{{ $input->helper }} 
 		@endif
 	</p>
-@if($label)	
-	</div>
+@endif
+
+@if($form->type == 'horizontal' && $input->label) 
+
+	</div> 
+
 @endif

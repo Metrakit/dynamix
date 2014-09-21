@@ -4,13 +4,13 @@
 	</success>
 @endif
 
-<form action="{{ URL::route('form') }}" class="form-horizontal" method="POST">
+<form action="{{ URL::route('form') }}" class="form-{{ $form->type }}" method="POST">
 
 	{{-- Send the Form Id --}}
-	<input type="hidden" name="form" value="{{ $formId }}" />
+	<input type="hidden" name="form" value="{{ $form->id }}" />
 
 	@foreach ($inputs as $input)
-		<div class="form-group row @if($errors->has($input->name)) has-error @endif ">
+		<div class="form-group @if($form->type == 'horizontal') row @endif @if($errors->has($input->name)) has-error @endif ">
 			{{ $input->view }}
 		</div>
 	@endforeach

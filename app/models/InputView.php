@@ -37,7 +37,7 @@ class InputView extends Eloquent{
      */
     public function getOptions()
     {
-        return $this->hasMany('SelectOption', 'input_id')->get();
+        return $this->hasMany('SelectOption', 'input_id', 'input_id')->get();
     }
 
 

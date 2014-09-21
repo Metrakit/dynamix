@@ -76,9 +76,9 @@ class Former extends \Controller {
      * @param  Integer $id
      * @return Object
      */
-    public function render($id)
+    public function render($form)
     {    
-        $this->formId = $id;
+        $this->formId = $form->id;
         $inputs = $this->getInputs();
 
         // Boucle on inputs
@@ -136,7 +136,10 @@ class Former extends \Controller {
 
             // Getting path
             $inputView = $input->getView()->path;
-            $inputs[$key]->view = \Response::view($inputView, $inputs[$key])->getOriginalContent();
+            $inputs[$key]->view = \Response::view($inputView, array(
+                'form' => $form,
+                'input' => $inputs[$key]
+            ))->getOriginalContent();
         }
 
         return $inputs;
