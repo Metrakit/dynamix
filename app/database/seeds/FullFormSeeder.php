@@ -590,7 +590,7 @@ class FullFormSeeder extends Seeder {
         // Form
         $form = Formr::create(array(
             'finish_on'         => 'database',
-            'type'              => 'horizontal',
+            'type'              => 'normal',
             'i18n_title'        => $i18n['title']->id,
             'i18n_description'  => $i18n['description']->id,
         ));

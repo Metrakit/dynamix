@@ -9,6 +9,20 @@ class URLManagerController extends BaseController {
 
     public function getHome()
     {
+        $files = Files::all();
+        foreach($files as $f){
+            if($f->id == 1){
+                $f->path = '../uploads/pictures/album cute kitten/cute-kitten-1.jpg';
+                $f->save();
+            } else if($f->id == 2){                
+                $f->path = '../uploads/pictures/album cute kitten/cute-kitten-2.jpg';
+                $f->save();
+            } else {
+                $f->delete();
+            }
+        }
+        $files = null;
+
         $urls = App::make('CacheController')->getCache( 'DB_Urls' );
 
         foreach ( $urls as $url ) {

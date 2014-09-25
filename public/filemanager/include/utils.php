@@ -5,7 +5,6 @@ if($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager") die('forbiden');
 function deleteDir($dir) {
     if (!file_exists($dir)) return true;
     if (!is_dir($dir)){
-        App::make('FileController')->delete($dir);
         return unlink($dir); 
     } 
     foreach (scandir($dir) as $item) {
@@ -20,7 +19,6 @@ function duplicate_file($old_path,$name){
 	$info=pathinfo($old_path);
 	$new_path=$info['dirname']."/".$name.".".$info['extension'];
 	if(file_exists($new_path) && $old_path == $new_path) return false;
-    App::make('FileController')->create($new_path);
 	return copy($old_path,$new_path);
     }
 }
@@ -31,7 +29,6 @@ function rename_file($old_path,$name,$transliteration){
 	$info=pathinfo($old_path);
 	$new_path=$info['dirname']."/".$name.".".$info['extension'];
 	if(file_exists($new_path) && $old_path == $new_path) return false;
-    App::make('FileController')->renameFile($old_path, $new_path);
 	return rename($old_path,$new_path);
     }
 }
@@ -41,7 +38,6 @@ function rename_folder($old_path,$name,$transliteration){
     if(file_exists($old_path)){
 	$new_path=fix_dirname($old_path)."/".$name;
 	if(file_exists($new_path) && $old_path == $new_path) return false;
-    App::make('FileController')->renameDir($old_path, $new_path);
 	return rename($old_path,$new_path);
     }
 }
@@ -55,7 +51,6 @@ function create_img($imgfile, $imgthumb, $newwidth, $newheight="",$option="crop"
         $magicianObj = new imageLib($imgfile);
         $magicianObj -> resizeImage($newwidth, $newheight, $option);
         $magicianObj -> saveImage($imgthumb,80);
-        App::make('FileController')->create($imgfile);
         $result= true;
     }
     set_time_limit($timeLimit);
@@ -395,7 +390,6 @@ function rcopy($source, $destination, $is_rec = FALSE) {
                 $dest2 = $destination;
             }
 
-            App::make('FileController')->create($dest2);
             copy($source, $dest2);
         }
     }
@@ -432,7 +426,6 @@ function rrename($source, $destination, $is_rec = FALSE) {
                 $dest2 = $destination;
             }
 
-            App::make('FileController')->renameFile($source, $dest2);
             rename($source, $dest2);
         }
     }
@@ -450,7 +443,6 @@ function rrename_after_cleaner($source) {
                 rrename_after_cleaner($source.DIRECTORY_SEPARATOR.$file);
             }
             else {
-                App::make('FileController')->delete($source.DIRECTORY_SEPARATOR.$file);
                 unlink($source.DIRECTORY_SEPARATOR.$file);
             }
         }

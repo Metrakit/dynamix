@@ -11,19 +11,18 @@ class AdminController extends BaseController {
 	{
 		//User
 		$data['user'] = Auth::user();
+
 		//Interface
 		$data['noAriane'] = true;
 
 		//Google Analytics
 		$data['ga_sessionsPerDay'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-		
 		$data['ga_sessionsCount'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsCount();
 		$data['ga_userCount'] 				= App::make('GoogleAnalyticsAPIController')->getUserCount();
 		$data['ga_pageSeenCount'] 			= App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
 		$data['ga_pagesBySession'] 			= round( $data['ga_pageSeenCount'] / $data['ga_sessionsCount'], 2);
 		$data['ga_timeBySession'] 			= round( App::make('GoogleAnalyticsAPIController')->getTimeBySession() / $data['ga_sessionsCount'], 0).'s';
 		$data['ga_rebound'] 				= App::make('GoogleAnalyticsAPIController')->getRebound();
-		
 		$data['ga_newOnReturningVisitor'] 	= App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();
 
 		return View::make('admin.index', $data );
@@ -91,6 +90,69 @@ class AdminController extends BaseController {
 	{
 		// Validate the inputs
         $validator = Validator::make(Input::all(), Config::get('validator.admin.option'));
+
+        
+        // Check if the form validates with success
+        if ($validator->passes())
+        {
+        	$option = Option::first();
+
+        	$option->site_url		= Input::get('site_url');
+        	$option->site_name		= Input::get('site_name');
+        	$option->admin_email	= Input::get('admin_email');
+        	$option->analytics		= Input::get('analytics');
+
+        	//if no error when save
+        	if($option->save()){
+        		Cache::forget('DB_Option');
+        		
+            	return Redirect::to('admin/option')->with( 'success', 'Les réglages ont été enregistré avec succès !' );
+        	}
+	        else
+	        {
+	        	return Redirect::to('admin/option')->with( 'error', 'Ouuups !!! Les réglages n\'ont pas été enregistré !' );
+	        }
+
+	    }
+	    
+		// Show the page
+		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
+	}/**
+	 * get All Option in base
+	 *
+	 * @return Response
+	 */
+
+
+
+
+
+
+	public function getEnvironnement()
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		//Datas
+		$data['langsFrontEnd'] = Locale::orderBy('id')->get();
+		$data['langsFrontEnd'] = array_chunk($data['langsFrontEnd']->toArray(), round(count($data['langsFrontEnd']->toArray())/3+1));
+		//return var_dump($data['langsFrontEnd']);
+
+		return View::make('admin.environment.index', $data);
+	}
+
+	/**
+	 * post All Option in base
+	 *
+	 * @return Response
+	 */
+	public function postEnvironnement()
+	{
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.environment'));
 
         
         // Check if the form validates with success

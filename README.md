@@ -25,12 +25,57 @@ $env = $app->detectEnvironment(array(
 Google Analytics
 http://packalyst.com/packages/package/thujohn/analytics
 
-Run php artisan config:publish thujohn/analytics and modify the config file with your own informations.
+Run `php artisan config:publish thujohn/analytics` and modify the config file with your own informations.
 
 4. Migrates
 
 For Test the Former you should user the example Form seeder :
-php artisan db:seed --class=FullFormSeeder
+`php artisan db:seed --class=FullFormSeeder`
+
+
+## Module
+
+1. FileManager
+   
+For upgrades, changes only this file `filemanager/config/config.php`
+
+With this parameters :
+
+```php
+$upload_dir = '/uploads/';
+$current_path = '../uploads/';
+$thumbs_base_path = '../uploads_thumbs/';
+```
+
+And put `USE_ACCESS_KEY` to `true` with this following code to use the Config model...
+
+```php
+//[...]
+define('USE_ACCESS_KEYS', TRUE); // TRUE or FALSE
+
+
+// add access keys eg: array('myPrivateKey', 'someoneElseKey');
+// keys should only containt (a-z A-Z 0-9 \ . _ -) characters
+// if you are integrating lets say to a cms for admins, i recommend making keys randomized something like this:
+// $username = 'Admin';
+// $salt = 'dsflFWR9u2xQa' (a hard coded string)
+// $akey = md5($username.$salt);
+// DO NOT use 'key' as access key!
+// Keys are CASE SENSITIVE!
+include __DIR__ . '/../../../vendor/autoload.php';
+$app = require_once __DIR__ . '/../../../bootstrap/start.php';
+$app->boot();
+
+$access_keys = array(Config::get('app.key'));
+
+//--------------------------------------------------------------------------------------------------------
+// YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS
+//--------------------------------------------------------------------------------------------------------
+//[...]
+```
+
+github : https://github.com/trippo/ResponsiveFilemanager
+website : http://www.responsivefilemanager.com
 
 
 ## TODO List
