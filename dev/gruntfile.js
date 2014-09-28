@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 					'<%= srcPath %>css/main.min.css':
 					[
 						'<%= srcPath %>css/bootstrap.css',
-						'<%= srcPath %>css/fontawesome.css',
+						'<%= srcPath %>css/font-awesome.css',
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
 						'<%= srcPath %>css/core.css'
 					],
