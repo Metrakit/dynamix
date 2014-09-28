@@ -51,8 +51,6 @@
             </div>
             <!-- ./ navbar-desktop -->
 
-            <span class="icon-beer"></span>
-
             <!-- container.main -->
             <div class="container main">
                 <div class="row">
@@ -67,7 +65,6 @@
                 </div>
 
             </div>
-
             <!-- ./ container.main -->
             @yield('container')
 
