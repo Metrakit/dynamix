@@ -207,10 +207,13 @@ module.exports = function(grunt) {
 		      {expand: false, src: ['<%= vendorPath %>media-match/media.match.min.js'], dest: '<%= distPath %>js/vendor/media.match.min.js', filter: 'isFile'},
 
 		    ]
+		  },
+		  images: {
+		    files: [
+		      {expand: true, cwd: '<%= srcPath %>favicon/', src: ['**'], dest: '<%= distPath %>favicon/', filter: 'isFile'}
+		    ]
 		  }
 		},
-
-
 
 		// Watchs
 		watch: {
@@ -280,7 +283,7 @@ module.exports = function(grunt) {
 				options: {
 	              livereload: true
 	          	}	
-          	},     	
+          	}, 
 
 			bootstrap: 
 			{
@@ -303,6 +306,17 @@ module.exports = function(grunt) {
 	              livereload: true
 	          	}	
           	},   
+
+			images: 
+			{
+				files: [
+					'<%= srcPath %>favicon/**/*'
+			    ],
+				tasks:['copy:images'],
+				options: {
+	              livereload: true
+	          	}	
+          	},    
 
 			blade: 
 			{
