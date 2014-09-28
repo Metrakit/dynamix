@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 		// Paths
 		path: '../',
 		srcPath: 'src/',
+		vendorPath: 'src/vendor/',
 		distPath: '../public/',
 
 
@@ -26,24 +27,20 @@ module.exports = function(grunt) {
 		        sassDir: '<%= srcPath %>sass',
         		cssDir: '<%= srcPath %>css',
 		      }
+		    },
+			bootstrap: {
+		      options: {
+		        sassDir: '<%= vendorPath %>bootstrap-sass/lib',
+        		cssDir: '<%= srcPath %>css',
+		      }
+		    },	
+			fontawesome: {
+		      options: {
+		        sassDir: '<%= vendorPath %>font-awesome/scss',
+        		cssDir: '<%= srcPath %>css',
+		      }
 		    }
 		},
-
-
-		// Je ne sais pas à quoi ça sert
-		/*csslint: {
-			// Config de la tâche csslint
-			options:{
-				'adjoining-classes' : false,
-				'empty-rules'       : false, 
-				// Générateur automatique d'un rapport XML
-				formatters: [{
-					id: 'csslint-xml',
-					dest: 'report/csslint.xml' 
-				}]
-			},
-			src: ['<%= srcPath %>css/*.css']
-		},	*/	
 
 
 		// Concaténation des feuilles de styles
@@ -53,8 +50,13 @@ module.exports = function(grunt) {
 					// Feuilles de style principale
 					'<%= srcPath %>css/main.min.css':
 					[
-						//'<%= srcPath %>css/vendor.css',
-						'<%= srcPath %>css/core.css'
+						'<%= srcPath %>css/bootstrap.css',
+						'<%= srcPath %>css/fontawesome.css',
+						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
+						'<%= srcPath %>css/core.css',
+						'<%= vendorPath %>morrisjs/morris.css',
+						'<%= vendorPath %>sb-admin-v2/css/sb-admin.css',
+						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css'
 					],
 
 					// Feuilles de style du back office (complete la main)
@@ -86,9 +88,8 @@ module.exports = function(grunt) {
 			main: {
 				// Fichiers à concaténer
 				src: [
-					 '<%= srcPath %>js/vendor/bootstrap.min.js',
-					 '<%= srcPath %>js/vendor/jquery.imageloaded.min.js',
-					 '<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
+					 '<%= vendorPath %>bootstrap-sass/dist/js/bootstrap.min.js',
+					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
 			         '<%= srcPath %>js/master.js'
 			    ],
 				// Fichier de destination
@@ -97,11 +98,11 @@ module.exports = function(grunt) {
 			back: {
 				// Fichiers à concaténer
 				src: [
-					 '<%= srcPath %>js/admin/metisMenu/metisMenu.min.js',
-					 '<%= srcPath %>js/vendor/jquery.fancybox.js',
-					 '<%= srcPath %>js/admin/sb-admin-2.js',
-					 '<%= srcPath %>js/vendor/raphaeljs.2.1.2.min.js',
-					 '<%= srcPath %>js/admin/morris/morris.js',
+					 '<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
+					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js',
+					 '<%= vendorPath %>sb-admin-v2/js/sb-admin.js',
+					 '<%= vendorPath %>raphael/raphael.min.js',
+					 '<%= vendorPath %>morrisjs/morris.js',
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
@@ -188,16 +189,38 @@ module.exports = function(grunt) {
 		},		
 
 
+		copy: {
+		  jsMap: {
+		    files: [
+		      // jQuery
+		      {expand: false, src: ['<%= vendorPath %>jquery/dist/jquery.min.js'], dest: '<%= distPath %>js/vendor/jquery.min.js', filter: 'isFile'},
+		      {expand: false, src: ['<%= vendorPath %>jquery/dist/jquery.min.map'], dest: '<%= distPath %>js/vendor/jquery.min.map', filter: 'isFile'},
+
+		      // HeadJS
+		      {expand: false, src: ['<%= vendorPath %>headjs/dist/1.0.0/head.min.js'], dest: '<%= distPath %>js/vendor/head.min.js', filter: 'isFile'},
+		      {expand: false, src: ['<%= vendorPath %>headjs/dist/1.0.0/head.min.js.map'], dest: '<%= distPath %>js/vendor/head.min.js.map', filter: 'isFile'},
+
+		      // ResponseJS
+		      {expand: false, src: ['<%= vendorPath %>responsejs/response.min.js'], dest: '<%= distPath %>js/vendor/response.min.js', filter: 'isFile'},
+
+		      // Media-match
+		      {expand: false, src: ['<%= vendorPath %>media-match/media.match.min.js'], dest: '<%= distPath %>js/vendor/media.match.min.js', filter: 'isFile'},
+
+		    ]
+		  }
+		},
+
+
+
 		// Watchs
 		watch: {
 			
-			js: 
+			mainJS: 
 			{
 				files: [
-					'<%= srcPath %>js/vendor/bootstrap.min.js',
-					'<%= srcPath %>js/vendor/jquery.imageloaded.min.js',
-					'<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
-					'<%= srcPath %>js/master.js'
+						'<%= vendorPath %>bootstrap-sass/dist/js/bootstrap.min.js',
+						'<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
+						'<%= srcPath %>js/master.js'
 				],
 				tasks:['concat:main', /*'uglify:main',*/ 'clean:js', 'hash:js'],
 				options: {
@@ -205,30 +228,81 @@ module.exports = function(grunt) {
 	          	}	
           	},
 
- 			vendorJs: 
+ 			backJS: 
 			{
 				files: [
-					'<%= srcPath %>js/vendor/bootstrap.min.js',
-					'<%= srcPath %>js/vendor/jquery.imageloaded.min.js',
-					'<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
-					'<%= srcPath %>js/master.js'
+						'<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
+						'<%= vendorPath %>fancybox/source/jquery.fancybox.js',
+						'<%= vendorPath %>sb-admin-v2/js/sb-admin.js',
+						'<%= vendorPath %>raphael/raphael.min.js',
+						'<%= vendorPath %>morrisjs/morris.js'
 				],
 				tasks:['concat:back', /*'uglify:back',*/ 'clean:js', 'hash:js'],
 				options: {
 	              livereload: true
 	          	}	
-          	},         	
+          	},  
+
+          	vendorJS: 
+			{
+				files: [
+						'<%= vendorPath %>jquery/dist/**/*',
+						'<%= vendorPath %>headjs/dist/**/*',
+						'<%= vendorPath %>responsejs/**/*',
+						'<%= vendorPath %>media-match/**/*'
+				],
+				tasks:['copy:jsMap'],
+				options: {
+	              livereload: true
+	          	}	
+          	},  
+
+        	css: 
+			{
+				files: [
+					'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
+					'<%= vendorPath %>morrisjs/morris.css',
+					'<%= vendorPath %>sb-admin-v2/css/sb-admin.css',
+					'<%= vendorPath %>metisMenu/dist/metisMenu.min.css'
+			    ],
+				tasks:['cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},    	       	
 
 			scss: 
 			{
 				files: [
-					'<%= srcPath %>sass/**/*.scss',
+					'<%= srcPath %>sass/**/*.scss'
 			    ],
-				tasks:['compass', 'cssmin', 'clean:css', 'hash:css'],
+				tasks:['compass:dist', 'cssmin', 'clean:css', 'hash:css'],
 				options: {
 	              livereload: true
 	          	}	
           	},     	
+
+			bootstrap: 
+			{
+				files: [
+					'<%= vendorPath %>bootstrap-sass/lib/**/*.scss'
+			    ],
+				tasks:['compass:bootstrap', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},   
+
+			fontawesome: 
+			{
+				files: [
+					'<%= vendorPath %>font-awesome/scss/*.scss'
+			    ],
+				tasks:['compass:fontawesome', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},   
 
 			blade: 
 			{
@@ -253,6 +327,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-hash');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
@@ -263,6 +338,7 @@ module.exports = function(grunt) {
 						['concat'],
 						['uglify'],
 						['imagemin'],
+						['copy'],
 						['watch']);
 
 	// Tâche personnalisée pour le développement
@@ -272,6 +348,7 @@ module.exports = function(grunt) {
 						['concat'],
 						['uglify'],
 						['imagemin'],
+						['copy'],
 						['watch']);
 
 	// Tâche personnalisée pour la mise en prod

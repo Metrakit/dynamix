@@ -1,0 +1,17 @@
+{
+    "name" : "Dynamix",
+    "version" : "0.0.1",
+    "dependencies" : {
+    	"jquery": ">= 2.1.1",
+        "bootstrap-sass": ">= 3.0.2",
+        "fancybox": ">= 2.1.5",
+        "raphael": ">= 2.1.1",
+        "imagesloaded": ">= 3.1.8",
+        "sb-admin-v2": ">= 0.1.0",
+        "headjs": ">= 1.0.3",
+        "mustache.js": ">= 0.8.2",
+        "media-match": ">= 0.1.0",
+        "responsejs": ">= 0.9.0",
+        "summernote": ">= 0.5.9"
+    }
+}
