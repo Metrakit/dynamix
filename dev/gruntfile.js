@@ -58,11 +58,10 @@ module.exports = function(grunt) {
 
 					// Feuilles de style du back office (complete la main)
 					'<%= srcPath %>css/main.back.min.css':
-					[
-          				'<%= srcPath %>css/core-admin.css',
+					[		
 						'<%= vendorPath %>morrisjs/morris.css',
-						'<%= vendorPath %>sb-admin-v2/css/sb-admin.css',
-						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css'          				
+						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css',
+						'<%= srcPath %>css/core-admin.css',       				
 					]
 				}
 			},
