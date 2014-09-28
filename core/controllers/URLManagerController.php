@@ -9,7 +9,7 @@ class URLManagerController extends BaseController {
 
     public function getHome()
     {
-        $files = Files::all();
+        /*$files = Files::all();
         foreach($files as $f){
             if($f->id == 1){
                 $f->path = '../uploads/pictures/album cute kitten/cute-kitten-1.jpg';
@@ -21,7 +21,13 @@ class URLManagerController extends BaseController {
                 $f->delete();
             }
         }
-        $files = null;
+        $files = null;*/
+
+/*        $arabicTest = Translation::where('locale_id','=','ar')->get();
+        foreach ( $arabicTest as $a ) {
+            $a->delete();
+        }
+*/
 
         $urls = App::make('CacheController')->getCache( 'DB_Urls' );
 

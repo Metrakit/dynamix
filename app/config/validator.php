@@ -48,9 +48,27 @@ return array(
 
 	'slider-edit'	=> 		array(	'image'		=> 'image',
 									'img_alt'	=> 'required|min:3',
-									'description'=> 'min:3')
+									'description'=> 'min:3'),
+
+	/*
+	|	Admin
+	|
+	|	Environment
+	|
+	*/
+	'admin'			=>		array(	
+		'languages'		=>		array(	'id'		=> 'min:2|max:15'),
 
 
+	/*
+	|	Option
+	|
+	| Only regular (-i18n) rules
+	*/
+		'option'		=> 		array(	'site_url'		=> 'url|min:5',										
+										'admin_email'	=> 'email|min:5|max:55'),
+		
+		'option_site_name'=>	array(  'site_name'		=> 'min:5')
+	),
 
-
-		);
+);

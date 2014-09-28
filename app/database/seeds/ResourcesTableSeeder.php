@@ -127,7 +127,7 @@ class ResourcesTableSeeder extends Seeder {
             //System
             array(
                 'name' => 'environment',
-                'icon' => 'glyphicon glyphicon-list',
+                'icon' => 'glyphicon glyphicon-globe',
                 'model' => null,
                 'in_admin_ui'   => true
             ),
@@ -138,7 +138,7 @@ class ResourcesTableSeeder extends Seeder {
                 'in_admin_ui'   => true
             ),
             array(
-                'name' => 'setting',
+                'name' => 'option',
                 'icon' => 'glyphicon glyphicon-cog',
                 'model' => 'Option',
                 'in_admin_ui'   => true

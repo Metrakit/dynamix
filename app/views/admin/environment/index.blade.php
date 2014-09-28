@@ -17,21 +17,24 @@
 
     <!-- Enable / Desable languages on the front ends -->
 
+    <div class="alert alert-info" role="alert">
+        {{ Lang::get('admin.languagesHelp') }}
+    </div>
 
-        <form class="form-horizontal" method="POST" action="{{ URL::to('admin/environment') }}" accept-charset="UTF-8" autocomplete="off">
+    <form class="form-horizontal" method="POST" action="{{ URL::to('admin/languages') }}" accept-charset="UTF-8" autocomplete="off">
 
-            @foreach( $langsFrontEnd as $langPack)
-            <div class="col-lg-4 col-sm-6">
-                @include('admin.environment.form', array('langs' => $langPack))
-            </div>
-            @endforeach
+        @foreach( $langsFrontEnd as $langPack)
+        <div class="col-lg-4 col-sm-6">
+            @include('admin.environment.form', array('langs' => $langPack))
+        </div>
+        @endforeach
 
-            <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
-            <div class="form-group text-center">
-                <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('button.save')}}}</button>
-            </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('button.save')}}}</button>
+        </div>
 
-        </form>
+    </form>
 
 @stop

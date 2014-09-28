@@ -16,7 +16,7 @@ return array(
 	'nav_user'				=> 'Utilisateurs',
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
-	'nav_setting'			=> 'Options',
+	'nav_option'			=> 'Options',
 
 	//Dashbooard
 	'dashboard'				=> 'Tableau de bord',
@@ -41,5 +41,28 @@ return array(
 
 	//Environment
 	'environment'				=> 'Langues',
-	'languages'		=> 'Langues',
+		'languages'					=> 'Langues',
+		'languagesHelp'				=> '<strong>Information! </strong><br>
+										Lors de l\'ajout d\'une nouvelle langue, les ressources existantes du site ne seront pas traduites et seront sufixées par l\'identifiant de la langue (par exemple : fr, en, ...).<br>
+										La traduction sera à faire par vos soins...',
+		'languauge_save_error'		=> 'Une erreur est survenu lors de l\'enrigistrement de la langue... Veuillez réessayer ou contacter le WebMaster',
+		'translate_create_error'	=> 'Une erreur est survenu lors de la traduction d\'une ressource... Veuillez réessayer ou contacter le WebMaster',
+		'language_success'			=> 'Félicitation ! La langue a été ajoutée avec succès !',
+
+	//Option
+	'option'					=> 'Options',
+
+		'option_site_url'			=> 'Adresse du site',
+		'option_site_name'			=> 'Nom du site',
+		'option_site_name_help'		=> 'Ce texte est affiché dans l\'onglet de votre site',
+		'option_admin_email'		=> 'Mail de l\'administrateur',
+		'option_admin_email_help'	=> 'Ce mail sera utilisé pour recevoir les messages par le biais du formulaire de contact',
+		'option_analytics'			=> 'Code analytics',
+		'option_analytics_help'		=> 'Outils d\'analyse et de statistique placé dans le \'<head>\'.<br>Recommandé : Google Analytics (gratuit)',
+
+		'option_site_name_update_error'		=> 'Une erreur est survenu lors de la mise à jour du nom du site...',
+		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
+		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
+
+
 );

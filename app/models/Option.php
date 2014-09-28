@@ -28,12 +28,22 @@ class Option extends Eloquent
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
 	}
 
+	public function translateLocale( $i18n_id, $locale_id )
+	{
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
+	}
+
 
 	/**
      * Attributes
      *
      * @return mixed
      */
+	public function site_name_locale( $locale_id )
+	{
+		return $this->translateLocale( $this->i18n_site_name, $locale_id );
+	}
+
 	public function site_name()
 	{
 		return $this->translate( $this->i18n_site_name );

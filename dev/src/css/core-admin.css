@@ -66,7 +66,7 @@ body {
   white-space: normal;
 }
 
-/* line 62, ../sass/admin/_sb-admin-2.scss */
+/* line 60, ../sass/admin/_sb-admin-2.scss */
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,
 .navbar-top-links .dropdown-alerts {
@@ -131,7 +131,7 @@ body {
   content: "\f107";
 }
 
-/* line 114, ../sass/admin/_sb-admin-2.scss */
+/* line 113, ../sass/admin/_sb-admin-2.scss */
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
   border-bottom: 0 !important;
@@ -156,7 +156,7 @@ body {
     margin-top: 51px;
   }
 
-  /* line 136, ../sass/admin/_sb-admin-2.scss */
+  /* line 134, ../sass/admin/_sb-admin-2.scss */
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
   .navbar-top-links .dropdown-alerts {
@@ -195,7 +195,7 @@ body {
   color: #d9534f;
 }
 
-/* line 171, ../sass/admin/_sb-admin-2.scss */
+/* line 167, ../sass/admin/_sb-admin-2.scss */
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
 .btn-info.btn-outline:hover,
@@ -233,7 +233,7 @@ body {
   margin: 0;
 }
 
-/* line 200, ../sass/admin/_sb-admin-2.scss */
+/* line 199, ../sass/admin/_sb-admin-2.scss */
 .panel .slidedown .glyphicon,
 .chat .glyphicon {
   margin-right: 5px;
@@ -262,7 +262,7 @@ body {
   height: 100%;
 }
 
-/* line 227, ../sass/admin/_sb-admin-2.scss */
+/* line 223, ../sass/admin/_sb-admin-2.scss */
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -329,7 +329,7 @@ table.dataTable thead .sorting:after {
   padding-top: 10px;
   padding-bottom: 10px;
   border: 1px solid #ddd;
-  background-color: #eeeeee !important;
+  background-color: #eee !important;
 }
 
 /* line 285, ../sass/admin/_sb-admin-2.scss */

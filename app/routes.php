@@ -64,7 +64,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 	//OPTION
 	Route::get('/environment', 'AdminController@getEnvironnement');
-	Route::post('/environment', 'AdminController@postEnvironnement');
+	Route::post('/languages', 'AdminController@postLanguages');
 });
 
 
