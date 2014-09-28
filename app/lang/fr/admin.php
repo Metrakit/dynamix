@@ -14,7 +14,7 @@ return array(
 	'nav_navigation'		=> 'Navigations',
 	'nav_role'				=> 'Rôles',
 	'nav_user'				=> 'Utilisateurs',
-	'nav_environment'		=> 'Environnement',
+	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
 	'nav_setting'			=> 'Options',
 
@@ -37,4 +37,9 @@ return array(
 	
 	//Media
 	'medias'			=> 'Médias',
+
+
+	//Environment
+	'environment'				=> 'Langues',
+	'languages'		=> 'Langues',
 );

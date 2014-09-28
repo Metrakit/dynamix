@@ -60,7 +60,6 @@ if (isset($_GET['action']))
     {
         case 'delete_file':
             if ($delete_files){
-                App::make('FileController')->delete($path);
                 unlink($path);
                 if (file_exists($path_thumb)) unlink($path_thumb);
 		    
@@ -189,7 +188,6 @@ if (isset($_GET['action']))
                 if (is_function_callable('chmod') !== FALSE){
                     chmod($path, 0644);
                 }
-                App::make('FileController')->create($path);
                 echo lang_File_Save_OK;
             }
 
