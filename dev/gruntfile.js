@@ -99,10 +99,10 @@ module.exports = function(grunt) {
 				// Fichiers à concaténer
 				src: [
 					 '<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
-					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js',
-					 '<%= vendorPath %>sb-admin-v2/js/sb-admin.js',
-					 '<%= vendorPath %>raphael/raphael.min.js',
+					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js', 
+					 '<%= vendorPath %>raphael/raphael-min.js',
 					 '<%= vendorPath %>morrisjs/morris.js',
+					 '<%= srcPath %>js/vendor/sb-admin-2.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
@@ -236,9 +236,9 @@ module.exports = function(grunt) {
 				files: [
 						'<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.js',
-						'<%= vendorPath %>sb-admin-v2/js/sb-admin.js',
-						'<%= vendorPath %>raphael/raphael.min.js',
-						'<%= vendorPath %>morrisjs/morris.js'
+						'<%= vendorPath %>raphael/raphael-min.js',
+						'<%= vendorPath %>morrisjs/morris.js',
+						'<%= srcPath %>js/vendor/sb-admin-2.js'
 				],
 				tasks:['concat:back', /*'uglify:back',*/ 'clean:js', 'hash:js'],
 				options: {
