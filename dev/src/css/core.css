@@ -1,3 +1,56 @@
+/* line 82, icon/*.png */
+.icon-sprite, .icon-beer, .icon-cat, .icon-drink, .icon-drug, .icon-hat, .icon-song {
+  background: url('/img/icon-s2903f9eb91.png') no-repeat;
+}
+
+/* line 60, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-beer {
+  background-position: 0 0;
+  height: 50px;
+  width: 50px;
+}
+
+/* line 60, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-cat {
+  background-position: 0 -50px;
+  height: 50px;
+  width: 50px;
+}
+
+/* line 60, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-drink {
+  background-position: 0 -100px;
+  height: 50px;
+  width: 50px;
+}
+
+/* line 60, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-drug {
+  background-position: 0 -150px;
+  height: 50px;
+  width: 50px;
+}
+
+/* line 60, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-hat {
+  background-position: 0 -200px;
+  height: 50px;
+  width: 50px;
+}
+
+/* line 60, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-song {
+  background-position: 0 -250px;
+  height: 50px;
+  width: 50px;
+}
+
+/* line 9, ../sass/common/_sprites.scss */
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+}
+
 /*======= Custom Media Query to fix small hero-unit ========= */
 /* line 2, ../sass/slideshow/_responsiveslideshow.scss */
 .hero-unit {
@@ -119,18 +172,18 @@ ol.linenums li {
   width: 100%;
 }
 
-/* line 29, ../sass/core.scss */
+/* line 32, ../sass/core.scss */
 body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 34, ../sass/core.scss */
+/* line 37, ../sass/core.scss */
 header {
   background: url(../../img/sources/background-cms.png) no-repeat center center #00a99d;
   color: white;
 }
-/* line 38, ../sass/core.scss */
+/* line 41, ../sass/core.scss */
 header figure {
   display: block;
   position: relative;
@@ -141,13 +194,13 @@ header figure {
   vertical-align: middle;
 }
 
-/* line 49, ../sass/core.scss */
+/* line 52, ../sass/core.scss */
 .container.main {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-/* line 54, ../sass/core.scss */
+/* line 57, ../sass/core.scss */
 footer {
   padding-top: 10px;
   padding-bottom: 10px;

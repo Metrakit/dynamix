@@ -53,16 +53,16 @@ module.exports = function(grunt) {
 						'<%= srcPath %>css/bootstrap.css',
 						'<%= srcPath %>css/fontawesome.css',
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
-						'<%= srcPath %>css/core.css',
-						'<%= vendorPath %>morrisjs/morris.css',
-						'<%= vendorPath %>sb-admin-v2/css/sb-admin.css',
-						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css'
+						'<%= srcPath %>css/core.css'
 					],
 
 					// Feuilles de style du back office (complete la main)
 					'<%= srcPath %>css/main.back.min.css':
 					[
-          				'<%= srcPath %>css/core-admin.css'
+          				'<%= srcPath %>css/core-admin.css',
+						'<%= vendorPath %>morrisjs/morris.css',
+						'<%= vendorPath %>sb-admin-v2/css/sb-admin.css',
+						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css'          				
 					]
 				}
 			},
