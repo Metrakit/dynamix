@@ -224,7 +224,7 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
 						'<%= srcPath %>js/master.js'
 				],
-				tasks:['concat:main', /*'uglify:main',*/ 'clean:js', 'hash:js'],
+				tasks:['concat:main', 'clean:js', 'hash:js'],
 				options: {
 	              livereload: true
 	          	}	
@@ -239,7 +239,7 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>morrisjs/morris.js',
 						'<%= srcPath %>js/vendor/sb-admin-2.js'
 				],
-				tasks:['concat:back', /*'uglify:back',*/ 'clean:js', 'hash:js'],
+				tasks:['concat:back', 'clean:js', 'hash:js'],
 				options: {
 	              livereload: true
 	          	}	
@@ -330,8 +330,6 @@ module.exports = function(grunt) {
 
 	});
 
-
-
 	// Chargement des plugins
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -344,28 +342,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-	// Tâche par défaut
-	grunt.registerTask('default',
-						['compass'],
-						['cssmin'],
-						['concat'],
-						['uglify'],
-						['imagemin'],
-						['copy'],
-						['watch']);
+	// Tâches par défauts
+	grunt.registerTask('default', ['clean', 'compass', 'cssmin', 'concat', 'imagemin', 'hash', 'copy', 'watch']);
 
-	// Tâche personnalisée pour le développement
-	grunt.registerTask('dev',
-						['compass'],
-						['cssmin'],
-						['concat'],
-						['uglify'],
-						['imagemin'],
-						['copy'],
-						['watch']);
 
-	// Tâche personnalisée pour la mise en prod
-	 grunt.registerTask('prod', 
-	 					 ['imagemin']);
+	// Tâches personnalisées pour le développement
+	grunt.registerTask('dev', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
+
+	// Tâches personnalisées pour la mise en prod
+	grunt.registerTask('prod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy', 'watch']);
 
 }
