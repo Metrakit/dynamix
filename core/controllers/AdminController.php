@@ -108,7 +108,7 @@ class AdminController extends BaseController {
 	        			if ( !empty($permission) ) {
 	        				$permission->type = 'allow';
 	        				if ( !$permission->save() ) {
-								return Redirect::to('admin/role_permission')->with( 'error', Lang::get('admin.permission_save_error') );
+								return Redirect::to('admin/role_permission')->with( 'error_permissions', Lang::get('admin.permission_save_error') );
 	        				}
 	        			}
 	        		
@@ -123,19 +123,19 @@ class AdminController extends BaseController {
 		        		if ( !empty($permission) ) {
 	        				$permission->type = 'deny';
 	        				if ( !$permission->save() ) {
-								return Redirect::to('admin/role_permission')->with( 'error', Lang::get('admin.permission_save_error') );
+								return Redirect::to('admin/role_permission')->with( 'error_permissions', Lang::get('admin.permission_save_error') );
 	        				}
 	        			}
 	        		}
 	        	}
 
-				return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.permission_save_success'));
+				return Redirect::to('admin/role_permission')->with('success_permissions', Lang::get('admin.permission_save_success'));
 	        }
 		
 			return Redirect::to('/admin/role_permission')->withInput()->withErrors($validator);
 		}
 
-		return Redirect::to('/admin/role_permission')->with('error', Lang::get('admin.role_not_found'));
+		return Redirect::to('/admin/role_permission')->with('error_permissions', Lang::get('admin.role_not_found'));
 	
 	}
 
@@ -204,11 +204,19 @@ class AdminController extends BaseController {
         	}
 
         	//Identify old languages
-			$oldLang = array();
         	foreach ( $activeLang as $lang ) {
-        		if( !array_search($lang->id, Input::all()) ){
+        		if ( !array_search($lang->id, Input::all()) ){
         			//Si on trouve rien
-        			$oldLang[] = $lang->id;
+        			foreach ( $activeLang as $lang ) {
+		        		if ( !array_search($lang->id, Input::all()) ){
+		        			//Si on trouve rien
+		        			foreach ( Translation::where('locale_id','=',$lang->id)->get() as $translation ) {
+		        				if (!$translation->delete() ) {
+									return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_delete_error'));
+		        				}
+		        			}
+		        		}
+		        	}
         		}
         	}
 

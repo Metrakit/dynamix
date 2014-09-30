@@ -62,10 +62,15 @@ return array(
 		'roles'				=> 'Rôles',
 		'role_name'			=> 'Nom',
 		'role_empty'		=> 'Ce rôle n\'existe pas !',
-		'permissions'		=> 'Permissions',
-		'permission_save_error'		=> 'Les permissions n\'ont pas pu être enregistrée...',
-		'permission_save_success'	=> 'Les permissions ont été enregistrée avec succès !',
 		'role_not_found'		=> 'Rôle introuvable...',
+		'role_help'				=> 'Un rôle est utilisé pour grouper des permissions d\'accès pour à des ressources.',
+		
+		'permissions'		=> 'Permissions',
+		'permission_save_error'		=> 'Les permissions n\'ont pas pu être enregistrées...',
+		'permission_save_success'	=> 'Les permissions ont été enregistrées avec succès !',
+		'permission_help'		=> 'Chaque rôle a des permissions qui, autorise ou non, l\'accès a des ressources.',
+
+
 
 	//User
 	'user'				=> 'Utilisateur',
@@ -79,8 +84,10 @@ return array(
 										Lors de l\'ajout d\'une nouvelle langue, les ressources existantes du site ne seront pas traduites et seront sufixées par l\'identifiant de la langue (par exemple : fr, en, ...).<br>
 										La traduction sera à faire par vos soins...',
 		'languauge_save_error'		=> 'Une erreur est survenu lors de l\'enrigistrement de la langue... Veuillez réessayer ou contacter le WebMaster',
-		'translate_create_error'	=> 'Une erreur est survenu lors de la traduction d\'une ressource... Veuillez réessayer ou contacter le WebMaster',
 		'language_success'			=> 'Félicitation ! La langue a été ajoutée avec succès !',
+		
+		'translate_create_error'	=> 'Une erreur est survenu lors de la traduction d\'une ressource... Veuillez réessayer ou contacter le WebMaster',
+		'translate_delete_error'	=> 'Une erreur est survenu lors de la suppression d\'une ressource... Veuillez réessayer ou contacter le WebMaster',
 
 	//Option
 	'option'					=> 'Option',

@@ -37,7 +37,21 @@ class AdminRoleController extends BaseController {
            
             // Was the blog post created?
             if ( $role->save() ) {
-                // Redirect to the new blog post role
+                //Set all permission to deny
+            	$resources = Resource::where('in_admin_ui','=',1)->get();
+            	$data = array();
+            	foreach($resources as $resource){
+	                foreach(Action::all() as $action){
+	                    $data[] = array(
+	                        'role_id'       => $role->id,
+	                        'type'          => 'deny',
+	                        'action_id'     => $action->id,
+	                        'resource_id'   => $resource->id
+	                    );
+	                }
+	            }
+				DB::table('permissions')->insert( $data );
+                
                 return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_save_success'));
             }
 
@@ -111,10 +125,16 @@ class AdminRoleController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		// delete
+	public function destroy ($id) {
+		//find resource
 		$role = Role::find($id);
+
+		//delete all permissions
+		foreach ( $role->permissions as $permission ) {
+			if (!$permission->delete()) return Redirect::to('admin/role_permission')->with('error', Lang::get('admin.role_delete_fail'));
+		}
+
+		// delete
 		if ( $role->delete() ) {
 			return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_delete_success'));;
 		}

@@ -17,6 +17,7 @@
 @include('includes.session-message')
 
 <h2>{{{ Lang::get('admin.roles') }}} <a href="{{ URL::to('admin/role/create') }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{ Lang::get('button.new') }}}</a></h2>
+<p class="help-block">{{{ Lang::get('admin.role_help') }}}</p>
 <div class="col-sm-6">
 <table class="table">
     <thead>
@@ -46,8 +47,10 @@
 </div>
 <div class="clearfix"></div>
 
+@include('includes.session-message-var', array('var'=>'permissions'))
 
 <h2>{{{ Lang::get('admin.permissions') }}}</h2>
+<p class="help-block">{{{ Lang::get('admin.permission_help') }}}</p>
 <table class="table">
     <thead>
     <tr>
