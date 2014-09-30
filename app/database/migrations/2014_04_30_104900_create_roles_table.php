@@ -22,6 +22,8 @@ class CreateRolesTable extends Migration {
 			$table->integer('inherited_role_id')->nullable()->unsigned();
 			$table->foreign('inherited_role_id')->references('id')->on('roles');
 			
+			$table->boolean('deletable');
+
 			$table->timestamps();
 		});
 	}

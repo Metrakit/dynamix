@@ -10,12 +10,14 @@ class RolesTableSeeder extends Seeder {
             array(
                 'name'              => 'moderator',
                 'inherited_role_id' => null,
+                'deletable'         => 1,
                 'created_at'        => new DateTime,
                 'updated_at'        => new DateTime
             ),
             array(
                 'name'              => 'admin',
                 'inherited_role_id' => 1,
+                'deletable'         => 0,
                 'created_at'        => new DateTime,
                 'updated_at'        => new DateTime
             ))

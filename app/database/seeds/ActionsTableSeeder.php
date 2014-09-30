@@ -8,7 +8,7 @@ class ActionsTableSeeder extends Seeder {
 
         DB::table('actions')->insert( array(
             //CRUD
-            array(
+            /*array(
                 'name' => 'create'
             ),
             array(
@@ -19,6 +19,10 @@ class ActionsTableSeeder extends Seeder {
             ),
             array(
                 'name' => 'delete'
+            )
+            */
+            array(
+                'name' => 'manage'
             ))
         );
     }

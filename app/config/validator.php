@@ -68,7 +68,18 @@ return array(
 		'option'		=> 		array(	'site_url'		=> 'url|min:5',										
 										'admin_email'	=> 'email|min:5|max:55'),
 		
-		'option_site_name'=>	array(  'site_name'		=> 'min:5')
+		'option_site_name'=>	array(  'site_name'		=> 'min:5'),
+	
+
+	/*
+	|	Role / Permission
+	|
+	*/
+		'role'		=> 		array(	'name'			=> 'required|min:3|max:200'),
+
+		'permission'=> 		array(	'resource_id'	=> 'exists:resources,id',
+									'role_id'		=> 'required|exists:roles,id'),
+		
 	),
 
 );

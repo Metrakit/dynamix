@@ -12,7 +12,7 @@ return array(
 	'nav_page'				=> 'Pages',
 	'nav_tag'				=> 'Tags',
 	'nav_navigation'		=> 'Navigations',
-	'nav_role'				=> 'Rôles',
+	'nav_role_permission'	=> 'Rôles / Permissions',
 	'nav_user'				=> 'Utilisateurs',
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
@@ -36,7 +36,40 @@ return array(
 		'returningVisitor'		=> 'Visiteur régulier',
 	
 	//Media
+	'media'				=> 'Média',
 	'medias'			=> 'Médias',
+
+	//Page
+	'page'			=> 'Page',
+	'pages'			=> 'Pages',
+
+
+	//Navigation
+	'navigation'					=> 'Navigation',
+	'navigations'					=> 'Navigations',
+
+	//Role / Permission
+	'role_permission'	=> 'Rôles / Permissions',
+		'role_edit'			=> 'Modification du rôle',
+		'role_create'		=> 'Création d\'un rôle',
+		'role_save_success' => 'Le rôle a bien été créé !',
+		'role_save_fail'	=> 'Le rôle n\'a pas pu être enregistré...',
+		'role_edit_success'	=> 'Le rôle a bien été modifié !',
+		'role_edit_fail'	=> 'Le rôle n\'a pas pu être modifié...',
+		'role_delete_success'=> 'Le rôle a bien été supprimé !',
+		'role_delete_fail'	=> 'Le rôle n\'a pas pu être supprimé...',
+		'role'				=> 'Rôle',
+		'roles'				=> 'Rôles',
+		'role_name'			=> 'Nom',
+		'role_empty'		=> 'Ce rôle n\'existe pas !',
+		'permissions'		=> 'Permissions',
+		'permission_save_error'		=> 'Les permissions n\'ont pas pu être enregistrée...',
+		'permission_save_success'	=> 'Les permissions ont été enregistrée avec succès !',
+		'role_not_found'		=> 'Rôle introuvable...',
+
+	//User
+	'user'				=> 'Utilisateur',
+	'users'				=> 'Utilisateurs',
 
 
 	//Environment
@@ -50,7 +83,8 @@ return array(
 		'language_success'			=> 'Félicitation ! La langue a été ajoutée avec succès !',
 
 	//Option
-	'option'					=> 'Options',
+	'option'					=> 'Option',
+	'options'					=> 'Options',
 
 		'option_site_url'			=> 'Adresse du site',
 		'option_site_name'			=> 'Nom du site',
@@ -64,5 +98,7 @@ return array(
 		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
 		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
 
-
+	//Log
+	'log'					=> 'Log',
+	'logs'					=> 'Logs',
 );

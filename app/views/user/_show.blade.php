@@ -2,22 +2,23 @@
 
 
 @section('meta_title')
-{{{ Lang::get('admin.users') }}} |
+{{{ Lang::get('admin/admin.user') }}} |
 @parent
 @stop
 
-@section('page-header')
-    <div class="row">
-        <h1 class="page-header">{{{ Lang::get('admin.users') }}}</h1>
-    </div>
+
+@section('ariane')
+@parent
+&nbsp;<a href="{{URL::to('admin')}}">{{{ Lang::get('admin/admin.dashboard') }}}</a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<a href="{{URL::to('admin/user')}}">{{{ Lang::get('admin/admin.user') }}}</a>
 @stop
 
+
 @section('content')
+<h2>{{{ Lang::get('admin/admin.user') }}}</h2>
 
 @include('includes.session-message')
 
 <table class="table">
-    <thead>
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
@@ -26,20 +27,14 @@
         <th>Dernière visite</th>
         <th>Action</th>
     </tr>
-    </thead>
-    <tbody>
-    @foreach($users as $user)
     <tr>
         <td>{{$user->lastname}}</td>
         <td>{{$user->firstname}}</td>
         <td>{{$user->pseudo}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->last_visit}}</td>
-        <td>
-            <a href="{{URL::to('user/'.$user->id.'/edit')}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-        </td>
+        <td><a href="{{URL::to('user/'.$user->id.'/edit')}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a></td>
     </tr>
-    @endforeach
-    </tbody>
 </table>
+ 
 @stop

@@ -19,7 +19,7 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ URL::to('/user/' . $user->id) }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('user.profile') }}}</a>
+                <li><a href="{{ URL::to('/user/' . $user->id . '/edit') }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('user.edit_account') }}}</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="{{ URL::to('/user/logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{{ Lang::get('user.logout') }}}</a>

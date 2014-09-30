@@ -8,7 +8,7 @@ class ResourcesTableSeeder extends Seeder {
 
         DB::table('resources')->insert( array(
             //Blog
-            array(
+            /*array(
                 'name' => 'blog',
                 'icon' => 'glyphicon glyphicon-book',
                 'model' => 'Blog',
@@ -26,7 +26,7 @@ class ResourcesTableSeeder extends Seeder {
                 'model' => 'ArticleCategory',
                 'in_admin_ui'   => true
             ),
-            
+            */
             //Media
             array(
                 'name' => 'media',
@@ -54,7 +54,7 @@ class ResourcesTableSeeder extends Seeder {
             ),*/
 
             //Gallery Image
-            array(
+            /*array(
                 'name' => 'mosaic',
                 'icon' => 'glyphicon glyphicon-picture',
                 'model' => 'Mosaic',
@@ -65,7 +65,7 @@ class ResourcesTableSeeder extends Seeder {
                 'icon' => 'glyphicon glyphicon-picture',
                 'model' => 'Gallery',
                 'in_admin_ui'   => true
-            ),
+            ),*/
 
             //Page
             array(
@@ -88,12 +88,12 @@ class ResourcesTableSeeder extends Seeder {
             ),
 
             //Conector
-            array(
+            /*array(
                 'name' => 'tag',
                 'icon' => 'glyphicon glyphicon-tag',
                 'model' => 'Tag',
                 'in_admin_ui'   => true
-            ),
+            ),*/
 
             //Menu
             array(
@@ -105,16 +105,22 @@ class ResourcesTableSeeder extends Seeder {
             
             //User
             array(
+                'name' => 'role_permission',
+                'icon' => 'glyphicon glyphicon-lock',
+                'model' => null,
+                'in_admin_ui'   => true
+            ),
+            array(
                 'name' => 'role',
                 'icon' => 'glyphicon glyphicon-lock',
                 'model' => 'Role',
-                'in_admin_ui'   => true
+                'in_admin_ui'   => false
             ),
             array(
                 'name' => 'permission',
                 'icon' => 'glyphicon glyphicon-lock',
                 'model' => 'Permission',
-                'in_admin_ui'   => true
+                'in_admin_ui'   => false
             ),
             array(
                 'name' => 'user',

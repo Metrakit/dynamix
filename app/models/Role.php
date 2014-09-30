@@ -26,8 +26,28 @@ class Role extends Eloquent
      *
      * @return mixed
      */
-    public function trackable()
-    {
+    public function trackable() {
         return $this->morphTo();
     }
+
+    /**
+     * Additional Method
+     *
+     * @var string
+     */
+    public function isDeletable() {
+        return $this->deletable;
+    }
+
+    public function hasResource( $id ) {
+        foreach ( $this->permissionsAllowed as $permission ) {
+            if ( $permission->resource->id === $id ) return true;
+        }
+        return false;
+    }
+
+    public function permissionsAllowed() {
+        return $this->hasMany('Permission')->where('type','=','allow');
+    }
+
 }

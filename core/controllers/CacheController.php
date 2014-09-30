@@ -15,11 +15,10 @@ class CacheController extends Controller {
 
 		
 		//Cache Model::Resource('name')
-		//Cache::forget('DB_Resource_name');
-		/*Cache::rememberForever('DB_Resource_name', function()
+		Cache::rememberForever('DB_AdminResourceName', function()
 		{
 			//Get all data in database
-		    $resources = Resource::all();
+		    $resources = Resource::where('in_admin_ui','=',1)->get();
 
 		    //Preapre data to extract by id
 		    $data = array();
@@ -29,7 +28,7 @@ class CacheController extends Controller {
 		    }
 
 		    return $data;
-		});*/
+		});
 
 		//Cache Model::Mosaique('name')
 		//Cache::forget('DB_Mosaique');
@@ -74,6 +73,7 @@ class CacheController extends Controller {
 	{
 		Cache::forget('DB_Urls');
 		Cache::forget('DB_Option');
+		Cache::forget('DB_AdminResourceName');
 
 		if(!Cache::has($cache)){
 			App::make('CacheController')->initCache();

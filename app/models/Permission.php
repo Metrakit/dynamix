@@ -6,7 +6,7 @@ class Permission extends Eloquent
      * Parameters
      */
 	protected $table = 'permissions';
-
+    public $timestamps = false;
 
     /**
      * Relations
@@ -14,7 +14,7 @@ class Permission extends Eloquent
      * @var string
      */
 	public function role() {
-        return $this->hasOne('Role');
+        return $this->belongsTo('Role');
     }
 
     public function action() {
@@ -22,7 +22,7 @@ class Permission extends Eloquent
     }
 
     public function resource() {
-        return $this->hasOne('Resource');
+        return $this->belongsTo('Resource');
     }
 
     /**
@@ -33,4 +33,12 @@ class Permission extends Eloquent
     public function trackable() {
         return $this->morphTo();
     }
+
+
+    /**
+     * Additionnal method
+     *
+     * @var string
+     */
+
 }

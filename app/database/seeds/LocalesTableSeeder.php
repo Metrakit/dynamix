@@ -81,7 +81,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag_w'        => '200',
                 'flag_h'        => '133',
                 'enable'        => 0,
-                'on_admin'      => 0
+                'on_admin'      => 1
             ),
 
             array(
@@ -92,7 +92,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag_w'        => '200',
                 'flag_h'        => '140',
                 'enable'        => 0,
-                'on_admin'      => 0
+                'on_admin'      => 1
             ),
 
             array(

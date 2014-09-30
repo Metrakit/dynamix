@@ -22,14 +22,17 @@ Route::get('/', array('uses' => 'HomeController@index'));
 |
 */
 Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function (){
-	//Index / Dashboard
+	//Dashboard
 	Route::get('/','AdminController@index');
 
-	//PAGE
+	//Media
+	Route::get('/media', 'AdminController@getMedia');
+
+	//Page
 	Route::resource('page','AdminPageController',
 		array('except' => array('show')) );
 
-	//MENU
+	//Navigation
 	Route::resource('menu','AdminMenuController',
 		array('except' => array('create','store','show')) );
 	Route::post('menu/{id}/move','AdminMenuController@move');
@@ -39,6 +42,26 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::get('menu/create-menu','AdminMenuController@createMenu');
 	Route::post('menu/create-menu','AdminMenuController@postCreateMenu');
 
+	//Role / Permission
+	Route::get('/role_permission', 'AdminController@getRolePermission');
+		//Role RestFull
+		Route::resource('role', 'AdminRoleController',
+			array('except' => array('index','show')) );
+		//Permission update
+		Route::post('/permission', 'AdminController@postPermission');
+	
+	//User
+	Route::get('/user', 'AdminController@getUser');
+	
+	//Option
+	Route::get('/option', 'AdminController@getOption');
+	Route::post('/option', 'AdminController@postOption');
+
+	//Languages
+	Route::get('/environment', 'AdminController@getEnvironnement');
+	Route::post('/languages', 'AdminController@postLanguages');
+
+/*
 	//MOSAIQUES
 	Route::resource('mosaique','AdminMosaiqueController',
 		array('only' => array('index','edit','update')) );
@@ -51,20 +74,9 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//ARTICLE
 	Route::resource('image','AdminImageController',
 		array('only' => array('destroy')) );
-
-	//USER
-	Route::get('/user', 'AdminController@getUser');
+*/
 	
-	//MEDIA
-	Route::get('/media', 'AdminController@getMedia');
-	
-	//OPTION
-	Route::get('/option', 'AdminController@getOption');
-	Route::post('/option', 'AdminController@postOption');
 
-	//OPTION
-	Route::get('/environment', 'AdminController@getEnvironnement');
-	Route::post('/languages', 'AdminController@postLanguages');
 });
 
 

@@ -30,30 +30,6 @@ class AdminController extends BaseController {
 		return View::make('admin.index', $data );
 	}
 
-	/**
-	 * get All User in base
-	 *
-	 * @return Response
-	 */
-	public function getUser()
-	{
-		$users = User::all();
-
-		return View::make('admin.user.index', compact('users'));
-	}
-
-	/**
-	 * get All User in base
-	 *
-	 * @return Response
-	 */
-	public function getMosaiques()
-	{
-		$mosaiques = Mosaique::all();
-
-		return View::make('admin.mosaique.index', compact('mosaiques'));
-	}
-
 
 	/**
 	 * get the Filemanager
@@ -64,6 +40,7 @@ class AdminController extends BaseController {
 	{
 		//User
 		$user = Auth::user();
+
 		//Interface
 		$noAriane = true;
 
@@ -71,74 +48,114 @@ class AdminController extends BaseController {
 	}
 
 
+
 	/**
-	 * get All Option in base
+	 * get All User in base
 	 *
 	 * @return Response
 	 */
-	public function getOption()
+/*	public function getMosaiques()
+	{
+		$mosaiques = Mosaique::all();
+
+		return View::make('admin.mosaique.index', compact('mosaiques'));
+	}*/
+
+
+	/**
+	 * get the Filemanager
+	 *
+	 * @return Response
+	 */
+	public function getRolePermission()
 	{
 		//User
 		$data['user'] = Auth::user();
 
+		//Roles
+		$data['roles'] = Role::all();
+
 		//Interface
 		$data['noAriane'] = true;
 
-		$data['option'] = Option::first();
-
-		return View::make('admin.option.index', $data);
+		return View::make('admin.role_permission.index', $data);
 	}
 
 	/**
-	 * post All Option in base
+	 * get the Filemanager
 	 *
 	 * @return Response
 	 */
-	public function postOption()
+	public function postPermission()
 	{
-		//Making adaptive rules for site_name
-		$site_name_rules = array();
-		$site_name_locales = array();
-		foreach ( Input::all() as $k => $v ) {
-			if ( strpos($k, 'site_name_') !== false ) {
-				$site_name_rules[$k] = Config::get('validator.admin.option_site_name');
-				$site_name_locales[] = substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
-			}
+		$role = Role::find( Input::get('role_id') );
+
+		if ( !empty($role) ) {
+			// Validate the inputs
+	        $validator = Validator::make(Input::all(), Config::get('validator.admin.permission'));
+	        
+	        // Check if the form validates with success
+	        if ($validator->passes()) {
+	        	//[id] => name
+	        	$resources = App::make('CacheController')->getCache('DB_AdminResourceName');
+
+	        	//Set allowed resources
+	        	foreach ( Input::except(array('role_id','_token')) as $resource_id ) {
+	        		//['resource_id'] => [id]
+	        		Log::info('allowed resource : '.$resource_id);
+	        		unset($resources[$resource_id]);
+	        			$permission = Permission::where('role_id','=',$role->id)->where('resource_id','=',$resource_id)->first();
+	        			if ( !empty($permission) ) {
+	        				$permission->type = 'allow';
+	        				if ( !$permission->save() ) {
+								return Redirect::to('admin/role_permission')->with( 'error', Lang::get('admin.permission_save_error') );
+	        				}
+	        			}
+	        		
+	        	}
+
+	        	//Set deny resources
+	        	foreach ( $resources as $k => $resource ) {
+	        		$permissions = Permission::where('role_id','=',$role->id)->where('resource_id','=',$k)->get();
+	        		Log::info('denied resource : '.$k);
+
+	        		foreach ( $permissions as $permission ) {	        			
+		        		if ( !empty($permission) ) {
+	        				$permission->type = 'deny';
+	        				if ( !$permission->save() ) {
+								return Redirect::to('admin/role_permission')->with( 'error', Lang::get('admin.permission_save_error') );
+	        				}
+	        			}
+	        		}
+	        	}
+
+				return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.permission_save_success'));
+	        }
+		
+			return Redirect::to('/admin/role_permission')->withInput()->withErrors($validator);
 		}
 
-		$rules = array_merge( $site_name_rules, Config::get('validator.admin.option') );
+		return Redirect::to('/admin/role_permission')->with('error', Lang::get('admin.role_not_found'));
+	
+	}
 
-		// Validate the inputs
-        $validator = Validator::make(Input::all(), $rules);
 
-        
-        // Check if the form validates with success
-        if ($validator->passes())
-        {
-        	$option = Option::first();
 
-        	$option->site_url		= Input::get('site_url');
-        	$option->admin_email	= Input::get('admin_email');
-        	$option->analytics		= Input::get('analytics');
-        	
-        	//Update translations
-        	foreach ( $site_name_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_site_name)->updateText($locale, Input::get('site_name_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
-        		}
-        	}
 
-        	//if no error when save
-        	if($option->save()) {
-        		Cache::forget('DB_Option');        		
-            	return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
-        	} else {
-	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
-	        }
-	    }
-	    
-		// Show the page
-		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
+	/**
+	 * get All User in base
+	 *
+	 * @return Response
+	 */
+	public function getUser()
+	{
+		//All users
+		$data['users'] = User::all();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		return View::make('admin.user.index', $data);
 	}
 
 
@@ -222,5 +239,76 @@ class AdminController extends BaseController {
 	    
 		// Show the page
 		return Redirect::to('/admin/environment')->withInput()->withErrors($validator);
+	}
+
+
+	/**
+	 * get All Option in base
+	 *
+	 * @return Response
+	 */
+	public function getOption()
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		$data['option'] = Option::first();
+
+		return View::make('admin.option.index', $data);
+	}
+
+	/**
+	 * post All Option in base
+	 *
+	 * @return Response
+	 */
+	public function postOption()
+	{
+		//Making adaptive rules for site_name
+		$site_name_rules = array();
+		$site_name_locales = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'site_name_') !== false ) {
+				$site_name_rules[$k] = Config::get('validator.admin.option_site_name');
+				$site_name_locales[] = substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
+			}
+		}
+
+		$rules = array_merge( $site_name_rules, Config::get('validator.admin.option') );
+
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
+
+        
+        // Check if the form validates with success
+        if ($validator->passes())
+        {
+        	$option = Option::first();
+
+        	$option->site_url		= Input::get('site_url');
+        	$option->admin_email	= Input::get('admin_email');
+        	$option->analytics		= Input::get('analytics');
+        	
+        	//Update translations
+        	foreach ( $site_name_locales as $locale ) {
+        		if ( !I18n::find($option->i18n_site_name)->updateText($locale, Input::get('site_name_'.$locale)) ) {
+        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
+        		}
+        	}
+
+        	//if no error when save
+        	if($option->save()) {
+        		Cache::forget('DB_Option');        		
+            	return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
+        	} else {
+	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
+	        }
+	    }
+	    
+		// Show the page
+		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
 	}
 }

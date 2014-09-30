@@ -112,10 +112,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
         foreach ( $resources as $resource_id ) {
             $resource = Resource::find($resource_id);
-            $data = array(
-                'name'  => $resource->name,
-                'icon'  => $resource->icon);
-            $navigations .= Response::view('admin.nav.nav', $data )->getOriginalContent();
+            if ($resource->in_admin_ui == 1) {
+                $data = array(
+                    'name'  => $resource->name,
+                    'icon'  => $resource->icon);
+                $navigations .= Response::view('admin.nav.nav', $data )->getOriginalContent();
+            }
         }
         
         return $navigations;

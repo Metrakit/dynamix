@@ -156,7 +156,7 @@ return array(
 		'Eloquent' 		  => 'SteroidEloquent',
 		'Event'           => 'Illuminate\Support\Facades\Event',
 		'File'            => 'Illuminate\Support\Facades\File',
-		//'Form'            => 'Illuminate\Support\Facades\Form',
+		'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
 		'HTML'            => 'Illuminate\Support\Facades\HTML',
 		'Input'           => 'Illuminate\Support\Facades\Input',
