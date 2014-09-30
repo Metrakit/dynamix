@@ -128,6 +128,15 @@ class AdminController extends BaseController {
 	        			}
 	        		}
 	        	}
+	        	
+	        	//track user
+	        	$track = new Track();
+	        	$track->user_id = Auth::user()->id;
+	        	$track->date = new Datetime;
+	        	$track->action = 'update';
+	        	$track->trackable_id = $role->id;
+	        	$track->trackable_type = 'Permission';         
+	        	$track->save();
 
 				return Redirect::to('admin/role_permission')->with('success_permissions', Lang::get('admin.permission_save_success'));
 	        }
@@ -215,6 +224,14 @@ class AdminController extends BaseController {
 									return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_delete_error'));
 		        				}
 		        			}
+		        			//track user
+		        			$track = new Track();
+		        			$track->user_id = Auth::user()->id;
+		        			$track->date = new Datetime;
+		        			$track->action = 'delete';
+		        			$track->trackable_id = $lang->id;
+		        			$track->trackable_type = 'Locale';                
+		        			$track->save();
 		        		}
 		        	}
         		}
@@ -240,6 +257,14 @@ class AdminController extends BaseController {
 				if ( ! $locale->save() ) {
 					return Redirect::to('/admin/environment')->with('error', Lang::get('admin.languauge_save_error'));
 				}
+				//track user
+				$track = new Track();
+				$track->user_id = Auth::user()->id;
+				$track->date = new Datetime;
+				$track->action = 'create';
+				$track->trackable_id = $locale->id;
+				$track->trackable_type = 'Locale';                
+				$track->save();
         	}
 
 			return Redirect::to('/admin/environment')->with('success', Lang::get('admin.language_success'));
@@ -309,8 +334,18 @@ class AdminController extends BaseController {
 
         	//if no error when save
         	if($option->save()) {
-        		Cache::forget('DB_Option');        		
-            	return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
+        		Cache::forget('DB_Option'); 
+
+        		//track user
+        		$track = new Track();
+        		$track->user_id = Auth::user()->id;
+        		$track->date = new Datetime;
+        		$track->action = 'update';
+        		$track->trackable_type = 'Option';
+                $track->save();   
+
+          		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
+
         	} else {
 	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
 	        }

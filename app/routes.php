@@ -26,21 +26,21 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::get('/','AdminController@index');
 
 	//Media
-	Route::get('/media', 'AdminController@getMedia');
+	Route::get('/media', array('before' => 'auth.permission_media', 'uses' => 'AdminController@getMedia'));
 
 	//Page
-	Route::resource('page','AdminPageController',
-		array('except' => array('show')) );
+/*	Route::resource('page','AdminPageController',
+		array('except' => array('show')) );*/
 
 	//Navigation
-	Route::resource('menu','AdminMenuController',
+/*	Route::resource('menu','AdminMenuController',
 		array('except' => array('create','store','show')) );
 	Route::post('menu/{id}/move','AdminMenuController@move');
 	
 	Route::get('menu/create-new-menu','AdminMenuController@createNewMenu');
 	Route::post('menu/create-new-menu','AdminMenuController@postCreateNewMenu');
 	Route::get('menu/create-menu','AdminMenuController@createMenu');
-	Route::post('menu/create-menu','AdminMenuController@postCreateMenu');
+	Route::post('menu/create-menu','AdminMenuController@postCreateMenu');*/
 
 	//Role / Permission
 	Route::get('/role_permission', 'AdminController@getRolePermission');
@@ -114,10 +114,6 @@ Route::get('/migrate', function(){
   Artisan::call("migrate");
   Artisan::call("db:seed");
   return "migrated";
-});
-
-Route::get('/getfiles', function(){
-  return View::make('test', array('files'=>Files::all()));
 });
 
 

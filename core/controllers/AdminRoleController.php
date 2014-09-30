@@ -51,6 +51,15 @@ class AdminRoleController extends BaseController {
 	                }
 	            }
 				DB::table('permissions')->insert( $data );
+
+				//track user
+				$track = new Track();
+				$track->user_id = Auth::user()->id;
+				$track->date = new Datetime;
+				$track->action = 'create';
+				$track->trackable_id = $resource->id;
+				$track->trackable_type = 'Role';
+				$track->save();
                 
                 return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_save_success'));
             }
@@ -106,6 +115,15 @@ class AdminRoleController extends BaseController {
 	            // Was the blog post created?
 	            if ( $role->save() ) {
 	                // Redirect to the new blog post role
+	                //track user
+	                $track = new Track();
+	                $track->user_id = Auth::user()->id;
+	                $track->date = new Datetime;
+	                $track->action = 'update';
+	                $track->trackable_id = $id,;
+	                $track->rackable_type = 'Role';
+	                $track->save();
+                
 	                return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_edit_success'));
 	            }
             }
@@ -136,6 +154,15 @@ class AdminRoleController extends BaseController {
 
 		// delete
 		if ( $role->delete() ) {
+			//track user
+			$track = new Track();
+			$track->user_id = Auth::user()->id;
+			$track->date = new Datetime;
+			$track->action = 'delete';
+			$track->trackable_id = $role->id;
+			$track->trackable_type = 'Role';
+			$track->save();
+                
 			return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_delete_success'));;
 		}
 		

@@ -92,6 +92,11 @@ Route::filter('auth.admin', function()
     }
 });
 
+Route::filter('auth.permission_media', function()
+{
+    if ( !Auth::user()->hasPermission('manage','media') ) return Redirect::to('admin')->with('error', Lang::get('user.you_are_not_authorized'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

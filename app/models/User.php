@@ -54,9 +54,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * hasPermissions
      *
      */
-    public function hasPermissions($key)
+    public function hasPermission($action, $resource)
     {
-        // todo
+        $action_id = Action::where('name','=',$action)->first()->id;
+        $resource_id = Resource::where('name','=',$resource)->first()->id;
+
+        foreach ( $this->roles as $role ) {
+            foreach ( $role->permissionsAllowed as $permission ) {
+                if ( $permission->action_id == $action_id
+                   &&$permission->resource_id == $resource_id) return true;
+            }
+        }
+        return false;
     }
 
 
