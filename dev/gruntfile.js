@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 		    },
 			bootstrap: {
 		      options: {
-		        sassDir: '<%= vendorPath %>bootstrap-sass/lib',
+		        sassDir: '<%= vendorPath %>bootstrap-sass-twbs/assets/stylesheets/',
         		cssDir: '<%= srcPath %>css',
 		      }
 		    },	
@@ -87,7 +87,7 @@ module.exports = function(grunt) {
 			main: {
 				// Fichiers à concaténer
 				src: [
-					 '<%= vendorPath %>bootstrap-sass/dist/js/bootstrap.min.js',
+					 '<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
 			         '<%= srcPath %>js/master.js'
 			    ],
@@ -220,7 +220,7 @@ module.exports = function(grunt) {
 			mainJS: 
 			{
 				files: [
-						'<%= vendorPath %>bootstrap-sass/dist/js/bootstrap.min.js',
+						'<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 						'<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
 						'<%= srcPath %>js/master.js'
 				],
@@ -287,7 +287,7 @@ module.exports = function(grunt) {
 			bootstrap: 
 			{
 				files: [
-					'<%= vendorPath %>bootstrap-sass/lib/**/*.scss'
+					'<%= vendorPath %>bootstrap-sass-twbs/assets/stylesheets/**/*.scss'
 			    ],
 				tasks:['compass:bootstrap', 'cssmin', 'clean:css', 'hash:css'],
 				options: {

@@ -11,13 +11,6 @@ return array(
 	|
 	*/
 
-	'register'		=>		array(	'pseudo'	=> 'required|max:45',
-									'firstname'	=> 'required|max:45',
-									'lastname'	=> 'required|max:45',
-									'email'		=> 'required|email|max:225',
-									'password'	=> 'required|max:225'),
-
-
 	'login'			=>		array(	'email'		=> 'required|email|max:225',
 									'password'	=> 'required|max:225'),
 
@@ -79,6 +72,25 @@ return array(
 
 		'permission'=> 		array(	'resource_id'	=> 'exists:resources,id',
 									'role_id'		=> 'required|exists:roles,id'),
+	/*
+	|	User
+	|
+	*/
+		'user_create'=>		array(	'pseudo'	=> 'required|max:45',
+									'firstname'	=> 'required|max:45',
+									'lastname'	=> 'required|max:45',
+									'role'		=> 'required|exists:roles,id',
+									'email'		=> 'required|email|max:225',
+									'password'	=> 'required|max:225'),
+
+		'user_profil'=>		array(	'pseudo'	=> 'required|max:45',
+									'firstname'	=> 'required|max:45',
+									'lastname'	=> 'required|max:45',
+									'email'		=> 'required|email|max:225',
+									'oldpassword'=> 'required',
+									'password'	=> 'required|max:225'),
+
+	
 		
 	),
 

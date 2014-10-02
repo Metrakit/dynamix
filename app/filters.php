@@ -96,6 +96,22 @@ Route::filter('auth.permission_media', function()
 {
     if ( !Auth::user()->hasPermission('manage','media') ) return Redirect::to('admin')->with('error', Lang::get('user.you_are_not_authorized'));
 });
+Route::filter('auth.permission_role', function()
+{
+    if ( !Auth::user()->hasPermission('manage','role_permission') ) return Redirect::to('admin')->with('error', Lang::get('user.you_are_not_authorized'));
+});
+Route::filter('auth.permission_log', function()
+{
+    if ( !Auth::user()->hasPermission('manage','log') ) return Redirect::to('admin')->with('error', Lang::get('user.you_are_not_authorized'));
+});
+Route::filter('auth.permission_option', function()
+{
+    if ( !Auth::user()->hasPermission('manage','option') ) return Redirect::to('admin')->with('error', Lang::get('user.you_are_not_authorized'));
+});
+Route::filter('auth.permission_environment', function()
+{
+    if ( !Auth::user()->hasPermission('manage','environment') ) return Redirect::to('admin')->with('error', Lang::get('user.you_are_not_authorized'));
+});
 
 /*
 |--------------------------------------------------------------------------

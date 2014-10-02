@@ -149,25 +149,6 @@ class AdminController extends BaseController {
 	}
 
 
-
-
-	/**
-	 * get All User in base
-	 *
-	 * @return Response
-	 */
-	public function getUser()
-	{
-		//All users
-		$data['users'] = User::all();
-
-		//Interface
-		$data['noAriane'] = true;
-
-		return View::make('admin.user.index', $data);
-	}
-
-
 	/**
 	 * get All Option in base
 	 *
@@ -274,6 +255,24 @@ class AdminController extends BaseController {
 		return Redirect::to('/admin/environment')->withInput()->withErrors($validator);
 	}
 
+
+	/**
+	 * get All Option in base
+	 *
+	 * @return Response
+	 */
+	public function getLog()
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		$data['logs'] = Track::orderBy('date','DESC')->paginate(20);
+
+		return View::make('admin.log.index', $data);
+	}
 
 	/**
 	 * get All Option in base

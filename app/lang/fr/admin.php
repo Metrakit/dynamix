@@ -75,6 +75,14 @@ return array(
 	//User
 	'user'				=> 'Utilisateur',
 	'users'				=> 'Utilisateurs',
+	'user_create'		=> 'Création d\'utilisateur',
+	'user_edit_profil'	=> 'Modification du compte',
+	'user_edit_role'	=> 'Modification du rôle utilisateur',
+	'user_empty'		=> 'Cet utilisateur n\'existe pas !',
+	'user_delete_success'	=> 'L\'utilisateur a bien été supprimé !',
+	'user_delete_fail'		=> 'Une erreur s\'est produite... L\'utilisateur n\'a pas été supprimé...',
+	'user_create_success'	=>  'L\'utilisateur a été créé avec succès !',
+	'user_create_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été créé...',
 
 
 	//Environment
@@ -108,4 +116,8 @@ return array(
 	//Log
 	'log'					=> 'Log',
 	'logs'					=> 'Logs',
+	'log_create'					=> 'Création',
+	'log_update'					=> 'Modification',
+	'log_delete'					=> 'Suppression',
+	'log_loggin'					=> 'Connexion',
 );

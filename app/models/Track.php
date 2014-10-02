@@ -1,38 +1,34 @@
 <?php
 
 class Track extends Eloquent{
+
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+     * Parameters
+     */
 	protected $table = 'tracks';
     public $timestamps = false;
 
-	/**
-     * An tracking has belong to many user
+	
+    /**
+     * Additional Method
      *
-     * @return mixed
+     * @var string
      */
 	public function user() {
-        return $this->hasOne('User');
+        return $this->hasOne('User','id','user_id');
     }
 
-    /**
-     * An tracking has belong to many user
-     *
-     * @return mixed
-     */
 	public function action() {
         return $this->hasOne('Action');
     }
 
     /**
-     * An tracking has belong to many user
+     * Attributes
      *
      * @return mixed
      */
-	public function resource() {
-        return $this->hasOne('Resource');
+
+    public function userName() {
+        return $this->user->firstname . ' ' . $this->user->lastname;
     }
 }

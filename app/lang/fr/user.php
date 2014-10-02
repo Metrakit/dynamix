@@ -12,6 +12,7 @@ return array(
 	'account_created'			=> 'Votre compte a bien été créé.',
 	'you_must_be_logged'		=> 'Vous devez être connecté !',
 	'you_are_not_authorized'	=> "Authorisation refusé !",
+	'role'						=> 'Rôle utilisateur',
 	
 	//Login
 	'logout'                 	=> 'Se déconnecter',

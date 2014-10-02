@@ -193,6 +193,15 @@ class UserController extends BaseController {
 			// redirect the user back to the intended page
 			// or defaultpage if there isn't one
 			if (Auth::attempt($credentials,true)) {
+				//track user
+				$track = new Track();
+				$track->user_id = Auth::user()->id;
+				$track->date = new Datetime;
+				$track->action = 'loggin';
+				$track->trackable_id = Auth::user()->id;
+				$track->trackable_type = 'User';
+				$track->save();
+
 			    return Redirect::intended('/');
 			} else {
         		$user = User::where('email','=', Input::get( 'email' ) )->first();

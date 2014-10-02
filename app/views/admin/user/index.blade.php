@@ -8,7 +8,9 @@
 
 @section('page-header')
     <div class="row">
-        <h1 class="page-header">{{{ Lang::get('admin.users') }}}</h1>
+        <h1 class="page-header">{{{ Lang::get('admin.users') }}} 
+            <a href="{{ URL::to('admin/user/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau</a>
+        </h1>
     </div>
 @stop
 
@@ -28,15 +30,22 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($users as $user)
+    @foreach($users as $u)
     <tr>
-        <td>{{$user->lastname}}</td>
-        <td>{{$user->firstname}}</td>
-        <td>{{$user->pseudo}}</td>
-        <td>{{$user->email}}</td>
-        <td>{{$user->last_visit}}</td>
+        <td>{{$u->lastname}}</td>
+        <td>{{$u->firstname}}</td>
+        <td>{{$u->pseudo}}</td>
+        <td>{{$u->email}}</td>
+        <td>{{$u->last_visit}}</td>
         <td>
-            <a href="{{URL::to('user/'.$user->id.'/edit')}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+            @if ($user->id != $u->id)
+            {{ Form::open(array('url' => 'admin/user/' . $u->id, 'class' => 'pull-right')) }}
+                {{ Form::hidden('_method', 'DELETE') }}
+                <button type="submit" class="btn btn-xs btn-danger remove"><span class="glyphicon glyphicon-remove"></span></button>
+            {{ Form::close() }}
+            @endif
+            <a href="{{URL::to('admin/user/'.$u->id.'/edit')}}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-lock"></span></a>
+            <div class="clearfix"></div>
         </td>
     </tr>
     @endforeach

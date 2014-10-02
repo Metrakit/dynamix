@@ -28,7 +28,35 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Media
 	Route::get('/media', array('before' => 'auth.permission_media', 'uses' => 'AdminController@getMedia'));
 
-	//Page
+	//Role / Permission
+	Route::get('/role_permission', array('before' => 'auth.permission_role', 'uses' => 'AdminController@getRolePermission'));
+		//Role RestFull
+		Route::resource('role', 'AdminRoleController',
+			array('except' => array('index','show')) );
+		//Permission update
+		Route::post('/permission', 'AdminController@postPermission');
+	
+	//User index
+	Route::resource('user', 'AdminUserController',
+			array('except' => array('show')) );
+		Route::get('/user/{id}/edit-profil', 'AdminUserController@editProfil');
+		Route::get('/user/profil', 'AdminUserController@showProfil');
+		Route::post('/user/edit-profil', 'AdminUserController@updateProfil');
+	
+	//Log
+	Route::get('/log', array('before' => 'auth.permission_log', 'uses' => 'AdminController@getLog'));
+
+	//Option
+	Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
+	Route::post('/option', 'AdminController@postOption');
+
+	//Languages
+	Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
+	Route::post('/languages', 'AdminController@postLanguages');
+
+
+
+//Page
 /*	Route::resource('page','AdminPageController',
 		array('except' => array('show')) );*/
 
@@ -41,26 +69,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::post('menu/create-new-menu','AdminMenuController@postCreateNewMenu');
 	Route::get('menu/create-menu','AdminMenuController@createMenu');
 	Route::post('menu/create-menu','AdminMenuController@postCreateMenu');*/
-
-	//Role / Permission
-	Route::get('/role_permission', 'AdminController@getRolePermission');
-		//Role RestFull
-		Route::resource('role', 'AdminRoleController',
-			array('except' => array('index','show')) );
-		//Permission update
-		Route::post('/permission', 'AdminController@postPermission');
-	
-	//User
-	Route::get('/user', 'AdminController@getUser');
-	
-	//Option
-	Route::get('/option', 'AdminController@getOption');
-	Route::post('/option', 'AdminController@postOption');
-
-	//Languages
-	Route::get('/environment', 'AdminController@getEnvironnement');
-	Route::post('/languages', 'AdminController@postLanguages');
-
 /*
 	//MOSAIQUES
 	Route::resource('mosaique','AdminMosaiqueController',
@@ -75,8 +83,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::resource('image','AdminImageController',
 		array('only' => array('destroy')) );
 */
-	
-
 });
 
 

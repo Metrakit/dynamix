@@ -2,6 +2,9 @@
 
 return array(
 
-	'actions' => 'Actions'
+	'actions' 			=> 'Actions',
+	'action' 			=> 'Action',
+	'date'				=> 'Date',
+	'resource'			=> 'Ressource',
 
 );
