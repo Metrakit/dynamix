@@ -202,6 +202,10 @@ class UserController extends BaseController {
 				$track->trackable_type = 'User';
 				$track->save();
 
+				$user = Auth::user();
+				$user->last_visit_at = new Datetime;
+				$user->save();
+
 			    return Redirect::intended('/');
 			} else {
         		$user = User::where('email','=', Input::get( 'email' ) )->first();

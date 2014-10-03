@@ -87,7 +87,7 @@ class AdminUserController extends BaseController {
 
 
 		//need design of a profil...
-		return View::make('admin.user.profil_show', $data);
+		return View::make('admin.user.show_profil', $data);
 	}
 
 	public function editProfil () {
@@ -183,4 +183,5 @@ class AdminUserController extends BaseController {
 		}
 		return Redirect::to('admin/user')->with('error', Lang::get('admin.user_delete_fail'));
 	}
+
 }

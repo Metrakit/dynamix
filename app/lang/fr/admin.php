@@ -115,9 +115,19 @@ return array(
 
 	//Log
 	'log'					=> 'Log',
-	'logs'					=> 'Logs',
-	'log_create'					=> 'Création',
-	'log_update'					=> 'Modification',
-	'log_delete'					=> 'Suppression',
-	'log_loggin'					=> 'Connexion',
+		'logs'					=> 'Logs',
+		'log_create'					=> 'Création',
+		'log_update'					=> 'Modification',
+		'log_delete'					=> 'Suppression',
+		'log_loggin'					=> 'Connexion',
+
+		'rscNavigation'		=> 'Navigation',
+		'rscMedia'			=> 'Media',
+		'rscPage'			=> 'Page',
+		'rscRole'			=> 'Role',
+		'rscPermission'		=> 'Permissions',
+		'rscUser'			=> 'Connexion',
+		'rscEnvironment'	=> 'Langues',
+		'rscOption'			=> 'Options',
+		'rscLog'			=> 'Logs',
 );

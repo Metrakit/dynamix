@@ -428,6 +428,18 @@ table.dataTable thead .sorting:after {
     margin-right: -15px;
   }
 }
+/*========== Fix bootstrap ==========*/
+/* line 23, ../sass/core-admin.scss */
+.img-center .img-responsive {
+  margin: 0 auto;
+}
+
+/*========== User ==========*/
+/* line 31, ../sass/core-admin.scss */
+.profil {
+  padding-top: 30px;
+}
+
 /*========== Mobile First Method ==========*/
 /* Custom, iPhone Retina */
 /* Extra Small Devices, Phones */

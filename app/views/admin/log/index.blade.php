@@ -28,7 +28,7 @@
         <td><span class="text-capitalize">{{ $log->userName() }}</span></td>
         <td>{{ $log->date }}</td>
         <td>{{{ Lang::get('admin.log_'.$log->action) }}}</td>
-        <td>{{{ Lang::get('admin.'.$log->trackable_type) }}}</td>
+        <td>{{{ Lang::get('admin.rsc'.$log->trackable_type) }}}</td>
     </tr>
 @endforeach
 </tbody>

@@ -21,31 +21,32 @@
 <table class="table">
     <thead>
     <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Pseudo</th>
-        <th>Mail</th>
-        <th>Dernière visite</th>
-        <th>Action</th>
+        <th>{{{ Lang::get('admin.user') }}}</th>
+        <th>{{{ Lang::get('user.firstname')}}}</th>
+        <th>{{{ Lang::get('user.lastname')}}}</th>
+        <th>{{{ Lang::get('admin.roles') }}}</th>
+        <th class="text-right">{{{ Lang::get('table.actions') }}}</th>
     </tr>
     </thead>
     <tbody>
     @foreach($users as $u)
     <tr>
-        <td>{{$u->lastname}}</td>
-        <td>{{$u->firstname}}</td>
-        <td>{{$u->pseudo}}</td>
-        <td>{{$u->email}}</td>
-        <td>{{$u->last_visit}}</td>
+        <td>
+            <img class="img-circle" width="22px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $u->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=22px"}}" alt="gravatar" />
+            {{$u->email . ' (' . $u->pseudo . ')'}}
+        </td>
+        <td class="text-capitalize">{{$u->firstname}}</td>
+        <td class="text-capitalize">{{$u->lastname}}</td>
+        <td class="text-capitalize">{{$u->rolesList()}}</td>
         <td>
             @if ($user->id != $u->id)
             {{ Form::open(array('url' => 'admin/user/' . $u->id, 'class' => 'pull-right')) }}
                 {{ Form::hidden('_method', 'DELETE') }}
                 <button type="submit" class="btn btn-xs btn-danger remove"><span class="glyphicon glyphicon-remove"></span></button>
             {{ Form::close() }}
-            @endif
             <a href="{{URL::to('admin/user/'.$u->id.'/edit')}}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-lock"></span></a>
             <div class="clearfix"></div>
+            @endif
         </td>
     </tr>
     @endforeach

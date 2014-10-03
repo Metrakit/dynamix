@@ -88,17 +88,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return 'remember_token';
     }
 
-    public function getAuthPassword()
+    public function getAuthPassword ()
     {
         return $this->password;
     }
 
-    public function getReminderEmail()
+    public function getReminderEmail ()
     {
         return $this->email;
     }
 
-    public function getAuthIdentifier()
+    public function getAuthIdentifier ()
     {
         return $this->getKey();
     }
@@ -107,7 +107,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * Additionnal method
      *
      */
-    public function getAuthorizedNavigations() {
+    public function getAuthorizedNavigations () {
         $resources = array();
         $navigations = '';
         
@@ -130,5 +130,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         }
         
         return $navigations;
+    }
+
+    public function rolesList () {
+        $str = '';
+        foreach ( $this->roles as $role ) {
+            $str .= ' '.$role->name.',';
+        }
+        return substr ($str, 1, strlen($str) - 2);
     }
 }

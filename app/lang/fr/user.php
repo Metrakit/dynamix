@@ -4,6 +4,7 @@ return array(
 
 	//General (User)
 	'profile'              		=> 'Profil',
+	'show_profil'         		=> 'Mon profil',
 	'connexion'              	=> 'Connexion',
 	'edit_account'				=> 'Modifiez son profil',
 	'create_account'			=> 'Création de compte',
@@ -20,10 +21,10 @@ return array(
 	'password'					=> 'Mot de passe',
 
 	//User
-	'email'						=> 'Email',
-	'pseudo' 					=> "Pseudo",
 	'lastname' 					=> "Nom",
 	'firstname' 				=> "Prénom",
+	'pseudo' 					=> "Pseudo",
+	'email'						=> 'Email',
 	'dont_exists'				=> 'Cet utilisateur n\'existe pas !',
 
 	//Password
