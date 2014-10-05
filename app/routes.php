@@ -37,11 +37,11 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::post('/permission', 'AdminController@postPermission');
 	
 	//User index
+	Route::get('/user/profil', 'AdminUserController@showProfil');
+	Route::get('/user/profil/edit', 'AdminUserController@editProfil');
+	Route::post('/user/profil/edit', 'AdminUserController@updateProfil');
 	Route::resource('user', 'AdminUserController',
 			array('except' => array('show')) );
-		Route::get('/user/{id}/edit-profil', 'AdminUserController@editProfil');
-		Route::get('/user/profil', 'AdminUserController@showProfil');
-		Route::post('/user/edit-profil', 'AdminUserController@updateProfil');
 	
 	//Log
 	Route::get('/log', array('before' => 'auth.permission_log', 'uses' => 'AdminController@getLog'));

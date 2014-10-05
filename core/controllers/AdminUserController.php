@@ -51,7 +51,22 @@ class AdminUserController extends BaseController {
 	 */
 	public function store()
 	{
-        $validator = Validator::make($inputs, Config::get('validator.admin.user_create'));
+		//Making adaptive rules for site_name
+		$role_rules = array();
+		$roles = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'role_') !== false ) {
+				$role_rules[$k] = Config::get('validator.admin.user_role.role');
+				$roles[] = substr( $k, strlen('role_'), (strlen($k) - strpos($k, 'role_')));
+			}
+		}
+
+		$rules = array_merge( $role_rules, Config::get('validator.admin.user_create') );
+
+		//return var_dump($rules);
+
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
 
 		// process the login
 		if ($validator->passes()) {
@@ -60,11 +75,17 @@ class AdminUserController extends BaseController {
 			$user->pseudo		= Input::get('pseudo');
 			$user->firstname	= Input::get('firstname');
 			$user->lastname		= Input::get('lastname');
-			//$user->roles		= Input::get('email'); see laravel doc to set tihis up!
+			
+			
 			$user->email		= Input::get('email');
 			$user->password		= Hash::make(Input::get('password'));
 
 			if( $user->save() ) {
+				//add roles
+				foreach ( $roles as $role ) {
+					$user->roles()->attach($role);
+				}
+	    
 	            // Redirect to the new blog post user
 	            return Redirect::to('admin/user')->with('success', Lang::get('admin.user_create_success'));
 			}
@@ -85,8 +106,6 @@ class AdminUserController extends BaseController {
 		//Interface
 		$data['noAriane'] 		= true;
 
-
-		//need design of a profil...
 		return View::make('admin.user.show_profil', $data);
 	}
 
@@ -96,15 +115,16 @@ class AdminUserController extends BaseController {
 
 		//Interface
 		$data['noAriane'] 		= true;
+		$data['glyphicon']		= 'ok';
+		$data['buttonLabel']	= Lang::get('button.update');
 
-		//design oof profil in editing mode
-		return View::make('admin.user.profil_edit', $data);
+		return View::make('admin.user.edit_profil', $data);
 	}
 
 	public function updateProfil () {
 		$user = Auth::user();
 
-		$validator = Validator::make($inputs, Config::get('validator.admin.user_profil'));
+		$validator = Validator::make(Input::all(), Config::get('validator.admin.user_profil'));
 
 		// process the login
 		if ($validator->passes()) {
@@ -120,18 +140,18 @@ class AdminUserController extends BaseController {
 	        	if ($user->save()){
 	            	return Redirect::to('admin/user/profil')->with( 'success', Lang::get('user.account_updated') );
 	        	} else {
-		        	return Redirect::to('admin/user/'.$user->id.'/edit')->with( 'error', Lang::get('user.error_saving') );
+		        	return Redirect::to('admin/user/profil/edit')->with( 'error', Lang::get('user.error_saving') );
 		        }
         	} else {
-        		return Redirect::to('admin/user/'.$user->id.'/edit')->with( 'error', Lang::get('user.icorrect_old_password') );
+        		return Redirect::to('admin/user/profil/edit')->with( 'error', Lang::get('user.icorrect_old_password') );
         	} 
 		
-            // Redirect to the blog post create user
-            return Redirect::to('admin/user/create')->with('error', Lang::get('admin.user_create_fail'));
+            // Redirect to the blog post profil/edit user
+            return Redirect::to('admin/user/profil/edit')->with('error', Lang::get('admin.user_profil/edit_fail'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/user/create')->withInput(Input::except('password'))->withErrors($validator);
+        return Redirect::to('admin/user/profil/edit')->withInput(Input::except('password'))->withErrors($validator);
 	}
 
 	/**
@@ -149,6 +169,9 @@ class AdminUserController extends BaseController {
 
 	    $data['user'] = User::find($id);
 
+		//Role
+		$data['roles'] 			= Role::all();
+
 	    if(empty($data['user'])) return Redirect::back()->with('error', Lang::get('admin.user_empty') );
 
 		return View::make('admin.user.edit_role', $data);
@@ -162,7 +185,38 @@ class AdminUserController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//todoo inspirate in edit profil + role
+		//Making adaptive rules for site_name
+		$role_rules = array();
+		$roles = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'role_') !== false ) {
+				$role_rules[$k] = Config::get('validator.admin.user_role.role');
+				$roles[] = substr( $k, strlen('role_'), (strlen($k) - strpos($k, 'role_')));
+			}
+		}
+
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), $role_rules);
+
+		// process the login
+		if ($validator->passes()) {
+
+			$user = User::find($id);
+			
+			//sync roles
+			$user->roles()->sync($roles);
+
+			if( $user->save() ) {
+	            // Redirect to the new blog post user
+	            return Redirect::to('admin/user')->with('success', Lang::get('admin.user_edit_success'));
+			}
+		
+            // Redirect to the blog post edit user
+            return Redirect::to('admin/user/' . $id . '/edit')->with('error', Lang::get('admin.user_edit_fail'));
+        }
+
+        // Form validation failed
+        return Redirect::to('admin/user/' . $id . '/edit')->withInput()->withErrors($validator);
 	}
 
 	/**

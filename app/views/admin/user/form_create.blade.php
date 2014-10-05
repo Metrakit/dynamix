@@ -19,16 +19,11 @@
         {{ $errors->first('lastname', '<div class="alert alert-danger">:message</div>') }}
     </div>
 </div>
-<div class="form-group {{{ $errors->has('role') ? 'error' : '' }}}">
-    <label class="col-sm-2 control-label" for="role">{{{ Lang::get('user.role') }}}</label>
+<div>
+    <label class="col-sm-2 control-label" for="lastname">{{{ Lang::get('admin.role') }}}</label>
     <div class="col-sm-10">
-        <select class="form-control" name="role" id="role" >
-            <option>{{{ Lang::get('input.choose_select') }}}</option>
-            @foreach( $roles as $role )
-            <option value="{{$role->id}}"{{( Input::old('role') == $role->id ? 'selected="selected"' : '' )}}>{{$role->name}}</option>
-            @endforeach
-        </select>
-        {{ $errors->first('role', '<div class="alert alert-danger">:message</div>') }}
+        @include('admin.user.role', array('autocompletion'=>false))
+        <div class="clearfix"></div>
     </div>
 </div>
 <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
