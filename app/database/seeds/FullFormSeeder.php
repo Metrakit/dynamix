@@ -589,7 +589,7 @@ class FullFormSeeder extends Seeder {
 
         // Form
         $form = Formr::create(array(
-            'finish_on'         => 'database',
+            'finish_on'         => 'model',
             'type'              => 'normal',
             'i18n_title'        => $i18n['title']->id,
             'i18n_description'  => $i18n['description']->id,
@@ -777,6 +777,13 @@ class FullFormSeeder extends Seeder {
         ));
 
         $this->command->info('Form maps created');
+
+        ModelForm::create(array(
+            'form_id'           => $form->id,
+            'model'             => 'gallery'
+        ));
+
+        $this->command->info('Models form created');
 
     }
 

@@ -343,7 +343,7 @@ module.exports = function(grunt) {
 
 
 	// Tâches par défauts
-	grunt.registerTask('default', ['clean', 'compass', 'cssmin', 'concat', 'imagemin', 'hash', 'copy', 'watch']);
+	grunt.registerTask('default', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
 
 
 	// Tâches personnalisées pour le développement

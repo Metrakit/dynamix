@@ -8,6 +8,46 @@ class Gallery extends Eloquent
 	protected $table = 'galleries';
 
 
+    /**
+     * Attributes for construct a form
+     * @return Array
+     */
+    public static function formr()
+    {
+        return array(        
+            'type'  => 'normal',
+            'data'  => array(
+                'title' => array(
+                    'type'        => 'text',
+                    'rules'       => 'required',
+                    'placeholder' => Lang::get('input.gallery.title.placeholder'),
+                    'helper'      => Lang::get('input.gallery.title.helper'),
+                    'label'       => Lang::get('input.gallery.title.label'),
+                ),
+                'description' => array(
+                    'type'        => 'textarea',
+                    'rules'       => 'required',
+                    'placeholder' => Lang::get('input.gallery.description.placeholder'),
+                    'helper'      => Lang::get('input.gallery.description.helper'),
+                    'label'       => Lang::get('input.gallery.description.label'),
+                ),
+            ),
+            'method' => 'model',
+            'model' => get_class(),
+        );
+    }
+
+    /**
+     * Formr action
+     * @param  Array $inputs
+     */
+    public static function getForm($inputs)
+    {
+        Log::info('Form inputs:');
+        Log::info($inputs);
+    }
+
+
 	/**
      * Relations
      *

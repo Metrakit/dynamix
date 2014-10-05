@@ -145,6 +145,7 @@ class Former extends \Controller {
         return $inputs;
     }
 
+
     /**
      * Get rules for the validator
      * @param  Integer $id 
@@ -164,5 +165,43 @@ class Former extends \Controller {
     }
 
 
+    /**
+     * Get a model name by the model settings in a Form
+     * @param  Object $form 
+     * @return String
+     */
+    public function getmodel($form)
+    {
+        if ($form->finish_on != "model") {
+            throw new \Exception('The form is not connected to a model.');
+        }  
+
+        $model = $form->getModel();
+
+        if (!$model) {
+            throw new \Exception('The form is not connected to a model.');
+        }
+
+        return $model->model;
+    }
+
+
+    /**
+     * Call the model declared in the form
+     * @param  Object $form
+     * @param  Array $inputs
+     */
+    public function callModel($form, $inputs)
+    {
+        $modelName = $this->getModel($form);
+
+        $model = $modelName::getForm($inputs);
+    }
+
+
+    public function create()
+    {
+        
+    }
 
 }

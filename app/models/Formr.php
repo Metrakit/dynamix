@@ -46,4 +46,25 @@ class Formr extends Eloquent{
 	{
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
 	}
+
+
+	/**
+	 * Model relation
+	 * @return Query
+	 */
+	public function model()
+	{
+		return $this->hasMany('ModelForm', 'form_id');
+	}
+
+
+	/**
+	 * Get the model to a form
+	 * @return Object	 
+	*/
+	public function getModel()
+	{
+		return $this->model()->first();
+	}
+
 }
