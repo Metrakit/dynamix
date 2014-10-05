@@ -79,9 +79,10 @@ return array(
 		'user_create'=>		array(	'pseudo'	=> 'required|max:45',
 									'firstname'	=> 'required|max:45',
 									'lastname'	=> 'required|max:45',
-									'role'		=> 'required|exists:roles,id',
 									'email'		=> 'required|email|max:225',
 									'password'	=> 'required|max:225'),
+
+		'user_role'	=> 		array ( 'role'		=> 'required|exists:roles,id'),
 
 		'user_profil'=>		array(	'pseudo'	=> 'required|max:45',
 									'firstname'	=> 'required|max:45',

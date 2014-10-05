@@ -14,9 +14,8 @@
 
 @section('content')
 <div class="col-sm-9">
-<form class="form-horizontal" method="POST" action="{{ URL::to('admin/user/'.$user->id ) }}" accept-charset="UTF-8" autocomplete="off">
+<form class="form-horizontal" method="POST" action="{{ URL::to('admin/user/profil/edit' ) }}" accept-charset="UTF-8" autocomplete="off">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="hidden" name="_method" value="put">
     <fieldset>
         @include('admin.user.form_profil')
     </fieldset>
