@@ -94,10 +94,59 @@ class PagesTableSeeder extends Seeder {
                 'structurable_type'         => 'Page'
             ));
 
+        $t_fr2 = 'NotAllowedAurevoir';
+        $t_en2 = 'NotAllowedGoodbye';
+
+        //article1
+        $name2 = new I18N;
+        $name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name2->save();
+        $name2->translate('fr',$t_fr2);
+        $name2->translate('en',$t_en2);
+
+        $title2 = new I18N;
+        $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title2->save();
+        $title2->translate('fr',$t_fr2);
+        $title2->translate('en',$t_en2);
+        
+        $url2 = new I18N;
+        $url2->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url2->save();
+        $url2->translate('fr','/'.Str::slug($t_fr2));
+        $url2->translate('en','/'.Str::slug($t_en2));
+
+
+        $meta_title2 = new I18N;
+        $meta_title2->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title2->save();
+        $meta_title2->translate('fr',$t_fr2);
+        $meta_title2->translate('en',$t_en2);
+
+        $meta_description2 = new I18N;
+        $meta_description2->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description2->save();
+        $meta_description2->translate('fr','Description '.$t_fr2);
+        $meta_description2->translate('en',$t_en2.' Description');        
+
+        $structure2 = Structure::create(array(
+                'i18n_title'                => $title2->id,
+                'i18n_url'                  => $url2->id,
+                'i18n_meta_title'           => $meta_title2->id,
+                'i18n_meta_description'     => $meta_description2->id,
+                'structurable_id'           => 3,
+                'structurable_type'         => 'Page'
+            ));
+
 
         DB::table('pages')->insert( array(
             array(
                 'i18n_name'                 => $name1->id,
+                'created_at'                => new DateTime,
+                'updated_at'                => new DateTime
+            ),
+            array(
+                'i18n_name'                 => $name2->id,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),

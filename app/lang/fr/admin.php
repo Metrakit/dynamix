@@ -124,13 +124,15 @@ return array(
 		'log_delete'					=> 'Suppression',
 		'log_loggin'					=> 'Connexion',
 
+	//Resource
+		'resource_not_allowed'	=> 'Ressources disponibles',
 		'rscNavigation'		=> 'Navigation',
 		'rscMedia'			=> 'Media',
 		'rscPage'			=> 'Page',
 		'rscRole'			=> 'Role',
 		'rscPermission'		=> 'Permissions',
 		'rscUser'			=> 'Compte utilisateur',
-		'rscEnvironment'	=> 'Langues',
+		'rscLocale'			=> 'Langues',
 		'rscOption'			=> 'Options',
 		'rscLog'			=> 'Logs',
 );

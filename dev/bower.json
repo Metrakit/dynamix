@@ -10,6 +10,8 @@
         "headjs": ">= 1.0.3",
         "mustache.js": ">= 0.8.2",
         "media-match": ">= 0.1.0",
+        //Plugin jQuery for descanding horizontal menu
+        "metisMenu": ">= 1.1.*",
         "responsejs": ">= 0.9.0",
         "summernote": ">= 0.5.9"
     }

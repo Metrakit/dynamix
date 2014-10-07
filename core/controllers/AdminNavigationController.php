@@ -1,6 +1,6 @@
 <?php
 
-class AdminMenuController extends BaseController {
+class AdminNavigationController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,12 +9,19 @@ class AdminMenuController extends BaseController {
 	 */
 	public function index()
 	{
-		$menus 					= Menu::where('parent_id','=',0)->orderBy('order','ASC')->get();
-		$page_not_allowed 		= parent::getNotAllowedPage();
-		$mosaique_not_allowed 	= parent::getNotAllowedMosaique();
-		$gallery_not_allowed 	= parent::getNotAllowedGallery();
+		//User
+		$data['user'] = Auth::user();
 
-		return View::make('admin.menu.index', compact('menus', 'page_not_allowed', 'mosaique_not_allowed', 'gallery_not_allowed') );
+		//Interface
+		$data['noAriane'] = true;
+
+		//Main menu
+		$data['navs'] 					= Nav::where('parent_id','=',0)->orderBy('order','ASC')->get();
+
+		//allowable resource
+		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
+
+		return View::make('admin.navigation.index', $data );
 	}
 
 	/**

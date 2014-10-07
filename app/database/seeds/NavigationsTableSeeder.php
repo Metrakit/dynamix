@@ -57,51 +57,51 @@ class NavigationsTableSeeder extends Seeder {
             array(
                 'i18n_title'        => $title1->id,
                 'parent_id'         => 0,
-                'order'             => 0,
-                'naviggable_id'     => 1,
-                'naviggable_type'   => 'Page'
+                'order'             => 1,
+                'navigable_id'     => 1,
+                'navigable_type'   => 'Page'
             ),
             array(
                 'i18n_title'        => $title2->id,                
                 'parent_id'         => 0,
-                'order'             => 1,
-                'naviggable_id'     => 1,
-                'naviggable_type'   => 'Mosaic'
+                'order'             => 2,
+                'navigable_id'     => 1,
+                'navigable_type'   => 'Mosaic'
             ),
             array(
                 'i18n_title'        => $title3->id,                
                 'parent_id'         => 2,
-                'order'             => 0,
-                'naviggable_id'     => 1,
-                'naviggable_type'   => 'Gallery'
+                'order'             => 1,
+                'navigable_id'     => 1,
+                'navigable_type'   => 'Gallery'
             ),
             array(
                 'i18n_title'        => $title4->id,                
                 'parent_id'         => 0,
-                'order'             => 2,
-                'naviggable_id'     => 1,
-                'naviggable_type'   => 'ArticleCategory'
+                'order'             => 3,
+                'navigable_id'     => 1,
+                'navigable_type'   => 'ArticleCategory'
             ),
             array(
                 'i18n_title'        => $title5->id,                
                 'parent_id'         => 4,
                 'order'             => 1,
-                'naviggable_id'     => 2,
-                'naviggable_type'   => 'Article'
+                'navigable_id'     => 2,
+                'navigable_type'   => 'Article'
             ),
             array(
                 'i18n_title'        => $title6->id,                
                 'parent_id'         => 4,
                 'order'             => 2,
-                'naviggable_id'     => 2,
-                'naviggable_type'   => 'Article'
+                'navigable_id'     => 2,
+                'navigable_type'   => 'Article'
             ),
             array(
                 'i18n_title'        => $title7->id,                
                 'parent_id'         => 0,
-                'order'             => 3,
-                'naviggable_id'     => 2,
-                'naviggable_type'   => 'Page'
+                'order'             => 4,
+                'navigable_id'     => 2,
+                'navigable_type'   => 'Page'
             ))
         );
     }
