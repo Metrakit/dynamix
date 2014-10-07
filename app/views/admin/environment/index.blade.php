@@ -16,6 +16,9 @@
     @include('includes.session-message')
 
     <!-- Enable / Desable languages on the front ends -->
+    @if ( count($langsFrontEnd) == 0 )
+    <h2 class="text-center">{{{ Lang::get('admin.noItemToSHow') }}}</h2>
+    @else
 
     <div class="alert alert-info" role="alert">
         {{ Lang::get('admin.languagesHelp') }}
@@ -36,5 +39,7 @@
         </div>
 
     </form>
+
+    @endif
 
 @stop

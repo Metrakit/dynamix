@@ -12,7 +12,7 @@ return array(
 	'nav_page'				=> 'Pages',
 	'nav_tag'				=> 'Tags',
 	'nav_navigation'		=> 'Navigations',
-	'nav_role_permission'	=> 'Rôles / Permissions',
+	'nav_role_permission'	=> 'Rôles & Permissions',
 	'nav_user'				=> 'Utilisateurs',
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
@@ -49,7 +49,7 @@ return array(
 	'navigations'					=> 'Navigations',
 
 	//Role / Permission
-	'role_permission'	=> 'Rôles / Permissions',
+	'role_permission'	=> 'Rôles & Permissions',
 		'role_edit'			=> 'Modification du rôle',
 		'role_create'		=> 'Création d\'un rôle',
 		'role_save_success' => 'Le rôle a bien été créé !',
@@ -63,12 +63,12 @@ return array(
 		'role_name'			=> 'Nom',
 		'role_empty'		=> 'Ce rôle n\'existe pas !',
 		'role_not_found'		=> 'Rôle introuvable...',
-		'role_help'				=> 'Un rôle est utilisé pour grouper des permissions d\'accès pour à des ressources.',
+		'role_help'				=> 'Un rôle est utilisé pour grouper des permissions d\'accès à des ressources.',
 		
 		'permissions'		=> 'Permissions',
 		'permission_save_error'		=> 'Les permissions n\'ont pas pu être enregistrées...',
 		'permission_save_success'	=> 'Les permissions ont été enregistrées avec succès !',
-		'permission_help'		=> 'Chaque rôle a des permissions qui, autorise ou non, l\'accès a des ressources.',
+		'permission_help'		=> 'Une permission autorise ou non, l\'accès a une ressource.',
 
 
 
@@ -126,6 +126,7 @@ return array(
 
 	//Resource
 		'resource_not_allowed'	=> 'Ressources disponibles',
+
 		'rscNavigation'		=> 'Navigation',
 		'rscMedia'			=> 'Media',
 		'rscPage'			=> 'Page',
@@ -135,4 +136,6 @@ return array(
 		'rscLocale'			=> 'Langues',
 		'rscOption'			=> 'Options',
 		'rscLog'			=> 'Logs',
+
+		'noItemToSHow'		=> 'Aucun élément à afficher...',
 );
