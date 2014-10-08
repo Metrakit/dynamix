@@ -1,12 +1,11 @@
 //Object MasterAdmin
 var MasterAdmin = function (){
-	this.start = function (){
-    initListener();
-	}
+  this.start = function (){
+  }
 	
-	var initListener = function () {
-	  //checkbox button states
-	  $('body').on('click', '.checkbox.checkbox-button .enable', function () 
+  this.checboxButtonListener = function () {
+    //checkbox button states
+    $('body').on('click', '.checkbox.checkbox-button .enable', function () 
     {
       if ($(this).hasClass('disabled')) {
         $(this).removeClass('disabled');  
@@ -23,7 +22,7 @@ var MasterAdmin = function (){
         $(this).addClass('enabled');
       }
     });
-	}
+  }
 }
 
 
