@@ -36,8 +36,65 @@
 }
 
 
+/*========== Form Plugin ==========*/ 
+.checkbox.checkbox-button {
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    float:left;
+}
 
+.checkbox.checkbox-button label {
+    float:left;
+    width:5.0em;
+}
 
+.checkbox.checkbox-button label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+}
+
+.checkbox.checkbox-button label input {
+    position:absolute;
+    top:-20px;
+}
+
+/*State = enable*/
+.checkbox.checkbox-button .enable + span {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.checkbox.checkbox-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.checkbox.checkbox-button .enable.disabled + span {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+/*State = disable*/
+.checkbox.checkbox-button .disable + span {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.checkbox.checkbox-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.checkbox.checkbox-button .disable.enabled + span {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
 
 
 
@@ -62,7 +119,8 @@
 @media only screen and (min-width : 1200px) {
 
 } 
-/*========== Non-Mobile First Method ==========*/ /* Large Devices, Wide Screens */ 
+/*========== Non-Mobile First Method ==========*/ 
+/* Large Devices, Wide Screens */ 
 @media only screen and (max-width : 1200px) {
 
 } 
