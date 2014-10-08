@@ -6,6 +6,10 @@
 @parent
 @stop
 
+@section('scriptOnReady')
+masterAdminClass.checboxButtonListener();
+@stop
+
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.environment') }}}</h1>
