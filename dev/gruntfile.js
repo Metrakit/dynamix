@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 				src: [
 					 '<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
-			         '<%= srcPath %>js/master.js'
+			         	 '<%= srcPath %>js/master.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.min.js'
@@ -101,7 +101,8 @@ module.exports = function(grunt) {
 					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js', 
 					 '<%= vendorPath %>raphael/raphael-min.js',
 					 '<%= vendorPath %>morrisjs/morris.js',
-					 '<%= srcPath %>js/vendor/sb-admin-2.js'
+					 '<%= srcPath %>js/vendor/sb-admin-2.js',
+					 '<%= srcPath %>js/master-admin.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
