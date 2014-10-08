@@ -28,7 +28,7 @@ masterAdminClass.checboxButtonListener();
         {{ Lang::get('admin.languagesHelp') }}
     </div>
 
-    <form class="form-horizontal" method="POST" action="{{ URL::to('admin/languages') }}" accept-charset="UTF-8" autocomplete="off">
+    <form class="form-horizontal form-lang" method="POST" action="{{ URL::to('admin/languages') }}" accept-charset="UTF-8" autocomplete="off">
 
         @foreach( $langsFrontEnd as $langPack)
         <div class="col-lg-4 col-sm-6">
