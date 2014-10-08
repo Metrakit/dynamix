@@ -44,11 +44,11 @@
     border:1px solid #D0D0D0;
     overflow:auto;
     float:left;
+    padding: 0;
 }
 
 .checkbox.checkbox-button label {
-    float:left;
-    width:5.0em;
+    padding: 0;
 }
 
 .checkbox.checkbox-button label span {
@@ -82,7 +82,7 @@
 /*State = disable*/
 .checkbox.checkbox-button .disable + span {
   color: #333;
-  background-color: #fff;
+  background-color: #f1f1f1;
   border-color: #ccc;
 }
 .checkbox.checkbox-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span {
@@ -96,6 +96,30 @@
   border-color: #398439;
 }
 
+
+//Environnement module
+.form-lang {
+  .form-group {
+    padding:5px;
+  }
+  .checkbox-button {    
+    margin:0 !important;
+    width:100%;
+    label{
+      width:inherit;
+      span {
+        width:inherit;
+        display:inline-block; 
+        min-width:40px; 
+        text-align:center;
+        img {
+          display:block;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
 
 
 /*========== Mobile First Method ==========*/ 
