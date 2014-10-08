@@ -2,7 +2,7 @@
 <div class="form-group">
     <div class="checkbox checkbox-button">
       <label>
-        <input type="checkbox" name="{{$lang['id']}}" value="{{$lang['id']}}"{{( $lang['enable'] == 1 ? 'checked="checked" class="enable"' : ' class="disable"' )}}>
+        <input type="checkbox" name="{{$lang['id']}}" value="{{$lang['id']}}"{{( $lang['enable'] == 1 ? ' checked="checked" class="enable"' : ' class="disable"' )}}>
         <span style="display:inline-block; min-width:40px; text-align:center;">
             <img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/>
             {{$lang['name_locale']}} ({{$lang['name_en']}})
