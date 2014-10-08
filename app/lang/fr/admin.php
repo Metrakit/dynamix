@@ -12,7 +12,7 @@ return array(
 	'nav_page'				=> 'Pages',
 	'nav_tag'				=> 'Tags',
 	'nav_navigation'		=> 'Navigations',
-	'nav_role_permission'	=> 'Rôles & Permissions',
+	'nav_role_permission'	=> 'Comptes & Permissions',
 	'nav_user'				=> 'Utilisateurs',
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
@@ -43,27 +43,31 @@ return array(
 	'page'			=> 'Page',
 	'pages'			=> 'Pages',
 
+	//Tag	
+	'tag'			=> 'Tag',
+	'tags'			=> 'Tags',
+
 
 	//Navigation
 	'navigation'					=> 'Navigation',
 	'navigations'					=> 'Navigations',
 
 	//Role / Permission
-	'role_permission'	=> 'Rôles & Permissions',
-		'role_edit'			=> 'Modification du rôle',
-		'role_create'		=> 'Création d\'un rôle',
-		'role_save_success' => 'Le rôle a bien été créé !',
-		'role_save_fail'	=> 'Le rôle n\'a pas pu être enregistré...',
-		'role_edit_success'	=> 'Le rôle a bien été modifié !',
-		'role_edit_fail'	=> 'Le rôle n\'a pas pu être modifié...',
-		'role_delete_success'=> 'Le rôle a bien été supprimé !',
-		'role_delete_fail'	=> 'Le rôle n\'a pas pu être supprimé...',
-		'role'				=> 'Rôle',
-		'roles'				=> 'Rôles',
+	'role_permission'	=> 'Comptes & Permissions',
+		'role_edit'			=> 'Modification du compte',
+		'role_create'		=> 'Création d\'un compte',
+		'role_save_success' => 'Le compte a bien été créé !',
+		'role_save_fail'	=> 'Le compte n\'a pas pu être enregistré...',
+		'role_edit_success'	=> 'Le compte a bien été modifié !',
+		'role_edit_fail'	=> 'Le compte n\'a pas pu être modifié...',
+		'role_delete_success'=> 'Le compte a bien été supprimé !',
+		'role_delete_fail'	=> 'Le compte n\'a pas pu être supprimé...',
+		'role'				=> 'Compte',
+		'roles'				=> 'Comptes',
 		'role_name'			=> 'Nom',
-		'role_empty'		=> 'Ce rôle n\'existe pas !',
-		'role_not_found'		=> 'Rôle introuvable...',
-		'role_help'				=> 'Un rôle est utilisé pour grouper des permissions d\'accès à des ressources.',
+		'role_empty'		=> 'Ce compte n\'existe pas !',
+		'role_not_found'		=> 'Compte introuvable...',
+		'role_help'				=> 'Un compte est utilisé pour grouper des permissions d\'accès à des ressources.',
 		
 		'permissions'		=> 'Permissions',
 		'permission_save_error'		=> 'Les permissions n\'ont pas pu être enregistrées...',
@@ -126,6 +130,7 @@ return array(
 
 	//Resource
 		'resource_not_allowed'	=> 'Ressources disponibles',
+		'manage_access_resource'=> 'Gestion d\'accès aux ressources',
 
 		'rscNavigation'		=> 'Navigation',
 		'rscMedia'			=> 'Media',

@@ -578,35 +578,150 @@ table.dataTable thead .sorting:after {
 }
 
 /*========== Media ==========*/
-/* line 7, ../sass/core-admin.scss */
+/* line 8, ../sass/core-admin.scss */
 .filemanager-container {
   min-height: inherit;
   margin-left: -30px;
   margin-right: -30px;
 }
-/* line 11, ../sass/core-admin.scss */
+/* line 12, ../sass/core-admin.scss */
 .filemanager-container > iframe {
   min-height: inherit;
   border: none;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 18, ../sass/core-admin.scss */
+  /* line 19, ../sass/core-admin.scss */
   .filemanager-container {
     margin-left: -15px;
     margin-right: -15px;
   }
 }
 /*========== Fix bootstrap ==========*/
-/* line 26, ../sass/core-admin.scss */
+/* line 27, ../sass/core-admin.scss */
 .img-center .img-responsive {
   margin: 0 auto;
 }
 
 /*========== User ==========*/
-/* line 34, ../sass/core-admin.scss */
+/* line 35, ../sass/core-admin.scss */
 .profil {
   padding-top: 30px;
+}
+
+/*========== Form Plugin ==========*/
+/* line 41, ../sass/core-admin.scss */
+.checkbox-button, .radio-button {
+  margin: 0 !important;
+  width: 100% !important;
+}
+/* line 44, ../sass/core-admin.scss */
+.checkbox-button label, .radio-button label {
+  width: inherit !important;
+}
+/* line 46, ../sass/core-admin.scss */
+.checkbox-button label span, .radio-button label span {
+  width: inherit !important;
+  display: inline-block !important;
+  min-width: 40px !important;
+  text-align: center !important;
+}
+/* line 51, ../sass/core-admin.scss */
+.checkbox-button label span img, .radio-button label span img {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* line 58, ../sass/core-admin.scss */
+.checkbox.checkbox-button, .radio.radio-button {
+  margin: 4px;
+  background-color: #EFEFEF;
+  border-radius: 4px;
+  border: 1px solid #D0D0D0;
+  overflow: auto;
+  float: left;
+  padding: 0;
+}
+
+/* line 68, ../sass/core-admin.scss */
+.checkbox.checkbox-button label, .radio.radio-button label {
+  padding: 0;
+}
+
+/* line 72, ../sass/core-admin.scss */
+.checkbox.checkbox-button label span, .radio.radio-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+}
+
+/* line 78, ../sass/core-admin.scss */
+.checkbox.checkbox-button label input, .radio.radio-button label input {
+  position: absolute;
+  top: -20px;
+}
+
+/*State = enable*/
+/* line 84, ../sass/core-admin.scss */
+.checkbox.checkbox-button .enable + span, .radio.radio-button .enable + span {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+/* line 89, ../sass/core-admin.scss */
+.checkbox.checkbox-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span, .radio.radio-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+/* line 94, ../sass/core-admin.scss */
+.checkbox.checkbox-button .enable.disabled + span, .radio.radio-button .enable.disabled + span {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+/*State = disable*/
+/* line 101, ../sass/core-admin.scss */
+.checkbox.checkbox-button .disable + span, .radio.radio-button .disable + span {
+  color: #333;
+  background-color: #f1f1f1;
+  border-color: #ccc;
+}
+
+/* line 106, ../sass/core-admin.scss */
+.checkbox.checkbox-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span, .radio.radio-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+/* line 111, ../sass/core-admin.scss */
+.checkbox.checkbox-button .disable.enabled + span, .radio.radio-button .disable.enabled + span {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+/* line 120, ../sass/core-admin.scss */
+.form-lang .form-group {
+  padding: 5px;
+}
+
+/* line 126, ../sass/core-admin.scss */
+.role {
+  margin-top: 20px;
+}
+/* line 129, ../sass/core-admin.scss */
+.role h3 {
+  margin-top: 0px;
+}
+
+/* line 134, ../sass/core-admin.scss */
+.form-role_permission .form-group {
+  padding: 5px;
 }
 
 /*========== Mobile First Method ==========*/

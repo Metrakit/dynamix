@@ -73,7 +73,7 @@ class AdminController extends BaseController {
 		$data['user'] = Auth::user();
 
 		//Roles
-		$data['roles'] = Role::all();
+		$data['roles'] = Role::orderBy('name','ASC')->get();
 
 		//Interface
 		$data['noAriane'] = true;

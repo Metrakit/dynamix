@@ -1,4 +1,6 @@
 
+@import "compass";
+
 @import "common/sprites";
 
 //Custom style
@@ -20,6 +22,13 @@
 //        display: block;
 //    }
 //}
+
+//Helper
+.inline-block {
+	display:inline-block !important;
+}
+
+
 
 
 //Custom stylesheet
@@ -57,6 +66,11 @@ footer{
 
 	background:#e5e5e5;
 }
+
+
+
+
+
 
 /*========== Mobile First Method ==========*/ 
 /* Custom, iPhone Retina */ 

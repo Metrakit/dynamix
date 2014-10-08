@@ -1,3 +1,4 @@
+@import "compass";
 @import "admin/sb-admin-2";
 
 //Nav
@@ -37,7 +38,24 @@
 
 
 /*========== Form Plugin ==========*/ 
-.checkbox.checkbox-button {
+.checkbox-button, .radio-button {    
+	margin:0 !important;
+	width:100% !important;
+	label{
+	  width:inherit !important;
+	  span {
+	    width:inherit !important;
+	    display:inline-block !important; 
+	    min-width:40px !important; 
+	    text-align:center !important;
+	    img {
+	      display:block !important;
+	      margin: 0 auto !important;
+	    }
+	  }
+	}
+}
+.checkbox.checkbox-button, .radio.radio-button {
     margin:4px;
     background-color:#EFEFEF;
     border-radius:4px;
@@ -47,50 +65,50 @@
     padding: 0;
 }
 
-.checkbox.checkbox-button label {
+.checkbox.checkbox-button label, .radio.radio-button label {
     padding: 0;
 }
 
-.checkbox.checkbox-button label span {
+.checkbox.checkbox-button label span, .radio.radio-button label span {
     text-align:center;
     padding:3px 0px;
     display:block;
 }
 
-.checkbox.checkbox-button label input {
+.checkbox.checkbox-button label input, .radio.radio-button label input {
     position:absolute;
     top:-20px;
 }
 
 /*State = enable*/
-.checkbox.checkbox-button .enable + span {
+.checkbox.checkbox-button .enable + span, .radio.radio-button .enable + span {
   color: #fff;
   background-color: #428bca;
   border-color: #357ebd;
 }
-.checkbox.checkbox-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span {
+.checkbox.checkbox-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span, .radio.radio-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
 }
-.checkbox.checkbox-button .enable.disabled + span {
+.checkbox.checkbox-button .enable.disabled + span, .radio.radio-button .enable.disabled + span {
   color: #fff;
   background-color: #c9302c;
   border-color: #ac2925;
 }
 
 /*State = disable*/
-.checkbox.checkbox-button .disable + span {
+.checkbox.checkbox-button .disable + span, .radio.radio-button .disable + span {
   color: #333;
   background-color: #f1f1f1;
   border-color: #ccc;
 }
-.checkbox.checkbox-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span {
+.checkbox.checkbox-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span, .radio.radio-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
-.checkbox.checkbox-button .disable.enabled + span {
+.checkbox.checkbox-button .disable.enabled + span, .radio.radio-button .disable.enabled + span {
   color: #fff;
   background-color: #449d44;
   border-color: #398439;
@@ -102,22 +120,19 @@
   .form-group {
     padding:5px;
   }
-  .checkbox-button {    
-    margin:0 !important;
-    width:100%;
-    label{
-      width:inherit;
-      span {
-        width:inherit;
-        display:inline-block; 
-        min-width:40px; 
-        text-align:center;
-        img {
-          display:block;
-          margin: 0 auto;
-        }
-      }
-    }
+}
+
+//Role & Permission
+.role{
+	margin-top:20px;
+
+	h3{
+		margin-top:0px;
+	}
+}
+.form-role_permission {
+  .form-group {
+    padding:5px;
   }
 }
 
