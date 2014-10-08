@@ -6,7 +6,10 @@
 		{ 
 			"firstname": "david",
 		  	"lastname": "lepaux"
-		} , {
+		}
+	],
+	"contributor": [
+		{
 		  	"firstname": "jordane",
 		  	"lastname": "jouffroy"
 		}
