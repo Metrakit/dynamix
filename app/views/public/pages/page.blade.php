@@ -8,5 +8,14 @@
 
 @section('content')
 @include('includes.session-message')
+
+
+{{-- #################### EXAMPLE #################### --}}
+{{-- EXAMPLE OF CREATE A FORM BY A MODEL --}}
+{{ Former::createFromModel(new Gallery) }}
+{{-- #################### EXAMPLE #################### --}}
+
+
 {{ Pager::render($page) }}
+
 @stop

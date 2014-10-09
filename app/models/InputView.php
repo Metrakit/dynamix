@@ -53,4 +53,23 @@ class InputView extends Eloquent{
 		return Translation::where('i18n_id', '=', $i18n_id)->where('locale_id', '=', App::getLocale())->first()->text;
 	}
 
+
+    /**
+     * Add an input
+     * @param  Array $data
+     * @return  Self
+     */
+    public static function add($typeId, $data)
+    {
+        $input = new self;
+        $input->name = $data['type'];
+        $input->view_id = $data['view'];
+        $input->i18n_placeholder = $data['placeholder'];
+        $input->i18n_helper = $data['helper'];
+        $input->i18n_label = $data['label'];
+        $input->type_id = $typeId;
+        $input->save();
+        return $input;
+    }
+
 }

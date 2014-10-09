@@ -13,6 +13,40 @@ class ViewsTableSeeder extends Seeder {
                 'updated_at' => new DateTime
             ))
         );
+
+        $view['radio'] = Viewr::create(array(
+            'path'              => 'public.form.input.radio',
+        ));
+
+        $view['textarea'] = Viewr::create(array(
+            'path'              => 'public.form.input.textarea',
+        ));
+
+        $view['text'] = Viewr::create(array(
+            'path'              => 'public.form.input.text',
+        ));
+
+        $view['password'] = Viewr::create(array(
+            'path'              => 'public.form.input.password',
+        ));
+
+        $view['hidden'] = Viewr::create(array(
+            'path'              => 'public.form.input.hidden',
+        ));        
+
+        $view['checkbox'] = Viewr::create(array(
+            'path'              => 'public.form.input.checkbox',
+        ));     
+
+        $view['submit'] = Viewr::create(array(
+            'path'              => 'public.form.input.submit',
+        ));  
+
+        $view['select'] = Viewr::create(array(
+            'path'              => 'public.form.input.select',
+        )); 
+
+        
     }
 
 }

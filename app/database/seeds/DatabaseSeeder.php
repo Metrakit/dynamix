@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder {
 
         //Forms
         //$this->call('PagesTableSeeder');
-        //$this->call('ViewsTableSeeder');
+        $this->call('ViewsTableSeeder');
         //$this->call('DatasTableSeeder');
         //$this->call('DataViewTableSeeder');
         //$this->call('MapsTableSeeder');

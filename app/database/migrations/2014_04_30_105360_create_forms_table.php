@@ -21,10 +21,10 @@ class CreateFormsTable extends Migration {
 			$table->enum('finish_on', array('email','database', 'model'));
 			$table->enum('type', array('horizontal', 'inline', 'normal'))->default('normal');
 
-			$table->integer('i18n_title')->unsigned()->index();
+			$table->integer('i18n_title')->unsigned()->index()->nullable();
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 
-			$table->integer('i18n_description')->unsigned()->index();
+			$table->integer('i18n_description')->unsigned()->index()->nullable();
 			$table->foreign('i18n_description')->references('id')->on('i18n');
 		});
 	}

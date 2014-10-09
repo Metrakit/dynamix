@@ -23,13 +23,13 @@ class CreateInputsTable extends Migration {
 			$table->integer('view_id')->unsigned()->index();
 			$table->foreign('view_id')->references('id')->on('views');
 
-			$table->integer('i18n_placeholder')->unsigned()->index();
+			$table->integer('i18n_placeholder')->unsigned()->index()->nullable();
 			$table->foreign('i18n_placeholder')->references('id')->on('i18n');
 
-			$table->integer('i18n_helper')->unsigned()->index();
+			$table->integer('i18n_helper')->unsigned()->index()->nullable();
 			$table->foreign('i18n_helper')->references('id')->on('i18n');
 
-			$table->integer('i18n_label')->unsigned()->index()->nullable();
+			$table->integer('i18n_label')->unsigned()->index()->nullable()->nullable();
 			$table->foreign('i18n_label')->references('id')->on('i18n');			
 
 			$table->integer('type_id')->unsigned()->index();

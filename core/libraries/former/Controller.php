@@ -39,6 +39,7 @@ class Former extends \Controller {
         // Initialisation des objets
         $this->translate  = Config::get('model.translation');
         $this->formMap    = Config::get('model.formMap');
+        $this->formr      = Config::get('model.formr');
         $this->inputs     = Config::get('model.input');
 
         // If a model doesnt exist we display an error in the debugger
@@ -199,9 +200,34 @@ class Former extends \Controller {
     }
 
 
-    public function create()
+    /**
+     * Create a form since a Object (Model)
+     * @param  Object $object (should contain "formr" method)
+     * @return boolean
+     */
+    public function createFromModel($object)
     {
-        
+        // Verifs
+        if (!is_object($object)) {
+            throw new \InvalidArgumentException('You should give an object to this method.');
+        }
+
+        if (!method_exists($object, 'formr')) {
+            throw new \InvalidArgumentException('Method "formr" not found in the ' . get_class($object) . ' object.');
+        }
+
+        $data = $object->formr();
+
+        if (!isset($data['description']) || NULL === $data['description']) {
+            throw new \InvalidArgumentException('Argument "description" not found or cannot be null in the form array.');
+        }
+
+        if (!isset($data['title']) || NULL === $data['title']) {
+            throw new \InvalidArgumentException('Argument "title" not found or cannot be null in the form array.');
+        } 
+
+        // If all is okay...
+        $this->formr->generateByModel($data);
     }
 
 }

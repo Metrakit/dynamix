@@ -45,4 +45,23 @@ class SteroidEloquent extends Model{
  
  		return $eloquent;
  	}
+
+
+ 	/**
+ 	 * Get settings of a Formr
+ 	 * @return Array
+ 	 * @todo  Modifier le 'view' (éclaircir ce point avec David)
+ 	 */
+ 	public function formr()
+ 	{
+ 		$className = get_class($this);
+ 		if (Config::has('forms/gallery' . $className)) {
+ 			$config = Config::get('forms/' . $className);
+ 			$config['model'] = $className;
+ 			return $config; 
+ 		} else {
+ 			throw new Exception("Gallery config file for the form is missing", 1); 			
+ 		}
+ 	}
+
 }

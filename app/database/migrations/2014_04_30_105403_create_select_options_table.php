@@ -21,10 +21,10 @@ class CreateSelectOptionsTable extends Migration {
 			$table->integer('input_id')->unsigned()->index();
 			$table->foreign('input_id')->references('id')->on('inputs');
 
-			$table->integer('i18n_key')->unsigned()->index();
+			$table->integer('i18n_key')->unsigned()->index()->nullable();
 			$table->foreign('i18n_key')->references('id')->on('i18n');
 
-			$table->integer('i18n_value')->unsigned()->index();
+			$table->integer('i18n_value')->unsigned()->index()->nullable();
 			$table->foreign('i18n_value')->references('id')->on('i18n');
 		});
 	}
