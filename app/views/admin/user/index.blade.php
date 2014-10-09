@@ -19,6 +19,7 @@
 @include('includes.session-message')
 
 @foreach($users as $u)
+<div class="row">
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
     @include('admin.user.profil', array('user'=>$u))
     <div class="row">
@@ -34,4 +35,5 @@
 </div>
 @endforeach
 <div class="clearfix"></div>
+</div>
 @stop

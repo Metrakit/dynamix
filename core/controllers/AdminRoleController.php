@@ -120,8 +120,8 @@ class AdminRoleController extends BaseController {
 	                $track->user_id = Auth::user()->id;
 	                $track->date = new Datetime;
 	                $track->action = 'update';
-	                $track->trackable_id = $id,;
-	                $track->rackable_type = 'Role';
+	                $track->trackable_id = $id;
+	                $track->trackable_type = 'Role';
 	                $track->save();
                 
 	                return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_edit_success'));

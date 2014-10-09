@@ -11,7 +11,7 @@
             <![endif]-->
 
             <!-- navbar -->
-            @include('admin.includes.nav')
+            @include('admin.interface.nav-admin')
             <!-- ./ navbar -->
 
             <div id="page-wrapper">

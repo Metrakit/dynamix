@@ -28,7 +28,7 @@ class Page extends Eloquent {
     }
 
     public function navigation() {
-        return $this->morphMany('Nav', 'naviggable');
+        return $this->morphMany('Nav', 'navigable');
     }
 
     public function trackable() {
@@ -43,6 +43,33 @@ class Page extends Eloquent {
 	 */
 	public function translate( $i18n_id ) {
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
+
+	public static function getNotAllowed () {
+		$notAllowed = array();
+
+		//get all Nav with a page as resource
+		$navs = Nav::where('navigable_type','=',get_class())->get();
+		$allowed = array();
+		foreach ( $navs as $nav ) {
+			$allowed[] = $nav->navigable->id;
+		}
+
+		//get all Pages
+		$pages = Page::all();
+
+		//store each resources
+		foreach ( $pages as  $page ) {
+			if ( !in_array( $page->id, $allowed ) ) {
+				$notAllowed[] = $page;
+			}
+		}
+
+		return $notAllowed;
+	}
+
+	public static function getClassName () {
+		return get_class();
 	}
 
 

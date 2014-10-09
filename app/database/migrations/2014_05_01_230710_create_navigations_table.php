@@ -27,9 +27,9 @@ class CreateNavigationsTable extends Migration {
 			
 			$table->integer('order')->unsigned();
 
-			$table->integer('naviggable_id')->unsigned();
+			$table->integer('navigable_id')->unsigned();
 
-			$table->string('naviggable_type');
+			$table->string('navigable_type');
 
 			$table->timestamps();
 		});

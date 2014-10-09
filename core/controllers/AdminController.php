@@ -73,7 +73,7 @@ class AdminController extends BaseController {
 		$data['user'] = Auth::user();
 
 		//Roles
-		$data['roles'] = Role::all();
+		$data['roles'] = Role::orderBy('name','ASC')->get();
 
 		//Interface
 		$data['noAriane'] = true;
@@ -205,6 +205,11 @@ class AdminController extends BaseController {
 									return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_delete_error'));
 		        				}
 		        			}
+		        			//set locale disabled
+		        			$locale = Locale::find($lang->id);
+		        			$locale->enable = false;
+		        			$locale->save();
+
 		        			//track user
 		        			$track = new Track();
 		        			$track->user_id = Auth::user()->id;

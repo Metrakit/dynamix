@@ -13,6 +13,10 @@
 @stop
 
 @section('content')
+<div class="row">
+@if ( count($logs) == 0 )
+<h2 class="text-center">{{{ Lang::get('admin.noItemToSHow') }}}</h2>
+@else
 <table class="table table-hover">
 <thead>
     <tr>
@@ -33,6 +37,7 @@
 @endforeach
 </tbody>
 </table>
-
+@endif
 {{ $logs->links() }}
+</div>
 @stop

@@ -118,6 +118,9 @@ class AdminUserController extends BaseController {
 		$data['glyphicon']		= 'ok';
 		$data['buttonLabel']	= Lang::get('button.update');
 
+		//langsBackend
+		$data['langsBackend'] = Locale::where('on_admin','=',1)->orderBy('enable', 'DESC')->orderBy('id')->get();
+
 		return View::make('admin.user.edit_profil', $data);
 	}
 

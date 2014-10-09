@@ -21,6 +21,7 @@ class CreateResourcesTable extends Migration {
 			$table->string('icon',45);
 			$table->string('model',45)->nullable();
 			$table->boolean('in_admin_ui');
+			$table->boolean('navigable');
 		});
 	}
 

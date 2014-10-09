@@ -125,7 +125,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                 $data = array(
                     'name'  => $resource->name,
                     'icon'  => $resource->icon);
-                $navigations .= Response::view('admin.nav.nav', $data )->getOriginalContent();
+                $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
             }
         }
         

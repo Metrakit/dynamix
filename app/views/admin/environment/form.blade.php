@@ -1,9 +1,12 @@
 @foreach( $langs as $lang )
 <div class="form-group">
-    <div class="checkbox">
+    <div class="checkbox checkbox-button">
       <label>
-        <input type="checkbox" name="{{$lang['id']}}" value="{{$lang['id']}}"{{( $lang['enable'] == 1 ? 'checked="checked"' : '' )}}>
-        <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/></span> {{$lang['name_locale']}} ({{$lang['name_en']}})
+        <input type="checkbox" name="{{$lang['id']}}" value="{{$lang['id']}}"{{( $lang['enable'] == 1 ? ' checked="checked" class="enable"' : ' class="disable"' )}}>
+        <span>
+            <img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/>
+            {{$lang['name_locale']}} ({{$lang['name_en']}})
+        </span>
       </label>
     </div>
 </div>

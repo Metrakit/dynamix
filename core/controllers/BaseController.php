@@ -2,35 +2,27 @@
 
 class BaseController extends Controller {
 
-	/**
-	 * Find and return the Object for an url
-	 *
-	 * @return void
-	 */
-	protected function slugExists( $slug )
-	{
-		$urls = Cache::get('DB_Urls');
 
-		foreach( $urls as $url ){
-			if( $url->text == '/' . $slug ){
-				return $url;
-			}
+
+
+	/**
+	 * return an array of Object for all not allowed resources
+	 *
+	 * @return array
+	 */
+	protected function getResourceNotAllowed () {
+		$notAllowed = array();
+		$resourceNavigable = Resource::where('navigable','=',1)->get();
+
+		foreach ( $resourceNavigable as $resource ) {
+			$modelName = $resource->model;
+			$notAllowed = array_merge( $notAllowed, $modelName::getNotAllowed() );
 		}
-		return false;
+
+		return $notAllowed;
 	}
 
 
-
-
-
-
-
-
-	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
 	/*protected function setupLayout()
 	{
 		if ( ! is_null($this->layout))

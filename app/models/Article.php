@@ -42,7 +42,7 @@ class Article extends Eloquent {
 
     public function navigation()
     {
-        return $this->morphMany('Nav', 'naviggable');
+        return $this->morphMany('Nav', 'navigable');
     }
     
     public function trackable()

@@ -23,11 +23,11 @@ class URLManagerController extends BaseController {
         }
         $files = null;*/
 
-/*        $arabicTest = Translation::where('locale_id','=','ar')->get();
-        foreach ( $arabicTest as $a ) {
-            $a->delete();
-        }
-*/
+        /*        $arabicTest = Translation::where('locale_id','=','ar')->get();
+                foreach ( $arabicTest as $a ) {
+                    $a->delete();
+                }
+        */
 
         $urls = App::make('CacheController')->getCache( 'DB_Urls' );
 
