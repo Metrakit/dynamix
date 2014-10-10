@@ -2092,6 +2092,17 @@ var MasterAdmin = function (){
       }
     });
   }
+
+  this.switchCheckboxInitializr = function () {
+    // JS is only used to add the <div>s
+    var switches = document.querySelectorAll('input[type="checkbox"].ios-switch');
+
+    for (var i=0, sw; sw = switches[i++]; ) {
+      var div = document.createElement('div');
+      div.className = 'switch';
+      sw.parentNode.insertBefore(div, sw.nextSibling);
+    }
+  }
 }
 
 
