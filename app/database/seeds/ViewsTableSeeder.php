@@ -6,13 +6,13 @@ class ViewsTableSeeder extends Seeder {
     {
         DB::table('views')->delete();
 
-        DB::table('views')->insert( array(
+        /*DB::table('views')->insert( array(
             array(
                 'path'       => 'public.pages.content',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ))
-        );
+        );*/
 
         $view['radio'] = Viewr::create(array(
             'path'              => 'public.form.input.radio',
