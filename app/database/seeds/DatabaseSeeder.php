@@ -49,6 +49,9 @@ class DatabaseSeeder extends Seeder {
         //$this->call('DatasTableSeeder');
         //$this->call('DataViewTableSeeder');
         //$this->call('MapsTableSeeder');
+        
+        // ONLY FOR DEVELOPMENT
+        $this->call('FullFormSeeder');
 
 
         //Sliders
