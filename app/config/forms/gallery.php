@@ -16,7 +16,7 @@ return array(
             'name'        => 'title',
             'type'        => 'text',
             'rules'       => 'required',
-            'view'        => 4,
+            'view'        => 3,
             'title'       => Lang::get('input.gallery.title.title'),
             'placeholder' => Lang::get('input.gallery.title.placeholder'),
             'helper'      => Lang::get('input.gallery.title.helper'),
@@ -26,7 +26,7 @@ return array(
             'name'        => 'description',
             'type'        => 'textarea',
             'rules'       => 'required',
-            'view'        => 3,
+            'view'        => 2,
             'title'       => Lang::get('input.gallery.description.title'),
             'placeholder' => Lang::get('input.gallery.description.placeholder'),
             'helper'      => Lang::get('input.gallery.description.helper'),
@@ -36,7 +36,7 @@ return array(
             'name'        => 'type',
             'type'        => 'select',
             'rules'       => 'required',
-            'view'        => 9,
+            'view'        => 8,
             'options'     => array(
                 array(
                     'i18n_key'   => Lang::get('input.gallery.type.key.1'),

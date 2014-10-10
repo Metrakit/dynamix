@@ -512,7 +512,7 @@ class FullFormSeeder extends Seeder {
         // Inputs
         $input[1] = InputView::create(array(
             'name'              => "radio",
-            'view_id'           => 2,
+            'view_id'           => 1,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['radio']->id,
@@ -521,7 +521,7 @@ class FullFormSeeder extends Seeder {
 
         $input[2] = InputView::create(array(
             'name'              => "textarea",
-            'view_id'           => 3,
+            'view_id'           => 2,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['textarea']->id,
@@ -530,7 +530,7 @@ class FullFormSeeder extends Seeder {
 
         $input[3] = InputView::create(array(
             'name'              => "text",
-            'view_id'           => 4,
+            'view_id'           => 3,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['text']->id,
@@ -539,7 +539,7 @@ class FullFormSeeder extends Seeder {
 
         $input[4] = InputView::create(array(
             'name'              => "password",
-            'view_id'           => 5,
+            'view_id'           => 4,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['password']->id,
@@ -548,7 +548,7 @@ class FullFormSeeder extends Seeder {
 
         $input[5] = InputView::create(array(
             'name'              => "hidden",
-            'view_id'           => 6,
+            'view_id'           => 5,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['hidden']->id,
@@ -557,7 +557,7 @@ class FullFormSeeder extends Seeder {
 
         $input[6] = InputView::create(array(
             'name'              => "checkbox",
-            'view_id'           => 7,
+            'view_id'           => 6,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['checkbox']->id,
@@ -566,7 +566,7 @@ class FullFormSeeder extends Seeder {
 
         $input[7] = InputView::create(array(
             'name'              => "submit",
-            'view_id'           => 8,
+            'view_id'           => 7,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['submit']->id,
@@ -575,7 +575,7 @@ class FullFormSeeder extends Seeder {
 
         $input[8] = InputView::create(array(
             'name'              => "select",
-            'view_id'           => 9,
+            'view_id'           => 8,
             'i18n_placeholder'  => $i18n['placeholder'][1]->id,
             'i18n_helper'       => $i18n['helper'][1]->id,
             'i18n_label'        => $i18n['label']['select']->id,
