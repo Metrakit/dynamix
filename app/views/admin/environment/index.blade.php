@@ -6,8 +6,8 @@
 @parent
 @stop
 
-@section('scriptOnReady')
-masterAdminClass.checboxButtonListener();
+@section('script')
+masterAdminClass.switchCheckboxInitializr();
 @stop
 
 @section('page-header')
@@ -31,7 +31,7 @@ masterAdminClass.checboxButtonListener();
     <form class="form-horizontal form-lang" method="POST" action="{{ URL::to('admin/languages') }}" accept-charset="UTF-8" autocomplete="off">
 
         @foreach( $langsFrontEnd as $langPack)
-        <div class="col-lg-4 col-sm-6">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             @include('admin.environment.form', array('langs' => $langPack))
         </div>
         @endforeach

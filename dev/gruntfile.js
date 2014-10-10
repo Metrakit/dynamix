@@ -238,7 +238,8 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.js',
 						'<%= vendorPath %>raphael/raphael-min.js',
 						'<%= vendorPath %>morrisjs/morris.js',
-						'<%= srcPath %>js/vendor/sb-admin-2.js'
+						'<%= srcPath %>js/vendor/sb-admin-2.js',
+						'<%= srcPath %>js/master-admin.js'
 				],
 				tasks:['concat:back', 'clean:js', 'hash:js'],
 				options: {
