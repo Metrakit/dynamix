@@ -165,17 +165,19 @@ class AdminUserController extends BaseController {
 	 */
 	public function edit($id)
 	{
+		$data['user'] 			= Auth::user();
+
 		//Interface
 		$data['noAriane'] 		= true;
 		$data['buttonLabel'] 	= Lang::get('button.update');
 		$data['glyphicon'] 		= 'ok';
 
-	    $data['user'] = User::find($id);
+	    $data['u'] = User::find($id);
 
 		//Role
 		$data['roles'] 			= Role::all();
 
-	    if(empty($data['user'])) return Redirect::back()->with('error', Lang::get('admin.user_empty') );
+	    if(empty($data['u'])) return Redirect::back()->with('error', Lang::get('admin.user_empty') );
 
 		return View::make('admin.user.edit_role', $data);
 	}

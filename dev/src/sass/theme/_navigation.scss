@@ -5,7 +5,9 @@
 	position:relative;
 	display:block;
 	width:100%;
-	overflow-y:auto;
+	overflow-x:auto;
+	overflow-y:hidden;
+	padding-bottom:10px;
 	.menu-objects{
 		float:left;
 		margin:0 2px;
@@ -19,13 +21,30 @@
 				@include opacity(1);				
 			}
 		}
+		&:first-child .menu-container{
+			padding-left:0px !important;
+		}
+		&:last-child  .menu-container{
+		//CHELOUUUU
+			padding-right:0px !important;
+		}
+
 	}
+}
+
+.width100{
+	width:100%;
+	display:block;
 }
 
 //MENU OBJECT
 .menu-object{
-	color:white;
 	font-size:18px;
+	position:relative;
+	border:1px solid #adadad;
+	@include border-radius(4px);
+	//overflow:hidden;
+	line-height:60px;
 
 	&.create{
 		margin-top:3px;
@@ -48,6 +67,9 @@
 
 	//Buttons
 	.buttons{
+		position:absolute;
+		top:0px;
+		right:0px;
 		button.remove{
 			@include border-radius( 0 25% 0 0 );
 			@include opacity(.5);
@@ -66,53 +88,99 @@
 		}
 	}
 
+	//Container
+	.menu-container {
+		float:left;
+		line-height:normal;
+		padding-left:24px;
+		padding-right:24px;
+	}
+	
+
 	//Parents
 	&.menu-object-parent{
 		float:left;
 		width: 100%;
-		.menu-object-parent-content{
-			height:62px;
-			line-height:60px;
-			background:#333;
+		height:64px;
 
+		.menu-object-parent-content{
 			.content{
 				padding:0 20px;
 			}
-			.content, .move-left{
-				float:left;	
-			}
-			.move-right{
-				float: right;
-			}
-			/* .move-left, .move-right{
-				padding:0 2px;
-			} */
-			&:hover, &:focus{
-				background:darken(#333,5%);
-			}
+		}
+		.move-left {
+		   @include border-radius(4px 0 0 4px);
+		}
+		.move-right{
+		   @include border-radius(0 4px 4px 0);
+			float: right;
 		}
 	}
 
 	//Children
 	&.menu-object-child{
+		line-height:normal;
+		height:auto;
+		margin-top:10px;
+		margin-left:20px;
+		position:relative;
+
+		
+		&:before{
+			content : " ";
+			height:80px;
+			width:2px;
+			position:absolute;
+			top:-11px;
+			left:-11px;
+			background:#adadad;
+		}
+		&:before:hover + div{
+			.move{
+				width:0px  !important;	
+				height:0px  !important;
+			}
+		}
 		.menu-object-child-content{
-			background:lighten(#333,10%);
 			.content{
-				line-height:60px;
 				vertical-align: middle;
-				height:60px;
 				padding: 0 20px;
 			}
-			.move form button{
+		}
+		.menu-container {
+			width:100%;
+			float:none;
+			
+			display:block;
+			padding-left:0px;
+			padding-right:0px;
+		}
+		.move-up {
+		   @include border-radius(4px 4px 0 0);
+		}
+		.move-down{
+		   @include border-radius(0 0 4px 4px);
+		}
+		.move {
+			float:none;
+			width:100%;
+			display:block;
+			form button{
 				background:lighten(#222,10%);
 				&:hover, &:focus{
 					background:#222;
 				}
 			}
-			&:hover, &:focus{
-				background:lighten(#333,5%);
-			}
 		}
+	}
+	&.menu-object-child:first-child .buttons{
+		top:0px !important;
+	}
+	
+	//Both
+	.menu-object-parent-content, .menu-object-child-content {
+		 margin-top:24px;
+		 padding-bottom:10px;
 	}
 
 	.content small{
@@ -128,6 +196,11 @@
 		vertical-align: middle;
 		text-align: center;
 		border:none;
+		float:left;
+		width:0px;
+		height:0px;
+		overflow:hidden;
+		//@include transition(.25s all ease);
 		form button{
 			background: #222;
 			vertical-align: middle;
@@ -139,4 +212,27 @@
 			}
 		}
 	}
+	&:hover , &:focus{
+		.move{
+			width:auto;	
+			height:auto;
+		}
+		.menu-container {
+			padding-left:0px;
+			padding-right:0px;
+		}
+		&.menu-object-parent .buttons{
+			right:24px;
+		}
+		&.menu-object-child {
+			.buttons{
+				top:19px;
+			}
+			&:first-child .buttons{
+			//CHELOUUUU
+				top:0px !important;
+			}
+		}
+	}
+
 }

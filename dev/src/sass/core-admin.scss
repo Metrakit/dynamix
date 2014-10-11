@@ -1,7 +1,58 @@
 @import "compass";
+@import "../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins";
 
 //Base Theme admin
 @import "admin/sb-admin-2";
+.scrollHorizontalBox {
+
+	background:
+				linear-gradient(90deg, white 0%, rgba(255,255,255,0)),
+				linear-gradient(-90deg, white 0%, rgba(255,255,255,0)) 100% 0,
+				radial-gradient(
+					farthest-side at 0% 50%,
+					rgba(0,0,0,.2),
+					rgba(0,0,0,0)
+				),
+				radial-gradient(
+					farthest-side at 100% 50%,
+					rgba(0,0,0,.2),
+					rgba(0,0,0,0)
+				) 100% 0%;
+	background-repeat: no-repeat;
+	background-color: #fff;
+	background-size: 100px 100%, 100px 100%, 14px 100%, 14px 100%;
+	background-attachment: local, local, scroll, scroll;
+}
+
+
+//NAV Interface
+.nav-user{
+	padding:8px !important;
+	color:#333 !important;
+}
+.navbar-brand.favicon{
+	padding:9px !important;
+	span{
+		line-height: 32px;
+		display: inline-block;
+		height: 32px;
+		vertical-align: middle;
+	}
+}
+
+//Log
+table.log{
+	//h:34px
+	tr td{
+		line-height:34px !important;
+	}
+}
+
+//BTN Admin
+.btn-transparent {
+	@include button-variant(grey, transparent, white);
+	border:0px;
+}
 
 //Nav
 @import "theme/navigation";
@@ -47,9 +98,6 @@
 .form-lang {
   .form-group {
     padding:5px;
-  }
-  label {
-    margin-bottom:0;
   }
 }
 
@@ -112,9 +160,6 @@
 	h3{
 		margin-top:0px;
 	}
-  label {
-    margin-bottom:0;
-  }
 }
 .form-role_permission {
   .form-group {

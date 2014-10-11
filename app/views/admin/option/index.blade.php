@@ -63,7 +63,7 @@
             <div class="col-md-10 col-lg-8">
                 <textarea class="form-control" name="analytics" id="analytics" rows="10">{{{ Input::old('admin_email', $option->analytics) }}}</textarea>
                 {{ $errors->first('analytics', '<div class="alert alert-danger">:message</div>') }}
-                <p class="help-block">{{{ Lang::get('admin.option_analytics_help') }}}</p>
+                <p class="help-block">{{{ Lang::get('admin.option_analytics_help') }}}<br>{{{ Lang::get('admin.option_analytics_help_recommand') }}}</p>
             </div>
         </div>
         <!-- ./ analytics -->
@@ -73,7 +73,7 @@
         <!-- Form Actions -->
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10 col-lg-8">
-                <button type="submit" class="btn btn-success">{{{Lang::get('button.update')}}}</button>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('button.update')}}}</button>
             </div>
         </div>
         <!-- ./ form actions -->

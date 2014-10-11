@@ -36,7 +36,11 @@ class Role extends Eloquent
      * @var string
      */
     public function isDeletable() {
-        return $this->deletable;
+        //Check if users has this role
+        if ( $this->users->count() === 0 && $this->deletable ) {
+            return true;
+        }
+        return false;
     }
 
     public function hasResource( $id ) {
