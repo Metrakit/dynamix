@@ -142,16 +142,19 @@ class PagesTableSeeder extends Seeder {
         DB::table('pages')->insert( array(
             array(
                 'i18n_name'                 => $name1->id,
+                'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
                 'i18n_name'                 => $name2->id,
+                'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
                 'i18n_name'                 => $name2->id,
+                'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ))

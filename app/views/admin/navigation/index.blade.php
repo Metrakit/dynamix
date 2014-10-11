@@ -21,7 +21,7 @@ masterAdminClass.watchMenuObjects();
 @include('includes.session-message')
 
 <div class="col-sm-12">
-	<div class="alert alert-warning alert-dismissable">
+	<div class="alert alert-info alert-dismissable">
 	    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	    <p>
 	    	Pour créer un menu simple, pointant vers une ressource (page|galerie) il vous suffit d'avoir une ressource disponible.<br>
@@ -92,22 +92,9 @@ masterAdminClass.watchMenuObjects();
 <div class="col-sm-12">
 	<?php $h3 = ''; ?>
 	@foreach($resource_not_allowed as $resource)
-	<div class="col-sm-6">
+	<div class="col-md-4">
 	<h3>{{{ Lang::get('admin.rsc'.$h3 = ( $resource->getClassName() != $h3 ? $resource->getClassName() : $h3 )) }}}</h3>
-	<table class="table">
-		<tr>
-		    <th>{{{ Lang::get('table.title')}}}</th>
-		    <th>{{{ Lang::get('table.url')}}}</th>
-		    <th>{{{ Lang::get('table.meta_description')}}}</th>
-		    <th>{{{ Lang::get('table.created_at')}}}</th>
-		</tr>
-		<tr>
-		    <td>{{$resource->title()}}</td>
-		    <td>{{$resource->url()}}</td>
-		    <td>{{$resource->meta_description()}}</td>
-		    <td>{{$resource->created_at}}</td>
-		</tr>
-	</table>
+	 	@include('admin.page.presenter', array('page'=>$resource))
 	</div>
 	@endforeach
 	<div class="clearfix"></div>

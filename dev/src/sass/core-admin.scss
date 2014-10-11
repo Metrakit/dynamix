@@ -54,6 +54,22 @@ table.log{
 	border:0px;
 }
 
+//Page
+.panel-page {
+	i.fa {
+		font-size:72px;	
+	}
+	.help-block {
+		display:inline-block;
+	}
+	.buttons{
+		position:absolute;
+		top:0;
+		right:15px;
+	}
+}
+
+
 //Nav
 @import "theme/navigation";
 
