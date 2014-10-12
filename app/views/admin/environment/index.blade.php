@@ -39,7 +39,7 @@ masterAdminClass.switchCheckboxInitializr();
         <div class="clearfix"></div>
 
         <div class="form-group text-center">
-            <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('button.save')}}}</button>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('button.save')}}}</button>
         </div>
 
     </form>

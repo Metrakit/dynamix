@@ -17,7 +17,7 @@
 @if ( count($logs) == 0 )
 <h2 class="text-center">{{{ Lang::get('admin.noItemToSHow') }}}</h2>
 @else
-<table class="table table-hover">
+<table class="table table-hover log">
 <thead>
     <tr>
         <th>{{ Lang::get('admin.user') }}</th>
@@ -28,10 +28,13 @@
 </thead>
 <tbody>
 @foreach ($logs as $log)
-    <tr class="{{ Config::get('core.log.action_css')[$log->action] }}">
-        <td><span class="text-capitalize">{{ $log->userName() }}</span></td>
+    <tr>
+        <td>
+            <img class="img-circle inlineBlock" height="34px" width="34px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=34px"}}" alt="gravatar" />
+             <span>{{$user->email}}</span>
+        </td>
         <td>{{ $log->date }}</td>
-        <td>{{{ Lang::get('admin.log_'.$log->action) }}}</td>
+        <td><span class="btn btn-{{ Config::get('core.log.action_css')[$log->action] }}">{{{ Lang::get('admin.log_'.$log->action) }}}</span></td>
         <td>{{{ Lang::get('admin.rsc'.$log->trackable_type) }}}</td>
     </tr>
 @endforeach

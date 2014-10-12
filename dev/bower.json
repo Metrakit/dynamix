@@ -2,27 +2,17 @@
     "name" : "Dynamix",
     "version" : "0.0.1",
     "dependencies" : {
-        //==== JS =====
-        //Framework
     	"jquery": ">= 2.1.1",
-        //HEAD / CROSS SUPPORT / PERFORMENCE
         "headjs": ">= 1.0.3",
         "media-match": ">= 0.1.0",
         "responsejs": ">= 0.9.0",
         "imagesloaded": ">= 3.1.8",
-        //WISIWIG
         "summernote": ">= 0.5.9",
-        //Modal
         "fancybox": ">= 2.1.5",
-        //Charts
         "raphael": ">= 2.1.1",
-        //Templating JS
         "mustache.js": ">= 0.8.2",
-        //Plugin jQuery for descanding horizontal menu
         "metisMenu": ">= 1.1.*",
 
-        //==== CSS ====
-        //Framework
         "bootstrap-sass-twbs": ">= 3.2.*"
     }
 }

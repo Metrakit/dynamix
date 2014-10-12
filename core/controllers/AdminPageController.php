@@ -1,6 +1,6 @@
 <?php
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+//use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdminPageController extends BaseController {
 
@@ -11,9 +11,14 @@ class AdminPageController extends BaseController {
 	 */
 	public function index()
 	{
-        $pages = Page::all();
+		//User
+		$data['user'] 			= Auth::user();
 
-		return View::make('admin.page.index', compact('pages'));
+		//Interface
+		$data['noAriane'] 		= true;
+        $data['pages'] 			= Page::all();
+
+		return View::make('admin.page.index', $data);
 	}
 
 	/**

@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{URL::to('/')}}"><img src="{{asset('favicon/favicon32.png')}}" alt="Logo"> {{ App::make('CacheController')->getCache('DB_Option')->site_name }}</a>
+        <a class="navbar-brand favicon" href="{{URL::to('/')}}"><img src="{{asset('favicon/favicon32.png')}}" alt="Logo"> <span>{{ App::make('CacheController')->getCache('DB_Option')->site_name() }}</span></a>
     </div>
     <!-- /.navbar-header -->
 
@@ -15,8 +15,9 @@
     <ul class="nav navbar-top-links navbar-right">
         <!-- /.dropdown -->
         <li class="dropdown pull-right">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            <a class="dropdown-toggle nav-user" data-toggle="dropdown" href="#">
+                <img class="img-circle inlineBlock" height="34px" width="34px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=34px"}}" alt="gravatar" />
+                 {{$user->email}}
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li><a href="{{ URL::to('/admin/user/profil' ) }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('user.show_profil') }}}</a>

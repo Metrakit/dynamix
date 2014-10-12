@@ -34,6 +34,22 @@ var MasterAdmin = function (){
       sw.parentNode.insertBefore(div, sw.nextSibling);
     }
   }
+
+  this.watchMenuObjects = function () {
+    var width = 0,
+        o = 0,
+        margin = 4;
+    //console.log($('#navigation').children('.menu-objects'));
+    $('#navigation .menu-objects').each( function (index) {
+      width=width + $(this).width() + margin;
+    });
+
+      //width = width + $('#navigation').children('.menu-objects')[o].width();
+      console.log(width);
+    
+
+    $('#navigation').width(width);
+  }
 }
 
 

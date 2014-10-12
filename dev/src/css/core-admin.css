@@ -1,4 +1,4 @@
-@charset "CP850";
+@charset "UTF-8";
 /*!
  * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -67,7 +67,7 @@ body {
   white-space: normal;
 }
 
-/* line 62, ../sass/admin/_sb-admin-2.scss */
+/* line 60, ../sass/admin/_sb-admin-2.scss */
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,
 .navbar-top-links .dropdown-alerts {
@@ -132,7 +132,7 @@ body {
   content: "\f107";
 }
 
-/* line 114, ../sass/admin/_sb-admin-2.scss */
+/* line 113, ../sass/admin/_sb-admin-2.scss */
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
   border-bottom: 0 !important;
@@ -157,7 +157,7 @@ body {
     margin-top: 51px;
   }
 
-  /* line 136, ../sass/admin/_sb-admin-2.scss */
+  /* line 134, ../sass/admin/_sb-admin-2.scss */
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
   .navbar-top-links .dropdown-alerts {
@@ -196,7 +196,7 @@ body {
   color: #d9534f;
 }
 
-/* line 171, ../sass/admin/_sb-admin-2.scss */
+/* line 167, ../sass/admin/_sb-admin-2.scss */
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
 .btn-info.btn-outline:hover,
@@ -234,7 +234,7 @@ body {
   margin: 0;
 }
 
-/* line 200, ../sass/admin/_sb-admin-2.scss */
+/* line 199, ../sass/admin/_sb-admin-2.scss */
 .panel .slidedown .glyphicon,
 .chat .glyphicon {
   margin-right: 5px;
@@ -263,7 +263,7 @@ body {
   height: 100%;
 }
 
-/* line 227, ../sass/admin/_sb-admin-2.scss */
+/* line 223, ../sass/admin/_sb-admin-2.scss */
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -330,7 +330,7 @@ table.dataTable thead .sorting:after {
   padding-top: 10px;
   padding-bottom: 10px;
   border: 1px solid #ddd;
-  background-color: #eeeeee !important;
+  background-color: #eee !important;
 }
 
 /* line 285, ../sass/admin/_sb-admin-2.scss */
@@ -409,19 +409,96 @@ table.dataTable thead .sorting:after {
   color: #df8a13;
 }
 
+/* line 6, ../sass/core-admin.scss */
+.scrollHorizontalBox {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0)), linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0)) 100% 0, radial-gradient(farthest-side at 0% 50%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 100% 0%;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  background-size: 100px 100%, 100px 100%, 14px 100%, 14px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+/* line 29, ../sass/core-admin.scss */
+.nav-user {
+  padding: 8px !important;
+  color: #333 !important;
+}
+
+/* line 33, ../sass/core-admin.scss */
+.navbar-brand.favicon {
+  padding: 9px !important;
+}
+/* line 35, ../sass/core-admin.scss */
+.navbar-brand.favicon span {
+  line-height: 32px;
+  display: inline-block;
+  height: 32px;
+  vertical-align: middle;
+}
+
+/* line 46, ../sass/core-admin.scss */
+table.log tr td {
+  line-height: 34px !important;
+}
+
+/* line 52, ../sass/core-admin.scss */
+.btn-transparent {
+  color: grey;
+  background-color: transparent;
+  border-color: white;
+  border: 0px;
+}
+/* line 11, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent:hover, .btn-transparent:focus, .btn-transparent:active, .btn-transparent.active, .open > .btn-transparent.dropdown-toggle {
+  color: grey;
+  background-color: transparent;
+  border-color: #e0e0e0;
+}
+/* line 20, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent:active, .btn-transparent.active, .open > .btn-transparent.dropdown-toggle {
+  background-image: none;
+}
+/* line 28, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent.disabled, .btn-transparent.disabled:hover, .btn-transparent.disabled:focus, .btn-transparent.disabled:active, .btn-transparent.disabled.active, .btn-transparent[disabled], .btn-transparent[disabled]:hover, .btn-transparent[disabled]:focus, .btn-transparent[disabled]:active, .btn-transparent[disabled].active, fieldset[disabled] .btn-transparent, fieldset[disabled] .btn-transparent:hover, fieldset[disabled] .btn-transparent:focus, fieldset[disabled] .btn-transparent:active, fieldset[disabled] .btn-transparent.active {
+  background-color: transparent;
+  border-color: white;
+}
+/* line 38, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent .badge {
+  color: transparent;
+  background-color: grey;
+}
+
+/* line 59, ../sass/core-admin.scss */
+.panel-page i.fa {
+  font-size: 72px;
+}
+/* line 62, ../sass/core-admin.scss */
+.panel-page .help-block {
+  display: inline-block;
+}
+/* line 65, ../sass/core-admin.scss */
+.panel-page .buttons {
+  position: absolute;
+  top: 0;
+  right: 15px;
+}
+
 /* line 4, ../sass/theme/_navigation.scss */
 .menus {
   position: relative;
   display: block;
   width: 100%;
-  overflow-y: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px;
 }
-/* line 9, ../sass/theme/_navigation.scss */
+/* line 11, ../sass/theme/_navigation.scss */
 .menus .menu-objects {
   float: left;
   margin: 0 2px;
 }
-/* line 12, ../sass/theme/_navigation.scss */
+/* line 14, ../sass/theme/_navigation.scss */
 .menus .menu-objects.create {
   vertical-align: middle;
   line-height: 62px;
@@ -430,146 +507,219 @@ table.dataTable thead .sorting:after {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 18, ../sass/theme/_navigation.scss */
+/* line 20, ../sass/theme/_navigation.scss */
 .menus .menu-objects.create:hover, .menus .menu-objects.create:focus {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-
-/* line 26, ../sass/theme/_navigation.scss */
-.menu-object {
-  color: white;
-  font-size: 18px;
+/* line 24, ../sass/theme/_navigation.scss */
+.menus .menu-objects:first-child .menu-container {
+  padding-left: 0px !important;
 }
-/* line 30, ../sass/theme/_navigation.scss */
+/* line 27, ../sass/theme/_navigation.scss */
+.menus .menu-objects:last-child .menu-container {
+  padding-right: 0px !important;
+}
+
+/* line 35, ../sass/theme/_navigation.scss */
+.width100 {
+  width: 100%;
+  display: block;
+}
+
+/* line 41, ../sass/theme/_navigation.scss */
+.menu-object {
+  font-size: 18px;
+  position: relative;
+  border: 1px solid #adadad;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  line-height: 60px;
+}
+/* line 49, ../sass/theme/_navigation.scss */
 .menu-object.create {
   margin-top: 3px;
   vertical-align: middle;
   line-height: 52px;
   padding-left: 10px;
   text-align: center;
-  -webkit-transition: 0.25s all ease;
-  -moz-transition: 0.25s all ease;
-  -o-transition: 0.25s all ease;
-  transition: 0.25s all ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
   opacity: 0.25;
 }
-/* line 38, ../sass/theme/_navigation.scss */
+/* line 57, ../sass/theme/_navigation.scss */
 .menu-object.create:hover, .menu-object.create:focus {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 43, ../sass/theme/_navigation.scss */
+/* line 62, ../sass/theme/_navigation.scss */
 .menu-object.create a:hover, .menu-object.create a:focus {
   text-decoration: none;
 }
-/* line 51, ../sass/theme/_navigation.scss */
+/* line 69, ../sass/theme/_navigation.scss */
+.menu-object .buttons {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+/* line 73, ../sass/theme/_navigation.scss */
 .menu-object .buttons button.remove {
-  -webkit-border-radius: 0 25% 0 0;
   -moz-border-radius: 0 25% 0 0;
-  -ms-border-radius: 0 25% 0 0;
-  -o-border-radius: 0 25% 0 0;
+  -webkit-border-radius: 0;
   border-radius: 0 25% 0 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
-  -webkit-transition: 0.25s all ease;
-  -moz-transition: 0.25s all ease;
-  -o-transition: 0.25s all ease;
-  transition: 0.25s all ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
 }
-/* line 55, ../sass/theme/_navigation.scss */
+/* line 77, ../sass/theme/_navigation.scss */
 .menu-object .buttons button.remove:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 59, ../sass/theme/_navigation.scss */
+/* line 81, ../sass/theme/_navigation.scss */
 .menu-object .buttons div a.pencil {
-  -webkit-border-radius: 25% 0 0 0;
   -moz-border-radius: 25% 0 0 0;
-  -ms-border-radius: 25% 0 0 0;
-  -o-border-radius: 25% 0 0 0;
+  -webkit-border-radius: 25%;
   border-radius: 25% 0 0 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
-  -webkit-transition: 0.25s all ease;
-  -moz-transition: 0.25s all ease;
-  -o-transition: 0.25s all ease;
-  transition: 0.25s all ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
 }
-/* line 63, ../sass/theme/_navigation.scss */
+/* line 85, ../sass/theme/_navigation.scss */
 .menu-object .buttons div a.pencil:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 70, ../sass/theme/_navigation.scss */
+/* line 92, ../sass/theme/_navigation.scss */
+.menu-object .menu-container {
+  float: left;
+  line-height: normal;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+/* line 101, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent {
   float: left;
   width: 100%;
+  height: 64px;
 }
-/* line 73, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-parent .menu-object-parent-content {
-  height: 62px;
-  line-height: 60px;
-  background: #333;
-  /* .move-left, .move-right{
-  	padding:0 2px;
-  } */
-}
-/* line 78, ../sass/theme/_navigation.scss */
+/* line 107, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .menu-object-parent-content .content {
   padding: 0 20px;
 }
-/* line 81, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-parent .menu-object-parent-content .content, .menu-object.menu-object-parent .menu-object-parent-content .move-left {
-  float: left;
+/* line 111, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-parent .move-left {
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
 }
-/* line 84, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-parent .menu-object-parent-content .move-right {
+/* line 114, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-parent .move-right {
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0;
   float: right;
 }
-/* line 90, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-parent .menu-object-parent-content:hover, .menu-object.menu-object-parent .menu-object-parent-content:focus {
-  background: #262626;
+/* line 121, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child {
+  line-height: normal;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 20px;
+  position: relative;
 }
-/* line 98, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-child .menu-object-child-content {
-  background: #4d4d4d;
+/* line 129, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child:before {
+  content: " ";
+  height: 80px;
+  width: 2px;
+  position: absolute;
+  top: -11px;
+  left: -11px;
+  background: #adadad;
 }
-/* line 100, ../sass/theme/_navigation.scss */
+/* line 139, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child:before:hover + div .move {
+  width: 0px  !important;
+  height: 0px  !important;
+}
+/* line 145, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .menu-object-child-content .content {
-  line-height: 60px;
   vertical-align: middle;
-  height: 60px;
   padding: 0 20px;
 }
-/* line 106, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-child .menu-object-child-content .move form button {
+/* line 150, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child .menu-container {
+  width: 100%;
+  float: none;
+  display: block;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+/* line 158, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child .move-up {
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 4px 0 0;
+}
+/* line 161, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child .move-down {
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 4px 4px;
+}
+/* line 164, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child .move {
+  float: none;
+  width: 100%;
+  display: block;
+}
+/* line 168, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child .move form button {
   background: #3c3c3c;
 }
-/* line 108, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-child .menu-object-child-content .move form button:hover, .menu-object.menu-object-child .menu-object-child-content .move form button:focus {
+/* line 170, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child .move form button:hover, .menu-object.menu-object-child .move form button:focus {
   background: #222;
 }
-/* line 112, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-child .menu-object-child-content:hover, .menu-object.menu-object-child .menu-object-child-content:focus {
-  background: #404040;
+/* line 176, ../sass/theme/_navigation.scss */
+.menu-object.menu-object-child:first-child .buttons {
+  top: 0px !important;
 }
-/* line 118, ../sass/theme/_navigation.scss */
+/* line 181, ../sass/theme/_navigation.scss */
+.menu-object .menu-object-parent-content, .menu-object .menu-object-child-content {
+  margin-top: 24px;
+  padding-bottom: 10px;
+}
+/* line 186, ../sass/theme/_navigation.scss */
 .menu-object .content small {
   font-size: 10px;
   color: grey;
   line-height: normal;
 }
-/* line 125, ../sass/theme/_navigation.scss */
+/* line 193, ../sass/theme/_navigation.scss */
 .menu-object .move {
   color: grey;
   font-size: 12px;
   vertical-align: middle;
   text-align: center;
   border: none;
+  float: left;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
 }
-/* line 131, ../sass/theme/_navigation.scss */
+/* line 204, ../sass/theme/_navigation.scss */
 .menu-object .move form button {
   background: #222;
   vertical-align: middle;
@@ -577,39 +727,61 @@ table.dataTable thead .sorting:after {
   border: 0;
   width: 100%;
 }
-/* line 137, ../sass/theme/_navigation.scss */
+/* line 210, ../sass/theme/_navigation.scss */
 .menu-object .move form button:hover, .menu-object .move form button:focus {
   background: #090909;
 }
+/* line 216, ../sass/theme/_navigation.scss */
+.menu-object:hover .move, .menu-object:focus .move {
+  width: auto;
+  height: auto;
+}
+/* line 220, ../sass/theme/_navigation.scss */
+.menu-object:hover .menu-container, .menu-object:focus .menu-container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+/* line 224, ../sass/theme/_navigation.scss */
+.menu-object:hover.menu-object-parent .buttons, .menu-object:focus.menu-object-parent .buttons {
+  right: 24px;
+}
+/* line 228, ../sass/theme/_navigation.scss */
+.menu-object:hover.menu-object-child .buttons, .menu-object:focus.menu-object-child .buttons {
+  top: 19px;
+}
+/* line 231, ../sass/theme/_navigation.scss */
+.menu-object:hover.menu-object-child:first-child .buttons, .menu-object:focus.menu-object-child:first-child .buttons {
+  top: 0px !important;
+}
 
 /*========== Media ==========*/
-/* line 10, ../sass/core-admin.scss */
+/* line 77, ../sass/core-admin.scss */
 .filemanager-container {
   min-height: inherit;
   margin-left: -30px;
   margin-right: -30px;
 }
-/* line 14, ../sass/core-admin.scss */
+/* line 81, ../sass/core-admin.scss */
 .filemanager-container > iframe {
   min-height: inherit;
   border: none;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 21, ../sass/core-admin.scss */
+  /* line 88, ../sass/core-admin.scss */
   .filemanager-container {
     margin-left: -15px;
     margin-right: -15px;
   }
 }
 /*========== Fix bootstrap ==========*/
-/* line 29, ../sass/core-admin.scss */
+/* line 96, ../sass/core-admin.scss */
 .img-center .img-responsive {
   margin: 0 auto;
 }
 
 /*========== User ==========*/
-/* line 37, ../sass/core-admin.scss */
+/* line 104, ../sass/core-admin.scss */
 .profil {
   padding-top: 30px;
 }
@@ -731,7 +903,7 @@ table.dataTable thead .sorting:after {
   border-radius: 999px;
   margin: 0 .5em;
   background: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), transparent), linear-gradient(90deg, #3d99f5 50%, transparent 50%);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), linear-gradient(90deg, #3d99f5 50%, rgba(0, 0, 0, 0) 50%);
   background-size: 200% 100%;
   background-position: 100% 0;
   background-origin: border-box;
@@ -760,7 +932,7 @@ table.dataTable thead .sorting:after {
   border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: inherit;
   background: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
   box-shadow: 0 0.1em 0.1em 0.1em rgba(255, 255, 255, 0.8) inset, 0 0 0.5em rgba(0, 0, 0, 0.3);
   color: white;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.3);
@@ -777,7 +949,7 @@ table.dataTable thead .sorting:after {
 	            0 .45em 0 .1em rgba(0,0,0,.05) inset,
 	            0 0 .4em 1px rgba(255,0,0,.5);
 } */
-/* line 143, ../sass/theme/_form.scss */
+/* line 142, ../sass/theme/_form.scss */
 :root input[type="checkbox"].ios-switch + div:before,
 :root input[type="checkbox"].ios-switch + div:after {
   font: bold 60%/1.9 sans-serif;
@@ -799,7 +971,7 @@ table.dataTable thead .sorting:after {
   float: right;
 }
 
-/* Switch code ends here, from now on it’s just bling for the demo page */
+/* Switch code ends here, from now on itÔÇÖs just bling for the demo page */
 /* line 165, ../sass/theme/_form.scss */
 label.label-list {
   position: relative;
@@ -810,31 +982,28 @@ label.label-list {
   background: white;
   font: bold 110% sans-serif;
   font-weight: 400;
+  margin-bottom: 0;
 }
 
-/* line 176, ../sass/theme/_form.scss */
+/* line 177, ../sass/theme/_form.scss */
 label.label-list:first-of-type {
   border-top-width: 1px;
   border-radius: .6em .6em 0 0;
 }
 
-/* line 181, ../sass/theme/_form.scss */
+/* line 182, ../sass/theme/_form.scss */
 label.label-list:last-of-type {
   border-radius: 0 0 .6em .6em;
   box-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* line 48, ../sass/core-admin.scss */
+/* line 115, ../sass/core-admin.scss */
 .form-lang .form-group {
   padding: 5px;
 }
-/* line 51, ../sass/core-admin.scss */
-.form-lang label {
-  margin-bottom: 0;
-}
 
 @media only screen and (max-width: 1920px) {
-  /* line 58, ../sass/core-admin.scss */
+  /* line 122, ../sass/core-admin.scss */
   .lang-label {
     max-width: 140px;
     max-width: calc(100% - 95px);
@@ -842,7 +1011,7 @@ label.label-list:last-of-type {
   }
 }
 @media only screen and (max-width: 1200px) {
-  /* line 65, ../sass/core-admin.scss */
+  /* line 129, ../sass/core-admin.scss */
   .lang-label {
     max-width: 180px;
     max-width: calc(100% - 95px);
@@ -851,7 +1020,7 @@ label.label-list:last-of-type {
 }
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
-  /* line 73, ../sass/core-admin.scss */
+  /* line 137, ../sass/core-admin.scss */
   .lang-label {
     max-width: 300px;
     max-width: calc(100% - 95px);
@@ -860,7 +1029,7 @@ label.label-list:last-of-type {
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width: 778px) {
-  /* line 81, ../sass/core-admin.scss */
+  /* line 145, ../sass/core-admin.scss */
   .lang-label {
     max-width: 295px;
     max-width: calc(100% - 95px);
@@ -869,7 +1038,7 @@ label.label-list:last-of-type {
 }
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 490px) {
-  /* line 89, ../sass/core-admin.scss */
+  /* line 153, ../sass/core-admin.scss */
   .lang-label {
     max-width: 135px;
     max-width: calc(100% - 95px);
@@ -878,33 +1047,29 @@ label.label-list:last-of-type {
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 330px) {
-  /* line 97, ../sass/core-admin.scss */
+  /* line 161, ../sass/core-admin.scss */
   .lang-label {
     max-width: 130px;
     max-width: calc(100% - 95px);
     display: inline-block;
   }
 }
-/* line 109, ../sass/core-admin.scss */
+/* line 173, ../sass/core-admin.scss */
 .role {
   margin-top: 20px;
 }
-/* line 112, ../sass/core-admin.scss */
+/* line 176, ../sass/core-admin.scss */
 .role h3 {
   margin-top: 0px;
 }
-/* line 115, ../sass/core-admin.scss */
-.role label {
-  margin-bottom: 0;
-}
 
-/* line 120, ../sass/core-admin.scss */
+/* line 181, ../sass/core-admin.scss */
 .form-role_permission .form-group {
   padding: 5px;
 }
 
 @media only screen and (max-width: 390px) {
-  /* line 125, ../sass/core-admin.scss */
+  /* line 186, ../sass/core-admin.scss */
   .role-label {
     max-width: 190px;
     display: inline-block;

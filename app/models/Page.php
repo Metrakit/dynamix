@@ -45,6 +45,10 @@ class Page extends Eloquent {
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
 	}
 
+	public function isDeletable() {
+		return $this->deletable;
+	}
+
 	public static function getNotAllowed () {
 		$notAllowed = array();
 

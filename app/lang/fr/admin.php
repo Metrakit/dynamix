@@ -114,7 +114,8 @@ return array(
 		'option_admin_email'		=> 'Mail de l\'administrateur',
 		'option_admin_email_help'	=> 'Ce mail sera utilisé pour recevoir les messages par le biais du formulaire de contact',
 		'option_analytics'			=> 'Code analytics',
-		'option_analytics_help'		=> 'Outils d\'analyse et de statistique placé dans le \'<head>\'.<br>Recommandé : Google Analytics (gratuit)',
+		'option_analytics_help'		=> 'Outils d\'analyse et de statistique placé dans le \'<head>\'.',
+		'option_analytics_help_recommand'		=> 'Recommandé : Google Analytics (gratuit)',
 
 		'option_site_name_update_error'		=> 'Une erreur est survenu lors de la mise à jour du nom du site...',
 		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
