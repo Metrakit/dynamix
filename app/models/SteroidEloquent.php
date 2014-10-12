@@ -54,14 +54,9 @@ class SteroidEloquent extends Model{
  	 */
  	public function formr()
  	{
- 		$className = get_class($this);
- 		if (Config::has('forms/gallery' . $className)) {
- 			$config = Config::get('forms/' . $className);
- 			$config['model'] = $className;
- 			return $config; 
- 		} else {
- 			throw new Exception("Gallery config file for the form is missing", 1); 			
- 		}
+ 		$data = $this->formParams();
+ 		$data['model'] = get_class($this);
+ 		return $data;
  	}
 
 }

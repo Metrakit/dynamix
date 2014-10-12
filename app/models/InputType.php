@@ -15,7 +15,7 @@ class InputType extends Eloquent {
         $inputType = new self;
         $inputType->name = $data['name'];
         $inputType->rules = $data['rules'];
-        $inputType->i18n_title = $data['i18n_title'];
+        $inputType->i18n_title = $data['title'];
         $inputType->save();
         return $inputType;
     }

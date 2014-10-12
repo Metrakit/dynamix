@@ -39,4 +39,14 @@ class Translation extends Eloquent{
         return static::where('i18n_id', '=', $i18n_id)->where('locale_id', '=', App::getLocale())->first()->text;
     }
 
+    public static function add($i18nId, $lang, $value)
+    {
+        $translation = new self;
+        $translation->i18n_id = $i18nId;
+        $translation->locale_id = $lang;
+        $translation->text = $value;
+        $translation->save();
+        return $translation;
+    }
+
 }

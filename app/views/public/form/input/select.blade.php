@@ -10,9 +10,9 @@
 
 @endif
 
-<select name="{{ $input->name }}" title="{{ $input->title }}" class="form-control"  value="{{ $input->value }}">
+<select name="{{ $input->name }}" title="{{ $input->title }}" class="form-control"  value="{{ $input->key }}">
 	@foreach ($input->options as $option)	
-		<option value="{{ $option->value }}" @if($input->value == $option->value) selected @endif> {{ $option->key }} </option>
+		<option value="{{ $option->key }}" @if($input->key == $option->key) selected @endif> {{ $option->value }} </option>
 	@endforeach
 </select>
 

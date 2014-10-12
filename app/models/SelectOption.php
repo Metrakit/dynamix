@@ -14,8 +14,8 @@ class SelectOption extends Eloquent {
 	{
 		$option = new self;
 		$option->input_id = $inputId;
-		$option->i18n_key = $data['i18n_key'];
-		$option->i18n_value = $data['i18n_value'];
+		$option->i18n_key = $data['key'];
+		$option->i18n_value = $data['value'];
 		$option->save();
 		return $option;
 	}

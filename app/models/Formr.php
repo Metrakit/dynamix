@@ -67,12 +67,85 @@ class Formr extends Eloquent{
 		return $this->model()->first();
 	}
 
+
+	public function generate($pageId, $order, $data)
+	{
+		$form = new self;
+		$fromObject = false;
+
+		if (is_object($data)) {
+			$data = $data->formr();
+			$form->i18n_title = NULL;
+			$form->i18n_description = NULL;
+			$fromObject = true;
+		}
+		
+		$form->finish_on = $data['method'];
+		$form->type = $data['type'];
+		$form->save();
+		$order = 0;
+
+
+		foreach ($data['data'] as $dataInput) {
+
+			// Increments the order
+			$order++;
+
+			if ($fromObject) {
+				$dataInput['title'] = NULL;
+				$dataInput['label'] = NULL;
+				$dataInput['placeholder'] = NULL;
+				$dataInput['helper'] = NULL;		
+			} else {
+				$dataInput['title'] = i18n::add($dataInput['title'], 'title');
+				$dataInput['label'] = i18n::add($dataInput['label'], 'label');
+				$dataInput['placeholder'] = i18n::add($dataInput['placeholder'], 'placeholder');
+				$dataInput['helper'] = i18n::add($dataInput['helper'], 'helper');
+			}
+
+			$inputType = InputType::add($dataInput);
+			$input = InputView::add($inputType->id, $dataInput);
+
+			// Add options if the input type is a select
+			if ($input->name = "select") {
+
+				if (isset($dataInput['options'])) {
+					foreach ($dataInput['options'] as $option) {
+						if ($fromObject) {
+							$option['key'] = NULL;
+							$option['value'] = NULL;
+						} else {
+							$option['key'] = i18n::add($option['key'], 'option_key');
+							$option['value'] = i18n::add($option['value'], 'option_value');
+						}
+						SelectOption::add($input->id, $option);
+					}
+				}
+			}
+
+			// Add form map
+			FormMap::add($input->id, $form->id, $order);
+		}
+
+		// Add a block
+		$block = Block::add($pageId, $order, 'Formr');
+		BlockResponsive::add($block->id, 12, 3);
+
+		if ($fromObject) {
+			// Add form model
+			ModelForm::add($form->id, $data['model']);
+		}
+
+		return $form;
+	}
+
+
 	/**
 	 * Generate a form by a model
 	 * @param  Array $data
 	 * @return  Self
 	 */
-	public function generateByModel($data)
+	/*public function generateByModel($pageId, $order, $data)
 	{
 		// Creating form
 		$form = new self;
@@ -115,10 +188,15 @@ class Formr extends Eloquent{
 			FormMap::add($input->id, $form->id, $order);
 		}
 
+		// Add a block
+		$block = Block::add($pageId, $order, 'Formr');
+		BlockResponsive::add($block->id, 12, 3);
+
 		// Add form model
 		ModelForm::add($form->id, $data['model']);
 
 		return $form;
-	}
+	}*/
+
 
 }

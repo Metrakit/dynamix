@@ -72,6 +72,22 @@ class Former extends \Controller {
          ->get();
     }
 
+
+    /**
+     * Récupère un texte en DB ou dans un fichier de config en fonction du type de form
+     * @param string $string
+     * @return string
+     */
+    public function getTranslation($string, $row, $langStart)
+    {
+        if ($string) {
+            return $this->translate->exec($string);
+        } else {
+            return \Lang::get($langStart . $row);
+        }
+    }
+
+
     /**
      * Display the form
      * @param  Integer $id
@@ -82,33 +98,31 @@ class Former extends \Controller {
         $this->formId = $form->id;
         $inputs = $this->getInputs();
 
+        $this->model = $form->getModel();
+
         // Boucle on inputs
         foreach ($inputs as $key => $input) {
-
-            // Getting texts translated
-            if (isset($input['i18n_placeholder'])) {
-                $inputs[$key]->placeholder = $this->translate->exec($input['i18n_placeholder']);
-            } else {
-                $inputs[$key]->placeholder = null;
-            }
-
-            if (isset($input['i18n_helper'])) {
-                $inputs[$key]->helper = $this->translate->exec($input['i18n_helper']);
-            } else {
-                $inputs[$key]->helper = null;
-            }
-
-            if (isset($input['i18n_label'])) {
-                $inputs[$key]->label = $this->translate->exec($input['i18n_label']);
-            } else {
-                $inputs[$key]->label = null;
-            }
             
             // Set type
             $inputs[$key]->type = $input->name; 
 
             // InputType - relation
             $inputType = $input->getType();
+
+
+
+            if ($form->model && isset($this->model->model)) {
+                $langInput = 'input.' . strtolower($this->model->model) . '.' . $inputType->name. '.';
+            } else {
+                $langInput = NULL;
+            }
+            
+
+            // Getting texts translated
+            $inputs[$key]->placeholder = $this->getTranslation($input['i18n_placeholder'], 'placeholder', $langInput);
+            $inputs[$key]->helper = $this->getTranslation($input['i18n_helper'], 'helper', $langInput);
+            $inputs[$key]->label = $this->getTranslation($input['i18n_label'], 'label', $langInput);
+            $inputs[$key]->title = $this->getTranslation($inputType->i18n_title, 'title', $langInput);
 
             // Getting and set name
             $inputs[$key]->name = $inputType->name; 
@@ -120,18 +134,16 @@ class Former extends \Controller {
                 $inputs[$key]->value = $inputType->defaultValue;
             } else {
                 $inputs[$key]->value = null;
-            }
-
-            // Get and translate the title
-            $inputs[$key]->title = $this->translate->exec($inputs[$key]->getType()->i18n_title); 
+            }                  
 
             // If the input type is "Radio" we get the select options
             if ($inputs[$key]->type == "select") {
                 $inputs[$key]->options = $input->getOptions();
                 // Translate the Options
                 foreach ($inputs[$key]->options as $optKey => $option) {
-                    $inputs[$key]->options[$optKey]->key = $this->translate->exec($option->i18n_key);
-                    $inputs[$key]->options[$optKey]->value = $this->translate->exec($option->i18n_value);
+                    $langOption = $langInput . 'options.';
+                    $inputs[$key]->options[$optKey]->key = $this->getTranslation($option->i18n_key, $optKey . '.key', $langOption);
+                    $inputs[$key]->options[$optKey]->value = $this->getTranslation($option->i18n_value, $optKey . '.value' , $langOption);              
                 }
             }
 
@@ -200,12 +212,27 @@ class Former extends \Controller {
     }
 
 
+
+
+    public function create($pageId, $order, $data)
+    {
+        /*if (is_object($data)) {
+            return $this->createFromModel($pageId, $order, $data);
+        } else {
+            return $this->createFromForm($pageId, $order, $data);
+        }*/
+
+        $this->formr->generate($pageId, $order, $data);
+    }
+
+
+
     /**
      * Create a form since a Object (Model)
      * @param  Object $object (should contain "formr" method)
      * @return boolean
      */
-    public function createFromModel($object)
+    /*public function createFromForm($pageId, $order, $data)
     {
         // Verifs
         if (!is_object($object)) {
@@ -227,7 +254,40 @@ class Former extends \Controller {
         } 
 
         // If all is okay...
-        $this->formr->generateByModel($data);
-    }
+        $this->formr->generateByModel($pageId, $order, $data);
+    }*/
+
+
+
+
+    /**
+     * Create a form since a Object (Model)
+     * @param  Object $object (should contain "formr" method)
+     * @return boolean
+     */
+    /*public function createFromModel($pageId, $order, $object)
+    {
+        // Verifs
+        if (!is_object($object)) {
+            throw new \InvalidArgumentException('You should give an object to this method.');
+        }
+
+        if (!method_exists($object, 'formr')) {
+            throw new \InvalidArgumentException('Method "formr" not found in the ' . get_class($object) . ' object.');
+        }
+
+        $data = $object->formr();
+
+        if (!isset($data['description']) || NULL === $data['description']) {
+            throw new \InvalidArgumentException('Argument "description" not found or cannot be null in the form array.');
+        }
+
+        if (!isset($data['title']) || NULL === $data['title']) {
+            throw new \InvalidArgumentException('Argument "title" not found or cannot be null in the form array.');
+        } 
+
+        // If all is okay...
+        $this->formr->generateByModel($pageId, $order, $data);
+    }*/
 
 }

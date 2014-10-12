@@ -23,6 +23,32 @@ class I18n extends Eloquent{
     }
 
 
+    public static function add($data, $type)
+    {
+
+        if (!is_array($data)) {
+            throw new InvalidArgumentException('The array $data should be an array with lang ids !', 1);          
+        }
+
+        $i18nType = I18nType::where('name', $type)
+                            ->first();
+        if (!$i18nType) {
+            return false;
+        }                    
+
+        $i18n = new self;
+        $i18n->i18n_type_id = $i18nType->id;
+        $i18n->save();
+
+        foreach ($data as $lang => $value) {
+           Translation::add($i18n->id, $lang, $value); 
+        }
+
+        Log::info($i18n->id);
+
+        return $i18n->id;
+    }
+
 
     /**
      * Additional Method

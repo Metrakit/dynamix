@@ -45,6 +45,21 @@ class Block extends Eloquent{
     }
 
 
+    public static function add($pageId, $order, $blockType)
+    {
+        $previousBlock = self::where('page_id', $pageId)
+                              ->where('blockable_type', $blockType)
+                              ->orderBy('blockable_id', 'DESC')
+                              ->first();    
+        $block = new self;
+        $block->blockable_id = $previousBlock->blockable_id+1;
+        $block->blockable_type = $blockType;
+        $block->page_id = $pageId;
+        $block->order = $order;
+        $block->save();
+        return $block;
+    }
+
 
     /**
      * Attributes

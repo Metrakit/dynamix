@@ -36,8 +36,17 @@ class I18nTypesTableSeeder extends Seeder {
             ),
             array(
                 'name' => 'helper'
-            ))
-        );
+            ),
+            array(
+                'name' => 'label'
+            ),
+            array(
+                'name' => 'option_key'
+            ),
+            array(
+                'name' => 'option_value'
+            ),             
+        ));
     }
 
 }
