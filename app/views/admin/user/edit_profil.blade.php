@@ -6,6 +6,10 @@
 @parent
 @stop
 
+@section('script')
+masterAdminClass.switchCheckboxInitializr();
+@stop
+
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.user_edit_profil') }}}</h1>

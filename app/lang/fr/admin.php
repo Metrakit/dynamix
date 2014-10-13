@@ -42,6 +42,8 @@ return array(
 	//Page
 	'page'			=> 'Page',
 	'pages'			=> 'Pages',
+	'page_edit'		=> 'Modification de page',
+	'page_create'		=> 'Création de page',
 
 	//Tag	
 	'tag'			=> 'Tag',
@@ -90,6 +92,7 @@ return array(
 	'user_create_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été créé...',
 	'user_edit_success'		=>  'L\'utilisateur a été modifié avec succès !',
 	'user_edit_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été modifié...',
+	'user_favourite_langage'=>'Langue préféré',
 
 
 	//Environment

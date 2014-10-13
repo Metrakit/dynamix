@@ -4,3 +4,4 @@
 <h1 class="text-center text-capitalize">{{ $user->firstname . ' '. $user->lastname}} {{(isset($btn_name) ? $btn_name : '')}}</h1>
 <h4 class="text-center text-capitalize">{{ $user->rolesList() }}</h4>
 <p class="text-center"><a href="mailto:{{$user->email}}">{{$user->email . '</a> (' . $user->pseudo . ')'}}</p>
+<p class="text-center">{{{ Lang::get('admin.user_favourite_langage') }}} <img height="19px" src="{{ $user->favouriteLanguage() }}" alt="flag"></p>

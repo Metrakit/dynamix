@@ -7,6 +7,71 @@ class Page extends Eloquent {
 	 */
 	protected $table = 'pages';
 
+	public static function formParams()
+    {
+        return array(        
+            'type'  => 'horizontal',
+            'title' => Lang::get('form.page.title'),
+            'description' => Lang::get('form.page.description'),
+            'data'  => array(
+                'title' => array(
+                    'name'        => 'title',
+                    'type'        => 'text',
+                    'rules'       => 'required',
+                    'view'        => 3,
+                    'title'       => Lang::get('input.page.title.title'),
+                    'placeholder' => Lang::get('input.page.title.placeholder'),
+                    'helper'      => Lang::get('input.page.title.helper'),
+                    'label'       => Lang::get('input.page.title.label'),
+                ),
+                'description' => array(
+                    'name'        => 'description',
+                    'type'        => 'textarea',
+                    'rules'       => 'required',
+                    'view'        => 2,
+                    'title'       => Lang::get('input.page.description.title'),
+                    'placeholder' => Lang::get('input.page.description.placeholder'),
+                    'helper'      => Lang::get('input.page.description.helper'),
+                    'label'       => Lang::get('input.page.description.label'),
+                ),
+                'type' => array(
+                    'name'        => 'type',
+                    'type'        => 'select',
+                    'rules'       => 'required',
+                    'view'        => 8,
+                    'options'     => array(
+                        array(
+                            'key'   => Lang::get('input.page.type.key.1'),
+                            'value' => Lang::get('input.page.type.key.3'),
+                        ),
+                        array(
+                            'key'   => Lang::get('input.page.type.value.2'),
+                            'value' => Lang::get('input.page.type.value.3'),
+                        ), 
+                        array(
+                            'key'   => Lang::get('input.page.type.value.3'),
+                            'value' => Lang::get('input.page.type.value.3'),
+                        ),                       
+                    ),
+                    'title'       => Lang::get('input.page.description.title'),
+                    'placeholder' => Lang::get('input.page.description.placeholder'),
+                    'helper'      => Lang::get('input.page.description.helper'),
+                    'label'       => Lang::get('input.page.description.label'),
+                ),
+                'envoyer' => array(
+                    'name'        => 'envoyer',
+                    'type'        => 'submit',
+                    'rules'       => 'required',
+                    'view'        => 7,
+                    'title'       => Lang::get('input.page.description.title'),
+                    'placeholder' => Lang::get('input.page.description.placeholder'),
+                    'helper'      => Lang::get('input.page.description.helper'),
+                    'label'       => Lang::get('input.page.description.label'),
+                ),
+            ),
+            'method' => 'model',
+        );
+    }
 
 	/**
 	 * Relations

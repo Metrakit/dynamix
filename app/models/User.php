@@ -139,4 +139,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         }
         return substr ($str, 1, strlen($str) - 2);
     }
+
+    public function favouriteLanguage () {
+        return Locale::find($this->favourite_lang)->flag;
+    }
 }

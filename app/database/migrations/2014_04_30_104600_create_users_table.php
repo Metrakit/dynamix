@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password');
 			$table->string('remember_token')->nullable();
 			$table->dateTime('last_visit_at');
-			$table->string('favorite_lang');
+			$table->string('favourite_lang');
 			$table->timestamps();
 		});
 	}

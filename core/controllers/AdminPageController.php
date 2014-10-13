@@ -28,7 +28,13 @@ class AdminPageController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.page.create');
+		//User
+		$data['user'] 			= Auth::user();
+
+		//Interface
+		$data['noAriane'] 		= true;
+
+		return View::make('admin.page.create', $data);
 	}
 
 	/**

@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder {
                 'pseudo'    => 'dlepaux',
                 'email'     => 'd.lepaux@gmail.com',
                 'password'  => Hash::make('admin'),
-                'favorite_lang'=> 'fr',
+                'favourite_lang'=> 'fr',
                 'last_visit_at' => new DateTime,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder {
                 'pseudo'    => 'jjouffroy',
                 'email'     => 'j.jouffroy@outlouk.com',
                 'password'  => Hash::make('admin'),
-                'favorite_lang'=> 'fr',
+                'favourite_lang'=> 'fr',
                 'last_visit_at' => new DateTime,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder {
                 'pseudo'    => 'mator',
                 'email'     => 'm.ator@gmail.com',
                 'password'  => Hash::make('moderator'),
-                'favorite_lang'=> 'fr',
+                'favourite_lang'=> 'fr',
                 'last_visit_at' => new DateTime,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime

@@ -45,10 +45,10 @@ var MasterAdmin = function (){
     });
 
       //width = width + $('#navigation').children('.menu-objects')[o].width();
-      console.log(width);
+      console.log(width + 1);
     
 
-    $('#navigation').width(width);
+    $('#navigation').width(width + 1);
   }
 }
 

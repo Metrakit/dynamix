@@ -22,13 +22,21 @@
 			}
 		}
 		&:first-child .menu-container{
-			padding-left:0px !important;
-		}
-		&:last-child  .menu-container{
-		//CHELOUUUU
-			padding-right:0px !important;
+			padding-left:0px;
 		}
 
+		&:last-of-type {
+			.menu-container{
+				padding-right:0px !important;
+				.buttons {
+					right:0px !important;
+				}
+			}
+		}
+		//chelouuuuwuwuwuwuwuwu
+		.menu-object .menu-object-child:first-of-type .buttons{
+			top:0px !important;
+		}
 	}
 }
 
@@ -120,6 +128,7 @@
 	//Children
 	&.menu-object-child{
 		line-height:normal;
+		font-size:14px;
 		height:auto;
 		margin-top:10px;
 		margin-left:20px;
@@ -129,17 +138,12 @@
 		&:before{
 			content : " ";
 			height:80px;
-			width:2px;
+			width:11px;
 			position:absolute;
 			top:-11px;
 			left:-11px;
-			background:#adadad;
-		}
-		&:before:hover + div{
-			.move{
-				width:0px  !important;	
-				height:0px  !important;
-			}
+			background:transparent;
+			border-left:2px solid #adadad;
 		}
 		.menu-object-child-content{
 			.content{
@@ -163,7 +167,8 @@
 		}
 		.move {
 			float:none;
-			width:100%;
+			width:0px;
+			height:auto;
 			display:block;
 			form button{
 				background:lighten(#222,10%);
@@ -173,14 +178,15 @@
 			}
 		}
 	}
-	&.menu-object-child:first-child .buttons{
-		top:0px !important;
-	}
 	
 	//Both
-	.menu-object-parent-content, .menu-object-child-content {
-		 margin-top:24px;
-		 padding-bottom:10px;
+	.menu-object-parent-content {
+		margin-top:24px;
+		padding-bottom:10px;
+	}
+	.menu-object-child-content {
+		margin-top:15px;
+		padding-bottom:5px;
 	}
 
 	.content small{
@@ -227,12 +233,83 @@
 		&.menu-object-child {
 			.buttons{
 				top:19px;
-			}
-			&:first-child .buttons{
-			//CHELOUUUU
-				top:0px !important;
-			}
+			}			
 		}
 	}
 
 }
+
+
+
+
+
+//Responsive
+
+
+/*========== Mobile First Method ==========*/ 
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+} 
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+} 
+/* Small Devices, Tablets */ 
+@media only screen and (min-width : 768px) {
+
+} 
+/* Medium Devices, Desktops */ 
+@media only screen and (min-width : 992px) {
+
+} 
+/* Large Devices, Wide Screens */ 
+@media only screen and (min-width : 1200px) {
+
+} 
+/*========== Non-Mobile First Method ==========*/ 
+/* Large Devices, Wide Screens */ 
+@media only screen and (max-width : 1200px) {
+
+} 
+/* Medium Devices, Desktops */ 
+@media only screen and (max-width : 992px) {
+} 
+/* Small Devices, Tablets */ 
+@media only screen and (max-width : 768px) {
+	#navigation {
+		width:auto !important;
+	}
+
+	.menus .menu-objects:first-child .menu-container{
+		padding-left:24px;
+	}
+	
+	.menu-objects{
+		width:100%;
+		margin: 0 0 40px 0 !important;
+	}
+
+	.menu-object {
+		&.menu-object-parent{
+			height: auto;
+			.menu-object-parent-content .content{
+				padding:0px;
+			}
+		}
+		&.menu-object-child{
+			&:before{
+				height:70px;
+				top:-11px;
+			}
+		}
+	}
+} 
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+} 
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+}
+

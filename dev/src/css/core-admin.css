@@ -514,20 +514,28 @@ table.log tr td {
 }
 /* line 24, ../sass/theme/_navigation.scss */
 .menus .menu-objects:first-child .menu-container {
-  padding-left: 0px !important;
+  padding-left: 0px;
 }
-/* line 27, ../sass/theme/_navigation.scss */
-.menus .menu-objects:last-child .menu-container {
+/* line 29, ../sass/theme/_navigation.scss */
+.menus .menu-objects:last-of-type .menu-container {
   padding-right: 0px !important;
 }
+/* line 31, ../sass/theme/_navigation.scss */
+.menus .menu-objects:last-of-type .menu-container .buttons {
+  right: 0px !important;
+}
+/* line 37, ../sass/theme/_navigation.scss */
+.menus .menu-objects .menu-object .menu-object-child:first-of-type .buttons {
+  top: 0px !important;
+}
 
-/* line 35, ../sass/theme/_navigation.scss */
+/* line 43, ../sass/theme/_navigation.scss */
 .width100 {
   width: 100%;
   display: block;
 }
 
-/* line 41, ../sass/theme/_navigation.scss */
+/* line 49, ../sass/theme/_navigation.scss */
 .menu-object {
   font-size: 18px;
   position: relative;
@@ -537,7 +545,7 @@ table.log tr td {
   border-radius: 4px;
   line-height: 60px;
 }
-/* line 49, ../sass/theme/_navigation.scss */
+/* line 57, ../sass/theme/_navigation.scss */
 .menu-object.create {
   margin-top: 3px;
   vertical-align: middle;
@@ -551,22 +559,22 @@ table.log tr td {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
   opacity: 0.25;
 }
-/* line 57, ../sass/theme/_navigation.scss */
+/* line 65, ../sass/theme/_navigation.scss */
 .menu-object.create:hover, .menu-object.create:focus {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 62, ../sass/theme/_navigation.scss */
+/* line 70, ../sass/theme/_navigation.scss */
 .menu-object.create a:hover, .menu-object.create a:focus {
   text-decoration: none;
 }
-/* line 69, ../sass/theme/_navigation.scss */
+/* line 77, ../sass/theme/_navigation.scss */
 .menu-object .buttons {
   position: absolute;
   top: 0px;
   right: 0px;
 }
-/* line 73, ../sass/theme/_navigation.scss */
+/* line 81, ../sass/theme/_navigation.scss */
 .menu-object .buttons button.remove {
   -moz-border-radius: 0 25% 0 0;
   -webkit-border-radius: 0;
@@ -578,12 +586,12 @@ table.log tr td {
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-/* line 77, ../sass/theme/_navigation.scss */
+/* line 85, ../sass/theme/_navigation.scss */
 .menu-object .buttons button.remove:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 81, ../sass/theme/_navigation.scss */
+/* line 89, ../sass/theme/_navigation.scss */
 .menu-object .buttons div a.pencil {
   -moz-border-radius: 25% 0 0 0;
   -webkit-border-radius: 25%;
@@ -595,70 +603,67 @@ table.log tr td {
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-/* line 85, ../sass/theme/_navigation.scss */
+/* line 93, ../sass/theme/_navigation.scss */
 .menu-object .buttons div a.pencil:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 92, ../sass/theme/_navigation.scss */
+/* line 100, ../sass/theme/_navigation.scss */
 .menu-object .menu-container {
   float: left;
   line-height: normal;
   padding-left: 24px;
   padding-right: 24px;
 }
-/* line 101, ../sass/theme/_navigation.scss */
+/* line 109, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent {
   float: left;
   width: 100%;
   height: 64px;
 }
-/* line 107, ../sass/theme/_navigation.scss */
+/* line 115, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .menu-object-parent-content .content {
   padding: 0 20px;
 }
-/* line 111, ../sass/theme/_navigation.scss */
+/* line 119, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .move-left {
   -moz-border-radius: 4px 0 0 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px 0 0 4px;
 }
-/* line 114, ../sass/theme/_navigation.scss */
+/* line 122, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .move-right {
   -moz-border-radius: 0 4px 4px 0;
   -webkit-border-radius: 0;
   border-radius: 0 4px 4px 0;
   float: right;
 }
-/* line 121, ../sass/theme/_navigation.scss */
+/* line 129, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child {
   line-height: normal;
+  font-size: 14px;
   height: auto;
   margin-top: 10px;
   margin-left: 20px;
   position: relative;
 }
-/* line 129, ../sass/theme/_navigation.scss */
+/* line 138, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child:before {
   content: " ";
   height: 80px;
-  width: 2px;
+  width: 11px;
   position: absolute;
   top: -11px;
   left: -11px;
-  background: #adadad;
+  background: transparent;
+  border-left: 2px solid #adadad;
 }
-/* line 139, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-child:before:hover + div .move {
-  width: 0px  !important;
-  height: 0px  !important;
-}
-/* line 145, ../sass/theme/_navigation.scss */
+/* line 149, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .menu-object-child-content .content {
   vertical-align: middle;
   padding: 0 20px;
 }
-/* line 150, ../sass/theme/_navigation.scss */
+/* line 154, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .menu-container {
   width: 100%;
   float: none;
@@ -666,48 +671,50 @@ table.log tr td {
   padding-left: 0px;
   padding-right: 0px;
 }
-/* line 158, ../sass/theme/_navigation.scss */
+/* line 162, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move-up {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px;
   border-radius: 4px 4px 0 0;
 }
-/* line 161, ../sass/theme/_navigation.scss */
+/* line 165, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move-down {
   -moz-border-radius: 0 0 4px 4px;
   -webkit-border-radius: 0;
   border-radius: 0 0 4px 4px;
 }
-/* line 164, ../sass/theme/_navigation.scss */
+/* line 168, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move {
   float: none;
-  width: 100%;
+  width: 0px;
+  height: auto;
   display: block;
 }
-/* line 168, ../sass/theme/_navigation.scss */
+/* line 173, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move form button {
   background: #3c3c3c;
 }
-/* line 170, ../sass/theme/_navigation.scss */
+/* line 175, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move form button:hover, .menu-object.menu-object-child .move form button:focus {
   background: #222;
 }
-/* line 176, ../sass/theme/_navigation.scss */
-.menu-object.menu-object-child:first-child .buttons {
-  top: 0px !important;
-}
-/* line 181, ../sass/theme/_navigation.scss */
-.menu-object .menu-object-parent-content, .menu-object .menu-object-child-content {
+/* line 183, ../sass/theme/_navigation.scss */
+.menu-object .menu-object-parent-content {
   margin-top: 24px;
   padding-bottom: 10px;
 }
-/* line 186, ../sass/theme/_navigation.scss */
+/* line 187, ../sass/theme/_navigation.scss */
+.menu-object .menu-object-child-content {
+  margin-top: 15px;
+  padding-bottom: 5px;
+}
+/* line 192, ../sass/theme/_navigation.scss */
 .menu-object .content small {
   font-size: 10px;
   color: grey;
   line-height: normal;
 }
-/* line 193, ../sass/theme/_navigation.scss */
+/* line 199, ../sass/theme/_navigation.scss */
 .menu-object .move {
   color: grey;
   font-size: 12px;
@@ -719,7 +726,7 @@ table.log tr td {
   height: 0px;
   overflow: hidden;
 }
-/* line 204, ../sass/theme/_navigation.scss */
+/* line 210, ../sass/theme/_navigation.scss */
 .menu-object .move form button {
   background: #222;
   vertical-align: middle;
@@ -727,33 +734,72 @@ table.log tr td {
   border: 0;
   width: 100%;
 }
-/* line 210, ../sass/theme/_navigation.scss */
+/* line 216, ../sass/theme/_navigation.scss */
 .menu-object .move form button:hover, .menu-object .move form button:focus {
   background: #090909;
 }
-/* line 216, ../sass/theme/_navigation.scss */
+/* line 222, ../sass/theme/_navigation.scss */
 .menu-object:hover .move, .menu-object:focus .move {
   width: auto;
   height: auto;
 }
-/* line 220, ../sass/theme/_navigation.scss */
+/* line 226, ../sass/theme/_navigation.scss */
 .menu-object:hover .menu-container, .menu-object:focus .menu-container {
   padding-left: 0px;
   padding-right: 0px;
 }
-/* line 224, ../sass/theme/_navigation.scss */
+/* line 230, ../sass/theme/_navigation.scss */
 .menu-object:hover.menu-object-parent .buttons, .menu-object:focus.menu-object-parent .buttons {
   right: 24px;
 }
-/* line 228, ../sass/theme/_navigation.scss */
+/* line 234, ../sass/theme/_navigation.scss */
 .menu-object:hover.menu-object-child .buttons, .menu-object:focus.menu-object-child .buttons {
   top: 19px;
 }
-/* line 231, ../sass/theme/_navigation.scss */
-.menu-object:hover.menu-object-child:first-child .buttons, .menu-object:focus.menu-object-child:first-child .buttons {
-  top: 0px !important;
-}
 
+/*========== Mobile First Method ==========*/
+/* Custom, iPhone Retina */
+/* Extra Small Devices, Phones */
+/* Small Devices, Tablets */
+/* Medium Devices, Desktops */
+/* Large Devices, Wide Screens */
+/*========== Non-Mobile First Method ==========*/
+/* Large Devices, Wide Screens */
+/* Medium Devices, Desktops */
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  /* line 280, ../sass/theme/_navigation.scss */
+  #navigation {
+    width: auto !important;
+  }
+
+  /* line 284, ../sass/theme/_navigation.scss */
+  .menus .menu-objects:first-child .menu-container {
+    padding-left: 24px;
+  }
+
+  /* line 288, ../sass/theme/_navigation.scss */
+  .menu-objects {
+    width: 100%;
+    margin: 0 0 40px 0 !important;
+  }
+
+  /* line 294, ../sass/theme/_navigation.scss */
+  .menu-object.menu-object-parent {
+    height: auto;
+  }
+  /* line 296, ../sass/theme/_navigation.scss */
+  .menu-object.menu-object-parent .menu-object-parent-content .content {
+    padding: 0px;
+  }
+  /* line 301, ../sass/theme/_navigation.scss */
+  .menu-object.menu-object-child:before {
+    height: 70px;
+    top: -11px;
+  }
+}
+/* Extra Small Devices, Phones */
+/* Custom, iPhone Retina */
 /*========== Media ==========*/
 /* line 77, ../sass/core-admin.scss */
 .filemanager-container {
@@ -966,13 +1012,93 @@ table.log tr td {
   text-shadow: none;
 }
 
-/* line 158, ../sass/theme/_form.scss */
+/* line 159, ../sass/theme/_form.scss */
+:root input[type="radio"] {
+  /* :root here acting as a filter for older browsers */
+  position: absolute;
+  opacity: 0;
+}
+
+/* line 164, ../sass/theme/_form.scss */
+:root input[type="radio"].ios-switch + div {
+  display: inline-block;
+  vertical-align: middle;
+  width: 3em;
+  height: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 999px;
+  margin: 0 .5em;
+  background: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), linear-gradient(90deg, #3d99f5 50%, rgba(0, 0, 0, 0) 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  background-origin: border-box;
+  background-clip: border-box;
+  overflow: hidden;
+  transition-duration: .4s;
+  transition-property: padding, width, background-position, text-indent;
+  box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2) inset, 0 0.45em 0 0.1em rgba(0, 0, 0, 0.05) inset;
+  font-size: 150%;
+  /* change this and see how they adjust! */
+}
+
+/* line 186, ../sass/theme/_form.scss */
+:root input[type="radio"].ios-switch:checked + div {
+  padding-left: 2em;
+  background-position: 0 0;
+}
+
+/* line 191, ../sass/theme/_form.scss */
+:root input[type="radio"].ios-switch + div:before {
+  content: 'On';
+  float: left;
+  width: 1.65em;
+  height: 1.65em;
+  margin: -.1em;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: inherit;
+  background: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  box-shadow: 0 0.1em 0.1em 0.1em rgba(255, 255, 255, 0.8) inset, 0 0 0.5em rgba(0, 0, 0, 0.3);
+  color: white;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.3);
+  text-indent: -2.5em;
+}
+
+/* line 207, ../sass/theme/_form.scss */
+:root input[type="radio"].ios-switch:active + div:before {
+  background-color: #eee;
+}
+
+/* :root input[type="radio"].ios-switch:focus + div {
+	box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+	            0 .45em 0 .1em rgba(0,0,0,.05) inset,
+	            0 0 .4em 1px rgba(255,0,0,.5);
+} */
+/* line 217, ../sass/theme/_form.scss */
+:root input[type="radio"].ios-switch + div:before,
+:root input[type="radio"].ios-switch + div:after {
+  font: bold 60%/1.9 sans-serif;
+  text-transform: uppercase;
+  line-height: 23px;
+}
+
+/* line 224, ../sass/theme/_form.scss */
+:root input[type="radio"].ios-switch + div:after {
+  content: 'Off';
+  float: left;
+  text-indent: .5em;
+  color: rgba(0, 0, 0, 0.45);
+  text-shadow: none;
+}
+
+/* line 233, ../sass/theme/_form.scss */
 :root .switch {
   float: right;
 }
 
 /* Switch code ends here, from now on itÔÇÖs just bling for the demo page */
-/* line 165, ../sass/theme/_form.scss */
+/* line 240, ../sass/theme/_form.scss */
 label.label-list {
   position: relative;
   display: block;
@@ -985,13 +1111,13 @@ label.label-list {
   margin-bottom: 0;
 }
 
-/* line 177, ../sass/theme/_form.scss */
+/* line 252, ../sass/theme/_form.scss */
 label.label-list:first-of-type {
   border-top-width: 1px;
   border-radius: .6em .6em 0 0;
 }
 
-/* line 182, ../sass/theme/_form.scss */
+/* line 257, ../sass/theme/_form.scss */
 label.label-list:last-of-type {
   border-radius: 0 0 .6em .6em;
   box-shadow: 0 1px rgba(255, 255, 255, 0.8);
