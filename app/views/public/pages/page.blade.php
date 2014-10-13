@@ -161,12 +161,15 @@
 
 {{-- #################### EXAMPLE #################### --}}
 {{-- EXAMPLE OF CREATE A FORM BY A MODEL --}}
-{{  Former::create(new Gallery) }}
+{{-- var_dump(Former::create(new Gallery)) --}}
+
 {{-- #################### EXAMPLE #################### --}}
 
 
-{{  Former::getForm(3) }}
+{{ Former::renderByModel(new Gallery) }}
 
 {{ Pager::render($page) }}
+
+
 
 @stop

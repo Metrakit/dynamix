@@ -41,6 +41,7 @@ class Former extends \Controller {
         $this->formMap    = Config::get('model.formMap');
         $this->formr      = Config::get('model.formr');
         $this->inputs     = Config::get('model.input');
+        $this->view     = Config::get('model.view');
 
         // If a model doesnt exist we display an error in the debugger
         if (!$this->translate || !$this->formMap || !$this->inputs) {
@@ -55,16 +56,6 @@ class Former extends \Controller {
     public function getInputs()
     {
         // Form mapping
-        
-        /*$formMap = $this->formMap->where('form_id', $this->formId)
-                                 ->orderBy('order', 'asc')
-                                 ->get();
-        // We make the query
-        foreach ($formMap as $input) {
-            $inputs = $this->inputs->orWhere('id', $input->input_id);
-        }
-        // Getting input objects
-        return $this->inputs->get();*/
 
         return $this->inputs->join('form_maps', 'form_maps.input_id', '=', 'inputs.id')
          ->where('form_maps.form_id', $this->formId)
@@ -85,6 +76,59 @@ class Former extends \Controller {
         } else {
             return \Lang::get($langStart . $row);
         }
+    }
+
+
+    /**
+     * Génère a form by a model
+     * @param  Object $form
+     * @return Array
+     */
+    public function generateByModel($form)
+    {
+        $data = array();
+
+        // Cast l'array en objet
+        $data['form'] = (object) $form;
+
+        // Cast l'array en objet
+        $form = (object) $form->formr();
+        $data['form']->id = $form->model;
+
+        $inputs = $form->data;
+
+        // Boucle sur les inputs
+        foreach ($inputs as $key => $input) {
+
+            $data['inputs'][$key] = (object) $input;
+            $data['inputs'][$key]->name = $key;
+
+            if (!isset($data['inputs'][$key]->value)) {
+                $data['inputs'][$key]->value = NULL;
+            }
+
+            $data['inputs'][$key]->key = NULL;
+
+            // Si c'est un select on génère les options
+            if ($data['inputs'][$key]->type == "select") {
+                foreach ($data['inputs'][$key]->options as $keyOpt => $option) {
+                    $options[$keyOpt] = (object) $option;
+                }
+                $data['inputs'][$key]->options = $options;
+            }
+            
+            // Génération des vues
+            $data['inputs'][$key]->view = \Response::view( $data['inputs'][$key]->viewPath, array(
+                'form' => $form,
+                'input' => $data['inputs'][$key]
+            ))->getOriginalContent();
+
+        }
+
+
+
+        return $data;
+
     }
 
 
@@ -177,6 +221,18 @@ class Former extends \Controller {
         return $rules;
     }
 
+    public function getRulesByModel($modelName)
+    {
+
+        $inputs = $modelName::formParams()['data'];
+
+        foreach ($inputs as $key => $input) {
+            $data[$key] = $input['rules'];
+        }
+
+        return $data;
+    }
+
 
     /**
      * Get a model name by the model settings in a Form
@@ -222,7 +278,7 @@ class Former extends \Controller {
             return $this->createFromForm($pageId, $order, $data);
         }*/
 
-        $this->formr->generate($data, $pageId, $order);
+        return $this->formr->generate($data, $pageId, $order);
     }
 
 
@@ -238,10 +294,19 @@ class Former extends \Controller {
             throw new Exception("No form found !", 1);      
         }
         $data['inputs'] = self::render($data['form']);
-        return \Response::view('public.form.form', $data )->getOriginalContent();
+        return \Response::view('public.form.form', $data)->getOriginalContent();
     }
 
-
+    /**
+     * Display a form by an Id
+     * @param  Integer $formId
+     * @return Response
+     */
+    public function renderByModel($model)
+    {
+        $data = self::generateByModel($model);
+        return \Response::view('public.form.form', $data)->getOriginalContent();
+    }
 
 
     /**
