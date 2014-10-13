@@ -166,7 +166,7 @@
 {{-- #################### EXAMPLE #################### --}}
 
 
-{{ Former::renderByModel(new Gallery) }}
+{{-- Former::renderByModel(new Gallery) --}}
 
 {{ Pager::render($page) }}
 
