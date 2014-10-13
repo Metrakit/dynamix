@@ -214,7 +214,7 @@ class Former extends \Controller {
 
 
 
-    public function create($pageId, $order, $data)
+    public function create($data, $pageId = NULL, $order = NULL)
     {
         /*if (is_object($data)) {
             return $this->createFromModel($pageId, $order, $data);
@@ -222,8 +222,25 @@ class Former extends \Controller {
             return $this->createFromForm($pageId, $order, $data);
         }*/
 
-        $this->formr->generate($pageId, $order, $data);
+        $this->formr->generate($data, $pageId, $order);
     }
+
+
+
+    /**
+     * Display a form by an Id
+     * @param  Integer $formId
+     * @return Response
+     */
+    public function getForm($formId)
+    {
+        if ((!$data['form'] = $this->formr->find($formId))) {
+            throw new Exception("No form found !", 1);      
+        }
+        $data['inputs'] = self::render($data['form']);
+        return \Response::view('public.form.form', $data )->getOriginalContent();
+    }
+
 
 
 

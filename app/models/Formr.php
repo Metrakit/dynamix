@@ -36,7 +36,6 @@ class Formr extends Eloquent{
         return Response::view('public.form.form', $data )->getOriginalContent();
     }
 
-
 	/**
 	 * Additional Method
 	 *
@@ -68,7 +67,7 @@ class Formr extends Eloquent{
 	}
 
 
-	public function generate($pageId, $order, $data)
+	public function generate($data, $pageId, $order)
 	{
 		$form = new self;
 		$fromObject = false;
@@ -127,9 +126,12 @@ class Formr extends Eloquent{
 			FormMap::add($input->id, $form->id, $order);
 		}
 
-		// Add a block
-		$block = Block::add($pageId, $order, 'Formr');
-		BlockResponsive::add($block->id, 12, 3);
+		// Add a block if the form is not by a model
+		if (!$fromObject) {
+			$block = Block::add($pageId, $order, 'Formr');
+			BlockResponsive::add($block->id, 12, 3);
+		}
+		
 
 		if ($fromObject) {
 			// Add form model

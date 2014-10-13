@@ -157,15 +157,15 @@
 
 ?>
 
-{{-- Former::create(2, 2, $data) --}}
+{{-- Former::create($data, 2, 2) --}}
 
 {{-- #################### EXAMPLE #################### --}}
 {{-- EXAMPLE OF CREATE A FORM BY A MODEL --}}
-{{  Former::create(2, 2, new Gallery) }}
+{{  Former::create(new Gallery) }}
 {{-- #################### EXAMPLE #################### --}}
 
 
-
+{{  Former::getForm(3) }}
 
 {{ Pager::render($page) }}
 
