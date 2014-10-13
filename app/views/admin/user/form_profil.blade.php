@@ -47,7 +47,7 @@
             <img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/>
             {{$lang['name_locale']}} ({{$lang['name_en']}})
         </span>
-        <input type="radio" name="{{$lang['id']}}" class="ios-switch" value="{{$lang['id']}}"{{( $lang['enable'] == 1 ? ' checked="checked"' : '' )}}>
+        <input type="radio" name="favourite_lang" class="ios-switch" value="{{$lang['id']}}"{{( $user->favourite_lang == $lang['id'] ? ' checked="checked"' : '' )}}>
       </label>
     @endforeach              
 </div>
