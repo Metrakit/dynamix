@@ -38,6 +38,9 @@ class AdminUserController extends BaseController {
 		$data['buttonLabel'] 	= Lang::get('button.add');
 		$data['glyphicon'] 		= 'plus';
 
+		//langsBackend
+		$data['langsBackend'] = Locale::where('on_admin','=',1)->orderBy('enable', 'DESC')->orderBy('id')->get();
+
 		//Role
 		$data['roles'] 			= Role::all();
 
@@ -75,8 +78,7 @@ class AdminUserController extends BaseController {
 			$user->pseudo		= Input::get('pseudo');
 			$user->firstname	= Input::get('firstname');
 			$user->lastname		= Input::get('lastname');
-			
-			
+			$user->favourite_lang		= Input::get('favourite_lang');
 			$user->email		= Input::get('email');
 			$user->password		= Hash::make(Input::get('password'));
 
@@ -136,7 +138,7 @@ class AdminUserController extends BaseController {
 	        	$user->pseudo		= Input::get('pseudo');
 	        	$user->lastname		= Input::get('lastname');
 	        	$user->firstname	= Input::get('firstname');
-	        	$user->email		= Input::get('email');
+	        	$user->favourite_lang		= Input::get('favourite_lang');
 	        	$user->password		= Hash::make(Input::get('password'));
 
 	        	//if no error when save

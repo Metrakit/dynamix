@@ -40,6 +40,17 @@
         {{ $errors->first('password', '<div class="alert alert-danger">:message</div>') }}
     </div>
 </div>
+<div class="form-group {{{ $errors->has('lang') ? 'error' : '' }}}">
+    @foreach( $langsBackend as $lang ) 
+      <label class="label-list">
+        <span>
+            <img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/>
+            {{$lang['name_locale']}} ({{$lang['name_en']}})
+        </span>
+        <input type="radio" name="favourite_lang" class="ios-switch" value="{{$lang['id']}}"{{( $lang['enable'] == 1 ? ' checked="checked"' : '' )}}>
+      </label>
+    @endforeach              
+</div>
 @include('includes.session-message')
 <div class="form-group">
     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-{{ $glyphicon }}"></span> {{ $buttonLabel }}</button>

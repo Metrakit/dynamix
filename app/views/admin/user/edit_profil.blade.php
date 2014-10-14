@@ -7,7 +7,7 @@
 @stop
 
 @section('script')
-masterAdminClass.switchCheckboxInitializr();
+masterAdminClass.switchRadioInitializr();
 @stop
 
 @section('page-header')
