@@ -160,16 +160,13 @@
 {{-- Former::create($data, 2, 2) --}}
 
 {{-- #################### EXAMPLE #################### --}}
-{{-- EXAMPLE OF CREATE A FORM BY A MODEL --}}
-{{-- var_dump(Former::create(new Gallery)) --}}
+{{-- A test with a database finish_on (create a new table thans to the Migrator class) --}}
+{{-- Former::create($data, 2, 2) --}}
 
 {{-- #################### EXAMPLE #################### --}}
-
-
 {{-- Former::renderByModel(new Gallery) --}}
 
 {{ Pager::render($page) }}
-
 
 
 @stop

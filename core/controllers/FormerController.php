@@ -48,5 +48,4 @@ class FormerController extends Controller {
 
 	}
 
-
 }

@@ -2,6 +2,13 @@
 
 use Config;
 
+/**
+ * Form Generator - Dynamix
+ * @version 1.0
+ * @example Former::create($data)
+ * @author David LEPAUX <d.lepaux@gmail.com>
+ * @author Jordane JOUFFROY <contact@jordane.net>
+ */
 class Former extends \Controller {
 
     /**

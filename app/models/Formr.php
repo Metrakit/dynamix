@@ -78,12 +78,13 @@ class Formr extends Eloquent{
 			$form->i18n_description = NULL;
 			$fromObject = true;
 		}
+
+
 		
 		$form->finish_on = $data['method'];
 		$form->type = $data['type'];
 		$form->save();
 		$order = 0;
-
 
 		foreach ($data['data'] as $dataInput) {
 
@@ -138,7 +139,32 @@ class Formr extends Eloquent{
 			ModelForm::add($form->id, $data['model']);
 		}
 
+		// Generate a migrate file
+		if ($form->finish_on == "database") {
+			// Prepare migrate content
+			$contentMigrate = $this->prepareMigrate($data['data']);
+			$bob = new Migrator('form_' . $form->id, $contentMigrate);
+ 			$bob->generate();
+		}
+
 		return $form;
+	}
+
+	public function prepareMigrate($data)
+	{
+		$content = "";
+		foreach ($data as $input) {
+			if ($input['type'] != "submit") {
+				$content .= "\t\t\t";
+				if ($input['type'] == "textarea") {
+					$content .= '$table->text("'. $input['name'] .'");';
+				} else {
+					$content .= '$table->string("'. $input['name'] .'");';
+				}
+				$content .= "\r\n";
+			}
+		}
+		return $content;
 	}
 
 
