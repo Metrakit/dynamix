@@ -15,7 +15,7 @@ class Migrator
 	/**
 	 * Model name
 	 * @var string
-	 */
+	 */ 
 	private $migrateName;
 	/**
 	 * Data array
@@ -110,7 +110,6 @@ class Migrator
 
 		return true;
 	}
-
 
 	/**
 	 * Get the new migrate file in the migrate folder
