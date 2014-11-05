@@ -28,7 +28,7 @@ masterAdminClass.switchCheckboxInitializr();
 
 <div class="row">
     @foreach($roles as $role)
-    <section class="role col-lg-5 col-md-6">
+    <section class="role col-lg-4 col-md-6">
             <div class="text-left">
                 <h3 class="text-capitalize">{{ $role->name }}
                 <a href="{{URL::to('admin/role/'.$role->id.'/edit')}}" class="btn btn-xs btn-default inline-block"><span class="glyphicon glyphicon-pencil"></span></a>

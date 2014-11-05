@@ -48,6 +48,8 @@ return array(
 	//Tag	
 	'tag'			=> 'Tag',
 	'tags'			=> 'Tags',
+	'tag_create'	=> 'Création de tag',
+	'tag_name_help'	=> 'Saisissez votre tag dans chaque champs ! (traduis)',
 
 
 	//Navigation

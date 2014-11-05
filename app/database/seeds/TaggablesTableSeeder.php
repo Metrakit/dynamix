@@ -5,7 +5,7 @@ class TaggablesTableSeeder extends Seeder {
     public function run()
     {
         DB::table('taggables')->delete();
-
+/*
         $tag1 = Tag::find(1)->id;
         $tag2 = Tag::find(2)->id;
 
@@ -23,7 +23,7 @@ class TaggablesTableSeeder extends Seeder {
                 'taggable_id'       => $article2,
                 'taggable_type'     => 'articles'
             ))
-        );
+        );*/
     }
 
 }

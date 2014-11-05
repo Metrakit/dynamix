@@ -6,9 +6,9 @@
 
 /dev/node_modules
 /dev/.sass-cache
+/dev/src/vendor
+/dev/homestead
 
-/dev/src/packages
 
-composer.lock
 
 *.tmp

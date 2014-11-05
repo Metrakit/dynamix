@@ -2,15 +2,17 @@
 	"name": "dlepaux/dynamix",
 	"description": "Based on the Laravel Framework, it is an awesome CMS for anyone !",
 	"keywords": ["cms", "framework", "laravel", "dynamix"],
-    "authors": [
-        {
-            "name": "David Lepaux",
-            "email": "d.lepaux@gmail.com"
-        },
-  		{
-            "name": "Jordane Jouffroy",
-            "email": "contact@jordane.net"
-        }
+	"author": [
+		{ 
+			"firstname": "david",
+		  	"lastname": "lepaux"
+		}
+	],
+	"contributor": [
+		{
+		  	"firstname": "jordane",
+		  	"lastname": "jouffroy"
+		}
 	],
 	"license": "MIT",
 	"require": {
@@ -22,12 +24,10 @@
 	"autoload": {
 		"classmap": [
 			"app/models",
-			"app/commands",
 			"core/controllers",
 			"core/libraries",
 			"app/database/migrations",
-			"app/database/seeds",
-			"vendor/dynamix/template"
+			"app/database/seeds"
 		]
 	},
 	"scripts": {

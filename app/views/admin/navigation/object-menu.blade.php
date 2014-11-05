@@ -1,3 +1,9 @@
+<!-- Dépendances :
+ CSS
+ helper admin : btn-absolute
+
+ -->
+
 <div class="menu-object menu-object-{{$role}}">
 
 <div class="width100">
@@ -12,7 +18,7 @@
 	@endif
 
 	<div class="menu-container">
-		<div class="buttons">
+		<div class="btn-absolute">
 			{{ Form::open(array('url' => 'admin/navigation/' . $nav->id, 'class' => 'pull-right')) }}
 				{{ Form::hidden('_method', 'DELETE') }}
 				<button type="submit" class="btn btn-transparent btn-xs remove"><span class="glyphicon glyphicon-remove"></span></button>

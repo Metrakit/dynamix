@@ -109,16 +109,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-
-		// Dynamix packages
-		'Dynamix\Template\TemplateServiceProvider',
-
-		// External packages
+		
 		'PagerServiceProvider',
 		'FormerServiceProvider',
 		'Thujohn\Analytics\AnalyticsServiceProvider',
-
-
 	),
 
 	/*
@@ -186,10 +180,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
-		// Dynamix packages
-		'Template'        => 'Dynamix\Template\TemplateFacade',
-
-		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 	),
 

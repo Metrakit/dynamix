@@ -1,3 +1,6 @@
+//Dépendances
+// helper admin : btn-absolute
+
 @import "compass";
 
 //MENUS
@@ -28,13 +31,13 @@
 		&:last-of-type {
 			.menu-container{
 				padding-right:0px !important;
-				.buttons {
+				.btn-absolute {
 					right:0px !important;
 				}
 			}
 		}
 		//chelouuuuwuwuwuwuwuwu
-		.menu-object .menu-object-child:first-of-type .buttons{
+		.menu-object .menu-object-child:first-of-type .btn-absolute{
 			top:0px !important;
 		}
 	}
@@ -71,29 +74,6 @@
 			text-decoration:none;			
 		}
 
-	}
-
-	//Buttons
-	.buttons{
-		position:absolute;
-		top:0px;
-		right:0px;
-		button.remove{
-			@include border-radius( 0 25% 0 0 );
-			@include opacity(.5);
-			@include transition(.25s all ease);
-			&:hover{
-				@include opacity(1);
-			}
-		}
-		div a.pencil{
-			@include border-radius( 25% 0 0 0 );
-			@include opacity(.5);
-			@include transition(.25s all ease);
-			&:hover{
-				@include opacity(1);
-			}
-		}
 	}
 
 	//Container
@@ -227,11 +207,11 @@
 			padding-left:0px;
 			padding-right:0px;
 		}
-		&.menu-object-parent .buttons{
+		&.menu-object-parent .btn-absolute{
 			right:24px;
 		}
 		&.menu-object-child {
-			.buttons{
+			.btn-absolute{
 				top:19px;
 			}			
 		}
