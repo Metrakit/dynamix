@@ -13,7 +13,8 @@
 /dev/src/js/main.back.min.js
 /dev/src/js/main.min.js
 
-/public/js/vendor/**
+/public/js/**
+/public/css/**
 
 composer.lock
 
