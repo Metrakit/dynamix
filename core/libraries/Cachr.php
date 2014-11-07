@@ -19,6 +19,28 @@ class Cachr
 		});*/
 
 		
+		//Cache Model::Locale
+		Cache::rememberForever('DB_LocaleFrontEnable', function()
+		{
+			//Get all data in database
+		    $locales = Locale::where('enable','=',1)->get();
+
+		    //Preapre data to extract by id
+		    $data = array();
+		    foreach( $locales as $l )
+		    {
+		    	$data[] = $l->id;
+		    }
+
+		    return $data;
+		});
+
+		//Cache Model::Nav
+		Cache::rememberForever('DB_Nav', function()
+		{
+			return Nav::where('parent_id','=',0)->orderBy('order','ASC')->get();
+		});
+
 		//Cache Model::Resource('name')
 		Cache::rememberForever('DB_AdminResourceName', function()
 		{
@@ -86,6 +108,7 @@ class Cachr
 		Cache::forget('DB_Option');
 		Cache::forget('DB_AdminResourceName');
 		Cache::forget('DB_AdminResource');
+		Cache::forget('DB_LocaleFrontEnable');
 
 		if(!Cache::has($cache)){
 			$cachr = new Cachr;
