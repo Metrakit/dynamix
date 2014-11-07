@@ -1,3 +1,3 @@
-grunt --force
+grunt
 
 pause

@@ -79,8 +79,7 @@ return array(
 		'user_create'=>		array(	'pseudo'	=> 'required|max:45',
 									'firstname'	=> 'required|max:45',
 									'lastname'	=> 'required|max:45',
-									'email'		=> 'required|email|max:225|unique:users,email',
-									'favourite_lang'=> 'required|exists:locales,id',
+									'email'		=> 'required|email|max:225',
 									'password'	=> 'required|max:225'),
 
 		'user_role'	=> 		array ( 'role'		=> 'required|exists:roles,id'),
@@ -88,8 +87,8 @@ return array(
 		'user_profil'=>		array(	'pseudo'	=> 'required|max:45',
 									'firstname'	=> 'required|max:45',
 									'lastname'	=> 'required|max:45',
+									'email'		=> 'required|email|max:225',
 									'oldpassword'=> 'required',
-									'favourite_lang'=> 'required|exists:locales,id',
 									'password'	=> 'required|max:225'),
 
 	

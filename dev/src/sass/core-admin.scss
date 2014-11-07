@@ -49,18 +49,9 @@ table.log{
 }
 
 //BTN Admin
-.btn-transparent, .btn-transparent-white {
-	background:transparent;
-	border:0px;
-	&:hover, &:focus{
-	 	color:inherit;
-	}
-}
 .btn-transparent {
-	color:grey;
-}
-.btn-transparent-white {
-	color:white;
+	@include button-variant(grey, transparent, white);
+	border:0px;
 }
 
 //Page
@@ -118,49 +109,6 @@ table.log{
 
 @import "theme/form";
 
-//Tag 
-.tag-king-blue {
-	position:relative;
-	display:inline-block;
-	color: #fff;
-	background-color: #6AAEE8;
-	padding: 19px 16px 6px;
-	font-size: 14px;
-	line-height: 1.33;
-	border-radius: 6px;
-}
-
-
-//Helper btn absolute right
-.btn-absolute{
-	position:absolute;
-	top:0px;
-	right:0px;
-	button.remove{
-		@include border-radius( 0 25% 0 0 );
-		@include opacity(.5);
-		@include transition(.25s all ease);
-		&:hover{
-			@include opacity(1);
-		}
-	}
-	div a.pencil{
-		@include border-radius( 25% 0 0 0 );
-		@include opacity(.5);
-		@include transition(.25s all ease);
-		&:hover{
-			@include opacity(1);
-		}
-	}
-}
-
-//Extend bootstrap
-.btn-xxs, .btn-group-xxs>.btn {
-	padding: 1px 5px;
-	font-size: 8px;
-	line-height: 1.5;
-	border-radius: 3px;
-}
 
 //Environnement module
 .form-lang {

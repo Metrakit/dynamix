@@ -442,41 +442,49 @@ table.log tr td {
 }
 
 /* line 52, ../sass/core-admin.scss */
-.btn-transparent, .btn-transparent-white {
-  background: transparent;
+.btn-transparent {
+  color: grey;
+  background-color: transparent;
+  border-color: white;
   border: 0px;
 }
-/* line 55, ../sass/core-admin.scss */
-.btn-transparent:hover, .btn-transparent:focus, .btn-transparent-white:hover, .btn-transparent-white:focus {
-  color: inherit;
+/* line 11, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent:hover, .btn-transparent:focus, .btn-transparent:active, .btn-transparent.active, .open > .btn-transparent.dropdown-toggle {
+  color: grey;
+  background-color: transparent;
+  border-color: #e0e0e0;
+}
+/* line 20, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent:active, .btn-transparent.active, .open > .btn-transparent.dropdown-toggle {
+  background-image: none;
+}
+/* line 28, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent.disabled, .btn-transparent.disabled:hover, .btn-transparent.disabled:focus, .btn-transparent.disabled:active, .btn-transparent.disabled.active, .btn-transparent[disabled], .btn-transparent[disabled]:hover, .btn-transparent[disabled]:focus, .btn-transparent[disabled]:active, .btn-transparent[disabled].active, fieldset[disabled] .btn-transparent, fieldset[disabled] .btn-transparent:hover, fieldset[disabled] .btn-transparent:focus, fieldset[disabled] .btn-transparent:active, fieldset[disabled] .btn-transparent.active {
+  background-color: transparent;
+  border-color: white;
+}
+/* line 38, ../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-transparent .badge {
+  color: transparent;
+  background-color: grey;
 }
 
 /* line 59, ../sass/core-admin.scss */
-.btn-transparent {
-  color: grey;
-}
-
-/* line 62, ../sass/core-admin.scss */
-.btn-transparent-white {
-  color: white;
-}
-
-/* line 68, ../sass/core-admin.scss */
 .panel-page i.fa {
   font-size: 72px;
 }
-/* line 71, ../sass/core-admin.scss */
+/* line 62, ../sass/core-admin.scss */
 .panel-page .help-block {
   display: inline-block;
 }
-/* line 74, ../sass/core-admin.scss */
+/* line 65, ../sass/core-admin.scss */
 .panel-page .buttons {
   position: absolute;
   top: 0;
   right: 15px;
 }
 
-/* line 7, ../sass/theme/_navigation.scss */
+/* line 4, ../sass/theme/_navigation.scss */
 .menus {
   position: relative;
   display: block;
@@ -485,12 +493,12 @@ table.log tr td {
   overflow-y: hidden;
   padding-bottom: 10px;
 }
-/* line 14, ../sass/theme/_navigation.scss */
+/* line 11, ../sass/theme/_navigation.scss */
 .menus .menu-objects {
   float: left;
   margin: 0 2px;
 }
-/* line 17, ../sass/theme/_navigation.scss */
+/* line 14, ../sass/theme/_navigation.scss */
 .menus .menu-objects.create {
   vertical-align: middle;
   line-height: 62px;
@@ -499,35 +507,35 @@ table.log tr td {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 23, ../sass/theme/_navigation.scss */
+/* line 20, ../sass/theme/_navigation.scss */
 .menus .menu-objects.create:hover, .menus .menu-objects.create:focus {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 27, ../sass/theme/_navigation.scss */
+/* line 24, ../sass/theme/_navigation.scss */
 .menus .menu-objects:first-child .menu-container {
   padding-left: 0px;
 }
-/* line 32, ../sass/theme/_navigation.scss */
+/* line 29, ../sass/theme/_navigation.scss */
 .menus .menu-objects:last-of-type .menu-container {
   padding-right: 0px !important;
 }
-/* line 34, ../sass/theme/_navigation.scss */
-.menus .menu-objects:last-of-type .menu-container .btn-absolute {
+/* line 31, ../sass/theme/_navigation.scss */
+.menus .menu-objects:last-of-type .menu-container .buttons {
   right: 0px !important;
 }
-/* line 40, ../sass/theme/_navigation.scss */
-.menus .menu-objects .menu-object .menu-object-child:first-of-type .btn-absolute {
+/* line 37, ../sass/theme/_navigation.scss */
+.menus .menu-objects .menu-object .menu-object-child:first-of-type .buttons {
   top: 0px !important;
 }
 
-/* line 46, ../sass/theme/_navigation.scss */
+/* line 43, ../sass/theme/_navigation.scss */
 .width100 {
   width: 100%;
   display: block;
 }
 
-/* line 52, ../sass/theme/_navigation.scss */
+/* line 49, ../sass/theme/_navigation.scss */
 .menu-object {
   font-size: 18px;
   position: relative;
@@ -537,7 +545,7 @@ table.log tr td {
   border-radius: 4px;
   line-height: 60px;
 }
-/* line 60, ../sass/theme/_navigation.scss */
+/* line 57, ../sass/theme/_navigation.scss */
 .menu-object.create {
   margin-top: 3px;
   vertical-align: middle;
@@ -551,46 +559,86 @@ table.log tr td {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
   opacity: 0.25;
 }
-/* line 68, ../sass/theme/_navigation.scss */
+/* line 65, ../sass/theme/_navigation.scss */
 .menu-object.create:hover, .menu-object.create:focus {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 73, ../sass/theme/_navigation.scss */
+/* line 70, ../sass/theme/_navigation.scss */
 .menu-object.create a:hover, .menu-object.create a:focus {
   text-decoration: none;
 }
-/* line 80, ../sass/theme/_navigation.scss */
+/* line 77, ../sass/theme/_navigation.scss */
+.menu-object .buttons {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+/* line 81, ../sass/theme/_navigation.scss */
+.menu-object .buttons button.remove {
+  -moz-border-radius: 0 25% 0 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 25% 0 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+/* line 85, ../sass/theme/_navigation.scss */
+.menu-object .buttons button.remove:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 89, ../sass/theme/_navigation.scss */
+.menu-object .buttons div a.pencil {
+  -moz-border-radius: 25% 0 0 0;
+  -webkit-border-radius: 25%;
+  border-radius: 25% 0 0 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+/* line 93, ../sass/theme/_navigation.scss */
+.menu-object .buttons div a.pencil:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 100, ../sass/theme/_navigation.scss */
 .menu-object .menu-container {
   float: left;
   line-height: normal;
   padding-left: 24px;
   padding-right: 24px;
 }
-/* line 89, ../sass/theme/_navigation.scss */
+/* line 109, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent {
   float: left;
   width: 100%;
   height: 64px;
 }
-/* line 95, ../sass/theme/_navigation.scss */
+/* line 115, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .menu-object-parent-content .content {
   padding: 0 20px;
 }
-/* line 99, ../sass/theme/_navigation.scss */
+/* line 119, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .move-left {
   -moz-border-radius: 4px 0 0 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px 0 0 4px;
 }
-/* line 102, ../sass/theme/_navigation.scss */
+/* line 122, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-parent .move-right {
   -moz-border-radius: 0 4px 4px 0;
   -webkit-border-radius: 0;
   border-radius: 0 4px 4px 0;
   float: right;
 }
-/* line 109, ../sass/theme/_navigation.scss */
+/* line 129, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child {
   line-height: normal;
   font-size: 14px;
@@ -599,7 +647,7 @@ table.log tr td {
   margin-left: 20px;
   position: relative;
 }
-/* line 118, ../sass/theme/_navigation.scss */
+/* line 138, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child:before {
   content: " ";
   height: 80px;
@@ -610,12 +658,12 @@ table.log tr td {
   background: transparent;
   border-left: 2px solid #adadad;
 }
-/* line 129, ../sass/theme/_navigation.scss */
+/* line 149, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .menu-object-child-content .content {
   vertical-align: middle;
   padding: 0 20px;
 }
-/* line 134, ../sass/theme/_navigation.scss */
+/* line 154, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .menu-container {
   width: 100%;
   float: none;
@@ -623,50 +671,50 @@ table.log tr td {
   padding-left: 0px;
   padding-right: 0px;
 }
-/* line 142, ../sass/theme/_navigation.scss */
+/* line 162, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move-up {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px;
   border-radius: 4px 4px 0 0;
 }
-/* line 145, ../sass/theme/_navigation.scss */
+/* line 165, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move-down {
   -moz-border-radius: 0 0 4px 4px;
   -webkit-border-radius: 0;
   border-radius: 0 0 4px 4px;
 }
-/* line 148, ../sass/theme/_navigation.scss */
+/* line 168, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move {
   float: none;
   width: 0px;
   height: auto;
   display: block;
 }
-/* line 153, ../sass/theme/_navigation.scss */
+/* line 173, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move form button {
   background: #3c3c3c;
 }
-/* line 155, ../sass/theme/_navigation.scss */
+/* line 175, ../sass/theme/_navigation.scss */
 .menu-object.menu-object-child .move form button:hover, .menu-object.menu-object-child .move form button:focus {
   background: #222;
 }
-/* line 163, ../sass/theme/_navigation.scss */
+/* line 183, ../sass/theme/_navigation.scss */
 .menu-object .menu-object-parent-content {
   margin-top: 24px;
   padding-bottom: 10px;
 }
-/* line 167, ../sass/theme/_navigation.scss */
+/* line 187, ../sass/theme/_navigation.scss */
 .menu-object .menu-object-child-content {
   margin-top: 15px;
   padding-bottom: 5px;
 }
-/* line 172, ../sass/theme/_navigation.scss */
+/* line 192, ../sass/theme/_navigation.scss */
 .menu-object .content small {
   font-size: 10px;
   color: grey;
   line-height: normal;
 }
-/* line 179, ../sass/theme/_navigation.scss */
+/* line 199, ../sass/theme/_navigation.scss */
 .menu-object .move {
   color: grey;
   font-size: 12px;
@@ -678,7 +726,7 @@ table.log tr td {
   height: 0px;
   overflow: hidden;
 }
-/* line 190, ../sass/theme/_navigation.scss */
+/* line 210, ../sass/theme/_navigation.scss */
 .menu-object .move form button {
   background: #222;
   vertical-align: middle;
@@ -686,26 +734,26 @@ table.log tr td {
   border: 0;
   width: 100%;
 }
-/* line 196, ../sass/theme/_navigation.scss */
+/* line 216, ../sass/theme/_navigation.scss */
 .menu-object .move form button:hover, .menu-object .move form button:focus {
   background: #090909;
 }
-/* line 202, ../sass/theme/_navigation.scss */
+/* line 222, ../sass/theme/_navigation.scss */
 .menu-object:hover .move, .menu-object:focus .move {
   width: auto;
   height: auto;
 }
-/* line 206, ../sass/theme/_navigation.scss */
+/* line 226, ../sass/theme/_navigation.scss */
 .menu-object:hover .menu-container, .menu-object:focus .menu-container {
   padding-left: 0px;
   padding-right: 0px;
 }
-/* line 210, ../sass/theme/_navigation.scss */
-.menu-object:hover.menu-object-parent .btn-absolute, .menu-object:focus.menu-object-parent .btn-absolute {
+/* line 230, ../sass/theme/_navigation.scss */
+.menu-object:hover.menu-object-parent .buttons, .menu-object:focus.menu-object-parent .buttons {
   right: 24px;
 }
-/* line 214, ../sass/theme/_navigation.scss */
-.menu-object:hover.menu-object-child .btn-absolute, .menu-object:focus.menu-object-child .btn-absolute {
+/* line 234, ../sass/theme/_navigation.scss */
+.menu-object:hover.menu-object-child .buttons, .menu-object:focus.menu-object-child .buttons {
   top: 19px;
 }
 
@@ -720,31 +768,31 @@ table.log tr td {
 /* Medium Devices, Desktops */
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
-  /* line 260, ../sass/theme/_navigation.scss */
+  /* line 280, ../sass/theme/_navigation.scss */
   #navigation {
     width: auto !important;
   }
 
-  /* line 264, ../sass/theme/_navigation.scss */
+  /* line 284, ../sass/theme/_navigation.scss */
   .menus .menu-objects:first-child .menu-container {
     padding-left: 24px;
   }
 
-  /* line 268, ../sass/theme/_navigation.scss */
+  /* line 288, ../sass/theme/_navigation.scss */
   .menu-objects {
     width: 100%;
     margin: 0 0 40px 0 !important;
   }
 
-  /* line 274, ../sass/theme/_navigation.scss */
+  /* line 294, ../sass/theme/_navigation.scss */
   .menu-object.menu-object-parent {
     height: auto;
   }
-  /* line 276, ../sass/theme/_navigation.scss */
+  /* line 296, ../sass/theme/_navigation.scss */
   .menu-object.menu-object-parent .menu-object-parent-content .content {
     padding: 0px;
   }
-  /* line 281, ../sass/theme/_navigation.scss */
+  /* line 301, ../sass/theme/_navigation.scss */
   .menu-object.menu-object-child:before {
     height: 70px;
     top: -11px;
@@ -753,33 +801,33 @@ table.log tr td {
 /* Extra Small Devices, Phones */
 /* Custom, iPhone Retina */
 /*========== Media ==========*/
-/* line 86, ../sass/core-admin.scss */
+/* line 77, ../sass/core-admin.scss */
 .filemanager-container {
   min-height: inherit;
   margin-left: -30px;
   margin-right: -30px;
 }
-/* line 90, ../sass/core-admin.scss */
+/* line 81, ../sass/core-admin.scss */
 .filemanager-container > iframe {
   min-height: inherit;
   border: none;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 97, ../sass/core-admin.scss */
+  /* line 88, ../sass/core-admin.scss */
   .filemanager-container {
     margin-left: -15px;
     margin-right: -15px;
   }
 }
 /*========== Fix bootstrap ==========*/
-/* line 105, ../sass/core-admin.scss */
+/* line 96, ../sass/core-admin.scss */
 .img-center .img-responsive {
   margin: 0 auto;
 }
 
 /*========== User ==========*/
-/* line 113, ../sass/core-admin.scss */
+/* line 104, ../sass/core-admin.scss */
 .profil {
   padding-top: 30px;
 }
@@ -1075,74 +1123,13 @@ label.label-list:last-of-type {
   box-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* line 122, ../sass/core-admin.scss */
-.tag-king-blue {
-  position: relative;
-  display: inline-block;
-  color: #fff;
-  background-color: #6AAEE8;
-  padding: 19px 16px 6px;
-  font-size: 14px;
-  line-height: 1.33;
-  border-radius: 6px;
-}
-
-/* line 135, ../sass/core-admin.scss */
-.btn-absolute {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-}
-/* line 139, ../sass/core-admin.scss */
-.btn-absolute button.remove {
-  -moz-border-radius: 0 25% 0 0;
-  -webkit-border-radius: 0;
-  border-radius: 0 25% 0 0;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
-  -moz-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-/* line 143, ../sass/core-admin.scss */
-.btn-absolute button.remove:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-  opacity: 1;
-}
-/* line 147, ../sass/core-admin.scss */
-.btn-absolute div a.pencil {
-  -moz-border-radius: 25% 0 0 0;
-  -webkit-border-radius: 25%;
-  border-radius: 25% 0 0 0;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
-  -moz-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-/* line 151, ../sass/core-admin.scss */
-.btn-absolute div a.pencil:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-  opacity: 1;
-}
-
-/* line 158, ../sass/core-admin.scss */
-.btn-xxs, .btn-group-xxs > .btn {
-  padding: 1px 5px;
-  font-size: 8px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-
-/* line 167, ../sass/core-admin.scss */
+/* line 115, ../sass/core-admin.scss */
 .form-lang .form-group {
   padding: 5px;
 }
 
 @media only screen and (max-width: 1920px) {
-  /* line 174, ../sass/core-admin.scss */
+  /* line 122, ../sass/core-admin.scss */
   .lang-label {
     max-width: 140px;
     max-width: calc(100% - 95px);
@@ -1150,7 +1137,7 @@ label.label-list:last-of-type {
   }
 }
 @media only screen and (max-width: 1200px) {
-  /* line 181, ../sass/core-admin.scss */
+  /* line 129, ../sass/core-admin.scss */
   .lang-label {
     max-width: 180px;
     max-width: calc(100% - 95px);
@@ -1159,7 +1146,7 @@ label.label-list:last-of-type {
 }
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
-  /* line 189, ../sass/core-admin.scss */
+  /* line 137, ../sass/core-admin.scss */
   .lang-label {
     max-width: 300px;
     max-width: calc(100% - 95px);
@@ -1168,7 +1155,7 @@ label.label-list:last-of-type {
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width: 778px) {
-  /* line 197, ../sass/core-admin.scss */
+  /* line 145, ../sass/core-admin.scss */
   .lang-label {
     max-width: 295px;
     max-width: calc(100% - 95px);
@@ -1177,7 +1164,7 @@ label.label-list:last-of-type {
 }
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 490px) {
-  /* line 205, ../sass/core-admin.scss */
+  /* line 153, ../sass/core-admin.scss */
   .lang-label {
     max-width: 135px;
     max-width: calc(100% - 95px);
@@ -1186,29 +1173,29 @@ label.label-list:last-of-type {
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 330px) {
-  /* line 213, ../sass/core-admin.scss */
+  /* line 161, ../sass/core-admin.scss */
   .lang-label {
     max-width: 130px;
     max-width: calc(100% - 95px);
     display: inline-block;
   }
 }
-/* line 225, ../sass/core-admin.scss */
+/* line 173, ../sass/core-admin.scss */
 .role {
   margin-top: 20px;
 }
-/* line 228, ../sass/core-admin.scss */
+/* line 176, ../sass/core-admin.scss */
 .role h3 {
   margin-top: 0px;
 }
 
-/* line 233, ../sass/core-admin.scss */
+/* line 181, ../sass/core-admin.scss */
 .form-role_permission .form-group {
   padding: 5px;
 }
 
 @media only screen and (max-width: 390px) {
-  /* line 238, ../sass/core-admin.scss */
+  /* line 186, ../sass/core-admin.scss */
   .role-label {
     max-width: 190px;
     display: inline-block;

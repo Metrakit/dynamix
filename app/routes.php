@@ -31,10 +31,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Page
 	Route::resource('page','AdminPageController',
 		array('except' => array('show')) );
-	
-	//Tag
-	Route::resource('tag','AdminTagController',
-		array('except' => array('show')) );
 
 	//Navigation
 	Route::resource('navigation','AdminNavigationController',

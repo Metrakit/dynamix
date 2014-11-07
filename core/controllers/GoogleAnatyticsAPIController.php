@@ -30,6 +30,7 @@ class GoogleAnalyticsAPIController extends BaseController {
 
 		if (!empty($site_id)) {
 			$stats = Analytics::query($site_id, $this->daysAgo, 'yesterday', 'ga:sessions')->rows;
+		   
 		    return $stats[0][0];
 		}
 		return null;

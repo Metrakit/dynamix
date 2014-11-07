@@ -99,11 +99,6 @@ class Page extends Eloquent {
     public function trackable() {
         return $this->morphTo();
     }
-
-    public function tags()
-    {
-        return $this->morphToMany('Tag', 'taggable');
-    }
     
 	
 	/**
