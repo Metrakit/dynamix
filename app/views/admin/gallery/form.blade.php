@@ -34,7 +34,7 @@
     <label class="control-label" for="mosaique_id">Mosaique *</label>
     <select class="form-control" name="mosaique_id" id="mosaique_id">
         <option value="">Choisissez une mosaïque..</option>
-        @foreach(App::make('CacheController')->getCache('DB_Mosaique') as $g)
+        @foreach(Cachr::getCache('DB_Mosaique') as $g)
             <option value="{{$g->id}}" {{(Input::old('mosaique_id', (isset($gallery) ? $gallery->mosaique_id : '')) == $g->id ? 'selected="selected"' : '')}}>{{$g->title}}</option>
         @endforeach
     </select>

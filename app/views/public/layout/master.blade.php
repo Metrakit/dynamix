@@ -19,7 +19,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">{{App::make('CacheController')->getCache('DB_Option')->site_name()}}</a>
+                        <a class="navbar-brand" href="#">{{Cachr::getCache('DB_Option')->site_name()}}</a>
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">

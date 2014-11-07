@@ -43,7 +43,7 @@ masterAdminClass.switchCheckboxInitializr();
             <form class="form-horizontal form-role_permission" method="POST" action="{{ URL::to('admin/permission') }}" accept-charset="UTF-8" autocomplete="off">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="role_id" value="{{ $role->id }}">
-                    @foreach( App::make('CacheController')->getCache('DB_AdminResource') as $resource )                  
+                    @foreach( Cachr::getCache('DB_AdminResource') as $resource )                  
                     <label class="label-list">
                         <span class="text-capitalize text-left role-label">
                             <span class="{{$resource->icon}}"></span> {{{ Lang::get('admin.'.$resource->name) }}}

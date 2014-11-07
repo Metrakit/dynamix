@@ -8,6 +8,7 @@
 /dev/.sass-cache
 
 /dev/src/packages
+/dev/src/vendor
 
 composer.lock
 
