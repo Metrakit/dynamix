@@ -123,7 +123,12 @@ Route::get('/migrate', function(){
   Artisan::call("db:seed");
   return "migrated";
 });
-
+Route::get('/first-migrate', function(){
+  define('STDIN',fopen("php://stdin","r"));
+  Artisan::call("migrate");
+  Artisan::call("db:seed");
+  return "migrated";
+});
 
 /*
 |--------------------------------------------------------------------------
