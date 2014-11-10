@@ -29,7 +29,7 @@ class URLManagerController extends BaseController {
                 }
         */
 
-        $urls = App::make('CacheController')->getCache( 'DB_Urls' );
+        $urls = Cachr::getCache( 'DB_Urls' );
 
         foreach ( $urls as $url ) {
             if ( $url['url'] == '/' ) {
@@ -43,7 +43,7 @@ class URLManagerController extends BaseController {
 
     public function getSlug( $slug )
     {
-        foreach ( App::make('CacheController')->getCache( 'DB_Urls' ) as $url ) {
+        foreach ( Cachr::getCache( 'DB_Urls' ) as $url ) {
             if ( $url['url'] == '/' . $slug ) {
                 //Check current locale
                 if ( App::getLocale() != $url['locale_id'] ) {
