@@ -1,6 +1,7 @@
 /vendor
 
 /app/storage
+/app/config/assets/assets.json
 
 /bootstrap/compiled.php
 
@@ -8,6 +9,12 @@
 /dev/.sass-cache
 
 /dev/src/packages
+/dev/src/vendor
+/dev/src/js/main.back.min.js
+/dev/src/js/main.min.js
+
+/public/js/**
+/public/css/**
 
 composer.lock
 
