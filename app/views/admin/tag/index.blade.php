@@ -14,7 +14,6 @@
 @stop
 
 @section('content')
-
 @include('includes.session-message')
 
 <div class="alert alert-info" role="alert">{{{ Lang::get('admin.role_help') }}}{{{ Lang::get('admin.permission_help') }}}</div>

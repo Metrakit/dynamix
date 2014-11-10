@@ -72,6 +72,14 @@ return array(
 
 		'permission'=> 		array(	'resource_id'	=> 'exists:resources,id',
 									'role_id'		=> 'required|exists:roles,id'),
+		
+	/*
+	|	Tag
+	|
+	*/
+		'tag'		=> 		array(	'name'			=> 'required|min:2|max:200'),
+		
+
 	/*
 	|	User
 	|

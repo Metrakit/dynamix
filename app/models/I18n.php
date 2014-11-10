@@ -56,7 +56,7 @@ class I18n extends Eloquent{
      * @var string
      */
 	public function translate( $locale_id, $text ) {
-        if( Translation::create( array('i18n_id' => $this->id, 'locale_id' => $locale_id, 'text' => $text ) ) ){
+        if( Translation::add( $this->id, $locale_id, $text ) ) {
             return true;
         }
         return false;

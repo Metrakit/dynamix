@@ -25,7 +25,7 @@ class Locale extends Eloquent{
      *
      */
     public function tags() {
-    	return DB::table('tags')
+        $data = DB::table('tags')
         ->join('translations', function($join)
         {
             $join->on('tags.i18n_name', '=', 'translations.i18n_id');
@@ -33,5 +33,9 @@ class Locale extends Eloquent{
         ->where('translations.locale_id','=',$this->id)
         ->orderBy('translations.text','ASC')
         ->get(array('tags.id','text'));
+
+        //Log::info(print_r(DB::getQueryLog()));
+
+        return $data;
 	}
 }

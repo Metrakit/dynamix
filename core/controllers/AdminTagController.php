@@ -47,48 +47,52 @@ class AdminTagController extends BaseController {
 	 */
 	public function store()
 	{
-        $validator = Validator::make(Input::all(), Config::get('validator.admin.role'));
+        $rules = array();
+		$tag_name_datas = array();
+		foreach ( Input::except('_token') as $k => $v ) {
+			if ( strpos($k, 'tag_name_') !== false ) {
+				$rules[$k] = Config::get('validator.admin.tag.name');
+				$tag_name_datas[substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')))] = $v;
+			}
+		}
+		//return var_dump($tag_name_datas);
+
+		// Validate the inputs
+        $validator = Validator::make(Input::except('_token'), $rules);
 
 		if ( $validator->passes() ) {
-			$role = new Role();
-            $role->name     		= Input::get('name');
-            $role->deletable   		= 1;
+			//create i18n key
+
+			$i18n_name = new I18n();
+			$i18n_name->i18n_type_id = I18nType::where('name', '=', 'tag')->first()->id;
+			$i18n_name->save();
+			foreach ( $tag_name_datas as $locale => $value) {
+				if( !$i18n_name->translate($locale, $value) ) return Redirect::to('admin/tag')->with('error', Lang::get('admin.tag_save_fail'));
+			}
+
+			$tag = new Tag();
+            $tag->i18n_name    		= $i18n_name->id;
            
             // Was the blog post created?
-            if ( $role->save() ) {
-                //Set all permission to deny
-            	$resources = Resource::where('in_admin_ui','=',1)->get();
-            	$data = array();
-            	foreach($resources as $resource){
-	                foreach(Action::all() as $action){
-	                    $data[] = array(
-	                        'role_id'       => $role->id,
-	                        'type'          => 'deny',
-	                        'action_id'     => $action->id,
-	                        'resource_id'   => $resource->id
-	                    );
-	                }
-	            }
-				DB::table('permissions')->insert( $data );
-
-				//track user
+            if ( $tag->save() ) {
+                //track user
 				$track = new Track();
 				$track->user_id = Auth::user()->id;
 				$track->date = new Datetime;
 				$track->action = 'create';
-				$track->trackable_id = $resource->id;
-				$track->trackable_type = 'Role';
+				$track->trackable_id = $tag->id;
+				$track->trackable_type = 'Tag';
 				$track->save();
                 
-                return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_save_success'));
+                return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_save_success'));
             }
 
-            // Redirect to the blog post create role
-            return Redirect::to('admin/role/create')->with('error', Lang::get('admin.role_save_fail'));
+            // Redirect to the blog post create tag
+            return Redirect::to('admin/tag/create')->with('error', Lang::get('admin.tag_save_fail'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/role/create')->withInput()->withErrors($validator);
+        return Redirect::to('admin/tag/create')->withInput()->withErrors($validator);
 	}
 
 
@@ -108,10 +112,10 @@ class AdminTagController extends BaseController {
 		$data['buttonLabel'] 	= Lang::get('button.update');
 		$data['glyphicon'] 		= 'ok';
 
-	    $data['role'] = Role::find($id);
-	    if(empty($data['role'])) return Redirect::back()->with('error', Lang::get('admin.role_empty') );
+	    $data['tag'] = Tag::find($id);
+	    if(empty($data['tag'])) return Redirect::back()->with('error', Lang::get('admin.tag_empty') );
 
-		return View::make('admin.role.edit', $data);
+		return View::make('admin.tag.edit', $data);
 	}
 
 
@@ -123,36 +127,47 @@ class AdminTagController extends BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Config::get('validator.admin.role'));
+		$rules = array();
+		$tag_name_locales = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'tag_name_') !== false ) {
+				$rules[$k] = Config::get('validator.admin.option_site_name');
+				$tag_name_locales[] = substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')));
+			}
+		}
 
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
+
+		$tag = Tag::find($id);
 		if ( $validator->passes() ) {
-			
-			$role = Role::find($id);
-            if ( !empty($role) ) {
-	            $role->name     		= Input::get('name');
+
+            if ( !empty($tag) ) {
+	        	//Update translations
+	        	foreach ( $tag_name_locales as $locale ) {
+	        		if ( !I18n::find($tag->i18n_name)->updateText($locale, Input::get('tag_name_'.$locale)) ) {
+	        			return Redirect::to('admin/tag')->with('error', Lang::get('admin.tag_update_error'));
+	        		}
+	        	}
 	           
-	            // Was the blog post created?
-	            if ( $role->save() ) {
-	                // Redirect to the new blog post role
-	                //track user
-	                $track = new Track();
-	                $track->user_id = Auth::user()->id;
-	                $track->date = new Datetime;
-	                $track->action = 'update';
-	                $track->trackable_id = $id;
-	                $track->trackable_type = 'Role';
-	                $track->save();
-                
-	                return Redirect::to('admin/role_permission')->with('success', Lang::get('admin.role_edit_success'));
-	            }
+                //track user
+                $track = new Track();
+                $track->user_id = Auth::user()->id;
+                $track->date = new Datetime;
+                $track->action = 'update';
+                $track->trackable_id = $id;
+                $track->trackable_type = 'Tag';
+                $track->save();
+            
+                return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_edit_success'));
             }
 
-            // Redirect to the blog post create role
-            return Redirect::to('admin/role/' . $id . '/edit')->with('error', Lang::get('admin.role_edit_fail'));
+            // Redirect to the blog post create tag
+            return Redirect::to('admin/tag/' . $id . '/edit')->with('error', Lang::get('admin.tag_edit_fail'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/role/' . $id . '/edit')->withInput()->withErrors($validator);
+        return Redirect::to('admin/tag/' . $id . '/edit')->withInput()->withErrors($validator);
 	}
 
 

@@ -48,6 +48,16 @@ return array(
 	//Tag	
 	'tag'			=> 'Tag',
 	'tags'			=> 'Tags',
+		'tag_empty'		=> 'Ce tag n\'existe pas !',
+		'tag_edit'		=> 'Modification de tag',
+		'tag_name'		=> 'Nom',
+		'tag_name_help'	=> 'Modifiez le tag pour chaque langue active sur le site',
+		'tag_create'		=> 'Création d\'un tag',
+		'tag_update_error'		=> 'Une erreur est survenu lors de la mise à jour du tag...',
+		'tag_edit_success'		=> 'Le tag a été enregistré avec succès !',
+		'tag_edit_fail'			=> 'Le tag n\'a pas pu être enregistrée...',
+		'tag_save_success'		=> 'Le tag a été créé avec succès !',
+		'tag_save_fail'			=> 'Le tag n\'a pas pu être créé...',
 
 
 	//Navigation
@@ -139,6 +149,7 @@ return array(
 		'rscNavigation'		=> 'Navigation',
 		'rscMedia'			=> 'Media',
 		'rscPage'			=> 'Page',
+		'rscTag'			=> 'Tag',
 		'rscRole'			=> 'Role',
 		'rscPermission'		=> 'Permissions',
 		'rscUser'			=> 'Compte utilisateur',

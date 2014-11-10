@@ -18,15 +18,11 @@
 @include('includes.session-message')
 
 <div class="col-sm-9">
-{{ Form::open(array('url' => URL::to('admin/tag'), 'method' => 'POST', 'class' => 'form-horizontal', 'autocomplete' => 'off' ) ) }}
-        <!-- CSRF Token -->
-        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        
+<form class="form-horizontal" method="POST" action="{{ URL::to('admin/tag') }}" accept-charset="UTF-8" autocomplete="off">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <fieldset>
         @include('admin.tag.form')
-
-        <button type="submit" class="btn btn-primary"> {{{ Lang::get('button.add') }}}</button>
-        <!-- ./ form actions -->
-{{ Form::close() }}
+    </fieldset>
+</form>
 </div>
-<div class="clearfix"></div>
 @stop

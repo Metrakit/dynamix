@@ -17,6 +17,6 @@ Choose your language | @parent
 @include('includes.session-message')
 
 
-
+<!-- Liste des langues avec le liens dynam.ix/{locale} -->
 
 @stop
