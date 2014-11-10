@@ -51,10 +51,12 @@
             </div>
             <!-- ./ navbar-desktop -->
 
+            {{var_dump(Session::all())}}
+
             <!-- container.main -->
             <div class="container main">
                 <div class="row">
-                @if (!Request::is('/') )
+                @if ( !Request::is('/') && !Request::is(App::getLocale()) )
                 @section('ariane')
 <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
                 @show
