@@ -36,7 +36,7 @@ class Localizr
 			}
 		}
 
-		if ( $locale != Session::get('lang') ) {
+		if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') ) {
 			Session::put('translate_request',1);
 		}
 		Session::put('lang', $locale);

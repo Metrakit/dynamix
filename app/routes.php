@@ -23,6 +23,16 @@ Route::get('/first-migrate', function(){
 
 /*
 |--------------------------------------------------------------------------
+| System
+|--------------------------------------------------------------------------
+|
+*/
+//i18n
+Route::get('choose-your-language', array ('uses' => 'UserController@choose_your_language'));
+
+
+/*
+|--------------------------------------------------------------------------
 | Front
 |--------------------------------------------------------------------------
 |
@@ -31,7 +41,7 @@ Route::get('/first-migrate', function(){
 $locale = Localizr::initLocale();
 Route::group(array('prefix' => $locale), function() 
 {
-	Route::get('/', array('uses' => 'HomeController@index'));
+	Route::get('/', array('uses' => 'URLManagerController@getHome'));
 	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 });
 
@@ -54,6 +64,10 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	
 	//Page
 	Route::resource('page','AdminPageController',
+		array('except' => array('show')) );
+
+	//Tag
+	Route::resource('tag','AdminTagController',
 		array('except' => array('show')) );
 
 	//Navigation

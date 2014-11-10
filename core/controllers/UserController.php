@@ -258,4 +258,18 @@ class UserController extends BaseController {
 			return Redirect::to('user/login')->with('notice', Lang::get('user.you_must_be_logged'));
 		}
 	}
+
+
+
+	/**
+	 * get the page with all langue activated
+	 *
+	 * @return Response
+	 */
+	public function choose_your_language()
+	{
+		return View::make('public.i18n.choose-your-language');
+	}
+
+
 }

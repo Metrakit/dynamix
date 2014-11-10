@@ -3,26 +3,12 @@ class URLManagerController extends BaseController {
     public function init()
     {
     }
+
+
+
+    
     public function getHome()
     {
-        //Detect and set locale
-        /*if ( !Session::has('lang') ) {
-            //init the setLocale by search the locale on server
-            Localizr::detectLocale();//here, detect lang, set it in session and redirect to /[locale]
-            return Redirect::to(App::getLocale());
-        } else {
-            //re setLocale for other request
-            App::setLocale(Session::get('lang'));
-        }*/
-        //If the INDEX route is not set with lang GET, redirect with param(for user experience)
-        /*$inputLang = Input::get('lang');
-        if (empty($inputLang)) {
-            
-        //If the locale in lang is different of the App::locale and is valid, set new locale
-        } else if (App::getLocale() != $inputLang && in_array($inputLang, Cachr::getCache('DB_LocaleFrontEnable'))) {
-            Session::put('lang', $inputLang);
-            App::setLocale($inputLang);
-        }*/
         //Find good page
         $urls = Cachr::getCache( 'DB_Urls' );
         foreach ( $urls as $url ) {
@@ -65,7 +51,7 @@ class URLManagerController extends BaseController {
             if ( $url['url'] == '/' . $slug_origin ) {
                 //Search route with the same i18n_id and with the new locale
                 foreach ( Cachr::getCache( 'DB_Urls' ) as $url_translated ) {
-                    if ( $url_translated['i18n_id'] == $url['i18n_id'] && $url_translated['locale_id'] == $locale_new && $url_translated['url'] != $url['url'] ) {
+                    if ( $url_translated['i18n_id'] == $url['i18n_id'] && $url_translated['locale_id'] == $locale_new && $url_translated['url'] != $url['url'] ) {               
                         return Redirect::to('/' . $url_translated['locale_id'] . $url_translated['url'] );
                     }
                 }

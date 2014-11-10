@@ -77,7 +77,8 @@
                         Mentions légales&nbsp;|
                         Plan du site&nbsp;|
                         Contact&nbsp;|
-                        Designed & Developped by <a rel="noindex nofollow" href="http://www.davidlepaux.fr">David Lepaux</a>
+                        Designed & Developped by <a rel="noindex nofollow" href="http://www.davidlepaux.fr">David Lepaux</a>&nbsp;|
+                        <a href="{{ URL::to('choose-your-language') }}"><img class="img-rounded" height="16px" width="16px" src="{{ Locale::findCached(App::getLocale())->flag }}"/></a>
                     </p>
                     @yield('footer')
                 </div>
