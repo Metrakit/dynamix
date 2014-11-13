@@ -15,7 +15,6 @@
     </div>
 </div>
 <!-- ./ tag_name -->
-@include('includes.session-message')
 <div class="form-group">
     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-{{ $glyphicon }}"></span> {{ $buttonLabel }}</button>
 </div>

@@ -19,7 +19,14 @@ class BaseController extends Controller {
 			$notAllowed = array_merge( $notAllowed, $modelName::getNotAllowed() );
 		}
 
-		return $notAllowed;
+		natsort($notAllowed);
+
+		foreach ( $resourceNavigable as $resource ) {
+			$modelName = $resource->model;
+			$notAllowed = array_merge( $notAllowed, $modelName::getNotAllowed() );
+		}
+
+		return ;
 	}
 
 

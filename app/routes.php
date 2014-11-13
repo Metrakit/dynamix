@@ -72,13 +72,13 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 	//Navigation
 	Route::resource('navigation','AdminNavigationController',
-		array('except' => array('create','store','show')) );
-		Route::post('menu/{id}/move','AdminMenuController@move');
-		
-		Route::get('menu/create-new-menu','AdminMenuController@createNewMenu');
-		Route::post('menu/create-new-menu','AdminMenuController@postCreateNewMenu');
-		Route::get('menu/create-menu','AdminMenuController@createMenu');
-		Route::post('menu/create-menu','AdminMenuController@postCreateMenu');
+		array('except' => array('show')) );
+
+		Route::post('navigation/{id}/move','AdminMenuController@move');
+		/*Route::get( 'navigation/create-new-menu','AdminMenuController@createNewMenu');
+		Route::post('navigation/create-new-menu','AdminMenuController@postCreateNewMenu');
+		Route::get( 'navigation/create-menu','AdminMenuController@createMenu');
+		Route::post('navigation/create-menu','AdminMenuController@postCreateMenu');*/
 
 	//Role / Permission
 	Route::get('/role_permission', array('before' => 'auth.permission_role', 'uses' => 'AdminController@getRolePermission'));

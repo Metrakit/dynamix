@@ -1,6 +1,6 @@
 <?php
 
-class AdminNavigationController extends BaseController {
+class AdminMenuController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,19 +9,12 @@ class AdminNavigationController extends BaseController {
 	 */
 	public function index()
 	{
-		//User
-		$data['user'] = Auth::user();
+		$menus 					= Menu::where('parent_id','=',0)->orderBy('order','ASC')->get();
+		$page_not_allowed 		= parent::getNotAllowedPage();
+		$mosaique_not_allowed 	= parent::getNotAllowedMosaique();
+		$gallery_not_allowed 	= parent::getNotAllowedGallery();
 
-		//Interface
-		$data['noAriane'] = true;
-
-		//Main menu
-		$data['navs'] 					= Nav::where('parent_id','=',0)->orderBy('order','ASC')->get();
-
-		//allowable resource
-		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
-
-		return View::make('admin.navigation.index', $data );
+		return View::make('admin.menu.index', compact('menus', 'page_not_allowed', 'mosaique_not_allowed', 'gallery_not_allowed') );
 	}
 
 	/**
@@ -29,29 +22,15 @@ class AdminNavigationController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function createNewMenu()
 	{
-		//User
-		$data['user'] = Auth::user();
-
-		//Interface
-		$data['noAriane'] 		= true;
-		$data['buttonLabel'] 	= Lang::get('button.add');
-		$data['glyphicon'] 		= 'plus';
-
-		//Datas
-		$data['isChildren']					= false;
 		$data['order']						= Input::get('order');
-		if( Input::has('parent_id') ) {//If parent_id is present and set, this is a child
-			$data['isChildren']					= true;
-			$data['parent_id']					= Input::get('parent_id');
-		}
-
-		//allowable resource
-		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
+		$data['page_not_allowed']			= parent::getNotAllowedPage();
+		$data['mosaique_not_allowed']		= parent::getNotAllowedMosaique();
+		$data['gallery_not_allowed'] 		= parent::getNotAllowedGallery();
 
 		// load the create form (app/views/nerds/create.blade.php)
-		return View::make('admin.navigation.create', $data);
+		return View::make('admin.menu.create-new-menu', $data);
 	}
 
 	/**
@@ -59,16 +38,26 @@ class AdminNavigationController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function createMenu()
+	{
+		$data['order']						= Input::get('order');
+		$data['parent_id']					= Input::get('parent_id');
+		$data['page_not_allowed']			= parent::getNotAllowedPage();
+		$data['mosaique_not_allowed']		= parent::getNotAllowedMosaique();
+		$data['gallery_not_allowed'] 		= parent::getNotAllowedGallery();
+
+		// load the create form (app/views/nerds/create.blade.php)
+		return View::make('admin.menu.create-menu', $data);
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function postCreateNewMenu()
 	{
 		$validator = Validator::make(Input::all(), Config::get('validator.menu.create'));
-
-		//tree case is think,
-		/*
-			3. Navigation::button(parent)
-			1. Navigation::link(parent)internal|external
-			2. Navigation::link(child)internal|external
-		*/
 
 		// process the login
 		if ($validator->passes()) 

@@ -12,13 +12,14 @@ masterAdminClass.watchMenuObjects();
 
 @section('page-header')
     <div class="row">
-        <h1 class="page-header">{{{ Lang::get('admin.navigations') }}}</h1>
+        <h1 class="page-header">{{{ Lang::get('admin.navigations') }}}
+         <a href="{{URL::to('admin/navigation/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{ Lang::get('button.new') }}}</a></h1>
     </div>
 @stop
 
 @section('content')
-
 @include('includes.session-message')
+
 
 <div class="col-sm-12">
 	<div class="alert alert-info alert-dismissable">
@@ -45,19 +46,19 @@ masterAdminClass.watchMenuObjects();
 			$order_second = 1;
 		?>
 		@if( count( $nav->children() ) != 0 )
-			@include('admin.navigation.object-menu', array( 'nav' => $nav, 'role' => 'parent' ))
+			@include('admin.navigation.presenter_manager', array( 'nav' => $nav, 'role' => 'parent' ))
 			<div class="clearfix"></div>
 			<?php
 				$order_second = 1;
 			?>
 			@foreach( $nav->children() as $child )
-				@include('admin.navigation.object-menu', array( 'nav' => $child, 'role' => 'child' ))
+				@include('admin.navigation.presenter_manager', array( 'nav' => $child, 'role' => 'child' ))
 				<?php
 					$order_second++;
 				?>
 			@endforeach
 		@else	
-			@include('admin.navigation.object-menu', array( 'nav' => $nav, 'role' => 'parent' ))
+			@include('admin.navigation.presenter_manager', array( 'nav' => $nav, 'role' => 'parent' ))
 		@endif
 			<div class="clearfix"></div>
 			<!-- <div class="create">
@@ -88,18 +89,7 @@ masterAdminClass.watchMenuObjects();
 <div class="clearfix"></div>
 
 @if( !empty($resource_not_allowed) )
-<h2>{{{ Lang::get('admin.resource_not_allowed') }}}</h2>
-<div class="col-sm-12">
-	<?php $h3 = ''; ?>
-	@foreach($resource_not_allowed as $resource)
-	<div class="col-md-4">
-	<h3>{{{ Lang::get('admin.rsc'.$h3 = ( $resource->getClassName() != $h3 ? $resource->getClassName() : $h3 )) }}}</h3>
-	 	@include('admin.page.presenter', array('page'=>$resource))
-	</div>
-	@endforeach
-	<div class="clearfix"></div>
-</div>
-<div class="clearfix"></div>
+	@include('admin.navigation.presenter_resourcenotallowed_tile', array('resource_not_allowed' => $resource_not_allowed))
 @endif
 
 @stop
