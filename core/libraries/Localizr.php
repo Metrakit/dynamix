@@ -17,38 +17,42 @@ class Localizr
 		}
 		
 		if ($db_is_ok) {
-			//Test if segment 1 isnt here, and if is valid
-			if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){
-				if (Request::is('/') ) {
-					if ( Session::has('lang') ) {
+			if (Schema::hasTable('locales')){
+				//Test if segment 1 isnt here, and if is valid
+				if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){
+					if (Request::is('/') ) {
+						if ( Session::has('lang') ) {
+							$locale = Session::get('lang');
+						} else {
+							$locale = Config::get('app.locale');
+						}
+						Session::put('lang',$locale);
+						App::setLocale($locale);
+						Log::info('locale : '.$locale);
+						return null;
+					} 
+
+					if ( Session::has('lang') ) {//For return visit
 						$locale = Session::get('lang');
 					} else {
-						$locale = Config::get('app.locale');
-					}
-					Session::put('lang',$locale);
-					App::setLocale($locale);
-					Log::info('locale : '.$locale);
-					return null;
-				} 
-
-				if ( Session::has('lang') ) {//For return visit
-					$locale = Session::get('lang');
-				} else {
-					//if not, search a lang in server datas and if is valid
-					$locale = $this->detectLocale();			
-					//if no valid lang is in server set default
-					if($locale===null) {
-						Session::put('lang',Config::get('app.locale'));
+						//if not, search a lang in server datas and if is valid
+						$locale = $this->detectLocale();			
+						//if no valid lang is in server set default
+						if($locale===null) {
+							Session::put('lang',Config::get('app.locale'));
+						}
 					}
 				}
-			}
 
-			if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') ) {
-				Session::put('translate_request',1);
+				if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') ) {
+					Session::put('translate_request',1);
+				}
+				Session::put('lang', $locale);
+				App::setLocale($locale);
+				Log::info('locale : '.$locale);
+			} else {
+				$locale = null;
 			}
-			Session::put('lang', $locale);
-			App::setLocale($locale);
-			Log::info('locale : '.$locale);
 		} else {
 			$locale = null;
 		}
