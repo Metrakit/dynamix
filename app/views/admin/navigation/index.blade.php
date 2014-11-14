@@ -13,7 +13,7 @@ masterAdminClass.watchMenuObjects();
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.navigations') }}}
-         <a href="{{URL::to('admin/navigation/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{ Lang::get('button.new') }}}</a></h1>
+         <a href="{{URL::to('admin/navigation/create-choose')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{ Lang::get('button.new') }}}</a></h1>
     </div>
 @stop
 
@@ -21,15 +21,14 @@ masterAdminClass.watchMenuObjects();
 @include('includes.session-message')
 
 
-<div class="col-sm-12">
-	<div class="alert alert-info alert-dismissable">
-	    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	    <p>
-	    	Pour créer un menu simple, pointant vers une ressource (page|galerie) il vous suffit d'avoir une ressource disponible.<br>
-	    	Pour créer un menu avec une arborescance (voir Tarifs..), créez tout d'abord un menu de type 'Conteneur de sous-menu' (=linkcontainer). Puis ajoutez vos menus normalement.
-	    </p>
-	</div>
+
+<div class="alert alert-info alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p>
+    	{{ Lang::get('admin.navigation_help') }}
+    </p>
 </div>
+
 
 
 <!-- Colonne gauche -->
@@ -88,7 +87,7 @@ masterAdminClass.watchMenuObjects();
 </div>
 <div class="clearfix"></div>
 
-@if( !empty($resource_not_allowed) )
+@if( count($resource_not_allowed) > 0 )
 	@include('admin.navigation.presenter_resourcenotallowed_tile', array('resource_not_allowed' => $resource_not_allowed))
 @endif
 

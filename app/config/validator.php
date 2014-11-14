@@ -79,6 +79,17 @@ return array(
 	*/
 		'tag'		=> 		array(	'name'			=> 'required|min:2|max:200'),
 		
+	/*
+	|	Navigation
+	|
+	*/
+		'navigation'			=> 		array(	'model_resource_id'	=> 'min:2|max:55',
+												'url_external'		=> 'url',
+												'parent_id'			=> 'exists:navigations,id'),
+
+
+		'navigation_title'		=> 		array(	'title'			=> 'required|min:2|max:55'),
+		
 
 	/*
 	|	User

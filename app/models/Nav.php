@@ -66,6 +66,10 @@ class Nav extends Eloquent{
 		return false;
     }
 
+    public static function max() {
+		return DB::table('navigations')->where('parent_id','=',0)->max('order');
+    }
+
     
 
 	/**

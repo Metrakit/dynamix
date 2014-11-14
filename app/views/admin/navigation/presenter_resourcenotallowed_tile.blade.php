@@ -3,13 +3,14 @@
 <!-- TO Maintain -->
 <h2>{{{ Lang::get('admin.resource_not_allowed') }}}</h2>
 <div class="col-sm-12">
-	<?php $h3 = ''; ?>
-	@foreach($resource_not_allowed as $resource)
+	@foreach($resource_not_allowed as $resourcesK => $resourcesV)
+	<h3>{{{ Lang::get('admin.rsc'.$resourcesK) }}}</h3>
+	@foreach( $resourcesV as $r)
 	<div class="col-md-4">
-	<h3>{{{ Lang::get('admin.rsc'.$h3 = ( $resource->getClassName() != $h3 ? $resource->getClassName() : $h3 )) }}}</h3>
-	 	@include('admin.page.presenter', array('page'=>$resource))
+	 	@include('admin.page.presenter', array('page'=>$r))
 	</div>
 	@endforeach
 	<div class="clearfix"></div>
+	@endforeach
 </div>
 <div class="clearfix"></div>

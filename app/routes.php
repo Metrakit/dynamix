@@ -74,9 +74,9 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::resource('navigation','AdminNavigationController',
 		array('except' => array('show')) );
 
-		Route::post('navigation/{id}/move','AdminMenuController@move');
-		/*Route::get( 'navigation/create-new-menu','AdminMenuController@createNewMenu');
-		Route::post('navigation/create-new-menu','AdminMenuController@postCreateNewMenu');
+		Route::post('navigation/{id}/move','AdminNavigationController@move');
+		Route::get( 'navigation/create-choose','AdminNavigationController@createChoose');
+		/*Route::post('navigation/create-new-menu','AdminMenuController@postCreateNewMenu');
 		Route::get( 'navigation/create-menu','AdminMenuController@createMenu');
 		Route::post('navigation/create-menu','AdminMenuController@postCreateMenu');*/
 

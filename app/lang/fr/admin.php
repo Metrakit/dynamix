@@ -63,6 +63,28 @@ return array(
 	//Navigation
 	'navigation'					=> 'Navigation',
 	'navigations'					=> 'Navigations',
+		'navigation_create12'			=> 'Création d\'un menu 1/2',
+		'navigation_create22'			=> 'Création d\'un menu 2/2',
+		'navigation_create_choose_help'	=> 'Vous devez choisir entre créer un lien vers une ressource interne au site comme une Page... Un lien vers une ressource externe via une URL. Ou créer un bouton qui contiendra des futurs liens.',
+		'navigation_edit'				=> 'Modification d\'un menu',
+		'navigation_title'				=> 'Titre du menu',
+		'navigation_title_help'			=> 'Vous devez traduire le titre de votre menu pour chaque langue...',
+		'navigation_help'				=> 'Vous pouvez créer deux types de menu :
+											<br>- un lien, pointant vers une ressource du site ou une url
+											<br>- un bouton, contenant des liens...',
+
+		'navigation_resource_help'			=> 'Vous devez choisir une des ressources dans la liste ci-dessus, cela permettra de faire le lien entre le menu et l\'élément choisi.',
+		'navigation_url_help'				=> 'Vous devez saisir une URL valide et externe au site.',
+		'navigation_link_internal'				=> 'Lien interne',
+		'navigation_create_link_internal'		=> 'Créer un lien interne',
+		'navigation_link_external'				=> 'Lien externe',
+		'navigation_create_link_external'		=> 'Créer un lien externe',
+		'navigation_button'						=> 'Bouton',
+		'navigation_create_button'				=> 'Créer un bouton',
+
+		'navigation_save_fail'					=> '',
+
+
 
 	//Role / Permission
 	'role_permission'	=> 'Comptes & Permissions',

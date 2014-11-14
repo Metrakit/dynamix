@@ -2,15 +2,14 @@
 
 
 @section('meta_title')
-{{{ Lang::get('admin.navigation') }}} |
+{{{ Lang::get('admin.navigation_create22') }}} |
 @parent
 @stop
 
 
 @section('page-header')
     <div class="row">
-        <h1 class="page-header">{{{ Lang::get('admin.navigation') }}}
-         <a href="{{URL::to('admin/navigation/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{ Lang::get('button.new') }}}</a></h1>
+        <h1 class="page-header">{{{ Lang::get('admin.navigation_create22') }}}
     </div>
 @stop
 

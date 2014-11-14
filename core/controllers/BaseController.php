@@ -16,17 +16,15 @@ class BaseController extends Controller {
 
 		foreach ( $resourceNavigable as $resource ) {
 			$modelName = $resource->model;
-			$notAllowed = array_merge( $notAllowed, $modelName::getNotAllowed() );
+			//Si la clé allowed['resource'] exists, put the objet in this
+			if ( isset($notAllowed[$modelName]) ) {
+				$notAllowed[$modelName] = array_merge( $notAllowed[$modelName], $modelName::getNotAllowed() );
+			} else {
+				$notAllowed[$modelName] = $modelName::getNotAllowed();
+			}
 		}
 
-		natsort($notAllowed);
-
-		foreach ( $resourceNavigable as $resource ) {
-			$modelName = $resource->model;
-			$notAllowed = array_merge( $notAllowed, $modelName::getNotAllowed() );
-		}
-
-		return ;
+		return $notAllowed;
 	}
 
 

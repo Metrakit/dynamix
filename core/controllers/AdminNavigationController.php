@@ -29,6 +29,26 @@ class AdminNavigationController extends BaseController {
 	 *
 	 * @return Response
 	 */
+	public function createChoose()
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] 		= true;
+
+		//allowable resource
+		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
+
+		// load the create form (app/views/nerds/create.blade.php)
+		return View::make('admin.navigation.create-choose', $data);
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
 	public function create()
 	{
 		//User
@@ -55,63 +75,73 @@ class AdminNavigationController extends BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Store all type of menu, parent, child internal or external link and button
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make(Input::all(), Config::get('validator.menu.create'));
+		$rules = array();
+		$navigation_title_datas = array();
+		foreach ( Input::except('_token') as $k => $v ) {
+			if ( strpos($k, 'navigation_title_') !== false ) {
+				$rules[$k] = Config::get('validator.admin.navigation_title.title');
+				$navigation_title_datas[substr( $k, strlen('navigation_title_'), (strlen($k) - strpos($k, 'navigation_title_')))] = $v;
+			}
+		}
 
-		//tree case is think,
-		/*
-			3. Navigation::button(parent)
-			1. Navigation::link(parent)internal|external
-			2. Navigation::link(child)internal|external
-		*/
+		$rules = array_merge( $rules, Config::get('validator.admin.navigation'));
+		//return var_dump($rules);
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
 
-		// process the login
-		if ($validator->passes()) 
-		{
-			$re_id = Input::get('resource_id_n_element_id');
-			$resource_id = substr($re_id,0,strpos($re_id,'|'));
-			$element_id = substr($re_id,strpos($re_id,'|')+1,strlen($re_id)-strpos($re_id,'|'));
+		if ( $validator->passes() ) {
 
-			$menu = new Menu();
-			$menu->title       = Input::get('title');
-			$menu->resource_id = $resource_id;
-			$menu->element_id  = $element_id;
-			$menu->parent_id   = 0;
-			$menu->order       = Input::get('order');
+			//create i18n key
+			$i18n_title = new I18n();
+			$i18n_title->i18n_type_id = I18nType::where('name', '=', 'navigation')->first()->id;
+			$i18n_title->save();
+			foreach ( $navigation_title_datas as $locale => $value) {
+				if( !$i18n_title->translate($locale, $value) ) return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_save_fail'));
+			}
 
-			//get the resource index with the i18n ID of the url
-	        $data = array();
-	        switch ( $resource_id ) {
-	            case 1://Page
-	                $menu->url = Page::find($element_id)->url;
-	                break;
-	            case 2://mosaique
-	                $menu->url = Mosaique::find($element_id)->url;
-	                break;
-	            case 3://gallery
-	                $menu->url = Gallery::find($element_id)->url;
-	                break;
-	        }
+			$navigation = new Nav();
+            $navigation->i18n_title    		= $i18n_title->id;
+
+            if (Input::has('parent_id')) {
+            	$navigation->parent_id = Input::get('parent_id');
+            } else {
+            	$navigation->parent_id = 0;
+            }
+
+            if (Input::has('url_external')) $navigation->url = Input::get('url_external');
+
+            if (Input::has('order')) {
+            	$navigation->order = Input::get('order');
+            } else {
+				$navigation->order = Nav::max() + 1;
+            }
+
+            if (Input::has('model_resource_id')) {
+            	$result_explode = explode('|', Input::get('model_resource_id'));
+            	$navigation->navigable_id = $result_explode[1];
+            	$navigation->navigable_type = $result_explode[0];
+            }
 
             // Was the blog post created?
-            if($menu->save())
+            if($navigation->save())
             {
-            	Cache::forget('DB_Menu');
+            	Cache::forget('DB_Nav');
                 // Redirect to the new blog post menu
-                return Redirect::to('admin/menu')->with('success','Le menu à bien été ajouté !');
+                return Redirect::to('admin/navigation')->with('success','Le menu à bien été ajouté !');
             }
 
             // Redirect to the blog post create menu
-            return Redirect::to('admin/menu/create-new-menu')->with('error', 'Le menu n\'a pas pu être enregistrée...');
+            return Redirect::to('admin/navigation/create')->with('error', 'Le menu n\'a pas pu être enregistrée...');
         }
 
         // Form validation failed
-        return Redirect::to('admin/menu/create-new-menu')->withInput()->withErrors($validator);
+        return Redirect::to('admin/navigation/create')->withInput()->withErrors($validator);
 	}
 
 	/**

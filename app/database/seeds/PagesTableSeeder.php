@@ -138,6 +138,50 @@ class PagesTableSeeder extends Seeder {
                 'structurable_type'         => 'Page'
             ));
 
+        $t_fr3 = 'NotAllowedAurevoir';
+        $t_en3 = 'NotAllowedGoodbye';
+
+        //article1
+        $name3 = new I18N;
+        $name3->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name3->save();
+        $name3->translate('fr',$t_fr3);
+        $name3->translate('en',$t_en3);
+
+        $title3 = new I18N;
+        $title3->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title3->save();
+        $title3->translate('fr',$t_fr3);
+        $title3->translate('en',$t_en3);
+        
+        $url3 = new I18N;
+        $url3->i18n_type_id = I18nType::where('name','=','url')->first()->id;
+        $url3->save();
+        $url3->translate('fr','/'.Str::slug($t_fr3));
+        $url3->translate('en','/'.Str::slug($t_en3));
+
+
+        $meta_title3 = new I18N;
+        $meta_title3->i18n_type_id = I18nType::where('name','=','meta_title')->first()->id;
+        $meta_title3->save();
+        $meta_title3->translate('fr',$t_fr3);
+        $meta_title3->translate('en',$t_en3);
+
+        $meta_description3 = new I18N;
+        $meta_description3->i18n_type_id = I18nType::where('name','=','meta_description')->first()->id;
+        $meta_description3->save();
+        $meta_description3->translate('fr','Description '.$t_fr3);
+        $meta_description3->translate('en',$t_en3.' Description');        
+
+        $structure2 = Structure::create(array(
+                'i18n_title'                => $title3->id,
+                'i18n_url'                  => $url3->id,
+                'i18n_meta_title'           => $meta_title3->id,
+                'i18n_meta_description'     => $meta_description3->id,
+                'structurable_id'           => 4,
+                'structurable_type'         => 'Page'
+            ));
+
 
         DB::table('pages')->insert( array(
             array(
@@ -154,6 +198,12 @@ class PagesTableSeeder extends Seeder {
             ),
             array(
                 'i18n_name'                 => $name2->id,
+                'deletable'                 => 1,
+                'created_at'                => new DateTime,
+                'updated_at'                => new DateTime
+            ),
+            array(
+                'i18n_name'                 => $name3->id,
                 'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
