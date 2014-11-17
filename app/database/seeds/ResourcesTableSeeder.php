@@ -116,6 +116,13 @@ class ResourcesTableSeeder extends Seeder {
                 'in_admin_ui'   => true,
                 'navigable'     => false
             ),
+            array(
+                'name' => 'navigation_link',
+                'icon' => 'glyphicon glyphicon-list',
+                'model' => 'NavLink',
+                'in_admin_ui'   => false,
+                'navigable'     => true
+            ),
             
             //User
             array(

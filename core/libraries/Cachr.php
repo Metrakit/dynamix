@@ -87,6 +87,7 @@ class Cachr
 	}
 	public static function getCache( $cache )
 	{
+		Cache::forget('DB_Nav');
 		Cache::forget('DB_Urls');
 		Cache::forget('DB_Option');
 		Cache::forget('DB_AdminResourceName');

@@ -83,6 +83,9 @@ return array(
 		'navigation_create_button'				=> 'Créer un bouton',
 
 		'navigation_save_fail'					=> '',
+		'navigation_delete_fail'					=> '',
+		'navigation_notfind'					=> '',
+		'navigation_delete_success'					=> 'Le menu à bien été supprmé !',
 
 
 

@@ -181,6 +181,8 @@ class AdminTagController extends BaseController {
 		//find resource
 		$tag = Tag::find($id);
 
+		if (empty($tag)) return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_delete_fail'));
+
 		//delete all translation
 		foreach ( $tag->i18n()->translations() as $translation ) {
 			if (!$translation->delete()) return Redirect::to('admin/tag')->with('error', Lang::get('admin.tag_translation_delete_fail'));
@@ -201,9 +203,9 @@ class AdminTagController extends BaseController {
 			$track->trackable_type = 'Tag';
 			$track->save();
                 
-			return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_delete_success'));;
+			return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_delete_success'));
 		}
 		
-		return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_delete_fail'));;
+		return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_delete_fail'));
 	}
 }

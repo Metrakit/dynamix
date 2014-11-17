@@ -37,13 +37,11 @@ class Tag extends Eloquent{
 		return Taggable::where('tag_id','=', $this->id)->get();
 	}
 
-	public function translateLocale( $i18n_id, $locale_id )
-	{
+	public function translateLocale( $i18n_id, $locale_id ) {
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
 	}
 	
-	public function tag_name_locale( $locale_id )
-	{
+	public function tag_name_locale( $locale_id ) {
 		return $this->translateLocale( $this->i18n_name, $locale_id );
 	}
 

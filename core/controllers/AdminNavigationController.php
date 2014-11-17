@@ -114,7 +114,15 @@ class AdminNavigationController extends BaseController {
             	$navigation->parent_id = 0;
             }
 
-            if (Input::has('url_external')) $navigation->url = Input::get('url_external');
+            if (Input::has('url_external')) {
+            	//create a link and put the id in the navigable_id :)
+            	$nav_link = new NavLink();
+            	$nav_link->url = Input::get('url_external');
+            	$nav_link->save();
+
+            	$navigation->navigable_id = $nav_link->id;
+            	$navigation->navigable_type = 'NavLink';
+            }
 
             if (Input::has('order')) {
             	$navigation->order = Input::get('order');
@@ -131,6 +139,141 @@ class AdminNavigationController extends BaseController {
             // Was the blog post created?
             if($navigation->save())
             {
+            	//track user
+                $track = new Track();
+                $track->user_id = Auth::user()->id;
+                $track->date = new Datetime;
+                $track->action = 'create';
+                $track->trackable_id = $navigation->id;
+                $track->trackable_type = 'Navigation';
+                $track->save();
+
+            	Cache::forget('DB_Nav');
+                // Redirect to the new blog post menu
+                return Redirect::to('admin/navigation')->with('success','Le menu à bien été ajouté !');
+            }
+
+            // Redirect to the blog post create menu
+            return Redirect::to('admin/navigation/create')->with('error', 'Le menu n\'a pas pu être enregistrée...');
+        }
+
+        // Form validation failed
+        return Redirect::to('admin/navigation/create')->withInput()->withErrors($validator);
+	}
+
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] 		= true;
+		$data['buttonLabel'] 	= Lang::get('button.update');
+		$data['glyphicon'] 		= 'ok';
+
+		//Datas
+		$data['navigation'] = Nav::find($id);
+		if (empty($data['navigation'])) return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_notfind'));
+
+		if ($data['navigation']->navigable_type == 'NavLink') {
+			$data['link_external'] = true;
+		}
+
+		if ($data['navigation']->navigable_type != null && $data['navigation']->navigable_type != 'NavLink') {
+			$data['link_internal'] = true;
+			$data['current_resource_id'] 	= $data['navigation']->navigable_id;
+			$data['current_resource_type'] 	= $data['navigation']->navigable_type;
+		}
+		
+
+		//allowable resource
+		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
+
+		// show the edit form and pass the nerd
+		return View::make('admin.navigation.edit', $data);
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		$navigation = Nav::find($id);
+
+		if (empty($navigation)) return Redirect::to('admin/navigation')->with('success', Lang::get('admin.navigation_notfind'));
+
+		$rules = array();
+		$navigation_name_locales = array();
+		foreach ( Input::except('_token') as $k => $v ) {
+			if ( strpos($k, 'navigation_title_') !== false ) {
+				$rules[$k] = Config::get('validator.admin.navigation_title.title');
+				$navigation_name_locales[] = substr( $k, strlen('navigation_title_'), (strlen($k) - strpos($k, 'navigation_title_')));
+			}
+		}
+
+		$rules = array_merge( $rules, Config::get('validator.admin.navigation'));
+		//return var_dump($rules);
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
+
+		if ( $validator->passes() ) {
+
+			//Update translations
+        	foreach ( $navigation_name_locales as $locale ) {
+        		if ( !I18n::find($navigation->i18n_title)->updateText($locale, Input::get('navigation_title_'.$locale)) ) {
+        			return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_update_error'));
+        		}
+        	}
+
+			/*           
+			if (Input::has('parent_id')) {
+            	$navigation->parent_id = Input::get('parent_id');
+            } else {
+            	$navigation->parent_id = 0;
+            }
+            */
+
+            if (Input::has('url_external')) {
+            	//create a link and put the id in the navigable_id :)
+            	$nav_link = NavLink::find($navigation->navigable_id);
+            	$nav_link->url = Input::get('url_external');
+            	$nav_link->save();
+            }
+
+            if (Input::has('order')) {
+            	$navigation->order = Input::get('order');
+            } else {
+				$navigation->order = Nav::max() + 1;
+            }
+
+            if (Input::has('model_resource_id')) {
+            	$result_explode = explode('|', Input::get('model_resource_id'));
+            	$navigation->navigable_id = $result_explode[1];
+            	$navigation->navigable_type = $result_explode[0];
+            }
+
+            // Was the blog post created?
+            if($navigation->save())
+            {
+            	//track user
+                $track = new Track();
+                $track->user_id = Auth::user()->id;
+                $track->date = new Datetime;
+                $track->action = 'update';
+                $track->trackable_id = $id;
+                $track->trackable_type = 'Navigation';
+                $track->save();
+
             	Cache::forget('DB_Nav');
                 // Redirect to the new blog post menu
                 return Redirect::to('admin/navigation')->with('success','Le menu à bien été ajouté !');
@@ -145,160 +288,6 @@ class AdminNavigationController extends BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function postCreateMenu()
-	{
-		$validator = Validator::make(Input::all(), Config::get('validator.menu.create'));
-
-		// process the login
-		if ($validator->passes()) 
-		{
-			$re_id = Input::get('resource_id_n_element_id');
-			$resource_id = substr($re_id,0,strpos($re_id,'|'));
-			$element_id = substr($re_id,strpos($re_id,'|')+1,strlen($re_id)-strpos($re_id,'|'));
-
-			$newMenu = new Menu();
-			$newMenu->title       = Input::get('title');
-			$newMenu->resource_id = $resource_id;
-			$newMenu->element_id  = $element_id;
-			$newMenu->parent_id   = Input::get('parent_id');
-
-			//If order = 1, transform mod
-			if(Input::get('order') == 1){
-				$menuParent = Menu::find(Input::get('parent_id'));
-				Log::info($menuParent->resource_id);
-
-				//if main menu isnot a linkcontainer, we saved the link
-				if($menuParent->resource_id != 4){					
-					$menuSaved = new Menu();
-					$menuSaved->title       = $menuParent->title;
-					$menuSaved->resource_id = $menuParent->resource_id;
-					$menuSaved->element_id  = $menuParent->element_id;
-					$menuSaved->parent_id   = Input::get('parent_id');
-					$menuSaved->order       = Input::get('order');
-					$menuSaved->url   		= $menuParent->url;
-					
-			        $menuSaved->save();
-					
-					$newMenu->order       = Input::get('order') + 1;
-				}
-
-				$menuParent->resource_id = 4;
-				$menuParent->element_id = null;
-				$menuParent->url = '#';
-				//Transform the main menu
-				$menuParent->save();
-
-				$newMenu->order       = Input::get('order');
-			}else{
-				$newMenu->order       = Input::get('order');
-			}
-			
-
-			//get the resource index with the i18n ID of the url
-	        $data = array();
-	        switch ( $resource_id ) {
-	            case 1://Page
-	                $newMenu->url = Page::find($element_id)->url;
-	                break;
-	            case 2://Mosaique
-	                $newMenu->url = Mosaique::find($element_id)->url;
-	                break;
-	        	case 3://Gallery
-	                $newMenu->url = Gallery::find($element_id)->url;
-	                break;
-	        }
-
-            // Was the blog post created?
-            if($newMenu->save())
-            {
-            	Cache::forget('DB_Menu');
-                // Redirect to the new blog post menu
-                return Redirect::to('admin/menu')->with('success','Le sous menu à bien été ajouté !');
-            }
-
-            // Redirect to the blog post create menu
-            return Redirect::to('admin/menu/create-new-menu')->with('error', 'Le sous menu n\'a pas pu être enregistrée...');
-        }
-
-        // Form validation failed
-        $data = array();
-        $data['order'] = Input::get('order');
-		$data['parent_id'] = Input::get('parent_id');
-        return Redirect::to('admin/menu/create-new-menu',$data)->withInput()->withErrors($validator);
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		// get the nerd
-		$menu = Menu::find($id);
-
-		$page_not_allowed			= parent::getNotAllowedPage();
-		$mosaique_not_allowed		= parent::getNotAllowedMosaique();
-		$gallery_not_allowed		= parent::getNotAllowedGallery();
-
-		if($menu->resource_id != 4){
-			switch ( $menu->resource_id ) {
-	            case 1://Page
-	                $page_not_allowed[] = Page::find( $menu->element_id );
-	                break;
-	            case 2://mosaique
-	                $mosaique_not_allowed[] = Mosaique::find( $menu->element_id );
-	                break;
-	        	case 3://galley
-	                $gallery_not_allowed[] = Gallery::find( $menu->element_id );
-	                break;
-	        }
-		}			
-
-		// show the edit form and pass the nerd
-		return View::make('admin.menu.edit', compact('menu','page_not_allowed','mosaique_not_allowed','gallery_not_allowed'));
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$validator = Validator::make(Input::all(), Config::get('validator.menu.edit'));
-
-		// process the login
-		if ($validator->passes()) 
-		{
-			$menu = Menu::find($id);
-			$menu->title       = Input::get('title');
-
-
-            // Was the blog post created?
-            if($menu->save())
-            {
-            	Cache::forget('DB_Menu');
-                // Redirect to the new blog post menu
-                return Redirect::to('admin/menu')->with('success','La menu à bien été mise à jour !');
-            }
-
-            // Redirect to the blog post create menu
-            return Redirect::to('admin/menu/' . $id . '/edit')->with('error', 'La menu n\'a pas pu être enregistrée...');
-        }
-
-        // Form validation failed
-        return Redirect::to('admin/menu/' . $id . '/edit')->withInput()->withErrors($validator);
-	}
-
-	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
@@ -307,14 +296,32 @@ class AdminNavigationController extends BaseController {
 	public function destroy($id)
 	{
 		// delete
-		$menu = Menu::find($id);
-		$menu->deleteWithChildren();
+		$navigation = Nav::find($id);
 
-		Cache::forget('DB_Menu');
+		if (empty($navigation)) return Redirect::to('admin/navigation')->with('success', Lang::get('admin.navigation_notfind'));
 
-		// redirect
-		Session::flash('success', 'Le menu à bien été supprmé !');
-		return Redirect::to('admin/menu');
+		//delete all translation
+		foreach ( $navigation->i18n()->translations() as $translation ) {
+			if (!$translation->delete()) return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_translation_delete_fail'));
+		}
+
+		// delete
+		if ( $navigation->delete() ) {
+			//track user
+			$track = new Track();
+			$track->user_id = Auth::user()->id;
+			$track->date = new Datetime;
+			$track->action = 'delete';
+			$track->trackable_id = $navigation->id;
+			$track->trackable_type = 'Navigation';
+			$track->save();
+
+			Cache::forget('DB_Nav');
+                
+			return Redirect::to('admin/navigation')->with('success', Lang::get('admin.navigation_delete_success'));
+		}
+		
+		return Redirect::to('admin/navigation')->with('success', Lang::get('admin.navigation_delete_fail'));
 	}
 	
 
