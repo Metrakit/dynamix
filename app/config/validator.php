@@ -84,7 +84,7 @@ return array(
 	|
 	*/
 		'navigation'			=> 		array(	'model_resource_id'	=> 'min:2|max:55',
-												'url_external'		=> 'url',
+												'url_external'		=> 'min:1|max:255',
 												'parent_id'			=> 'exists:navigations,id'),
 
 

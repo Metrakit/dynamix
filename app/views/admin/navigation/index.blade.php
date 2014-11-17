@@ -18,9 +18,8 @@ masterAdminClass.watchMenuObjects();
 @stop
 
 @section('content')
+
 @include('includes.session-message')
-
-
 
 <div class="alert alert-info alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -28,8 +27,6 @@ masterAdminClass.watchMenuObjects();
     	{{ Lang::get('admin.navigation_help') }}
     </p>
 </div>
-
-
 
 <!-- Colonne gauche -->
 <div class="col-sm-12">
@@ -88,7 +85,9 @@ masterAdminClass.watchMenuObjects();
 <div class="clearfix"></div>
 
 @if( count($resource_not_allowed) > 0 )
-	@include('admin.navigation.presenter_resourcenotallowed_tile', array('resource_not_allowed' => $resource_not_allowed))
+	@include('admin.resource.presenter_not_allowed_tile', array('resource_not_allowed' => $resource_not_allowed))
+@else
+	@include('admin.resource.presenter_call_to_create')
 @endif
 
 @stop

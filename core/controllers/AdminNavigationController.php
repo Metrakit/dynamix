@@ -62,7 +62,7 @@ class AdminNavigationController extends BaseController {
 		//Datas
 		$data['isChildren']					= false;
 		$data['order']						= Input::get('order');
-		if( Input::has('parent_id') ) {//If parent_id is present and set, this is a child
+		if ( Input::has('parent_id') ) {//If parent_id is present and set, this is a child
 			$data['isChildren']					= true;
 			$data['parent_id']					= Input::get('parent_id');
 		}
@@ -102,7 +102,7 @@ class AdminNavigationController extends BaseController {
 			$i18n_title->i18n_type_id = I18nType::where('name', '=', 'navigation')->first()->id;
 			$i18n_title->save();
 			foreach ( $navigation_title_datas as $locale => $value) {
-				if( !$i18n_title->translate($locale, $value) ) return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_save_fail'));
+				if ( !$i18n_title->translate($locale, $value) ) return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_save_fail'));
 			}
 
 			$navigation = new Nav();
@@ -114,10 +114,24 @@ class AdminNavigationController extends BaseController {
             	$navigation->parent_id = 0;
             }
 
+            //There case : external link, internal link and link container (button)
             if (Input::has('url_external')) {
             	//create a link and put the id in the navigable_id :)
             	$nav_link = new NavLink();
             	$nav_link->url = Input::get('url_external');
+            	$nav_link->save();
+
+            	$navigation->navigable_id = $nav_link->id;
+            	$navigation->navigable_type = 'NavLink';
+            }
+            if (Input::has('model_resource_id')) {
+            	$result_explode = explode('|', Input::get('model_resource_id'));
+            	$navigation->navigable_id = $result_explode[1];
+            	$navigation->navigable_type = $result_explode[0];
+            }
+            if (!Input::has('url_external')&&!Input::has('model_resource_id')) {
+            	$nav_link = new NavLink();
+            	$nav_link->url = '#';
             	$nav_link->save();
 
             	$navigation->navigable_id = $nav_link->id;
@@ -130,23 +144,11 @@ class AdminNavigationController extends BaseController {
 				$navigation->order = Nav::max() + 1;
             }
 
-            if (Input::has('model_resource_id')) {
-            	$result_explode = explode('|', Input::get('model_resource_id'));
-            	$navigation->navigable_id = $result_explode[1];
-            	$navigation->navigable_type = $result_explode[0];
-            }
-
             // Was the blog post created?
-            if($navigation->save())
+            if ($navigation->save())
             {
             	//track user
-                $track = new Track();
-                $track->user_id = Auth::user()->id;
-                $track->date = new Datetime;
-                $track->action = 'create';
-                $track->trackable_id = $navigation->id;
-                $track->trackable_type = 'Navigation';
-                $track->save();
+                parent::track('create','Navigation',$navigation->id);
 
             	Cache::forget('DB_Nav');
                 // Redirect to the new blog post menu
@@ -249,6 +251,11 @@ class AdminNavigationController extends BaseController {
             	$nav_link->url = Input::get('url_external');
             	$nav_link->save();
             }
+            if (Input::has('model_resource_id')) {
+            	$result_explode = explode('|', Input::get('model_resource_id'));
+            	$navigation->navigable_id = $result_explode[1];
+            	$navigation->navigable_type = $result_explode[0];
+            }
 
             if (Input::has('order')) {
             	$navigation->order = Input::get('order');
@@ -256,36 +263,87 @@ class AdminNavigationController extends BaseController {
 				$navigation->order = Nav::max() + 1;
             }
 
-            if (Input::has('model_resource_id')) {
-            	$result_explode = explode('|', Input::get('model_resource_id'));
-            	$navigation->navigable_id = $result_explode[1];
-            	$navigation->navigable_type = $result_explode[0];
-            }
 
             // Was the blog post created?
             if($navigation->save())
             {
             	//track user
-                $track = new Track();
-                $track->user_id = Auth::user()->id;
-                $track->date = new Datetime;
-                $track->action = 'update';
-                $track->trackable_id = $id;
-                $track->trackable_type = 'Navigation';
-                $track->save();
+                parent::track('update','Navigation',$navigation->id);
 
             	Cache::forget('DB_Nav');
                 // Redirect to the new blog post menu
-                return Redirect::to('admin/navigation')->with('success','Le menu à bien été ajouté !');
+                return Redirect::to('admin/navigation')->with('success','Le menu à bien été modifié !');
             }
 
-            // Redirect to the blog post create menu
-            return Redirect::to('admin/navigation/create')->with('error', 'Le menu n\'a pas pu être enregistrée...');
+            // Redirect to the blog post edit menu
+            return Redirect::to('admin/navigation/' . $id . '/edit')->with('error', 'Le menu n\'a pas pu être modifiée...');
         }
 
         // Form validation failed
-        return Redirect::to('admin/navigation/create')->withInput()->withErrors($validator);
+        return Redirect::to('admin/navigation/' . $id . '/edit')->withInput()->withErrors($validator);
 	}
+
+
+	/**
+	 * Move the specified resource in order
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function move($id)
+	{
+		// find resource
+		$nav = Nav::find($id);
+
+		if( !empty($nav) ){
+			//identify the direction
+			$direction = Input::get('direction');
+
+			switch ($direction) {
+			    case 'up':
+					parent::track('update','Navigation', $nav->id);
+			        return $this->moveNav($nav, 'up', -1, $nav->parent_id);
+			        break;
+			    case 'down':
+			    	parent::track('update','Navigation', $nav->id);
+			        return $this->moveNav($nav, 'down', 1, $nav->parent_id);
+			        break;
+				case 'right':
+					parent::track('update','Navigation', $nav->id);
+					return $this->moveNav($nav, 'right', 1, 0);
+					break;
+				case 'left':
+					parent::track('update','Navigation', $nav->id);
+					return $this->moveNav($nav, 'left', -1, 0);
+					break;
+			    default:
+			       	return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_direction_not_set'));
+			}
+
+			Cache::forget('DB_Nav');
+			return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_move_fail'));
+		}
+		return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_unfinded'));
+	}
+
+	public function moveNav ($nav, $direction, $increment, $parent_id) {
+		$old_order = $nav->order;
+        $nav->order = $old_order + $increment;
+
+        $nav_next = Nav::where('parent_id', $parent_id)->where('order', $old_order + $increment)->first();
+        if (!empty($nav_next)){
+	        $nav_next->order = $old_order;
+	        $nav_next->save();
+        } else {
+        	return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_move_'. $direction .'_impossible'));
+        }
+        if ($nav->save()){
+        	return Redirect::to('admin/navigation')->with('success',Lang::get('admin.navigation_move_successfully'));
+        } else {
+        	return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_move_'. $direction .'_save_error'));
+        }
+	}
+
 
 	/**
 	 * Remove the specified resource from storage.
@@ -305,16 +363,21 @@ class AdminNavigationController extends BaseController {
 			if (!$translation->delete()) return Redirect::to('admin/navigation')->with('error', Lang::get('admin.navigation_translation_delete_fail'));
 		}
 
+		//equilibrate branche
+		//here equilibrate orders of menu !
+		//if parentid = 0, set all else other !
+		/*if ($navigation->parent_id == 0) {
+			$navigations = Nav::where('parent_id', 0)->where('id','><',$navigation->id)->orderBy('order','ASC')->get();
+		} else {
+			$navigations = Nav::where('parent_id',$navigation->parent_id)->where('id','><',$navigation->id)->orderBy('order','ASC')->get();			
+		}
+
+		$navigations->sync(array())*/
+
 		// delete
 		if ( $navigation->delete() ) {
 			//track user
-			$track = new Track();
-			$track->user_id = Auth::user()->id;
-			$track->date = new Datetime;
-			$track->action = 'delete';
-			$track->trackable_id = $navigation->id;
-			$track->trackable_type = 'Navigation';
-			$track->save();
+			parent::track('delete','Navigation', $navigation->id);
 
 			Cache::forget('DB_Nav');
                 
@@ -323,68 +386,4 @@ class AdminNavigationController extends BaseController {
 		
 		return Redirect::to('admin/navigation')->with('success', Lang::get('admin.navigation_delete_fail'));
 	}
-	
-
-
-	/**
-	 * Move the specified resource in order
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function move($id)
-	{
-		// find resource
-		$menu = Menu::find($id);
-
-		if( !empty($menu) ){
-			//identify the direction
-			$direction = Input::get('direction');
-
-			switch ($direction) {
-				case 'up':
-					$menuUpper = Menu::where('parent_id','=',$menu->parent_id)->where('order','=',$menu->order - 1)->first();
-					$menuUpper->order = $menu->order;
-					$menu->order = $menu->order - 1;
-					if( $menu->save() && $menuUpper->save() ){
-						Cache::forget('DB_Menu');
-						return Redirect::to('admin/menu')->with('success','L\'opération s\'est excécuté avec succès !');
-					}
-					break;
-				case 'right':
-					$menuRighter = Menu::where('parent_id','=',0)->where('order','=',$menu->order + 1)->first();
-					$menuRighter->order = $menu->order;
-					$menu->order = $menu->order + 1;
-					if( $menu->save() && $menuRighter->save() ){
-						Cache::forget('DB_Menu');
-						return Redirect::to('admin/menu')->with('success','L\'opération s\'est excécuté avec succès !');
-					}
-					break;
-				case 'down':
-					$menuDowner = Menu::where('parent_id','=',$menu->parent_id)->where('order','=',$menu->order + 1)->first();
-					$menuDowner->order = $menu->order;
-					$menu->order = $menu->order + 1;
-					if( $menu->save() && $menuDowner->save() ){
-						Cache::forget('DB_Menu');
-						return Redirect::to('admin/menu')->with('success','L\'opération s\'est excécuté avec succès !');
-					}
-					break;
-				case 'left':
-					$menuRighter = Menu::where('parent_id','=',0)->where('order','=',$menu->order - 1)->first();
-					$menuRighter->order = $menu->order;
-					$menu->order = $menu->order - 1;
-					if( $menu->save() && $menuRighter->save() ){
-						Cache::forget('DB_Menu');
-						return Redirect::to('admin/menu')->with('success','L\'opération s\'est excécuté avec succès !');
-					}
-					break;
-			}
-			Cache::forget('DB_Menu');
-
-			return Redirect::to('admin/menu')->with('error','Il y a eu un problème lors de l\'opération...');
-		}
-
-		return Redirect::to('admin/menu')->with('error','Menu introuvable !');
-	}
-
 }

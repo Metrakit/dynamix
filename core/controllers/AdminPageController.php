@@ -90,14 +90,17 @@ class AdminPageController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		// get the post
-		$page = Page::find($id);
+		//User
+		$data['user'] 			= Auth::user();
 
-		if(empty($page)){
+		// get the post
+		$data['page'] = Page::find($id);
+
+		if(empty($data['page'])){
 			return Redirect::back()->with('error', 'Cette page est introuvable !');
 		}
 
-		return View::make('admin.page.edit', compact('page') );
+		return View::make('admin.page.edit', $data );
 	}
 
 	/**

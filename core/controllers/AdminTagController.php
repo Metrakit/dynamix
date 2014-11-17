@@ -76,13 +76,7 @@ class AdminTagController extends BaseController {
             // Was the blog post created?
             if ( $tag->save() ) {
                 //track user
-				$track = new Track();
-				$track->user_id = Auth::user()->id;
-				$track->date = new Datetime;
-				$track->action = 'create';
-				$track->trackable_id = $tag->id;
-				$track->trackable_type = 'Tag';
-				$track->save();
+				parent::track('create','Tag',$tag->id);
                 
                 return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_save_success'));
             }
@@ -151,13 +145,7 @@ class AdminTagController extends BaseController {
 	        	}
 	           
                 //track user
-                $track = new Track();
-                $track->user_id = Auth::user()->id;
-                $track->date = new Datetime;
-                $track->action = 'update';
-                $track->trackable_id = $id;
-                $track->trackable_type = 'Tag';
-                $track->save();
+                parent::track('update','Tag',$tag->id);
             
                 return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_edit_success'));
             }
@@ -195,13 +183,7 @@ class AdminTagController extends BaseController {
 		// delete
 		if ( $tag->delete() ) {
 			//track user
-			$track = new Track();
-			$track->user_id = Auth::user()->id;
-			$track->date = new Datetime;
-			$track->action = 'delete';
-			$track->trackable_id = $tag->id;
-			$track->trackable_type = 'Tag';
-			$track->save();
+			parent::track('delete','Tag', $tag->id);
                 
 			return Redirect::to('admin/tag')->with('success', Lang::get('admin.tag_delete_success'));
 		}

@@ -6,6 +6,21 @@ class BaseController extends Controller {
 
 
 	/**
+	 * store in db action
+	 *
+	 * @return array
+	 */
+	protected function track ($action, $model, $id) {
+		$track = new Track();
+		$track->user_id = Auth::user()->id;
+		$track->date = new Datetime;
+		$track->action = $action;
+		$track->trackable_id = $id;
+		$track->trackable_type = $model;
+		return $track->save();
+	}
+
+	/**
 	 * return an array of Object for all not allowed resources
 	 *
 	 * @return array
@@ -17,11 +32,16 @@ class BaseController extends Controller {
 		foreach ( $resourceNavigable as $resource ) {
 			$modelName = $resource->model;
 			//Si la clé allowed['resource'] exists, put the objet in this
-			if ( isset($notAllowed[$modelName]) ) {
-				$notAllowed[$modelName] = array_merge( $notAllowed[$modelName], $modelName::getNotAllowed() );
-			} else {
-				$notAllowed[$modelName] = $modelName::getNotAllowed();
+			$objects = $modelName::getNotAllowed();
+
+			if (count($objects)>0) {				
+				if ( isset($notAllowed[$modelName]) ) {
+					$notAllowed[$modelName] = array_merge( $notAllowed[$modelName], $objects );
+				} else {
+					$notAllowed[$modelName] = $objects;
+				}
 			}
+
 		}
 
 		return $notAllowed;

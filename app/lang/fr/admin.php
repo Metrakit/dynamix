@@ -86,6 +86,12 @@ return array(
 		'navigation_delete_fail'					=> '',
 		'navigation_notfind'					=> '',
 		'navigation_delete_success'					=> 'Le menu à bien été supprmé !',
+		'navigation_direction_not_set'				=> '',
+		'navigation_move_up_impossible'				=> '',
+		'navigation_move_down_impossible'			=> '',
+		'navigation_move_left_impossible'			=> '',
+		'navigation_move_right_impossible'			=> '',
+		'navigation_move_successfully'				=> '',
 
 
 
@@ -169,6 +175,8 @@ return array(
 
 	//Resource
 		'resource_not_allowed'	=> 'Ressources disponibles',
+		'resource_all_allowed'	=> 'Toutes les ressources sont attribuées, pour créer un nouveau lien créer d\'abord une ressource !',
+		'resource_over'					=> 'Vous n\'avez plus de ressources (interne) !',
 		'manage_access_resource'=> 'Gestion d\'accès aux ressources',
 
 		'rscNavigation'		=> 'Navigation',
