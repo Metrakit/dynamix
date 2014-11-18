@@ -97,7 +97,7 @@ class AdminController extends BaseController {
 	        // Check if the form validates with success
 	        if ($validator->passes()) {
 	        	//[id] => name
-	        	$resources = App::make('CacheController')->getCache('DB_AdminResourceName');
+	        	$resources = Cachr::getCache('DB_AdminResourceName');
 
 	        	//Set allowed resources
 	        	foreach ( Input::except(array('role_id','_token')) as $resource_id ) {

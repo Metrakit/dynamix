@@ -19,7 +19,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">{{App::make('CacheController')->getCache('DB_Option')->site_name()}}</a>
+                        <a class="navbar-brand" href="#">{{Cachr::getCache('DB_Option')->site_name()}}</a>
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
@@ -51,10 +51,12 @@
             </div>
             <!-- ./ navbar-desktop -->
 
+            {{var_dump(Session::all())}}
+
             <!-- container.main -->
             <div class="container main">
                 <div class="row">
-                @if (!Request::is('/') )
+                @if ( !Request::is('/') && !Request::is(App::getLocale()) )
                 @section('ariane')
 <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
                 @show

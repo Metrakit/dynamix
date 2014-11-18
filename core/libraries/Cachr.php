@@ -1,7 +1,12 @@
 <?php
 
-class CacheController extends Controller {
-
+/**
+ * Cachr - Cache manager for permanent cache - Dynamix
+ * @version 1.0
+ * @author David LEPAUX <d.lepaux@gmail.com>
+ */
+class Cachr
+{
 	public function initCache()
 	{
 
@@ -14,6 +19,28 @@ class CacheController extends Controller {
 		});*/
 
 		
+		//Cache Model::Locale
+		Cache::rememberForever('DB_LocaleFrontEnable', function()
+		{
+			//Get all data in database
+		    $locales = Locale::where('enable','=',1)->get();
+
+		    //Preapre data to extract by id
+		    $data = array();
+		    foreach( $locales as $l )
+		    {
+		    	$data[] = $l->id;
+		    }
+
+		    return $data;
+		});
+
+		//Cache Model::Nav
+		Cache::rememberForever('DB_Nav', function()
+		{
+			return Nav::where('parent_id','=',0)->orderBy('order','ASC')->get();
+		});
+
 		//Cache Model::Resource('name')
 		Cache::rememberForever('DB_AdminResourceName', function()
 		{
@@ -75,16 +102,20 @@ class CacheController extends Controller {
 		});
 	}
 
-	public function getCache( $cache )
+	public static function getCache( $cache )
 	{
 		Cache::forget('DB_Urls');
 		Cache::forget('DB_Option');
 		Cache::forget('DB_AdminResourceName');
 		Cache::forget('DB_AdminResource');
+		Cache::forget('DB_LocaleFrontEnable');
 
 		if(!Cache::has($cache)){
-			App::make('CacheController')->initCache();
+			$cachr = new Cachr;
+			$cachr->initCache();
 		}
 		return Cache::get($cache);
 	}
+
 }
+

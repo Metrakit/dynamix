@@ -2,14 +2,18 @@
 
 /*
 |--------------------------------------------------------------------------
-| Home
+| Front
 |--------------------------------------------------------------------------
 |
-|	Home Page
 |
 */
-//Index of website
-Route::get('/', array('uses' => 'HomeController@index'));
+$locale = Localizr::initLocale();
+Route::group(array('prefix' => $locale), function() 
+{
+	Route::get('/', array('uses' => 'HomeController@index'));
+	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
+});
+
 
 
 
@@ -124,16 +128,14 @@ Route::get('/migrate', function(){
   return "migrated";
 });
 
+Route::get('/first-migrate', function(){
+  define('STDIN',fopen("php://stdin","r"));
+  Artisan::call("migrate");
+  Artisan::call("db:seed");
+  return "migrated";
+});
 
-/*
-|--------------------------------------------------------------------------
-| Element (Category|Post|Page)
-|--------------------------------------------------------------------------
-|
-|	Element (Category|Post|Page)
-|
-*/
-Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
+
 
 
 

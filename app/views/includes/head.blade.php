@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>
     @section('meta_title')
-{{ App::make('CacheController')->getCache('DB_Option')->site_name() }}
+{{ Cachr::getCache('DB_Option')->site_name() }}
     @show
     </title>
     <meta name="author" content="{{Config::get('app.author')}}">

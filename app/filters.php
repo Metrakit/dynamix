@@ -13,50 +13,13 @@
 
 App::before(function($route, $request, $lang = 'auto')
 {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Language
-    |--------------------------------------------------------------------------
-    |
-    | Detect the browser language.
-    |
-    */
-
-    //Session::forget('locale');
-    /*if ( Schema::hasTable('migrations') && !Session::has('locale') ) {
-        //get all enable langage
-        $available_langages = DB::table('locales')->where('enable','=',1)->get();
-        
-        $available_langage = array();
-        foreach($available_langages as $a)
-        {
-            $available_langage[] = $a->id;
-        }
-
-        Log::info('lang :: '.$lang);
-        
-        if ($lang != "auto" && in_array($lang , $available_langage)) {
-            Config::set('app.locale', $lang);
-        } else {
-            $browser_lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',') : '';          
-            $browser_lang = substr($browser_lang, 0,2);
-            $userLang = (in_array($browser_lang, $available_langage)) ? $browser_lang : Config::get('app.locale');
-            Config::set('app.locale', $userLang);
-            App::setLocale($userLang);
-        }
-        Session::put('locale',Config::get('app.locale'));
-    } else if (!Schema::hasTable('migrations')) {
-        define('STDIN',fopen("php://stdin","r"));
-        Artisan::call("migrate");
-        Artisan::call("db:seed");
-    }*/
+    //
 });
 
 
 App::after(function($request, $response)
 {
-	//
+    //
 });
 
 /*
