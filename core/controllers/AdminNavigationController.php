@@ -366,13 +366,16 @@ class AdminNavigationController extends BaseController {
 		//equilibrate branche
 		//here equilibrate orders of menu !
 		//if parentid = 0, set all else other !
-		/*if ($navigation->parent_id == 0) {
-			$navigations = Nav::where('parent_id', 0)->where('id','><',$navigation->id)->orderBy('order','ASC')->get();
-		} else {
-			$navigations = Nav::where('parent_id',$navigation->parent_id)->where('id','><',$navigation->id)->orderBy('order','ASC')->get();			
+		$navigations = Nav::where('parent_id',$navigation->parent_id)->where('id','<>',$navigation->id)->orderBy('order','ASC')->get();			
+		for ($count_navigation = count($navigations), $i = 0;$i<$count_navigation;$i++) {
+			$navigations[$i]->order = $i+1;
+			$navigations[$i]->save();
 		}
 
-		$navigations->sync(array())*/
+		//delete children if exists
+		foreach ( $navigation->children() as $child ) {
+			$child->delete();
+		}
 
 		// delete
 		if ( $navigation->delete() ) {

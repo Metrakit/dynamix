@@ -42,6 +42,18 @@ class NavigationsTableSeeder extends Seeder {
         $title6->translate('fr','Article 2');
         $title6->translate('en','Article 2');
 
+        $title51 = new I18N;
+        $title51->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title51->save();
+        $title51->translate('fr','Article 1');
+        $title51->translate('en','Article 1');
+
+        $title61 = new I18N;
+        $title61->i18n_type_id = I18nType::where('name','=','title')->first()->id;
+        $title61->save();
+        $title61->translate('fr','Article 2');
+        $title61->translate('en','Article 2');
+
         $title7 = new I18N;
         $title7->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title7->save();
@@ -93,6 +105,20 @@ class NavigationsTableSeeder extends Seeder {
                 'i18n_title'        => $title6->id,                
                 'parent_id'         => 4,
                 'order'             => 2,
+                'navigable_id'     => 2,
+                'navigable_type'   => 'Article'
+            ),
+            array(
+                'i18n_title'        => $title51->id,                
+                'parent_id'         => 4,
+                'order'             => 3,
+                'navigable_id'     => 2,
+                'navigable_type'   => 'Article'
+            ),
+            array(
+                'i18n_title'        => $title61->id,                
+                'parent_id'         => 4,
+                'order'             => 4,
                 'navigable_id'     => 2,
                 'navigable_type'   => 'Article'
             ),
