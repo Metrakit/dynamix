@@ -15,6 +15,7 @@
             <!-- ./ navbar -->
 
             <div id="page-wrapper">
+
                 @yield('page-header')
                 
                 @yield('filemanager')

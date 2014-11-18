@@ -323,7 +323,7 @@ class AdminNavigationController extends BaseController {
 			Cache::forget('DB_Nav');
 			return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_move_fail'));
 		}
-		return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_unfinded'));
+		return Redirect::to('admin/navigation')->with('error',Lang::get('admin.navigation_notfind'));
 	}
 
 	public function moveNav ($nav, $direction, $increment, $parent_id) {

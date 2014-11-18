@@ -82,16 +82,17 @@ return array(
 		'navigation_button'						=> 'Bouton',
 		'navigation_create_button'				=> 'Créer un bouton',
 
-		'navigation_save_fail'					=> '',
-		'navigation_delete_fail'					=> '',
-		'navigation_notfind'					=> '',
+		'navigation_save_fail'						=> 'Le menu n\'a pas pu être enregistré...',
+		'navigation_delete_fail'					=> 'Le menu n\'a pas pu être supprimé...',
+		'navigation_notfind'						=> 'Menu introuvable',
 		'navigation_delete_success'					=> 'Le menu à bien été supprmé !',
-		'navigation_direction_not_set'				=> '',
-		'navigation_move_up_impossible'				=> '',
-		'navigation_move_down_impossible'			=> '',
-		'navigation_move_left_impossible'			=> '',
-		'navigation_move_right_impossible'			=> '',
-		'navigation_move_successfully'				=> '',
+		'navigation_direction_not_set'				=> 'Impossible de déplacer le menu, aucune direction n\'été fournie...',
+		'navigation_move_up_impossible'				=> 'Déplacement en haut impossible...',
+		'navigation_move_down_impossible'			=> 'Déplacement en bas impossible...',
+		'navigation_move_left_impossible'			=> 'Déplacement à gauche impossible...',
+		'navigation_move_right_impossible'			=> 'Déplacement à droite impossible...',
+		'navigation_move_successfully'				=> 'Le menu a été déplacé avec succès !',
+		'navigation_move_fail'						=> 'Le menu n\'a pas pu être déplacé...',
 
 
 
