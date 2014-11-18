@@ -28,7 +28,6 @@ class Localizr
 						}
 						Session::put('lang',$locale);
 						App::setLocale($locale);
-						Log::info('locale : '.$locale);
 						return null;
 					} 
 
@@ -44,12 +43,13 @@ class Localizr
 					}
 				}
 
-				if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') ) {
+				Log::info('Session::get(\'old_RequestSegment2\')   :'.Session::get('old_RequestSegment2'));
+				Log::info('Request::segment(2)                     :'.Request::segment(2));
+				if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
 					Session::put('translate_request',1);
 				}
 				Session::put('lang', $locale);
 				App::setLocale($locale);
-				Log::info('locale : '.$locale);
 			} else {
 				$locale = null;
 			}

@@ -194,7 +194,7 @@ class UserController extends BaseController {
 			// or defaultpage if there isn't one
 			if (Auth::attempt($credentials,true)) {
 				//track user
-				parent::track('loggin','User',$Auth::user()->id);
+				parent::track('loggin','User',Auth::user()->id);
 
 				$user = Auth::user();
 				$user->last_visit_at = new Datetime;

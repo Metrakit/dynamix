@@ -1,7 +1,9 @@
 <?php
 class URLManagerController extends BaseController {
-    public function init()
-    {
+
+
+    public function redirectHome() {
+        Redirect::to(App::getLocale());
     }
 
 
@@ -9,7 +11,10 @@ class URLManagerController extends BaseController {
     
     public function getHome()
     {
+        Session::put('old_RequestSegment2', '');
         //Find good page
+        if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
+
         $urls = Cachr::getCache( 'DB_Urls' );
         foreach ( $urls as $url ) {
             if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
@@ -24,6 +29,8 @@ class URLManagerController extends BaseController {
 
     public function getSlug( $slug )
     {
+        Session::put('old_RequestSegment2', Request::segment(2));
+
         if( Session::has('translate_request') ) {
             Session::forget('translate_request');
             return $this->translateAndRedirect(Request::segment(2), Request::segment(1));

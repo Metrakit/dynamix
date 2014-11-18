@@ -38,6 +38,7 @@ Route::get('choose-your-language', array ('uses' => 'UserController@choose_your_
 |
 |
 */
+
 $locale = Localizr::initLocale();
 Route::group(array('prefix' => $locale), function() 
 {
