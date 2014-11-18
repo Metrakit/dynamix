@@ -169,4 +169,12 @@
 {{ Pager::render($page) }}
 
 
+
+{{-- Package Template --}}
+
+{{ Template::hello() }}
+<br />
+{{ Config::get('template::example.foo') }}
+
+
 @stop

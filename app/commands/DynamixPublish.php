@@ -40,7 +40,7 @@ class DynamixPublish extends Command {
 		$moduleName = $this->option('module');
 		if ($moduleName) {
 			$this->info("The module '$moduleName' was successfully published !");
-			Artisan::call("asset:publish", array(
+			$this->call("asset:publish", array(
 				"--path" => "vendor/dynamix/$moduleName/public", 
 				"--dest"   => "../../dev/src/packages/$moduleName")
 			);

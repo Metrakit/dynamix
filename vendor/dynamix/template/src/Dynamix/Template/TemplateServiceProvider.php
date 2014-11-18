@@ -19,6 +19,8 @@ class TemplateServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('dynamix/template');
+		// Include routes file if we need
+		include_once __DIR__ . '/../../routes.php';
 	}
 
 	/**

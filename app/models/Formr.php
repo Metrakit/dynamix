@@ -84,12 +84,12 @@ class Formr extends Eloquent{
 		$form->finish_on = $data['method'];
 		$form->type = $data['type'];
 		$form->save();
-		$order = 0;
+		$orderMap = 0;
 
 		foreach ($data['data'] as $dataInput) {
 
 			// Increments the order
-			$order++;
+			$orderMap++;
 
 			if ($fromObject) {
 				$dataInput['title'] = NULL;
@@ -124,7 +124,7 @@ class Formr extends Eloquent{
 			}
 
 			// Add form map
-			FormMap::add($input->id, $form->id, $order);
+			FormMap::add($input->id, $form->id, $orderMap);
 		}
 
 		// Add a block if the form is not by a model
