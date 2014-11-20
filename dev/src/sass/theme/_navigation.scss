@@ -25,7 +25,7 @@
 			padding-left:0px;
 		}
 
-		&:last-of-type {
+		&:nth-last-of-type(2) {
 			.menu-container{
 				padding-right:0px !important;
 				.buttons {
@@ -116,67 +116,15 @@
 			}
 		}
 		.move-left {
-		   @include border-radius(4px 0 0 4px);
+			@include border-radius(4px 0 0 4px);
 		}
 		.move-right{
-		   @include border-radius(0 4px 4px 0);
+			@include border-radius(0 4px 4px 0);
 			float: right;
 		}
 	}
 
-	//Children
-	&.menu-object-child{
-		line-height:normal;
-		font-size:14px;
-		height:auto;
-		margin-top:10px;
-		margin-left:20px;
-		position:relative;
-
-		
-		&:before{
-			content : " ";
-			height:80px;
-			width:11px;
-			position:absolute;
-			top:-11px;
-			left:-11px;
-			background:transparent;
-			border-left:2px solid #adadad;
-		}
-		.menu-object-child-content{
-			.content{
-				vertical-align: middle;
-				padding: 0 20px;
-			}
-		}
-		.menu-container {
-			width:100%;
-			float:none;
-			
-			display:block;
-			padding-left:0px;
-			padding-right:0px;
-		}
-		.move-up {
-		   @include border-radius(4px 4px 0 0);
-		}
-		.move-down{
-		   @include border-radius(0 0 4px 4px);
-		}
-		.move {
-			float:none;
-			width:0px;
-			height:auto;
-			display:block;
-			form button{
-				background:lighten(#222,10%);
-				&:hover, &:focus{
-					background:#222;
-				}
-			}
-		}
-	}
+	
 	
 	//Both
 	.menu-object-parent-content {
@@ -238,6 +186,59 @@
 
 }
 
+//Children
+.menu-object-child{
+	line-height:normal;
+	font-size:14px;
+	height:auto;
+	margin-top:10px;
+	margin-left:20px;
+	position:relative;
+
+
+	&.menu-object:before{
+		content : " ";
+		height:80px;
+		width:11px;
+		position:absolute;
+		top:-11px;
+		left:-11px;
+		background:transparent;
+		border-left:2px solid #adadad;
+	}
+	.menu-object-child-content{
+		.content{
+			vertical-align: middle;
+			padding: 0 20px;
+		}
+	}
+	.menu-container {
+		width:100%;
+		float:none;
+
+		display:block;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.move-up {
+		@include border-radius(4px 4px 0 0);
+	}
+	.move-down{
+		@include border-radius(0 0 4px 4px);
+	}
+	.move {
+		float:none;
+		width:0px;
+		height:auto;
+		display:block;
+		form button{
+			background:lighten(#222,10%);
+			&:hover, &:focus{
+				background:#222;
+			}
+		}
+	}
+}
 
 
 

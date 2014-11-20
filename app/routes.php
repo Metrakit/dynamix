@@ -7,17 +7,17 @@
 |
 */
 Route::get('/migrate', function(){
-  define('STDIN',fopen("php://stdin","r"));
-  Artisan::call("migrate:reset");
-  Artisan::call("migrate");
-  Artisan::call("db:seed");
-  return "migrated";
+	define('STDIN',fopen("php://stdin","r"));
+	Artisan::call("migrate:reset");
+	Artisan::call("migrate");
+	Artisan::call("db:seed");
+	return "migrated";
 });
 Route::get('/first-migrate', function(){
-  define('STDIN',fopen("php://stdin","r"));
-  Artisan::call("migrate");
-  Artisan::call("db:seed");
-  return "migrated";
+	define('STDIN',fopen("php://stdin","r"));
+	Artisan::call("migrate");
+	Artisan::call("db:seed");
+	return "migrated";
 });
 
 
@@ -75,41 +75,41 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::resource('navigation','AdminNavigationController',
 		array('except' => array('show')) );
 
-		Route::post('navigation/{id}/move','AdminNavigationController@move');
-		Route::get( 'navigation/create-choose','AdminNavigationController@createChoose');
+	Route::post('navigation/{id}/move','AdminNavigationController@move');
+	Route::get( 'navigation/create-choose','AdminNavigationController@createChoose');
 		/*Route::post('navigation/create-new-menu','AdminMenuController@postCreateNewMenu');
 		Route::get( 'navigation/create-menu','AdminMenuController@createMenu');
 		Route::post('navigation/create-menu','AdminMenuController@postCreateMenu');*/
 
 	//Role / Permission
-	Route::get('/role_permission', array('before' => 'auth.permission_role', 'uses' => 'AdminController@getRolePermission'));
+		Route::get('/role_permission', array('before' => 'auth.permission_role', 'uses' => 'AdminController@getRolePermission'));
 		//Role RestFull
 		Route::resource('role', 'AdminRoleController',
 			array('except' => array('index','show')) );
 		//Permission update
 		Route::post('/permission', 'AdminController@postPermission');
-	
+
 	//User index
-	Route::get('/user/profil', 'AdminUserController@showProfil');
-	Route::get('/user/profil/edit', 'AdminUserController@editProfil');
-	Route::post('/user/profil/edit', 'AdminUserController@updateProfil');
-	Route::resource('user', 'AdminUserController',
+/*		Route::get('/user/profil', 'AdminUserController@showProfil');
+		Route::get('/user/profil/edit', 'AdminUserController@editProfil');
+		Route::post('/user/profil/edit', 'AdminUserController@updateProfil');
+		Route::resource('user', 'AdminUserController',
 			array('except' => array('show')) );
-	
+*/
 	//Log
-	Route::get('/log', array('before' => 'auth.permission_log', 'uses' => 'AdminController@getLog'));
+		Route::get('/log', array('before' => 'auth.permission_log', 'uses' => 'AdminController@getLog'));
 
 	//Option
-	Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
-	Route::post('/option', 'AdminController@postOption');
+		Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
+		Route::post('/option', 'AdminController@postOption');
 
 	//Languages
-	Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
-	Route::post('/languages', 'AdminController@postLanguages');
+		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
+		Route::post('/languages', 'AdminController@postLanguages');
 
 
 
-	
+
 /*
 	//MOSAIQUES
 	Route::resource('mosaique','AdminMosaiqueController',
@@ -130,22 +130,20 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 /*
 |--------------------------------------------------------------------------
-| User
+| Auth
 |--------------------------------------------------------------------------
 |
-|	User
+|	Auth
 |
 */
-Route::get('user/login', 'UserController@login');
-Route::post('user/login', 'UserController@post_login');
-Route::get('user/logout', 'UserController@logout');
+Route::get('auth/login', 'AuthController@login');
+Route::post('auth/login', 'AuthController@post_login');
+Route::get('auth/logout', 'AuthController@logout');
 
-Route::get('user/remind', 'RemindersController@getRemind');
-Route::post('user/remind', 'RemindersController@postRemind');
+Route::get('auth/remind', 'RemindersController@getRemind');
+Route::post('auth/remind', 'RemindersController@postRemind');
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset','as' => 'password.reset'));
 Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset','as' => 'password.update'));
-
-Route::resource('user','UserController', array('except' => array('index', 'show')) );
 
 
 /*

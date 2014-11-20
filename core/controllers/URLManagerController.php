@@ -22,7 +22,7 @@ class URLManagerController extends BaseController {
                 return View::make( 'public.pages.page' , compact('page') );
             }
         }
-         
+
         return View::make('errors.404');        
     }
     
@@ -64,7 +64,7 @@ class URLManagerController extends BaseController {
                 }
             }
         }
-         
+
         return View::make('errors.500');        
     }
 

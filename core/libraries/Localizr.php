@@ -35,7 +35,19 @@ class Localizr
 						$locale = Session::get('lang');
 					} else {
 						//if not, search a lang in server datas and if is valid
-						$locale = $this->detectLocale();			
+						$browser_lang = substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
+
+					    // Check the browser request langugae is support in app?
+					    if(!empty($browser_lang) AND in_array($browser_lang, Cachr::getCache('DB_LocaleFrontEnable')))
+					    {
+					        $locale = $browser_lang;
+					    }
+					    else
+					    {
+					        // Default Application Setting Language
+					        $locale = Config::get('app.locale');
+					    }	
+
 						//if no valid lang is in server set default
 						if($locale===null) {
 							Session::put('lang',Config::get('app.locale'));
@@ -57,22 +69,5 @@ class Localizr
 			$locale = null;
 		}
 		return $locale;
-	}
-
-	//Detect locale from server
-	public static function detectLocale () {
-	    //Get the Browser Request language
-	    $browser_lang = substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
-
-	    // Check the browser request langugae is support in app?
-	    if(!empty($browser_lang) AND in_array($browser_lang, Cachr::getCache('DB_LocaleFrontEnable')))
-	    {
-	        return $browser_lang;
-	    }
-	    else
-	    {
-	        // Default Application Setting Language
-	        return Config::get('app.locale');
-	    }
 	}
 }

@@ -3,12 +3,12 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class Authenticator extends Eloquent implements UserInterface, RemindableInterface {
 
 	/**
      * Parameters
      */    
-	protected $table = 'users';
+	protected $table = 'auths';
 
 
     /**
@@ -33,7 +33,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * Attributes
      *
      */
-	protected $hidden = array('password');
+    protected $hidden = array('password');
 
 
     /**
@@ -62,11 +62,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         foreach ( $this->roles as $role ) {
             foreach ( $role->permissionsAllowed as $permission ) {
                 if ( $permission->action_id == $action_id
-                   &&$permission->resource_id == $resource_id) return true;
+                 &&$permission->resource_id == $resource_id) return true;
             }
-        }
-        return false;
     }
+    return false;
+}
 
 
     /**
