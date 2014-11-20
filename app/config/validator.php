@@ -94,7 +94,7 @@ return array(
 	/*
 	|	User
 	|
-	*/
+	
 		'user_create'=>		array(	'pseudo'	=> 'required|max:45',
 									'firstname'	=> 'required|max:45',
 									'lastname'	=> 'required|max:45',
@@ -110,7 +110,7 @@ return array(
 									'oldpassword'=> 'required',
 									'password'	=> 'required|max:225'),
 
-	
+	*/
 		
 	),
 
