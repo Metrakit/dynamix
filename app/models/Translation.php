@@ -63,8 +63,14 @@ class Translation extends Eloquent{
      */
     public static function getByI18n($i18nId)
     {
-        return self::where('i18n_id', $i18nId)
+        $translations = self::where('i18n_id', $i18nId)
                    ->get();
+
+        $texts = array();           
+        foreach ($translations as $translation) {
+            $texts[$translation->locale_id] = $translation->text;
+        }
+        return $texts;
     }
 
     /**
