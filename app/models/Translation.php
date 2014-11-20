@@ -39,6 +39,13 @@ class Translation extends Eloquent{
         return static::where('i18n_id', '=', $i18n_id)->where('locale_id', '=', App::getLocale())->first()->text;
     }
 
+    /**
+     * Add a new translation of a Text
+     * @param integer $i18nId i18n Id
+     * @param string $lang lang code
+     * @param string $value text translated
+     * @return self 
+     */
     public static function add($i18nId, $lang, $value)
     {
         $translation = new self;
@@ -48,5 +55,49 @@ class Translation extends Eloquent{
         $translation->save();
         return $translation;
     }
+
+    /**
+     * Get texts translated by i18n Id
+     * @param  integer $i18nId i18n id
+     * @return Array
+     */
+    public static function getByI18n($i18nId)
+    {
+        return self::where('i18n_id', $i18nId)
+                   ->get();
+    }
+
+    /**
+     * Update a new translation of a Text
+     * @param integer $i18nId i18n Id
+     * @param string $lang lang code
+     * @param string $value text translated
+     * @return self 
+     */
+    public static function change($i18nId, $lang, $value)
+    {
+        $translation = self::where('i18n_id', $i18nId)
+                           ->where('locale_id', $lang)
+                           ->first();
+
+        if (!$translation) {
+            return FALSE;
+        }
+
+        $translation->text = $value;
+        $translation->save();
+        return $translation;
+    }   
+
+    /**
+     * Delete translation of a Text
+     * @param integer $i18nId i18n Id
+     * @return boolean 
+     */
+    public static function removeFromI18n($i18nId)
+    {
+        return self::where('i18n_id', $i18nId)->delete();
+    }
+
 
 }
