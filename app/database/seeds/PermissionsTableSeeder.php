@@ -28,10 +28,10 @@ class PermissionsTableSeeder extends Seeder {
                 foreach($actions as $action){
                     $data[] = array(
                         'role_id'       => $role,
-                        'type'          => ( $role == $roles[0] || ( $resource->name != 'role' && $resource->name != 'user' ) ? 'allow' : 'deny'),
+                        'type'          => ( $role == $roles[0] || ( $resource->name != 'role' && $resource->name != 'auth' ) ? 'allow' : 'deny'),
                         'action_id'     => $action,
                         'resource_id'   => $resource->id
-                    );
+                        );
                 }
             }
         }

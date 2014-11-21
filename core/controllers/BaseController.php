@@ -12,7 +12,7 @@ class BaseController extends Controller {
 	 */
 	protected function track ($action, $model, $id) {
 		$track = new Track();
-		$track->user_id = Auth::user()->id;
+		$track->auth_id = Auth::user()->id;
 		$track->date = new Datetime;
 		$track->action = $action;
 		$track->trackable_id = $id;

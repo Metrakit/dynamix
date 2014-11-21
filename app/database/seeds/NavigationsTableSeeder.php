@@ -12,7 +12,7 @@ class NavigationsTableSeeder extends Seeder {
         $title1->translate('fr','Accueil');
         $title1->translate('en','Home');
 
-        $title2 = new I18N;
+/*        $title2 = new I18N;
         $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title2->save();
         $title2->translate('fr','Galerie');
@@ -52,7 +52,7 @@ class NavigationsTableSeeder extends Seeder {
         $title61->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title61->save();
         $title61->translate('fr','Article 2');
-        $title61->translate('en','Article 2');
+        $title61->translate('en','Article 2');*/
 
         $title7 = new I18N;
         $title7->i18n_type_id = I18nType::where('name','=','title')->first()->id;
@@ -72,8 +72,8 @@ class NavigationsTableSeeder extends Seeder {
                 'order'             => 1,
                 'navigable_id'     => 1,
                 'navigable_type'   => 'Page'
-            ),
-            array(
+                ),
+            /*array(
                 'i18n_title'        => $title2->id,                
                 'parent_id'         => 0,
                 'order'             => 2,
@@ -121,14 +121,14 @@ class NavigationsTableSeeder extends Seeder {
                 'order'             => 4,
                 'navigable_id'     => 2,
                 'navigable_type'   => 'Article'
-            ),
-            array(
-                'i18n_title'        => $title7->id,                
-                'parent_id'         => 0,
-                'order'             => 4,
-                'navigable_id'     => 2,
-                'navigable_type'   => 'Page'
-            ))
-        );
-    }
+                ),*/
+array(
+    'i18n_title'        => $title7->id,                
+    'parent_id'         => 0,
+    'order'             => 2,
+    'navigable_id'     => 2,
+    'navigable_type'   => 'Page'
+    ))
+);
+}
 }

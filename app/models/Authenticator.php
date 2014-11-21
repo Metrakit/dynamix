@@ -17,7 +17,7 @@ class Authenticator extends Eloquent implements UserInterface, RemindableInterfa
      * @var string
      */
     public function roles() {
-        return $this->belongsToMany('Role');
+        return $this->belongsToMany('Role', 'auth_role', 'auth_id', 'role_id');
     }
 
     public function articles() {
@@ -62,7 +62,7 @@ class Authenticator extends Eloquent implements UserInterface, RemindableInterfa
         foreach ( $this->roles as $role ) {
             foreach ( $role->permissionsAllowed as $permission ) {
                 if ( $permission->action_id == $action_id
-                 &&$permission->resource_id == $resource_id) return true;
+                   &&$permission->resource_id == $resource_id) return true;
             }
     }
     return false;

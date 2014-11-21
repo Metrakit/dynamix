@@ -31,13 +31,13 @@ class ResourcesTableSeeder extends Seeder {
             ),
             */
             //Media
-            array(
-                'name' => 'media',
-                'icon' => 'glyphicon glyphicon-picture',
-                'model' => null,
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
+array(
+    'name' => 'media',
+    'icon' => 'glyphicon glyphicon-picture',
+    'model' => null,
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
             /*array(
                 'name' => 'image',
                 'icon' => 'glyphicon glyphicon-picture',
@@ -58,7 +58,7 @@ class ResourcesTableSeeder extends Seeder {
                 'model' => 'Audio',
                 'in_admin_ui'   => true,
                 'navigable'     => true
-            ),*/
+                ),*/
 
             //Gallery Image
             /*array(
@@ -74,110 +74,110 @@ class ResourcesTableSeeder extends Seeder {
                 'model' => 'Gallery',
                 'in_admin_ui'   => true,
                 'navigable'     => true
-            ),*/
+                ),*/
 
             //Page
-            array(
-                'name' => 'page',
-                'icon' => 'glyphicon glyphicon-book',
-                'model' => 'Page',
-                'in_admin_ui'   => true,
-                'navigable'     => true
-            ),
-            array(
-                'name' => 'block',
-                'icon' => 'glyphicon glyphicon-book',
-                'model' => 'Block',
-                'in_admin_ui'   => false,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'block_content',
-                'icon' => 'glyphicon glyphicon-book',
-                'model' => 'BlockContent',
-                'in_admin_ui'   => false,
-                'navigable'     => false
-            ),
+array(
+    'name' => 'page',
+    'icon' => 'glyphicon glyphicon-book',
+    'model' => 'Page',
+    'in_admin_ui'   => true,
+    'navigable'     => true
+    ),
+array(
+    'name' => 'block',
+    'icon' => 'glyphicon glyphicon-book',
+    'model' => 'Block',
+    'in_admin_ui'   => false,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'block_content',
+    'icon' => 'glyphicon glyphicon-book',
+    'model' => 'BlockContent',
+    'in_admin_ui'   => false,
+    'navigable'     => false
+    ),
 
             //Conector
-            array(
-                'name' => 'tag',
-                'icon' => 'glyphicon glyphicon-tag',
-                'model' => 'Tag',
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
+array(
+    'name' => 'tag',
+    'icon' => 'glyphicon glyphicon-tag',
+    'model' => 'Tag',
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
 
             //Menu
-            array(
-                'name' => 'navigation',
-                'icon' => 'glyphicon glyphicon-list',
-                'model' => 'Nav',
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'navigation_link',
-                'icon' => 'glyphicon glyphicon-list',
-                'model' => 'NavLink',
-                'in_admin_ui'   => false,
-                'navigable'     => true
-            ),
-            
+array(
+    'name' => 'navigation',
+    'icon' => 'glyphicon glyphicon-list',
+    'model' => 'Nav',
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'navigation_link',
+    'icon' => 'glyphicon glyphicon-list',
+    'model' => 'NavLink',
+    'in_admin_ui'   => false,
+    'navigable'     => true
+    ),
+
             //User
-            array(
-                'name' => 'role_permission',
-                'icon' => 'glyphicon glyphicon-lock',
-                'model' => null,
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'role',
-                'icon' => 'glyphicon glyphicon-lock',
-                'model' => 'Role',
-                'in_admin_ui'   => false,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'permission',
-                'icon' => 'glyphicon glyphicon-lock',
-                'model' => 'Permission',
-                'in_admin_ui'   => false,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'user',
-                'icon' => 'glyphicon glyphicon-user',
-                'model' => 'User',
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
+array(
+    'name' => 'role_permission',
+    'icon' => 'glyphicon glyphicon-lock',
+    'model' => null,
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'role',
+    'icon' => 'glyphicon glyphicon-lock',
+    'model' => 'Role',
+    'in_admin_ui'   => false,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'permission',
+    'icon' => 'glyphicon glyphicon-lock',
+    'model' => 'Permission',
+    'in_admin_ui'   => false,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'auth',
+    'icon' => 'glyphicon glyphicon-user',
+    'model' => 'Authenticator',
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
 
 
             //System
-            array(
-                'name' => 'environment',
-                'icon' => 'glyphicon glyphicon-globe',
-                'model' => null,
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'log',
-                'icon' => 'glyphicon glyphicon-list',
-                'model' => 'Track',
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ),
-            array(
-                'name' => 'option',
-                'icon' => 'glyphicon glyphicon-cog',
-                'model' => 'Option',
-                'in_admin_ui'   => true,
-                'navigable'     => false
-            ))
-        );
-    }
+array(
+    'name' => 'environment',
+    'icon' => 'glyphicon glyphicon-globe',
+    'model' => null,
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'log',
+    'icon' => 'glyphicon glyphicon-list',
+    'model' => 'Track',
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
+array(
+    'name' => 'option',
+    'icon' => 'glyphicon glyphicon-cog',
+    'model' => 'Option',
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ))
+);
+}
 
 }

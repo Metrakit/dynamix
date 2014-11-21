@@ -52,26 +52,26 @@ class AuthController extends BaseController {
 				//track user
 				parent::track('loggin','Auth',Auth::user()->id);
 
-				$user = Auth::user();
+				/*$user = Auth::user();
 				$user->last_visit_at = new Datetime;
-				$user->save();
+				$user->save();*/
 
 				return Redirect::intended('/');
 			} else {
 				$user = User::where('email','=', Input::get( 'email' ) )->first();
 
 				if ( empty($user) || !isset($user) ) {
-					return Redirect::to('/user/login')->with('error', Lang::get('user.unknow_email'))->withInput(Input::except('password'));
+					return Redirect::to('/auth/login')->with('error', Lang::get('user.unknow_email'))->withInput(Input::except('password'));
 				}
 
-				return Redirect::to('/user/login')->with('error', Lang::get('user.incorrect_password'))->withInput(Input::except('password'));
+				return Redirect::to('/auth/login')->with('error', Lang::get('user.incorrect_password'))->withInput(Input::except('password'));
 			}
 
 			$this->user = $user;
 			return Redirect::to('/');
 		}
 
-		return Redirect::to('/user/login')->withInput()->withErrors($validator);
+		return Redirect::to('/auth/login')->withInput()->withErrors($validator);
 	}
 
 	/**
@@ -105,7 +105,7 @@ class AuthController extends BaseController {
 
 			App::abort(403, Lang::get('user.you_are_not_authorized'));
 		} else {
-			return Redirect::to('user/login')->with('notice', Lang::get('user.you_must_be_logged'));
+			return Redirect::to('auth/login')->with('notice', Lang::get('user.you_must_be_logged'));
 		}
 	}
 
