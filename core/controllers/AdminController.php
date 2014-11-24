@@ -130,7 +130,7 @@ class AdminController extends BaseController {
 	        	}
 	        	
 	        	//track user
-	        	parent::track('update','Permission', $permission->id);
+	        	parent::track('update','Permission', $role->id);
 
 				return Redirect::to('admin/role_permission')->with('success_permissions', Lang::get('admin.permission_save_success'));
 	        }
