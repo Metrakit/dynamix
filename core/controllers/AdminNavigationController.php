@@ -383,7 +383,7 @@ class AdminNavigationController extends BaseController {
 			parent::track('delete','Navigation', $navigation->id);
 
 			Cache::forget('DB_Nav');
-                
+
 			return Redirect::to('admin/navigation')->with('success', Lang::get('admin.navigation_delete_success'));
 		}
 		

@@ -14,6 +14,15 @@ return array(
 
 	//User
 	'email'						=> 'Email',
+	'profile'              		=> 'Profil',
+	'show_profil'         		=> 'Mon profil',
+	'edit_account'				=> 'Modifiez son profil',
+	'create_account'			=> 'Création de compte',
+	'account_updated'       	=> 'Compte mis à jour',
+	'error_saving'				=> 'Il y a eu un problème lors de l\'inscription... Veuillez, s\'il vous plaît, recommencer.',
+	'account_created'			=> 'Votre compte a bien été créé.',
+	'you_must_be_logged'		=> 'Vous devez être connecté !',
+	'role'						=> 'Rôle utilisateur',
 
 	//Password
 	'ask_new_password'			=> 'Demander un nouveau mot de passe',

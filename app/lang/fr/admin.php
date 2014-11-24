@@ -13,7 +13,7 @@ return array(
 	'nav_tag'				=> 'Tags',
 	'nav_navigation'		=> 'Navigations',
 	'nav_role_permission'	=> 'Comptes & Permissions',
-	'nav_user'				=> 'Utilisateurs',
+	'nav_auth'				=> 'Comptes',
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
 	'nav_option'			=> 'Options',
@@ -119,9 +119,11 @@ return array(
 		'permission_help'		=> 'Une permission autorise ou non, l\'accès a une ressource.',
 
 
+	//Auth
+	'' => '',
 
 	//User
-	'user'				=> 'Utilisateur',
+	/*'user'				=> 'Utilisateur',
 	'users'				=> 'Utilisateurs',
 	'user_create'		=> 'Création d\'utilisateur',
 	'user_edit_profil'	=> 'Modification du profile',
@@ -135,7 +137,7 @@ return array(
 	'user_edit_success'		=>  'L\'utilisateur a été modifié avec succès !',
 	'user_edit_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été modifié...',
 	'user_favourite_langage'=>'Langue préféré',
-
+*/
 
 	//Environment
 	'environment'				=> 'Langues',
@@ -186,7 +188,7 @@ return array(
 		'rscTag'			=> 'Tag',
 		'rscRole'			=> 'Role',
 		'rscPermission'		=> 'Permissions',
-		'rscUser'			=> 'Compte utilisateur',
+		'rscAuth'			=> 'Comptes',
 		'rscLocale'			=> 'Langues',
 		'rscOption'			=> 'Options',
 		'rscLog'			=> 'Logs',

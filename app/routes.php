@@ -60,6 +60,14 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Dashboard
 	Route::get('/','AdminController@index');
 
+	//Auth 
+	Route::get('auth', 'AdminAuthController@index');
+	Route::get('profil', 'AdminAuthController@showProfil');
+	Route::get('profil/edit', 'AdminAuthController@editProfil');
+	Route::post('profil/edit', 'AdminAuthController@updateProfil');
+	Route::get('role/{id}/edit', 'AdminAuthController@editRole');
+	Route::post('role/{id}', 'AdminAuthController@updateRole');
+
 	//Media
 	Route::get('/media', array('before' => 'auth.permission_media', 'uses' => 'AdminController@getMedia'));
 	

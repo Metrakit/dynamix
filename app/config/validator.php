@@ -90,6 +90,14 @@ return array(
 
 		'navigation_title'		=> 		array(	'title'			=> 'required|min:2|max:55'),
 		
+	/*
+	|	Auth
+	|
+	*/
+		'auth_role'	=> 		array ( 'role'		=> 'required|exists:roles,id'),
+
+		'auth_profil'=>		array(	'oldpassword'=> 'required',
+									'password'	=> 'required|max:225'),
 
 	/*
 	|	User

@@ -11,7 +11,6 @@ class AuthController extends BaseController {
 	{
 		$this->user = $user;
 	}*/
-
 	
 	/**
 	 * Show the display for logging
@@ -58,13 +57,13 @@ class AuthController extends BaseController {
 
 				return Redirect::intended('/');
 			} else {
-				$user = User::where('email','=', Input::get( 'email' ) )->first();
+				$user = Authenticator::where('email','=', Input::get( 'email' ) )->first();
 
 				if ( empty($user) || !isset($user) ) {
-					return Redirect::to('/auth/login')->with('error', Lang::get('user.unknow_email'))->withInput(Input::except('password'));
+					return Redirect::to('/auth/login')->with('error', Lang::get('auth.unknow_email'))->withInput(Input::except('password'));
 				}
 
-				return Redirect::to('/auth/login')->with('error', Lang::get('user.incorrect_password'))->withInput(Input::except('password'));
+				return Redirect::to('/auth/login')->with('error', Lang::get('auth.incorrect_password'))->withInput(Input::except('password'));
 			}
 
 			$this->user = $user;
