@@ -3,6 +3,9 @@
 /app/storage
 /app/config/assets/assets.json
 
+/app/views/packages/dynamix
+/app/config/packages/dynamix
+
 /bootstrap/compiled.php
 
 /dev/node_modules
@@ -12,6 +15,8 @@
 /dev/src/vendor
 /dev/src/js/main.back.min.js
 /dev/src/js/main.min.js
+/dev/src/css/main.back.min.css
+/dev/src/css/core-admin.css
 
 /public/js/**
 /public/css/**
