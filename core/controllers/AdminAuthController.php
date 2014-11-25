@@ -15,7 +15,7 @@ class AdminAuthController extends BaseController {
 		$data['user'] = Auth::user();
 		
 		//All users
-		$data['users'] = Authenticator::all();
+		$data['users'] = AuthUser::all();
 
 		//Interface
 		$data['noAriane'] = true;
@@ -94,7 +94,7 @@ class AdminAuthController extends BaseController {
 		$data['buttonLabel'] 	= Lang::get('button.update');
 		$data['glyphicon'] 		= 'ok';
 
-		$data['u'] = Authenticator::find($id);
+		$data['u'] = AuthUser::find($id);
 
 		//Role
 		$data['roles'] 			= Role::all();
@@ -128,7 +128,7 @@ class AdminAuthController extends BaseController {
 		// process the login
 		if ($validator->passes()) {
 
-			$user = Authenticator::find($id);
+			$user = AuthUser::find($id);
 			
 			//sync roles
 			$user->roles()->sync($roles);

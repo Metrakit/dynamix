@@ -149,7 +149,7 @@ array(
 array(
     'name' => 'auth',
     'icon' => 'glyphicon glyphicon-user',
-    'model' => 'Authenticator',
+    'model' => 'AuthUser',
     'in_admin_ui'   => true,
     'navigable'     => false
     ),

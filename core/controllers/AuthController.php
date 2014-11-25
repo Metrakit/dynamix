@@ -57,7 +57,7 @@ class AuthController extends BaseController {
 
 				return Redirect::intended('/');
 			} else {
-				$user = Authenticator::where('email','=', Input::get( 'email' ) )->first();
+				$user = AuthUser::where('email','=', Input::get( 'email' ) )->first();
 
 				if ( empty($user) || !isset($user) ) {
 					return Redirect::to('/auth/login')->with('error', Lang::get('auth.unknow_email'))->withInput(Input::except('password'));

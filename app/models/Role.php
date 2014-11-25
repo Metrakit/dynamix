@@ -14,7 +14,7 @@ class Role extends Eloquent
      * @return mixed
      */
     public function auths() {
-        return $this->belongsToMany('Authenticator', 'auth_role', 'auth_id', 'role_id');
+        return $this->belongsToMany('AuthUser', 'auth_role', 'auth_id', 'role_id');
     }
 
     public function permissions() {
