@@ -49,4 +49,9 @@ tinymce.init({
    filemanager_access_key:"{{Config::get('app.key')}}",
    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
 });
+
+$('body').on('#myTab a','click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 @stop

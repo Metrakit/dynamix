@@ -9,12 +9,12 @@ class PagesTableSeeder extends Seeder {
         $t_fr = 'Bonjour';
         $t_en = 'Hello';
 
-        //article1
-        //$name1 = new I18N;
-        //$name1->i18n_type_id = I18nType::where('name','=','name')->first()->id;
-        //$name1->save();
-        //$name1->translate('fr',$t_fr);
-        //$name1->translate('en',$t_en);
+        //page
+        $name1 = new I18N;
+        $name1->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name1->save();
+        $name1->translate('fr',$t_fr);
+        $name1->translate('en',$t_en);
         
         $title1 = new I18N;
         $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
@@ -53,12 +53,12 @@ class PagesTableSeeder extends Seeder {
         $t_fr2 = 'Aurevoir';
         $t_en2 = 'Goodbye';
 
-        //article1
-        //$name2 = new I18N;
-        //$name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
-        //$name2->save();
-        //$name2->translate('fr',$t_fr2);
-        //$name2->translate('en',$t_en2);
+        //page
+        $name2 = new I18N;
+        $name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name2->save();
+        $name2->translate('fr',$t_fr2);
+        $name2->translate('en',$t_en2);
 
         $title2 = new I18N;
         $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
@@ -97,12 +97,12 @@ class PagesTableSeeder extends Seeder {
         $t_fr2 = 'NotAllowedAurevoir';
         $t_en2 = 'NotAllowedGoodbye';
 
-        //article1
-        //$name2 = new I18N;
-        //$name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
-        //$name2->save();
-        //$name2->translate('fr',$t_fr2);
-        //$name2->translate('en',$t_en2);
+        //page
+        $name2 = new I18N;
+        $name2->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name2->save();
+        $name2->translate('fr',$t_fr2);
+        $name2->translate('en',$t_en2);
 
         $title2 = new I18N;
         $title2->i18n_type_id = I18nType::where('name','=','title')->first()->id;
@@ -141,12 +141,12 @@ class PagesTableSeeder extends Seeder {
         $t_fr3 = 'NotAllowedAurevoir';
         $t_en3 = 'NotAllowedGoodbye';
 
-        //article1
-        //$name3 = new I18N;
-        //$name3->i18n_type_id = I18nType::where('name','=','name')->first()->id;
-        //$name3->save();
-        //$name3->translate('fr',$t_fr3);
-        //$name3->translate('en',$t_en3);
+        //page
+        $name3 = new I18N;
+        $name3->i18n_type_id = I18nType::where('name','=','name')->first()->id;
+        $name3->save();
+        $name3->translate('fr',$t_fr3);
+        $name3->translate('en',$t_en3);
 
         $title3 = new I18N;
         $title3->i18n_type_id = I18nType::where('name','=','title')->first()->id;
@@ -185,25 +185,25 @@ class PagesTableSeeder extends Seeder {
 
         DB::table('pages')->insert( array(
             array(
-                ////'i18n_name'                 => $name1->id,
+                'i18n_name'                 => $name1->id,
                 'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
-                ////'i18n_name'                 => $name2->id,
+                'i18n_name'                 => $name2->id,
                 'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
-                ////'i18n_name'                 => $name2->id,
+                'i18n_name'                 => $name2->id,
                 'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
-                ////'i18n_name'                 => $name3->id,
+                'i18n_name'                 => $name3->id,
                 'deletable'                 => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
