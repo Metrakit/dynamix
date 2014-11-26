@@ -22,6 +22,7 @@
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
+        @include('admin.page.form')
 
         <button type="submit" class="btn btn-primary">Créer la page !</button>
         <!-- ./ form actions -->
@@ -31,6 +32,7 @@
 @stop
 
 @section('scriptOnReady')
+tinyMCE.baseURL = "{{Url::to('/js/tinymce')}}";
 tinymce.init({
     selector: "textarea#content",theme: "modern",
     plugins: [
@@ -42,8 +44,9 @@ tinymce.init({
    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
    image_advtab: true ,
    
-   external_filemanager_path:"/relooking-coiffure/filemanager/",
+   external_filemanager_path:"/filemanager/",
    filemanager_title:"Responsive Filemanager" ,
-   external_plugins: { "filemanager" : "{{asset('filemanager/plugin.min.js')}}"}
+   filemanager_access_key:"{{Config::get('app.key')}}",
+   external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
 });
 @stop

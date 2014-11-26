@@ -100,6 +100,7 @@ module.exports = function(grunt) {
 					 '<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
 					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js', 
 					 '<%= vendorPath %>raphael/raphael-min.js',
+					 '<%= vendorPath %>tinymce/tinymce.min.js',
 					 '<%= srcPath %>js/vendor/morris.js',
 					 '<%= srcPath %>js/vendor/sb-admin-2.js',
 					 '<%= srcPath %>js/master-admin.js'
@@ -205,6 +206,10 @@ module.exports = function(grunt) {
 
 		      // Media-match
 		      {expand: false, src: ['<%= vendorPath %>media-match/media.match.min.js'], dest: '<%= distPath %>js/vendor/media.match.min.js', filter: 'isFile'},
+
+			  // TinyMCE
+		      {expand: true, cwd: '<%= vendorPath %>tinymce/', src: ['**'], dest: '<%= distPath %>js/tinymce/', filter: 'isFile'},
+		      {expand: true, cwd: '<%= distPath %>filemanager/tinymce/plugins', src: ['**'], dest: '<%= distPath %>js/tinymce/plugins/', filter: 'isFile'}
 
 		    ]
 		  },

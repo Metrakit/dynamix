@@ -18,8 +18,8 @@ class CreatePagesTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			
-			$table->integer('i18n_name')->unsigned();
-			$table->foreign('i18n_name')->references('id')->on('i18n');
+/*			$table->integer('i18n_name')->unsigned();
+			$table->foreign('i18n_name')->references('id')->on('i18n');*/
 
 			$table->boolean('deletable');
 

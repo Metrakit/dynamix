@@ -37,7 +37,7 @@
                 $data_i18n['method_locale'] = 'site_name_locale';
             } 
         ?>
-        @include('admin.i18n.presenter_4form', $data_i18n)
+        @include('admin.i18n.input_text_4form', $data_i18n)
 
         <!-- admin_email -->
         <div class="form-group {{{ $errors->has('admin_email') ? 'error' : '' }}}">
