@@ -17,6 +17,10 @@ class Block extends Eloquent{
         return $this->hasOne('Page');
     }
 
+    public function type() {
+        return $this->hasOne('Type');
+    }
+
 	public function responsives() {
         return $this->hasMany('Responsive');
     }

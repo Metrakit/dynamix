@@ -21,8 +21,7 @@
 {{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'form-horizontal', 'autocomplete' => 'off' ) ) }}
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        
-        {{ Former::renderByModel(new Page) }}
+
 
         <button type="submit" class="btn btn-primary">Créer la page !</button>
         <!-- ./ form actions -->

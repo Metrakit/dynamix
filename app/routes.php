@@ -85,9 +85,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 	Route::post('navigation/{id}/move','AdminNavigationController@move');
 	Route::get( 'navigation/create-choose','AdminNavigationController@createChoose');
-		/*Route::post('navigation/create-new-menu','AdminMenuController@postCreateNewMenu');
-		Route::get( 'navigation/create-menu','AdminMenuController@createMenu');
-		Route::post('navigation/create-menu','AdminMenuController@postCreateMenu');*/
 
 	//Role / Permission
 		Route::get('/role_permission', array('before' => 'auth.permission_role', 'uses' => 'AdminController@getRolePermission'));
@@ -97,13 +94,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		//Permission update
 		Route::post('/permission', 'AdminController@postPermission');
 
-	//User index
-/*		Route::get('/user/profil', 'AdminUserController@showProfil');
-		Route::get('/user/profil/edit', 'AdminUserController@editProfil');
-		Route::post('/user/profil/edit', 'AdminUserController@updateProfil');
-		Route::resource('user', 'AdminUserController',
-			array('except' => array('show')) );
-*/
 	//Log
 		Route::get('/log', array('before' => 'auth.permission_log', 'uses' => 'AdminController@getLog'));
 
@@ -114,24 +104,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Languages
 		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
 		Route::post('/languages', 'AdminController@postLanguages');
-
-
-
-
-/*
-	//MOSAIQUES
-	Route::resource('mosaique','AdminMosaiqueController',
-		array('only' => array('index','edit','update')) );
-
-	//GALLERY
-	Route::resource('gallery','AdminGalleryController');
-	Route::post('gallery/add-image','AdminGalleryController@postAddImage');
-	Route::post('gallery/{order}/move','AdminGalleryController@move');
-
-	//ARTICLE
-	Route::resource('image','AdminImageController',
-		array('only' => array('destroy')) );
-*/
 });
 
 
