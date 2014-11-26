@@ -12,6 +12,12 @@
 @import "blog/post";
 @import "blog/user";
 
+
+//Bootstrap +
+.nav-tabs {
+	margin-bottom:15px;
+}
+
 //Slideshow
 @import "slideshow/responsiveslideshow";
 
