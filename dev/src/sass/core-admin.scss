@@ -79,8 +79,14 @@ table.log{
 }
 
 
-//Nav
-@import "theme/navigation";
+//Navigations
+.btn-nav-left{
+	display:none;
+}
+//@import "theme/navigation-admin";
+
+//Menus
+@import "theme/menus-admin";
 
 /*========== Media ==========*/ 
 .filemanager-container{

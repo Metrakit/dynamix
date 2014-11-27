@@ -4,6 +4,7 @@
 
     <body id="admin" class="@yield('classBody')">
         @yield('beforeWrapper')
+        <div class="btn-nav-left">Click ME!</div>
         <div id="wrapper">
 
             <!--[if lt IE 8]>
@@ -15,7 +16,8 @@
             <!-- ./ navbar -->
 
             <div id="page-wrapper">
-
+                <div class="page-wrapper-inner">
+                <div class="page-content">
                 @yield('page-header')
                 
                 @yield('filemanager')
@@ -35,6 +37,8 @@
                 @yield('content')
                 <!-- ./ main-container -->
 
+                </div>
+                </div>
             </div>
             
             @yield('container')
