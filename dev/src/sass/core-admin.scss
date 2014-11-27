@@ -1,5 +1,6 @@
 @import "compass";
 @import "../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/mixins";
+@import "../vendor/bootstrap-sass-twbs/assets/stylesheets/bootstrap/variables";
 
 //Base Theme admin
 @import "admin/sb-admin-2";
@@ -85,6 +86,48 @@ table.log{
 }
 @media only screen and (min-width : 768px) {
 @import "theme/navigation-admin";
+}
+//+ navbar black for left nav
+.sidebar.sidebar-inverse {
+	background-color: $navbar-inverse-bg;
+	border-color: $navbar-inverse-border;
+
+	.nav {
+		> li > a {
+			color: $navbar-inverse-link-color;
+			&:hover, &:focus {
+				color: $navbar-inverse-link-hover-color;
+				background-color: $navbar-inverse-link-hover-bg;
+			}
+		}
+		> .active > a {
+	  		&, &:hover, &:focus {
+	    	color: $navbar-inverse-link-active-color;
+	   		background-color: $navbar-inverse-link-active-bg;
+		  	}
+		}
+		> .disabled > a {
+		  	&, &:hover, &:focus {
+		    	color: $navbar-inverse-link-disabled-color;
+		    	background-color: $navbar-inverse-link-disabled-bg;
+		  	}
+		}
+	}
+
+	// Dropdowns
+	.navbar-nav {
+	> .open > a {
+	  &,
+	  &:hover,
+	  &:focus {
+	    background-color: $navbar-inverse-link-active-bg;
+	    color: $navbar-inverse-link-active-color;
+	  }
+	}
+	}
+}
+.sidebar ul li {
+    border-bottom: 1px solid #353535
 }
 
 //Menus
