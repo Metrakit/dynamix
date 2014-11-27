@@ -83,7 +83,9 @@ table.log{
 .btn-nav-left{
 	display:none;
 }
-//@import "theme/navigation-admin";
+@media only screen and (min-width : 768px) {
+@import "theme/navigation-admin";
+}
 
 //Menus
 @import "theme/menus-admin";
@@ -91,8 +93,7 @@ table.log{
 /*========== Media ==========*/ 
 .filemanager-container{
 	min-height: inherit;
-	margin-left:-30px;	
-	margin-right:-30px;	
+	height: calc( 100% - 4px);
 	> iframe {
 		min-height: inherit;
 		border:none;

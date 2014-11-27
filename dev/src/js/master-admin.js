@@ -69,9 +69,23 @@ var masterAdminClass = new MasterAdmin();
 
 //Navigation admin (nav-left)
 $('body').on('click','.btn-nav-left', function (e) {
-  $('#wrapper').addClass('st-effect-11 st-menu-open');
-  console.log('coucou');
+  var wrapper = $('#wrapper');
+  if (wrapper.hasClass('st-menu-open') ) {
+    wrapper.removeClass('st-menu-open');
+  } else {
+    wrapper.addClass('st-menu-open');
+  }
 });
+$('body').on('click','#wrapper.st-menu-open #page-wrapper', function (e) {
+  console.log('coucou)');
+  var wrapper = $('#wrapper');
+  if (wrapper.hasClass('st-menu-open') ) {
+    wrapper.removeClass('st-menu-open');
+  }
+});
+/*$('body').click( function (e) {
+  console.log(e);
+});*/
 
 /**
  * sidebarEffects.js v1.0.0
