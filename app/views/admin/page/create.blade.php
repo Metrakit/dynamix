@@ -17,7 +17,7 @@
 
 @include('includes.session-message')
 
-<div class="col-sm-9">
+<div class="col-sm-12">
 {{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'form-horizontal', 'autocomplete' => 'off' ) ) }}
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

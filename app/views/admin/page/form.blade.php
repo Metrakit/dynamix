@@ -83,6 +83,21 @@
             <label class="col-md-2 control-label" for="#">{{{ Lang::get('admin.block_create') }}}</label>
         </div>
         <!-- ./ création de block -->
+        <section role="block-craete">
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="col-sm-1 block-map"></div>
+            <div class="clearfix"></div>
+        </section>
     </div>
     @endfor
 </div>

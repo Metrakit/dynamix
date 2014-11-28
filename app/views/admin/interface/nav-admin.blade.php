@@ -33,7 +33,7 @@
     <!-- /.navbar-top-links -->
 
     <!-- /.navbar-static-side -->
-    <div class="navbar-default sidebar  sidebar-inverse" role="navigation">
+    <div class="navbar-default sidebar sidebar-inverse" role="navigation">
         <div class="sidebar-nav navbar-collapse collapse">
             <ul class="nav" id="side-menu">
                 <li {{(Request::is( 'admin' ) ? 'class="active"' : '')}}>
