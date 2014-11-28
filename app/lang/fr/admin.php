@@ -44,6 +44,21 @@ return array(
 	'pages'			=> 'Pages',
 	'page_edit'		=> 'Modification de page',
 	'page_create'		=> 'Création de page',
+	'page_name'			=> 'Nom de la page',
+	'page_name_help'		=> 'Le nom de la page sert a mieux identifier cette page parmis les autres dans l\'interface administrateur...',
+	'page_meta_title'		=> 'Titre de l\'onglet',
+	'page_meta_title_help'		=> 'Titre de l\'onglet du navigateur',
+	'page_meta_description'	=> 'Description (moteur de recherche)',
+	'page_meta_description_help'	=> 'Cette description va apparaître dans les résultats de recherche (en gris) et permet un meilleur référencement !',
+	'page_url'				=> 'URL de la page',
+	'page_title'			=> 'Titre de la page',
+
+	//Block
+	'block_create'			=> 'Création de bloc',
+	'block_calltocreate'	=> 'Sélectionnez la largeur du bloc',
+	'blocktype'				=> array(
+		'wysiwyg' => 'Texte/Image',
+		'form' => 'Formulaire'),
 
 	//Tag	
 	'tag'			=> 'Tag',

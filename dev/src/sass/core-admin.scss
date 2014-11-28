@@ -132,10 +132,144 @@ table.log{
 
 
 //Blocks
+.block-create {
+	position: relative;
+	background-color: white;
+	background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%);
+	background-size: 16px 16px;
+	background-position: 0 0, 8px 8px;
+	
+	&:hover .call-to-create, &:focus .call-to-create{
+		display:none;
+	}
+	
+	.call-to-create{
+		position:absolute;
+		z-index:2;
+		color:white;
+		text-align:center;
+		line-height:50px;
+		background:rgba(0,0,0,0.5);
+		top:0;
+		width:100%;
+		height:100%;
+		@include text-shadow(white 0 0 5px);
+		
+	}
+
+	&.step-1-ok {
+		background-color: white;
+		background-image: none;
+		background-size: auto;
+		background-position: 0% 0%;
+		.call-to-create {
+			display:none;
+		}
+		.block-map.hover {
+			background:#333;
+		}
+		.block-type-btns {
+			height:auto;
+			margin-top:60px;	
+		}
+	}
+}
+.block-type-btns{
+	position:absolute;
+	display:block;
+	width:100%;
+	height:0px;
+	margin-top:0;
+	@include transition(all .25s ease);
+	overflow:hidden;
+}
 .block-map{
-	border: 1px solid #e5e5e5;
+	height: 50px;
+	@include opacity(.5);
+	@include transform(all .2s ease);
+	text-align: center;
+	line-height:50px;
+	font-weight:700;
+	vertical-align: middle;
+	color:white;
+	background:rgba(0,0,0,0.5);
+	cursor:pointer;
+	/* border-right:1px #4affff solid;
+	
+	&::last-child {
+		border-right:none;
+	} */
+	&.hover {
+		@include opacity(1);
+	}
+	&:hover, &:focus {
+	}
+}
+.block-map-fake-1, .block-map-fake-2 {
 	height: 50px;
 }
+
+.ul-block-types{
+	text-align:center;
+	padding:0;
+	li {
+		cursor:pointer;
+		display:inline-block;
+		margin: 0 2px;
+	}
+}
+
+
+//Chips
+.chip{
+	position:relative;
+	display:inline-block;
+	text-align:center;
+	border:1px solid;
+	
+	//Style
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+	&:hover, &:focus {
+		color: #333;
+		background-color: #e6e6e6;
+		border-color: #adadad;
+	}
+
+	&.chip-blue {
+		color: #fff;
+		background-color: #3071a9;
+		border-color: #285e8e;
+		&:hover, &:focus {
+			color: #fff;
+			background-color: #3071a9;
+			border-color: #285e8e;
+		}
+	}
+	//Size
+	&.chip-md {
+		font-size:12px;
+		width:24px;
+		height:24px;
+		line-height:24px;
+		@include border-radius(12px);
+	}
+	&.chip-lg {
+		font-size:20px;
+		width:32px;
+		height:32px;
+		line-height:32px;
+		@include border-radius(16px);
+	}
+}
+
+/* .block-map-fake-1{
+	@include opacity(.5);
+}
+.block-map-fake-2{
+	@include opacity(.1);
+} */
 
 //Menus
 @import "theme/menus-admin";

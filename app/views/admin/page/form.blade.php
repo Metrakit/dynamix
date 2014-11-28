@@ -25,18 +25,6 @@
         </div>
         <!-- ./ page_name -->
 
-        <!-- page_title -->
-        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
-            <label class="col-md-2 control-label" for="{{'page_title'}}">{{{ Lang::get('admin.page_title') }}}</label>
-            <div class="col-md-10 col-lg-8">
-                <input class="form-control" type="text" name="{{'page_title'}}_{{$locales[$i]->id}}" id="{{'page_title'}}_{{$locales[$i]->id}}" value="{{{ Input::old('page_title' . '_' . $locales[$i]->id, (isset($object)?$object->$method_locale($locales[$i]->id):null) ) }}}" />
-                {{ $errors->first('page_title' . '_' . $locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
-                <p class="help-block">{{{ Lang::get('admin.page_title_help') }}}</p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <!-- ./ page_title -->
-
         <!-- page_meta_title -->
         <div class="form-group {{{ $errors->has('page_meta_title') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="{{'page_meta_title'}}">{{{ Lang::get('admin.page_meta_title') }}}</label>
@@ -63,7 +51,7 @@
 
         <!-- url -->
         <div class="form-group {{{ $errors->has('url') ? 'error' : '' }}}">
-            <label class="col-md-2 control-label" for="{{'url'}}">{{{ Lang::get('admin.url') }}}</label>
+            <label class="col-md-2 control-label" for="{{'url'}}">{{{ Lang::get('admin.page_url') }}}</label>
             <div class="col-md-10 col-lg-8">
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -72,30 +60,56 @@
                     <input class="form-control" type="text" name="{{'url'}}_{{$locales[$i]->id}}" id="{{'url'}}_{{$locales[$i]->id}}" value="{{{ Input::old('url' . '_' . $locales[$i]->id, (isset($object)?$object->$method_locale($locales[$i]->id):null) ) }}}" />
                     {{ $errors->first('url' . '_' . $locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
                 </div>
-                <p class="help-block">{{{ Lang::get('admin.url_help') }}}</p>
             </div>
             <div class="clearfix"></div>
         </div>
         <!-- ./ url -->
 
+        <!-- page_title -->
+        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="{{'page_title'}}">{{{ Lang::get('admin.page_title') }}}</label>
+            <div class="col-md-10 col-lg-8">
+                <input class="form-control" type="text" name="{{'page_title'}}_{{$locales[$i]->id}}" id="{{'page_title'}}_{{$locales[$i]->id}}" value="{{{ Input::old('page_title' . '_' . $locales[$i]->id, (isset($object)?$object->$method_locale($locales[$i]->id):null) ) }}}" />
+                {{ $errors->first('page_title' . '_' . $locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- ./ page_title -->
+
         <!-- création de block -->
         <div class="form-group">
             <label class="col-md-2 control-label" for="#">{{{ Lang::get('admin.block_create') }}}</label>
+            <input type="hidden" name="block-width" value="">
+            <input type="hidden" name="block-type" value="">
         </div>
         <!-- ./ création de block -->
-        <section role="block-craete">
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
-            <div class="col-sm-1 block-map"></div>
+        <section role="block-create" class="block-create">
+            <div class="call-to-create">
+                <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>
+                {{{ Lang::get('admin.block_calltocreate') }}}
+                <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>
+            </div>
+            <div class="block-type-btns">
+                <ul class="ul-block-types">
+                    @foreach( Cachr::getCache('DB_BlockTypes') as $type )
+                    <li>
+                        <span class="chip chip-blue chip-lg"><span class="{{$type->icon}}"></span></span> {{{ Lang::get($type->lang)}}}
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="col-sm-1 block-map" data-width="1">01/12</div>
+            <div class="col-sm-1 block-map" data-width="2">02/12</div>
+            <div class="col-sm-1 block-map" data-width="3">03/12</div>
+            <div class="col-sm-1 block-map" data-width="4">04/12</div>
+            <div class="col-sm-1 block-map" data-width="5">05/12</div>
+            <div class="col-sm-1 block-map" data-width="6">06/12</div>
+            <div class="col-sm-1 block-map" data-width="7">07/12</div>
+            <div class="col-sm-1 block-map" data-width="8">08/12</div>
+            <div class="col-sm-1 block-map" data-width="9">09/12</div>
+            <div class="col-sm-1 block-map" data-width="10">10/12</div>
+            <div class="col-sm-1 block-map" data-width="11">11/12</div>
+            <div class="col-sm-1 block-map" data-width="12">12/12</div>
             <div class="clearfix"></div>
         </section>
     </div>

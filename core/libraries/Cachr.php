@@ -57,6 +57,14 @@ class Cachr
 			//Get all data in database
 		    return Resource::where('navigable','=',1)->where('in_admin_ui','=',1)->get();
 		});
+
+
+
+		Cache::rememberForever('DB_BlockTypes', function()
+		{
+			//Get all data in database
+		    return BlockType::all();
+		});
 		//Cache Model::Mosaique('name')
 		//Cache::forget('DB_Mosaique');
 		/*Cache::rememberForever('DB_Mosaique', function()
@@ -95,6 +103,7 @@ class Cachr
 		Cache::forget('DB_Nav');
 		Cache::forget('DB_Urls');
 		Cache::forget('DB_Option');
+		Cache::forget('DB_BlockTypes');
 		Cache::forget('DB_AdminResourceName');
 		Cache::forget('DB_AdminResource');
 		Cache::forget('DB_LocaleFrontEnable');

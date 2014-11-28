@@ -7,7 +7,7 @@
 	z-index: 99999;
 	top:50%;
 	left:0;
-	margin-top:-20px;
+	margin-top: 5px;//before 20px but re set with the 51 of the nav top
 	height:40px;
 	width:40px;
 	background:transparent;
@@ -113,6 +113,7 @@ html.csstransforms {
 
 .sidebar {
 	position: fixed;
+	display:table;
 	bottom: 0;
 	top: 0;
 	left: 0;
@@ -120,10 +121,27 @@ html.csstransforms {
 	visibility: hidden;
 	width: 300px;
 	height: 100%;
+	height: calc( 100% - 51px );
 	background-color: #f8f8f8;
 	border-right: #e7e7e7;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
+	
+	.sidebar-nav {
+		height: 100% !important;
+		display: table-row !important;
+		
+		ul.nav {
+			display: table-cell;
+			vertical-align: middle;
+			/* li:first-child {
+				border-top:1px solid #353535;
+			} */
+			li {
+				border:none;
+			}
+		}
+	}
 }
 
 .sidebar::after {

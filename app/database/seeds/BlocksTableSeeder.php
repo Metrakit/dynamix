@@ -8,9 +8,13 @@ class BlocksTableSeeder extends Seeder {
 
         DB::table('block_types')->insert( array(
             array(
-                'name'  => 'wysiwyg'
+                'name'  => 'wysiwyg',
+                'icon'  => 'fa fa-font',
+                'lang'  => 'admin.blocktype.wysiwyg'
             ),array(
-                'name'  => 'form'
+                'name'  => 'form',
+                'icon'  => 'fa fa-list-ul',
+                'lang'  => 'admin.blocktype.form'
             )
         ));
 

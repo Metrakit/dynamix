@@ -19,6 +19,8 @@ class CreateBlockTypesTable extends Migration {
 			$table->increments('id')->unsigned();
 
 			$table->string('name', 80);
+			$table->string('icon',45);
+			$table->string('lang', 80);
 		});
 	}
 
