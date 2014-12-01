@@ -21,6 +21,7 @@ class CreateBlockTypesTable extends Migration {
 			$table->string('name', 80);
 			$table->string('icon',45);
 			$table->string('lang', 80);
+			$table->string('path_to_view');
 		});
 	}
 

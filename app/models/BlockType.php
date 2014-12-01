@@ -1,6 +1,6 @@
 <?php
 
-class Blocktype extends Eloquent{
+class BlockType extends Eloquent{
 	
 	/**
 	 * Table name

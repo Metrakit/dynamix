@@ -130,6 +130,27 @@ table.log{
     border-bottom: 1px solid #353535
 }
 
+/* Standard syntax */ 
+@keyframes bounce {
+    0%   {margin-top: 0px;}
+    12%  {margin-top: 60px;}
+    25%  {margin-top: 51px;}
+    37%  {margin-top: 60px;}
+    50% {margin-top: 56px;}
+    62%  {margin-top: 60px;}
+    75% {margin-top: 58px;}
+    87%, 100%  {margin-top: 60px;}
+}
+@-webkit-keyframes bounce {
+    0%   {margin-top: 0px;}
+    12%  {margin-top: 60px;}
+    25%  {margin-top: 51px;}
+    37%  {margin-top: 60px;}
+    50% {margin-top: 56px;}
+    62%  {margin-top: 60px;}
+    75% {margin-top: 58px;}
+    87%, 100%  {margin-top: 60px;}
+}
 
 //Blocks
 .block-create {
@@ -162,6 +183,7 @@ table.log{
 		background-image: none;
 		background-size: auto;
 		background-position: 0% 0%;
+		padding-bottom:52px;
 		.call-to-create {
 			display:none;
 		}
@@ -170,7 +192,7 @@ table.log{
 		}
 		.block-type-btns {
 			height:auto;
-			margin-top:60px;	
+			@include animation(bounce .5s forwards);
 		}
 	}
 }
@@ -180,7 +202,8 @@ table.log{
 	width:100%;
 	height:0px;
 	margin-top:0;
-	@include transition(all .25s ease);
+	//@include transition(all .25s ease);
+	
 	overflow:hidden;
 }
 .block-map{
@@ -204,6 +227,7 @@ table.log{
 	}
 	&:hover, &:focus {
 	}
+
 }
 .block-map-fake-1, .block-map-fake-2 {
 	height: 50px;

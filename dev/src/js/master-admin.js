@@ -89,8 +89,8 @@ $('body').on('click','#wrapper.st-menu-open #page-wrapper', function (e) {
 });*/
 
 //Block
-var blockMapEnter = function () {
-  var me    = $(this),
+var blockMapEnter = function (e) {
+  var me    = $(e.target),
       index = me.index();
 
   if( !me.hasClass('hover') ) {      
@@ -110,7 +110,7 @@ var blockMapLeave = function () {
 //Listen hover
 $('body .block-map').on({mouseenter: blockMapEnter,mouseleave: blockMapLeave});
 
-//First step = Choose width
+//First step = Choose width (mouseenter)
 $('body').on('click','.block-map', function (e) {
   var width = $(this).attr('data-width');
   //Set input width the width on 12 (x/12)
@@ -130,10 +130,19 @@ $('body').on('click','.block-create.step-1-ok .block-map', function (e) {
   $('body .block-map').on({mouseenter: blockMapEnter,mouseleave: blockMapLeave});
   //Set input to empty string
   $('input[name=block-width]').val('');
+  blockMapEnter(e);
 });
 
 //Second step !
 //Show button with css...
 //When a choice is done, get presenter of module
-
+$('body').on('click','.ajax-block-type', function (e) {
+  var href = '/admin/api/block-type',
+      input = {blockType:$(this).attr('data-block-type')};
+  $.post(href, input, function (data){
+    if (data) {
+      $('#block-type-module').addClass('col-md-' + $('input[name=block-width]').val()).html(data.view)
+    }
+  });
+});
 

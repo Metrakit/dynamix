@@ -104,6 +104,9 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Languages
 		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
 		Route::post('/languages', 'AdminController@postLanguages');
+
+	//API - AJAX
+	Route::post('/api/block-type', 'AdminBlockTypeController@getBlockType');
 });
 
 

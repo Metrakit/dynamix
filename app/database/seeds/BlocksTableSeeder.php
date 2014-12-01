@@ -10,11 +10,13 @@ class BlocksTableSeeder extends Seeder {
             array(
                 'name'  => 'wysiwyg',
                 'icon'  => 'fa fa-font',
-                'lang'  => 'admin.blocktype.wysiwyg'
+                'lang'  => 'admin.blocktype.wysiwyg',
+                'path_to_view' => 'admin.page.block.wysiwyg'
             ),array(
                 'name'  => 'form',
                 'icon'  => 'fa fa-list-ul',
-                'lang'  => 'admin.blocktype.form'
+                'lang'  => 'admin.blocktype.form',
+                'path_to_view' => 'admin.page.block.form'
             )
         ));
 

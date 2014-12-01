@@ -92,35 +92,30 @@
             <div class="block-type-btns">
                 <ul class="ul-block-types">
                     @foreach( Cachr::getCache('DB_BlockTypes') as $type )
-                    <li>
+                    <li class="ajax-block-type" data-block-type="{{$type->name}}">
                         <span class="chip chip-blue chip-lg"><span class="{{$type->icon}}"></span></span> {{{ Lang::get($type->lang)}}}
                     </li>
                     @endforeach
                 </ul>
             </div>
-            <div class="col-sm-1 block-map" data-width="1">01/12</div>
-            <div class="col-sm-1 block-map" data-width="2">02/12</div>
-            <div class="col-sm-1 block-map" data-width="3">03/12</div>
-            <div class="col-sm-1 block-map" data-width="4">04/12</div>
-            <div class="col-sm-1 block-map" data-width="5">05/12</div>
-            <div class="col-sm-1 block-map" data-width="6">06/12</div>
-            <div class="col-sm-1 block-map" data-width="7">07/12</div>
-            <div class="col-sm-1 block-map" data-width="8">08/12</div>
-            <div class="col-sm-1 block-map" data-width="9">09/12</div>
-            <div class="col-sm-1 block-map" data-width="10">10/12</div>
-            <div class="col-sm-1 block-map" data-width="11">11/12</div>
-            <div class="col-sm-1 block-map" data-width="12">12/12</div>
+            <div class="col-sm-1 block-map" data-width="1"></div>
+            <div class="col-sm-1 block-map" data-width="2"></div>
+            <div class="col-sm-1 block-map" data-width="3">1/4</div>
+            <div class="col-sm-1 block-map" data-width="4">1/3</div>
+            <div class="col-sm-1 block-map" data-width="5"></div>
+            <div class="col-sm-1 block-map" data-width="6">1/2</div>
+            <div class="col-sm-1 block-map" data-width="7"></div>
+            <div class="col-sm-1 block-map" data-width="8">2/3</div>
+            <div class="col-sm-1 block-map" data-width="9">3/4</div>
+            <div class="col-sm-1 block-map" data-width="10"></div>
+            <div class="col-sm-1 block-map" data-width="11"></div>
+            <div class="col-sm-1 block-map" data-width="12"></div>
             <div class="clearfix"></div>
+        </section>
+        <section id="block-type-module">
         </section>
     </div>
     @endfor
 </div>
 
 </fieldset>
-   <!--  <div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
-       <label class="col-md-2 control-label" for="content">Contenu de la page *</label>
-       <div class="col-md-8">
-           <textarea class="input-block-level" id="content" name="content" value="content" rows="18">{{{ Input::old('content', isset($page) ? $page->content : null) }}}
-           </textarea>
-       </div>
-   </div> -->
