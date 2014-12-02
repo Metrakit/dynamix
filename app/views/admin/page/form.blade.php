@@ -1,3 +1,6 @@
+@extends('admin.page.' . $action)
+
+@section('form')
 <ul class="nav nav-tabs" role="tablist" id="myTab">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <li role="presentation"{{($i==0?' class="active"':'')}}>
@@ -75,47 +78,55 @@
             <div class="clearfix"></div>
         </div>
         <!-- ./ page_title -->
-
-        <!-- création de block -->
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="#">{{{ Lang::get('admin.block_create') }}}</label>
-            <input type="hidden" name="block-width" value="">
-            <input type="hidden" name="block-type" value="">
-        </div>
-        <!-- ./ création de block -->
-        <section role="block-create" class="block-create">
-            <div class="call-to-create">
-                <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>
-                {{{ Lang::get('admin.block_calltocreate') }}}
-                <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>
-            </div>
-            <div class="block-type-btns">
-                <ul class="ul-block-types">
-                    @foreach( Cachr::getCache('DB_BlockTypes') as $type )
-                    <li class="ajax-block-type" data-block-type="{{$type->name}}">
-                        <span class="chip chip-blue chip-lg"><span class="{{$type->icon}}"></span></span> {{{ Lang::get($type->lang)}}}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="col-sm-1 block-map" data-width="1"></div>
-            <div class="col-sm-1 block-map" data-width="2"></div>
-            <div class="col-sm-1 block-map" data-width="3">1/4</div>
-            <div class="col-sm-1 block-map" data-width="4">1/3</div>
-            <div class="col-sm-1 block-map" data-width="5"></div>
-            <div class="col-sm-1 block-map" data-width="6">1/2</div>
-            <div class="col-sm-1 block-map" data-width="7"></div>
-            <div class="col-sm-1 block-map" data-width="8">2/3</div>
-            <div class="col-sm-1 block-map" data-width="9">3/4</div>
-            <div class="col-sm-1 block-map" data-width="10"></div>
-            <div class="col-sm-1 block-map" data-width="11"></div>
-            <div class="col-sm-1 block-map" data-width="12"></div>
-            <div class="clearfix"></div>
-        </section>
-        <section id="block-type-module">
-        </section>
     </div>
     @endfor
 </div>
 
 </fieldset>
+@endsection
+
+@section('container')
+<!-- parameters -->
+<input type="hidden" name="block-width" value="">
+<input type="hidden" name="block-type" value="">
+<!-- ./ parameters -->
+
+<section role="block-create" class="block-create">
+    <div class="container">
+        <h2>{{{ Lang::get('admin.block_create') }}}</h2>
+    </div>
+    <div class="container">
+        <div class="call-to-create">
+            <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>
+            {{{ Lang::get('admin.block_calltocreate') }}}
+            <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>
+        </div>
+        <div class="block-type-btns">
+            <ul class="ul-block-types">
+                @foreach( Cachr::getCache('DB_BlockTypes') as $type )
+                <li class="ajax-block-type" data-block-type="{{$type->name}}">
+                    <span class="chip chip-blue chip-lg"><span class="{{$type->icon}}"></span></span> {{{ Lang::get($type->lang)}}}
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="block-map-border">
+            <section id="block-type-module"></section>
+        </div>
+        <div class="col-sm-1 block-map" data-width="1">1/12</div>
+        <div class="col-sm-1 block-map" data-width="2">2/12</div>
+        <div class="col-sm-1 block-map" data-width="3">3/12</div>
+        <div class="col-sm-1 block-map" data-width="4">4/12</div>
+        <div class="col-sm-1 block-map" data-width="5">5/12</div>
+        <div class="col-sm-1 block-map" data-width="6">6/12</div>
+        <div class="col-sm-1 block-map" data-width="7">7/12</div>
+        <div class="col-sm-1 block-map" data-width="8">8/12</div>
+        <div class="col-sm-1 block-map" data-width="9">9/12</div>
+        <div class="col-sm-1 block-map" data-width="10">10/12</div>
+        <div class="col-sm-1 block-map" data-width="11">11/12</div>
+        <div class="col-sm-1 block-map" data-width="12">12/12</div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+
+@endsection

@@ -32,9 +32,10 @@ class AdminPageController extends BaseController {
 		$data['user'] 			= Auth::user();
 
 		//Interface
+		$data['action'] 		= 'create';
 		$data['noAriane'] 		= true;
 
-		return View::make('admin.page.create', $data);
+		return View::make('admin.page.form', $data);
 	}
 
 	/**

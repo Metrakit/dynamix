@@ -40,10 +40,10 @@
                 <!-- ./ main-container -->
 
                 </div>
+                @yield('container')
                 </div>
             </div>
             
-            @yield('container')
             <!-- ./ content -->
 
         </div>

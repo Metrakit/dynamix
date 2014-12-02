@@ -22,11 +22,12 @@
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
-        @include('admin.page.form')
+        @yield('form')
 
         <button type="submit" class="btn btn-primary">Créer la page !</button>
         <!-- ./ form actions -->
 {{ Form::close() }}
 </div>
 <div class="clearfix"></div>
+
 @stop

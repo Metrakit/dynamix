@@ -7,11 +7,11 @@ tinymce.init({
     selector: "textarea#content",theme: "modern",
     plugins: [
          "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-         "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+         "searchreplace wordcount visualblocks visualchars insertdatetime code media nonbreaking",
          "table contextmenu directionality emoticons paste textcolor responsivefilemanager"
    ],
    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-   toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+   toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | code ",
    image_advtab: true ,
    
    external_filemanager_path:"/filemanager/",
