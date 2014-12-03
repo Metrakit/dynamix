@@ -52,6 +52,8 @@ return array(
 	'page_meta_description_help'	=> 'Cette description va apparaître dans les résultats de recherche (en gris) et permet un meilleur référencement !',
 	'page_url'				=> 'URL de la page',
 	'page_title'			=> 'Titre de la page',
+	'page_proprieties'			=> 'Propriétés de la page',
+	'page_contents'			=> 'Contenu de la page',
 
 	//Block
 	'block_create'			=> 'Création de bloc',

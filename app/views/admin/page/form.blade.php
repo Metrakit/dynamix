@@ -16,6 +16,7 @@
 <div class="tab-content">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="{{$locales[$i]->id}}">
+        <h3>{{{ Lang::get('admin.page_proprieties') }}}</h3>
         <!-- page_name -->
         <div class="form-group {{{ $errors->has('page_name') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="{{'page_name'}}">{{{ Lang::get('admin.page_name') }}}</label>
@@ -67,7 +68,8 @@
             <div class="clearfix"></div>
         </div>
         <!-- ./ url -->
-
+    <hr>
+        <h3>{{{ Lang::get('admin.page_contents') }}}</h3>
         <!-- page_title -->
         <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="{{'page_title'}}">{{{ Lang::get('admin.page_title') }}}</label>
@@ -92,9 +94,6 @@
 <!-- ./ parameters -->
 
 <section role="block-create" class="block-create">
-    <div class="container">
-        <h2>{{{ Lang::get('admin.block_create') }}}</h2>
-    </div>
     <div class="container">
         <div class="call-to-create">
             <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>

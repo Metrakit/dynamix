@@ -46,11 +46,17 @@
                         <ul class="nav navbar-nav">
                             @include('public.nav.nav')
                         </ul>
+                        @if(Auth::check())
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
+                        </ul>
+                        @endif
                     </div>
                 </div>
             </div>
             <!-- ./ navbar-desktop -->
 
+            {{var_dump(Session::all())}}
             <!-- container.main -->
             <div class="container main">
                 <div class="row">

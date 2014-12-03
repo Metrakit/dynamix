@@ -23,8 +23,7 @@
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
         @yield('form')
-
-        <button type="submit" class="btn btn-primary">Créer la page !</button>
+        
         <!-- ./ form actions -->
 {{ Form::close() }}
 </div>
