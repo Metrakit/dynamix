@@ -91,13 +91,13 @@ table.log{
 .btn-nav-left{
 	display:none;
 }
-#wrapper {
-	background:#222;
-}
 @media only screen and (min-width : 768px) {
 @import "theme/navigation-admin";
 }
 //+ navbar black for left nav
+#wrapper {
+	background:#222;
+}
 .sidebar.sidebar-inverse {
 	background-color: $navbar-inverse-bg;
 	border-color: $navbar-inverse-border;
