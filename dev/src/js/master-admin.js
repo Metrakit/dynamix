@@ -89,7 +89,7 @@ $('body').on('click','#wrapper.st-menu-open #page-wrapper', function (e) {
 });*/
 
 //Block
-var blockMapEnter = function (e) {
+/*var blockMapEnter = function (e) {
   var me    = $(e.target),
       index = me.index('.block-map');
 
@@ -153,5 +153,5 @@ $('body').on('click','.ajax-block-type', function (e) {
       $('#block-type-module').html(data.view);
     }
   });
-});
+});*/
 

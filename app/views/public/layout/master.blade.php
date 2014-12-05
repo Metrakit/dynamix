@@ -56,7 +56,7 @@
             </div>
             <!-- ./ navbar-desktop -->
 
-            {{var_dump(Session::all())}}
+<!--             {{var_dump(Session::all())}} -->
             <!-- container.main -->
             <div class="container main">
                 <div class="row">
