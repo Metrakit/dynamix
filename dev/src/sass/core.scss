@@ -18,6 +18,56 @@
 	margin-bottom:15px;
 }
 
+$navbar-blue-bg : #0f93bc;
+$navbar-blue-border : #12b9ee;
+$navbar-blue-link-color : white;
+$navbar-blue-link-hover-color : #f5f5f5;
+$navbar-blue-link-hover-bg : #0c7393;
+$navbar-blue-link-active-color : #eee;
+$navbar-blue-link-active-bg : #12b9ee;
+$navbar-blue-link-disabled-color : grey;
+$navbar-blue-link-disabled-bg : none;
+
+.navbar-blue {
+	@include border-radius(0px);
+	background-color: $navbar-blue-bg;
+	border-color: $navbar-blue-border;
+
+	.nav {
+		> li > a {
+			color: $navbar-blue-link-color;
+			&:hover, &:focus {
+				color: $navbar-blue-link-hover-color;
+				background-color: $navbar-blue-link-hover-bg;
+			}
+		}
+		> .active > a {
+	  		&, &:hover, &:focus {
+	    	color: $navbar-blue-link-active-color;
+	   		background-color: $navbar-blue-link-active-bg;
+		  	}
+		}
+		> .disabled > a {
+		  	&, &:hover, &:focus {
+		    	color: $navbar-blue-link-disabled-color;
+		    	background-color: $navbar-blue-link-disabled-bg;
+		  	}
+		}
+	}
+
+	// Dropdowns
+	.navbar-nav {
+	> .open > a {
+	  &,
+	  &:hover,
+	  &:focus {
+	    background-color: $navbar-blue-link-active-bg;
+	    color: $navbar-blue-link-active-color;
+	  }
+	}
+	}
+}
+
 //Slideshow
 @import "slideshow/responsiveslideshow";
 
