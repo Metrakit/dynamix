@@ -168,5 +168,13 @@
 
 {{ Pager::render($page) }}
 
-
+{{-- To surcharge for comment module --}}
+<section role="comment">
+	<h2>{{ count($page->comments()) }}</h2>
+	@foreach ( $page->comments() as $comment ) 
+		{{ var_dump($comment) }}
+	@endforeach
+	
+	
+</section>
 @stop

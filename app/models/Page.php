@@ -125,4 +125,9 @@ class Page extends Eloquent {
     }
 
 
+    //To surrcharge for comment module
+    public function comments () {
+    	return $this->morphMany('Comment', 'commentable');
+    }
+
 }

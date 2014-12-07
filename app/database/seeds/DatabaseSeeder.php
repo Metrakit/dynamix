@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder {
         
         // ONLY FOR DEVELOPMENT
         $this->call('FullFormSeeder');
+        $this->call('CommentsTableSeeder');
 
 
         //Sliders
