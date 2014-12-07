@@ -1,0 +1,44 @@
+@import "compass";
+
+.comment{
+	
+}
+
+.comment-head{
+	margin-bottom:10px;
+	font-size:16px;
+}
+
+.comment-form {
+}
+
+.img-comment{
+	float:left;
+	margin-right:10px;
+	img{
+		display: block;
+		width: 48px;
+		height: 48px;
+	}
+}
+.input-comment-form {
+	overflow:hidden;
+	input{
+		width:100%;
+		height: 48px;
+		border:2px solid #ddd;
+		@include border-radius(3px);
+		font-size:18px;
+		padding: 2px 6px;
+		&:focus {
+			outline: none;
+			border:2px solid #ddd;
+			@include border-radius(3px);
+		}
+	}
+	
+}
+
+.comment-user-header{
+	color:grey;
+}

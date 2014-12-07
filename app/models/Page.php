@@ -32,6 +32,12 @@ class Page extends Eloquent {
     public function trackable() {
         return $this->morphTo();
     }
+
+    //To surrcharge for comment module
+    public function comments() {
+    	return $this->morphMany('Comment', 'commentable');
+    }
+
     
 	
 	/**
@@ -123,11 +129,4 @@ class Page extends Eloquent {
     public function page_meta_description_locale( $locale_id ) {
         return $this->translateLocale( $this->structure->first()->i18n_meta_description , $locale_id );
     }
-
-
-    //To surrcharge for comment module
-    public function comments () {
-    	return $this->morphMany('Comment', 'commentable');
-    }
-
 }

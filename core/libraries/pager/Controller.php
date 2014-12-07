@@ -36,7 +36,7 @@ class Pager {
     		$view .= $this->blockable( $block );
 		}
 
-        return $view;
+        return $view.'<div class="clearfix"></div>';;
     }
 
 

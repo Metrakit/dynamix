@@ -21,4 +21,9 @@ class Comment extends Eloquent{
     {
         return $this->morphTo();
     }
+
+    public function user () {
+        //To adapt for other user system
+        return AuthUser::find($this->user_id);
+    }
 }
