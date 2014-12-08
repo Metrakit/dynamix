@@ -1,0 +1,136 @@
+@import "compass";
+
+.comment{
+	
+}
+
+//Header of comment system
+.comment-head{
+	margin-bottom:10px;
+	font-size:16px;
+}
+
+//Form for comment
+.comment-form {
+	margin-bottom:10px;
+}
+	//Input of form
+	.input-comment-form {
+		overflow:hidden;
+		input{
+			width:100%;
+			height: 48px;
+			border:2px solid #ddd;
+			@include border-radius(3px);
+			font-size:18px;
+			padding: 2px 6px;
+			&:focus {
+				outline: none;
+				//font-size:12px;
+				border:2px solid #ddd;
+				@include border-radius(3px);
+			}
+		}
+		/* textarea{
+			width:100%;
+			border:2px solid #ddd;
+			font-size:12px;
+			@include border-radius(3px);
+			padding: 2px 6px;
+			&:focus {
+				outline: none;
+				font-size:12px;
+				border:2px solid #ddd;
+				@include border-radius(3px);
+			}
+		} */
+	}
+
+//Avatar
+.img-comment{
+	float:left;
+	margin-right:10px;
+	img{
+		display: block;
+		width: 48px;
+		height: 48px;
+	}
+}
+
+//Comment of users
+.comment-user{
+	margin: 5px 0;
+}
+	.comment-user-inner{
+		overflow: hidden;
+	}
+		//Header of comment user
+		.comment-user-header{
+			color:#bbb;
+			font-size:85%;
+		}
+		//Body of comment user
+		.comment-user-body{
+			p {
+				margin:0
+			}
+		}
+		//Footer of comment user
+		.comment-user-footer{
+			color:#bbb;
+			font-size:85%;
+			a {
+				color:#bbb;
+				&:hover, &:focus{
+					color:#bbb;
+					text-decoration: none;
+				}
+			}
+		}
+
+
+//Relpy of a comment user
+.comment-reply{
+	margin-left:48px;
+	padding:0;
+	list-style:none;
+	margin-top:20px;
+	li{
+
+	}
+}
+	//Smallest avatar for replied comment
+	.img-comment-reply{
+		float:left;
+		margin-right:10px;
+		img{
+			display: block;
+			width: 36px;
+			height: 36px;
+		}
+	}
+	//Set overflow none for comment replied
+	.comment-reply-inner{
+		overflow:hidden;
+	}
+
+
+//Action Modifier
+.author-edit{
+	display:none;
+	a {
+		color:#bbb;
+		&:hover, &:focus{
+			color:#bbb;
+			text-decoration: none;
+		}
+	}
+}
+
+.comment-reply-inner, .comment-user-inner {
+	&:hover, &:focus {
+		.author-edit{
+			display:inline;
+		}
+	}
+}

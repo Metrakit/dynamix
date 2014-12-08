@@ -138,7 +138,13 @@ Route::post('password/reset/{token}', array('uses' => 'RemindersController@postR
 Route::post('form', array('as' => 'form', 'uses' => 'FormerController@store'));
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Comment
+|--------------------------------------------------------------------------
+|
+*/
+Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
 
 /*
 |--------------------------------------------------------------------------

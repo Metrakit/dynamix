@@ -17,16 +17,15 @@
 
 @include('includes.session-message')
 
-<div class="col-sm-12">
+<div>
 {{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'form-horizontal', 'autocomplete' => 'off' ) ) }}
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
-        @include('admin.page.form')
-
-        <button type="submit" class="btn btn-primary">Créer la page !</button>
+        @yield('form')
+        
         <!-- ./ form actions -->
 {{ Form::close() }}
 </div>
-<div class="clearfix"></div>
+
 @stop

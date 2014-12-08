@@ -18,6 +18,7 @@
 /dev/src/css/main.back.min.css
 /dev/src/css/core-admin.css
 /dev/src/css/core.css
+/dev/src/css/main.min.css
 
 /public/css/**
 /public/js/**

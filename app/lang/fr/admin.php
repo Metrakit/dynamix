@@ -44,6 +44,7 @@ return array(
 	'pages'			=> 'Pages',
 	'page_edit'		=> 'Modification de page',
 	'page_create'		=> 'Création de page',
+	'page_add'		=> 'Créer la page',
 	'page_name'			=> 'Nom de la page',
 	'page_name_help'		=> 'Le nom de la page sert a mieux identifier cette page parmis les autres dans l\'interface administrateur...',
 	'page_meta_title'		=> 'Titre de l\'onglet',
@@ -52,13 +53,19 @@ return array(
 	'page_meta_description_help'	=> 'Cette description va apparaître dans les résultats de recherche (en gris) et permet un meilleur référencement !',
 	'page_url'				=> 'URL de la page',
 	'page_title'			=> 'Titre de la page',
+	'put_page_title'			=> 'Saisissez le titre de la page',
+	'page_proprieties'			=> 'Propriétés de la page',
+	'page_contents'			=> 'Contenu de la page',
 
 	//Block
 	'block_create'			=> 'Création de bloc',
 	'block_calltocreate'	=> 'Sélectionnez la largeur du bloc',
 	'blocktype'				=> array(
+		'wysiwyg_add' => 'Ajouter un bloc de Texte/Image',
 		'wysiwyg' => 'Texte/Image',
-		'form' => 'Formulaire'),
+		'form_add' => 'Ajouter un Formulaire',
+		'form' => 'Formulaire'
+		),
 
 	//Tag	
 	'tag'			=> 'Tag',
@@ -135,24 +142,21 @@ return array(
 
 
 	//Auth
-	'' => '',
+	'auth'				=> 'Compte',
+	'auths'				=> 'Comptes',
+	'auth_create'		=> 'Création d\'un compte',
+	'auth_edit_profil'	=> 'Modification d\'un compte',
+	'auth_profil'		=> 'Profile',
+	'auth_edit_role'	=> 'Modification du rôle utilisateur',
+	'auth_empty'		=> 'Cet utilisateur n\'existe pas !',
+	'auth_delete_success'	=> 'L\'utilisateur a bien été supprimé !',
+	'auth_delete_fail'		=> 'Une erreur s\'est produite... L\'utilisateur n\'a pas été supprimé...',
+	'auth_create_success'	=>  'L\'utilisateur a été créé avec succès !',
+	'auth_create_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été créé...',
+	'auth_edit_success'		=>  'L\'utilisateur a été modifié avec succès !',
+	'auth_edit_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été modifié...',
+	'auth_favourite_langage'=>'Langue préféré',
 
-	//User
-	/*'user'				=> 'Utilisateur',
-	'users'				=> 'Utilisateurs',
-	'user_create'		=> 'Création d\'utilisateur',
-	'user_edit_profil'	=> 'Modification du profile',
-	'user_profil'		=> 'Profile',
-	'user_edit_role'	=> 'Modification du rôle utilisateur',
-	'user_empty'		=> 'Cet utilisateur n\'existe pas !',
-	'user_delete_success'	=> 'L\'utilisateur a bien été supprimé !',
-	'user_delete_fail'		=> 'Une erreur s\'est produite... L\'utilisateur n\'a pas été supprimé...',
-	'user_create_success'	=>  'L\'utilisateur a été créé avec succès !',
-	'user_create_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été créé...',
-	'user_edit_success'		=>  'L\'utilisateur a été modifié avec succès !',
-	'user_edit_fail'		=>  'Une erreur s\'est produite... L\'utilisateur n\'a pas été modifié...',
-	'user_favourite_langage'=>'Langue préféré',
-*/
 
 	//Environment
 	'environment'				=> 'Langues',

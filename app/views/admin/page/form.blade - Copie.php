@@ -16,26 +16,6 @@
 <div class="tab-content">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="{{$locales[$i]->id}}">
-        <!-- <h3>{{{ Lang::get('admin.page_contents') }}}</h3> -->
-        <!-- page_title -->
-        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
-            <div>
-                <input class="form-control input-transparent-lg" type="text" name="{{'page_title'}}_{{$locales[$i]->id}}" id="{{'page_title'}}_{{$locales[$i]->id}}" placeHolder="{{{ Lang::get('admin.put_page_title') }}}" value="{{{ Input::old('page_title' . '_' . $locales[$i]->id, (isset($object)?$object->$method_locale($locales[$i]->id):null) ) }}}" />
-                {{ $errors->first('page_title' . '_' . $locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
-            </div>
-        </div>
-        <!-- ./ page_title -->
-
-        <!-- wysiwyg -->
-        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
-            @include('admin.page.block.wysiwyg')
-        </div>
-        <!-- ./ wysiwyg -->
-
-        @include('admin.page.block.presenter_call_to_create')
-        
-        <hr>
-
         <h3>{{{ Lang::get('admin.page_proprieties') }}}</h3>
         <!-- page_name -->
         <div class="form-group {{{ $errors->has('page_name') ? 'error' : '' }}}">
@@ -88,13 +68,64 @@
             <div class="clearfix"></div>
         </div>
         <!-- ./ url -->
+    <hr>
+        <h3>{{{ Lang::get('admin.page_contents') }}}</h3>
+        <!-- page_title -->
+        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="{{'page_title'}}">{{{ Lang::get('admin.page_title') }}}</label>
+            <div class="col-md-10 col-lg-8">
+                <input class="form-control" type="text" name="{{'page_title'}}_{{$locales[$i]->id}}" id="{{'page_title'}}_{{$locales[$i]->id}}" value="{{{ Input::old('page_title' . '_' . $locales[$i]->id, (isset($object)?$object->$method_locale($locales[$i]->id):null) ) }}}" />
+                {{ $errors->first('page_title' . '_' . $locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- ./ page_title -->
     </div>
     @endfor
 </div>
 
-<div class="form-group">
-    <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-{{ $glyphicon }}"></span> {{ $buttonLabel }}</button>
-</div>
-
 </fieldset>
+@endsection
+
+@section('container')
+<!-- parameters -->
+<input type="hidden" name="block-width" value="">
+<input type="hidden" name="block-type" value="">
+<!-- ./ parameters -->
+
+<section role="block-create" class="block-create">
+    <div class="container">
+        <div class="call-to-create">
+            <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>
+            {{{ Lang::get('admin.block_calltocreate') }}}
+            <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>
+        </div>
+        <div class="block-type-btns">
+            <ul class="ul-block-types">
+                @foreach( Cachr::getCache('DB_BlockTypes') as $type )
+                <li class="ajax-block-type" data-block-type="{{$type->name}}">
+                    <span class="chip chip-blue chip-lg"><span class="{{$type->icon}}"></span></span> {{{ Lang::get($type->lang)}}}
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="block-map-border">
+            <section id="block-type-module"></section>
+        </div>
+        <div class="col-sm-1 block-map" data-width="1">1/12</div>
+        <div class="col-sm-1 block-map" data-width="2">2/12</div>
+        <div class="col-sm-1 block-map" data-width="3">3/12</div>
+        <div class="col-sm-1 block-map" data-width="4">4/12</div>
+        <div class="col-sm-1 block-map" data-width="5">5/12</div>
+        <div class="col-sm-1 block-map" data-width="6">6/12</div>
+        <div class="col-sm-1 block-map" data-width="7">7/12</div>
+        <div class="col-sm-1 block-map" data-width="8">8/12</div>
+        <div class="col-sm-1 block-map" data-width="9">9/12</div>
+        <div class="col-sm-1 block-map" data-width="10">10/12</div>
+        <div class="col-sm-1 block-map" data-width="11">11/12</div>
+        <div class="col-sm-1 block-map" data-width="12">12/12</div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+
 @endsection

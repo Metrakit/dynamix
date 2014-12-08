@@ -89,9 +89,9 @@ $('body').on('click','#wrapper.st-menu-open #page-wrapper', function (e) {
 });*/
 
 //Block
-var blockMapEnter = function (e) {
+/*var blockMapEnter = function (e) {
   var me    = $(e.target),
-      index = me.index();
+      index = me.index('.block-map');
 
   if( !me.hasClass('hover') ) {      
     //reset
@@ -99,8 +99,12 @@ var blockMapEnter = function (e) {
 
     //set
     for ( var i = 0; i < index; i++ ) {
-      $(me.parent().children()[i]).addClass('hover');
+      $(me.parent().children('.block-map')[i]).addClass('hover');
     }
+
+    //set block-map-border
+    $('.block-map-border').removeClass().addClass('block-map-border col-sm-' + (index+1) );
+    $('.ul-block-types').removeClass().addClass('ul-block-types col-sm-' + (index+1) );
     me.addClass('hover');
   }
 }
@@ -137,12 +141,17 @@ $('body').on('click','.block-create.step-1-ok .block-map', function (e) {
 //Show button with css...
 //When a choice is done, get presenter of module
 $('body').on('click','.ajax-block-type', function (e) {
+  //set step 2
+  $('.block-create').addClass('step-2-ok loading');
+
+  //get creator
   var href = '/admin/api/block-type',
       input = {blockType:$(this).attr('data-block-type')};
   $.post(href, input, function (data){
     if (data) {
-      $('#block-type-module').addClass('col-md-' + $('input[name=block-width]').val()).html(data.view)
+      $('.block-create').removeClass('loading');
+      $('#block-type-module').html(data.view);
     }
   });
-});
+});*/
 
