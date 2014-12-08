@@ -7,7 +7,7 @@ return array(
 	| Validator
 	|--------------------------------------------------------------------------
 	|
-	|	Identification
+	|	Auth
 	|
 	*/
 
@@ -23,25 +23,9 @@ return array(
 	|
 	*/
 	
-	'comment'		=>		array(	'name'		=> 'required|min:3',
-									'email'		=> 'required|min:3|email',
-									'comment'	=> 'required|min:3'),
-
-	'comment-admin'	=>		array(	'comment'	=> 'required|min:3'),
-
-
-	'post'			=> 		array(	'title'		=> 'required|min:3',
-									'content'	=> 'required|min:3',
-									'image'		=> 'image'),
-
-	'slider'		=> 		array(	'image'		=> 'required|image',
-									'img_alt'	=> 'required|min:3',
-									'description'=> 'min:3'),
-
-
-	'slider-edit'	=> 		array(	'image'		=> 'image',
-									'img_alt'	=> 'required|min:3',
-									'description'=> 'min:3'),
+	'comment'		=>		array(	'commentable_id'	=> 'required|integer',
+									'commentable_type'	=> 'required',
+									'message'			=> 'required|min:3'),
 
 	/*
 	|	Admin
@@ -98,27 +82,6 @@ return array(
 
 		'auth_profil'=>		array(	'oldpassword'=> 'required',
 									'password'	=> 'required|max:225'),
-
-	/*
-	|	User
-	|
-	
-		'user_create'=>		array(	'pseudo'	=> 'required|max:45',
-									'firstname'	=> 'required|max:45',
-									'lastname'	=> 'required|max:45',
-									'email'		=> 'required|email|max:225',
-									'password'	=> 'required|max:225'),
-
-		'user_role'	=> 		array ( 'role'		=> 'required|exists:roles,id'),
-
-		'user_profil'=>		array(	'pseudo'	=> 'required|max:45',
-									'firstname'	=> 'required|max:45',
-									'lastname'	=> 'required|max:45',
-									'email'		=> 'required|email|max:225',
-									'oldpassword'=> 'required',
-									'password'	=> 'required|max:225'),
-
-	*/
 		
 	),
 

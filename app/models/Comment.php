@@ -22,6 +22,10 @@ class Comment extends Eloquent{
         return $this->morphTo();
     }
 
+    public function children() {
+        return $this->morphMany('Comment', 'commentable');
+    }
+
     public function user () {
         //To adapt for other user system
         return AuthUser::find($this->user_id);

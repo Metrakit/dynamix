@@ -21,8 +21,7 @@ class CreateCommentsTable extends Migration {
 			$table->text('text');
 			$table->integer('user_id')->unsigned();
 
-			$table->integer('locale_id')->unsigned()->nullable();
-			$table->integer('parent_id')->unsigned()->nullable();
+			$table->string('locale_id',5)->nullable();
 
 			$table->integer('is_published')->default(true);
 

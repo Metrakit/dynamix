@@ -4,6 +4,7 @@ return array(
 	'comment'		=> 'commentaire',
 	'comments'		=> 'commentaires',
 
-	'placeHolder'		=> 'Laissez un message',
+	'placeHolder'	=> 'Laissez un message',
+	'reply'			=> 'Répondre',
 	
 	);
