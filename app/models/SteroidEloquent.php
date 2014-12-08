@@ -59,4 +59,10 @@ class SteroidEloquent extends Model{
  		return $data;
  	}
 
+ 	public static function generateForm()
+ 	{
+ 		$model = get_called_class();
+ 		return Former::renderByModel(new $model);
+ 	}
+
 }

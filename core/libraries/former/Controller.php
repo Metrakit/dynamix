@@ -102,6 +102,10 @@ class Former extends \Controller {
         $form = (object) $form->formr();
         $data['form']->id = $form->model;
 
+        if (isset($form->action)) {
+            $data['form']->action = $form->action; 
+        }
+       
         $inputs = $form->data;
 
         // Boucle sur les inputs

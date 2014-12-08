@@ -16,7 +16,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"nesbot/Carbon": "*",
-		"google/apiclient": "1.0.*@beta",
+		"google/apiclient": "1.1.*@dev",
 		"thujohn/analytics": "dev-master"
 	},
 	"autoload": {
@@ -27,7 +27,7 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
-			"vendor/dynamix/template"
+			"vendor/dynamix"
 		]
 	},
 	"scripts": {

@@ -111,7 +111,9 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Dynamix packages
-		'Dynamix\Template\TemplateServiceProvider',
+		//'Dynamix\Template\TemplateServiceProvider',
+		
+		'Dynamix\BlogModule\BlogServiceProvider',
 
 		// External packages
 		'PagerServiceProvider',
@@ -187,7 +189,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		// Dynamix packages
-		'Template'        => 'Dynamix\Template\TemplateFacade',
+		//'Template'        => 'Dynamix\Template\TemplateFacade',
+		'BlogModule'        => 'Dynamix\BlogModule\BlogFacade',
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
