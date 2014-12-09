@@ -21,7 +21,11 @@ class AdminNavigationController extends BaseController {
 		//allowable resource
 		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
 
-		return View::make('admin.navigation.index', $data );
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.navigation.index', $data )->renderSections());
+		} else {
+			return View::make('admin.navigation.index', $data );
+		}
 	}
 
 	/**

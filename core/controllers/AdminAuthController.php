@@ -20,7 +20,11 @@ class AdminAuthController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		return View::make('admin.auth.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.auth.index', $data )->renderSections());
+		} else {
+			return View::make('admin.auth.index', $data);
+		}
 	}
 
 

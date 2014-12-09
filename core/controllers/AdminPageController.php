@@ -18,7 +18,11 @@ class AdminPageController extends BaseController {
 		$data['noAriane'] 		= true;
         $data['pages'] 			= Page::all();
 
-		return View::make('admin.page.index', $data);
+        if (Request::ajax()) {
+			return Response::json(View::make( 'admin.page.index', $data )->renderSections());
+		} else {
+			return View::make('admin.page.index', $data);
+		}
 	}
 
 	/**

@@ -7,7 +7,7 @@
 
 
 
-@include keyframes (loader) {
+@include keyframes(loader) {
   0% {
     @include rotate(0deg);
   }
@@ -29,7 +29,7 @@
   }
 }
 
-@include keyframes( loader-inner ){
+@include keyframes(loader-inner) {
   0% {
     height: 0%;
   }
@@ -53,14 +53,15 @@
 
 //Loader
 .loader {
-	display: none;
+	//display: none;
 	position: absolute;
 	top: 0;
 	text-align: center;
 	height: 100%;
 	//background: rgba(0,0,0,.5);
 	width: 100%;
-
+	z-index: 9999;
+	
 	> div {
 		display: inline-block;
 		width: 200px;
@@ -458,6 +459,9 @@ Standard syntax
 @import "theme/menus-admin";
 
 /*========== Media ==========*/ 
+#section-filemanager {
+}
+
 .filemanager-container{
 	min-height: inherit;
 	height: calc( 100% - 4px);

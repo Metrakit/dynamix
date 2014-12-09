@@ -19,31 +19,39 @@
 
             <div id="page-wrapper">
                 <div class="page-wrapper-inner">
-                @yield('filemanager')
-                <div class="page-content">
-                @yield('page-header')
-                
 
-                <!-- /.row -->
-                @section('ariane')
-                @if(!isset($noAriane))
-                <div class="row">
-                    <p>
-        <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-                    </p>
+                    <div id="section-filemanager">
+                        @yield('filemanager')
+                    </div>
+
+                    <div class="page-content">
+
+                        <div id="section-page-header">
+                            @yield('page-header')
+                        </div>
+
+                        <!-- /.row -->
+                        @section('ariane')
+                        @if(!isset($noAriane))
+                        <div class="row">
+                            <p>
+                <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                            </p>
+                        </div>
+                        @endif
+                        @show
+
+                        <!-- main-container -->
+                        <div id="section-content">
+                            @yield('content')
+                        </div>
+                        <!-- ./ main-container -->
+
+                    </div>
+                    @yield('container')
                 </div>
-                @endif
-                @show
 
-                <!-- main-container -->
-                @yield('content')
-                <!-- ./ main-container -->
-
-                </div>
-                @yield('container')
-                </div>
-
-                <div class="loader">
+                <div class="loader" style="display:none">
                     <div><span class="loader-inner"></span></div>
                 </div>
             </div>

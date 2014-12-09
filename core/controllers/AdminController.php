@@ -27,7 +27,11 @@ class AdminController extends BaseController {
 		$data['ga_rebound'] 				= App::make('GoogleAnalyticsAPIController')->getRebound();
 		$data['ga_newOnReturningVisitor'] 	= App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();
 
-		return View::make('admin.index', $data );
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.index', $data )->renderSections());
+		} else {
+			return View::make('admin.index', $data );
+		}
 	}
 
 
@@ -39,12 +43,16 @@ class AdminController extends BaseController {
 	public function getMedia()
 	{
 		//User
-		$user = Auth::user();
+		$data['user'] = Auth::user();
 
 		//Interface
-		$noAriane = true;
+		$data['noAriane'] = true;
 
-		return View::make('admin.media.index', compact('user','noAriane'));
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.media.index', $data )->renderSections());
+		} else {
+			return View::make('admin.media.index', $data);
+		}
 	}
 
 
@@ -78,7 +86,11 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		return View::make('admin.role_permission.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.role_permission.index', $data )->renderSections());
+		} else {
+			return View::make('admin.role_permission.index', $data);
+		}
 	}
 
 	/**
@@ -161,7 +173,11 @@ class AdminController extends BaseController {
 		$data['langsFrontEnd'] = array_chunk($data['langsFrontEnd']->toArray(), round(count($data['langsFrontEnd']->toArray())/3+1));
 		//return var_dump($data['langsFrontEnd']);
 
-		return View::make('admin.environment.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.environment.index', $data )->renderSections());
+		} else {
+			return View::make('admin.environment.index', $data);
+		}
 	}
 
 	/**
@@ -258,7 +274,11 @@ class AdminController extends BaseController {
 
 		$data['logs'] = Track::orderBy('date','DESC')->paginate(20);
 
-		return View::make('admin.log.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.log.index', $data )->renderSections());
+		} else {
+			return View::make('admin.log.index', $data);
+		}
 	}
 
 	/**
@@ -276,7 +296,11 @@ class AdminController extends BaseController {
 
 		$data['option'] = Option::first();
 
-		return View::make('admin.option.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.option.index', $data )->renderSections());
+		} else {
+			return View::make('admin.option.index', $data);
+		}
 	}
 
 	/**

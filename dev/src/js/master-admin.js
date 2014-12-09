@@ -85,7 +85,51 @@ $('body').on('click','#wrapper.st-menu-open #page-wrapper', function (e) {
 
 
 //Ajax loading page of admin ui
-$('body').on('click','#side-menu', function (e) {
+$('body').on('click','#side-menu a', function (e) {
+  //Disable native comportment
   e.preventDefault();
+  //Show loader (pure css)
   $('.loader').fadeIn('fast');
+  //post to get content
+  $.get($(this).attr('href'), function (data) {
+    //reset dom
+    document.getElementById('section-filemanager').style.height = "0px";
+    document.getElementById('section-page-header').innerHTML = '';
+    document.getElementById('section-content').innerHTML = '';
+
+    for( var o in data ) {
+      //Only load text content
+      switch(o) {
+        case 'meta_title':
+          document.title = data[o];
+          break;
+        case 'page-header':
+          document.getElementById('section-page-header').innerHTML = data[o];
+          break;
+        case 'content':
+          document.getElementById('section-content').innerHTML = data[o];
+          break;
+        case 'filemanager':
+          document.getElementById('section-filemanager').style.height = "100%";
+          document.getElementById('section-filemanager').innerHTML = data[o];
+          break;
+      }
+    }
+    //after replace part in dom, fadeout loader and getback menu !
+    $('.loader').fadeOut('fast', function () {
+      for( var o in data ) {
+        switch(o) {
+          case 'script':
+            eval(data[o]);
+            break;
+          case 'scriptOnReady':
+            eval(data[o]);
+            break;
+        }
+      }
+      $('#wrapper').removeClass('st-menu-open');
+
+    });
+  });
+
 });
