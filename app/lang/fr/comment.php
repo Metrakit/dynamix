@@ -6,5 +6,8 @@ return array(
 
 	'placeHolder'	=> 'Laissez un message',
 	'reply'			=> 'Répondre',
+	'edit'			=> 'Modifier',
+
+	'submit'		=> 'Poster votre message',
 	
 	);

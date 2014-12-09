@@ -19,16 +19,17 @@ var CommentMaster = function () {
 			});
 		});
 
-		//input to textarea
-		/*$('body').on('focus', '#comment-form input[name=message]', function () {
+		//AHAHAH CSS powaaa
+		/*//input to textarea
+		$('body').on('focus', '#comment-form input[name=message]', function () {
 			console.log('focus');
-			saveInput = form.find('input[name=message]');
-			form.find('input[name=message]').replaceWith('<textarea rows="3" name="message"></textarea>');
-			form.find('textarea[name=message]').focus();
+			//show btn submit
+
 		});
-		$('body').on('blur', '#comment-form textarea[name=message]', function () {
+		$('body').on('blur', '#comment-form input[name=message]', function () {
 			console.log('blur');
-			form.find('textarea[name=message]').replaceWith(saveInput);
+			//hide btn submit
+
 		});*/
 	}
 }

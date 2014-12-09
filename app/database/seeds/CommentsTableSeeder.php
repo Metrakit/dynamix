@@ -35,6 +35,16 @@ class CommentsTableSeeder extends Seeder {
 
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
+                ),
+            array(
+                'text'     => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar, augue eget accumsan dignissim, turpis turpis dictum elit, nec dapibus enim mi a tellus. Quisque blandit tincidunt mattis. Fusce non erat eget augue vehicula sodales sed vel dui. Pellentesque a dolor at erat auctor tempor et fringilla tortor.',
+                'user_id'  => 1,
+                'locale_id' => null,
+                'commentable_id'  => 3,
+                'commentable_type'  => 'Comment',
+
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime
                 ))
         );
 
