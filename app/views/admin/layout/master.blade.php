@@ -42,6 +42,10 @@
                 </div>
                 @yield('container')
                 </div>
+
+                <div class="loader">
+                    <div><span class="loader-inner"></span></div>
+                </div>
             </div>
             
             <!-- ./ content -->

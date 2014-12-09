@@ -84,74 +84,8 @@ $('body').on('click','#wrapper.st-menu-open #page-wrapper', function (e) {
 });
 
 
-/*$('body').click( function (e) {
-  console.log(e);
-});*/
-
-//Block
-/*var blockMapEnter = function (e) {
-  var me    = $(e.target),
-      index = me.index('.block-map');
-
-  if( !me.hasClass('hover') ) {      
-    //reset
-    $('.block-map').removeClass('hover');
-
-    //set
-    for ( var i = 0; i < index; i++ ) {
-      $(me.parent().children('.block-map')[i]).addClass('hover');
-    }
-
-    //set block-map-border
-    $('.block-map-border').removeClass().addClass('block-map-border col-sm-' + (index+1) );
-    $('.ul-block-types').removeClass().addClass('ul-block-types col-sm-' + (index+1) );
-    me.addClass('hover');
-  }
-}
-var blockMapLeave = function () {
-  $('.block-map').removeClass('hover');
-}
-//Listen hover
-$('body .block-map').on({mouseenter: blockMapEnter,mouseleave: blockMapLeave});
-
-//First step = Choose width (mouseenter)
-$('body').on('click','.block-map', function (e) {
-  var width = $(this).attr('data-width');
-  //Set input width the width on 12 (x/12)
-  $('input[name=block-width]').val(width);
-  //Remove listener for hover 
-  $('body .block-map').off({mouseenter: blockMapEnter,mouseleave: blockMapLeave});
-  //Fix state
-  $('.block-create').addClass('step-1-ok');
+//Ajax loading page of admin ui
+$('body').on('click','#side-menu', function (e) {
+  e.preventDefault();
+  $('.loader').fadeIn('fast');
 });
-//If want to change
-$('body').on('click','.block-create.step-1-ok .block-map', function (e) {
-  //reset .hover
-  $('.block-map').removeClass('hover');
-  //Remove state
-  $('.block-create').removeClass('step-1-ok');
-  //Set listener for hover
-  $('body .block-map').on({mouseenter: blockMapEnter,mouseleave: blockMapLeave});
-  //Set input to empty string
-  $('input[name=block-width]').val('');
-  blockMapEnter(e);
-});
-
-//Second step !
-//Show button with css...
-//When a choice is done, get presenter of module
-$('body').on('click','.ajax-block-type', function (e) {
-  //set step 2
-  $('.block-create').addClass('step-2-ok loading');
-
-  //get creator
-  var href = '/admin/api/block-type',
-      input = {blockType:$(this).attr('data-block-type')};
-  $.post(href, input, function (data){
-    if (data) {
-      $('.block-create').removeClass('loading');
-      $('#block-type-module').html(data.view);
-    }
-  });
-});*/
-
