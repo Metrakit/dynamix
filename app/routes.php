@@ -23,12 +23,12 @@ Route::get('/first-migrate', function(){
 
 /*
 |--------------------------------------------------------------------------
-| System
+| Base/System
 |--------------------------------------------------------------------------
 |
 */
 //i18n
-Route::get('choose-your-language', array ('uses' => 'UserController@choose_your_language'));
+Route::get('choose-your-language', array ('uses' => 'BaseController@choose_your_language'));
 
 
 /*
@@ -145,6 +145,7 @@ Route::post('form', array('as' => 'form', 'uses' => 'FormerController@store'));
 |
 */
 Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
+Route::resource('comment','CommentController', array('only' => array('destroy')) );
 
 /*
 |--------------------------------------------------------------------------

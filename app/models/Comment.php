@@ -16,6 +16,14 @@ class Comment extends Eloquent{
 	public function votes() {
         return $this->hasMany('CommentVote');
     }
+    
+    public function votesCount() {
+        $count = 0;
+        foreach ($this->votes->all() as $vote) {
+            $count = $count + ($vote->is_positive?1:-1);
+        }
+        return ($count==0?'':$count);
+    }
 
     public function commentable()
     {

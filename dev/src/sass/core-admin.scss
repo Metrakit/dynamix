@@ -464,6 +464,7 @@ Standard syntax
 
 .filemanager-container{
 	min-height: inherit;
+	height:99%;
 	height: calc( 100% - 4px);
 	> iframe {
 		min-height: inherit;

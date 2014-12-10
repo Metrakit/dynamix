@@ -72,6 +72,18 @@ $navbar-blue-link-disabled-bg : none;
 //    }
 //}
 
+//button (form)
+.button-transparent{
+	background:transparent;
+	border:none;
+	height:auto;
+	width:auto;
+	padding:0;
+	display:block;
+	position:relative;
+}
+
+
 //Helper
 .inline-block {
 	display:inline-block !important;

@@ -14,9 +14,9 @@
 @stop
 
 @section('scriptOnReady')
-    //Fix #section-filemanager
-    var sectionFilemanager = document.getElementById('section-filemanager');
-    if (sectionFilemanager) {
-      sectionFilemanager.style.height = "100%";
-    }
+	//Fix #section-filemanager
+	var sectionFilemanager = document.getElementById('section-filemanager');
+	if (sectionFilemanager) {
+	  sectionFilemanager.style.height = "100%";
+	}
 @endsection

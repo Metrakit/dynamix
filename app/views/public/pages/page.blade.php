@@ -170,5 +170,5 @@
 
 {{-- To surcharge for comment module --}}
 <hr>
-@include('public.comment.index')
+@include('public.comment.index', array('object' => $page))
 @stop

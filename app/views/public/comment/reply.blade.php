@@ -1,7 +1,7 @@
 @if( count($child->children->all()) != 0)
 <ul class="comment-reply">
 	@foreach( $child->children->all() as $child2 )
-	<li data-comment-id="{{$child2->id}}">
+	<li data-comment-id="{{$child2->id}}" class="comment-user">
 		<div class="img-comment-reply">
 			<img class="img-circle" height="36px" width="36px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $child2->user()->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=36px"}}" alt="gravatar" />
 		</div>
