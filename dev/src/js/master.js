@@ -69,56 +69,43 @@ var CommentMaster = function () {
 	var updateColorCountVote = function (form, action) {
 		var span = form.find('button').find('span');
 		switch(action) {
-		    case 'destroy':
-		    	//color
-		        span.removeClass('color-blue color-red');
-		        //count
-		        if (form.hasClass('comment-vote-up')) {
+		    case 'destroy':	
+		    	var counter = null;	    	
+		        span.removeClass('color-blue color-red');//color		        
+		        if (form.hasClass('comment-vote-up')) {//count
 		        	//canceled a positive vote, decrement counter
 		        	counter = form.siblings('.vote-counter-up');
 		        } else {
 		        	counter = form.siblings('.vote-counter-down');
 		        }
-		        i = counter.text();
-		        crementCount( counter, i, false);
+		        crementCount( counter, counter.text(), false);
 		        break;
 		    case 'reverse':
-		    	var counterMore = null, iMore = null, counterLess = null, iLess = null;
-		        if (span.hasClass('comment-vote-up')) {
-		        	//color
-		        	span.addClass('color-blue');
-		        	form.siblings('form').find('button').find('span.comment-vote-down').removeClass('color-red');
-		        	//count
-		        	counterMore = form.siblings('.vote-counter-up');
+		    	var counterMore = null, counterLess = null;
+		        if (span.hasClass('comment-vote-up')) {		        	
+		        	span.addClass('color-blue');//color
+		        	form.siblings('form').find('button').find('span.comment-vote-down').removeClass('color-red');		        	
+		        	counterMore = form.siblings('.vote-counter-up');//count
 		        	counterLess = form.siblings('.vote-counter-down');
-		        } else {
-		        	//color
-		        	span.addClass('color-red');
-		        	form.siblings('form').find('button').find('span.comment-vote-up').removeClass('color-blue');
-		        	//count
-		        	counterMore = form.siblings('.vote-counter-down');
+		        } else {		        	
+		        	span.addClass('color-red');//color
+		        	form.siblings('form').find('button').find('span.comment-vote-up').removeClass('color-blue');		        	
+		        	counterMore = form.siblings('.vote-counter-down');//count
 		        	counterLess = form.siblings('.vote-counter-up');
 		        }
-		        iMore = counterMore.text();
-		        iLess = counterLess.text();
-		        crementCount( counterMore, iMore, true);
-		        crementCount( counterLess, iLess, false);
+		        crementCount( counterMore, counterMore.text(), true);
+		        crementCount( counterLess, counterLess.text(), false);
 		        break;
 		    case 'create':
-		    var counter = null, i = null;
-		        if (span.hasClass('comment-vote-up')) {
-		        	//color
-		        	span.addClass('color-blue');
-		        	//count
-		        	counter = form.siblings('.vote-counter-up');
-		        } else {
-		        	//color
-		        	span.addClass('color-red');
-		        	//count
-		        	counter = form.siblings('.vote-counter-down');
+		    	var counter = null;
+		        if (span.hasClass('comment-vote-up')) {		        	
+		        	span.addClass('color-blue');//color		        	
+		        	counter = form.siblings('.vote-counter-up');//count
+		        } else {		        	
+		        	span.addClass('color-red');//color		        	
+		        	counter = form.siblings('.vote-counter-down');//count
 		        }
-		        i = counter.text();
-		        crementCount( counter, i, true);
+		        crementCount( counter, counter.text(), true);
 		        break;
 		}
 	}
