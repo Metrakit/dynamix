@@ -143,4 +143,80 @@ class CommentController extends BaseController {
 
 
 
+
+
+
+
+	//Comment Vote
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function vote($id, $bool)
+	{
+		if ( Auth::check() ) {
+			$user = Auth::user();
+			if ( !empty($user) ) {
+				//get comment
+				$comment = Comment::find($id);
+				if (!empty($comment)) {
+					//check if user want to delete his vote : if a vote already exist and have same bool, it's an canceltion of vote
+					$vote = CommentVote::where('user_id', $user->id)->where('comment_id', $id)->first();
+					if (!empty($vote)) {//if vote exist
+						if ($vote->is_positive == ($bool=='1'?true:false)) {//if vote have same bool = deletion of vote
+							if ($vote->delete()) {
+								if (Request::ajax()) {
+									return Response::json(array('status' => 'success', 'action' => 'destroy', 'message' => Lang::get('comment.vote_canceled_success')));
+								} else {
+									return Redirect::back()->with('success_comment', Lang::get('comment.vote_canceled_success'));
+								}
+							}
+						} else {//reverse vote
+							$vote->is_positive = $bool;
+							if ($vote->save()) {
+								if (Request::ajax()) {
+									return Response::json(array('status' => 'success', 'action' => 'reverse', 'message' => Lang::get('comment.vote_reverse_success')));
+								} else {
+									return Redirect::back()->with('success_comment', Lang::get('comment.vote_reverse_success'));
+								}
+							}
+						}
+					} else {//if not exist = create a new one !
+						$vote = new CommentVote;
+						$vote->is_positive = $bool;
+						$vote->user_id = $user->id;
+						$vote->comment_id = $id;
+						if ($vote->save()){
+							if (Request::ajax()) {
+								return Response::json(array('status' => 'success', 'action' => 'create', 'message' => Lang::get('comment.vote_success')));
+							} else {
+								return Redirect::back()->with('success_comment', Lang::get('comment.vote_success'));
+							}
+						}
+					}
+					if (Request::ajax()) {
+						return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.vote_fail')));
+					} else {
+						return Redirect::back()->with('error_comment', Lang::get('comment.vote_fail'));
+					}
+				}
+				//not find
+				if (Request::ajax()) {
+					return Response::json(array('status' => 'warning', 'message' => Lang::get('comment.not_find')));
+				} else {
+					return Redirect::back()->with('error_comment', Lang::get('comment.not_find'));
+				}
+			}
+		}
+		//denied
+		if (Request::ajax()) {
+			return Response::json(array('status' => 'warning', 'message' => Lang::get('auth.you_must_be_logged')));
+		} else {
+			return Redirect::back()->with('notice_comment', Lang::get('auth.you_must_be_logged'));
+		}
+	}
+
+
 }

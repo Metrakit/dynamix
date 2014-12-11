@@ -81,6 +81,9 @@ $navbar-blue-link-disabled-bg : none;
 	padding:0;
 	display:block;
 	position:relative;
+	&:focus {
+		outline:0;
+	}
 }
 
 

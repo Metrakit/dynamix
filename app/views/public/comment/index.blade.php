@@ -7,7 +7,7 @@
 		<div class="pull-left"><strong>{{ count($object->comments->all()) }} {{{ Lang::get('comment.comment'. (count($object->comments->all()) > 1 ? 's' : '' ) ) }}}</strong></div>
 		<div class="pull-right">
 		@if(!Auth::check())
-			<a href="{{ URL::to('auth/login')}}"><strong>Login</strong></a>
+			<a href="{{ URL::to('auth/login')}}"><strong>{{{ Lang::get('auth.connexion')}}}</strong></a>
 		@else
 			{{Auth::user()->email}}
 		@endif

@@ -3,13 +3,12 @@ var CommentMaster = function () {
 	var isPosting = null;
 
 	this.start = function () {
-		//INPUT MESSAGE
+		//INPUT MESSAGE (CREATE MESSAGE)
 		var form = $('#comment-form'),
 			action = form.attr('action');
 		//Listen
 		$('body').on('submit', '#comment-form', function (e) {
 			e.preventDefault();
-			console.log('go post');	
 			//post
 			if (isPosting === null) {
 				isPosting = $.post(action, form.serializeArray(), function (data) {
@@ -25,11 +24,10 @@ var CommentMaster = function () {
 			}
 		});
 
-		//FORM DELETE
+		//FORM DELETE (DELETE MESSAGE)
 		//Listen
 		$('body').on('submit', '.comment-user form.author-remove', function (e) {
 			e.preventDefault();
-			console.log('go post');
 			var formDelete = $(this).closest('form'),
 				actionDelete = formDelete.attr('action');
 				
@@ -45,6 +43,92 @@ var CommentMaster = function () {
 				});
 			}
 		});
+
+		//FORM VOTE
+		//Listen
+		$('body').on('submit', '.comment-user-footer form.comment-vote', function (e) {
+			e.preventDefault();
+			var formVote = $(this).closest('form'),
+				actionDelete = formVote.attr('action');
+				
+			//post
+			if (isPosting === null) {
+				isPosting = $.post(actionDelete, formVote.serializeArray(), function (data) {
+					if ( data.status == "success" ) {
+						updateColorCountVote(formVote, data.action);
+					} else {
+						showAlertAfterForm(data.status, data.message);
+					}
+					isPosting = null;
+				});
+			}
+		});
+	}
+
+	//VoteSystem
+	var updateColorCountVote = function (form, action) {
+		var span = form.find('button').find('span');
+		switch(action) {
+		    case 'destroy':
+		    	//color
+		        span.removeClass('color-blue color-red');
+		        //count
+		        if (form.hasClass('comment-vote-up')) {
+		        	//canceled a positive vote, decrement counter
+		        	counter = form.siblings('.vote-counter-up');
+		        } else {
+		        	counter = form.siblings('.vote-counter-down');
+		        }
+		        i = counter.text();
+		        crementCount( counter, i, false);
+		        break;
+		    case 'reverse':
+		    	var counterMore = null, iMore = null, counterLess = null, iLess = null;
+		        if (span.hasClass('comment-vote-up')) {
+		        	//color
+		        	span.addClass('color-blue');
+		        	form.siblings('form').find('button').find('span.comment-vote-down').removeClass('color-red');
+		        	//count
+		        	counterMore = form.siblings('.vote-counter-up');
+		        	counterLess = form.siblings('.vote-counter-down');
+		        } else {
+		        	//color
+		        	span.addClass('color-red');
+		        	form.siblings('form').find('button').find('span.comment-vote-up').removeClass('color-blue');
+		        	//count
+		        	counterMore = form.siblings('.vote-counter-down');
+		        	counterLess = form.siblings('.vote-counter-up');
+		        }
+		        iMore = counterMore.text();
+		        iLess = counterLess.text();
+		        crementCount( counterMore, iMore, true);
+		        crementCount( counterLess, iLess, false);
+		        break;
+		    case 'create':
+		    var counter = null, i = null;
+		        if (span.hasClass('comment-vote-up')) {
+		        	//color
+		        	span.addClass('color-blue');
+		        	//count
+		        	counter = form.siblings('.vote-counter-up');
+		        } else {
+		        	//color
+		        	span.addClass('color-red');
+		        	//count
+		        	counter = form.siblings('.vote-counter-down');
+		        }
+		        i = counter.text();
+		        crementCount( counter, i, true);
+		        break;
+		}
+	}
+
+	var crementCount = function (counter, i, bool) {
+		if (bool) {//true = incrément ; false = décrément
+			counter.text(( i == '' || i == ' ' ? '1' : parseInt(i) + 1));
+		} else {
+			counter.text(( i == '1' ? '' : parseInt(i) - 1));
+		}
 	}
 
 	//Feedback

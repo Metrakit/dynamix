@@ -17,13 +17,33 @@ class Comment extends Eloquent{
         return $this->hasMany('CommentVote');
     }
     
-    public function votesCount() {
-        $count = 0;
-        foreach ($this->votes->all() as $vote) {
-            $count = $count + ($vote->is_positive?1:-1);
-        }
+    public function votesPositives() {
+        $count = $this->votes()->where('is_positive',1)->count();
         return ($count==0?'':$count);
     }
+    public function votesNegatives() {
+        $count = $this->votes()->where('is_positive',0)->count();
+        return ($count==0?'':$count);
+    }
+
+
+    public function userHasVotePositive($user_id) {
+        //check if comment vote for this user exist
+        $vote = $this->votes()->where('user_id', $user_id)->where('is_positive', true)->first();
+        if (!empty($vote)) {
+            return true;
+        }
+        return false;
+    }
+    public function userHasVoteNegative($user_id) {
+        //check if comment vote for this user exist
+        $vote = $this->votes()->where('user_id', $user_id)->where('is_positive', false)->first();
+        if (!empty($vote)) {
+            return true;
+        }
+        return false;
+    }
+
 
     public function commentable()
     {

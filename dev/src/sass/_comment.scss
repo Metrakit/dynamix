@@ -73,7 +73,7 @@
 
 //Comment of users
 .comment-user{
-	margin: 5px 0;
+	margin: 15px 0;
 }
 	.comment-user-inner{
 		overflow: hidden;
@@ -154,4 +154,17 @@
 	border-width: 2px;
 	border-top:none;
 	@include border-radius(0 0 4px 4px);
+}
+
+
+//Helper
+.display-inline-block {
+	display:inline-block;
+}
+
+.color-blue {
+	color:lighten(#31708f,20%);
+}
+.color-red {
+	color:lighten(#a94442,20%);
 }

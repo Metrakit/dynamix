@@ -1,6 +1,7 @@
 <?php
 
 return array(
+	//comment
 	'comment'		=> 'commentaire',
 	'comments'		=> 'commentaires',
 
@@ -8,11 +9,9 @@ return array(
 	'reply'			=> 'Répondre',
 	'edit'			=> 'Modifier',
 
-	'vote_more'		=> '+1',
-	'vote_less'		=> '-1',
-
 	'submit'		=> 'Poster votre message',
 
+	'not_find' 		=> 'Commentaire introuvable !',
 	'be_the_first' 	=> 'Soyez le premier à laisser votre avis !',
 
 	'store_success'	=> 'Merci pour votre  message ! :)',
@@ -23,4 +22,13 @@ return array(
 	'destroy_child_fail'=> 'La suppression des réponses du message n\'ont pas pu être supprimées... Veuillez réessayer !',
 	'destroy_child_vote_fail'=> 'La suppression des votes des réponses n\'ont pas pu être supprimés... Veuillez réessayer !',
 	
+	//vote
+	'vote_up'		=> '+1',
+	'vote_down'		=> '-1',
+
+	'vote_canceled_success'	=> 'Vote annulé !',
+	'vote_reverse_success'	=> 'Vote inversé !',
+	'vote_success'	=> 'Vote enregistré avec succès !',
+	'vote_fail'	=> 'Ce vote n\'a pass pu être enregistré... Veuillez réessayer !',
+
 	);
