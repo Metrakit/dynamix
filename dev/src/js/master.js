@@ -63,6 +63,22 @@ var CommentMaster = function () {
 				});
 			}
 		});
+
+		//FORM EDIT
+		//Liisten - 1 show edit, 2 save
+		$('body').on('click', '.comment-edit', function (e) {
+			e.preventDefault();
+			var container = $(this).closest('.comment-user-body'),
+				text = container.find('p').html(),
+				comment_id = $(this).closest('.comment-user').attr('data-comment-id');
+				
+			//put form with textarea
+			var form = $('#comment-form-edit-hidden form');
+			form.find('textarea[name=message]').val(text);
+			form.attr('action', form.attr('action') + '/' + comment_id);
+			container.html('');
+			console.log(text);
+		});
 	}
 
 	//VoteSystem

@@ -145,7 +145,7 @@ Route::post('form', array('as' => 'form', 'uses' => 'FormerController@store'));
 |
 */
 Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
-Route::resource('comment','CommentController', array('only' => array('destroy')) );
+Route::resource('comment','CommentController', array('only' => array('destroy','update')) );
 Route::post('comment/{id}/vote/{bool}', array('as' => 'comment-vote', 'uses' => 'CommentController@vote'));
 
 /*

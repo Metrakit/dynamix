@@ -23,6 +23,10 @@
     {{ Form::open(array('url' => 'comment/' . $comment->id . '/vote/0', 'class' => 'comment-vote comment-vote-down display-inline-block')) }}
         <button type="submit" class="button-transparent" title="{{{ Lang::get('comment.vote_down') }}}"><span class="comment-vote-down glyphicon glyphicon-chevron-down {{(Auth::check()?($comment->userHasVoteNegative(Auth::user()->id)?'color-red':''):'')}}"></span></button>
     {{ Form::close() }}
-	 &bull; <a href="#">{{{ Lang::get('comment.edit')}}}</a>
+    @if (Auth::check())
+    @if ($comment->user_id == Auth::user()->id)
+	 &bull; <a class="comment-edit" href="{{ URL::to('comment/' . $comment->id . '/edit') }}">{{{ Lang::get('comment.edit')}}}</a>
+    @endif
+    @endif
 	 &bull; <a href="#" title="{{{ Lang::get('comment.reply') }}}">{{{ Lang::get('comment.reply') }}}</a>
 </div>

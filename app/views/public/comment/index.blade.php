@@ -36,5 +36,16 @@
 		@include('public.comment.comment', array('comment' => $comment))
 	@endforeach
 	
-	
+	<div id="comment-form-edit-hidden">
+		<form class="form-horizontal" method="POST" action="{{URL::to('comment/')}}" accept-charset="UTF-8" autocomplete="off">
+		    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+		    <input type="hidden" name="_method" value="put">
+		    <fieldset>
+		        <div class="form-group">
+				    <textarea class="form-control" name="message" id="message"></textarea>
+				    <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('button.update')}}}</button>
+				</div>
+		    </fieldset>
+		</form>
+	</div>
 </section>

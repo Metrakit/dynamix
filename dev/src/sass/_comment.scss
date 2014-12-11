@@ -156,7 +156,9 @@
 	@include border-radius(0 0 4px 4px);
 }
 
-
+#comment-form-edit-hidden {
+	display:none;
+}
 //Helper
 .display-inline-block {
 	display:inline-block;
