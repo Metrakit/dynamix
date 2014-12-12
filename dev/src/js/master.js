@@ -129,6 +129,7 @@ var CommentMaster = function () {
 				form.find('input[name=commentable_id]').val(comment_id);
 				form.find('input[name=commentable_type]').val('Comment');
 				$(form).insertAfter(parent_comment);
+				form.find('input[name=message]').focus();
 			} else {//reverse
 				parent_comment.siblings('.comment-form-reply').remove();
 				container.removeClass('onReply');
@@ -138,7 +139,7 @@ var CommentMaster = function () {
 		$('body').on('submit', 'form.comment-form-reply', function (e) {
 			e.preventDefault();
 			var form = $(this).closest('form'),
-				containerForm = $(this).parent().closest('comment-form-reply');
+				containerForm = $(this).parent().closest('.comment-form-reply');
 				actionReply = form.attr('action'),
 				container = $(this).parent().closest('.comment-user');
 			
@@ -148,13 +149,14 @@ var CommentMaster = function () {
 					console.log(data);
 					if ( data.status == "success" ) {
 						if (container.children('ul.comment-reply').length){//if ul list exists
-							container.find('ul.comment-reply').append(data.comment);//just put it in first :)
+							container.find('ul.comment-reply').prepend(data.comment);//just put it in first :)
 						}else{	
 							container.find('.comment-form-reply').replaceWith('<ul class="comment-reply">' + data.comment + '</ul>');
 						}
 						container.removeClass('onReply');
+						containerForm.remove();
 					} else {
-						//showAlertAfterForm(data.status, data.message);//Set error message fine
+						showAlertInputReplyMessage(containerForm, data.status, data.message);//Set error message fine
 					}
 					isPosting = null;
 				});
@@ -216,6 +218,18 @@ var CommentMaster = function () {
 	}
 
 	//Feedback
+	var showAlertInputReplyMessage = function (containerForm, type, message) {
+		//Clean
+		containerForm.find('p').remove();
+
+		var fragment = document.createDocumentFragment();
+		var p = createElementWithClass('p', 'alert alert-' + type);
+			p.innerText = message;
+			fragment.appendChild(p);
+		
+		$(fragment).insertAfter(containerForm.find('button'));
+	}
+
 	var showAlertAfterForm = function (type, message) {
 		//Clean
 		$('.comment-form + p').remove();

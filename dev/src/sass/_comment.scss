@@ -168,6 +168,12 @@
 			height:36px;
 		}
 	}
+	p.alert {
+		padding: 5px;
+		border-width: 2px;
+		border-top: 0;
+		@include border-radius(0 0 4px 4px);
+	}
 }
 
 //Modifier p.alert
