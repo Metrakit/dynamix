@@ -46,7 +46,11 @@ class CommentController extends BaseController {
 			$comment->locale_id = App::getLocale();
 			if ( $comment->save() ) {
 				if ( Request::ajax() ) {
-					return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.comment', array('comment' => $comment))->render(), 'message' => Lang::get('comment.store_success')));
+					if (Input::has('reply')) {
+						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.reply-inner', array('child' => $comment))->render(), 'message' => Lang::get('comment.store_success')));
+					} else {						
+						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.comment', array('comment' => $comment))->render(), 'message' => Lang::get('comment.store_success')));
+					}
 				} else {
 					return Redirect::to($url)->with('success', Lang::get('comment.store_success'));
 				}
@@ -67,6 +71,49 @@ class CommentController extends BaseController {
 	}
 
 	
+	/**
+	 * Update the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		if ( Request::ajax() ) {
+			// Validate the inputs
+			$validator = Validator::make(Input::all(), Config::get('validator.comment_edit'));
+
+			if ( $validator->passes() ){
+				if ( Auth::check() ) {
+					$user = Auth::user();
+					$comment = Comment::find($id);
+					if ( !empty($user) && !empty($comment) ) {				
+						if ($user->id == $comment->user_id) {//is author
+							$comment->text = Input::get('message');
+							if ($comment->save()) {
+								//good
+								return Response::json(array('status' => 'success', 'message' => Lang::get('comment.edit_success')));
+							}
+							//fail
+							return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.edit_fail')));
+						}
+						//not authorised
+						App::abort(403, Lang::get('auth.you_are_not_authorized'));
+					}
+					//not found
+					return Response::json(array('status' => 'warning', 'message' => Lang::get('comment.not_found')));
+				}
+				//need to be logged
+				return Response::json(array('status' => 'warning', 'message' => Lang::get('auth.you_must_be_logged')));
+			}
+			//validator fail
+			return Response::json(array('status' => 'danger', 'message' => $validator->messages()->all()));
+		}
+
+		App::abort(405, Lang::get('comment.update_405'));
+	}
+
+
 	/**
 	 * Remove the specified resource from storage.
 	 *

@@ -25,8 +25,8 @@
     {{ Form::close() }}
     @if (Auth::check())
     @if ($comment->user_id == Auth::user()->id)
-	 &bull; <a class="comment-edit" href="{{ URL::to('comment/' . $comment->id . '/edit') }}">{{{ Lang::get('comment.edit')}}}</a>
+	 &bull; <a class="comment-edit" href="{{ URL::to('comment/' . $comment->id) }}">{{{ Lang::get('comment.edit')}}}</a>
     @endif
     @endif
-	 &bull; <a href="#" title="{{{ Lang::get('comment.reply') }}}">{{{ Lang::get('comment.reply') }}}</a>
+	 &bull; <a class="comment-add-reply" href="#" title="{{{ Lang::get('comment.reply') }}}">{{{ Lang::get('comment.reply') }}}</a>
 </div>

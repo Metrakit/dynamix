@@ -1,7 +1,18 @@
 @import "compass";
 
 .comment{
-	
+	textarea {
+		border:2px solid #ddd;
+		@include border-radius(3px);
+		resize: none;
+		outline: none;
+		&:focus {
+		}
+	}
+	textarea + .input-group-addon {
+		border:2px solid #ddd;
+		border-left:none;
+	}
 }
 
 //Header of comment system
@@ -32,6 +43,8 @@
 			}
 		}
 	}
+
+
 
 	button.submit-comment-form {
 		height:0px;
@@ -148,6 +161,15 @@
 	}
 }
 
+.comment-form-reply {
+	.img-comment {
+		img {
+			width:36px;
+			height:36px;
+		}
+	}
+}
+
 //Modifier p.alert
 #comment-form p.alert {
 	padding: 5px;
@@ -156,7 +178,7 @@
 	@include border-radius(0 0 4px 4px);
 }
 
-#comment-form-edit-hidden {
+#comment-form-edit-hidden, #comment-form-reply-hidden {
 	display:none;
 }
 //Helper

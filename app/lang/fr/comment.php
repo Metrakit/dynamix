@@ -21,7 +21,12 @@ return array(
 	'destroy_comment_vote_fail'=> 'La suppression des votes du message n\'ont pas pu être supprimés... Veuillez réessayer !',
 	'destroy_child_fail'=> 'La suppression des réponses du message n\'ont pas pu être supprimées... Veuillez réessayer !',
 	'destroy_child_vote_fail'=> 'La suppression des votes des réponses n\'ont pas pu être supprimés... Veuillez réessayer !',
+
+	'edit_success'	=> 'Commentaire modifié avec succès !',
+	'edit_fail'		=> 'Le commentaire n\'a pas pu être modifié... Veuillez réessayer !',
 	
+	'update_405'		=> 'Méthode de requête non autorisée',
+
 	//vote
 	'vote_up'		=> '+1',
 	'vote_down'		=> '-1',

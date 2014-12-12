@@ -102,9 +102,9 @@ class AuthController extends BaseController {
 				}
 			}
 
-			App::abort(403, Lang::get('user.you_are_not_authorized'));
+			App::abort(403, Lang::get('auth.you_are_not_authorized'));
 		} else {
-			return Redirect::to('auth/login')->with('notice', Lang::get('user.you_must_be_logged'));
+			return Redirect::to('auth/login')->with('notice', Lang::get('auth.you_must_be_logged'));
 		}
 	}
 

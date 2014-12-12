@@ -26,6 +26,7 @@ return array(
 	'comment'		=>		array(	'commentable_id'	=> 'required|integer',
 									'commentable_type'	=> 'required',
 									'message'			=> 'required|min:3'),
+	'comment_edit'	=>		array(	'message'			=> 'required|min:3'),
 
 	/*
 	|	Admin

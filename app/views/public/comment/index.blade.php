@@ -37,15 +37,31 @@
 	@endforeach
 	
 	<div id="comment-form-edit-hidden">
-		<form class="form-horizontal" method="POST" action="{{URL::to('comment/')}}" accept-charset="UTF-8" autocomplete="off">
+		<form class="form-horizontal comment-form-edit" method="POST" action="" accept-charset="UTF-8" autocomplete="off">
 		    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 		    <input type="hidden" name="_method" value="put">
-		    <fieldset>
-		        <div class="form-group">
-				    <textarea class="form-control" name="message" id="message"></textarea>
-				    <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('button.update')}}}</button>
-				</div>
-		    </fieldset>
+		    <div class="input-group">
+			    <textarea class="form-control" rows="3" name="message" id="message"></textarea>
+			    <div class="input-group-addon"><button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('comment.edit')}}}</button></div>
+		    </div>
 		</form>
+	</div>
+	<div id="comment-form-reply-hidden">
+		<div class="comment-form-reply comment-reply">
+			<div class="img-comment">
+				<img class="img-circle" height="36px" width="36px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( Auth::user()->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=36px"}}" alt="gravatar" />
+			</div>
+			<div class="input-comment-form">
+				<form class="comment-form-reply" method="POST" action="{{ action('CommentController@store') }}" accept-charset="UTF-8">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">					
+					<input type="hidden" name="reply" value="1">
+					<input type="hidden" name="referer" value="{{ Request::url() }}">
+					<input type="hidden" name="commentable_id" value="{{$object->id}}">
+					<input type="hidden" name="commentable_type" value="{{$object->getClassName()}}">
+					<input type="text" autocomplete="off" placeHolder="{{{ Lang::get('comment.placeHolder') }}}" name="message" value="">
+					<button type="submit" class="btn btn-comment-form submit-comment-form pull-right">{{{ Lang::get('comment.submit') }}}</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </section>

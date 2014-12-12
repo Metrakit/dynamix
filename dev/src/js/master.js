@@ -5,7 +5,12 @@ var CommentMaster = function () {
 	this.start = function () {
 		//INPUT MESSAGE (CREATE MESSAGE)
 		var form = $('#comment-form'),
-			action = form.attr('action');
+			action = form.attr('action'),
+			formEdit = $('#comment-form-edit-hidden form'),
+			formReply = $('#comment-form-reply-hidden > div');
+
+
+		//FORM CREATE
 		//Listen
 		$('body').on('submit', '#comment-form', function (e) {
 			e.preventDefault();
@@ -65,19 +70,95 @@ var CommentMaster = function () {
 		});
 
 		//FORM EDIT
-		//Liisten - 1 show edit, 2 save
+		//Listen - 1 show edit, 2 save
 		$('body').on('click', '.comment-edit', function (e) {
 			e.preventDefault();
-			var container = $(this).closest('.comment-user-body'),
-				text = container.find('p').html(),
+			var container = $(this).parent().siblings('.comment-user-body'),
+				text = container.find('p').text(),
 				comment_id = $(this).closest('.comment-user').attr('data-comment-id');
+			
+			if (!container.hasClass('onEdit')) {
+				//Set a class flag
+				container.addClass('onEdit');
+
+				//put form with textarea
+				var form = formEdit.clone();
+				form.find('textarea[name=message]').val(text);
+				form.attr('action', $(this).attr('href'));
+				container.html(form);
+			} else {//reverse
+				container.html('<p>' + container.find('textarea').val() + '</p>');
+				container.removeClass('onEdit');
+			}
+		});
+		//Listen 2 update
+		$('body').on('submit', 'form.comment-form-edit', function (e) {
+			e.preventDefault();
+			var form = $(this).closest('form'),
+				actionUpdate = form.attr('action');
 				
-			//put form with textarea
-			var form = $('#comment-form-edit-hidden form');
-			form.find('textarea[name=message]').val(text);
-			form.attr('action', form.attr('action') + '/' + comment_id);
-			container.html('');
-			console.log(text);
+			//post
+			if (isPosting === null) {
+				isPosting = $.post(actionUpdate, form.serializeArray(), function (data) {
+					if ( data.status == "success" ) {
+						var container = form.parent();
+						container.html('<p>' + container.find('textarea').val() + '</p>');
+						container.removeClass('onEdit');
+					} else {
+						showAlertAfterForm(data.status, data.message);
+					}
+					isPosting = null;
+				});
+			}
+		});
+
+		//FORM REPLY
+		//Listen 1 show form reply
+		$('body').on('click', '.comment-add-reply', function (e) {
+			e.preventDefault();
+			var parent_comment = $(this).parent().closest('.comment-parent'),
+				container = $(this).parent().closest('.comment-user'),
+				comment_id = container.attr('data-comment-id');
+			
+			if (!container.hasClass('onReply')) {
+				//Set a class flag
+				container.addClass('onReply');
+
+				//put form with textarea
+				var form = formReply.clone();
+				form.find('input[name=commentable_id]').val(comment_id);
+				form.find('input[name=commentable_type]').val('Comment');
+				$(form).insertAfter(parent_comment);
+			} else {//reverse
+				parent_comment.siblings('.comment-form-reply').remove();
+				container.removeClass('onReply');
+			}
+		});
+		//Listen 2 update
+		$('body').on('submit', 'form.comment-form-reply', function (e) {
+			e.preventDefault();
+			var form = $(this).closest('form'),
+				containerForm = $(this).parent().closest('comment-form-reply');
+				actionReply = form.attr('action'),
+				container = $(this).parent().closest('.comment-user');
+			
+			//post
+			if (isPosting === null) {
+				isPosting = $.post(actionReply, form.serializeArray(), function (data) {
+					console.log(data);
+					if ( data.status == "success" ) {
+						if (container.children('ul.comment-reply').length){//if ul list exists
+							container.find('ul.comment-reply').append(data.comment);//just put it in first :)
+						}else{	
+							container.find('.comment-form-reply').replaceWith('<ul class="comment-reply">' + data.comment + '</ul>');
+						}
+						container.removeClass('onReply');
+					} else {
+						//showAlertAfterForm(data.status, data.message);//Set error message fine
+					}
+					isPosting = null;
+				});
+			}
 		});
 	}
 
