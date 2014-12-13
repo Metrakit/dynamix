@@ -113,9 +113,7 @@ return array(
 		// Dynamix packages
 
 		//'Dynamix\Template\TemplateServiceProvider',
-		
-		'Dynamix\BlogModule\BlogServiceProvider',
-
+		//'Dynamix\BlogModule\BlogServiceProvider',
 		//'Dynamix\UserManager\UserServiceProvider',
 
 		// External packages
@@ -192,10 +190,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		// Dynamix packages
-
 		//'Template'        => 'Dynamix\Template\TemplateFacade',
-		'BlogModule'        => 'Dynamix\BlogModule\BlogFacade',
-
+		//'BlogModule'        => 'Dynamix\BlogModule\BlogFacade',
 		//'UserManager'        => 'Dynamix\UserManager\UserFacade',
 
 		// External packages

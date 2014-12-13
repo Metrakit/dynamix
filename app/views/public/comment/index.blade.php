@@ -46,6 +46,7 @@
 		    </div>
 		</form>
 	</div>
+	@if ( Auth::check() )
 	<div id="comment-form-reply-hidden">
 		<div class="comment-form-reply comment-reply">
 			<div class="img-comment">
@@ -64,4 +65,5 @@
 			</div>
 		</div>
 	</div>
+	@endif
 </section>
