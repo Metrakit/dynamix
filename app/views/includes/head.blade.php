@@ -68,7 +68,8 @@
                 complete: function(){                                        
                     @yield('script')
                     $(document).ready( function(){   
-                        masterClass.start();                    
+                        masterClass.start();    
+                        {{ (isset($scriptOnReady)?$scriptOnReady:'')}}                
                         @yield('scriptOnReady')
                     });
                 }
