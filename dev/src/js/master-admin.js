@@ -1,92 +1,116 @@
 var PagerAdminMaster = function (){
   //Attibuts
-  var draw = false;
-  var dp = null;
+  var draw = false,
+      area = null,
+      pc_col_1_width = 8.3333,
+      count_col = 12,
+      offsetXBootstrap = 0;
   
   this.start = function (e) {
-    dp = $('#page-block-drawing-area');
-    dp.on("mousemove mousedown mouseup", draw_block );
+    area = $('#page-block-drawing-area');
+    area.on("mousemove mousedown mouseup", draw_block );
   }
 
   var draw_block = function (e) {
     //console.log(e);
     var offsetX = e.offsetX,
         offsetY = e.offsetY,
-        dpCurrent = dp.find('.drawn-block.current'),
-        dpCurrent_data = dpCurrent.data();
+        block = area.find('.drawn-block.current'),
+        block_data = block.data();
     
-    if ( e.type === 'mousemove' ) {
-        
-        // If ".drawnBox.current" doesn't exist, create it.
-        if ( dpCurrent.length < 1 ) {
-            $('<div class="drawn-block current"></div>').appendTo( dp );
-        }
-        
-        var drawCSS = {};
+    if ( e.type === 'mousemove' ) { 
+      // If ".drawnBox.current" doesn't exist, create it.
+      if ( block.length < 1 ) {
+        $('<div class="drawn-block current"></div>').appendTo( area );
+      }
+      
+      var drawCSS = {};
+      // If drawing is initiated.
+      if ( draw ) {
+          // Determine the direction.
+          // xLeft
+          if ( block_data.offsetX > offsetX ) {
+              drawCSS['right'] = area.width() - block_data.offsetX,
+              drawCSS['left'] = 'auto',
+              drawCSS['width'] = block_data.offsetX - offsetX;
+          }
+          // xRight
+          else if ( block_data.offsetX < offsetX ) {
+              drawCSS['left'] = block_data.offsetX,
+              drawCSS['right'] = 'auto',
+              drawCSS['width'] = offsetX - block_data.offsetX;
+          }
+          // yUp
+          if ( block_data.offsetY > offsetY ) {
+              drawCSS['bottom'] = area.height() - block_data.offsetY,
+              drawCSS['top'] = 'auto',
+              drawCSS['height'] = block_data.offsetY - offsetY;
+          }
+          // yDown
+          else if ( block_data.offsetY < offsetY ) {
+              drawCSS['top'] = block_data.offsetY,
+              drawCSS['bottom'] = 'auto',
+              drawCSS['height'] = offsetY - block_data.offsetY;
+          }
+      }
 
-        // If drawing is initiated.
-        if ( draw ) {
-
-            // Determine the direction.
-            
-            // xLeft
-            if ( dpCurrent_data.offsetX > offsetX ) {
-                drawCSS['right'] = dp.width() - dpCurrent_data.offsetX,
-                drawCSS['left'] = 'auto',
-                drawCSS['width'] = dpCurrent_data.offsetX - offsetX;
-            }
-            // xRight
-            else if ( dpCurrent_data.offsetX < offsetX ) {
-                drawCSS['left'] = dpCurrent_data.offsetX,
-                drawCSS['right'] = 'auto',
-                drawCSS['width'] = offsetX - dpCurrent_data.offsetX;
-            }
-            
-            // yUp
-            if ( dpCurrent_data.offsetY > offsetY ) {
-                drawCSS['bottom'] = dp.height() - dpCurrent_data.offsetY,
-                drawCSS['top'] = 'auto',
-                drawCSS['height'] = dpCurrent_data.offsetY - offsetY;
-            }
-            // yDown
-            else if ( dpCurrent_data.offsetY < offsetY ) {
-                drawCSS['top'] = dpCurrent_data.offsetY,
-                drawCSS['bottom'] = 'auto',
-                drawCSS['height'] = offsetY - dpCurrent_data.offsetY;
-            }
-
-        }
-
-        if ( !draw && dpCurrent.length > 0 ) {
-
-            dpCurrent.css({
-                top: offsetY,
-                left: offsetX
-            });
-        }
-        
-        if ( draw ) {
-            dpCurrent.css( drawCSS );
-        } 
-        
+      if ( !draw && block.length > 0 ) {
+          block.css({
+              top: offsetY,
+              left: offsetX
+          });
+      }
+      
+      if ( draw ) {
+          block.css( drawCSS );
+      }
     }
 
     if ( e.type === 'mousedown' ) {
         e.preventDefault();
         draw = true;
-        dpCurrent.css('display','block');
-        dpCurrent.data({ "offsetX": offsetX, "offsetY": offsetY });      
-        
-    }
-    else if ( e.type === 'mouseup' ) {
-        draw = false;        
-        dpCurrent.prev().removeClass('last');
-        dpCurrent
-            .css('display','block')
-            .addClass('last')
-            .removeClass('current');
+        block.css('display','block');
+        block.data({ "offsetX": offsetX, "offsetY": offsetY }); 
 
+        offsetXBootstrap = offsetBootstrap(block, offsetX);
+    } else if ( e.type === 'mouseup' ) {
+        draw = false;        
+        block.prev().removeClass('last');
+        block
+            .addClass('drawn-block-show last col-sm-'+(offsetBootstrap(block, offsetX) - offsetXBootstrap)+(offsetXBootstrap != 0?' col-sm-offset-'+offsetXBootstrap:''))
+            .removeClass('current')
+            .removeAttr('style');
+
+        if (offsetBootstrap(block, offsetX) - offsetXBootstrap == 0) {
+          block.remove();
+        }
     }
+  }
+
+  var magnet = function (block, offsetX) {
+    var area_width = area.width();
+        pc_offsetX = offsetX*100/area_width,
+        ratio_count_col = count_col*pc_offsetX/100,
+        floor_ratio_count_col = Math.floor(ratio_count_col);
+
+    //si on a 6.4/12 on doit aller vvers 6 si on a 6.6 vers 7...
+    if (ratio_count_col-floor_ratio_count_col < 0.5) {
+      return pc_offsetX = floor_ratio_count_col*pc_col_1_width;
+    }
+    return pc_offsetX = (floor_ratio_count_col+1)*pc_col_1_width;
+  }
+
+  var offsetBootstrap = function (block, offsetX) {
+    var area_width = area.width();
+        pc_offsetX = offsetX*100/area_width,
+        ratio_count_col = count_col*pc_offsetX/100,
+        floor_ratio_count_col = Math.floor(ratio_count_col);
+
+    //si on a 6.4/12 on doit aller vvers 6 si on a 6.6 vers 7...
+    if (ratio_count_col-floor_ratio_count_col < 0.5) {
+      return floor_ratio_count_col;
+    }
+    return floor_ratio_count_col+1;
   }
 };
 

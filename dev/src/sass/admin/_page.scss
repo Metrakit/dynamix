@@ -65,4 +65,13 @@
 	    background: transparent;
 	    border: 1px dashed #000;
 	}
+	&.drawn-block-show {
+		@include transition(all .15s ease-in);
+		position:relative;
+		display:block;
+		top: auto;
+	    left: auto;
+	    right: auto;
+		min-height:100px;
+	}
 }
