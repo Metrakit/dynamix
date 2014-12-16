@@ -193,6 +193,9 @@ module.exports = function(grunt) {
 		copy: {
 		  jsMap: {
 		    files: [
+		      // Modernizr
+		      {expand: false, src: ['<%= srcPath %>js/vendor/modernizr.min.js'], dest: '<%= distPath %>js/vendor/modernizr.min.js', filter: 'isFile'},
+		      
 		      // jQuery
 		      {expand: false, src: ['<%= vendorPath %>jquery/dist/jquery.min.js'], dest: '<%= distPath %>js/vendor/jquery.min.js', filter: 'isFile'},
 		      {expand: false, src: ['<%= vendorPath %>jquery/dist/jquery.min.map'], dest: '<%= distPath %>js/vendor/jquery.min.map', filter: 'isFile'},
