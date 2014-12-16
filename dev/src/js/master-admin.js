@@ -72,17 +72,17 @@ var PagerAdminMaster = function (){
     }
 
     if ( e.type === 'mousedown' ) {
-
         e.preventDefault();
         draw = true;
+        dpCurrent.css('display','block');
         dpCurrent.data({ "offsetX": offsetX, "offsetY": offsetY });      
         
     }
     else if ( e.type === 'mouseup' ) {
-
         draw = false;        
         dpCurrent.prev().removeClass('last');
         dpCurrent
+            .css('display','block')
             .addClass('last')
             .removeClass('current');
 
