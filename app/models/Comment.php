@@ -44,7 +44,6 @@ class Comment extends Eloquent{
         return false;
     }
 
-
     public function commentable()
     {
         return $this->morphTo();

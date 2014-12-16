@@ -1,0 +1,67 @@
+@import "compass";
+//Grid system with col bootstrap
+//fix bootstrap
+.tab-content, .tab-content>.tab-pane {
+	position:relative;
+}
+
+.page-grid {
+	position:absolute;
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+	z-index: -10;
+	border-right:1px dotted #e4e4e4;
+	.col-sm-1 {
+		height:100%;
+		border-left:1px dotted #e4e4e4;
+		> div {
+			height:100%;
+			background:#f6f6f6;
+			border-right:1px solid #cdcdcd;
+			border-left:1px solid #cdcdcd;
+		}
+	}
+}
+
+//Form create page
+//Form
+.input-transparent-lg{
+	border:none;
+	font-size:36px;
+	background:transparent;
+	height:70px;
+	@include border-radius(0px);
+	border: 1px solid #939ba2;
+}
+
+//Page create
+.page-create {
+	position:relative;
+
+	.form-group {
+		padding-right:15px;
+		padding-left:15px;
+	}
+}
+
+.page-block-drawing-area{
+	position: relative;
+	cursor: crosshair;
+	min-height:450px;
+	width: 100%;
+    z-index: 1;
+}
+.drawn-block {
+	position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    //border: 1px solid #222;
+    background: rgba(0,0,0,.15);
+    &.current {
+	    background: transparent;
+	    border: 1px dashed #000;
+	}
+}

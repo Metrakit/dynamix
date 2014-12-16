@@ -215,7 +215,7 @@ table.log{
     border-bottom: 1px solid #353535
 }
 
-
+@import "admin/page";
 /* 
 //Blocks
 $block-create-height : 75px;
@@ -394,12 +394,7 @@ Standard syntax
 
 
 
-//Form
-.input-transparent-lg{
-	border:none;
-	font-size:36px;
-	height:70px;
-}
+
 
 
 

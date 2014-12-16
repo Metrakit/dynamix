@@ -17,24 +17,38 @@
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="{{$locales[$i]->id}}">
         <!-- <h3>{{{ Lang::get('admin.page_contents') }}}</h3> -->
-        <!-- page_title -->
-        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
-            <div>
+        <div class="page-create">
+            <!-- page_grid -->
+            <div class="page-grid">
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="col-sm-1"><div></div></div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- ./ page_grid -->
+            <!-- page_title -->
+            <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
                 <input class="form-control input-transparent-lg" type="text" name="{{'page_title'}}_{{$locales[$i]->id}}" id="{{'page_title'}}_{{$locales[$i]->id}}" placeHolder="{{{ Lang::get('admin.put_page_title') }}}" value="{{{ Input::old('page_title' . '_' . $locales[$i]->id, (isset($object)?$object->$method_locale($locales[$i]->id):null) ) }}}" />
                 {{ $errors->first('page_title' . '_' . $locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
             </div>
-        </div>
-        <!-- ./ page_title -->
+            <!-- ./ page_title -->
 
-        <!-- wysiwyg -->
-        <div class="form-group {{{ $errors->has('page_title') ? 'error' : '' }}}">
-            @include('admin.page.block.wysiwyg')
+            <div id="page-block-drawing-area" class="page-block-drawing-area"></div>
         </div>
-        <!-- ./ wysiwyg -->
-
-        @include('admin.page.block.presenter_call_to_create')
+        
         
         <hr>
+
+        @include('admin.page.block.presenter_call_to_create')
 
         <h3>{{{ Lang::get('admin.page_proprieties') }}}</h3>
         <!-- page_name -->

@@ -1,8 +1,93 @@
 var PagerAdminMaster = function (){
-  this.start = function () {
-
+  //Attibuts
+  var draw = false;
+  var dp = null;
+  
+  this.start = function (e) {
+    dp = $('#page-block-drawing-area');
+    dp.on("mousemove mousedown mouseup", draw_block );
   }
 
+  var draw_block = function (e) {
+    //console.log(e);
+    var offsetX = e.offsetX,
+        offsetY = e.offsetY,
+        dpCurrent = dp.find('.drawn-block.current'),
+        dpCurrent_data = dpCurrent.data();
+    
+    if ( e.type === 'mousemove' ) {
+        
+        // If ".drawnBox.current" doesn't exist, create it.
+        if ( dpCurrent.length < 1 ) {
+            $('<div class="drawn-block current"></div>').appendTo( dp );
+        }
+        
+        var drawCSS = {};
+
+        // If drawing is initiated.
+        if ( draw ) {
+
+            // Determine the direction.
+            
+            // xLeft
+            if ( dpCurrent_data.offsetX > offsetX ) {
+                drawCSS['right'] = dp.width() - dpCurrent_data.offsetX,
+                drawCSS['left'] = 'auto',
+                drawCSS['width'] = dpCurrent_data.offsetX - offsetX;
+            }
+            // xRight
+            else if ( dpCurrent_data.offsetX < offsetX ) {
+                drawCSS['left'] = dpCurrent_data.offsetX,
+                drawCSS['right'] = 'auto',
+                drawCSS['width'] = offsetX - dpCurrent_data.offsetX;
+            }
+            
+            // yUp
+            if ( dpCurrent_data.offsetY > offsetY ) {
+                drawCSS['bottom'] = dp.height() - dpCurrent_data.offsetY,
+                drawCSS['top'] = 'auto',
+                drawCSS['height'] = dpCurrent_data.offsetY - offsetY;
+            }
+            // yDown
+            else if ( dpCurrent_data.offsetY < offsetY ) {
+                drawCSS['top'] = dpCurrent_data.offsetY,
+                drawCSS['bottom'] = 'auto',
+                drawCSS['height'] = offsetY - dpCurrent_data.offsetY;
+            }
+
+        }
+
+        if ( !draw && dpCurrent.length > 0 ) {
+
+            dpCurrent.css({
+                top: offsetY,
+                left: offsetX
+            });
+        }
+        
+        if ( draw ) {
+            dpCurrent.css( drawCSS );
+        } 
+        
+    }
+
+    if ( e.type === 'mousedown' ) {
+
+        e.preventDefault();
+        draw = true;
+        dpCurrent.data({ "offsetX": offsetX, "offsetY": offsetY });      
+        
+    }
+    else if ( e.type === 'mouseup' ) {
+
+        draw = false;        
+        dpCurrent.prev().removeClass('last');
+        dpCurrent
+            .addClass('last')
+            .removeClass('current');
+
+    }
+  }
 };
 
 var SpeedNavigationAdminMaster = function (){
