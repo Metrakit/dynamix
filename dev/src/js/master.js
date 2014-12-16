@@ -10,6 +10,56 @@ var CommentMaster = function () {
 			formReply = $('#comment-form-reply-hidden > div');
 
 
+		//initMethod
+		refreshCommentDate();
+		initListener(form, action, formEdit, formReply);
+	}
+
+	var refreshCommentDate = function () {
+		$('section.comment .data-created-at').each( function (i, element) {
+			//2014-12-12 14:21:24
+			var created_at 	= $(element).attr('data-created-at'),
+				date 		= new Date( created_at );
+			$(element).text(diffForHuman(dateDiff(date, new Date())));
+		});
+
+		var wait = window.setTimeout(function (e){
+            refreshCommentDate();
+        },59000);
+	}
+
+	var diffForHuman = function (diff) {
+		if (diff.day === 0 && diff.hour === 0 && diff.min === 0) {
+			return diff.sec + ' seconds ago';
+		} else if (diff.day === 0 && diff.hour === 0) {
+			return diff.min + ' minutes ago';
+		} else if (diff.day === 0){
+			return diff.hour + ' hours ago';
+		} else {
+			return diff.day + ' days ago';
+		}
+	}
+
+	var dateDiff = function (date1, date2) {
+	    var diff = {}                           // Initialisation du retour
+	    var tmp = date2 - date1;
+	 
+	    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+	    diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+	 
+	    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
+	    diff.min = tmp % 60;                    // Extraction du nombre de minutes
+	 
+	    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+	    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+	     
+	    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+	    diff.day = tmp;
+	     
+	    return diff;
+	}
+
+	var initListener = function (form, action, formEdit, formReply) {
 		//FORM CREATE
 		//Listen
 		$('body').on('submit', '#comment-form', function (e) {
@@ -54,11 +104,11 @@ var CommentMaster = function () {
 		$('body').on('submit', '.comment-user-footer form.comment-vote', function (e) {
 			e.preventDefault();
 			var formVote = $(this).closest('form'),
-				actionDelete = formVote.attr('action');
+				actionVote = formVote.attr('action');
 				
 			//post
 			if (isPosting === null) {
-				isPosting = $.post(actionDelete, formVote.serializeArray(), function (data) {
+				isPosting = $.post(actionVote, formVote.serializeArray(), function (data) {
 					if ( data.status == "success" ) {
 						updateColorCountVote(formVote, data.action);
 					} else {
