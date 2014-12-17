@@ -49,9 +49,17 @@
 .page-block-drawing-area{
 	position: relative;
 	cursor: crosshair;
-	min-height:450px;
+	min-height:250px;
 	width: 100%;
     z-index: 1;
+    margin:0 !important;
+    padding-bottom:250px;
+    .drawn-row {
+    	width:100%;
+    	height:auto;
+    	position:relative;
+    	display:block;
+    }
 }
 .drawn-block {
 	display:none;
@@ -62,8 +70,8 @@
     //border: 1px solid #222;
     background: rgba(0,0,0,.15);
     &.current {
-	    background: transparent;
-	    border: 1px dashed #000;
+    	background: rgba(0,0,0,.15);
+//	    border: 1px dashed #000;
 	}
 	&.drawn-block-show {
 		@include transition(all .15s ease-in);

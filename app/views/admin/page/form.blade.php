@@ -42,7 +42,7 @@
             </div>
             <!-- ./ page_title -->
 
-            <div id="page-block-drawing-area" class="page-block-drawing-area"></div>
+            <div id="page-block-drawing-area" class="page-block-drawing-area row"></div>
         </div>
         
         

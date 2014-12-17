@@ -6,7 +6,34 @@
 @import "admin/sb-admin-2";
 
 
+.axe {
+	position:absolute;
+	display:block;
+	background:red;
+	z-index:9999
 
+}
+#axeX {
+	height:1px;
+	left:0;
+	right:0;
+
+	width:100%;	
+}
+#axeY {
+	height:100%;
+	width:1px;	
+	top:0;
+	bottom:0;
+}
+#axeXprev {
+	height:1px;
+	left:0;
+	right:0;
+
+	width:100%;	
+	background:green;
+}
 @include keyframes(loader) {
   0% {
     @include rotate(0deg);

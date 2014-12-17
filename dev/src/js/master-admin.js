@@ -4,7 +4,8 @@ var PagerAdminMaster = function (){
       area = null,
       pc_col_1_width = 8.3333,
       count_col = 12,
-      offsetXBootstrap = 0;
+      offsetXBootstrap = 0,
+      cssOffsetXBootstrap = 0;
   
   this.start = function (e) {
     area = $('#page-block-drawing-area');
@@ -71,16 +72,37 @@ var PagerAdminMaster = function (){
         draw = true;
         block.css('display','block');
         block.data({ "offsetX": offsetX, "offsetY": offsetY }); 
-
+        //
+        //with or without offsetbootstrap
         offsetXBootstrap = offsetBootstrap(block, offsetX);
+        cssOffsetXBootstrap = offsetXBootstrap;
+        
+        if (block.prev().length != 0) {
+          if (e.clientY < block.prev().offset().top+100) {
+            cssOffsetXBootstrap = 0;
+          }
+        }
+       /* $('#axeX').css({
+          top:e.clientY
+        });
+        $('#axeY').css({
+          left:e.clientX
+        });*/
+
+        
     } else if ( e.type === 'mouseup' ) {
         draw = false;        
         block.prev().removeClass('last');
         block
-            .addClass('drawn-block-show last col-sm-'+(offsetBootstrap(block, offsetX) - offsetXBootstrap)+(offsetXBootstrap != 0?' col-sm-offset-'+offsetXBootstrap:''))
+            .addClass('drawn-block-show last col-sm-'+(offsetBootstrap(block, offsetX) - offsetXBootstrap)+(offsetXBootstrap != 0?' col-sm-offset-'+cssOffsetXBootstrap:''))
             .removeClass('current')
             .removeAttr('style');
 
+        /*console.log(block.offset().top);
+        $('#axeXprev').css({
+          top:(block.offset().top+100)
+        });
+        console.log(e);*/
         if (offsetBootstrap(block, offsetX) - offsetXBootstrap == 0) {
           block.remove();
         }
