@@ -21,7 +21,8 @@ class CreatePagesTable extends Migration {
 			$table->integer('i18n_name')->unsigned();
 			$table->foreign('i18n_name')->references('id')->on('i18n');
 
-			$table->boolean('deletable');
+			$table->boolean('is_published')->default(false);
+			$table->boolean('deletable')->default(true);
 
 			$table->timestamps();
 		});

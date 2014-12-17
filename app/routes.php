@@ -106,7 +106,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::post('/languages', 'AdminController@postLanguages');
 
 	//API - AJAX
-	Route::post('/api/block-type', 'AdminBlockTypeController@getBlockType');
+	Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
 });
 
 

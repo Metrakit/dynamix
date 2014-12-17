@@ -1,8 +1,8 @@
+@section('form')
 <textarea class="input-block-level" id="content" name="content" value="content" rows="5">{{{ Input::old('content', isset($page) ? $page->content : null) }}}</textarea>
-
+@stop
 
 @section('scriptOnReady')
-$(document).ready( function () {
   console.log('start tinymce');
   tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";
   tinymce.init({
@@ -21,10 +21,4 @@ $(document).ready( function () {
      filemanager_access_key:"{{Config::get('app.key')}}",
      external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
   });
-});
-
-$('body').on('#myTab a','click', function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
-@endsection
+@stop

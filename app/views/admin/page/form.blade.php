@@ -43,12 +43,13 @@
             <!-- ./ page_title -->
 
             <div id="page-block-drawing-area" class="page-block-drawing-area row"></div>
+
+            <div class="hidden block-presenter-call-to-create">
+            @include('admin.page.block.presenter_call_to_create_in_block')
+            </div>
         </div>
         
-        
         <hr>
-
-        @include('admin.page.block.presenter_call_to_create')
 
         <h3>{{{ Lang::get('admin.page_proprieties') }}}</h3>
         <!-- page_name -->
@@ -111,4 +112,11 @@
 </div>
 
 </fieldset>
-@endsection
+@stop
+
+@section('scriptOnReady')
+$('body').on('#myTab a','click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+@stop

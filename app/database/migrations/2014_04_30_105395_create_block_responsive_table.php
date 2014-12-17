@@ -21,6 +21,8 @@ class CreateBlockResponsiveTable extends Migration {
 			$table->integer('block_id')->unsigned();
 			$table->foreign('block_id')->references('id')->on('blocks');
 
+			$table->integer('responsive_offset_id')->nullable()->unsigned()->default(null);
+
 			$table->integer('responsive_width_id')->unsigned();
 			$table->foreign('responsive_width_id')->references('id')->on('responsive_widths');
 

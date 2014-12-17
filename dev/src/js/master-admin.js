@@ -5,11 +5,41 @@ var PagerAdminMaster = function (){
       pc_col_1_width = 8.3333,
       count_col = 12,
       offsetXBootstrap = 0,
-      cssOffsetXBootstrap = 0;
+      cssOffsetXBootstrap = 0,
+      btnBlockTypeCreate = $('.block-presenter-call-to-create').html();
   
   this.start = function (e) {
     area = $('#page-block-drawing-area');
     area.on("mousemove mousedown mouseup", draw_block );
+
+    $('body').on('click', '.drawn-block-show .remove', function (e) {
+      console.log(e);
+      $(this).parent('.drawn-block').remove();
+    });
+
+    $('body').on('click', '.action-in-block a', function (e) {
+      e.preventDefault();
+
+      var me = $(this),
+          href = me.attr('href');
+
+      $.get(href, function (data) {
+        //for dom
+        console.log(me.parent('.action-in-block'));
+        me.closest('.action-in-block').html(data.form);
+        //for js
+        for( var o in data ) {
+          switch(o) {
+            case 'script':
+              eval(data[o]);
+              break;
+            case 'scriptOnReady':
+              eval(data[o]);
+              break;
+          }
+        }
+      });
+    });
   }
 
   var draw_block = function (e) {
@@ -22,7 +52,7 @@ var PagerAdminMaster = function (){
     if ( e.type === 'mousemove' ) { 
       // If ".drawnBox.current" doesn't exist, create it.
       if ( block.length < 1 ) {
-        $('<div class="drawn-block current"></div>').appendTo( area );
+        $('<div class="drawn-block current"></div><div class="clearfix"></div>').appendTo( area );
       }
       
       var drawCSS = {};
@@ -80,29 +110,29 @@ var PagerAdminMaster = function (){
         if (block.prev().length != 0) {
           if (e.clientY < block.prev().offset().top+100) {
             cssOffsetXBootstrap = 0;
+            console.log('created under line');
           }
         }
-       /* $('#axeX').css({
-          top:e.clientY
-        });
-        $('#axeY').css({
-          left:e.clientX
-        });*/
-
         
     } else if ( e.type === 'mouseup' ) {
-        draw = false;        
+        draw = false;   
+        area.find('.clearfix').remove();     
         block.prev().removeClass('last');
         block
             .addClass('drawn-block-show last col-sm-'+(offsetBootstrap(block, offsetX) - offsetXBootstrap)+(offsetXBootstrap != 0?' col-sm-offset-'+cssOffsetXBootstrap:''))
             .removeClass('current')
             .removeAttr('style');
 
-        /*console.log(block.offset().top);
-        $('#axeXprev').css({
-          top:(block.offset().top+100)
+        block.removeData('offsetX offsetY');
+        block.data({ 
+          "responsive_width":offsetBootstrap(block, offsetX) - offsetXBootstrap,
+          "responsive_trigger":"sm",
+          "responsive_offset":(offsetXBootstrap != 0?cssOffsetXBootstrap:null)
         });
-        console.log(e);*/
+
+        block.append(btnBlockTypeCreate);
+        block.prepend('<div class="remove"><span class="glyphicon glyphicon-remove"></span></div>');
+
         if (offsetBootstrap(block, offsetX) - offsetXBootstrap == 0) {
           block.remove();
         }
@@ -135,6 +165,7 @@ var PagerAdminMaster = function (){
     return floor_ratio_count_col+1;
   }
 };
+
 
 var SpeedNavigationAdminMaster = function (){
   this.start = function () {

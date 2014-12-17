@@ -3,9 +3,6 @@
     @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')), asset(Bassets::show('css/main.back.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')).'","'.asset(Bassets::show('js/main.back.min.js')), 'scriptOnReady' => 'masterAdminClass.start()' ))
 
     <body id="admin" class="@yield('classBody')">
-    <div class="axe" id="axeX"></div>
-    <div class="axe" id="axeY"></div>
-    <div class="axe" id="axeXprev"></div>
 
         @yield('beforeWrapper')
 
