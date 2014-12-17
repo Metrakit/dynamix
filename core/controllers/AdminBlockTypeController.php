@@ -13,7 +13,7 @@ class AdminBlockTypeController extends BaseController {
 			//find block type in db
 			$name = BlockType::where('name','=',$name)->first();
 
-			return Response::json(View::make( $name->path_to_view )->renderSections());
+			return Response::json(View::make( $name->path_to_view, array('index'=>Input::get('index')) )->renderSections());
 		}
 		return Response::json('error');
 	}

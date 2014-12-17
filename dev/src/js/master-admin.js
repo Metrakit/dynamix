@@ -6,7 +6,8 @@ var PagerAdminMaster = function (){
       count_col = 12,
       offsetXBootstrap = 0,
       cssOffsetXBootstrap = 0,
-      btnBlockTypeCreate = $('.block-presenter-call-to-create').html();
+      btnBlockTypeCreate = $('.block-presenter-call-to-create').html(),
+      indexBlock = 1;
   
   this.start = function (e) {
     area = $('#page-block-drawing-area');
@@ -21,12 +22,15 @@ var PagerAdminMaster = function (){
       e.preventDefault();
 
       var me = $(this),
-          href = me.attr('href');
+          href = me.attr('href'),
+          block = me.closest('.action-in-block');
 
+      block.data({"index":indexBlock});
+      href += '?index='+indexBlock;
+      indexBlock++;
       $.get(href, function (data) {
         //for dom
-        console.log(me.parent('.action-in-block'));
-        me.closest('.action-in-block').html(data.form);
+        block.html(data.form);       
         //for js
         for( var o in data ) {
           switch(o) {
@@ -129,6 +133,7 @@ var PagerAdminMaster = function (){
           "responsive_trigger":"sm",
           "responsive_offset":(offsetXBootstrap != 0?cssOffsetXBootstrap:null)
         });
+
 
         block.append(btnBlockTypeCreate);
         block.prepend('<div class="remove"><span class="glyphicon glyphicon-remove"></span></div>');

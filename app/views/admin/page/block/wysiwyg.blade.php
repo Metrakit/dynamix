@@ -1,12 +1,12 @@
 @section('form')
-<textarea class="input-block-level" id="content" name="content" value="content" rows="5">{{{ Input::old('content', isset($page) ? $page->content : null) }}}</textarea>
+<textarea class="input-block-level" id="wysiwyg_{{isset($index)?$index:''}}" name="wysiwyg_{{isset($index)?$index:''}}" value="" rows="5">{{{ Input::old('content'.(isset($index)?$index:''), null) }}}</textarea>
 @stop
 
 @section('scriptOnReady')
   console.log('start tinymce');
   tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";
   tinymce.init({
-      selector: "textarea#content",theme: "modern",
+      selector: "textarea#wysiwyg_{{isset($index)?$index:''}}",theme: "modern",
       plugins: [
            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
            "searchreplace wordcount visualblocks visualchars insertdatetime code media nonbreaking",
