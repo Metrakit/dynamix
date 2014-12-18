@@ -212,6 +212,7 @@ module.exports = function(grunt) {
 
 			  // TinyMCE
 		      {expand: true, cwd: '<%= vendorPath %>tinymce/', src: ['**'], dest: '<%= distPath %>js/tinymce/', filter: 'isFile'},
+		      {expand: true, cwd: '<%= srcPath %>js/vendor/tinymce-skin/light/', src: ['**'], dest: '<%= distPath %>js/tinymce/skins/', filter: 'isFile'},
 		      {expand: true, cwd: '<%= distPath %>filemanager/tinymce/plugins', src: ['**'], dest: '<%= distPath %>js/tinymce/plugins/', filter: 'isFile'}
 
 		    ]
