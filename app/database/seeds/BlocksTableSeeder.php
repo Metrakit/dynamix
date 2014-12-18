@@ -9,11 +9,13 @@ class BlocksTableSeeder extends Seeder {
         DB::table('block_types')->insert( array(
             array(
                 'name'  => 'wysiwyg',
+                'model'  => 'Wysiwyg',
                 'icon'  => 'fa fa-font',
                 'lang'  => 'admin.blocktype.wysiwyg',
                 'path_to_view' => 'admin.page.block.wysiwyg'
             ),array(
                 'name'  => 'form',
+                'model'  => 'Formr',
                 'icon'  => 'fa fa-list-ul',
                 'lang'  => 'admin.blocktype.form',
                 'path_to_view' => 'admin.page.block.form'

@@ -5,6 +5,22 @@
 //Base Theme admin
 @import "admin/sb-admin-2";
 
+//Theme tinyMCE herit of light theme
+@import "admin/tinymce";
+
+
+//Helper
+.fixed-bottom {
+	position:fixed;
+	bottom:0;
+	right:0;
+	left:0;
+	z-index:9999;
+}
+.btn-border-top {
+	@include border-bottom-right-radius(0px);
+	@include border-bottom-left-radius(0px);
+}
 
 @include keyframes(loader) {
   0% {

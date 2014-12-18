@@ -107,7 +107,7 @@
     @endfor
 </div>
 
-<div class="form-group">
+<div class="form-group text-center">
     <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-{{ $glyphicon }}"></span> {{ $buttonLabel }}</button>
 </div>
 
