@@ -1,15 +1,31 @@
 @import "compass";
+
+//general
+.mce-tinymce {
+	background: transparent !important;
+}
 //toolbar
-.mce-panel {
-	position: absolute;
-	width: 100%;
-	top: -26px;
-	background: #fff;
-	filter: none;
-	border: 0 solid #fff;
+.mce-toolbar-grp {
+	position: absolute !important;
+	top: -30px;
+	@include box-shadow(0 0 3px black);
+	//background:#333 !important;	
+}
+.mce-toolbar .mce-btn i {
+	//color:white !important;
+}
+.mce-btn i {
+	//@include text-shadow(1px 1px black !important);
+}
+.mce-caret {
+	//border-top: 4px solid white !important;
+}
+.mce-toolbar .mce-btn.mce-active {
+//background: #444 !important;
 }
 
 //textarea
 .mce-edit-area {
-
+	background: transparent !important;
+	border-color: #939ba2 !important
 }

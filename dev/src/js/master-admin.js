@@ -25,6 +25,7 @@ var PagerAdminMaster = function (){
           href = me.attr('href'),
           block = me.closest('.action-in-block');
 
+      block.parent().addClass('drawn-block-type-chosen');
       block.data({"index":indexBlock});
       href += '?index='+indexBlock;
       indexBlock++;
