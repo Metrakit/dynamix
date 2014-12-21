@@ -13,7 +13,7 @@
 
 <fieldset>
 
-{{var_dump(Session::all())}}
+
 
 <div class="tab-content">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
@@ -44,7 +44,7 @@
             </div>
             <!-- ./ page_title -->
 
-            <div id="page-block-drawing-area" class="page-block-drawing-area row"></div>
+            <div id="page-block-drawing-area-{{$locales[$i]->id}}" class="page-block-drawing-area row"></div>
 
             <div class="hidden block-presenter-call-to-create">
             <div class="handful handful-left"></div>

@@ -10,13 +10,13 @@ var PagerAdminMaster = function (){
       indexBlock = 1;
   
   this.start = function (e) {
-    area = $('#page-block-drawing-area');
+    area = $('.page-block-drawing-area');
     area.on("mousemove mousedown mouseup", draw_block );
 
     //Resfull DELETE
     $('body').on('click', '.drawn-block-show .remove', function (e) {
-      console.log(e);
-      $(this).parent('.drawn-block').remove();
+      var className = '.block-locale-id-' + $(this).parent('.drawn-block').data('index');
+      $(className).remove();
     });
 
     $('body').on('click', '.action-in-block a', function (e) {
@@ -27,9 +27,7 @@ var PagerAdminMaster = function (){
           block = me.closest('.action-in-block');
 
       block.parent().addClass('drawn-block-type-chosen');
-      block.data({"index":indexBlock});
-      href += '?index='+indexBlock;
-      indexBlock++;
+      href += '?index='+block.data("index");
       $.get(href, function (data) {
         //for dom
         block.html(data.form);       
@@ -58,7 +56,10 @@ var PagerAdminMaster = function (){
     if ( e.type === 'mousemove' ) { 
       // If ".drawnBox.current" doesn't exist, create it.
       if ( block.length < 1 ) {
-        $('<div class="drawn-block current"></div><div class="clearfix"></div>').appendTo( area );
+        $('<div class="drawn-block current block-locale-id-' + indexBlock + '"></div><div class="clearfix"></div>')
+          .data({"index":indexBlock})
+          .appendTo( area );
+        indexBlock++;
       }
       
       var drawCSS = {};
