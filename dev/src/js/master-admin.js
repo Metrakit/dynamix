@@ -7,7 +7,8 @@ var PagerAdminMaster = function (){
       offsetXBootstrap = 0,
       cssOffsetXBootstrap = 0,
       btnBlockTypeCreate = $('.block-presenter-call-to-create').html(),
-      indexBlock = 1;
+      indexBlock = 1,
+      locale_id_class = '.block-locale-id-';
   
   this.start = function (e) {
     area = $('.page-block-drawing-area');
@@ -15,7 +16,7 @@ var PagerAdminMaster = function (){
 
     //Resfull DELETE
     $('body').on('click', '.drawn-block-show .remove', function (e) {
-      var className = '.block-locale-id-' + $(this).parent('.drawn-block').data('index');
+      var className = locale_id_class + $(this).parent('.drawn-block').data('index');
       $(className).remove();
     });
 
@@ -27,10 +28,10 @@ var PagerAdminMaster = function (){
           block = me.closest('.action-in-block');
 
       block.parent().addClass('drawn-block-type-chosen');
-      href += '?index='+block.data("index");
+      href += '?index='+block.data('index');
       $.get(href, function (data) {
         //for dom
-        block.html(data.form);       
+        $(locale_id_class + block.data("index")).html(data.form);       
         //for js
         for( var o in data ) {
           switch(o) {
@@ -38,6 +39,7 @@ var PagerAdminMaster = function (){
               eval(data[o]);
               break;
             case 'scriptOnReady':
+            console.log(data[o]);
               eval(data[o]);
               break;
           }
@@ -57,7 +59,7 @@ var PagerAdminMaster = function (){
       // If ".drawnBox.current" doesn't exist, create it.
       if ( block.length < 1 ) {
         $('<div class="drawn-block current block-locale-id-' + indexBlock + '"></div><div class="clearfix"></div>')
-          .data({"index":indexBlock})
+          .data("index",indexBlock)
           .appendTo( area );
         indexBlock++;
       }
