@@ -13,6 +13,8 @@
 
 <fieldset>
 
+{{var_dump(Session::all())}}
+
 <div class="tab-content">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="{{$locales[$i]->id}}">
@@ -45,7 +47,9 @@
             <div id="page-block-drawing-area" class="page-block-drawing-area row"></div>
 
             <div class="hidden block-presenter-call-to-create">
+            <div class="handful handful-left"></div>
             @include('admin.page.block.presenter_call_to_create_in_block')
+            <div class="handful handful-right"></div>
             </div>
         </div>
         

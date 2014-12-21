@@ -59,6 +59,12 @@ return array(
 									'role_id'		=> 'required|exists:roles,id'),
 		
 	/*
+	|	Page
+	|
+	*/
+		'page'		=> 		array(	'required'			=> 'required|min:2|max:200'),
+		
+	/*
 	|	Tag
 	|
 	*/

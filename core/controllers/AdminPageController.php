@@ -51,12 +51,10 @@ class AdminPageController extends BaseController {
 	 */
 	public function store()
 	{
-		$inputs = Input::all();
-		$inputs['url'] = '/'.Str::slug($inputs['url']);
 
 		//return var_dump($inputs);
 
-        $validator = Validator::make($inputs, Config::get('validator.page.deletable'));
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.page'));
 		
         // Check if the form validates with success
         if ($validator->passes())

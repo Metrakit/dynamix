@@ -18,6 +18,8 @@
     toolbar_item_size: "small",
 
     setup: function (theEditor) {
+
+
       theEditor.on('focus', function () {
           $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").show();
       });
@@ -27,11 +29,13 @@
       theEditor.on("init", function () {
           $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").hide();
       });
+
     },
    
     external_filemanager_path:"/filemanager/",
     filemanager_title:"Responsive Filemanager" ,
     filemanager_access_key:"{{Config::get('app.key')}}",
-    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
+    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"},
+    auto_focus: "wysiwyg_{{isset($index)?$index:''}}",
   });
 @stop

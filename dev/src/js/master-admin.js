@@ -13,6 +13,7 @@ var PagerAdminMaster = function (){
     area = $('#page-block-drawing-area');
     area.on("mousemove mousedown mouseup", draw_block );
 
+    //Resfull DELETE
     $('body').on('click', '.drawn-block-show .remove', function (e) {
       console.log(e);
       $(this).parent('.drawn-block').remove();
@@ -120,26 +121,32 @@ var PagerAdminMaster = function (){
         }
         
     } else if ( e.type === 'mouseup' ) {
-        draw = false;   
-        area.find('.clearfix').remove();     
-        block.prev().removeClass('last');
-        block
-            .addClass('drawn-block-show last col-sm-'+(offsetBootstrap(block, offsetX) - offsetXBootstrap)+(offsetXBootstrap != 0?' col-sm-offset-'+cssOffsetXBootstrap:''))
-            .removeClass('current')
-            .removeAttr('style');
+      /*console.log('--------------');
+      console.log(offsetBootstrap(block, offsetX));
+      console.log(offsetXBootstrap);*/
+        var block_width = offsetBootstrap(block, offsetX) - offsetXBootstrap;
+        draw = false;
+        if (block_width >= 0) {
+          area.find('.clearfix').remove();     
+          block.prev().removeClass('last');
+          block
+              .addClass('drawn-block-show last col-sm-'+(block_width)+(offsetXBootstrap != 0?' col-sm-offset-'+cssOffsetXBootstrap:''))
+              .removeClass('current')
+              .removeAttr('style');
 
-        block.removeData('offsetX offsetY');
-        block.data({ 
-          "responsive_width":offsetBootstrap(block, offsetX) - offsetXBootstrap,
-          "responsive_trigger":"sm",
-          "responsive_offset":(offsetXBootstrap != 0?cssOffsetXBootstrap:null)
-        });
+          block.removeData('offsetX offsetY');
+          block.data({ 
+            "responsive_width":block_width,
+            "responsive_trigger":"sm",
+            "responsive_offset":(offsetXBootstrap != 0?cssOffsetXBootstrap:null)
+          });
 
 
-        block.append(btnBlockTypeCreate);
-        block.prepend('<div class="remove"><span class="glyphicon glyphicon-remove"></span></div>');
+          block.append(btnBlockTypeCreate);
+          block.prepend('<div class="remove"><span class="glyphicon glyphicon-remove"></span></div>');
+        }
 
-        if (offsetBootstrap(block, offsetX) - offsetXBootstrap == 0) {
+        if (block_width == 0) {
           block.remove();
         }
     }

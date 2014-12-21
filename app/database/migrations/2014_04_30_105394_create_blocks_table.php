@@ -30,6 +30,8 @@ class CreateBlocksTable extends Migration {
 
 			$table->integer('order')->unsigned();
 
+			$table->boolean('is_clearfixed')->default(false);
+
 			$table->timestamps();
 		});
 	}
