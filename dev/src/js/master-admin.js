@@ -14,6 +14,12 @@ var PagerAdminMaster = function (){
     area = $('.page-block-drawing-area');
     area.on("mousemove mousedown mouseup", draw_block );
 
+    //!!!TODO!!!//
+    //ici on va mettre les meme écouteurs que pour la création d'un block
+    //sauf qu'on prend que l'axe X
+    //Et on va transvaser (à gauche) dans le offsetboostrap et moins la taille, et à droite on ajoute ou réduit
+    //area.on("mousemove mousedown mouseup", draw_block );
+    
     //Resfull DELETE
     $('body').on('click', '.drawn-block-show .remove', function (e) {
       var className = locale_id_class + $(this).parent('.drawn-block').data('index');
@@ -21,6 +27,7 @@ var PagerAdminMaster = function (){
     });
 
     $('body').on('click', '.action-in-block a', function (e) {
+      //les 'block' contienent un index dans $.data('index')
       e.preventDefault();
 
       var me = $(this),
@@ -28,24 +35,28 @@ var PagerAdminMaster = function (){
           block = me.closest('.action-in-block');
 
       block.parent().addClass('drawn-block-type-chosen');
-      href += '?index='+block.data('index');
+      href += '?index='+block.parent().data('index')+'&current_locale='+$('.tab-pane.active').attr('data-locale-id');
       $.get(href, function (data) {
-        //for dom
-        $(locale_id_class + block.data("index")).html(data.form);       
-        //for js
-        for( var o in data ) {
-          switch(o) {
-            case 'script':
-              eval(data[o]);
-              break;
-            case 'scriptOnReady':
-            console.log(data[o]);
-              eval(data[o]);
-              break;
-          }
-        }
+        putContent(locale_id_class, block, data, makeJs);
       });
     });
+
+    //for dom
+    var putContent = function (locale_id_class, block, data, callback) {
+      $(locale_id_class + block.parent().data("index")).html(data.form);
+      callback(data);
+    }
+    //for js
+    var makeJs = function (data) {
+      for( var o in data ) {
+        switch(o) {
+          case 'script':
+            console.log(data[o]);
+            eval(data[o]);
+            break;
+        }
+      }
+    }
   }
 
   var draw_block = function (e) {

@@ -4,7 +4,7 @@
 <ul class="nav nav-tabs" role="tablist" id="myTab">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <li role="presentation"{{($i==0?' class="active"':'')}}>
-        <a href="#{{$locales[$i]->id}}" aria-controls="{{$locales[$i]->id}}" role="tab" data-toggle="tab">
+        <a href="#tab-{{$locales[$i]->id}}" aria-controls="tab-{{$locales[$i]->id}}" role="tab" data-toggle="tab">
             <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{$locales[$i]->flag}}" alt="{{$locales[$i]->id}}"/></span>
         </a>
     </li>
@@ -17,7 +17,7 @@
 
 <div class="tab-content">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
-    <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="{{$locales[$i]->id}}">
+    <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="tab-{{$locales[$i]->id}}" data-locale-id="{{$locales[$i]->id}}">
         <!-- <h3>{{{ Lang::get('admin.page_contents') }}}</h3> -->
         <div class="page-create">
             <!-- page_grid -->
@@ -121,6 +121,7 @@
 @section('scriptOnReady')
 $('body').on('#myTab a','click', function (e) {
   e.preventDefault()
+  console.log('tab');
   $(this).tab('show')
 })
 @stop
