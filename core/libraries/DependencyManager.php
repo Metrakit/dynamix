@@ -37,9 +37,9 @@ class DependencyManager {
 	 * Initialise the dependency manager
 	 * @param  array $data [description]
 	 */
-	public static function init($data = NULL)
+	public static function init($data = null)
 	{
-		if ($data == NULL) {
+		if ($data === null) {
 			throw new InvalidArgumentException("You should add the modules needed in a array as argument in the DependencyManager. You can add an empty array if no modules are needed", 1);
 		}
 		$self = new self($data);
