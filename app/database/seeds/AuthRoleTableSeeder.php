@@ -10,6 +10,7 @@ class AuthRoleTableSeeder extends Seeder {
         $auth_id1 = AuthUser::find(1)->id;
         $auth_id2 = AuthUser::find(2)->id;
         $auth_id3 = AuthUser::find(3)->id;
+        $auth_id4 = AuthUser::find(4)->id;
         $role_id1 = Role::where('name','=','admin')->first()->id;
         $role_id2 = Role::where('name','=','moderator')->first()->id;
 
@@ -25,7 +26,12 @@ class AuthRoleTableSeeder extends Seeder {
             array(
                 'auth_id'    => $auth_id3,
                 'role_id'    => $role_id2
-                ))
+                ),
+            array(
+                'auth_id'    => $auth_id4,
+                'role_id'    => $role_id1
+                ),
+            )
         );
     }
 
