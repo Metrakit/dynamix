@@ -91,9 +91,13 @@ class Former extends \Controller {
      * @param  Object $form
      * @return Array
      */
-    public function generateByModel($form)
+    public function generateByModel($form, $modelId)
     {
         $data = array();
+
+        if (null != $modelId && is_int($modelId)) {
+            $modelData = $form->find($modelId);
+        }
 
         // Cast l'array en objet
         $data['form'] = (object) $form;
@@ -118,6 +122,21 @@ class Former extends \Controller {
                 $data['inputs'][$key]->value = NULL;
             }
 
+            // Set the input value if defined
+            if (null == $data['inputs'][$key]->value) {
+                if (\Input::old($data['inputs'][$key]->name)) {
+                    $data['inputs'][$key]->value = \Input::old($data['inputs'][$key]->name);
+                } else if (isset($modelData) 
+                    && isset($modelData[$data['inputs'][$key]->name])
+                    && null != $modelData[$data['inputs'][$key]->name]) {
+
+                    $data['inputs'][$key]->value =$modelData[$data['inputs'][$key]->name];
+                }
+
+            }
+
+          
+
             $data['inputs'][$key]->key = NULL;
 
             // Si c'est un select on génère les options
@@ -128,6 +147,12 @@ class Former extends \Controller {
                 $data['inputs'][$key]->options = $options;
             }
             
+            // Set file Type if the input is a filemanager
+            if ($data['inputs'][$key]->type == "filemanager" && !isset($data['inputs'][$key]->typeFilemanager)) {
+                // Set to 0 if typeFilemanager is undefined
+                $data['inputs'][$key]->typeFilemanager = 0;
+            }
+
             // Génération des vues
             $data['inputs'][$key]->view = \Response::view( $data['inputs'][$key]->viewPath, array(
                 'form' => $form,
@@ -313,9 +338,10 @@ class Former extends \Controller {
      * @param  Integer $formId
      * @return Response
      */
-    public function renderByModel($model)
+    public function renderByModel($model, $modelId)
     {
-        $data = self::generateByModel($model);
+        $data = self::generateByModel($model, $modelId);
+        $data['modelId'] = $modelId;
         return \Response::view('public.form.form', $data)->getOriginalContent();
     }
 

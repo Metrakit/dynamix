@@ -2,7 +2,7 @@
 
 class FormerController extends Controller {
 
-	public function store()
+	public function store($modelId = null)
 	{
         if (Input::has('form')) {
             if (is_int(Input::get('form'))) {
@@ -51,7 +51,7 @@ class FormerController extends Controller {
             } else if ($formParams['method'] == "database") {
                 // Store in DB
             } else if ($formParams['method'] == "model") {
-                return $model::formAction(Input::except('_token'));      
+                return $model::formAction(Input::except('_token'), $modelId);      
             } else {
                 App::abort(500, "No method found for send the form !");
             }

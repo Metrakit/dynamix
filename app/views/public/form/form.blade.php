@@ -4,7 +4,7 @@
 	</success>
 @endif
 
-<form action="{{ URL::route('form') }}" class="form-{{ $form->type }}" method="POST">
+<form action="{{ URL::route('form', array($modelId)) }}" class="form-{{ $form->type }}" method="POST">
 
 	{{-- Send the Form Id --}}
 	<input type="hidden" name="form" value="{{ $form->id }}" />
