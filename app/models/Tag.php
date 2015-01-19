@@ -1,19 +1,49 @@
 <?php
 
 class Tag extends Eloquent{
+	
 	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
+	 * Parameters
 	 */
 	protected $table = 'tags';
 
 	/**
-     * An Tag has belong to many article
+	 * Relations
+	 *
+	 * @var string
+	 */
+	
+	/**
+	 * Polymorphic relation
+	 *
+	 * @var string
+	 */
+	public function pages () {
+		return $this->morphedByMany('Page', 'taggable');
+	}
+
+ 	
+ 	/**
+     * Additional method
      *
+     * For TagController::delete()
      * @return mixed
      */
-	public function articles() {
-        return $this->belongsToMany('Article');
-    }
+ 	public function i18n () {
+ 		return I18n::find($this->i18n_name);
+ 	}
+
+ 	public function taggables () {
+		return Taggable::where('tag_id','=', $this->id)->get();
+	}
+
+	public function translateLocale( $i18n_id, $locale_id ) {
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
+	}
+	
+	public function tag_name_locale( $locale_id ) {
+		return $this->translateLocale( $this->i18n_name, $locale_id );
+	}
+
+
 }

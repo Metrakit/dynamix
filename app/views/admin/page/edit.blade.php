@@ -22,8 +22,8 @@
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <input type="hidden" name="_method" value="put" />
-        
-        {{ Former::createFromModel($page) }}
+
+        @include('admin.page.form', array('page' => $page))
 
         <button type="submit" class="btn btn-primary">Enregistrer</button>
         <!-- ./ form actions -->

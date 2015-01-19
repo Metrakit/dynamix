@@ -11,28 +11,28 @@ class DatabaseSeeder extends Seeder {
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
-        $this->call('FileTypesTableSeeder');
-        $this->call('FilesTableSeeder');
+        //$this->call('FileTypesTableSeeder');
+        //$this->call('FilesTableSeeder');
         $this->call('ResponsiveWidthsTableSeeder');
         $this->call('ResponsiveTriggersTableSeeder');
 
 
         //Users
-        $this->call('UsersTableSeeder');
+        $this->call('AuthsTableSeeder');
         $this->call('RolesTableSeeder');
 
-        $this->call('RoleUserTableSeeder');
+        $this->call('AuthRoleTableSeeder');
         $this->call('PermissionsTableSeeder');
 
 
         //Blogs
-        $this->call('BlogsTableSeeder');
-        $this->call('ArticlesTableSeeder');
-        $this->call('TagsTableSeeder');
-        $this->call('ArticleCategoriesTableSeeder');
+        //$this->call('BlogsTableSeeder');
+        //$this->call('ArticlesTableSeeder');
+        //$this->call('TagsTableSeeder');
+        //$this->call('ArticleCategoriesTableSeeder');
 
-        $this->call('ArticleBlogTableSeeder');
-        $this->call('ArticleCategoryTableSeeder');
+        //$this->call('ArticleBlogTableSeeder');
+        //$this->call('ArticleCategoryTableSeeder');
         $this->call('TaggablesTableSeeder');
         
 
@@ -41,6 +41,9 @@ class DatabaseSeeder extends Seeder {
         $this->call('BlocksTableSeeder');
         $this->call('BlockContentsTableSeeder');
         $this->call('BlockResponsiveTableSeeder');
+
+        //OnePage
+        $this->call('OnePagesTableSeeder');
 
 
         //Forms
@@ -52,6 +55,7 @@ class DatabaseSeeder extends Seeder {
         
         // ONLY FOR DEVELOPMENT
         $this->call('FullFormSeeder');
+        $this->call('CommentsTableSeeder');
 
 
         //Sliders
@@ -60,13 +64,13 @@ class DatabaseSeeder extends Seeder {
         
 
         //Galleries
-        $this->call('GalleriesTableSeeder');
-        $this->call('GalleryImageTableSeeder');
+        //$this->call('GalleriesTableSeeder');
+        //$this->call('GalleryImageTableSeeder');
         
 
         //Mosaics
-        $this->call('MosaicsTableSeeder');
-        $this->call('GalleryMosaicTableSeeder');
+        //$this->call('MosaicsTableSeeder');
+        //$this->call('GalleryMosaicTableSeeder');
 
 
         //Menu

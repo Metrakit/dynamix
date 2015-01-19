@@ -79,7 +79,7 @@ class Formr extends Eloquent{
 			$fromObject = true;
 		}
 
-
+		
 		
 		$form->finish_on = $data['method'];
 		$form->type = $data['type'];

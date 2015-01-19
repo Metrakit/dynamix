@@ -4,42 +4,42 @@
   background-repeat: no-repeat;
 }
 
-/* line 84, ../../../../../HashiCorp/Vagrant/embedded/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-beer {
   background-position: 0 0;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../HashiCorp/Vagrant/embedded/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-cat {
   background-position: 0 -50px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../HashiCorp/Vagrant/embedded/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-drink {
   background-position: 0 -100px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../HashiCorp/Vagrant/embedded/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-drug {
   background-position: 0 -150px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../HashiCorp/Vagrant/embedded/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-hat {
   background-position: 0 -200px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../HashiCorp/Vagrant/embedded/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-song {
   background-position: 0 -250px;
   height: 50px;
@@ -50,6 +50,266 @@
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
+}
+
+/* line 4, ../sass/_comment.scss */
+.comment textarea {
+  border: 2px solid #ddd;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  resize: none;
+  outline: none;
+}
+/* line 12, ../sass/_comment.scss */
+.comment textarea + .input-group-addon {
+  border: 2px solid #ddd;
+  border-left: none;
+}
+
+/* line 19, ../sass/_comment.scss */
+.comment-head {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* line 25, ../sass/_comment.scss */
+.comment-form {
+  margin-bottom: 10px;
+}
+
+/* line 29, ../sass/_comment.scss */
+.input-comment-form {
+  overflow: hidden;
+}
+/* line 31, ../sass/_comment.scss */
+.input-comment-form input {
+  width: 100%;
+  height: 48px;
+  border: 2px solid #ddd;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px 3px 0 0;
+  font-size: 18px;
+  padding: 2px 6px;
+}
+/* line 38, ../sass/_comment.scss */
+.input-comment-form input:focus {
+  outline: none;
+  border: 2px solid #ddd;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px 3px 0 0;
+}
+
+/* line 49, ../sass/_comment.scss */
+button.submit-comment-form {
+  height: 0px;
+  padding: 0 6px;
+  border: none;
+}
+
+/* line 55, ../sass/_comment.scss */
+.input-comment-form input:focus + .submit-comment-form,
+.submit-comment-form:focus {
+  height: auto;
+  padding: 6px 12px;
+  border: 2px solid #ddd;
+  border-top: none;
+}
+
+/* line 63, ../sass/_comment.scss */
+.btn-comment-form {
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 4px 4px;
+  border: 2px solid #ddd;
+  border-top: none;
+  background: white;
+  color: grey;
+}
+/* line 69, ../sass/_comment.scss */
+.btn-comment-form:focus {
+  border: 2px solid #ddd;
+  border-top: none;
+  outline: none;
+}
+
+/* line 77, ../sass/_comment.scss */
+.img-comment {
+  float: left;
+  margin-right: 10px;
+}
+/* line 80, ../sass/_comment.scss */
+.img-comment img {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+/* line 88, ../sass/_comment.scss */
+.comment-user {
+  margin: 15px 0;
+}
+
+/* line 91, ../sass/_comment.scss */
+.comment-user-inner {
+  overflow: hidden;
+}
+
+/* line 95, ../sass/_comment.scss */
+.comment-user-header {
+  color: #bbb;
+  font-size: 85%;
+}
+
+/* line 101, ../sass/_comment.scss */
+.comment-user-body p {
+  margin: 0;
+}
+
+/* line 106, ../sass/_comment.scss */
+.comment-user-footer {
+  color: #bbb;
+  font-size: 85%;
+}
+/* line 109, ../sass/_comment.scss */
+.comment-user-footer a {
+  color: #bbb;
+}
+/* line 111, ../sass/_comment.scss */
+.comment-user-footer a:hover, .comment-user-footer a:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+/* line 120, ../sass/_comment.scss */
+.comment-reply {
+  margin-left: 48px;
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
+}
+/* line 125, ../sass/_comment.scss */
+.comment-reply li.comment-user {
+  margin: 0;
+}
+
+/* line 130, ../sass/_comment.scss */
+.img-comment-reply {
+  float: left;
+  margin-right: 10px;
+}
+/* line 133, ../sass/_comment.scss */
+.img-comment-reply img {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+/* line 140, ../sass/_comment.scss */
+.comment-reply-inner {
+  overflow: hidden;
+}
+
+/* line 146, ../sass/_comment.scss */
+.author-remove {
+  display: none;
+}
+/* line 148, ../sass/_comment.scss */
+.author-remove a {
+  color: #bbb;
+}
+/* line 150, ../sass/_comment.scss */
+.author-remove a:hover, .author-remove a:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+/* line 158, ../sass/_comment.scss */
+.comment-reply-inner:hover .author-remove, .comment-reply-inner:focus .author-remove, .comment-user-inner:hover .author-remove, .comment-user-inner:focus .author-remove {
+  display: inline;
+}
+
+/* line 166, ../sass/_comment.scss */
+.comment-form-reply .img-comment img {
+  width: 36px;
+  height: 36px;
+}
+/* line 171, ../sass/_comment.scss */
+.comment-form-reply p.alert {
+  padding: 5px;
+  border-width: 2px;
+  border-top: 0;
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 4px 4px;
+}
+
+/* line 180, ../sass/_comment.scss */
+#comment-form p.alert {
+  padding: 5px;
+  border-width: 2px;
+  border-top: none;
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 4px 4px;
+}
+
+/* line 187, ../sass/_comment.scss */
+#comment-form-edit-hidden, #comment-form-reply-hidden {
+  display: none;
+}
+
+/* line 191, ../sass/_comment.scss */
+.display-inline-block {
+  display: inline-block;
+}
+
+/* line 195, ../sass/_comment.scss */
+.color-blue {
+  color: #5ea5c8;
+}
+
+/* line 198, ../sass/_comment.scss */
+.color-red {
+  color: #ce8483;
+}
+
+/* .nav-tabs {
+	margin-bottom:15px;
+} */
+/* line 24, ../sass/core.scss */
+.navbar-blue {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color: #0f93bc;
+  border-color: #12b9ee;
+}
+/* line 30, ../sass/core.scss */
+.navbar-blue .nav > li > a {
+  color: white;
+}
+/* line 32, ../sass/core.scss */
+.navbar-blue .nav > li > a:hover, .navbar-blue .nav > li > a:focus {
+  color: #f5f5f5;
+  background-color: #0c7393;
+}
+/* line 38, ../sass/core.scss */
+.navbar-blue .nav > .active > a, .navbar-blue .nav > .active > a:hover, .navbar-blue .nav > .active > a:focus {
+  color: #eee;
+  background-color: #12b9ee;
+}
+/* line 44, ../sass/core.scss */
+.navbar-blue .nav > .disabled > a, .navbar-blue .nav > .disabled > a:hover, .navbar-blue .nav > .disabled > a:focus {
+  color: grey;
+  background-color: none;
+}
+/* line 54, ../sass/core.scss */
+.navbar-blue .navbar-nav > .open > a, .navbar-blue .navbar-nav > .open > a:hover, .navbar-blue .navbar-nav > .open > a:focus {
+  background-color: #12b9ee;
+  color: #eee;
 }
 
 /*======= Custom Media Query to fix small hero-unit ========= */
@@ -173,23 +433,38 @@ ol.linenums li {
   width: 100%;
 }
 
-/* line 27, ../sass/core.scss */
+/* line 76, ../sass/core.scss */
+.button-transparent {
+  background: transparent;
+  border: none;
+  height: auto;
+  width: auto;
+  padding: 0;
+  display: block;
+  position: relative;
+}
+/* line 84, ../sass/core.scss */
+.button-transparent:focus {
+  outline: 0;
+}
+
+/* line 91, ../sass/core.scss */
 .inline-block {
   display: inline-block !important;
 }
 
-/* line 36, ../sass/core.scss */
+/* line 100, ../sass/core.scss */
 body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 41, ../sass/core.scss */
+/* line 105, ../sass/core.scss */
 header {
-  background: url(../../img/sources/background-cms.png) no-repeat center center #00a99d;
+  background: #333;
   color: white;
 }
-/* line 45, ../sass/core.scss */
+/* line 109, ../sass/core.scss */
 header figure {
   display: block;
   position: relative;
@@ -200,13 +475,13 @@ header figure {
   vertical-align: middle;
 }
 
-/* line 56, ../sass/core.scss */
+/* line 120, ../sass/core.scss */
 .container.main {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-/* line 61, ../sass/core.scss */
+/* line 125, ../sass/core.scss */
 footer {
   padding-top: 10px;
   padding-bottom: 10px;

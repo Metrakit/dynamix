@@ -17,6 +17,7 @@ class CreateStructuresTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
+			//For the title (h1) of the page
 			$table->integer('i18n_title')->unsigned();
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 

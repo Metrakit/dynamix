@@ -4,6 +4,24 @@ class BlocksTableSeeder extends Seeder {
 
     public function run()
     {
+        DB::table('block_types')->delete();
+
+        DB::table('block_types')->insert( array(
+            array(
+                'name'  => 'wysiwyg',
+                'model'  => 'Wysiwyg',
+                'icon'  => 'fa fa-font',
+                'lang'  => 'admin.blocktype.wysiwyg',
+                'path_to_view' => 'admin.page.block.wysiwyg'
+            ),array(
+                'name'  => 'form',
+                'model'  => 'Formr',
+                'icon'  => 'fa fa-list-ul',
+                'lang'  => 'admin.blocktype.form',
+                'path_to_view' => 'admin.page.block.form'
+            )
+        ));
+
         DB::table('blocks')->delete();
 
         DB::table('blocks')->insert( array(
@@ -11,33 +29,39 @@ class BlocksTableSeeder extends Seeder {
                 'blockable_id'  => 1,
                 'blockable_type'=> 'BlockContent',
                 'page_id'       => 1,
+                'type_id'       => 1,
                 'order'         => 0
             ),array(
                 'blockable_id'  => 2,
                 'blockable_type'=> 'BlockContent',
                 'page_id'       => 1,
+                'type_id'       => 1,
                 'order'         => 1
             ),array(
                 'blockable_id'  => 3,
                 'blockable_type'=> 'BlockContent',
                 'page_id'       => 1,
+                'type_id'       => 1,
                 'order'         => 2
             ),array(
                 'blockable_id'  => 4,
                 'blockable_type'=> 'BlockContent',
                 'page_id'       => 1,
+                'type_id'       => 1,
                 'order'         => 3
             ),
             array(
                 'blockable_id'  => 5,
                 'blockable_type'=> 'BlockContent',
                 'page_id'       => 2,
+                'type_id'       => 1,
                 'order'         => 0
             ),
             array(
                 'blockable_id'  => 1,
                 'blockable_type'=> 'Formr',
                 'page_id'       => 2,
+                'type_id'       => 2,
                 'order'         => 1
             ))
         );

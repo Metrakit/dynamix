@@ -27,7 +27,11 @@ class AdminController extends BaseController {
 		$data['ga_rebound'] 				= App::make('GoogleAnalyticsAPIController')->getRebound();
 		$data['ga_newOnReturningVisitor'] 	= App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();
 
-		return View::make('admin.index', $data );
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.index', $data )->renderSections());
+		} else {
+			return View::make('admin.index', $data );
+		}
 	}
 
 
@@ -39,12 +43,16 @@ class AdminController extends BaseController {
 	public function getMedia()
 	{
 		//User
-		$user = Auth::user();
+		$data['user'] = Auth::user();
 
 		//Interface
-		$noAriane = true;
+		$data['noAriane'] = true;
 
-		return View::make('admin.media.index', compact('user','noAriane'));
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.media.index', $data )->renderSections());
+		} else {
+			return View::make('admin.media.index', $data);
+		}
 	}
 
 
@@ -78,7 +86,11 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		return View::make('admin.role_permission.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.role_permission.index', $data )->renderSections());
+		} else {
+			return View::make('admin.role_permission.index', $data);
+		}
 	}
 
 	/**
@@ -130,13 +142,7 @@ class AdminController extends BaseController {
 	        	}
 	        	
 	        	//track user
-	        	$track = new Track();
-	        	$track->user_id = Auth::user()->id;
-	        	$track->date = new Datetime;
-	        	$track->action = 'update';
-	        	$track->trackable_id = $role->id;
-	        	$track->trackable_type = 'Permission';         
-	        	$track->save();
+	        	parent::track('update','Permission', $role->id);
 
 				return Redirect::to('admin/role_permission')->with('success_permissions', Lang::get('admin.permission_save_success'));
 	        }
@@ -167,7 +173,11 @@ class AdminController extends BaseController {
 		$data['langsFrontEnd'] = array_chunk($data['langsFrontEnd']->toArray(), round(count($data['langsFrontEnd']->toArray())/3+1));
 		//return var_dump($data['langsFrontEnd']);
 
-		return View::make('admin.environment.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.environment.index', $data )->renderSections());
+		} else {
+			return View::make('admin.environment.index', $data);
+		}
 	}
 
 	/**
@@ -211,13 +221,7 @@ class AdminController extends BaseController {
 		        			$locale->save();
 
 		        			//track user
-		        			$track = new Track();
-		        			$track->user_id = Auth::user()->id;
-		        			$track->date = new Datetime;
-		        			$track->action = 'delete';
-		        			$track->trackable_id = $lang->id;
-		        			$track->trackable_type = 'Locale';                
-		        			$track->save();
+		        			parent::track('delete','Locale',$locale->id);
 		        		}
 		        	}
         		}
@@ -244,13 +248,7 @@ class AdminController extends BaseController {
 					return Redirect::to('/admin/environment')->with('error', Lang::get('admin.languauge_save_error'));
 				}
 				//track user
-				$track = new Track();
-				$track->user_id = Auth::user()->id;
-				$track->date = new Datetime;
-				$track->action = 'create';
-				$track->trackable_id = $locale->id;
-				$track->trackable_type = 'Locale';                
-				$track->save();
+				parent::track('create','Locale', $locale->id);
         	}
 
 			return Redirect::to('/admin/environment')->with('success', Lang::get('admin.language_success'));
@@ -276,7 +274,11 @@ class AdminController extends BaseController {
 
 		$data['logs'] = Track::orderBy('date','DESC')->paginate(20);
 
-		return View::make('admin.log.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.log.index', $data )->renderSections());
+		} else {
+			return View::make('admin.log.index', $data);
+		}
 	}
 
 	/**
@@ -294,7 +296,11 @@ class AdminController extends BaseController {
 
 		$data['option'] = Option::first();
 
-		return View::make('admin.option.index', $data);
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.option.index', $data )->renderSections());
+		} else {
+			return View::make('admin.option.index', $data);
+		}
 	}
 
 	/**
@@ -341,12 +347,7 @@ class AdminController extends BaseController {
         		Cache::forget('DB_Option'); 
 
         		//track user
-        		$track = new Track();
-        		$track->user_id = Auth::user()->id;
-        		$track->date = new Datetime;
-        		$track->action = 'update';
-        		$track->trackable_type = 'Option';
-                $track->save();   
+        		parent::track('update','Option',null);  
 
           		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
 

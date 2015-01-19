@@ -16,17 +16,14 @@
 	$data = array(        
 	    'type'  => 'normal',
 	    'method' => 'database',
-
 	    'title' => array(
         	'fr'		=> '',
         	'en'		=> '',
         ),
-
 	    'description' => array(
         	'fr'		=> '',
         	'en'		=> '',
         ),
-
 	    'data'  => array(
 	        'title' => array(
 	            'name'        => 'title',
@@ -50,7 +47,6 @@
 	            	'en'		=> 'atestlabel',
 	            ),
 	        ),
-
 	        'description' => array(
 	            'name'        => 'description',
 	            'type'        => 'textarea',
@@ -73,7 +69,6 @@
 	            	'en'		=> '',
 	            ),
 	        ),
-
 	        'type' => array(
 	            'name'        => 'type',
 	            'type'        => 'select',
@@ -128,7 +123,6 @@
 	            	'en'		=> 'labeltesten',
 	            ),
 	        ),
-
 	        'envoyer' => array(
 	            'name'        => 'envoyer',
 	            'type'        => 'submit',
@@ -152,9 +146,7 @@
 	            ),
 	        ),
 	    ),
-
 	);
-
 ?>
 
 {{-- Former::create($data, 2, 2) --}}
@@ -168,13 +160,7 @@
 
 {{ Pager::render($page) }}
 
-
-
-{{-- Package Template --}}
-
-{{ Template::hello() }}
-<br />
-{{ Config::get('template::example.foo') }}
-
-
+{{-- To surcharge for comment module --}}
+<hr>
+@include('public.comment.index', array('object' => $page))
 @stop

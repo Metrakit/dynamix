@@ -13,8 +13,8 @@ class Role extends Eloquent
      *
      * @return mixed
      */
-    public function users() {
-        return $this->belongsToMany('User');
+    public function auths() {
+        return $this->belongsToMany('AuthUser', 'auth_role', 'auth_id', 'role_id');
     }
 
     public function permissions() {
@@ -37,7 +37,7 @@ class Role extends Eloquent
      */
     public function isDeletable() {
         //Check if users has this role
-        if ( $this->users->count() === 0 && $this->deletable ) {
+        if ( $this->auths->count() === 0 && $this->deletable ) {
             return true;
         }
         return false;

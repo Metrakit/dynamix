@@ -21,15 +21,12 @@ class CreateNavigationsTable extends Migration {
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 
 			$table->integer('parent_id')->unsigned();
-			//$table->foreign('parent_id')->references('id')->on('navigations');
 
 			$table->boolean('is_published')->default(true);
-			
 			$table->integer('order')->unsigned();
 
-			$table->integer('navigable_id')->unsigned();
-
-			$table->string('navigable_type');
+			$table->integer('navigable_id')->nullable()->unsigned();
+			$table->string('navigable_type')->nullable();
 
 			$table->timestamps();
 		});

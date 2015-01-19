@@ -126,7 +126,7 @@ class Article extends Eloquent {
 	 *
 	 * @return User
 	 */
-	public function author()
+	/*public function author()
 	{
 		//return $this->belongsTo('User', 'user_id');
 		$user = User::find($this->user_id);
@@ -134,7 +134,7 @@ class Article extends Eloquent {
 			return 'Anonyme';
 		}
 		return $user->pseudo;
-	}
+	}*/
 	
 	/**
 	 * Return the date in the locale format

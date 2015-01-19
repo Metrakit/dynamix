@@ -6,6 +6,21 @@ class BaseController extends Controller {
 
 
 	/**
+	 * store in db action
+	 *
+	 * @return array
+	 */
+	protected function track ($action, $model, $id) {
+		$track = new Track();
+		$track->auth_id = Auth::user()->id;
+		$track->date = new Datetime;
+		$track->action = $action;
+		$track->trackable_id = $id;
+		$track->trackable_type = $model;
+		return $track->save();
+	}
+
+	/**
 	 * return an array of Object for all not allowed resources
 	 *
 	 * @return array
@@ -16,11 +31,34 @@ class BaseController extends Controller {
 
 		foreach ( $resourceNavigable as $resource ) {
 			$modelName = $resource->model;
-			$notAllowed = array_merge( $notAllowed, $modelName::getNotAllowed() );
+			//Si la clé allowed['resource'] exists, put the objet in this
+			$objects = $modelName::getNotAllowed();
+
+			if (count($objects)>0) {				
+				if ( isset($notAllowed[$modelName]) ) {
+					$notAllowed[$modelName] = array_merge( $notAllowed[$modelName], $objects );
+				} else {
+					$notAllowed[$modelName] = $objects;
+				}
+			}
+
 		}
 
 		return $notAllowed;
 	}
+
+	
+
+	/**
+	 * get the page with all langue activated
+	 *
+	 * @return Response
+	 */
+	public function choose_your_language()
+	{
+		return View::make('public.i18n.choose-your-language');
+	}
+
 
 
 	/*protected function setupLayout()

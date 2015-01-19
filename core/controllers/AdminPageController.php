@@ -18,7 +18,11 @@ class AdminPageController extends BaseController {
 		$data['noAriane'] 		= true;
         $data['pages'] 			= Page::all();
 
-		return View::make('admin.page.index', $data);
+        if (Request::ajax()) {
+			return Response::json(View::make( 'admin.page.index', $data )->renderSections());
+		} else {
+			return View::make('admin.page.index', $data);
+		}
 	}
 
 	/**
@@ -32,9 +36,12 @@ class AdminPageController extends BaseController {
 		$data['user'] 			= Auth::user();
 
 		//Interface
+		$data['action'] 		= 'create';
 		$data['noAriane'] 		= true;
+		$data['buttonLabel'] 	= Lang::get('admin.page_add');
+		$data['glyphicon'] 		= 'plus';
 
-		return View::make('admin.page.create', $data);
+		return View::make('admin.page.form', $data);
 	}
 
 	/**
@@ -44,12 +51,10 @@ class AdminPageController extends BaseController {
 	 */
 	public function store()
 	{
-		$inputs = Input::all();
-		$inputs['url'] = '/'.Str::slug($inputs['url']);
 
 		//return var_dump($inputs);
 
-        $validator = Validator::make($inputs, Config::get('validator.page.deletable'));
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.page'));
 		
         // Check if the form validates with success
         if ($validator->passes())
@@ -90,14 +95,17 @@ class AdminPageController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		// get the post
-		$page = Page::find($id);
+		//User
+		$data['user'] 			= Auth::user();
 
-		if(empty($page)){
+		// get the post
+		$data['page'] = Page::find($id);
+
+		if(empty($data['page'])){
 			return Redirect::back()->with('error', 'Cette page est introuvable !');
 		}
 
-		return View::make('admin.page.edit', compact('page') );
+		return View::make('admin.page.edit', $data );
 	}
 
 	/**

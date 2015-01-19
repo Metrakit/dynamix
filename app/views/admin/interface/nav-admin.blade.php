@@ -17,13 +17,13 @@
         <li class="dropdown pull-right">
             <a class="dropdown-toggle nav-user" data-toggle="dropdown" href="#">
                 <img class="img-circle inlineBlock" height="34px" width="34px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=34px"}}" alt="gravatar" />
-                 {{$user->email}}
+                {{$user->email}}
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ URL::to('/admin/user/profil' ) }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('user.show_profil') }}}</a>
+                <li><a href="{{ URL::to('/admin/profil' ) }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('auth.show_profil') }}}</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="{{ URL::to('/user/logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{{ Lang::get('user.logout') }}}</a>
+                <li><a href="{{ URL::to('/auth/logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{{ Lang::get('auth.logout') }}}</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -33,7 +33,7 @@
     <!-- /.navbar-top-links -->
 
     <!-- /.navbar-static-side -->
-    <div class="navbar-default sidebar" role="navigation">
+    <div class="navbar-default sidebar sidebar-inverse" role="navigation">
         <div class="sidebar-nav navbar-collapse collapse">
             <ul class="nav" id="side-menu">
                 <li {{(Request::is( 'admin' ) ? 'class="active"' : '')}}>

@@ -15,7 +15,7 @@ class CreatePermissionsTable extends Migration {
 		// Create the `Comments` table
 		Schema::create('permissions', function(Blueprint $table)
 		{
-            $table->engine = 'InnoDB';
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
 			$table->integer('role_id')->unsigned();
@@ -38,7 +38,7 @@ class CreatePermissionsTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `role_user` table
+		// Delete the `permissions` table
 		Schema::drop('permissions');
 	}
 

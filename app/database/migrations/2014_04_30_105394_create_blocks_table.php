@@ -25,7 +25,12 @@ class CreateBlocksTable extends Migration {
 			$table->integer('page_id')->unsigned();
 			$table->foreign('page_id')->references('id')->on('pages');
 
+			$table->integer('type_id')->unsigned();
+			$table->foreign('type_id')->references('id')->on('block_types');
+
 			$table->integer('order')->unsigned();
+
+			$table->boolean('is_clearfixed')->default(false);
 
 			$table->timestamps();
 		});

@@ -100,6 +100,7 @@ module.exports = function(grunt) {
 					 '<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
 					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js', 
 					 '<%= vendorPath %>raphael/raphael-min.js',
+					 '<%= vendorPath %>tinymce/tinymce.min.js',
 					 '<%= srcPath %>js/vendor/morris.js',
 					 '<%= srcPath %>js/vendor/sb-admin-2.js',
 					 '<%= srcPath %>js/master-admin.js'
@@ -192,6 +193,9 @@ module.exports = function(grunt) {
 		copy: {
 		  jsMap: {
 		    files: [
+		      // Modernizr
+		      {expand: false, src: ['<%= srcPath %>js/vendor/modernizr.min.js'], dest: '<%= distPath %>js/vendor/modernizr.min.js', filter: 'isFile'},
+		      
 		      // jQuery
 		      {expand: false, src: ['<%= vendorPath %>jquery/dist/jquery.min.js'], dest: '<%= distPath %>js/vendor/jquery.min.js', filter: 'isFile'},
 		      {expand: false, src: ['<%= vendorPath %>jquery/dist/jquery.min.map'], dest: '<%= distPath %>js/vendor/jquery.min.map', filter: 'isFile'},
@@ -205,6 +209,11 @@ module.exports = function(grunt) {
 
 		      // Media-match
 		      {expand: false, src: ['<%= vendorPath %>media-match/media.match.min.js'], dest: '<%= distPath %>js/vendor/media.match.min.js', filter: 'isFile'},
+
+			  // TinyMCE
+		      {expand: true, cwd: '<%= vendorPath %>tinymce/', src: ['**'], dest: '<%= distPath %>js/tinymce/', filter: 'isFile'},
+		      {expand: true, cwd: '<%= srcPath %>js/vendor/tinymce-skin/light/', src: ['**'], dest: '<%= distPath %>js/tinymce/skins/light/', filter: 'isFile'},
+		      {expand: true, cwd: '<%= distPath %>filemanager/tinymce/plugins', src: ['**'], dest: '<%= distPath %>js/tinymce/plugins/', filter: 'isFile'}
 
 		    ]
 		  },

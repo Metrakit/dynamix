@@ -3,76 +3,9 @@
 class Page extends Eloquent {
 
 	/**
-	 * Parameters
+	 * Table name
 	 */
 	protected $table = 'pages';
-
-	public static function formParams()
-    {
-        return array(        
-            'type'  => 'horizontal',
-            'title' => Lang::get('form.page.title'),
-            'description' => Lang::get('form.page.description'),
-            'data'  => array(
-                'title' => array(
-                    'name'        => 'title',
-                    'type'        => 'text',
-                    'rules'       => 'required',
-                    'viewPath'        => 'public.form.input.text',
-                    'title'       => Lang::get('input.page.title.title'),
-                    'placeholder' => Lang::get('input.page.title.placeholder'),
-                    'helper'      => Lang::get('input.page.title.helper'),
-                    'label'       => Lang::get('input.page.title.label'),
-                ),
-                'description' => array(
-                    'name'        => 'description',
-                    'type'        => 'textarea',
-                    'rules'       => 'required',
-                    'viewPath'    => 'public.form.input.textarea',
-                    'title'       => Lang::get('input.page.description.title'),
-                    'placeholder' => Lang::get('input.page.description.placeholder'),
-                    'helper'      => Lang::get('input.page.description.helper'),
-                    'label'       => Lang::get('input.page.description.label'),
-                ),
-                'type' => array(
-                    'name'        => 'type',
-                    'type'        => 'select',
-                    'rules'       => 'required',
-                    'viewPath'        => 'public.form.input.select',
-                    'options'     => array(
-                        array(
-                            'key'   => Lang::get('input.page.type.key.1'),
-                            'value' => Lang::get('input.page.type.key.3'),
-                        ),
-                        array(
-                            'key'   => Lang::get('input.page.type.value.2'),
-                            'value' => Lang::get('input.page.type.value.3'),
-                        ), 
-                        array(
-                            'key'   => Lang::get('input.page.type.value.3'),
-                            'value' => Lang::get('input.page.type.value.3'),
-                        ),                       
-                    ),
-                    'title'       => Lang::get('input.page.description.title'),
-                    'placeholder' => Lang::get('input.page.description.placeholder'),
-                    'helper'      => Lang::get('input.page.description.helper'),
-                    'label'       => Lang::get('input.page.description.label'),
-                ),
-                'envoyer' => array(
-                    'name'        => 'envoyer',
-                    'type'        => 'submit',
-                    'rules'       => 'required',
-                    'viewPath'        => 'public.form.input.submit',
-                    'title'       => Lang::get('input.page.description.title'),
-                    'placeholder' => Lang::get('input.page.description.placeholder'),
-                    'helper'      => Lang::get('input.page.description.helper'),
-                    'label'       => Lang::get('input.page.description.label'),
-                ),
-            ),
-            'method' => 'model',
-        );
-    }
-
 	/**
 	 * Relations
 	 *
@@ -98,6 +31,11 @@ class Page extends Eloquent {
 
     public function trackable() {
         return $this->morphTo();
+    }
+
+    //To surrcharge for comment module
+    public function comments() {
+    	return $this->morphMany('Comment', 'commentable');
     }
     
 	
@@ -173,4 +111,21 @@ class Page extends Eloquent {
 	}
 
 
+    //i18n
+    public function translateLocale( $i18n_id, $locale_id ) {
+        return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
+    }
+    
+    public function page_title_locale( $locale_id ) {
+        return $this->translateLocale( $this->structure->first()->i18n_title , $locale_id );
+    }
+    public function page_url_locale( $locale_id ) {
+        return $this->translateLocale( $this->structure->first()->i18n_url , $locale_id );
+    }
+    public function page_meta_title_locale( $locale_id ) {
+        return $this->translateLocale( $this->structure->first()->i18n_meta_title , $locale_id );
+    }
+    public function page_meta_description_locale( $locale_id ) {
+        return $this->translateLocale( $this->structure->first()->i18n_meta_description , $locale_id );
+    }
 }

@@ -23,6 +23,11 @@ class I18n extends Eloquent{
     }
 
 
+    /**
+     * Add a new text with translations
+     * @param Array $data Langs array
+     * @param String $type i18n type
+     */
     public static function add($data, $type)
     {
 
@@ -33,7 +38,7 @@ class I18n extends Eloquent{
         $i18nType = I18nType::where('name', $type)
                             ->first();
         if (!$i18nType) {
-            return false;
+            return FALSE;
         }                    
 
         $i18n = new self;
@@ -44,11 +49,94 @@ class I18n extends Eloquent{
            Translation::add($i18n->id, $lang, $value); 
         }
 
-        Log::info($i18n->id);
-
         return $i18n->id;
     }
 
+     /**
+     * Get translations of a Text
+     * @param  integer $id i18n Id
+     * @return array texts translated
+     */
+    public static function read($id)
+    {
+
+        if (!is_integer($id)) {
+            throw new InvalidArgumentException('$id should be an integer !', 1);          
+        }     
+
+        $i18n = self::find($id);
+        if (!$i18n) {
+            return NULL;
+        }    
+        
+        return Translation::getByI18n($i18n->id);
+    }   
+
+    /**
+     * Update translations of a Text
+     * @param  integer $id i18n Id
+     * @param  array $data A list of texts translated
+     * @return array new texts translated
+     */
+    public static function change($id, $data)
+    {
+
+        if (!is_integer($id)) {
+            throw new InvalidArgumentException('$id should be an integer !', 1);          
+        }     
+
+        if (!is_array($data) || !sizeof($data)) {
+            throw new InvalidArgumentException('The array $data should be an array with lang ids and should not be empty !', 1);          
+        }    
+
+        $i18n = self::find($id);
+        if (!$i18n) {
+            throw new UnexpectedValueException('$i18n not found !', 1);
+        }    
+
+        $texts = array();
+
+        foreach ($data as $lang => $value) {
+           $text = Translation::change($i18n->id, $lang, $value);
+           if ($text) {
+                $texts[$lang] = $text;
+           }
+        }
+
+        // return an Array of the new texts translated
+        if (sizeof($texts)) {
+            return $texts;
+        }
+
+        return NULL;
+    }
+
+    /**
+     * Delete text with translations
+     * @param  integer $id i18n Id
+     * @return boolean
+     */
+    public static function remove($id)
+    {
+
+        if (!is_integer($id)) {
+            throw new InvalidArgumentException('$id should be an integer !', 1);          
+        }         
+
+        $i18n = self::find($id);
+        if (!$i18n) {
+            throw new UnexpectedValueException('$i18n not found !', 1);
+        }    
+
+        Translation::removeFromI18n($id);
+
+        // Try to delete it if not foreign keys are founded
+        try {
+            return $i18n->delete();
+        } catch (Exception $e) {
+            throw new Exception("You cannot delete this i18n: " . $e->getMessage(), 1);           
+        }
+    }
 
     /**
      * Additional Method
@@ -56,7 +144,7 @@ class I18n extends Eloquent{
      * @var string
      */
 	public function translate( $locale_id, $text ) {
-        if( Translation::create( array('i18n_id' => $this->id, 'locale_id' => $locale_id, 'text' => $text ) ) ){
+        if( Translation::add( $this->id, $locale_id, $text ) ) {
             return true;
         }
         return false;

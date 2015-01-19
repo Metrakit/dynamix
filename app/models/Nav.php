@@ -35,6 +35,18 @@ class Nav extends Eloquent{
 	 *
 	 * @var string
 	 */
+	public function i18n () {
+ 		return I18n::find($this->i18n_title);
+ 	}
+
+ 	public function translateLocale( $i18n_id, $locale_id ) {
+		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
+	}
+
+	public function navigation_title_locale( $locale_id ) {
+		return $this->translateLocale( $this->i18n_title, $locale_id );
+	}
+
 	public function children() {
         return Nav::where('parent_id','=',$this->id)->orderBy('order','ASC')->get();
     }
@@ -66,6 +78,10 @@ class Nav extends Eloquent{
 		return false;
     }
 
+    public static function max() {
+		return DB::table('navigations')->where('parent_id','=',0)->max('order');
+    }
+
     
 
 	/**
@@ -78,6 +94,6 @@ class Nav extends Eloquent{
 	}
 
 	public function url(){
-		return $this->navigable->url();
+		return ( $this->navigable_type !=  'NavLink' ? App::getLocale() : '') . $this->navigable->url();
 	}
 }

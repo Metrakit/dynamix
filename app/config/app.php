@@ -111,7 +111,11 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Dynamix packages
-		'Dynamix\Template\TemplateServiceProvider',
+
+		//'Dynamix\Template\TemplateServiceProvider',
+		//'Dynamix\BlogModule\BlogServiceProvider',
+		//'Dynamix\UserManager\UserServiceProvider',
+		'Dynamix\Crew\CrewModuleServiceProvider',
 
 		// External packages
 		'PagerServiceProvider',
@@ -187,12 +191,15 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		// Dynamix packages
-		'Template'        => 'Dynamix\Template\TemplateFacade',
+		//'Template'        => 'Dynamix\Template\TemplateFacade',
+		//'BlogModule'        => 'Dynamix\BlogModule\BlogFacade',
+		//'UserManager'        => 'Dynamix\UserManager\UserFacade',
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 	),
 
 
-	'author'			=> 'David Lepaux & Jordane Jouffroy'
+	'author'			=> 'David Lepaux',
+	'contributor'		=> 'Jordane Jouffroy',
 );
