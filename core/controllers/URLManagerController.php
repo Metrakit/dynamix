@@ -12,18 +12,27 @@ class URLManagerController extends BaseController {
     public function getHome()
     {
         Session::put('old_RequestSegment2', '');
-        //Find good page
-        if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
+        //OnePage
+        if (Config::get('display.onepage')) {
+            $data = array();
 
-        $urls = Cachr::getCache( 'DB_Urls' );
-        foreach ( $urls as $url ) {
-            if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
-                $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
-                return View::make( 'public.pages.page' , compact('page') );
+            $data['onepage'] = OnePage::first();
+
+            return View::make('public.onepage', $data);
+        } else {
+            //Find good page
+            if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
+
+            $urls = Cachr::getCache( 'DB_Urls' );
+            foreach ( $urls as $url ) {
+                if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
+                    $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
+                    return View::make( 'public.pages.page' , compact('page') );
+                }
             }
-        }
 
-        return View::make('errors.404');        
+            return View::make('errors.404');        
+        }
     }
     
 
