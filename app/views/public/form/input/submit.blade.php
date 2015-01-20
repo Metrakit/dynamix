@@ -9,11 +9,18 @@
 	@endif
 
 @endif--}}
-	
-<input name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}"/>
 
-{{--@if($form->type == 'horizontal' && $input->label) 
+
+@if($form->type == 'horizontal')
+	<div class="col-sm-push-2 col-sm-6">
+@endif
+	
+<button type="{{ $input->type }}" name="{{ $input->name }}" class="btn">{{ $input->title }}</button>
+
+@if($form->type == 'horizontal') 
 
 	</div>
 
-@endif--}}
+	<div class="clearfix"></div>
+
+@endif
