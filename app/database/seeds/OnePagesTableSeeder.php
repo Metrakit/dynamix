@@ -16,14 +16,32 @@ class OnePagesTableSeeder extends Seeder {
             )
         ));    
 
+        //Background_positions
+        DB::table('background_positions')->delete();
+
+        DB::table('background_positions')->insert( array(
+            array(
+                'name'       => 'relative'
+            ),
+            array(
+                'name'       => 'fixed'
+            )
+        ));    
+
 
         //Backgrounds
         DB::table('backgrounds')->delete();
 
         DB::table('backgrounds')->insert( array(
             array(
-                'url'           => 'uploads\pictures\album cute kitten\cute-kitten-2.jpg',
-                'background_type_id'   => 1
+                'url'           => 'uploads/pictures/album cute kitten/cute-kitten-2.jpg',
+                'background_type_id'   => 1,
+                'background_position_id'   => 2
+            ),
+            array(
+                'url'           => 'uploads/medias/vjing.mp4',
+                'background_type_id'   => 2,
+                'background_position_id'   => 2
             )
         ));    
 
@@ -82,14 +100,14 @@ class OnePagesTableSeeder extends Seeder {
                 'onepage_id'        => 1,
                 'background_id'     => 1,
                 'page_id'      => 1
-            )/*,
+            ),
             array(
                 'order'             => 2,
                 'name'              => 'Content',
                 'onepage_id'        => 1,
-                'background_id'     => 1,
+                'background_id'     => 2,
                 'page_id'      => 2
-            )*/
+            )
         ));    
     }
 

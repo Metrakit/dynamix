@@ -23,6 +23,9 @@ class CreateBackgroundsTable extends Migration {
 			$table->integer('background_type_id')->unsigned();
 			$table->foreign('background_type_id')->references('id')->on('background_types');
 
+			$table->integer('background_position_id')->unsigned();
+			$table->foreign('background_position_id')->references('id')->on('background_positions');
+
 			$table->timestamps();
 		});
 	}

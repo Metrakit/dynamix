@@ -39,14 +39,4 @@ class Part extends Eloquent {
 	public function render () {
 		return Pager::render(Page::find($this->page_id));
 	}
-
-	public function background_data () {
-		if (file_exists($this->background->url)) {
-			//image find !
-			return 'data: '.(function_exists('mime_content_type') ? mime_content_type($this->background->url) : $mime).';base64,'.base64_encode(file_get_contents($this->background->url));
-		} else {
-			//image not find
-			return '';
-		}
-	}
 }

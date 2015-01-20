@@ -97,6 +97,10 @@ $navbar-blue-link-disabled-bg : none;
 
 //Custom stylesheet
 //General Design
+html, body {
+	height: 100%;
+	overflow: auto;
+}
 body{
 	background: #fff;
 	font-family: 'Open Sans', sans-serif;
@@ -127,11 +131,25 @@ footer{
 	padding-bottom:10px;
 
 	text-align:center;
-
-	background:#e5e5e5;
 }
 
 
+.video {
+	position: absolute;
+	min-width: 100%; 
+	min-height: 100%;
+	width: 100%; 
+	height: auto;
+	top:0;
+	margin-left: -50%;
+	background: black;
+	background-size: cover;
+	z-index: -5;
+	&.video-fixed {
+		position: fixed;
+
+	}
+}
 
 
 
