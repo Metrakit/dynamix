@@ -19,10 +19,31 @@
 
 @endif
 
-<div class="input-group">
-	<input id="input_{{ $input->name }}" name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
-	<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'&amp;akey='.Config::get('app.key')) }}">Select</a>
-</div>
+@if($input->multiLang)
+	@foreach($locales as $locale)
+
+		<div class="input-group @if(Config::get('app.locale') != $locale->id) hidden @endif input_{{ $locale->id }} ">
+			<input 
+				id="input_{{ $input->name }}_{{ $locale->id }}" 
+				name="{{ $input->name }}_{{ $locale->id }}" 
+				title="{{ $input->title }}" 
+				class="form-control" 
+				type="{{ $input->type }}" 
+				placeholder="{{ $input->placeholder }}" 
+				value="{{ $input->value }}" 
+			/>
+			<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'_'.$locale->id.'&amp;akey='.Config::get('app.key')) }}">Select</a>
+		</div>
+
+	@endforeach
+@else	
+
+	<div class="input-group">
+		<input id="input_{{ $input->name }}" name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
+		<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'&amp;akey='.Config::get('app.key')) }}">Select</a>
+	</div>
+
+@endif
 
 @if($form->type != 'inline')
 	<p class="help-block"> 
