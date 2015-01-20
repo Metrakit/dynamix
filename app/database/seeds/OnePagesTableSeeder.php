@@ -36,12 +36,12 @@ class OnePagesTableSeeder extends Seeder {
             array(
                 'url'           => 'uploads/pictures/album cute kitten/cute-kitten-2.jpg',
                 'background_type_id'   => 1,
-                'background_position_id'   => 2
+                'background_position_id'   => 1
             ),
             array(
                 'url'           => 'uploads/medias/vjing.mp4',
                 'background_type_id'   => 2,
-                'background_position_id'   => 2
+                'background_position_id'   => 1
             )
         ));    
 

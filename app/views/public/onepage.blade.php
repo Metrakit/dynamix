@@ -27,7 +27,7 @@
 		<?php
 			$in_style = $parts[$i]->background->is_image();//boolean
 		?>
-		<{{$dom_node}} {{$in_style?'style="background: url(\''.$parts[$i]->background->url.'\') '.($parts[$i]->background->is_fixed()?' fixed':'').' no-repeat center center"':''}}>
+		<{{$dom_node}} {{$in_style?'style="background: url(\''.$parts[$i]->background->url.'\') '.($parts[$i]->background->is_fixed()?' fixed':'').' no-repeat center center #FFF; background-size: cover;"':''}}>
 			<div class="container">
 
 				{{$in_style?'':'<video autoplay loop class="video'.($parts[$i]->background->is_fixed()?' video-fixed':'').'"><source src="'.URL::to($parts[$i]->background->url).'" type="video/mp4"></video>'}}

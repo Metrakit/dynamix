@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')) ))
-    <body>
+    <body id="onepage">
 
         <div id="wrapper">
         
@@ -31,7 +31,7 @@
             <!-- ./ navbar-mobile -->
 
             <!-- navbar-desktop-->
-            <div class="navbar navbar-default navbar-blue hidden-xs" role="navigation">
+            <div class="navbar navbar-default navbar-inverse hidden-xs" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">

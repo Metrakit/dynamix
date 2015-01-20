@@ -39,12 +39,18 @@ class Background extends Eloquent{
 
 	public function is_image () {
 		//video too
-		return (empty($this->background_type()->where('name', 'image')->first())?false:true);
+		$type = BackgroundType::find($this->background_type_id);
+		if ($type->name == 'image') {
+			return true;
+		}
+		return false;
 	}
 	public function is_fixed () {
-		return true;
-		//and the second is : relative
-		return (empty($this->background_position()->where('name', 'fixed')->first())?false:true);
+		$type = BackgroundPosition::find($this->background_position_id);
+		if ($type->name == 'fixed') {
+			return true;
+		}
+		return false;
 	}
 	
 }

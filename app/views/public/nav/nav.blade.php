@@ -7,11 +7,11 @@
 				<a href="{{ URL::to( App::getLocale() . $nav->url() ) }}" class="dropdown-toggle" data-toggle="dropdown">{{ $nav->title() }} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 				@foreach( $nav->children() as $child )
-					<li {{ ( Request::is( App::getLocale() . $child->url() ) ? ' class="active"' : '' ) }}><a href="{{ URL::to( App::getLocale() . $child->url() ) }}">{{ $child->title() }}</a></li>
+					<li {{ ( Request::is( $child->url() ) ? ' class="active"' : '' ) }}><a href="{{ URL::to( $child->url() ) }}">{{ $child->title() }}</a></li>
 				@endforeach
 				</ul>
 		@else	
-			<li {{ ( Request::is( App::getLocale() . $nav->url() ) ? ' class="active"' : '' ) }}><a href="{{ URL::to( App::getLocale() . $nav->url() ) }}">{{ $nav->title() }}</a>
+			<li {{ ( Request::is( $nav->url() ) ? ' class="active"' : '' ) }}><a href="{{ URL::to( $nav->url() ) }}">{{ $nav->title() }}</a>
 		@endif
 			</li>
 @endforeach

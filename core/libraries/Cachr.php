@@ -109,6 +109,10 @@ class Cachr
 			$cachr = new Cachr;
 			$cachr->initCache();
 		}
+		if (Cache::get($cache) === null) {
+			$cachr = new Cachr;
+			$cachr->initCache();
+		}
 		return Cache::get($cache);
 	}
 }

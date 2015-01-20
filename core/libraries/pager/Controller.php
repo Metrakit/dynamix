@@ -29,7 +29,7 @@ class Pager {
     public function render( $page )
     {
         //return var_dump( $page->blocks->first()->blockable->render );
-        $view = '';
+        $view = '<div class="row"><h1 class="page-header">' . $page->title() . '</h1></div>';
 
         //for all blocks show the content
     	foreach ( $page->blocks as $block ) {
