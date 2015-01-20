@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 		srcPath: 'src/',
 		vendorPath: 'src/vendor/',
 		distPath: '../public/',
-
+		modulesPath: '../vendor/dynamix/',
 
 
 		/**
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 		      options: {
 		        config: '<%= srcPath %>config.rb',
 		        sassDir: '<%= srcPath %>sass',
-        		cssDir: '<%= srcPath %>css',
+        		cssDir: '<%= srcPath %>css'
 		      }
 		    },
 			bootstrap: {
@@ -39,7 +39,19 @@ module.exports = function(grunt) {
 		        sassDir: '<%= vendorPath %>font-awesome/scss',
         		cssDir: '<%= srcPath %>css',
 		      }
-		    }
+		    },
+		    modulesPublic: {
+		      options: {
+		        sassDir: '<%= modulesPath %>**/assets/public/sass',
+        		cssDir: '<%= srcPath %>css/modules/public'
+		      }
+		    },
+		    modulesAdmin: {
+		      options: {
+		        sassDir: '<%= modulesPath %>**/assets/admin/sass',
+        		cssDir: '<%= srcPath %>css/modules/admin',
+		      }
+		    },
 		},
 
 
@@ -53,7 +65,8 @@ module.exports = function(grunt) {
 						'<%= srcPath %>css/bootstrap.css',
 						'<%= srcPath %>css/font-awesome.css',
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
-						'<%= srcPath %>css/core.css'
+						'<%= srcPath %>css/core.css',
+						'<%= srcPath %>css/modules/public/**/*.css'
 					],
 
 					// Feuilles de style du back office (complete la main)
@@ -61,7 +74,8 @@ module.exports = function(grunt) {
 					[		
 						'<%= vendorPath %>morrisjs/morris.css',
 						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css',
-						'<%= srcPath %>css/core-admin.css',       				
+						'<%= srcPath %>css/core-admin.css',  
+						'<%= srcPath %>css/modules/admin/**/*.css'		
 					]
 				}
 			},
@@ -89,7 +103,8 @@ module.exports = function(grunt) {
 				src: [
 					 '<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
-			         	 '<%= srcPath %>js/master.js'
+			         '<%= srcPath %>js/master.js',
+			         '<%= modulesPath %>**/assets/public/js/**/*.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.min.js'
@@ -103,7 +118,8 @@ module.exports = function(grunt) {
 					 '<%= vendorPath %>tinymce/tinymce.min.js',
 					 '<%= srcPath %>js/vendor/morris.js',
 					 '<%= srcPath %>js/vendor/sb-admin-2.js',
-					 '<%= srcPath %>js/master-admin.js'
+					 '<%= srcPath %>js/master-admin.js',
+					 '<%= modulesPath %>**/assets/admin/js/**/*.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
@@ -232,7 +248,8 @@ module.exports = function(grunt) {
 				files: [
 						'<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 						'<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
-						'<%= srcPath %>js/master.js'
+						'<%= srcPath %>js/master.js',
+						'<%= modulesPath %>**/assets/public/js/**/*.js'
 				],
 				tasks:['concat:main', 'clean:js', 'hash:js'],
 				options: {
@@ -248,7 +265,8 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>raphael/raphael-min.js',
 						'<%= vendorPath %>morrisjs/morris.js',
 						'<%= srcPath %>js/vendor/sb-admin-2.js',
-						'<%= srcPath %>js/master-admin.js'
+						'<%= srcPath %>js/master-admin.js',
+						'<%= modulesPath %>**/assets/admin/js/**/*.js'
 				],
 				tasks:['concat:back', 'clean:js', 'hash:js'],
 				options: {
@@ -294,6 +312,28 @@ module.exports = function(grunt) {
 	              livereload: true
 	          	}	
           	}, 
+
+          	modulesPublicScss: 
+			{
+				files: [
+					'<%= modulesPath %>**/assets/public/sass/**/*.scss'
+			    ],
+				tasks:['compass:modulesPublic', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},
+
+          	modulesAdminScss: 
+			{
+				files: [
+					'<%= modulesPath %>**/assets/admin/sass/**/*.scss'
+			    ],
+				tasks:['compass:modulesAdmin', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},  
 
 			bootstrap: 
 			{
