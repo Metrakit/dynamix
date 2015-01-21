@@ -10,7 +10,22 @@
 
 @endif
 
-<input name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
+@if($input->multiLang)
+	@foreach($locales as $locale)
+
+		<input 
+			name="{{ $input->name }}_{{ $locale->id }}" 
+			title="{{ $input->title }}" 
+			class="form-control @if(Config::get('app.locale') != $locale->id) hidden @endif input_{{ $locale->id }} " 
+			type="{{ $input->type }}" 
+			placeholder="{{ $input->placeholder }}" 
+			value="{{ $input->value }}" 
+		/>
+
+	@endforeach
+@else	
+	<input name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
+@endif
 
 @if($form->type != 'inline')
 	<p class="help-block"> 
@@ -25,5 +40,6 @@
 @if($form->type == 'horizontal' && $input->label)
 
 	</div>
+	<div class="clearfix"></div>
 
 @endif

@@ -3,11 +3,7 @@
 		<p>{{ Session::get('formSuccess') }}</p>
 	</success>
 @endif
-@if(!isset($modelId)) 
-	<?php
-	$modelId = 1;
-	?>
-@endif
+
 <form action="{{ URL::route('form', array($modelId)) }}" class="form-{{ $form->type }}" method="POST">
 
 	{{-- Send the Form Id --}}
@@ -22,7 +18,4 @@
 			{{ $input->view }}
 		</div>
 	@endforeach
-
-	
-
 </form>

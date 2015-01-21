@@ -48,7 +48,7 @@ class Former extends \Controller {
         $this->formMap    = Config::get('model.formMap');
         $this->formr      = Config::get('model.formr');
         $this->inputs     = Config::get('model.input');
-        $this->view     = Config::get('model.view');
+        $this->view       = Config::get('model.view');
 
         // If a model doesnt exist we display an error in the debugger
         if (!$this->translate || !$this->formMap || !$this->inputs) {
@@ -95,6 +95,9 @@ class Former extends \Controller {
     {
         $data = array();
 
+
+        $data['locales'] = \Cache::get('DB_LocalesEnabled');
+
         if (null != $modelId && is_int($modelId)) {
             $modelData = $form->find($modelId);
         }
@@ -117,6 +120,10 @@ class Former extends \Controller {
 
             $data['inputs'][$key] = (object) $input;
             $data['inputs'][$key]->name = $key;
+
+            if (!isset($data['inputs'][$key]->multiLang)) {
+                $data['inputs'][$key]->multiLang = false;
+            }
 
             if (!isset($data['inputs'][$key]->value)) {
                 $data['inputs'][$key]->value = NULL;
@@ -156,7 +163,8 @@ class Former extends \Controller {
             // Génération des vues
             $data['inputs'][$key]->view = \Response::view( $data['inputs'][$key]->viewPath, array(
                 'form' => $form,
-                'input' => $data['inputs'][$key]
+                'input' => $data['inputs'][$key],
+                'locales' => $data['locales']
             ))->getOriginalContent();
 
         }
@@ -313,7 +321,7 @@ class Former extends \Controller {
         } else {
             return $this->createFromForm($pageId, $order, $data);
         }*/
-
+        
         return $this->formr->generate($data, $pageId, $order);
     }
 

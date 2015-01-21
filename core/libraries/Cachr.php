@@ -57,6 +57,15 @@ class Cachr
 			//Get all data in database
 		    return Resource::where('navigable','=',1)->where('in_admin_ui','=',1)->get();
 		});
+
+		// Get all Locales enableds in the table
+		Cache::rememberForever('DB_LocalesEnabled', function()
+		{	
+		    return Locale::where('enable', 1)->get();
+		});
+
+
+
 		Cache::rememberForever('DB_AdminBlockTypes', function()
 		{
 			//Get all data in database
@@ -105,6 +114,8 @@ class Cachr
 		Cache::forget('DB_AdminResource');
 		Cache::forget('DB_LocaleFrontEnable');
 		Cache::forget('DB_ResourceNavigable');
+		Cache::forget('DB_LocalesEnabled');
+		
 		if(!Cache::has($cache)){
 			$cachr = new Cachr;
 			$cachr->initCache();
