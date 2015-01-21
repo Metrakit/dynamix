@@ -1,4 +1,3 @@
-
 @import "compass";
 
 @import "common/sprites";
@@ -100,10 +99,15 @@ $navbar-blue-link-disabled-bg : none;
 html, body {
 	height: 100%;
 	overflow: auto;
+	position:relative;
 }
 body{
 	background: #fff;
 	font-family: 'Open Sans', sans-serif;
+}
+
+header, section, footer {
+	position:relative;
 }
 
 header{
@@ -129,11 +133,10 @@ header{
 footer{
 	padding-top:10px;
 	padding-bottom:10px;
-
 	text-align:center;
 }
 
-
+//Video, relative or fixed
 .video {
 	position: absolute;
 	min-width: 100%; 
@@ -151,6 +154,17 @@ footer{
 	}
 }
 
+
+
+//onepage specific
+#onepage  {	
+	.navbar {
+		margin-bottom:0;
+	}
+	.navbar-inverse{
+		@include border-radius(0px);
+	}
+}
 
 
 
