@@ -7,7 +7,7 @@ class URLManagerController extends BaseController {
     public function getHome()
     {
         Session::put('old_RequestSegment2', '');
-        //OnePage
+        //is OnePage?
         if (Config::get('display.onepage')) {
             $data = array();
             $data['onepage'] = OnePage::first();

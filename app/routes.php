@@ -60,6 +60,12 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Media
 	Route::get('/media', array('before' => 'auth.permission_media', 'uses' => 'AdminController@getMedia'));
 	
+	//OnePage
+	if (Config::get('display.onepage')) {		
+		Route::resource('onepage','AdminOnePageController',
+			array('except' => array('show')) );
+	}
+
 	//Page
 	Route::resource('page','AdminPageController',
 		array('except' => array('show')) );

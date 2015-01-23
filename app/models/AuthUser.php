@@ -110,25 +110,32 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
     public function getAuthorizedNavigations () {
         $resources = array();
         $navigations = '';
-        
+
         foreach ($this->roles as $role) {
             foreach ($role->permissions as $permission) {
                 $resources[] = $permission->resource_id;
             }
         }
-        
+
         $resources = array_unique($resources);
 
         foreach ( $resources as $resource_id ) {
             $resource = Resource::find($resource_id);
             if ($resource->in_admin_ui == 1) {
-                $data = array(
-                    'name'  => $resource->name,
-                    'icon'  => $resource->icon);
-                $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                if(Config::get('display.onepage') && $resource->navigable != 1) {
+                    $data = array(
+                        'name'  => $resource->name,
+                        'icon'  => $resource->icon);
+                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                } else if (!Config::get('display.onepage')) {
+                    $data = array(
+                        'name'  => $resource->name,
+                        'icon'  => $resource->icon);
+                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                }
             }
         }
-        
+
         return $navigations;
     }
 

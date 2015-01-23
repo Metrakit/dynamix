@@ -1,6 +1,10 @@
 <?php
 
 return array(
+	//OnePage
+	'onepage'	=> 'OnePage',
+	'onepage_manage'	=> 'Gérer les parties',
+
 
 	//Navigation
 	'nav_blog'				=> 'Blogs',
