@@ -95,11 +95,19 @@ class Former extends \Controller {
     {
         $data = array();
 
-
         $data['locales'] = \Cache::get('DB_LocalesEnabled');
 
         if (null != $modelId && is_int($modelId)) {
             $modelData = $form->find($modelId);
+            // Boucle sur les champs pour trouver les champs i18n
+            foreach ($modelData->getAttributes() as $key => $value) {
+                
+                if (strpos($key, 'i18n_') !== false) {
+                    $splitModel = explode('_', $key);
+                    $modelData[$splitModel[1]] = \I18n::read($value);
+                    unset($modelData[$key]);
+                }
+            }
         }
 
         // Cast l'array en objet
@@ -129,20 +137,46 @@ class Former extends \Controller {
                 $data['inputs'][$key]->value = NULL;
             }
 
+            $data['inputs'][$key]->i18nInpError = false;
+            
+
             // Set the input value if defined
             if (null == $data['inputs'][$key]->value) {
+
+                // Si 18n est activé pour cet input
+                if ($data['inputs'][$key]->multiLang) {
+                    // Boucle sur les langues et set les valeurs pour les inputs i18n
+                    foreach ($data['locales'] as $locale) {
+                        $data['inputs'][$key]->value[$locale->id] = \Input::old($data['inputs'][$key]->name . '_lang_' . $locale->id);
+                    }
+                // Sinon c'est un input normal
+                }
+
                 if (\Input::old($data['inputs'][$key]->name)) {
                     $data['inputs'][$key]->value = \Input::old($data['inputs'][$key]->name);
+                // Si il n'y a pas de old value et si la value est setté dans le model
                 } else if (isset($modelData) 
                     && isset($modelData[$data['inputs'][$key]->name])
                     && null != $modelData[$data['inputs'][$key]->name]) {
 
-                    $data['inputs'][$key]->value =$modelData[$data['inputs'][$key]->name];
-                }
+                    // Set la value en i18n si elle existe
+                    if ($data['inputs'][$key]->multiLang) {
+                        foreach ($data['locales'] as $locale) {   
+                            if (isset($modelData[$data['inputs'][$key]->name][$locale->id]) && $data['inputs'][$key]->value[$locale->id] == null) {
+                                $data['inputs'][$key]->value[$locale->id] = $modelData[$data['inputs'][$key]->name][$locale->id];
+                            }
+                        }
+
+                    } else {
+                        // si c'est pas multilang, on set la value normal
+                        $data['inputs'][$key]->value = $modelData[$data['inputs'][$key]->name];
+                    }
+                    
+                }  
+
+
 
             }
-
-          
 
             $data['inputs'][$key]->key = NULL;
 
@@ -211,6 +245,8 @@ class Former extends \Controller {
             $inputs[$key]->helper = $this->getTranslation($input['i18n_helper'], 'helper', $langInput);
             $inputs[$key]->label = $this->getTranslation($input['i18n_label'], 'label', $langInput);
             $inputs[$key]->title = $this->getTranslation($inputType->i18n_title, 'title', $langInput);
+
+            $inputs[$key]->i18nInpError = false;
 
             // Getting and set name
             $inputs[$key]->name = $inputType->name; 
