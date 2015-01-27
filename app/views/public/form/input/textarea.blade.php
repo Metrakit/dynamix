@@ -13,21 +13,33 @@
 @if($input->multiLang)
 	@foreach($locales as $locale)
 
-		<textarea 
-			name="{{ $input->name }}_{{ $locale->id }}" 
-			title="{{ $input->title }}" 
-			class="form-control @if(Config::get('app.locale') != $locale->id) hidden @endif input_{{ $locale->id }} " 
-			type="{{ $input->type }}" 
-			placeholder="{{ $input->placeholder }}">{{ $input->value }}</textarea>
+		<div class="input-group">
+            <div class="input-group-addon">
+                <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{ $locale->flag }}" alt="{{ $locale->id }}"/></span>
+            </div>
+			<textarea 
+				name="{{ $input->name }}_lang_{{ $locale->id }}" 
+				title="{{ $input->title }}" 
+				class="form-control" 
+				type="{{ $input->type }}" 
+				placeholder="{{ $input->placeholder }}">{{ $input->value[$locale->id] }}</textarea>
+		</div>
+
+		@if($errors->has($input->name . '_lang_' . $locale->id)) 
+        	<?php $input->i18nInpError = true; ?>
+	        <p class="text-danger"> 
+				{{ $errors->first($input->name . '_lang_' . $locale->id) }}
+			</p>
+		@endif
 
 	@endforeach
 @else	
 	<textarea name="{{ $input->name }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}">{{ $input->value }}</textarea>
 @endif
 
-@if($form->type != 'inline')
-	<p class="help-block"> 
-		@if($errors->has($input->name)) 
+@if($form->type != 'inline' && !$input->i18nInpError)
+	<p class="@if($errors->has($input->name)) text-danger @else help-block @endif"> 
+		@if($errors->has($input->name) && !$input->multiLang) 
 			{{ $errors->first($input->name) }}
 		@else
 			{{ $input->helper }} 

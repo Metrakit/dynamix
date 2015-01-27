@@ -3,7 +3,7 @@
 	'width'		: 900,
 	'height'	: 600,
 	'type'		: 'iframe',
-    'autoScale'    	: false
+    'autoScale' : false
     });
 @endsection
 
@@ -20,20 +20,31 @@
 @endif
 
 @if($input->multiLang)
+
 	@foreach($locales as $locale)
 
-		<div class="input-group @if(Config::get('app.locale') != $locale->id) hidden @endif input_{{ $locale->id }} ">
+		<div class="input-group ">
+			<div class="input-group-addon">
+                <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{ $locale->flag }}" alt="{{ $locale->id }}"/></span>
+            </div>
 			<input 
-				id="input_{{ $input->name }}_{{ $locale->id }}" 
-				name="{{ $input->name }}_{{ $locale->id }}" 
+				id="input_{{ $input->name }}_lang_{{ $locale->id }}" 
+				name="{{ $input->name }}_lang_{{ $locale->id }}" 
 				title="{{ $input->title }}" 
 				class="form-control" 
 				type="{{ $input->type }}" 
 				placeholder="{{ $input->placeholder }}" 
-				value="{{ $input->value }}" 
+				value="{{ $input->value[$locale->id] }}" 
 			/>
-			<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'_'.$locale->id.'&amp;akey='.Config::get('app.key')) }}">Select</a>
+			<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'_lang_'.$locale->id.'&amp;akey='.Config::get('app.key')) }}">Select</a>
 		</div>
+
+		@if($errors->has($input->name . '_lang_' . $locale->id)) 
+        	<?php $input->i18nInpError = true; ?>
+	        <p class="text-danger"> 
+				{{ $errors->first($input->name . '_lang_' . $locale->id) }}
+			</p>
+		@endif
 
 	@endforeach
 @else	
@@ -45,9 +56,9 @@
 
 @endif
 
-@if($form->type != 'inline')
-	<p class="help-block"> 
-		@if($errors->has($input->name)) 
+@if($form->type != 'inline' && !$input->i18nInpError)
+	<p class="@if($errors->has($input->name)) text-danger @else help-block @endif"> 
+		@if($errors->has($input->name) && !$input->multiLang) 
 			{{ $errors->first($input->name) }}
 		@else
 			{{ $input->helper }} 

@@ -9,6 +9,7 @@
     $('#tab-{{$locale}} textarea.wysiwyg-{{isset($index)?$index:''}}').attr('id',$('#tab-{{$locale}} textarea.wysiwyg-{{isset($index)?$index:''}}').attr('id').replace('%%','{{$locale}}'));
     callback();
   }
+  
 
   var initTinyMCE{{$locale}} = function () {
     console.log('start initTinyMCE{{$locale}}');

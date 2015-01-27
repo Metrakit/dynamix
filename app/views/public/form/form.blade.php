@@ -14,7 +14,7 @@
 	@endif
 
 	@foreach ($inputs as $input)
-		<div class="form-group @if($form->type == 'horizontal') row @endif @if($errors->has($input->name)) has-error @endif ">
+		<div class="form-group @if($form->type == 'horizontal') row @endif ">
 			{{ $input->view }}
 		</div>
 	@endforeach
