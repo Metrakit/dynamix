@@ -1,4 +1,4 @@
-@if(Session::has('formSuccess'))
+@if(Session::has('formSuccess') && !$builder)
 	<success closable>
 		<p>{{ Session::get('formSuccess') }}</p>
 	</success>

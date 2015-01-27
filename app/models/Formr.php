@@ -118,9 +118,9 @@ class Formr extends Eloquent{
         $form->save();
 
         if (null == $modelId) {
-            return Redirect::back()->with('formSuccess', Lang::get('forms.create.success'));
+            return Redirect::route('admin.form.show', $form->id)->with('success', Lang::get('forms.create.success'));
         } else {
-        	return Redirect::back()->with('formSuccess', Lang::get('forms.update.success'));
+        	return Redirect::route('admin.form.show', $form->id)->with('success', Lang::get('forms.update.success'));
         }
 
     }

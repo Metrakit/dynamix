@@ -20,6 +20,14 @@
 <p>{{ $form->description() }}</p>
 
 
+@if(Session::has('success'))
+	<success closable>
+		<p>{{ Session::get('success') }}</p>
+	</success>
+@endif
+
+
+
 <h4>Inputs:</h4>
 
 {{ $displayInputs }}
