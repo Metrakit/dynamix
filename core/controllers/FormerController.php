@@ -1,6 +1,47 @@
 <?php
 class FormerController extends Controller {
-    public function store($modelId = null)
+
+    public function __construct()
+    {
+        if (Auth::check()) {
+            $this->data['user'] = Auth::user();
+        }
+    }
+
+    public function index()
+    {
+        $this->data['forms'] = Formr::all();
+        return View::make('admin.formr.index', $this->data);
+    }
+
+
+    public function create()
+    {
+        return View::make('admin.formr.create', $this->data);
+    }
+
+    public function show($formID)
+    {
+        $this->data['form'] = Formr::find($formID);
+
+        if (!$this->data['form']) App::abbort(404);
+
+        $this->data['displayInputs'] =  Former::getForm($formID, true);
+
+        return View::make('admin.formr.show', $this->data);
+    } 
+
+    public function edit($formID)
+    {
+        $this->data['form'] = Formr::find($formID);
+
+        if (!$this->data['form']) App::abbort(404); 
+
+        return View::make('admin.formr.edit', $this->data);
+    }   
+
+
+    public function storeResult($modelId = null)
     {
         if (Input::has('form')) {
             if (is_int(Input::get('form'))) {
@@ -28,15 +69,6 @@ class FormerController extends Controller {
         } else {
             App::abort(500, "Form ID not found !");
         }
-
-
-        /*
-        foreach ( Input::all() as $k => $v ) {
-            if ( strpos($k, 'site_name_') !== false ) {
-                $site_name_rules[$k] = Config::get('validator.admin.option_site_name');
-                $site_name_locales[] = substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
-            }
-        }*/
 
         // Using the Validator
         $validator = Validator::make(Input::except('_token'), $rules);

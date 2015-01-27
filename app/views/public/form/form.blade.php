@@ -4,7 +4,12 @@
 	</success>
 @endif
 
-<form action="{{ URL::route('form', array($modelId)) }}" class="form-{{ $form->type }}" method="POST">
+<form 
+	@if (!$builder)
+		action="{{ URL::route('formr', array($modelId)) }}" 
+		method="POST"
+	@endif
+	class="form-{{ $form->type }}">
 
 	{{-- Send the Form Id --}}
 	<input type="hidden" name="form" value="{{ $form->id }}" />
@@ -18,4 +23,9 @@
 			{{ $input->view }}
 		</div>
 	@endforeach
+
+	@if($builder && !sizeof($inputs))
+		<info>Pas d'inputs disponibles</info>
+	@endif
+
 </form>

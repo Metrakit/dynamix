@@ -176,8 +176,17 @@ array(
     'model' => 'Option',
     'in_admin_ui'   => true,
     'navigable'     => false
-    ))
-);
+    ),
+array(
+    'name' => 'form',
+    'icon' => 'glyphicon glyphicon-tasks',
+    'model' => 'Formr',
+    'in_admin_ui'   => true,
+    'navigable'     => false
+)
+
+
+));
 }
 
 }

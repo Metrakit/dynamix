@@ -10,6 +10,131 @@ class InputView extends Eloquent{
     public $timestamps = false;
     protected $fillable = ['name', 'view_id', 'i18n_placeholder', 'i18n_helper', 'i18n_label', 'type_id'];
 
+    public static function formParams()
+    {
+        return array(        
+            'type'  => 'horizontal',
+            'title' => Lang::get('crew::forms.create.title'),
+            'description' => Lang::get('crew::forms.create.description'),
+            'data'  => array(
+                'title' => array(
+                    'name'        => 'title',
+                    'type'        => 'text',
+                    'rules'       => 'required',
+                    'multiLang'   => true,
+                    'viewPath'    => 'public.form.input.text',
+                    'title'       => 'Title',
+                    'placeholder' => 'Title',
+                    'helper'      => 'Title',
+                    'label'       => 'Title',
+                ),               
+                'placeholder' => array(
+                    'name'        => 'placeholder',
+                    'type'        => 'text',
+                    'multiLang'   => true,
+                    'viewPath'    => 'public.form.input.text',
+                    'title'       => 'Placeholder',
+                    'placeholder' => 'Placeholder',
+                    'helper'      => 'Placeholder',
+                    'label'       => 'Placeholder',
+                ),   
+                 'helper' => array(
+                    'name'        => 'helper',
+                    'type'        => 'text',
+                    'multiLang'   => true,
+                    'viewPath'    => 'public.form.input.text',
+                    'title'       => 'Helper',
+                    'placeholder' => 'Helper',
+                    'helper'      => 'Helper',
+                    'label'       => 'Helper',
+                ),   
+                 'label' => array(
+                    'name'        => 'label',
+                    'type'        => 'text',
+                    'multiLang'   => true,
+                    'viewPath'    => 'public.form.input.text',
+                    'title'       => 'Label',
+                    'placeholder' => 'Label',
+                    'helper'      => 'Label',
+                    'label'       => 'Label',
+                ),                                  
+                 'name' => array(
+                    'name'        => 'name',
+                    'type'        => 'text',
+                    'rules'       => 'required',
+                    'viewPath'    => 'public.form.input.text',
+                    'title'       => 'Name',
+                    'placeholder' => 'Name',
+                    'helper'      => 'Name',
+                    'label'       => 'Name',
+                ),                  
+                'type' => array(
+                    'name'        => 'type',
+                    'type'        => 'select',
+                    'rules'       => 'required',
+                    'viewPath'    => 'public.form.input.select',
+                    'options'     => array(
+                        array(
+                            'key'   => 'password',
+                            'value' => 'Password',
+                        ), 
+                        array(
+                            'key'   => 'text',
+                            'value' => 'Text',
+                        ), 
+                        array(
+                            'key'   => 'textarea',
+                            'value' => 'Textarea',
+                        ), 
+                        array(
+                            'key'   => 'select',
+                            'value' => 'Select',
+                        ), 
+                         array(
+                            'key'   => 'hidden',
+                            'value' => 'Hidden',
+                        ),                        
+                        array(
+                            'key'   => 'checkbox',
+                            'value' => 'Checkbox',
+                        ),                                                    
+                        array(
+                            'key'   => 'fileManager',
+                            'value' => 'File manager',
+                        ),     
+                        array(
+                            'key'   => 'submit',
+                            'value' => 'Submit',
+                        ),                                                                    
+                    ),
+                    'title'       => 'Type',
+                    'placeholder' => 'Type',
+                    'helper'      => 'Type',
+                    'label'       => 'Type',
+                ),
+                'multiLang' => array(
+                    'name'        => 'multiLang',
+                    'type'        => 'checkbox',
+                    'viewPath'    => 'public.form.input.checkbox',
+                    'title'       => 'Multi langues',
+                    'placeholder' => 'Multi langues',
+                    'helper'      => 'Multi langues',
+                    'label'       => 'Multi langues',
+                ),
+                'send' => array(
+                    'name'        => 'send',
+                    'type'        => 'submit',
+                    'rules'       => 'required',
+                    'viewPath'    => 'public.form.input.submit',
+                    'title'       => 'Envoyer',
+                    'placeholder' => 'Envoyer',
+                    'helper'      => 'Envoyer',
+                    'label'       => 'Envoyer',
+                ),
+            ),
+            'method' => 'model'
+        );
+    }
 
     /**
      * View relation

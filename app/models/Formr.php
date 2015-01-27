@@ -10,6 +10,122 @@ class Formr extends Eloquent{
 	protected $fillable = ['finish_on', 'i18n_title', 'i18n_description', 'type'];
 
 	
+	public static function formParams()
+    {
+        return array(        
+            'type'  => 'horizontal',
+            'title' => Lang::get('crew::forms.create.title'),
+            'description' => Lang::get('crew::forms.create.description'),
+            'data'  => array(
+                'title' => array(
+                    'name'        => 'title',
+                    'type'        => 'text',
+                    'rules'       => 'required',
+                    'multiLang'   => true,
+                    'viewPath'    => 'public.form.input.text',
+                    'title'       => Lang::get('crew::forms.create.blog.inputs.name.title'),
+                    'placeholder' => Lang::get('crew::forms.create.blog.inputs.name.placeholder'),
+                    'helper'      => Lang::get('crew::forms.create.blog.inputs.name.helper'),
+                    'label'       => Lang::get('crew::forms.create.blog.inputs.name.label'),
+                ),               
+                'description' => array(
+                    'name'        => 'description',
+                    'type'        => 'textarea',
+                    'rules'       => 'required',
+                    'multiLang'   => true,
+                    'viewPath'    => 'public.form.input.textarea',
+                    'title'       => Lang::get('crew::forms.create.inputs.bio.title'),
+                    'placeholder' => Lang::get('crew::forms.create.inputs.bio.placeholder'),
+                    'helper'      => Lang::get('crew::forms.create.inputs.bio.helper'),
+                    'label'       => Lang::get('crew::forms.create.inputs.bio.label'),
+                ),
+                'finish_on' => array(
+                    'name'        => 'finish_on',
+                    'type'        => 'select',
+                    'rules'       => 'required',
+                    'viewPath'    => 'public.form.input.select',
+                    'options'     => array(
+                        array(
+                            'key'   => 'database',
+                            'value' => 'Database',
+                        ), 
+                        array(
+                            'key'   => 'email',
+                            'value' => 'Email',
+                        ),                       
+                    ),
+                    'title'       => Lang::get('input.gallery.description.title'),
+                    'placeholder' => Lang::get('input.gallery.description.placeholder'),
+                    'helper'      => Lang::get('input.gallery.description.helper'),
+                    'label'       => Lang::get('input.gallery.description.label'),
+                ),
+                'type' => array(
+                    'name'        => 'type',
+                    'type'        => 'select',
+                    'rules'       => 'required',
+                    'viewPath'    => 'public.form.input.select',
+                    'options'     => array(
+                        array(
+                            'key'   => 'normal',
+                            'value' => 'Normal',
+                        ), 
+                        array(
+                            'key'   => 'inline',
+                            'value' => 'Inline',
+                        ), 
+                        array(
+                            'key'   => 'horizontal',
+                            'value' => 'Horizontal',
+                        ),                       
+                    ),
+                    'title'       => Lang::get('input.gallery.description.title'),
+                    'placeholder' => Lang::get('input.gallery.description.placeholder'),
+                    'helper'      => Lang::get('input.gallery.description.helper'),
+                    'label'       => Lang::get('input.gallery.description.label'),
+                ),
+                'send' => array(
+                    'name'        => 'send',
+                    'type'        => 'submit',
+                    'rules'       => 'required',
+                    'viewPath'    => 'public.form.input.submit',
+                    'title'       => Lang::get('crew::forms.create.inputs.send.title'),
+                    'placeholder' => Lang::get('crew::forms.create.inputs.send.placeholder'),
+                    'helper'      => Lang::get('crew::forms.create.inputs.send.helper'),
+                    'label'       => Lang::get('crew::forms.create.inputs.send.label'),
+                ),
+            ),
+            'method' => 'model'
+        );
+    }
+
+
+	public static function formAction($inputs, $modelId)
+    {
+        if (null == $modelId) {
+            $form = new self;
+            $form->i18n_title = i18n::add($inputs['title'], 'title');
+            $form->i18n_description = i18n::add($inputs['description'], 'description');
+        } else {
+        	$form = Self::find($modelId);
+            i18n::change($form->i18n_title, $inputs['title']);
+            i18n::change($form->i18n_description, $inputs['description']);
+        }
+
+        //var_dump($inputs); die;
+
+        $form->finish_on = $inputs['finish_on'];
+        $form->type = $inputs['type'];
+        $form->save();
+
+        if (null == $modelId) {
+            return Redirect::back()->with('formSuccess', Lang::get('forms.create.success'));
+        } else {
+        	return Redirect::back()->with('formSuccess', Lang::get('forms.update.success'));
+        }
+
+    }
+
+
 	/**
 	 * Relations
 	 *
@@ -34,6 +150,7 @@ class Formr extends Eloquent{
     	$data['form'] = $this;
     	$data['inputs'] = Former::render($data['form']);
     	$data['modelId'] = null;
+    	$data['builder'] = false;
         return Response::view('public.form.form', $data )->getOriginalContent();
     }
 
@@ -45,6 +162,16 @@ class Formr extends Eloquent{
 	public function translate( $i18n_id )
 	{
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	}
+
+	public function title()
+	{
+		return $this->translate($this->i18n_title);
+	}
+
+	public function description()
+	{
+		return $this->translate($this->i18n_description);
 	}
 
 

@@ -12,6 +12,8 @@
 
 <select name="{{ $input->name }}" title="{{ $input->title }}" class="form-control"  value="{{ $input->key }}">
 	@foreach ($input->options as $option)	
+		 {{ var_dump($input->key) }}
+		  {{ var_dump($option->key) }}
 		<option value="{{ $option->key }}" @if($input->key == $option->key) selected @endif> {{ $option->value }} </option>
 	@endforeach
 </select>

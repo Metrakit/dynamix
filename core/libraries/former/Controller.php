@@ -112,9 +112,15 @@ class Former extends \Controller {
 
         // Cast l'array en objet
         $data['form'] = (object) $form;
+ 
+        $form = $form->formr();
+        if ($form) {
+            // Cast l'array en objet
+            $form = (object) $form;
+        } else {
+            return false;
+        }
 
-        // Cast l'array en objet
-        $form = (object) $form->formr();
         $data['form']->id = $form->model;
 
         if (isset($form->action)) {
@@ -178,10 +184,18 @@ class Former extends \Controller {
 
             }
 
-            $data['inputs'][$key]->key = NULL;
-
             // Si c'est un select on génère les options
             if ($data['inputs'][$key]->type == "select") {
+
+                // Append la valeur en DB à la key (A bien test correctement)
+                if (\Input::old($data['inputs'][$key]->name)) {
+                    $data['inputs'][$key]->key = \Input::old($data['inputs'][$key]->name);
+                } else if (null != $modelId) {
+                    $data['inputs'][$key]->key = $modelData[$data['inputs'][$key]->name];
+                } else {
+                    $data['inputs'][$key]->key = NULL;
+                }
+                
                 foreach ($data['inputs'][$key]->options as $keyOpt => $option) {
                     $options[$keyOpt] = (object) $option;
                 }
@@ -307,7 +321,12 @@ class Former extends \Controller {
         $inputs = $modelName::formParams()['data'];
 
         foreach ($inputs as $key => $input) {
-            $data[$key] = $input['rules'];
+            if (isset($input['rules'])) {
+                $data[$key] = $input['rules'];
+            } else {
+                $data[$key] = array();
+            }
+            
         }
 
         return $data;
@@ -368,12 +387,14 @@ class Former extends \Controller {
      * @param  Integer $formId
      * @return Response
      */
-    public function getForm($formId)
+    public function getForm($formId, $builder = false)
     {
         if ((!$data['form'] = $this->formr->find($formId))) {
             throw new Exception("No form found !", 1);      
         }
         $data['inputs'] = self::render($data['form']);
+        $data['builder'] = $builder;
+
         return \Response::view('public.form.form', $data)->getOriginalContent();
     }
 
@@ -385,7 +406,12 @@ class Former extends \Controller {
     public function renderByModel($model, $modelId)
     {
         $data = self::generateByModel($model, $modelId);
+        if (!$data) {
+            \Log::info('Form unexist !');
+            return false;
+        }
         $data['modelId'] = $modelId;
+        $data['builder'] = false;
         return \Response::view('public.form.form', $data)->getOriginalContent();
     }
 

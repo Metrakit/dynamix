@@ -94,6 +94,9 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::post('/languages', 'AdminController@postLanguages');
 	//API - AJAX
 	Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
+
+	// Formr
+	Route::resource('form','FormerController');
 });
 /*
 |--------------------------------------------------------------------------
@@ -116,7 +119,7 @@ Route::post('password/reset/{token}', array('uses' => 'RemindersController@postR
 |--------------------------------------------------------------------------
 |
 */
-Route::post('form/{modelId?}', array('as' => 'form', 'uses' => 'FormerController@store'));
+Route::post('formr/{modelId?}', array('as' => 'formr', 'uses' => 'FormerController@storeResult'));
 /*
 |--------------------------------------------------------------------------
 | Comment
