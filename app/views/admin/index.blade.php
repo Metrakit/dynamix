@@ -11,12 +11,12 @@
         <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
     </div>
 @stop
-
+@include('includes.labels-css', array('labels'=>$labels))
 @section('content')
     @include('includes.session-message')
-
+    @if($ga_googleAnalyticsFound)
     <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-bar-chart-o fa-fw"></i> {{{ Lang::get('admin.sessions') }}}
@@ -26,6 +26,29 @@
             </div>
         </div>
     </div>
+    @endif
+
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-edit fa-fw"></i> {{{ Lang::get('admin.task') }}}
+            </div>
+            <div class="panel-body">
+                @include('tasks.list', array('tasks', $tasks))
+            </div>
+            <div class="panel-footer">
+                <form action="{{URL::route('add-task-post')}}" method="post">
+                    <div class="input-group task_input">
+                        <input class="form-control" name="task_label" type="text">
+                        <div class="input-group-addon task_addon">
+                            <button type="submit">ADD</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @if($ga_googleAnalyticsFound)
     <div class="col-lg-8">
         <div class="row">
             <div class="col-md-4 col-xs-6">
@@ -113,12 +136,13 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-8">
     </div>
+    @endif
+   
     <div class="clearfix"></div>
-    </div>
+    
 @stop
-
+@if($ga_googleAnalyticsFound)
 @section('scriptOnReady')
 /*ga-sessionsPerDay*/
 Morris.Area({
@@ -139,3 +163,4 @@ Morris.Donut({
     resize: true
   });
 @stop
+@endif

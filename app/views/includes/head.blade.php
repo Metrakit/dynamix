@@ -27,7 +27,7 @@
 
     <link rel="icon" href="{{asset('favicon/apple-touch-icon.png')}}" sizes="57x57" type="image/png">
     <link rel="apple-touch-icon" href="{{asset('favicon/apple-touch-icon.png')}}" />
-
+    @yield('css')
     <!--[if IE]><link rel="shortcut icon" href="{{URL::to('../favicon/favicon.ico')}}"/><![endif]-->
 
     <!--[if lt IE 9]>

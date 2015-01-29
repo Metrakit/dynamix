@@ -8,6 +8,7 @@
 //Theme tinyMCE herit of light theme
 @import "admin/tinymce";
 
+@import "admin/task";
 
 //Helper
 .fixed-bottom {
@@ -630,3 +631,5 @@ Standard syntax
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 320px) {
 }
+
+
