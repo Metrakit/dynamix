@@ -33,6 +33,7 @@ class Formr extends Eloquent{
     {
     	$data['form'] = $this;
     	$data['inputs'] = Former::render($data['form']);
+    	$data['modelId'] = null;
         return Response::view('public.form.form', $data )->getOriginalContent();
     }
 
@@ -79,7 +80,7 @@ class Formr extends Eloquent{
 			$fromObject = true;
 		}
 
-
+		
 		
 		$form->finish_on = $data['method'];
 		$form->type = $data['type'];

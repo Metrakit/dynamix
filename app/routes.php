@@ -21,11 +21,6 @@ Route::get('/first-migrate', function(){
 });
 
 
-//test pulrequest
-
-//test 2 pr
-
-
 /*
 |--------------------------------------------------------------------------
 | Base/System
@@ -147,7 +142,7 @@ Route::post('password/reset/{token}', array('uses' => 'RemindersController@postR
 |--------------------------------------------------------------------------
 |
 */
-Route::post('form', array('as' => 'form', 'uses' => 'FormerController@store'));
+Route::post('form/{modelId?}', array('as' => 'form', 'uses' => 'FormerController@store'));
 
 
 /*

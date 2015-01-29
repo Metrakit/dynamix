@@ -27,7 +27,8 @@
 @endif
 
 @if($form->type == 'horizontal' && $input->label) 
-
+		
 	</div> 
+	<div class="clearfix"></div>
 
 @endif

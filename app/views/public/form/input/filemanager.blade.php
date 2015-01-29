@@ -1,3 +1,12 @@
+@section('scriptOnReady')
+	$('.iframe-filemanager').fancybox({	
+	'width'		: 900,
+	'height'	: 600,
+	'type'		: 'iframe',
+    'autoScale' : false
+    });
+@endsection
+
 @if($input->label)
 
 	@if($form->type != 'inline')
@@ -5,24 +14,29 @@
 	@endif
 
 	@if($form->type == 'horizontal')
-		<div class="col-sm-6">
+		<div class="col-sm-6">	
 	@endif
 
 @endif
 
 @if($input->multiLang)
+
 	@foreach($locales as $locale)
 
-		<div class="input-group">
-            <div class="input-group-addon">
+		<div class="input-group ">
+			<div class="input-group-addon">
                 <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{ $locale->flag }}" alt="{{ $locale->id }}"/></span>
             </div>
-			<textarea 
+			<input 
+				id="input_{{ $input->name }}_lang_{{ $locale->id }}" 
 				name="{{ $input->name }}_lang_{{ $locale->id }}" 
 				title="{{ $input->title }}" 
 				class="form-control" 
 				type="{{ $input->type }}" 
-				placeholder="{{ $input->placeholder }}">{{ $input->value[$locale->id] }}</textarea>
+				placeholder="{{ $input->placeholder }}" 
+				value="{{ $input->value[$locale->id] }}" 
+			/>
+			<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'_lang_'.$locale->id.'&amp;akey='.Config::get('app.key')) }}">Select</a>
 		</div>
 
 		@if($errors->has($input->name . '_lang_' . $locale->id)) 
@@ -34,7 +48,12 @@
 
 	@endforeach
 @else	
-	<textarea name="{{ $input->name }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}">{{ $input->value }}</textarea>
+
+	<div class="input-group">
+		<input id="input_{{ $input->name }}" name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
+		<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'&amp;akey='.Config::get('app.key')) }}">Select</a>
+	</div>
+
 @endif
 
 @if($form->type != 'inline' && !$input->i18nInpError)

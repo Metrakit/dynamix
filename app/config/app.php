@@ -115,6 +115,7 @@ return array(
 		//'Dynamix\Template\TemplateServiceProvider',
 		//'Dynamix\BlogModule\BlogServiceProvider',
 		//'Dynamix\UserManager\UserServiceProvider',
+		'Dynamix\Crew\CrewModuleServiceProvider',
 
 		// External packages
 		'PagerServiceProvider',
@@ -168,7 +169,7 @@ return array(
 		'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
 		'HTML'            => 'Illuminate\Support\Facades\HTML',
-		'Input'           => 'Illuminate\Support\Facades\Input',
+		'Input'           => 'Inputizr',
 		'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',
 		'Mail'            => 'Illuminate\Support\Facades\Mail',

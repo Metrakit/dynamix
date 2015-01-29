@@ -48,7 +48,7 @@ class Former extends \Controller {
         $this->formMap    = Config::get('model.formMap');
         $this->formr      = Config::get('model.formr');
         $this->inputs     = Config::get('model.input');
-        $this->view     = Config::get('model.view');
+        $this->view       = Config::get('model.view');
 
         // If a model doesnt exist we display an error in the debugger
         if (!$this->translate || !$this->formMap || !$this->inputs) {
@@ -91,9 +91,24 @@ class Former extends \Controller {
      * @param  Object $form
      * @return Array
      */
-    public function generateByModel($form)
+    public function generateByModel($form, $modelId)
     {
         $data = array();
+
+        $data['locales'] = \Cache::get('DB_LocalesEnabled');
+
+        if (null != $modelId && is_int($modelId)) {
+            $modelData = $form->find($modelId);
+            // Boucle sur les champs pour trouver les champs i18n
+            foreach ($modelData->getAttributes() as $key => $value) {
+                
+                if (strpos($key, 'i18n_') !== false) {
+                    $splitModel = explode('_', $key);
+                    $modelData[$splitModel[1]] = \I18n::read($value);
+                    unset($modelData[$key]);
+                }
+            }
+        }
 
         // Cast l'array en objet
         $data['form'] = (object) $form;
@@ -114,8 +129,53 @@ class Former extends \Controller {
             $data['inputs'][$key] = (object) $input;
             $data['inputs'][$key]->name = $key;
 
+            if (!isset($data['inputs'][$key]->multiLang)) {
+                $data['inputs'][$key]->multiLang = false;
+            }
+
             if (!isset($data['inputs'][$key]->value)) {
                 $data['inputs'][$key]->value = NULL;
+            }
+
+            $data['inputs'][$key]->i18nInpError = false;
+            
+
+            // Set the input value if defined
+            if (null == $data['inputs'][$key]->value) {
+
+                // Si 18n est activé pour cet input
+                if ($data['inputs'][$key]->multiLang) {
+                    // Boucle sur les langues et set les valeurs pour les inputs i18n
+                    foreach ($data['locales'] as $locale) {
+                        $data['inputs'][$key]->value[$locale->id] = \Input::old($data['inputs'][$key]->name . '_lang_' . $locale->id);
+                    }
+                // Sinon c'est un input normal
+                }
+
+                if (\Input::old($data['inputs'][$key]->name)) {
+                    $data['inputs'][$key]->value = \Input::old($data['inputs'][$key]->name);
+                // Si il n'y a pas de old value et si la value est setté dans le model
+                } else if (isset($modelData) 
+                    && isset($modelData[$data['inputs'][$key]->name])
+                    && null != $modelData[$data['inputs'][$key]->name]) {
+
+                    // Set la value en i18n si elle existe
+                    if ($data['inputs'][$key]->multiLang) {
+                        foreach ($data['locales'] as $locale) {   
+                            if (isset($modelData[$data['inputs'][$key]->name][$locale->id]) && $data['inputs'][$key]->value[$locale->id] == null) {
+                                $data['inputs'][$key]->value[$locale->id] = $modelData[$data['inputs'][$key]->name][$locale->id];
+                            }
+                        }
+
+                    } else {
+                        // si c'est pas multilang, on set la value normal
+                        $data['inputs'][$key]->value = $modelData[$data['inputs'][$key]->name];
+                    }
+                    
+                }  
+
+
+
             }
 
             $data['inputs'][$key]->key = NULL;
@@ -128,10 +188,17 @@ class Former extends \Controller {
                 $data['inputs'][$key]->options = $options;
             }
             
+            // Set file Type if the input is a filemanager
+            if ($data['inputs'][$key]->type == "filemanager" && !isset($data['inputs'][$key]->typeFilemanager)) {
+                // Set to 0 if typeFilemanager is undefined
+                $data['inputs'][$key]->typeFilemanager = 0;
+            }
+
             // Génération des vues
             $data['inputs'][$key]->view = \Response::view( $data['inputs'][$key]->viewPath, array(
                 'form' => $form,
-                'input' => $data['inputs'][$key]
+                'input' => $data['inputs'][$key],
+                'locales' => $data['locales']
             ))->getOriginalContent();
 
         }
@@ -178,6 +245,8 @@ class Former extends \Controller {
             $inputs[$key]->helper = $this->getTranslation($input['i18n_helper'], 'helper', $langInput);
             $inputs[$key]->label = $this->getTranslation($input['i18n_label'], 'label', $langInput);
             $inputs[$key]->title = $this->getTranslation($inputType->i18n_title, 'title', $langInput);
+
+            $inputs[$key]->i18nInpError = false;
 
             // Getting and set name
             $inputs[$key]->name = $inputType->name; 
@@ -288,7 +357,7 @@ class Former extends \Controller {
         } else {
             return $this->createFromForm($pageId, $order, $data);
         }*/
-
+        
         return $this->formr->generate($data, $pageId, $order);
     }
 
@@ -313,9 +382,10 @@ class Former extends \Controller {
      * @param  Integer $formId
      * @return Response
      */
-    public function renderByModel($model)
+    public function renderByModel($model, $modelId)
     {
-        $data = self::generateByModel($model);
+        $data = self::generateByModel($model, $modelId);
+        $data['modelId'] = $modelId;
         return \Response::view('public.form.form', $data)->getOriginalContent();
     }
 
