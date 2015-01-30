@@ -148,8 +148,26 @@ body {
   padding-left: 52px;
 }
 
+/* line 126, ../sass/admin/_sb-admin-2.scss */
+.sidebar-nav .nav > li > ul {
+  padding: 0;
+}
+
+/* line 130, ../sass/admin/_sb-admin-2.scss */
+.sidebar-nav .nav > li > ul > li > a {
+  display: block;
+  padding: 10px 15px 10px 38px;
+  text-decoration: none;
+  color: #999;
+}
+
+/* line 137, ../sass/admin/_sb-admin-2.scss */
+.sidebar-nav .nav > li > ul > li > a:hover {
+  color: #fff;
+}
+
 @media (min-width: 768px) {
-  /* line 127, ../sass/admin/_sb-admin-2.scss */
+  /* line 142, ../sass/admin/_sb-admin-2.scss */
   .sidebar {
     z-index: 1;
     position: absolute;
@@ -157,46 +175,46 @@ body {
     margin-top: 51px;
   }
 
-  /* line 134, ../sass/admin/_sb-admin-2.scss */
+  /* line 149, ../sass/admin/_sb-admin-2.scss */
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
   .navbar-top-links .dropdown-alerts {
     margin-left: auto;
   }
 }
-/* line 141, ../sass/admin/_sb-admin-2.scss */
+/* line 156, ../sass/admin/_sb-admin-2.scss */
 .btn-outline {
   color: inherit;
   background-color: transparent;
   transition: all .5s;
 }
 
-/* line 147, ../sass/admin/_sb-admin-2.scss */
+/* line 162, ../sass/admin/_sb-admin-2.scss */
 .btn-primary.btn-outline {
   color: #428bca;
 }
 
-/* line 151, ../sass/admin/_sb-admin-2.scss */
+/* line 166, ../sass/admin/_sb-admin-2.scss */
 .btn-success.btn-outline {
   color: #5cb85c;
 }
 
-/* line 155, ../sass/admin/_sb-admin-2.scss */
+/* line 170, ../sass/admin/_sb-admin-2.scss */
 .btn-info.btn-outline {
   color: #5bc0de;
 }
 
-/* line 159, ../sass/admin/_sb-admin-2.scss */
+/* line 174, ../sass/admin/_sb-admin-2.scss */
 .btn-warning.btn-outline {
   color: #f0ad4e;
 }
 
-/* line 163, ../sass/admin/_sb-admin-2.scss */
+/* line 178, ../sass/admin/_sb-admin-2.scss */
 .btn-danger.btn-outline {
   color: #d9534f;
 }
 
-/* line 167, ../sass/admin/_sb-admin-2.scss */
+/* line 182, ../sass/admin/_sb-admin-2.scss */
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
 .btn-info.btn-outline:hover,
@@ -205,65 +223,65 @@ body {
   color: #fff;
 }
 
-/* line 175, ../sass/admin/_sb-admin-2.scss */
+/* line 190, ../sass/admin/_sb-admin-2.scss */
 .chat {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 181, ../sass/admin/_sb-admin-2.scss */
+/* line 196, ../sass/admin/_sb-admin-2.scss */
 .chat li {
   margin-bottom: 10px;
   padding-bottom: 5px;
   border-bottom: 1px dotted #999;
 }
 
-/* line 187, ../sass/admin/_sb-admin-2.scss */
+/* line 202, ../sass/admin/_sb-admin-2.scss */
 .chat li.left .chat-body {
   margin-left: 60px;
 }
 
-/* line 191, ../sass/admin/_sb-admin-2.scss */
+/* line 206, ../sass/admin/_sb-admin-2.scss */
 .chat li.right .chat-body {
   margin-right: 60px;
 }
 
-/* line 195, ../sass/admin/_sb-admin-2.scss */
+/* line 210, ../sass/admin/_sb-admin-2.scss */
 .chat li .chat-body p {
   margin: 0;
 }
 
-/* line 199, ../sass/admin/_sb-admin-2.scss */
+/* line 214, ../sass/admin/_sb-admin-2.scss */
 .panel .slidedown .glyphicon,
 .chat .glyphicon {
   margin-right: 5px;
 }
 
-/* line 204, ../sass/admin/_sb-admin-2.scss */
+/* line 219, ../sass/admin/_sb-admin-2.scss */
 .chat-panel .panel-body {
   height: 350px;
   overflow-y: scroll;
 }
 
-/* line 209, ../sass/admin/_sb-admin-2.scss */
+/* line 224, ../sass/admin/_sb-admin-2.scss */
 .login-panel {
   margin-top: 25%;
 }
 
-/* line 213, ../sass/admin/_sb-admin-2.scss */
+/* line 228, ../sass/admin/_sb-admin-2.scss */
 .flot-chart {
   display: block;
   height: 400px;
 }
 
-/* line 218, ../sass/admin/_sb-admin-2.scss */
+/* line 233, ../sass/admin/_sb-admin-2.scss */
 .flot-chart-content {
   width: 100%;
   height: 100%;
 }
 
-/* line 223, ../sass/admin/_sb-admin-2.scss */
+/* line 238, ../sass/admin/_sb-admin-2.scss */
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -272,21 +290,21 @@ table.dataTable thead .sorting_desc_disabled {
   background: 0 0;
 }
 
-/* line 231, ../sass/admin/_sb-admin-2.scss */
+/* line 246, ../sass/admin/_sb-admin-2.scss */
 table.dataTable thead .sorting_asc:after {
   content: "\f0de";
   float: right;
   font-family: fontawesome;
 }
 
-/* line 237, ../sass/admin/_sb-admin-2.scss */
+/* line 252, ../sass/admin/_sb-admin-2.scss */
 table.dataTable thead .sorting_desc:after {
   content: "\f0dd";
   float: right;
   font-family: fontawesome;
 }
 
-/* line 243, ../sass/admin/_sb-admin-2.scss */
+/* line 258, ../sass/admin/_sb-admin-2.scss */
 table.dataTable thead .sorting:after {
   content: "\f0dc";
   float: right;
@@ -294,7 +312,7 @@ table.dataTable thead .sorting:after {
   color: rgba(50, 50, 50, 0.5);
 }
 
-/* line 250, ../sass/admin/_sb-admin-2.scss */
+/* line 265, ../sass/admin/_sb-admin-2.scss */
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -305,7 +323,7 @@ table.dataTable thead .sorting:after {
   line-height: 1.428571429;
 }
 
-/* line 260, ../sass/admin/_sb-admin-2.scss */
+/* line 275, ../sass/admin/_sb-admin-2.scss */
 .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
@@ -315,7 +333,7 @@ table.dataTable thead .sorting:after {
   line-height: 1.33;
 }
 
-/* line 269, ../sass/admin/_sb-admin-2.scss */
+/* line 284, ../sass/admin/_sb-admin-2.scss */
 .btn-circle.btn-xl {
   width: 70px;
   height: 70px;
@@ -325,7 +343,7 @@ table.dataTable thead .sorting:after {
   line-height: 1.33;
 }
 
-/* line 278, ../sass/admin/_sb-admin-2.scss */
+/* line 293, ../sass/admin/_sb-admin-2.scss */
 .show-grid [class^=col-] {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -333,78 +351,78 @@ table.dataTable thead .sorting:after {
   background-color: #eee !important;
 }
 
-/* line 285, ../sass/admin/_sb-admin-2.scss */
+/* line 300, ../sass/admin/_sb-admin-2.scss */
 .show-grid {
   margin: 15px 0;
 }
 
-/* line 289, ../sass/admin/_sb-admin-2.scss */
+/* line 304, ../sass/admin/_sb-admin-2.scss */
 .huge {
   font-size: 40px;
 }
 
-/* line 293, ../sass/admin/_sb-admin-2.scss */
+/* line 308, ../sass/admin/_sb-admin-2.scss */
 .panel-green {
   border-color: #5cb85c;
 }
 
-/* line 297, ../sass/admin/_sb-admin-2.scss */
+/* line 312, ../sass/admin/_sb-admin-2.scss */
 .panel-green .panel-heading {
   border-color: #5cb85c;
   color: #fff;
   background-color: #5cb85c;
 }
 
-/* line 303, ../sass/admin/_sb-admin-2.scss */
+/* line 318, ../sass/admin/_sb-admin-2.scss */
 .panel-green a {
   color: #5cb85c;
 }
 
-/* line 307, ../sass/admin/_sb-admin-2.scss */
+/* line 322, ../sass/admin/_sb-admin-2.scss */
 .panel-green a:hover {
   color: #3d8b3d;
 }
 
-/* line 311, ../sass/admin/_sb-admin-2.scss */
+/* line 326, ../sass/admin/_sb-admin-2.scss */
 .panel-red {
   border-color: #d9534f;
 }
 
-/* line 315, ../sass/admin/_sb-admin-2.scss */
+/* line 330, ../sass/admin/_sb-admin-2.scss */
 .panel-red .panel-heading {
   border-color: #d9534f;
   color: #fff;
   background-color: #d9534f;
 }
 
-/* line 321, ../sass/admin/_sb-admin-2.scss */
+/* line 336, ../sass/admin/_sb-admin-2.scss */
 .panel-red a {
   color: #d9534f;
 }
 
-/* line 325, ../sass/admin/_sb-admin-2.scss */
+/* line 340, ../sass/admin/_sb-admin-2.scss */
 .panel-red a:hover {
   color: #b52b27;
 }
 
-/* line 329, ../sass/admin/_sb-admin-2.scss */
+/* line 344, ../sass/admin/_sb-admin-2.scss */
 .panel-yellow {
   border-color: #f0ad4e;
 }
 
-/* line 333, ../sass/admin/_sb-admin-2.scss */
+/* line 348, ../sass/admin/_sb-admin-2.scss */
 .panel-yellow .panel-heading {
   border-color: #f0ad4e;
   color: #fff;
   background-color: #f0ad4e;
 }
 
-/* line 339, ../sass/admin/_sb-admin-2.scss */
+/* line 354, ../sass/admin/_sb-admin-2.scss */
 .panel-yellow a {
   color: #f0ad4e;
 }
 
-/* line 343, ../sass/admin/_sb-admin-2.scss */
+/* line 358, ../sass/admin/_sb-admin-2.scss */
 .panel-yellow a:hover {
   color: #df8a13;
 }
@@ -430,7 +448,126 @@ table.dataTable thead .sorting:after {
   border-color: #939ba2 !important;
 }
 
-/* line 13, ../sass/core-admin.scss */
+/* line 3, ../sass/admin/_task.scss */
+.label-task-min {
+  border: none;
+  height: 5px;
+  width: 45px;
+  line-height: 100px;
+  float: left;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+/* line 12, ../sass/admin/_task.scss */
+.head-task {
+  margin-bottom: 10px;
+}
+/* line 14, ../sass/admin/_task.scss */
+.head-task h3 {
+  margin: 0px;
+}
+
+/* line 18, ../sass/admin/_task.scss */
+.tasks {
+  position: relative;
+  height: 300px;
+  overflow-y: auto;
+}
+
+/* line 23, ../sass/admin/_task.scss */
+.task-card {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #E6E6E6;
+  padding: 0 10px 10px 10px;
+  margin-bottom: 10px;
+  color: #57594D;
+}
+/* line 29, ../sass/admin/_task.scss */
+.task-card:hover {
+  background: #D7D7D7;
+  -moz-transform: background 1.2s 1.5s ease-out;
+  -ms-transform: background 1.2s 1.5s ease-out;
+  -webkit-transform: background 1.2s 1.5s ease-out;
+  transform: background 1.2s 1.5s ease-out;
+}
+/* line 33, ../sass/admin/_task.scss */
+.task-card p {
+  text-align: left;
+  margin: 10px;
+}
+/* line 37, ../sass/admin/_task.scss */
+.task-card a {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-decoration: none;
+  outline: 0;
+}
+
+/* line 47, ../sass/admin/_task.scss */
+.task_input input, .task_input button, .task_input .task_addon {
+  background: #F5F5F5;
+  box-shadow: none;
+}
+/* line 51, ../sass/admin/_task.scss */
+.task_input button {
+  border: none;
+}
+
+/* line 57, ../sass/admin/_task.scss */
+.task_select input[type="checkbox"] {
+  position: relative;
+}
+
+/* line 61, ../sass/admin/_task.scss */
+input.task-box {
+  opacity: 0;
+}
+/* line 64, ../sass/admin/_task.scss */
+input.task-box + label > i {
+  opacity: 0;
+}
+/* line 69, ../sass/admin/_task.scss */
+input.task-box:checked + label > span {
+  opacity: 0.6;
+}
+/* line 72, ../sass/admin/_task.scss */
+input.task-box:checked + label > i {
+  opacity: 1;
+  color: green;
+}
+
+/* line 80, ../sass/admin/_task.scss */
+.collapse-relative {
+  position: absolute;
+  z-index: 400;
+  padding-left: 50px;
+}
+
+/* line 86, ../sass/admin/_task.scss */
+.task-priority-high {
+  background: black;
+  color: white;
+}
+
+/* line 90, ../sass/admin/_task.scss */
+.task-priority-medium {
+  color: white;
+  background: red;
+}
+
+/* line 94, ../sass/admin/_task.scss */
+.task-priority {
+  padding: 3px 6px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 14, ../sass/core-admin.scss */
 .fixed-bottom {
   position: fixed;
   bottom: 0;
@@ -439,7 +576,7 @@ table.dataTable thead .sorting:after {
   z-index: 9999;
 }
 
-/* line 20, ../sass/core-admin.scss */
+/* line 21, ../sass/core-admin.scss */
 .btn-border-top {
   -moz-border-radius-bottomright: 0px;
   -webkit-border-bottom-right-radius: 0px;
@@ -576,7 +713,7 @@ table.dataTable thead .sorting:after {
     height: 0%;
   }
 }
-/* line 70, ../sass/core-admin.scss */
+/* line 71, ../sass/core-admin.scss */
 .loader {
   position: absolute;
   top: 0;
@@ -585,7 +722,7 @@ table.dataTable thead .sorting:after {
   width: 100%;
   z-index: 9999;
 }
-/* line 80, ../sass/core-admin.scss */
+/* line 81, ../sass/core-admin.scss */
 .loader > div {
   display: inline-block;
   width: 200px;
@@ -606,7 +743,7 @@ table.dataTable thead .sorting:after {
   -webkit-animation: loader 3s infinite ease;
   animation: loader 3s infinite ease;
 }
-/* line 94, ../sass/core-admin.scss */
+/* line 95, ../sass/core-admin.scss */
 .loader > div .loader-inner {
   vertical-align: top;
   display: inline-block;
@@ -617,7 +754,7 @@ table.dataTable thead .sorting:after {
   animation: loader-inner 3s infinite ease-in;
 }
 
-/* line 104, ../sass/core-admin.scss */
+/* line 105, ../sass/core-admin.scss */
 .scrollHorizontalBox {
   background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0)), linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0)) 100% 0, radial-gradient(farthest-side at 0% 50%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 100% 0%;
   background-repeat: no-repeat;
@@ -626,17 +763,17 @@ table.dataTable thead .sorting:after {
   background-attachment: local, local, scroll, scroll;
 }
 
-/* line 127, ../sass/core-admin.scss */
+/* line 128, ../sass/core-admin.scss */
 .nav-user {
   padding: 8px !important;
   color: #333 !important;
 }
 
-/* line 131, ../sass/core-admin.scss */
+/* line 132, ../sass/core-admin.scss */
 .navbar-brand.favicon {
   padding: 9px !important;
 }
-/* line 133, ../sass/core-admin.scss */
+/* line 134, ../sass/core-admin.scss */
 .navbar-brand.favicon span {
   line-height: 32px;
   display: inline-block;
@@ -644,44 +781,44 @@ table.dataTable thead .sorting:after {
   vertical-align: middle;
 }
 
-/* line 144, ../sass/core-admin.scss */
+/* line 145, ../sass/core-admin.scss */
 table.log tr td {
   line-height: 34px !important;
 }
 
-/* line 150, ../sass/core-admin.scss */
+/* line 151, ../sass/core-admin.scss */
 .btn-transparent {
   color: grey;
   background-color: transparent;
   border: 0px;
 }
 
-/* line 158, ../sass/core-admin.scss */
+/* line 159, ../sass/core-admin.scss */
 .panel-page i.fa {
   font-size: 72px;
 }
-/* line 161, ../sass/core-admin.scss */
+/* line 162, ../sass/core-admin.scss */
 .panel-page .help-block {
   display: inline-block;
 }
-/* line 164, ../sass/core-admin.scss */
+/* line 165, ../sass/core-admin.scss */
 .panel-page .buttons {
   position: absolute;
   top: 0;
   right: 15px;
 }
 
-/* line 172, ../sass/core-admin.scss */
+/* line 173, ../sass/core-admin.scss */
 .margin-top-md {
   margin-top: 10px;
 }
 
-/* line 175, ../sass/core-admin.scss */
+/* line 176, ../sass/core-admin.scss */
 .margin-top-lg {
   margin-top: 15px;
 }
 
-/* line 181, ../sass/core-admin.scss */
+/* line 182, ../sass/core-admin.scss */
 .btn-nav-left {
   display: none;
 }
@@ -914,210 +1051,270 @@ table.log tr td {
   }
 }
 
-/* line 188, ../sass/core-admin.scss */
+/* line 189, ../sass/core-admin.scss */
 #wrapper {
   background: #222;
 }
 
-/* line 191, ../sass/core-admin.scss */
+/* line 192, ../sass/core-admin.scss */
 .sidebar.sidebar-inverse {
   background-color: #222;
   border-color: #090909;
 }
-/* line 196, ../sass/core-admin.scss */
+/* line 197, ../sass/core-admin.scss */
 .sidebar.sidebar-inverse .nav > li > a {
   color: #9d9d9d;
 }
-/* line 198, ../sass/core-admin.scss */
+/* line 199, ../sass/core-admin.scss */
 .sidebar.sidebar-inverse .nav > li > a:hover, .sidebar.sidebar-inverse .nav > li > a:focus {
   color: #fff;
   background-color: transparent;
 }
-/* line 204, ../sass/core-admin.scss */
+/* line 205, ../sass/core-admin.scss */
 .sidebar.sidebar-inverse .nav > .active > a, .sidebar.sidebar-inverse .nav > .active > a:hover, .sidebar.sidebar-inverse .nav > .active > a:focus {
   color: #fff;
   background-color: #090909;
 }
-/* line 210, ../sass/core-admin.scss */
+/* line 211, ../sass/core-admin.scss */
 .sidebar.sidebar-inverse .nav > .disabled > a, .sidebar.sidebar-inverse .nav > .disabled > a:hover, .sidebar.sidebar-inverse .nav > .disabled > a:focus {
   color: #444;
   background-color: transparent;
 }
-/* line 220, ../sass/core-admin.scss */
+/* line 221, ../sass/core-admin.scss */
 .sidebar.sidebar-inverse .navbar-nav > .open > a, .sidebar.sidebar-inverse .navbar-nav > .open > a:hover, .sidebar.sidebar-inverse .navbar-nav > .open > a:focus {
   background-color: #090909;
   color: #fff;
 }
 
-/* line 229, ../sass/core-admin.scss */
+/* line 230, ../sass/core-admin.scss */
 .sidebar ul li {
   border-bottom: 1px solid #353535;
 }
 
-/* line 4, ../sass/admin/_page.scss */
-.tab-content, .tab-content > .tab-pane {
-  position: relative;
+/* line 5, ../sass/admin/_page.scss */
+.create-page {
+  background: #eee;
+  padding: 7px;
+}
+/* line 9, ../sass/admin/_page.scss */
+.create-page .create-page-list {
+  white-space: nowrap;
+  overflow-y: auto;
 }
 
-/* line 8, ../sass/admin/_page.scss */
-.page-grid {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  z-index: -10;
-  border-right: 1px dotted #e4e4e4;
-}
-/* line 16, ../sass/admin/_page.scss */
-.page-grid .col-sm-1 {
-  height: 100%;
-  border-left: 1px dotted #e4e4e4;
-}
-/* line 19, ../sass/admin/_page.scss */
-.page-grid .col-sm-1 > div {
-  height: 100%;
-  background: #f6f6f6;
-  border-right: 1px solid #cdcdcd;
-  border-left: 1px solid #cdcdcd;
-}
-
-/* line 30, ../sass/admin/_page.scss */
-.input-transparent-lg {
-  border: none;
-  font-size: 36px;
-  background: transparent;
-  height: 70px;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
-  border: 1px solid #939ba2;
-}
-
-/* line 40, ../sass/admin/_page.scss */
-.page-create {
-  position: relative;
-}
-/* line 43, ../sass/admin/_page.scss */
-.page-create .form-group {
-  padding-top: 5px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-/* line 50, ../sass/admin/_page.scss */
-.page-block-drawing-area {
-  position: relative;
-  cursor: crosshair;
-  min-height: 250px;
-  width: 100%;
-  z-index: 1;
-  margin: 0 !important;
-  padding-bottom: 250px;
-}
-/* line 58, ../sass/admin/_page.scss */
-.page-block-drawing-area .drawn-row {
-  width: 100%;
-  height: auto;
-  position: relative;
-  display: block;
-}
-
-/* line 65, ../sass/admin/_page.scss */
-.drawn-block {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  left: 0px;
-  border: 1px solid #939ba2;
-}
-/* line 72, ../sass/admin/_page.scss */
-.drawn-block.current {
-  background: transparent;
-}
-/* line 77, ../sass/admin/_page.scss */
-.drawn-block.drawn-block-show {
-  -moz-transition: all 0.15s ease-in;
-  -o-transition: all 0.15s ease-in;
-  -webkit-transition: all 0.15s ease-in;
-  transition: all 0.15s ease-in;
-  position: relative;
-  display: block;
-  padding-left: 0px;
-  padding-right: 0px;
-  top: auto;
-  left: auto;
-  right: auto;
-  min-height: 100px;
-  cursor: default;
-}
-/* line 95, ../sass/admin/_page.scss */
-.drawn-block .remove {
-  position: absolute;
-  display: none;
-  z-index: 2;
-  height: 15px;
-  width: 15px;
-  top: -5px;
-  right: -5px;
-  padding-top: 1px;
-  text-align: center;
-  color: white;
-  font-size: 10px;
-  border: 1px solid #333;
-  font-size: 9px;
-  cursor: pointer;
-  background: #333;
-  border-radius: 50%;
-}
-/* line 118, ../sass/admin/_page.scss */
-.drawn-block:hover, .drawn-block:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-/* line 124, ../sass/admin/_page.scss */
-.drawn-block:hover .remove, .drawn-block:hover .handful, .drawn-block:focus .remove, .drawn-block:focus .handful {
-  display: block;
-}
-
-/* line 133, ../sass/admin/_page.scss */
-.handful {
-  height: 8px;
-  width: 8px;
-  z-index: 2;
-  position: absolute;
-  display: none;
-  top: 50%;
-  margin-top: -4px;
-  border: 1px solid #333;
-  background: white;
-  cursor: e-resize;
-}
-/* line 148, ../sass/admin/_page.scss */
-.handful.handful-left {
-  left: 0;
-  margin-left: -4px;
-}
-/* line 153, ../sass/admin/_page.scss */
-.handful.handful-right {
-  right: 0;
-  margin-right: -4px;
-}
-
-/* line 162, ../sass/admin/_page.scss */
-.action-in-block {
-  vertical-align: middle;
-}
-
-/* line 167, ../sass/admin/_page.scss */
-.block-type {
-  line-height: normal;
+/* line 15, ../sass/admin/_page.scss */
+.page-template {
+  background: url("../img/page-template.gif") no-repeat;
+  width: 150px;
+  height: 106px;
   display: inline-block;
 }
+/* line 21, ../sass/admin/_page.scss */
+.page-template.simple {
+  background-position: 0 0;
+}
+/* line 24, ../sass/admin/_page.scss */
+.page-template.simple-double {
+  background-position: -150px 0;
+}
+/* line 27, ../sass/admin/_page.scss */
+.page-template.simple-aside {
+  background-position: -300px 0;
+}
+/* line 30, ../sass/admin/_page.scss */
+.page-template.simple-aside-o {
+  background-position: -450px 0;
+}
+/* line 33, ../sass/admin/_page.scss */
+.page-template.double-aside {
+  background-position: -600px 0;
+}
+/* line 36, ../sass/admin/_page.scss */
+.page-template.double-aside-o {
+  background-position: -750px 0;
+}
+/* line 39, ../sass/admin/_page.scss */
+.page-template.quadruple {
+  background-position: -900px 0;
+}
+/* line 42, ../sass/admin/_page.scss */
+.page-template.third {
+  background-position: -1050px 0;
+}
+/* line 45, ../sass/admin/_page.scss */
+.page-template.quarter {
+  background-position: -1200px 0;
+}
 
+/* //Grid system with col bootstrap
+//fix bootstrap
+.tab-content, .tab-content>.tab-pane {
+	position:relative;
+}
+
+.page-grid {
+	position:absolute;
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+	z-index: -10;
+	border-right:1px dotted #e4e4e4;
+	.col-sm-1 {
+		height:100%;
+		border-left:1px dotted #e4e4e4;
+		> div {
+			height:100%;
+			background:#f6f6f6;
+			border-right:1px solid #cdcdcd;
+			border-left:1px solid #cdcdcd;
+		}
+	}
+}
+
+//Form create page
+//Form
+.input-transparent-lg{
+	border:none;
+	font-size:36px;
+	background:transparent;
+	height:70px;
+	@include border-radius(0px);
+	border: 1px solid #939ba2;
+}
+
+//Page create
+.page-create {
+	position:relative;
+
+	.form-group {
+		padding-top:5px;
+		padding-right:15px;
+		padding-left:15px;
+	}
+}
+
+.page-block-drawing-area{
+	position: relative;
+	cursor: crosshair;
+	min-height:250px;
+	width: 100%;
+    z-index: 1;
+    margin:0 !important;
+    padding-bottom:250px;
+    .drawn-row {
+    	width:100%;
+    	height:auto;
+    	position:relative;
+    	display:block;
+    }
+}
+.drawn-block {
+	display:none;
+	position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    border: 1px solid #939ba2;
+    &.current {
+    	background: transparent;
+    	//background: rgba(0,0,0,.15);
+	    //border: 1px solid #000;
+	}
+	&.drawn-block-show {
+		@include transition(all .15s ease-in);
+		position:relative;
+		display:block;
+		padding-left:0px;
+		padding-right:0px;
+		top: auto;
+	    left: auto;
+	    right: auto;
+		min-height:100px;
+		//border-right:1px solid white;
+		//border-left:1px solid white;
+		//margin-bottom:2px;
+		cursor:default;
+	}
+	&.drawn-block-type-chosen{
+		//border:0px;
+	}
+	.remove {
+		position:absolute;
+		display:none;
+		z-index: 2;
+		height:15px;
+		width:15px;
+
+		top:-5px;
+		right:-5px;
+		padding-top:1px;
+		text-align:center;
+		
+
+		color:white;
+		font-size:10px;
+		border: 1px solid #333;
+
+		font-size: 9px;
+		cursor: pointer;
+		background: #333;
+		border-radius: 50%;
+	}
+
+	&:hover, &:focus {
+	    border-color: #66afe9;
+	    outline: 0;
+	    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+		
+		.remove, .handful {
+			display:block;
+		}
+
+	}
+}
+
+//handful (poign├®e) photoshop
+$handful_size : 8px;
+.handful {
+	height:$handful_size;
+	width:$handful_size;
+
+	z-index: 2;
+
+	position:absolute;
+	display:none;
+	top:50%;
+	margin-top:-$handful_size*.5;
+
+	border:1px solid #333;
+	background:white;
+	cursor:e-resize;
+
+	&.handful-left {
+		left:0;
+		margin-left:-$handful_size*.5;
+	}
+
+	&.handful-right {
+		right:0;
+		margin-right:-$handful_size*.5;
+	}
+}
+
+
+
+
+.action-in-block {
+	vertical-align: middle;
+}
+
+//Block type
+.block-type {
+	line-height: normal;
+	display:inline-block;
+} */
 /* 
 //Blocks
 $block-create-height : 75px;
@@ -1293,7 +1490,7 @@ Standard syntax
 	}
 }
  */
-/* line 418, ../sass/core-admin.scss */
+/* line 419, ../sass/core-admin.scss */
 .chip {
   position: relative;
   display: inline-block;
@@ -1303,25 +1500,25 @@ Standard syntax
   background-color: #fff;
   border-color: #ccc;
 }
-/* line 428, ../sass/core-admin.scss */
+/* line 429, ../sass/core-admin.scss */
 .chip:hover, .chip:focus {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
-/* line 434, ../sass/core-admin.scss */
+/* line 435, ../sass/core-admin.scss */
 .chip.chip-blue {
   color: #fff;
   background-color: #3071a9;
   border-color: #285e8e;
 }
-/* line 438, ../sass/core-admin.scss */
+/* line 439, ../sass/core-admin.scss */
 .chip.chip-blue:hover, .chip.chip-blue:focus {
   color: #fff;
   background-color: #3071a9;
   border-color: #285e8e;
 }
-/* line 445, ../sass/core-admin.scss */
+/* line 446, ../sass/core-admin.scss */
 .chip.chip-md {
   font-size: 12px;
   width: 24px;
@@ -1331,7 +1528,7 @@ Standard syntax
   -webkit-border-radius: 12px;
   border-radius: 12px;
 }
-/* line 452, ../sass/core-admin.scss */
+/* line 453, ../sass/core-admin.scss */
 .chip.chip-lg {
   font-size: 20px;
   width: 32px;
@@ -1666,33 +1863,33 @@ Standard syntax
 /* Extra Small Devices, Phones */
 /* Custom, iPhone Retina */
 /*========== Media ==========*/
-/* line 475, ../sass/core-admin.scss */
+/* line 476, ../sass/core-admin.scss */
 .filemanager-container {
   min-height: inherit;
   height: 99%;
   height: calc( 100% - 4px);
 }
-/* line 479, ../sass/core-admin.scss */
+/* line 480, ../sass/core-admin.scss */
 .filemanager-container > iframe {
   min-height: inherit;
   border: none;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 486, ../sass/core-admin.scss */
+  /* line 487, ../sass/core-admin.scss */
   .filemanager-container {
     margin-left: -15px;
     margin-right: -15px;
   }
 }
 /*========== Fix bootstrap ==========*/
-/* line 494, ../sass/core-admin.scss */
+/* line 495, ../sass/core-admin.scss */
 .img-center .img-responsive {
   margin: 0 auto;
 }
 
 /*========== User ==========*/
-/* line 502, ../sass/core-admin.scss */
+/* line 503, ../sass/core-admin.scss */
 .profil {
   padding-top: 30px;
 }
@@ -1988,13 +2185,13 @@ label.label-list:last-of-type {
   box-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* line 513, ../sass/core-admin.scss */
+/* line 514, ../sass/core-admin.scss */
 .form-lang .form-group {
   padding: 5px;
 }
 
 @media only screen and (max-width: 1920px) {
-  /* line 520, ../sass/core-admin.scss */
+  /* line 521, ../sass/core-admin.scss */
   .lang-label {
     max-width: 140px;
     max-width: calc(100% - 95px);
@@ -2002,7 +2199,7 @@ label.label-list:last-of-type {
   }
 }
 @media only screen and (max-width: 1200px) {
-  /* line 527, ../sass/core-admin.scss */
+  /* line 528, ../sass/core-admin.scss */
   .lang-label {
     max-width: 180px;
     max-width: calc(100% - 95px);
@@ -2011,7 +2208,7 @@ label.label-list:last-of-type {
 }
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
-  /* line 535, ../sass/core-admin.scss */
+  /* line 536, ../sass/core-admin.scss */
   .lang-label {
     max-width: 300px;
     max-width: calc(100% - 95px);
@@ -2020,7 +2217,7 @@ label.label-list:last-of-type {
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width: 778px) {
-  /* line 543, ../sass/core-admin.scss */
+  /* line 544, ../sass/core-admin.scss */
   .lang-label {
     max-width: 295px;
     max-width: calc(100% - 95px);
@@ -2029,7 +2226,7 @@ label.label-list:last-of-type {
 }
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 490px) {
-  /* line 551, ../sass/core-admin.scss */
+  /* line 552, ../sass/core-admin.scss */
   .lang-label {
     max-width: 135px;
     max-width: calc(100% - 95px);
@@ -2038,34 +2235,53 @@ label.label-list:last-of-type {
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 330px) {
-  /* line 559, ../sass/core-admin.scss */
+  /* line 560, ../sass/core-admin.scss */
   .lang-label {
     max-width: 130px;
     max-width: calc(100% - 95px);
     display: inline-block;
   }
 }
-/* line 571, ../sass/core-admin.scss */
+/* line 572, ../sass/core-admin.scss */
 .role {
   margin-top: 20px;
 }
-/* line 574, ../sass/core-admin.scss */
+/* line 575, ../sass/core-admin.scss */
 .role h3 {
   margin-top: 0px;
 }
 
-/* line 579, ../sass/core-admin.scss */
+/* line 580, ../sass/core-admin.scss */
 .form-role_permission .form-group {
   padding: 5px;
 }
 
 @media only screen and (max-width: 390px) {
-  /* line 584, ../sass/core-admin.scss */
+  /* line 585, ../sass/core-admin.scss */
   .role-label {
     max-width: 190px;
     display: inline-block;
   }
 }
+/* //Custom, scroll
+&::-webkit-scrollbar {
+	width: 10px;
+}
+
+// Track
+&::-webkit-scrollbar-track {
+	background: none; 
+}
+
+// Handle 
+&::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, .25); 
+	@include border-radius(5px);
+}
+
+&::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255, 255, 255, .25); 
+} */
 /*========== Mobile First Method ==========*/
 /* Custom, iPhone Retina */
 /* Extra Small Devices, Phones */

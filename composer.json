@@ -27,6 +27,7 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
+			"workbench",
 			"vendor/dynamix"
 		]
 	},
