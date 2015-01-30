@@ -1,5 +1,59 @@
 @import "compass";
-//Grid system with col bootstrap
+
+//Image for themplate
+
+.create-page {
+	white-space: nowrap;
+	background: #eee;
+	overflow-y:auto;
+	padding:7px;
+}
+
+.page-template {
+	background:url('../img/page-template.gif') no-repeat;
+	width:150px;
+	height:106px;
+	display:inline-block;
+
+	&.simple {
+		background-position: 0 0;
+	}
+	&.simple-double {
+		background-position: 0 0;
+	}
+	&.simple-aside {
+		background-position: 0 0;
+	}
+	&.simple-aside-o {
+		background-position: 0 0;
+	}
+	&.double-aside {
+		background-position: 0 0;
+	}
+	&.double-aside-o {
+		background-position: 0 0;
+	}
+	&.quadruple {
+		background-position: 0 0;
+	}
+	&.third {
+		background-position: 0 0;
+	}
+	&.quarter {
+		background-position: 0 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+//Pager dynamic
+/* //Grid system with col bootstrap
 //fix bootstrap
 .tab-content, .tab-content>.tab-pane {
 	position:relative;
@@ -167,4 +221,4 @@ $handful_size : 8px;
 .block-type {
 	line-height: normal;
 	display:inline-block;
-}
+} */

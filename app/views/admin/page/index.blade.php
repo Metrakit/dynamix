@@ -9,8 +9,13 @@
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.page') }}}
-            <a href="{{ URL::to('admin/page/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau</a>
+            <span class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau</span>
         </h1>
+        <div class="create-page">
+            @foreach( Config::get('display.page-template') as $template)
+            <a href="{{ URL::to('admin/page/create?template' . $template)}}" class="page-template {{$template}}"></a>
+            @endforeach
+        </div>
     </div>
 @stop
 

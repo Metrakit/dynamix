@@ -41,6 +41,13 @@ class AdminPageController extends BaseController {
 		$data['buttonLabel'] 	= Lang::get('admin.page_add');
 		$data['glyphicon'] 		= 'plus';
 
+		if (Input::has('template')) {
+			$template = Input::get('template');
+			
+			
+			
+		}
+
 		return View::make('admin.page.form', $data);
 	}
 
