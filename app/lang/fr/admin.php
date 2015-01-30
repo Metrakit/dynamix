@@ -38,6 +38,12 @@ return array(
 		'newOnReturningVisitor' => 'Nouveau visiteur / Visiteur régulier',
 		'newVisitor'			=> 'Nouveau visiteur',
 		'returningVisitor'		=> 'Visiteur régulier',
+
+		'loadError'		=> 'Les données n\'ont pas pu être chargées',
+
+
+		//tasks
+		'task'		=>	'Taches',
 	
 	//Media
 	'media'				=> 'Média',

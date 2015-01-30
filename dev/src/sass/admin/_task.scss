@@ -1,0 +1,97 @@
+
+
+.label-task-min{
+	border:none;
+	height: 5px;
+	width: 45px;
+	line-height: 100px;
+	float: left;
+	overflow:hidden;
+	margin-right: 10px;
+}
+.head-task{
+	margin-bottom: 10px;
+	h3{
+		margin: 0px;
+	}
+}
+.tasks{
+	position: relative;
+	height: 300px;
+	overflow-y: auto;
+}
+.task-card{
+	@include border-radius(5px);
+	background :#E6E6E6;
+	padding: 0 10px 10px 10px;
+	margin-bottom: 10px;
+	color : #57594D;
+	&:hover{
+		background: #D7D7D7;
+		@include transform (background 1.2s 1.5s ease-out);
+	}
+	p{
+		text-align: left;
+		margin: 10px;
+	}
+	a{
+		height: 100%;
+		width: 100%;
+		position: relative;
+		text-decoration: none;
+		outline: 0;
+	}
+	
+}
+.task_input{
+	input, button, .task_addon{ 
+		background: #F5F5F5;
+		box-shadow: none;
+	}
+	button{
+		border: none;
+	}
+}
+
+.task_select{
+	input[type="checkbox"]{
+		position : relative;
+	}
+}
+input.task-box{
+	opacity : 0;
+	& + label{
+		& > i{
+			opacity : 0;
+		}
+	}
+	&:checked + label{
+		& > span{ 
+			opacity: 0.6;
+		}
+		& > i{
+			opacity : 1;
+			color:green;
+		}
+		
+	}
+}
+
+.collapse-relative{
+	position: absolute;
+	z-index: 400;
+	padding-left: 50px;
+}
+
+.task-priority-high{
+	background : black;
+	color: white;
+}
+.task-priority-medium{
+	color: white;
+	background: red;
+}
+.task-priority{
+	padding: 3px 6px;
+	@include border-radius(4px); 
+}

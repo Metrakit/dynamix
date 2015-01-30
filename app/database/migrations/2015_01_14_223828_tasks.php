@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthsTable extends Migration {
+class Tasks extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,17 +12,17 @@ class CreateAuthsTable extends Migration {
 	 */
 	public function up()
 	{
-		// Create the `Comments` table
-		Schema::create('auths', function(Blueprint $table)
+		// Create the `Tasks` table
+		Schema::create('tasks', function(Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->string('email');
-			$table->string('password');
-			$table->string('remember_token')->nullable();
+			$table->string('label');
 
-			$table->timestamps();
+			$table->string('description');
+			$table->dateTime('date');
+
 		});
 	}
 
@@ -33,9 +33,9 @@ class CreateAuthsTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `auths` table
-		//Schema::drop('tasks_has_auths');
-		Schema::drop('auths');
+		Schema::dropIfExists('tasks_has_labels');
+		Schema::dropIfExists('tasks_has_auths');
+		Schema::dropIfExists('tasks');
 	}
 
 }

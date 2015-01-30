@@ -49,7 +49,8 @@ Route::group(array('prefix' => $locale), function()
 */
 Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function (){
 	//Dashboard
-	Route::get('/','AdminController@index');
+	Route::get('/',array('as'=> 'index_admin', 'uses' => 'AdminController@index'));
+
 	//Auth 
 	Route::get('auth', 'AdminAuthController@index');
 	Route::get('profil', 'AdminAuthController@showProfil');
@@ -94,6 +95,14 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::post('/languages', 'AdminController@postLanguages');
 	//API - AJAX
 	Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
+
+
+	// Task
+	Route::post('/task/add', array('as'=>'add-task-post','uses'=>'AdminTasksController@addPostTask'));
+	Route::get('/task/edit/{id}', array('as'=>'edit-task','uses'=>'AdminTasksController@editTask'));
+	Route::post('/task/edit/{id}', array('as'=>'edit-task-post','uses'=>'AdminTasksController@editPostTask'));
+	Route::get('/task/delete/{id}', array('as'=>'delete-task','uses'=>'AdminTasksController@deleteTask'));
+
 
 	// Formr
 	Route::resource('form','FormerController');
