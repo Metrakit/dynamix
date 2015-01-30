@@ -21,7 +21,6 @@
         <!-- <h3>{{{ Lang::get('admin.page_contents') }}}</h3> -->
         <div class="page-create">
             <!-- page_grid -->
-            coucou
             <div class="page-grid">
                 <div class="col-sm-1"><div></div></div>
                 <div class="col-sm-1"><div></div></div>

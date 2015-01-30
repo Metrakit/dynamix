@@ -26,7 +26,6 @@
 @section('content')
 <!-- Colonne gauche -->
 <div class="row">
-    coucou
     @include('includes.session-message')
 
     @foreach($pages as $page)
