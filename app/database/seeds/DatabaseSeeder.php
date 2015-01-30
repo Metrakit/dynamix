@@ -77,6 +77,9 @@ class DatabaseSeeder extends Seeder {
         //Menu
         $this->call('NavigationsTableSeeder');//Need Page module OK
 
+        //Task
+        $this->call('TasksTableSeeder');
+
 
         //Autonomous
         //$this->call('ThemesTableSeeder');

@@ -9,12 +9,15 @@
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.page') }}}
-            <span class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau</span>
+            <span class="btn btn-primary" data-toggle="collapse" data-target="#page-template"><span class="glyphicon glyphicon-plus"></span> Nouveau</span><br>
         </h1>
-        <div class="create-page">
-            @foreach( Config::get('display.page-template') as $template)
-            <a href="{{ URL::to('admin/page/create?template' . $template)}}" class="page-template {{$template}}"></a>
-            @endforeach
+        <div class="create-page collapse" id="page-template">
+            <h4>Choisissez un modèle de block</h4>
+            <div class="create-page-list">
+                @foreach( Config::get('display.page-template') as $template)
+                <a href="{{ URL::to('admin/page/create?template=' . $template)}}" class="page-template {{$template}}"></a>
+                @endforeach
+            </div>
         </div>
     </div>
 @stop

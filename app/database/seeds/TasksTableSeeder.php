@@ -1,6 +1,6 @@
 <?php
 
-class TasksSeeder extends Seeder {
+class TasksTableSeeder extends Seeder {
 
 
     public function run()

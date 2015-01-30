@@ -43,9 +43,6 @@ class AdminPageController extends BaseController {
 
 		if (Input::has('template')) {
 			$template = Input::get('template');
-			
-			
-			
 		}
 
 		return View::make('admin.page.form', $data);
