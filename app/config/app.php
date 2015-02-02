@@ -115,7 +115,7 @@ return array(
 		//'Dynamix\Template\TemplateServiceProvider',
 		//'Dynamix\BlogModule\BlogServiceProvider',
 		//'Dynamix\UserManager\UserServiceProvider',
-		'Dynamix\Crew\CrewModuleServiceProvider',
+		//'Dynamix\Crew\CrewModuleServiceProvider',
 
 		// External packages
 		'PagerServiceProvider',
