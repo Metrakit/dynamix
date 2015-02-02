@@ -90,6 +90,9 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Option
 		Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
 		Route::post('/option', 'AdminController@postOption');
+	//I18nConstant
+		Route::get('/i18n-constant', 'AdminController@getI18nConstant');
+		Route::post('/i18n-constant', 'AdminController@postI18nConstant');
 	//Languages
 		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
 		Route::post('/languages', 'AdminController@postLanguages');

@@ -366,4 +366,23 @@ class AdminController extends BaseController {
 		// Show the page
 		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
 	}
+
+	public function getI18nConstant () {
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		$data['i18nConstants'] = Option::first();
+
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.option.index', $data )->renderSections());
+		} else {
+			return View::make('admin.option.index', $data);
+		}
+	}
+	public function postI18nConstant () {
+
+	}
 }

@@ -178,6 +178,13 @@ array(
     'navigable'     => false
     ),
 array(
+    'name' => 'i18n-constant',
+    'icon' => 'glyphicon glyphicon-globe',
+    'model' => null,
+    'in_admin_ui'   => true,
+    'navigable'     => false
+    ),
+array(
     'name' => 'form',
     'icon' => 'glyphicon glyphicon-tasks',
     'model' => 'Formr',

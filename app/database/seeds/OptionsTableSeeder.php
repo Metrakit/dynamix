@@ -81,18 +81,20 @@ class OptionsTableSeeder extends Seeder {
         //I18n Constant text
 
         $key1 = new I18N;
-        $key1->i18n_type_id = I18nType::where('name','=','button')->first()->id;
-        $key1->key = "key1";
+        $key1->i18n_type_id = I18nType::where('name','=','key')->first()->id;
+        $key1->key = "create";
+        $key1->key = "admin.i18n-constant.create";
         $key1->save();
-        $key1->translate('fr','key1');
-        $key1->translate('en','key1');
+        $key1->translate('fr','créer');
+        $key1->translate('en','create');
         
         $key2 = new I18N;
-        $key2->i18n_type_id = I18nType::where('name','=','button')->first()->id;
-        $key2->key = "key2";
+        $key2->i18n_type_id = I18nType::where('name','=','key')->first()->id;
+        $key2->key = "edit";
+        $key2->key = "admin.i18n-constant.edit";
         $key2->save();
-        $key2->translate('fr','key2');
-        $key2->translate('en','key2');
+        $key2->translate('fr','modifier');
+        $key2->translate('en','edit');
 
     }
 

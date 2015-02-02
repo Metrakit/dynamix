@@ -197,6 +197,11 @@ return array(
 		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
 		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
 
+	'i18n-constant' => array(
+		'create' 	=> 'Créer',
+		'edit' 		=> 'Modifier',
+	),
+
 	//Log
 	'log'					=> 'Log',
 		'logs'					=> 'Logs',

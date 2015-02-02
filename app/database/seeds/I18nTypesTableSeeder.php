@@ -50,7 +50,7 @@ class I18nTypesTableSeeder extends Seeder {
                 'name' => 'navigation'
             ),
             array(
-                'name' => 'button'
+                'name' => 'key'
             ),             
         ));
     }
