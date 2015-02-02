@@ -12,7 +12,7 @@ class AuthTask extends Migration {
 	 */
 	public function up()
 	{
-		// Create the `label_task` table
+		// Create the `auth_task` table
 		Schema::create('auth_task', function(Blueprint $table)
 		{
 			$table->engine = 'InnoDB';

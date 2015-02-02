@@ -33,8 +33,8 @@ class Tasks extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('tasks_has_labels');
-		Schema::dropIfExists('tasks_has_auths');
+		Schema::dropIfExists('label_task');
+		Schema::dropIfExists('auth_task');
 		Schema::dropIfExists('tasks');
 	}
 

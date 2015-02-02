@@ -32,6 +32,8 @@ class Labels extends Migration {
 	 */
 	public function down()
 	{
+		Schema::dropIfExists('label_task');
+		Schema::dropIfExists('auth_task');
 		Schema::dropIfExists('labels');
 	}
 
