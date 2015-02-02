@@ -75,6 +75,25 @@ class OptionsTableSeeder extends Seeder {
                 'social_google_plus'    => ''
             ))
         );
+
+
+
+        //I18n Constant text
+
+        $key1 = new I18N;
+        $key1->i18n_type_id = I18nType::where('name','=','button')->first()->id;
+        $key1->key = "key1";
+        $key1->save();
+        $key1->translate('fr','key1');
+        $key1->translate('en','key1');
+        
+        $key2 = new I18N;
+        $key2->i18n_type_id = I18nType::where('name','=','button')->first()->id;
+        $key2->key = "key2";
+        $key2->save();
+        $key2->translate('fr','key2');
+        $key2->translate('en','key2');
+
     }
 
 }
