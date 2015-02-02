@@ -36,13 +36,11 @@ class AdminPageController extends BaseController {
 		$data['user'] 			= Auth::user();
 
 		//Interface
-		$data['action'] 		= 'create';
 		$data['noAriane'] 		= true;
-		$data['buttonLabel'] 	= Lang::get('admin.page_add');
-		$data['glyphicon'] 		= 'plus';
 
 		if (Input::has('template')) {
 			$template = Input::get('template');
+			return View::make('admin.page.template.' . $template, $data);
 		}
 
 		return View::make('admin.page.form', $data);

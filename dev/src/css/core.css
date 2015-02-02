@@ -4,49 +4,49 @@
   background-repeat: no-repeat;
 }
 
-/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-beer {
   background-position: 0 0;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-cat {
   background-position: 0 -50px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-drink {
   background-position: 0 -100px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-drug {
   background-position: 0 -150px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-hat {
   background-position: 0 -200px;
   height: 50px;
   width: 50px;
 }
 
-/* line 84, ../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/sprites/_base.scss */
 .icon-song {
   background-position: 0 -250px;
   height: 50px;
   width: 50px;
 }
 
-/* line 8, ../sass/common/_sprites.scss */
+/* line 9, ../sass/common/_sprites.scss */
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -279,7 +279,7 @@ button.submit-comment-form {
 /* .nav-tabs {
 	margin-bottom:15px;
 } */
-/* line 24, ../sass/core.scss */
+/* line 23, ../sass/core.scss */
 .navbar-blue {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
@@ -287,26 +287,26 @@ button.submit-comment-form {
   background-color: #0f93bc;
   border-color: #12b9ee;
 }
-/* line 30, ../sass/core.scss */
+/* line 29, ../sass/core.scss */
 .navbar-blue .nav > li > a {
   color: white;
 }
-/* line 32, ../sass/core.scss */
+/* line 31, ../sass/core.scss */
 .navbar-blue .nav > li > a:hover, .navbar-blue .nav > li > a:focus {
   color: #f5f5f5;
   background-color: #0c7393;
 }
-/* line 38, ../sass/core.scss */
+/* line 37, ../sass/core.scss */
 .navbar-blue .nav > .active > a, .navbar-blue .nav > .active > a:hover, .navbar-blue .nav > .active > a:focus {
   color: #eee;
   background-color: #12b9ee;
 }
-/* line 44, ../sass/core.scss */
+/* line 43, ../sass/core.scss */
 .navbar-blue .nav > .disabled > a, .navbar-blue .nav > .disabled > a:hover, .navbar-blue .nav > .disabled > a:focus {
   color: grey;
   background-color: none;
 }
-/* line 54, ../sass/core.scss */
+/* line 53, ../sass/core.scss */
 .navbar-blue .navbar-nav > .open > a, .navbar-blue .navbar-nav > .open > a:hover, .navbar-blue .navbar-nav > .open > a:focus {
   background-color: #12b9ee;
   color: #eee;
@@ -433,7 +433,7 @@ ol.linenums li {
   width: 100%;
 }
 
-/* line 76, ../sass/core.scss */
+/* line 75, ../sass/core.scss */
 .button-transparent {
   background: transparent;
   border: none;
@@ -443,28 +443,40 @@ ol.linenums li {
   display: block;
   position: relative;
 }
-/* line 84, ../sass/core.scss */
+/* line 83, ../sass/core.scss */
 .button-transparent:focus {
   outline: 0;
 }
 
-/* line 91, ../sass/core.scss */
+/* line 90, ../sass/core.scss */
 .inline-block {
   display: inline-block !important;
 }
 
-/* line 100, ../sass/core.scss */
+/* line 99, ../sass/core.scss */
+html, body {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+/* line 104, ../sass/core.scss */
 body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 105, ../sass/core.scss */
+/* line 109, ../sass/core.scss */
+header, section, footer {
+  position: relative;
+}
+
+/* line 113, ../sass/core.scss */
 header {
   background: #333;
   color: white;
 }
-/* line 109, ../sass/core.scss */
+/* line 117, ../sass/core.scss */
 header figure {
   display: block;
   position: relative;
@@ -475,18 +487,46 @@ header figure {
   vertical-align: middle;
 }
 
-/* line 120, ../sass/core.scss */
+/* line 128, ../sass/core.scss */
 .container.main {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-/* line 125, ../sass/core.scss */
+/* line 133, ../sass/core.scss */
 footer {
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
-  background: #e5e5e5;
+}
+
+/* line 140, ../sass/core.scss */
+.video {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  top: 0;
+  margin-left: -50%;
+  background: black;
+  background-size: cover;
+  z-index: -5;
+}
+/* line 151, ../sass/core.scss */
+.video.video-fixed {
+  position: fixed;
+}
+
+/* line 161, ../sass/core.scss */
+#onepage .navbar {
+  margin-bottom: 0;
+}
+/* line 164, ../sass/core.scss */
+#onepage .navbar-inverse {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
 }
 
 /*========== Mobile First Method ==========*/

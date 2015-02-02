@@ -139,6 +139,33 @@ class I18n extends Eloquent{
     }
 
     /**
+     * Get shortcut for constants translations
+     * @param  integer $id i18n Id
+     * @return boolean
+     */
+    public static function get($path)
+    {
+
+        if (!is_string($path)) {
+            throw new InvalidArgumentException('$path should be a string !', 1);          
+        }         
+
+        $i18n = self::where('key', $id);
+        if (!$i18n) {
+            throw new UnexpectedValueException('$i18n not found !', 1);
+        }    
+
+        Translation::removeFromI18n($id);
+
+        // Try to delete it if not foreign keys are founded
+        try {
+            return $i18n;
+        } catch (Exception $e) {
+            throw new Exception("You cannot get this i18n: " . $e->getMessage(), 1);           
+        }
+    }
+
+    /**
      * Additional Method
      *
      * @var string

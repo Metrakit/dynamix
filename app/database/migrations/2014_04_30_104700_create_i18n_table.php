@@ -19,6 +19,8 @@ class CreateI18nTable extends Migration {
 
 			$table->integer('i18n_type_id')->unsigned();
 			$table->foreign('i18n_type_id')->references('id')->on('i18n_types');
+			
+			$table->string('key')->nullable()->default(null);
 		});
 	}
 
