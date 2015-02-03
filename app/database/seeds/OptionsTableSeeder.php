@@ -83,7 +83,7 @@ class OptionsTableSeeder extends Seeder {
         $key1 = new I18N;
         $key1->i18n_type_id = I18nType::where('name','=','key')->first()->id;
         $key1->key = "create";
-        $key1->key = "admin.i18n-constant.create";
+        $key1->lang_key = "admin.i18n-constant.create";
         $key1->save();
         $key1->translate('fr','créer');
         $key1->translate('en','create');
@@ -91,7 +91,7 @@ class OptionsTableSeeder extends Seeder {
         $key2 = new I18N;
         $key2->i18n_type_id = I18nType::where('name','=','key')->first()->id;
         $key2->key = "edit";
-        $key2->key = "admin.i18n-constant.edit";
+        $key2->lang_key = "admin.i18n-constant.edit";
         $key2->save();
         $key2->translate('fr','modifier');
         $key2->translate('en','edit');

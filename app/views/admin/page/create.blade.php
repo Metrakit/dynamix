@@ -111,7 +111,6 @@
 @section('scriptOnReady')
 $('body').on('#locale-tabs a','click', function (e) {
   e.preventDefault()
-  console.log('tab');
   $(this).tab('show')
 })
 @stop

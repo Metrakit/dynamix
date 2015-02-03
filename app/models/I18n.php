@@ -194,6 +194,11 @@ class I18n extends Eloquent{
         return false;
     }
 
+    public function getLocale( $locale_id )
+    {
+        return Translation::where('i18n_id','=',$this->id)->where('locale_id','=', $locale_id)->first()->text;
+    }
+
     /*public static function urls() {   DONT WORK
         $instance = new static;
 

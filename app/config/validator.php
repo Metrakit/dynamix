@@ -47,6 +47,8 @@ return array(
 										'admin_email'	=> 'email|min:5|max:55'),
 		
 		'option_site_name'=>	array(  'site_name'		=> 'min:5'),
+		
+		//'i18n_constant'=>	array(  'key'		=> 'max:255'),
 	
 
 	/*

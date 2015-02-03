@@ -21,6 +21,7 @@ return array(
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
 	'nav_option'			=> 'Options',
+	'nav_i18n-constant'			=> 'Expression récurrente',
 
 	//Dashbooard
 	'dashboard'				=> 'Tableau de bord',
@@ -197,6 +198,9 @@ return array(
 		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
 		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
 
+
+	'i18n-constant-title' => 'Expression récurrente',
+	'i18n_constant_success' => 'Les modifications ont bien été prise en compte !',
 	'i18n-constant' => array(
 		'create' 	=> 'Créer',
 		'edit' 		=> 'Modifier',
