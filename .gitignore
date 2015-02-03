@@ -23,7 +23,7 @@
 /public/css/**
 /public/js/**
 /public/js/vendor/jquery.min.js
-/public/js/vendor/jquery.min.js.map
+/public/js/vendor/jquery.min.map
 /public/js/vendor/head.min.js
 
 composer.lock
