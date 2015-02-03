@@ -199,9 +199,10 @@ return array(
 		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
 
 
-	'i18n-constant-title' => 'Expression récurrente',
+	//I18n Constant
+	'i18n-constant' => 'Expression récurrente',
 	'i18n_constant_success' => 'Les modifications ont bien été prise en compte !',
-	'i18n-constant' => array(
+	'i18n-constant-key' => array(
 		'create' 	=> 'Créer',
 		'edit' 		=> 'Modifier',
 	),
