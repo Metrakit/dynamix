@@ -108,7 +108,15 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 
 	// Formr
-	Route::resource('form','FormerController');
+	Route::resource('form', 'FormerController');
+	// Inputs
+	Route::resource('input', 'InputController');
+
+	Route::get('/formr/{formId}/input/add', array('as' => 'add-input', 'uses' => 'InputController@add'));
+
+	Route::get('/formr/{formId}/input/{inputId}/{move}', array('as' => 'move-input', 'uses' => 'InputController@move'));
+
+	//Route::get('/form/{formId}/create-input', array('as'=>'create-input', 'uses'=>'InputController@create'));
 });
 /*
 |--------------------------------------------------------------------------

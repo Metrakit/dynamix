@@ -48,10 +48,10 @@ class Eloquentizr extends Model {
  		}
  	}
 
- 	public static function generateForm($modelId = null)
+ 	public static function generateForm($modelId = null, $params = null)
  	{
  		$model = get_called_class();
- 		return \Former::renderByModel(new $model, $modelId);
+ 		return \Former::renderByModel(new $model, $modelId, $params);
  	}
 
 }

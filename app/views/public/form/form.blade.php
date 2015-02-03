@@ -8,6 +8,8 @@
 	@if (!$builder)
 		action="{{ URL::route('formr', array($modelId)) }}" 
 		method="POST"
+	@else
+		action="javascript:alert('This action is not available on the form builder.');"
 	@endif
 	class="form-{{ $form->type }}">
 
@@ -18,9 +20,22 @@
 		<input type="hidden" name="action" value="{{ $form->action }}" />
 	@endif
 
+	{{-- Parameters only set with renderByModel --}}
+	@if(isset($params) && is_array($params))
+		@foreach($params as $key => $param)
+			<input type="hidden" name="formParam[{{ $key }}]" value="{{ $param }}" />
+		@endforeach
+	@endif
+
 	@foreach ($inputs as $input)
 		<div class="form-group @if($form->type == 'horizontal') row @endif ">
+			
+			@if($builder && sizeof($inputs) > 1)
+				@include('public.form.actions')
+			@endif
+
 			{{ $input->view }}
+
 		</div>
 	@endforeach
 
