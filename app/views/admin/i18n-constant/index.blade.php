@@ -2,13 +2,13 @@
 
 
 @section('meta_title')
-{{{ Lang::get('admin.i18n-constant-title') }}} |
+{{{ Lang::get('admin.i18n-constant') }}} |
 @parent
 @stop
 
 @section('page-header')
     <div class="row">
-        <h1 class="page-header">{{{ Lang::get('admin.i18n-constant-title') }}}</h1>
+        <h1 class="page-header">{{{ Lang::get('admin.i18n-constant') }}}</h1>
     </div>
 @stop
 
