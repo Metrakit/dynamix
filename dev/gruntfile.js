@@ -11,6 +11,7 @@ module.exports = function(grunt) {
 		vendorPath: 'src/vendor/',
 		distPath: '../public/',
 		modulesPath: '../vendor/dynamix/',
+		modulesPathWorkbench: '../workbench/dynamix/',
 
 
 		/**
@@ -49,6 +50,18 @@ module.exports = function(grunt) {
 		    modulesAdmin: {
 		      options: {
 		        sassDir: '<%= modulesPath %>**/assets/admin/sass',
+        		cssDir: '<%= srcPath %>css/modules/admin',
+		      }
+		    },
+		    modulesPublicWorkbench: {
+		      options: {
+		        sassDir: '<%= modulesPathWorkbench %>**/assets/public/sass',
+        		cssDir: '<%= srcPath %>css/modules/public'
+		      }
+		    },
+		    modulesAdminWorkbench: {
+		      options: {
+		        sassDir: '<%= modulesPathWorkbench %>**/assets/admin/sass',
         		cssDir: '<%= srcPath %>css/modules/admin',
 		      }
 		    },
@@ -104,7 +117,8 @@ module.exports = function(grunt) {
 					 '<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
 			         '<%= srcPath %>js/master.js',
-			         '<%= modulesPath %>**/assets/public/js/**/*.js'
+			         '<%= modulesPath %>**/assets/public/js/**/*.js',
+			         '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.min.js'
@@ -119,7 +133,8 @@ module.exports = function(grunt) {
 					 '<%= srcPath %>js/vendor/morris.js',
 					 '<%= srcPath %>js/vendor/sb-admin-2.js',
 					 '<%= srcPath %>js/master-admin.js',
-					 '<%= modulesPath %>**/assets/admin/js/**/*.js'
+					 '<%= modulesPath %>**/assets/admin/js/**/*.js',
+					 '<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
@@ -249,7 +264,8 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 						'<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
 						'<%= srcPath %>js/master.js',
-						'<%= modulesPath %>**/assets/public/js/**/*.js'
+						'<%= modulesPath %>**/assets/public/js/**/*.js',
+						'<%= modulesPathWorkbench %>**/assets/public/js/**/*.js'
 				],
 				tasks:['concat:main', 'clean:js', 'hash:js'],
 				options: {
@@ -266,7 +282,8 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>morrisjs/morris.js',
 						'<%= srcPath %>js/vendor/sb-admin-2.js',
 						'<%= srcPath %>js/master-admin.js',
-						'<%= modulesPath %>**/assets/admin/js/**/*.js'
+						'<%= modulesPath %>**/assets/admin/js/**/*.js',
+						'<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js'
 				],
 				tasks:['concat:back', 'clean:js', 'hash:js'],
 				options: {
@@ -330,6 +347,28 @@ module.exports = function(grunt) {
 					'<%= modulesPath %>**/assets/admin/sass/**/*.scss'
 			    ],
 				tasks:['compass:modulesAdmin', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},  
+
+			modulesPublicScssWorkbench: 
+			{
+				files: [
+					'<%= modulesPathWorkbench %>**/assets/public/sass/**/*.scss'
+			    ],
+				tasks:['compass:modulesPublicWorkbench', 'cssmin', 'clean:css', 'hash:css'],
+				options: {
+	              livereload: true
+	          	}	
+          	},
+
+          	modulesAdminScssWorkbench: 
+			{
+				files: [
+					'<%= modulesPathWorkbench %>**/assets/admin/sass/**/*.scss'
+			    ],
+				tasks:['compass:modulesAdminWorkbench', 'cssmin', 'clean:css', 'hash:css'],
 				options: {
 	              livereload: true
 	          	}	
