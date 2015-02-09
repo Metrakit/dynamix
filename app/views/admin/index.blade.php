@@ -34,7 +34,7 @@
                 <i class="fa fa-edit fa-fw"></i> {{{ Lang::get('admin.task') }}}
             </div>
             <div class="panel-body">
-                @include('tasks.list', array('tasks', $tasks))
+                @include('admin.tasks.list', array('tasks', $tasks))
             </div>
             <div class="panel-footer">
                 <form action="{{URL::route('admin.task.store')}}" method="post">

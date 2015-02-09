@@ -49,7 +49,7 @@
               </button>
               <div class="collapse collapse-relative" id="lLabels">
                 <div class="well">
-                  @include('tasks.form-tasks-labels', array('labels' => $labels, 'task_labels' => $idsLabel))
+                  @include('admin.tasks.form-tasks-labels', array('labels' => $labels, 'task_labels' => $idsLabel))
                 </div>
               </div>
             
@@ -66,7 +66,7 @@
               </button>
               <div class="collapse collapse-relative" id="lUsers">
                 <div class="well">
-                  @include('tasks.form-tasks-users', array('users' => $users, 'task_users' => $idsUser))
+                  @include('admin.tasks.form-tasks-users', array('users' => $users, 'task_users' => $idsUser))
                 </div>
               </div>
             </div>

@@ -10,5 +10,5 @@
 
 
 @section('content')
- @include('tasks.list', array('tasks', $tasks))
+ @include('admin.tasks.list', array('tasks', $tasks))
 @stop

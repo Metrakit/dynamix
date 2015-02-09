@@ -51,7 +51,7 @@ class AdminTasksController extends BaseController {
 		foreach($task->auths as $user){
 			$idsUser[] = $user->id;
 		}
-		return View::make('tasks.edit', array(
+		return View::make('admin.tasks.edit', array(
 					'task' => $task,
 					'user' => Auth::user(),
 					'noAriane' => true,
