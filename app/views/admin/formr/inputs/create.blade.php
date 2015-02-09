@@ -17,21 +17,8 @@
 
 <h3>{{ $form->title() }}</h3>
 
-<p>{{ $form->description() }}</p>
+<h4>Ajouter un input</h4>
 
-
-@if(Session::has('success'))
-	<success closable>
-		<p>{{ Session::get('success') }}</p>
-	</success>
-@endif
-
-
-
-<h4>Inputs:</h4>
-
-<a href="{{ URL::route('add-input', $form->id) }}" class="btn btn-primary">Ajouter un input</a>
-
-{{ $displayInputs }}
+{{ InputView::generateForm(null, $params) }}
 
 @stop

@@ -17,7 +17,7 @@ class CreateViewsTable extends Migration {
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
-			
+			$table->string('name');	
 			$table->string('path');
 
 			$table->timestamps();

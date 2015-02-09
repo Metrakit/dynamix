@@ -21,6 +21,7 @@ class CreateI18nTable extends Migration {
 			$table->foreign('i18n_type_id')->references('id')->on('i18n_types');
 			
 			$table->string('key')->nullable()->default(null);
+			$table->string('lang_key')->nullable()->default(null);
 		});
 	}
 

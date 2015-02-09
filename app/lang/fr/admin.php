@@ -21,6 +21,7 @@ return array(
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
 	'nav_option'			=> 'Options',
+	'nav_i18n-constant'			=> 'Expression récurrente',
 
 	//Dashbooard
 	'dashboard'				=> 'Tableau de bord',
@@ -196,6 +197,15 @@ return array(
 		'option_site_name_update_error'		=> 'Une erreur est survenu lors de la mise à jour du nom du site...',
 		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
 		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
+
+
+	//I18n Constant
+	'i18n-constant' => 'Expression récurrente',
+	'i18n_constant_success' => 'Les modifications ont bien été prise en compte !',
+	'i18n-constant-key' => array(
+		'create' 	=> 'Créer',
+		'edit' 		=> 'Modifier',
+	),
 
 	//Log
 	'log'					=> 'Log',

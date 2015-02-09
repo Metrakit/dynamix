@@ -22,9 +22,7 @@ class FormerController extends Controller {
 
     public function show($formID)
     {
-        $this->data['form'] = Formr::find($formID);
-
-        if (!$this->data['form']) App::abbort(404);
+        $this->data['form'] = Formr::findOrFail($formID);
 
         $this->data['displayInputs'] =  Former::getForm($formID, true);
 
@@ -33,9 +31,7 @@ class FormerController extends Controller {
 
     public function edit($formID)
     {
-        $this->data['form'] = Formr::find($formID);
-
-        if (!$this->data['form']) App::abbort(404); 
+        $this->data['form'] = Formr::findOrFail($formID);
 
         return View::make('admin.formr.edit', $this->data);
     }   

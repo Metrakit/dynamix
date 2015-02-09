@@ -180,12 +180,10 @@ class Former extends \Controller {
                     
                 }  
 
-
-
             }
 
             // Si c'est un select on génère les options
-            if ($data['inputs'][$key]->type == "select") {
+            if ($data['inputs'][$key]->type == "select" || $data['inputs'][$key]->type == "multiselect") {
 
                 // Append la valeur en DB à la key (A bien test correctement)
                 if (\Input::old($data['inputs'][$key]->name)) {
@@ -195,13 +193,40 @@ class Former extends \Controller {
                 } else {
                     $data['inputs'][$key]->key = NULL;
                 }
-                
+            }
+
+            // Si c'est un multiselect on génère les options
+            if ($data['inputs'][$key]->type == "multiselect") {
+
+                $data['inputs'][$key]->keys = array();
+
+                // Append la valeur en DB à la key (A bien test correctement)
+                if (\Input::old($data['inputs'][$key]->name)) {
+
+                    $oldInput = \Input::old($data['inputs'][$key]->name);
+
+                    foreach ($oldInput as $oldIn) {
+                        $data['inputs'][$key]->keys[] = $oldIn;
+                    }
+
+                } else if (null != $modelId) {
+                    // A TESTER A MODIFIER SI BUG /!\
+                    // Recuper le champs en DB (au format json) et le decode pr setter les options
+                    $optionsFromModel = json_decode($modelData[$data['inputs'][$key]->name]);
+                    // A TERMINER :
+                    foreach ($optionsFromModel as $opt) {
+                        $data['inputs'][$key]->keys[] = $opt;
+                    }
+                }
+            }
+            
+            if ($data['inputs'][$key]->type == "select" || $data['inputs'][$key]->type == "multiselect") {
                 foreach ($data['inputs'][$key]->options as $keyOpt => $option) {
                     $options[$keyOpt] = (object) $option;
                 }
                 $data['inputs'][$key]->options = $options;
             }
-            
+
             // Set file Type if the input is a filemanager
             if ($data['inputs'][$key]->type == "filemanager" && !isset($data['inputs'][$key]->typeFilemanager)) {
                 // Set to 0 if typeFilemanager is undefined
@@ -216,8 +241,6 @@ class Former extends \Controller {
             ))->getOriginalContent();
 
         }
-
-
 
         return $data;
 
@@ -245,15 +268,12 @@ class Former extends \Controller {
             // InputType - relation
             $inputType = $input->getType();
 
-
-
             if ($form->model && isset($this->model->model)) {
                 $langInput = 'input.' . strtolower($this->model->model) . '.' . $inputType->name. '.';
             } else {
                 $langInput = NULL;
             }
             
-
             // Getting texts translated
             $inputs[$key]->placeholder = $this->getTranslation($input['i18n_placeholder'], 'placeholder', $langInput);
             $inputs[$key]->helper = $this->getTranslation($input['i18n_helper'], 'helper', $langInput);
@@ -380,6 +400,27 @@ class Former extends \Controller {
         return $this->formr->generate($data, $pageId, $order);
     }
 
+    /**
+     * Défini quel input est le dernier
+     */
+    public function setLastInput($inputs)
+    {
+
+        $order = 0;
+        $lastInput = 0;
+
+        foreach ($inputs as $key => &$input) {
+            if ($input->order > $order) {
+                $lastInput = $key;
+            }
+            $input->isLast = false;
+        }
+
+        $inputs[$lastInput]->isLast = true;
+
+        return $inputs;
+    }
+
 
 
     /**
@@ -395,6 +436,10 @@ class Former extends \Controller {
         $data['inputs'] = self::render($data['form']);
         $data['builder'] = $builder;
 
+        if ($data['builder']) {
+            $data['inputs'] = $this->setLastInput($data['inputs']);
+        }
+
         return \Response::view('public.form.form', $data)->getOriginalContent();
     }
 
@@ -403,7 +448,7 @@ class Former extends \Controller {
      * @param  Integer $formId
      * @return Response
      */
-    public function renderByModel($model, $modelId)
+    public function renderByModel($model, $modelId, $params)
     {
         $data = self::generateByModel($model, $modelId);
         if (!$data) {
@@ -412,71 +457,15 @@ class Former extends \Controller {
         }
         $data['modelId'] = $modelId;
         $data['builder'] = false;
+
+        if ($params != null) {
+            $data['params'] = $params;
+        } else {
+            $data['params'] = array();
+        }
+
+
         return \Response::view('public.form.form', $data)->getOriginalContent();
     }
-
-
-    /**
-     * Create a form since a Object (Model)
-     * @param  Object $object (should contain "formr" method)
-     * @return boolean
-     */
-    /*public function createFromForm($pageId, $order, $data)
-    {
-        // Verifs
-        if (!is_object($object)) {
-            throw new \InvalidArgumentException('You should give an object to this method.');
-        }
-
-        if (!method_exists($object, 'formr')) {
-            throw new \InvalidArgumentException('Method "formr" not found in the ' . get_class($object) . ' object.');
-        }
-
-        $data = $object->formr();
-
-        if (!isset($data['description']) || NULL === $data['description']) {
-            throw new \InvalidArgumentException('Argument "description" not found or cannot be null in the form array.');
-        }
-
-        if (!isset($data['title']) || NULL === $data['title']) {
-            throw new \InvalidArgumentException('Argument "title" not found or cannot be null in the form array.');
-        } 
-
-        // If all is okay...
-        $this->formr->generateByModel($pageId, $order, $data);
-    }*/
-
-
-
-
-    /**
-     * Create a form since a Object (Model)
-     * @param  Object $object (should contain "formr" method)
-     * @return boolean
-     */
-    /*public function createFromModel($pageId, $order, $object)
-    {
-        // Verifs
-        if (!is_object($object)) {
-            throw new \InvalidArgumentException('You should give an object to this method.');
-        }
-
-        if (!method_exists($object, 'formr')) {
-            throw new \InvalidArgumentException('Method "formr" not found in the ' . get_class($object) . ' object.');
-        }
-
-        $data = $object->formr();
-
-        if (!isset($data['description']) || NULL === $data['description']) {
-            throw new \InvalidArgumentException('Argument "description" not found or cannot be null in the form array.');
-        }
-
-        if (!isset($data['title']) || NULL === $data['title']) {
-            throw new \InvalidArgumentException('Argument "title" not found or cannot be null in the form array.');
-        } 
-
-        // If all is okay...
-        $this->formr->generateByModel($pageId, $order, $data);
-    }*/
 
 }

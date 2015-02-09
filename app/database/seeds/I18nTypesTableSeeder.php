@@ -48,6 +48,9 @@ class I18nTypesTableSeeder extends Seeder {
             ),
             array(
                 'name' => 'navigation'
+            ),
+            array(
+                'name' => 'key'
             ),             
         ));
     }

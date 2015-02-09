@@ -143,25 +143,30 @@ class I18n extends Eloquent{
      * @param  integer $id i18n Id
      * @return boolean
      */
-    public static function get($path)
+    public static function get($key)
     {
 
-        if (!is_string($path)) {
-            throw new InvalidArgumentException('$path should be a string !', 1);          
+        if (!is_string($key)) {
+            throw new InvalidArgumentException('$key should be a string !', 1);          
         }         
 
-        $i18n = self::where('key', $id);
+        $i18n = self::where('key', $key)->first();
         if (!$i18n) {
-            throw new UnexpectedValueException('$i18n not found !', 1);
-        }    
-
-        Translation::removeFromI18n($id);
+            return false;
+            Log::error('$i18n not found !');
+        }
+        
+        $locale = Translation::where('i18n_id', $i18n->id)->where('locale_id', App::getLocale())->first();
+        if (!$locale) {
+            return false;
+            Log::error('$locale not found !');
+        }
 
         // Try to delete it if not foreign keys are founded
         try {
-            return $i18n;
+            return $locale->text;
         } catch (Exception $e) {
-            throw new Exception("You cannot get this i18n: " . $e->getMessage(), 1);           
+            Log::error("You cannot get this i18n: " . $e->getMessage(), 1);        
         }
     }
 
@@ -178,7 +183,7 @@ class I18n extends Eloquent{
     }
     
     public function updateText( $locale_id, $newText ) {
-        $translation = Translation::where( 'i18n_id', '=', $this->id )->where( 'locale_id', '=', $locale_id )->first() ;
+        $translation = Translation::where( 'i18n_id', '=', $this->id )->where( 'locale_id', '=', $locale_id )->first();
 
         if ( !empty($translation) ) {
             $translation->text = $newText;
@@ -187,6 +192,11 @@ class I18n extends Eloquent{
             }
         }
         return false;
+    }
+
+    public function getLocale( $locale_id )
+    {
+        return Translation::where('i18n_id','=',$this->id)->where('locale_id','=', $locale_id)->first()->text;
     }
 
     /*public static function urls() {   DONT WORK
