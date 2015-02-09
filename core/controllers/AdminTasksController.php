@@ -25,7 +25,7 @@ class AdminTasksController extends BaseController {
 	/**
 	 * [addPostTask description]
 	 */
-	public function addPostTask(){
+	public function store(){
 		if(Input::has('task_label')){ 
 			$task = new Task;
 			$task->label = Input::get('task_label');
@@ -39,7 +39,7 @@ class AdminTasksController extends BaseController {
 	 * @param  Task   $task [description]
 	 * @return [type]       [description]
 	 */
-	public function editTask($task_id){
+	public function edit($task_id){
 		$task = Task::find($task_id);
 		$labels = TasksLabels::all();
 		$idsLabel = array();
@@ -66,7 +66,7 @@ class AdminTasksController extends BaseController {
 	 * [editPostTask description]
 	 * @return [type] [description]
 	 */
-	public function editPostTask($id){
+	public function update($id){
 		$task = Task::find($id);
 
 		if($task){
@@ -86,7 +86,7 @@ class AdminTasksController extends BaseController {
 		return Redirect::back();
 	}
 
-	public function deleteTask($id_task){
+	public function destroy($id_task){
 		$task = Task::find($id_task);
 		if($task){
 			$task->delete();

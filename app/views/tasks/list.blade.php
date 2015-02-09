@@ -2,7 +2,7 @@
 	@if(sizeof($tasks) > 0)
 		@foreach($tasks as $task)
 			<div class="task-card">
-				<a href="{{URL::Route('edit-task', array($task->id))}}">
+				<a href="{{URL::Route('admin.task.edit', array($task->id))}}">
 				@foreach($task->labels as $label)
 					<span class="label-task-min label-task-{{Str::slug($label->label)}}" title="{{$label->label}}">{{$label->label}}</span>
 				@endforeach

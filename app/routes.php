@@ -101,11 +101,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 
 	// Task
-	Route::post('/task/add', array('as'=>'add-task-post','uses'=>'AdminTasksController@addPostTask'));
-	Route::get('/task/edit/{id}', array('as'=>'edit-task','uses'=>'AdminTasksController@editTask'));
-	Route::post('/task/edit/{id}', array('as'=>'edit-task-post','uses'=>'AdminTasksController@editPostTask'));
-	Route::get('/task/delete/{id}', array('as'=>'delete-task','uses'=>'AdminTasksController@deleteTask'));
-
+	Route::resource('task', 'AdminTasksController');
 
 	// Formr
 	Route::resource('form', 'FormerController');

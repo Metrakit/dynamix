@@ -37,7 +37,7 @@
                 @include('tasks.list', array('tasks', $tasks))
             </div>
             <div class="panel-footer">
-                <form action="{{URL::route('add-task-post')}}" method="post">
+                <form action="{{URL::route('admin.task.store')}}" method="post">
                     <div class="input-group task_input">
                         <input class="form-control" name="task_label" type="text">
                         <div class="input-group-addon task_addon">

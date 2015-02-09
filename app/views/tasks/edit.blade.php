@@ -17,14 +17,16 @@
     <div class="row head-task">
       <div class="col-md-2"><h3>Tâche</h3></div> 
       <div class="col-md-2">
-        <a href="{{URL::route('delete-task',array($task->id))}}" class="btn btn-danger">
-          <i class="fa fa-times"></i>
-          supprimer
-        </a>
+        {{ Form::open(array('route' => array('admin.task.destroy', $task->id),'method' => 'DELETE')) }}
+          <button type="submit" class="btn btn-danger">
+            <i class="fa fa-times"></i>
+            supprimer
+          </button>
+        {{ Form::close() }}
       </div> 
     </div>
     <div class="col-lg-8">
-        {{ Form::open(array('route' => array('edit-task-post', $task->id))) }}
+        {{ Form::open(array('route' => array('admin.task.update', $task->id),'method' => 'PUT')) }}
           
             <div class="input-group">
               <label>Label de la tâche</label>
