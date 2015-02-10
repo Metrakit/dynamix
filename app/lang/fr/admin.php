@@ -21,7 +21,12 @@ return array(
 	'nav_environment'		=> 'Langues',
 	'nav_log'				=> 'Logs',
 	'nav_option'			=> 'Options',
-	'nav_i18n-constant'			=> 'Expression récurrente',
+	'nav_i18n-constant'		=> 'Expression récurrente',
+	'nav_form'				=> 'Formulaires',
+
+	// Modules
+	'nav_crew'				=> 'Crew',
+	'nav_artist'			=> 'Artistes',
 
 	//Dashbooard
 	'dashboard'				=> 'Tableau de bord',

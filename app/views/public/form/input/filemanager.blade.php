@@ -36,7 +36,7 @@
 				placeholder="{{ $input->placeholder }}" 
 				value="{{ $input->value[$locale->id] }}" 
 			/>
-			<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'_lang_'.$locale->id.'&amp;akey='.Config::get('app.key')) }}">Select</a>
+			<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'_lang_'.$locale->id.'&amp;akey='.Config::get('app.key')) }}">{{ Lang::get('input.filemanager_select') }}</a>
 		</div>
 
 		@if($errors->has($input->name . '_lang_' . $locale->id)) 
@@ -51,7 +51,7 @@
 
 	<div class="input-group">
 		<input id="input_{{ $input->name }}" name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
-		<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'&amp;akey='.Config::get('app.key')) }}">Select</a>
+		<a class="input-group-addon btn iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type='.$input->typeFilemanager.'&amp;field_id=input_'.$input->name.'&amp;akey='.Config::get('app.key')) }}">{{ Lang::get('input.filemanager_select') }}</a>
 	</div>
 
 @endif
@@ -61,7 +61,9 @@
 		@if($errors->has($input->name) && !$input->multiLang) 
 			{{ $errors->first($input->name) }}
 		@else
-			{{ $input->helper }} 
+			@if(isset($input->helper))
+				{{ $input->helper }} 
+			@endif
 		@endif
 	</p>
 @endif

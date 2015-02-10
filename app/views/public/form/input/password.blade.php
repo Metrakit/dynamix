@@ -17,7 +17,9 @@
 		@if($errors->has($input->name)) 
 			{{ $errors->first($input->name) }}
 		@else
-			{{ $input->helper }} 
+			@if(isset($input->helper))
+				{{ $input->helper }} 
+			@endif
 		@endif
 	</p>
 @endif

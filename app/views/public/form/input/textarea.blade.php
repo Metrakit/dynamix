@@ -42,7 +42,9 @@
 		@if($errors->has($input->name) && !$input->multiLang) 
 			{{ $errors->first($input->name) }}
 		@else
-			{{ $input->helper }} 
+			@if(isset($input->helper))
+				{{ $input->helper }} 
+			@endif
 		@endif
 	</p>
 @endif

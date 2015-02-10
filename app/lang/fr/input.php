@@ -8,6 +8,7 @@ return array(
 	//select option
 	'choose_select'				=> 'Choissiez une option',
 
+	'filemanager_select'		=> 'Sélectionner',
 
 	// Gallery module
 	'gallery' => array(
