@@ -6,4 +6,6 @@ return array(
 	'no'  			=> 'Non',
     'must_login' 	=> 'Doit être connecté.',
 
+    'member' => 'membre',
+
 );

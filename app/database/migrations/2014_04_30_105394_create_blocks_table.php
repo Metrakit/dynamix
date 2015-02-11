@@ -22,13 +22,13 @@ class CreateBlocksTable extends Migration {
 
 			$table->string('blockable_type',45);
 			
-			$table->integer('page_id')->unsigned();
+			$table->integer('page_id')->nullable()->unsigned();
 			$table->foreign('page_id')->references('id')->on('pages');
 
 			$table->integer('type_id')->unsigned();
 			$table->foreign('type_id')->references('id')->on('block_types');
 
-			$table->integer('order')->unsigned();
+			$table->integer('order')->nullable()->unsigned();
 
 			$table->boolean('is_clearfixed')->default(false);
 

@@ -7,6 +7,8 @@ class Block extends Eloquent{
 	 */
 	protected $table = 'blocks';
 
+    protected $fillable = ['name', 'model', 'icon', 'lang', 'path_to_view'];
+
 
 	/**
 	 * Relations
@@ -49,7 +51,7 @@ class Block extends Eloquent{
     }
 
 
-    public static function add($pageId, $order, $blockType)
+    /*public static function add($pageId, $order, $blockType)
     {
         $previousBlock = self::where('page_id', $pageId)
                               ->where('blockable_type', $blockType)
@@ -62,7 +64,48 @@ class Block extends Eloquent{
         $block->order = $order;
         $block->save();
         return $block;
+    }*/
+
+    /**
+     * Add a new block
+     *
+     */
+    public static function add($modelId, $model, $typeId = null, $pageId = null, $order = null)
+    {
+        if (!$modelId || !$model) {
+            return false;
+        }
+
+        if (!$typeId) {
+            $blockType = BlockType::where('model', $model)->firstOrFail();
+            $typeId = $blockType->id;
+        }
+
+        $block = new Self;
+        $block->blockable_type = $model;
+        $block->page_id = $pageId;
+        $block->type_id = $typeId;
+        $block->blockable_id = $modelId;
+
+        if (!$order && $pageId) {
+            $orderObject = Self::where('page_id', $pageId)
+                ->OrderBy('order', 'DESC')
+                ->first();
+            if ($orderObject) {
+                $order = $orderObject->order;
+            } else {
+                $order = null;
+            }
+        } else if (!$pageId) {
+            $order = null;
+        }
+
+        $block->order = $order;
+
+        return $block->save();
+
     }
+
 
 
     /**

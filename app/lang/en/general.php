@@ -4,6 +4,8 @@ return array(
 
 	'yes' => 'Yes',
 	'no'  => 'No',
-    'must_login' => 'Must be logged in.'
+    'must_login' => 'Must be logged in.',
+
+    'member' => 'member',
 
 );

@@ -44,4 +44,6 @@ class BlockType extends Eloquent{
 	 *
 	 * @var string
 	 */
+
+
 }
