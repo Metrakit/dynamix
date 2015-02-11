@@ -1,4 +1,25 @@
+//Pager dynamic
+var PagerAdminMaster = function (){
+  //Attibuts
 
+  //Methods
+  this.start = function () {
+    initListeners();
+  }
+
+  var initListeners = function () {
+    //Récupération de tous les formulaires de la pages /page/create
+    $('body').on('click', '.btn-submit-page', function (e) {
+      var forms = $('form');
+      console.log(forms);
+    });
+    
+    //Soumition de tous les formulaires de la pages /page/create
+  }
+
+
+
+};
 
 var SpeedNavigationAdminMaster = function (){
   this.start = function () {
@@ -81,8 +102,8 @@ var NavigationAdminMaster = function (){
 //Object MasterAdmin
 var MasterAdmin = function (){
   this.start = function (){
-    //var pagerService = new PagerAdminMaster();
-    //pagerService.start();
+    var pagerService = new PagerAdminMaster();
+    pagerService.start();
 
     var navigationAdminService = new NavigationAdminMaster();
     navigationAdminService.start();
