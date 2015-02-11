@@ -104,6 +104,11 @@
 	</div>
 	</div>
 @endfor
+
+	<p>
+		<span class="btn-submit-page btn btn-primary">{{{ Lang::get('admin.page.submit') }}}</span>
+	</p>
+
 </div>
 @stop
 
