@@ -49,7 +49,9 @@ return array(
 
 
 		//tasks
-		'task'		=>	'Taches',
+		'tasks'		=>	'Tâches',
+		'task'		=>	'Tâche',
+
 	
 	//Media
 	'media'				=> 'Média',

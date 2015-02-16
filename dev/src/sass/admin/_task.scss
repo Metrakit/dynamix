@@ -43,13 +43,29 @@
 	}
 	
 }
-.task_input{
-	input, button, .task_addon{ 
-		background: #F5F5F5;
+.task-input{
+	input, button, .task-addon{ 
+		//background: #F5F5F5;
 		box-shadow: none;
 	}
 	button{
 		border: none;
+	}
+}
+.task-addon{
+	color: #fff;
+	background-color: #428bca;
+	border-color: #357ebd;
+
+	button {
+		background:transparent;
+	}
+
+	&:hover, &:focus {
+		color: #fff;
+		background-color: #3071a9;
+		border-color: #285e8e;
+		
 	}
 }
 
@@ -84,12 +100,20 @@ input.task-box{
 }
 
 .task-priority-high{
-	background : black;
+	background : #d9534f;
 	color: white;
 }
 .task-priority-medium{
+	background: #f0ad4e;
 	color: white;
-	background: red;
+}
+.task-priority-normal{
+	background : #5cb85c;
+	color: white;
+}
+.task-priority-low{
+	background: #5bc0de;
+	color: white;
 }
 .task-priority{
 	padding: 3px 6px;

@@ -31,17 +31,17 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-edit fa-fw"></i> {{{ Lang::get('admin.task') }}}
+                <i class="fa fa-edit fa-fw"></i> {{{ Lang::get('admin.tasks') }}}
             </div>
             <div class="panel-body">
                 @include('admin.tasks.list', array('tasks', $tasks))
             </div>
             <div class="panel-footer">
                 <form action="{{URL::route('admin.task.store')}}" method="post">
-                    <div class="input-group task_input">
+                    <div class="input-group task-input">
                         <input class="form-control" name="task_label" type="text">
-                        <div class="input-group-addon task_addon">
-                            <button type="submit">ADD</button>
+                        <div class="input-group-addon task-addon btn-primary">
+                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                     </div>
                 </form>
