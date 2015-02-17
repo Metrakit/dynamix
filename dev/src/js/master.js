@@ -316,9 +316,37 @@ var CommentMaster = function () {
 
 //Object Master
 var Master = function (){
+	//Variables
+	var queue = [];
+
+	//Start
 	this.start = function (){
 		var commentService = new CommentMaster();
 		commentService.start();
+
+		//Exec queue script (for module)
+		for( var o in queue ) {
+			eval(queue[o]);
+		}
+	}
+
+
+	//Queue Script system
+	this.addQueue = function ( script ) {
+		var q = getQueue();
+		console.log(q);
+		
+		q.push(script);
+		console.log(q);
+	}
+
+	//return void
+	var setQueue = function (a) {
+		queue = a;
+	}
+	//return queue
+	var getQueue = function () {
+		return queue;
 	}
 }
 

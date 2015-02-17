@@ -62,17 +62,6 @@ class DatabaseSeeder extends Seeder {
         //Sliders
         //$this->call('SlidersTableSeeder');
         //$this->call('SlidesTableSeeder');
-        
-
-        //Galleries
-        //$this->call('GalleriesTableSeeder');
-        //$this->call('GalleryImageTableSeeder');
-        
-
-        //Mosaics
-        //$this->call('MosaicsTableSeeder');
-        //$this->call('GalleryMosaicTableSeeder');
-
 
         //Menu
         $this->call('NavigationsTableSeeder');//Need Page module OK

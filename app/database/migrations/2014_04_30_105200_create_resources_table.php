@@ -17,9 +17,9 @@ class CreateResourcesTable extends Migration {
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
-			$table->string('name',45);
+			$table->string('name',45)->unique();
 			$table->string('icon',45);
-			$table->string('model',45)->nullable();
+			$table->string('model',45)->unique()->nullable();
 			$table->boolean('in_admin_ui');
 			$table->boolean('navigable');
 		});
