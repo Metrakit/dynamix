@@ -321,23 +321,29 @@ var Master = function (){
 
 	//Start
 	this.start = function (){
+		//Comment System
 		var commentService = new CommentMaster();
 		commentService.start();
 
 		//Exec queue script (for module)
-		for( var o in queue ) {
-			eval(queue[o]);
-		}
+		execQueueScripts();
 	}
 
 
 	//Queue Script system
+	var execQueueScripts = function () {
+		var q = getQueue();
+		for( var o in q ) {
+			eval(q[o]);
+		}
+	}
+	//Add a script to exec at masterClass.start()
 	this.addQueue = function ( script ) {
 		var q = getQueue();
-		console.log(q);
+		//console.log(q);
 		
-		q.push(script);
-		console.log(q);
+		q.push(script + ';');
+		//console.log(q);
 	}
 
 	//return void

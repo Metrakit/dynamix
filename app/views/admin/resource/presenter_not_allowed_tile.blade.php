@@ -9,7 +9,7 @@
 	<h3>{{{ Lang::get('admin.rsc'.$resourcesK) }}}</h3>
 	@foreach( $resourcesV as $r)
 	<div class="col-md-4">
-	 	@include('admin.'. strtolower($resourcesK) .'.presenter', array(strtolower($resourcesK)=>$r))
+	 	@include($resourcesK::$presenter , array(strtolower($resourcesK)=>$r))
 	</div>
 	@endforeach
 	<div class="clearfix"></div>

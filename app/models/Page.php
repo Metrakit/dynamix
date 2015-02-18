@@ -6,6 +6,7 @@ class Page extends Eloquent {
 	 * Table name
 	 */
 	protected $table = 'pages';
+	public static $presenter = 'admin.page.presenter';
 	/**
 	 * Relations
 	 *
@@ -50,29 +51,6 @@ class Page extends Eloquent {
 
 	public function isDeletable() {
 		return $this->deletable;
-	}
-
-	public static function getNotAllowed () {
-		$notAllowed = array();
-
-		//get all Nav with a page as resource
-		$navs = Nav::where('navigable_type','=',get_class())->get();
-		$allowed = array();
-		foreach ( $navs as $nav ) {
-			$allowed[] = $nav->navigable->id;
-		}
-
-		//get all Pages
-		$pages = Page::all();
-
-		//store each resources
-		foreach ( $pages as  $page ) {
-			if ( !in_array( $page->id, $allowed ) ) {
-				$notAllowed[] = $page;
-			}
-		}
-
-		return $notAllowed;
 	}
 
 	public static function getClassName () {

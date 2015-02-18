@@ -54,4 +54,27 @@ class Eloquentizr extends Model {
  		return \Former::renderByModel(new $model, $modelId, $params);
  	}
 
+ 	public static function getNotAllowed () {
+        $notAllowed = array();
+
+        //get all Nav with a page as resource
+        $navs = Nav::where('navigable_type','=',get_class())->get();
+        $allowed = array();
+        foreach ( $navs as $nav ) {
+            $allowed[] = $nav->navigable->id;
+        }
+
+        //get all Pages
+        $objects = self::all();
+
+        //store each resources
+        foreach ( $objects as  $object ) {
+            if ( !in_array( $object->id, $allowed ) ) {
+                $notAllowed[] = $object;
+            }
+        }
+
+        return $notAllowed;
+    }
+
 }

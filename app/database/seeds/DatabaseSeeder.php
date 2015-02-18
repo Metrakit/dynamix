@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('ResponsiveWidthsTableSeeder');
         $this->call('ResponsiveTriggersTableSeeder');
         $this->call('SocialsTableSeeder');
+        $this->call('ImagesTableSeeder');
 
 
         //Users
