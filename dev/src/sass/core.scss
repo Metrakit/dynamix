@@ -93,8 +93,25 @@ $navbar-blue-link-disabled-bg : none;
 .inline-block {
 	display:inline-block !important;
 }
+.w100 {
+	width: 100%;
+}
+.padding-0 {
+	padding:0;
+}
 
-
+//Explore btn
+.btn-explore {
+	color:#fff;
+	background-color:#428bca;
+	border-color:#357ebd;
+	
+	&:hover, &:focus {
+		color:#fff;
+		text-decoration:none;
+		background-color:#3276b1;border-color:#285e8e
+	}
+}
 
 
 //Custom stylesheet
