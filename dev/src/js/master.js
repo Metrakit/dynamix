@@ -334,6 +334,7 @@ var Master = function (){
 	var execQueueScripts = function () {
 		var q = getQueue();
 		for( var o in q ) {
+			console.log(q[o]);
 			eval(q[o]);
 		}
 	}
