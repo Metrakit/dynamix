@@ -6,6 +6,7 @@ class Image extends Eloquent{
 	 * Parameters
 	 */
 	protected $table = 'images';
+	protected $fillable = ['i18n_description', 'file_name', 'file_ext'];
 
 	/**
 	 * Relation

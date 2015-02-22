@@ -110,8 +110,22 @@ var MasterAdmin = function (){
 
     var speedNavigationAdminService = new SpeedNavigationAdminMaster();
     //speedNavigationAdminService.start();
+
+    initListeners();
   }
   
+  var initListeners = function () {
+    $('body').on('click', 'button.remove', function (e) {
+      e.preventDefault();
+
+      var form = $(e.target).closest('form');
+      $('#modal-confirm-delete').modal();
+      $('body').on('click', '#modal-confirm-delete .confirm', function (e){
+        form.submit();
+      });
+    });
+  };
+
   this.checboxButtonListener = function () {
     //checkbox button states
     $('body').on('click', '.checkbox.checkbox-button .enable', function () 

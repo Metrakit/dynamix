@@ -7,6 +7,7 @@ class Page extends Eloquent {
 	 */
 	protected $table = 'pages';
 	public static $presenter = 'admin.page.presenter';
+	public static $rscName = 'admin.rscPage';
 	/**
 	 * Relations
 	 *

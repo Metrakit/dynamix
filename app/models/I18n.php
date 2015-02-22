@@ -170,6 +170,7 @@ class I18n extends Eloquent{
         }
     }
 
+
     /**
      * Additional Method
      *

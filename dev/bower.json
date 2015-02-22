@@ -12,6 +12,6 @@
         "metisMenu": ">= 1.1.*",
         "tinymce": ">= 4.*",
 
-        "bootstrap-sass-twbs": ">= 3.2.*"
+        "bootstrap-sass-twbs": "3.2.*"
     }
 }

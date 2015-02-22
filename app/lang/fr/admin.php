@@ -240,4 +240,12 @@ return array(
 		'rscLog'			=> 'Logs',
 
 		'noItemToSHow'		=> 'Aucun élément à afficher...',
+
+
+
+	//Modal confirm delete
+	'confirm-delete-title'		=> 'Suppression',
+	'confirm-delete-description'=> 'Attention, cette action est définitive et irréversible...',
+	'confirm-delete'			=> 'Supprimer',
+	'cancel'					=> 'Annuler',
 );

@@ -6,11 +6,9 @@
 <div class="col-sm-12">
 	@foreach($resource_not_allowed as $resourcesK => $resourcesV)
 	@if (count($resourcesV)>0)
-	<h3>{{{ Lang::get('admin.rsc'.$resourcesK) }}}</h3>
+	<h3>{{{ Lang::get($resourcesK::$rscName) }}}</h3>
 	@foreach( $resourcesV as $r)
-	<div class="col-md-4">
 	 	@include($resourcesK::$presenter , array(strtolower($resourcesK)=>$r))
-	</div>
 	@endforeach
 	<div class="clearfix"></div>
 	@endif

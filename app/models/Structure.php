@@ -30,6 +30,16 @@ class Structure extends Eloquent {
 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
 	}
 
+	public function deleteI18nAndMe()
+	{
+		$this->delete();
+		if (!I18n::remove($this->i18n_title)
+		|| !I18n::remove($this->i18n_url)
+		|| !I18n::remove($this->i18n_meta_title)
+		|| !I18n::remove($this->i18n_meta_description)) return false;
+		return true;
+	}
+
 
 	/**
 	 * Attributes
