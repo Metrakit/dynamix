@@ -44,7 +44,7 @@
             /* DOM Ready */
             yepnope([
               {
-                load: '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
+                load: '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',
                 complete: function()
                 {
                   if ( !window.jQuery ) 

@@ -14,12 +14,8 @@ class Image extends Eloquent{
 	 * @var string
 	 */
 	public function gallery () {
-        return $this->belongsTo('Gallery');
+        return $this->belongsToMany('Gallery');
     }
-
-    public function scopeOrderAsc ($query) {
-        return $query->orderBy('order','ASC');
-    } 
 
 	/**
 	 * Additional Method
@@ -40,9 +36,5 @@ class Image extends Eloquent{
 
     public function description () {
         return $this->translate($this->i18n_description);
-    }
-
-    public function getMaxOrder () {
-        return Image::where('gallery_id','=',$this->gallery_id)->max('order');
     }
 }
