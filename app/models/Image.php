@@ -13,9 +13,7 @@ class Image extends Eloquent{
 	 *
 	 * @var string
 	 */
-	public function gallery () {
-        return $this->belongsToMany('Gallery');
-    }
+
 
 	/**
 	 * Additional Method

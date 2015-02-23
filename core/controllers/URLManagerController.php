@@ -42,7 +42,7 @@ class URLManagerController extends BaseController {
                     $structure = Structure::where('i18n_url','=',$url['i18n_id'])->first();
                     $resourceName = strtolower ( $structure->structurable_type );
                     $data[ $resourceName ] = $structure->structurable;
-                    return View::make( 'public.' . \Illuminate\Support\Pluralizer::plural( $resourceName, 2) . '.' . $resourceName, $data );
+                    return View::make( $resourceName::$blockContentView, $data );
                 }
             }
         }
