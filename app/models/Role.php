@@ -6,6 +6,7 @@ class Role extends Eloquent
      * Parameters
      */
 	protected $table = 'roles';
+    public static $langNav = 'admin.nav_role_';
 
 
 	/**

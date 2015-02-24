@@ -40,7 +40,8 @@
     <script>
        head.js(
           '{{ asset("js/vendor/modernizr.min.js") }}',
-          function() {                
+          function() {
+            @yield('scriptYepnope')                
             /* DOM Ready */
             yepnope([
               {
@@ -65,6 +66,7 @@
                 test: Modernizr.input.placeholder,
                 nope: ["{{ asset('js/vendor/placehold.min.js') }}"],
                 load: ["{{ $load_js }}"],
+                @yield('load_supp_js')
                 complete: function(){                                        
                     @yield('script')
                     $(document).ready( function(){   

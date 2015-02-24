@@ -6,6 +6,7 @@ class Tag extends Eloquent{
 	 * Parameters
 	 */
 	protected $table = 'tags';
+	public static $langNav = 'admin.nav_tag';
 
 	/**
 	 * Relations
