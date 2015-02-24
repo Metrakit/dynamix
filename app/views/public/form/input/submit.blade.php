@@ -15,7 +15,7 @@
 	<div class="col-sm-push-2 col-sm-6">
 @endif
 	
-<button type="{{ $input->type }}" name="{{ $input->name }}" class="btn" value="send">{{ $input->title }}</button>
+<button type="{{ $input->type }}" name="{{ $input->name }}" class="btn btn-default" value="send">{{ $input->title }}</button>
 
 @if($form->type == 'horizontal') 
 

@@ -2,10 +2,15 @@
 
 return array(
 
-	'yes' 			=> 'Oui',
-	'no'  			=> 'Non',
-    'must_login' 	=> 'Doit être connecté.',
+	'description'		=> 'Description',
 
-    'member' => 'membre',
+	'edit' 				=> 'Modifier',
+
+	'yes' 				=> 'Oui',
+	'no'  				=> 'Non',
+	'no-description'	=> 'Pas de description',
+    'must_login' 		=> 'Doit être connecté.',
+
+    'member' 	=> 'membre',
 
 );

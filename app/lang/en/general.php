@@ -2,10 +2,15 @@
 
 return array(
 
-	'yes' => 'Yes',
-	'no'  => 'No',
-    'must_login' => 'Must be logged in.',
+	'description'		=> 'Description',
 
-    'member' => 'member',
+	'edit' 				=> 'Edit',
+
+	'yes' 				=> 'Yes',
+	'no'  				=> 'No',
+	'no-description'	=> 'No description',	
+    'must_login' 		=> 'Must be logged in.',
+
+    'member' 			=> 'member',
 
 );

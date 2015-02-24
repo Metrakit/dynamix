@@ -212,6 +212,12 @@ var CommentMaster = function () {
 				});
 			}
 		});
+
+		$('body').on('click', '.btn-click-hidden', function () {
+			$(this).fadeOut('fast', function(){
+				$(this).hide();
+			});
+		});
 	}
 
 	//VoteSystem
