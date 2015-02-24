@@ -60,6 +60,7 @@
             <!-- ./ content -->
 
         </div>
+        @yield('modal')
         <!-- Modal -->
             <!-- Are you sure? -->
             <!-- Modal -->
