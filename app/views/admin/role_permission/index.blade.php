@@ -13,7 +13,7 @@ masterAdminClass.switchCheckboxInitializr();
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.role_permission') }}}
-            <a href="{{ URL::to('admin/role/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau</a>
+            <a href="{{ URL::to('admin/role/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{Lang::get('button.new')}}}</a>
         </h1>
     </div>
 @stop
