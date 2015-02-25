@@ -29,6 +29,9 @@ class I18nTypesTableSeeder extends Seeder {
                 'name' => 'name'
             ),
             array(
+                'name' => 'date'
+            ),
+            array(
                 'name' => 'tag'
             ),
             array(
