@@ -42,28 +42,40 @@ module.exports = function(grunt) {
 		      }
 		    },
 		    modulesPublic: {
-		      options: {
-		        sassDir: '<%= modulesPath %>**/assets/public/sass',
-        		cssDir: '<%= srcPath %>css/modules/public'
-		      }
+		      //options: {
+        	//	httpPath: '/src/css/modules',
+        	//	basePath: '../',
+        	//	relativeAssets: true,
+		    //  //  sassDir: 'vendor/dynamix/**/assets/public/sass',
+        	//	cssDir: 'dev/src/css/modules/public',
+        	//	cssPath: 'src/css/modules/public',
+		      //}
 		    },
 		    modulesAdmin: {
-		      options: {
-		        sassDir: '<%= modulesPath %>**/assets/admin/sass',
-        		cssDir: '<%= srcPath %>css/modules/admin',
-		      }
+		      //options: {
+        	//	httpPath: '/src/css/modules',
+        	//	basePath: '../',
+        	//	relativeAssets: true,
+		    //  //  sassDir: 'vendor/dynamix/**/assets/admin/sass',
+        	//	cssDir: 'dev/src/css/modules/admin',
+        	//	cssPath: 'src/css/modules/admin',
+		      //}
 		    },
 		    modulesPublicWorkbench: {
 		      options: {
-		        sassDir: '<%= modulesPathWorkbench %>**/assets/public/sass',
-        		cssDir: '<%= srcPath %>css/modules/public'
+        		basePath: './..',
+		        sassDir: 'workbench/dynamix/*',
+        		cssDir: 'dev/src/css/modules/public/./../',
+        		//cssPath: 'dev/src/css/modules/public/',
 		      }
 		    },
 		    modulesAdminWorkbench: {
-		      options: {
-		        sassDir: '<%= modulesPathWorkbench %>**/assets/admin/sass',
-        		cssDir: '<%= srcPath %>css/modules/admin',
-		      }
+		    //  options: {
+        	//	basePath: '../',
+		    //    sassDir: '**/assets/admin/sass',
+        	//	//cssDir: './dev/src/css/modules/admin',
+        	//	cssPath: './src/css/modules/admin',
+		    //  }
 		    },
 		},
 
