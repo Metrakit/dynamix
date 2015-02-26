@@ -82,7 +82,8 @@ array(
     'icon' => 'glyphicon glyphicon-book',
     'model' => 'Page',
     'in_admin_ui'   => true,
-    'navigable'     => true
+    'navigable'     => true,
+    'group'     => 1
     ),
 array(
     'name' => 'block',
@@ -105,7 +106,8 @@ array(
     'icon' => 'glyphicon glyphicon-tag',
     'model' => 'Tag',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 1
     ),
 
             //Menu
@@ -114,7 +116,8 @@ array(
     'icon' => 'glyphicon glyphicon-list',
     'model' => 'Nav',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 1
     ),
 array(
     'name' => 'navigation_link',
@@ -130,7 +133,8 @@ array(
     'icon' => 'glyphicon glyphicon-lock',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 2
     ),
 array(
     'name' => 'role',
@@ -151,7 +155,8 @@ array(
     'icon' => 'glyphicon glyphicon-user',
     'model' => 'AuthUser',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 2
     ),
 
 
@@ -161,35 +166,40 @@ array(
     'icon' => 'glyphicon glyphicon-globe',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 3
     ),
 array(
     'name' => 'log',
     'icon' => 'glyphicon glyphicon-list',
     'model' => 'Track',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 2
     ),
 array(
     'name' => 'option',
     'icon' => 'glyphicon glyphicon-cog',
     'model' => 'Option',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 4
     ),
 array(
     'name' => 'i18n-constant',
     'icon' => 'glyphicon glyphicon-globe',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 3
     ),
 array(
     'name' => 'form',
     'icon' => 'glyphicon glyphicon-tasks',
     'model' => 'Formr',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 1
 )
 
 

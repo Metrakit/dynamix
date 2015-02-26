@@ -120,7 +120,29 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
 
         $resources = array_unique($resources);
 
-        foreach ( $resources as $resource_id ) {
+        //order resources
+        $data_by_group = array();
+        foreach ( Config::get('admin.nav_admin.groups') as $group) {
+            foreach ( $resources as $resource_id ) {
+                $resource = Resource::find($resource_id);
+                if ($resource->in_admin_ui == 1) {                    
+                    if ($resource->group == $group) $data_by_group['group'.$group] = $resource;
+                }
+            }
+        }
+
+        //Make data
+        $data_temp = $data_by_group['group0'];
+        foreach ($data_by_group as $groupKey => $groupValue) {
+            if ($groupKey > 1) {
+                $data_temp[] = $data_by_group[$groupKey];
+            }
+        }
+
+        return var_dump($data_temp);
+
+        //
+        /*foreach ( $data_by_group as $resource ) {
             $resource = Resource::find($resource_id);
             if ($resource->in_admin_ui == 1) {
                 $model_name = ucfirst ($resource->model);
@@ -140,7 +162,29 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
                     $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
                 }
             }
-        }
+        }*/
+
+        /*foreach ( $resources as $resource_id ) {
+            $resource = Resource::find($resource_id);
+            if ($resource->in_admin_ui == 1) {
+                $model_name = ucfirst ($resource->model);
+                Log::info($model_name);
+                $lang = ($resource->model!=''?$model_name::$langNav:'admin.nav_' . $resource->name);
+                if(Config::get('display.onepage') && $resource->navigable != 1) {
+                    $data = array(
+                        'name'  => $resource->name,
+                        'lang'  => $lang,
+                        'icon'  => $resource->icon);
+                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                } else if (!Config::get('display.onepage')) {
+                    $data = array(
+                        'name'  => $resource->name,
+                        'lang'  => $lang,
+                        'icon'  => $resource->icon);
+                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                }
+            }
+        }*/
 
         return $navigations;
     }
