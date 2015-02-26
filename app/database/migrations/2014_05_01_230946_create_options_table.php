@@ -25,12 +25,22 @@ class CreateOptionsTable extends Migration {
 
 			//$table->integer('i18n_site_description')->unsigned();
 			//$table->foreign('i18n_site_description')->references('id')->on('i18n');
+			/*
+
+			twitter:site @effe
+			une image
+			description
+			pi un title
+			pi un site name
+*/
 
 			//Admin
 			$table->string('admin_email');
 
 			//Confort Interface
 			$table->boolean('use_smilies')->default(true);
+
+			//Social og etc
 
 			//Mailserver
 			$table->string('mailserver_url');

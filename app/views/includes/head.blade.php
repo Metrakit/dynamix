@@ -11,6 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vous aussi, Initiez-vous Gratuitement aux RH avec le MOOC EFC !">
+    <meta property="og:description" content="Vous aussi, Initiez-vous Gratuitement en #RH &amp; #Management ! Participez au #MOOC certifiant : Inscrivez-vous sur www.efcmooc.com avec @EFCFormation  !">
+    <meta property="og:url" content="{{Request::url()}}">
+    <meta property="og:site_name" content="École Française de Comptabilité">
+    <meta property="og:image" content="http://efcmooc.com/img/Mooc-EFC-Ressources-Humaines.jpg">
+            <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:src" content="{{Request::url()}}">
+    <meta name="twitter:site" content="@EFCFormation">
+    <meta name="twitter:url" content="http://efcmooc.com/img/Mooc-EFC-Ressources-Humaines.jpg">
+    <meta name="twitter:description" content="Initiez-vous Gratuitement en #RH &amp; #Management! Participez au #MOOC certifiant: Inscrivez-vous sur http://www.efcmooc.com avec @EFCFormation">
+    <meta name="twitter:title" content="Vous aussi, Initiez-vous Gratuitement aux RH avec le MOOC EFC">
+
     <link rel="canonical" href="{{Request::url()}}">
 
     @foreach( $load_css as $css )

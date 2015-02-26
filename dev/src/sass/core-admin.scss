@@ -152,6 +152,24 @@ table.log{
 	color:grey;
 	background-color: transparent;
 	border:0px;
+	&:hover, &:focus {
+		color:darken(grey, 15%) !important;
+	}
+}
+.btn-transparent-white {
+	color:white;
+	background-color: transparent;
+	border:0px;
+	&:hover, &:focus {
+		color:darken(white, 15%) !important;
+	}
+}
+.btn-absolute {
+	position:absolute;
+	display:block;
+	top:6px;
+	right: 22px;
+	z-index: 10;
 }
 
 //Page
