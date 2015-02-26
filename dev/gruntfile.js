@@ -42,41 +42,19 @@ module.exports = function(grunt) {
 		      }
 		    },
 		    modulesPublic: {
-		      //options: {
-        	//	httpPath: '/src/css/modules',
-        	//	basePath: '../',
-        	//	relativeAssets: true,
-		    //  //  sassDir: 'vendor/dynamix/**/assets/public/sass',
-        	//	cssDir: 'dev/src/css/modules/public',
-        	//	cssPath: 'src/css/modules/public',
-		      //}
-		    },
-		    modulesAdmin: {
-		      //options: {
-        	//	httpPath: '/src/css/modules',
-        	//	basePath: '../',
-        	//	relativeAssets: true,
-		    //  //  sassDir: 'vendor/dynamix/**/assets/admin/sass',
-        	//	cssDir: 'dev/src/css/modules/admin',
-        	//	cssPath: 'src/css/modules/admin',
-		      //}
+		      options: {
+        		basePath: './..',
+		        sassDir: 'vendor/dynamix/*',
+        		cssDir: 'dev/src/css/modules/public/',
+		      }
 		    },
 		    modulesPublicWorkbench: {
 		      options: {
         		basePath: './..',
 		        sassDir: 'workbench/dynamix/*',
-        		cssDir: 'dev/src/css/modules/public/./../',
-        		//cssPath: 'dev/src/css/modules/public/',
+        		cssDir: 'dev/src/css/modules/public/',
 		      }
-		    },
-		    modulesAdminWorkbench: {
-		    //  options: {
-        	//	basePath: '../',
-		    //    sassDir: '**/assets/admin/sass',
-        	//	//cssDir: './dev/src/css/modules/admin',
-        	//	cssPath: './src/css/modules/admin',
-		    //  }
-		    },
+		    }
 		},
 
 
@@ -91,7 +69,7 @@ module.exports = function(grunt) {
 						'<%= srcPath %>css/font-awesome.css',
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
 						'<%= srcPath %>css/core.css',
-						'<%= srcPath %>css/modules/public/**/*.css'
+						'<%= srcPath %>css/modules/**/public/**/*.css'
 					],
 
 					// Feuilles de style du back office (complete la main)
@@ -100,7 +78,7 @@ module.exports = function(grunt) {
 						'<%= vendorPath %>morrisjs/morris.css',
 						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css',
 						'<%= srcPath %>css/core-admin.css',  
-						'<%= srcPath %>css/modules/admin/**/*.css'		
+						'<%= srcPath %>css/modules/**/admin/**/*.css'		
 					]
 				}
 			},
@@ -345,46 +323,25 @@ module.exports = function(grunt) {
           	modulesPublicScss: 
 			{
 				files: [
-					'<%= modulesPath %>**/assets/public/sass/**/*.scss'
+					'vendor/dynamix/**.scss'
 			    ],
 				tasks:['compass:modulesPublic', 'cssmin', 'clean:css', 'hash:css'],
 				options: {
 	              livereload: true
 	          	}	
           	},
-
-          	modulesAdminScss: 
-			{
-				files: [
-					'<%= modulesPath %>**/assets/admin/sass/**/*.scss'
-			    ],
-				tasks:['compass:modulesAdmin', 'cssmin', 'clean:css', 'hash:css'],
-				options: {
-	              livereload: true
-	          	}	
-          	},  
+  
 
 			modulesPublicScssWorkbench: 
 			{
 				files: [
-					'<%= modulesPathWorkbench %>**/assets/public/sass/**/*.scss'
+					'workbench/dynamix/**.scss'
 			    ],
 				tasks:['compass:modulesPublicWorkbench', 'cssmin', 'clean:css', 'hash:css'],
 				options: {
 	              livereload: true
 	          	}	
           	},
-
-          	modulesAdminScssWorkbench: 
-			{
-				files: [
-					'<%= modulesPathWorkbench %>**/assets/admin/sass/**/*.scss'
-			    ],
-				tasks:['compass:modulesAdminWorkbench', 'cssmin', 'clean:css', 'hash:css'],
-				options: {
-	              livereload: true
-	          	}	
-          	},  
 
 			bootstrap: 
 			{
