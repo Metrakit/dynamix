@@ -21,6 +21,6 @@ class Module extends Eloquent{
     public function renderResource()
     {
         $model_name = $this->target_model;
-        return $model_name::first()->renderResource();
+        return $model_name::deployResource();
     }
 }
