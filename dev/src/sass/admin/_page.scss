@@ -3,19 +3,37 @@
 //Image for themplate
 
 .create-page {
-	background: #eee;
+	//background: #eee;
 	padding:7px;
 	
 	.create-page-list {
-		white-space: nowrap;		
-		overflow-y:auto;
+		//white-space: nowrap;		
+		//overflow-y:auto;
 	}
+}
+
+.page-title {
+	background:#428bca;
+	color:white;
+	padding: 10px;
+	margin-bottom:10px;
+	h1 {
+		margin:0;
+	}
+}
+.page-block {
+	min-height:200px;
+	background:#428bca;
+	padding: 10px;
+	margin-bottom:10px;
+	color:white;
 }
 
 .page-template {
 	background:url('../img/page-template.gif') no-repeat;
 	width:150px;
 	height:106px;
+	margin:5px;
 	display:inline-block;
 
 	&.simple {
@@ -24,29 +42,79 @@
 	&.simple-double {
 		background-position: -150px 0;
 	}
-	&.simple-aside {
+	&.simple-double-h {
 		background-position: -300px 0;
 	}
-	&.simple-aside-o {
+	&.simple-aside {
 		background-position: -450px 0;
 	}
-	&.double-aside {
+	&.simple-aside-o {
 		background-position: -600px 0;
 	}
-	&.double-aside-o {
+	&.double-aside {
 		background-position: -750px 0;
 	}
-	&.quadruple {
+	&.double-aside-o {
 		background-position: -900px 0;
 	}
-	&.third {
+	&.quadruple {
 		background-position: -1050px 0;
 	}
-	&.quarter {
+	&.third {
 		background-position: -1200px 0;
+	}
+	&.quarter {
+		background-position: -1350px 0;
+	}
+}
+.block-template {
+	background:url('../img/block-template.gif') no-repeat;
+	width:150px;
+	height:88px;
+	margin:5px;
+	display:inline-block;
+
+	&.simple {
+		background-position: 0 0;
+	}
+	&.simple-double {
+		background-position: -150px 0;
+	}
+	&.simple-double-h {
+		background-position: -300px 0;
+	}
+	&.simple-aside {
+		background-position: -450px 0;
+	}
+	&.simple-aside-o {
+		background-position: -600px 0;
+	}
+	&.double-aside {
+		background-position: -750px 0;
+	}
+	&.double-aside-o {
+		background-position: -900px 0;
+	}
+	&.quadruple {
+		background-position: -1050px 0;
+	}
+	&.third {
+		background-position: -1200px 0;
+	}
+	&.quarter {
+		background-position: -1350px 0;
 	}
 }
 
+.page-border-right {
+	border-right:2px white solid;
+}
+.page-border-left {
+	border-left:2px white solid;
+}
+.page-double-height {
+	min-height:410px
+}
 
 
 

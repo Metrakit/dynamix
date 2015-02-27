@@ -21,6 +21,7 @@ return array(
 	'page-template' => array (
 		'simple'			,					
 		'simple-double'		,			
+		'simple-double-h'	,			
 		'simple-aside'		,			
 		'simple-aside-o'	,				
 		'double-aside'		,			

@@ -2,30 +2,26 @@
 
 @section('template')
 
-{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'col-md-6 form-horizontal', 'autocomplete' => 'off' ) ) }}
+{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'page-block col-md-6 page-border-right form-horizontal', 'autocomplete' => 'off' ) ) }}
 	<input type="hidden" name="_trigger_md" value="6">
 	<input type="hidden" name="order" value="1">
-	@include('admin.page.block.wysiwyg')
 {{ Form::close() }}
 
-{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'col-md-6 form-horizontal', 'autocomplete' => 'off' ) ) }}
+{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'page-block col-md-6 page-border-left form-horizontal', 'autocomplete' => 'off' ) ) }}
 	<input type="hidden" name="_trigger_md" value="6">
 	<input type="hidden" name="order" value="2">
-	@include('admin.page.block.wysiwyg')
 {{ Form::close() }}
 
 <div class="clearfix"></div>
 
-{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'col-md-6 form-horizontal', 'autocomplete' => 'off' ) ) }}
+{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'page-block col-md-6 page-border-right form-horizontal', 'autocomplete' => 'off' ) ) }}
 	<input type="hidden" name="_trigger_md" value="6">
 	<input type="hidden" name="order" value="3">
-	@include('admin.page.block.wysiwyg')
 {{ Form::close() }}
 
-{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'col-md-6 form-horizontal', 'autocomplete' => 'off' ) ) }}
+{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'page-block col-md-6 page-border-left form-horizontal', 'autocomplete' => 'off' ) ) }}
 	<input type="hidden" name="_trigger_md" value="6">
 	<input type="hidden" name="order" value="4">
-	@include('admin.page.block.wysiwyg')
 {{ Form::close() }}
 
 

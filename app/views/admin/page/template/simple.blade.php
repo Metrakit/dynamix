@@ -2,10 +2,9 @@
 
 @section('template')
 
-{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'form-horizontal', 'autocomplete' => 'off' ) ) }}
+{{ Form::open(array('url' => URL::to('admin/page'), 'method' => 'POST', 'class' => 'page-block page-double-height form-horizontal', 'autocomplete' => 'off' ) ) }}
 	<input type="hidden" name="_trigger_md" value="12">
 	<input type="hidden" name="order" value="1">
-	@include('admin.page.block.wysiwyg')
 {{ Form::close() }}
 
 @stop
