@@ -162,6 +162,7 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
                 $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
             } else if (gettype($objectValue) == "array") {
                 //drop down bitch
+                
                 //$data !!!
                 $navigations_temp = '';
                 foreach ($objectValue as $resource) {                
