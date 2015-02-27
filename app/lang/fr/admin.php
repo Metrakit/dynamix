@@ -25,7 +25,7 @@ return array(
 	'nav_form'				=> 'Formulaires',
 
 	// Modules
-	'nav_crew'				=> 'Crew',
+	'nav_crew'				=> 'Crews',
 	'nav_artist'			=> 'Artistes',
 
 	//Dashbooard

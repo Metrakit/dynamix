@@ -18,6 +18,22 @@ Route::get('/first-migrate', function(){
 	Artisan::call("db:seed");
 	return "migrated";
 });
+
+Route::get('/composer-update', function(){
+	define('STDIN',fopen("php://stdin","r"));
+	exec('composer update');
+	return "updated";
+});
+
+Route::get('/dump-autoload', function(){
+	define('STDIN',fopen("php://stdin","r"));
+	Artisan::call("dump-autoload");
+	return "dumpé!";
+});
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Base/System
