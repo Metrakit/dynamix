@@ -36,7 +36,8 @@ array(
     'icon' => 'glyphicon glyphicon-picture',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => 0
     ),
             /*array(
                 'name' => 'image',
@@ -90,14 +91,18 @@ array(
     'icon' => 'glyphicon glyphicon-book',
     'model' => 'Block',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
+
     ),
 array(
     'name' => 'block_content',
     'icon' => 'glyphicon glyphicon-book',
     'model' => 'BlockContent',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
+
     ),
 
             //Conector
@@ -124,7 +129,8 @@ array(
     'icon' => 'glyphicon glyphicon-list',
     'model' => 'NavLink',
     'in_admin_ui'   => false,
-    'navigable'     => true
+    'navigable'     => true,
+    'group' => null
     ),
 
             //User
@@ -141,14 +147,16 @@ array(
     'icon' => 'glyphicon glyphicon-lock',
     'model' => 'Role',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
     ),
 array(
     'name' => 'permission',
     'icon' => 'glyphicon glyphicon-lock',
     'model' => 'Permission',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
     ),
 array(
     'name' => 'auth',

@@ -248,8 +248,8 @@ return array(
 	'cancel'					=> 'Annuler',
 
 
-	'group' => array(	'1' => 'Gestion des contenus',
-						'2' => 'Gestion des utilisateurs',
-						'3' => 'Internationalisation',
-						'4' => 'Options'),
+	'group1' => 'Gestion des contenus',
+	'group2' => 'Gestion des utilisateurs',
+	'group3' => 'Internationalisation',
+	'group4' => 'Options',
 );
