@@ -12,6 +12,7 @@
 /dev/.sass-cache
 
 /dev/src/packages
+/dev/src/css/modules
 /dev/src/vendor
 /dev/src/js/main.back.min.js
 /dev/src/js/main.min.js

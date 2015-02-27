@@ -7,6 +7,7 @@ class Formr extends Eloquent{
 	 */
 	protected $table = 'forms';
 	public $timestamps = false;
+	public static $langNav = 'admin.nav_form';
 	protected $fillable = ['finish_on', 'i18n_title', 'i18n_description', 'type'];
 
 	

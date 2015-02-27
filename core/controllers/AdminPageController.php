@@ -166,6 +166,21 @@ class AdminPageController extends BaseController {
 	}
 
 	/**
+	 * Return the template of blocks
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function getBlockTemplate($template)
+	{
+		if (in_array($template, Config::get('display.page-template'))) {
+			return Response::json(View::make('admin.page.block-template.' . $template)->render());
+		}
+
+		return Response::json('caca');
+	}
+
+	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id

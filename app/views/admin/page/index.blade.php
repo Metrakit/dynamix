@@ -12,8 +12,8 @@
             <span class="btn btn-primary" data-toggle="collapse" data-target="#page-template"><span class="glyphicon glyphicon-plus"></span> Nouveau</span><br>
         </h1>
         <div class="create-page collapse" id="page-template">
-            <h4>Choisissez un modèle de block</h4>
-            <div class="create-page-list">
+            <h4>Choisissez un modèle de page</h4>
+            <div class="text-center">
                 @foreach( Config::get('display.page-template') as $template)
                 <a href="{{ URL::to('admin/page/create?template=' . $template)}}" class="page-template {{$template}}"></a>
                 @endforeach

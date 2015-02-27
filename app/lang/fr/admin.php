@@ -11,8 +11,6 @@ return array(
 	'nav_article'			=> 'Articles',
 	'nav_article_category'	=> 'Catégories',
 	'nav_media'				=> 'Médias',
-	'nav_mosaic'			=> 'Mosaïques',
-	'nav_gallery'			=> 'Galeries',
 	'nav_page'				=> 'Pages',
 	'nav_tag'				=> 'Tags',
 	'nav_navigation'		=> 'Navigations',
@@ -61,8 +59,8 @@ return array(
 	'page'			=> 'Page',
 	'pages'			=> 'Pages',
 	'page_edit'		=> 'Modification de page',
-	'page_create'		=> 'Création de page',
-	'page_add'		=> 'Créer la page',
+	'page_create'		=> 'Création de la structure',
+	'page_add'		=> 'Créer la structure',
 	'page_name'			=> 'Nom de la page',
 	'page_name_help'		=> 'Le nom de la page sert a mieux identifier cette page parmis les autres dans l\'interface administrateur...',
 	'page_meta_title'		=> 'Titre de l\'onglet',
@@ -248,4 +246,10 @@ return array(
 	'confirm-delete-description'=> 'Attention, cette action est définitive et irréversible...',
 	'confirm-delete'			=> 'Supprimer',
 	'cancel'					=> 'Annuler',
+
+
+	'group1' => 'Gestion des contenus',
+	'group2' => 'Gestion des utilisateurs',
+	'group3' => 'Internationalisation',
+	'group4' => 'Options',
 );

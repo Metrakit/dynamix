@@ -7,6 +7,7 @@ class Nav extends Eloquent{
 	 */
 	protected $table = 'navigations';
 	public $timestamps = false;
+	public static $langNav = 'admin.nav_navigation';
 
 
 	/**

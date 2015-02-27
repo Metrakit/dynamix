@@ -36,7 +36,8 @@ array(
     'icon' => 'glyphicon glyphicon-picture',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => 0
     ),
             /*array(
                 'name' => 'image',
@@ -82,21 +83,26 @@ array(
     'icon' => 'glyphicon glyphicon-book',
     'model' => 'Page',
     'in_admin_ui'   => true,
-    'navigable'     => true
+    'navigable'     => true,
+    'group'     => 1
     ),
 array(
     'name' => 'block',
     'icon' => 'glyphicon glyphicon-book',
     'model' => 'Block',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
+
     ),
 array(
     'name' => 'block_content',
     'icon' => 'glyphicon glyphicon-book',
     'model' => 'BlockContent',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
+
     ),
 
             //Conector
@@ -105,7 +111,8 @@ array(
     'icon' => 'glyphicon glyphicon-tag',
     'model' => 'Tag',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 1
     ),
 
             //Menu
@@ -114,14 +121,16 @@ array(
     'icon' => 'glyphicon glyphicon-list',
     'model' => 'Nav',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 1
     ),
 array(
     'name' => 'navigation_link',
     'icon' => 'glyphicon glyphicon-list',
     'model' => 'NavLink',
     'in_admin_ui'   => false,
-    'navigable'     => true
+    'navigable'     => true,
+    'group' => null
     ),
 
             //User
@@ -130,28 +139,32 @@ array(
     'icon' => 'glyphicon glyphicon-lock',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 2
     ),
 array(
     'name' => 'role',
     'icon' => 'glyphicon glyphicon-lock',
     'model' => 'Role',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
     ),
 array(
     'name' => 'permission',
     'icon' => 'glyphicon glyphicon-lock',
     'model' => 'Permission',
     'in_admin_ui'   => false,
-    'navigable'     => false
+    'navigable'     => false,
+    'group' => null
     ),
 array(
     'name' => 'auth',
     'icon' => 'glyphicon glyphicon-user',
     'model' => 'AuthUser',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 2
     ),
 
 
@@ -161,35 +174,40 @@ array(
     'icon' => 'glyphicon glyphicon-globe',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 3
     ),
 array(
     'name' => 'log',
     'icon' => 'glyphicon glyphicon-list',
     'model' => 'Track',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 2
     ),
 array(
     'name' => 'option',
     'icon' => 'glyphicon glyphicon-cog',
     'model' => 'Option',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 4
     ),
 array(
     'name' => 'i18n-constant',
     'icon' => 'glyphicon glyphicon-globe',
     'model' => null,
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 3
     ),
 array(
     'name' => 'form',
     'icon' => 'glyphicon glyphicon-tasks',
     'model' => 'Formr',
     'in_admin_ui'   => true,
-    'navigable'     => false
+    'navigable'     => false,
+    'group'     => 1
 )
 
 

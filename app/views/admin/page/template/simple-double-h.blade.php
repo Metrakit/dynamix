@@ -2,6 +2,6 @@
 
 @section('template')
 
-@include('admin.page.block-template.simple-double')
+@include('admin.page.block-template.simple-double-h')
 
 @stop

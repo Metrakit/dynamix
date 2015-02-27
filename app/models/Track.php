@@ -7,6 +7,7 @@ class Track extends Eloquent{
      */
 	protected $table = 'tracks';
     public $timestamps = false;
+    public static $langNav = 'admin.nav_log';
 
 	
     /**

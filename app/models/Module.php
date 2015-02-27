@@ -20,9 +20,7 @@ class Module extends Eloquent{
      */
     public function renderResource()
     {
-        // TODO
-        //$data['data'] = $this->translate( $this->i18n_content );
-        
-        //return Response::view('public.blockcontent.blockcontent', $data )->getOriginalContent();
+        $model_name = $this->target_model;
+        return $model_name::first()->renderResource();
     }
 }
