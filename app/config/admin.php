@@ -14,10 +14,11 @@ return array(
 	*/
 
 	'nav_admin' => array(	'groups' => array(
-										'1' => Lang::get('admin.group.1'),
-										'2' => Lang::get('admin.group.2'),
-										'3' => Lang::get('admin.group.3'),
-										'4' => Lang::get('admin.group.4'),
+										'group0' => '',
+										'group1' => Lang::get('admin.group1'),
+										'group2' => Lang::get('admin.group2'),
+										'group3' => Lang::get('admin.group3'),
+										'group4' => Lang::get('admin.group4'),
 		),
 		),
 
