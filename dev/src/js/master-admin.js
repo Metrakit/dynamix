@@ -13,6 +13,17 @@ var PagerAdminMaster = function (){
       var forms = $('form');
       console.log(forms);
     });
+
+
+    //Add blocks
+    $('body').on('click', '.block-template', function (e) {
+      e.preventDefault();
+      var me    = $(e.target);
+          href  = me.attr('href');
+      $.post(href, {}, function (data) {
+        $('#page-template').append(data).append('<div class="clearfix"></div>');
+      });
+    });
     
     //Soumition de tous les formulaires de la pages /page/create
   }

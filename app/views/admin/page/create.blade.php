@@ -22,7 +22,7 @@
 		<h1>{{{Lang::get('admin.page_title')}}}</h1>
 	{{ Form::close() }}
 
-	<div>
+	<div id="page-template">
 		@yield('template')
 		<div class="clearfix"></div>
 	</div>
@@ -31,13 +31,13 @@
         <h4>Ajouter des blocks</h4>
         <div class="text-center">
             @foreach( Config::get('display.page-template') as $template)
-            <a href="{{ URL::to('admin/page/create?template=' . $template)}}" class="block-template {{$template}}"></a>
+            <a href="{{ URL::to('admin/page/block/' . $template)}}" class="block-template {{$template}}"></a>
             @endforeach
         </div>
     </div>
 
 	<p class="text-center">
-		<span class="btn-submit-page btn btn-lg width100 btn-primary">{{{ Lang::get('admin.page.submit') }}}</span>
+		<span class="btn-submit-page btn btn-lg width100 btn-primary">{{{ Lang::get('admin.page_add') }}}</span>
 	</p>
 
 @stop

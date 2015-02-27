@@ -33,12 +33,14 @@ Route::get('choose-your-language', array ('uses' => 'BaseController@choose_your_
 |
 |
 */
+
 $locale = Localizr::initLocale();
 Route::group(array('prefix' => $locale), function() 
 {
 	Route::get('/', array('uses' => 'URLManagerController@getHome'));
 	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 });
+
 /*
 |--------------------------------------------------------------------------
 | Admin
@@ -50,6 +52,8 @@ Route::group(array('prefix' => $locale), function()
 Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function (){
 	//Dashboard
 	Route::get('/',array('as'=> 'index_admin', 'uses' => 'AdminController@index'));
+		// Task
+		Route::resource('task', 'AdminTasksController');
 
 	//Auth 
 	Route::get('auth', 'AdminAuthController@index');
@@ -96,12 +100,12 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Languages
 		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
 		Route::post('/languages', 'AdminController@postLanguages');
+	
 	//API - AJAX
 	Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
+	Route::post('/page/block/{template}', 'AdminPageController@getBlockTemplate');
 
 
-	// Task
-	Route::resource('task', 'AdminTasksController');
 
 	// Formr
 	Route::resource('form', 'FormerController');
@@ -109,11 +113,10 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::resource('input', 'InputController');
 
 	Route::get('/formr/{formId}/input/add', array('as' => 'add-input', 'uses' => 'InputController@add'));
-
 	Route::get('/formr/{formId}/input/{inputId}/{move}', array('as' => 'move-input', 'uses' => 'InputController@move'));
-
 	//Route::get('/form/{formId}/create-input', array('as'=>'create-input', 'uses'=>'InputController@create'));
 });
+
 /*
 |--------------------------------------------------------------------------
 | Auth
@@ -129,6 +132,7 @@ Route::get('auth/remind', 'RemindersController@getRemind');
 Route::post('auth/remind', 'RemindersController@postRemind');
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset','as' => 'password.reset'));
 Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset','as' => 'password.update'));
+
 /*
 |--------------------------------------------------------------------------
 | Former
@@ -136,6 +140,7 @@ Route::post('password/reset/{token}', array('uses' => 'RemindersController@postR
 |
 */
 Route::post('formr/{modelId?}', array('as' => 'formr', 'uses' => 'FormerController@storeResult'));
+
 /*
 |--------------------------------------------------------------------------
 | Comment
@@ -145,6 +150,7 @@ Route::post('formr/{modelId?}', array('as' => 'formr', 'uses' => 'FormerControll
 Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
 Route::resource('comment','CommentController', array('only' => array('destroy','update')) );
 Route::post('comment/{id}/vote/{bool}', array('as' => 'comment-vote', 'uses' => 'CommentController@vote'));
+
 /*
 |--------------------------------------------------------------------------
 | Composer before errors
