@@ -12,13 +12,17 @@ class BlocksTableSeeder extends Seeder {
                 'model'  => 'Wysiwyg',
                 'icon'  => 'fa fa-font',
                 'lang'  => 'admin.blocktype.wysiwyg',
-                'path_to_view' => 'admin.page.block.wysiwyg'
+                'path_to_view' => 'admin.page.block.wysiwyg',
+                'multi' => false,
+                'linked_on_module' => false,
             ),array(
                 'name'  => 'form',
                 'model'  => 'Formr',
                 'icon'  => 'fa fa-list-ul',
                 'lang'  => 'admin.blocktype.form',
-                'path_to_view' => 'admin.page.block.form'
+                'path_to_view' => 'admin.page.block.form',
+                'multi' => true,
+                'linked_on_module' => false,
             )
         ));
 

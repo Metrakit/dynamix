@@ -7,7 +7,13 @@ class Formr extends Eloquent{
 	 */
 	protected $table = 'forms';
 	public $timestamps = false;
+
+    //Blockable
+    public static $blockable_type = 'Formr';
+
+    //Navigable
 	public static $langNav = 'admin.nav_form';
+
 	protected $fillable = ['finish_on', 'i18n_title', 'i18n_description', 'type'];
 
 	
@@ -139,6 +145,23 @@ class Formr extends Eloquent{
      *
      * @return mixed
      */
+    public static function getFreeObjects()
+    {       
+    	//get objects not free in block table
+    	$model = get_class(new self);
+    	$blocks_not_free = Block::where('blockable_type', $model)->select('blockable_id')->get();
+    	$items = $model::select('id')->get();
+    	$block_ids = array();
+    	foreach ($blocks_not_free as $block) {
+    		$block_ids[] = $block->blockable_id;
+    	}
+
+    	$data =array();
+    	foreach ($items as $item) {
+    		if (!in_array($item->id, $block_ids)) $data[] = $item;
+    	}
+    	return $data;
+    }
 
        
     /**

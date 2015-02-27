@@ -8,12 +8,6 @@ var PagerAdminMaster = function (){
   }
 
   var initListeners = function () {
-    //Récupération de tous les formulaires de la pages /page/create
-    $('body').on('click', '.btn-submit-page', function (e) {
-      var forms = $('form');
-      console.log(forms);
-    });
-
 
     //Add blocks
     $('body').on('click', '.block-template', function (e) {
@@ -21,11 +15,45 @@ var PagerAdminMaster = function (){
       var me    = $(e.target);
           href  = me.attr('href');
       $.post(href, {}, function (data) {
-        $('#page-template').append(data).append('<div class="clearfix"></div>');
+        $('#page-template').append(data);
+      });
+    });
+
+    //Remove line of blocks
+    $('body').on('click', '.page-lineblock-remove-btn', function (e) {  
+      var me = $(e.target);
+      if (me.parent().hasClass('show-line')) {
+        me.parent().removeClass('show-line');
+      } else {
+        me.parent().addClass('show-line');        
+      }
+    });
+    $('body').on('click', '.page-lineblock-confirm-remove-btn', function (e) {
+      $(e.target).closest('.page-block-remove').slideUp('slow', function (e) {
+        $(this).remove();
       });
     });
     
-    //Soumition de tous les formulaires de la pages /page/create
+    //Récupération de tous les formulaires de la pages /page/create
+    $('body').on('click', '.btn-submit-page', function (e) {
+      var forms = $('form');
+
+      //check validation of selects
+      /*$.post('/admin/page', {}, function (data) {
+        //use the page_id
+
+        for (var o in forms) {
+          postBlockForm(forms[o]);
+        } 
+      });*/
+    });
+
+    //Soumition d'un formulaire d'un block
+    var postBlockForm = function (form ) {
+      $.post(WhereWeCreateThis, {}, function (data) {
+        
+      });
+    }
   }
 
 

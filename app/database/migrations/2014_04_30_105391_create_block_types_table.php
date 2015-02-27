@@ -23,6 +23,8 @@ class CreateBlockTypesTable extends Migration {
 			$table->string('icon',45);
 			$table->string('lang', 80);
 			$table->string('path_to_view');
+			$table->boolean('multi')->default(false);
+			$table->boolean('linked_on_module')->default(false);
 		});
 	}
 

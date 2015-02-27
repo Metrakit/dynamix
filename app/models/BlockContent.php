@@ -7,6 +7,9 @@ class BlockContent extends Eloquent{
 	 */
 	protected $table = 'block_contents';
 
+
+    //Blockable
+    public static $blockable_type = 'BlockContent';
 	
 	/**
 	 * Relations
@@ -37,6 +40,10 @@ class BlockContent extends Eloquent{
      * @return mixed
      */
 
+	public static function getFreeObjects()
+    {
+    	return array();
+    }
        
     /**
      * #Pager method
