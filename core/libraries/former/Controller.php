@@ -148,13 +148,15 @@ class Former extends \Controller {
             $data['inputs'][$key]->i18nInpError = false;
      
             // Check if the input is linked to a foreign model
-            if (isset($data['inputs'][$key]->foreign) && $data['inputs'][$key]->foreign != null) {
+            if (isset($modelData) && isset($data['inputs'][$key]->foreign) && $data['inputs'][$key]->foreign != null) {
                 if (\Input::old($data['inputs'][$key]->name)) {
                     $data['inputs'][$key]->value = \Input::old($data['inputs'][$key]->name);
                 } else {
                     $localModel = $data['inputs'][$key]->foreign_local_model;
                     $foreignColumn = $data['inputs'][$key]->foreign_column;
-                    $foreign = $localModel->hasMany($data['inputs'][$key]->foreign)->first();
+                    $foreign = $localModel->hasMany($data['inputs'][$key]->foreign)
+                                ->where($data['inputs'][$key]->foreign_column_id, $modelData->id)
+                                ->first();
                     if ($foreign == null) {
                         $data['inputs'][$key]->value = null;
                     } else {
