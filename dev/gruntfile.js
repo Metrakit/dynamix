@@ -67,6 +67,7 @@ module.exports = function(grunt) {
 					[
 						'<%= srcPath %>css/bootstrap.css',
 						'<%= srcPath %>css/font-awesome.css',
+						'<%= vendorPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
 						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
 						'<%= srcPath %>css/core.css',
 						'<%= srcPath %>css/modules/**/public/**/*.css'
@@ -106,6 +107,8 @@ module.exports = function(grunt) {
 				src: [
 					 '<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
+					 '<%= vendorPath %>moment/min/moment-with-locales.min.js',
+					 '<%= vendorPath %>eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
 			         '<%= srcPath %>js/master.js',
 			         '<%= modulesPath %>**/assets/public/js/**/*.js',
 			         '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js'

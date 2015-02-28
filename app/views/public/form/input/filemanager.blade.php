@@ -5,7 +5,7 @@
 	'type'		: 'iframe',
     'autoScale' : false
     });
-@endsection
+@append
 
 @if($input->label)
 

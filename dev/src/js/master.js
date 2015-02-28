@@ -320,6 +320,22 @@ var CommentMaster = function () {
     }
 }
 
+var DatePicker = function() {
+	this.displayDate = function (options) {
+		options.format = "LL";
+		$('.date-picker').datetimepicker(options);
+	}
+	this.displayTime = function (options) {
+		options.format = "LT";
+		$('.time-picker').datetimepicker(options);
+	}
+	this.displayDateTime = function (options) {
+		options.format = "";
+		$('.date-time-picker').datetimepicker(options);
+	}	
+}
+var datePick = new DatePicker;
+
 //Object Master
 var Master = function (){
 	//Variables
