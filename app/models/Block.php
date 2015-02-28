@@ -81,14 +81,14 @@ class Block extends Eloquent{
             $typeId = $blockType->id;
         }
 
-        $block = new Self;
+        $block = new self;
         $block->blockable_type = $model;
         $block->page_id = $pageId;
         $block->type_id = $typeId;
         $block->blockable_id = $modelId;
 
         if (!$order && $pageId) {
-            $orderObject = Self::where('page_id', $pageId)
+            $orderObject = self::where('page_id', $pageId)
                 ->OrderBy('order', 'DESC')
                 ->first();
             if ($orderObject) {

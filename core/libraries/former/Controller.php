@@ -99,6 +99,7 @@ class Former extends \Controller {
 
         if (null != $modelId && is_int($modelId)) {
             $modelData = $form->find($modelId);
+        
             // Boucle sur les champs pour trouver les champs i18n
             foreach ($modelData->getAttributes() as $key => $value) {
                 
@@ -145,10 +146,24 @@ class Former extends \Controller {
             }
 
             $data['inputs'][$key]->i18nInpError = false;
-            
-
+     
+            // Check if the input is linked to a foreign model
+            if (isset($data['inputs'][$key]->foreign) && $data['inputs'][$key]->foreign != null) {
+                if (\Input::old($data['inputs'][$key]->name)) {
+                    $data['inputs'][$key]->value = \Input::old($data['inputs'][$key]->name);
+                } else {
+                    $localModel = $data['inputs'][$key]->foreign_local_model;
+                    $foreignColumn = $data['inputs'][$key]->foreign_column;
+                    $foreign = $localModel->hasMany($data['inputs'][$key]->foreign)->first();
+                    if ($foreign == null) {
+                        $data['inputs'][$key]->value = null;
+                    } else {
+                        $data['inputs'][$key]->value = $foreign->$foreignColumn;
+                    }
+                }         
+            }
             // Set the input value if defined
-            if (null == $data['inputs'][$key]->value) {
+            else if (null == $data['inputs'][$key]->value) {
 
                 // Si 18n est activé pour cet input
                 if ($data['inputs'][$key]->multiLang) {
