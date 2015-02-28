@@ -24,13 +24,24 @@ class Eloquentizr extends Model {
 		$instance = new static;
 		$tableName = $instance->getTable();
 		 
-		$eloquent = \Cache::remember($tableName.':'.$id, static::$expireCache, function() use ($id, $tableName,$instance, $columns){
+		$eloquent = \Cache::remember($tableName.':'.$id, static::$expireCache, function() use ($id, $tableName, $instance, $columns){
 			return $instance->find($id, $columns);
 		});
  
  		return $eloquent;
  	}
 
+	public static function allCached()
+	{
+		$instance = new static;
+		$tableName = $instance->getTable();
+		 
+		$eloquent = \Cache::remember($tableName.'_all', static::$expireCache, function() use ($tableName, $instance){
+			return $instance->all();
+		});
+ 
+ 		return $eloquent;
+ 	}
 
  	/**
  	 * Get settings of a Formr

@@ -10,7 +10,7 @@ return array(
 	'no'  				=> 'Non',
 	'no-description'	=> 'Pas de description',
     'must_login' 		=> 'Doit être connecté.',
-
+    
     'member' 	=> 'membre',
 
 );

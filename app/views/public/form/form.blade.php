@@ -11,7 +11,7 @@
 	@else
 		action="javascript:alert('This action is not available on the form builder.');"
 	@endif
-	class="form-{{ $form->type }}">
+	class="@if($form->type == null) form-horizontal @else form-{{ $form->type }} @endif">
 
 	{{-- Send the Form Id --}}
 	<input type="hidden" name="form" value="{{ $form->id }}" />

@@ -122,6 +122,7 @@ class Former extends \Controller {
         }
 
         $data['form']->id = $form->model;
+        $data['form']->type = $form->type;
 
         if (isset($form->action)) {
             $data['form']->action = $form->action; 
