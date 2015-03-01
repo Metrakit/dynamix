@@ -1,13 +1,15 @@
 @section('scriptOnReady')
-  tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";
+  tinyMCE.baseURL = "{{ URL::to('/js/tinymce') }}";
   tinymce.init({
     mode : "specific_textareas",
     editor_selector : "tinymce-wysiwyg",
     plugins: [
       "table link image visualblocks code media",
-      "contextmenu textcolor responsivefilemanager"
+      "contextmenu textcolor responsivefilemanager",
+      "preview"
     ],
-    toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code ",
+
+    toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code | preview",
 
     menubar: true,
     statusbar: false,
@@ -15,13 +17,6 @@
 
     setup: function (theEditor) {
 
-
-      /*theEditor.on('focus', function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").show();
-      });
-      theEditor.on('blur', function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").hide();
-      });*/
       theEditor.on("init", function () {
           $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").show();
       });
