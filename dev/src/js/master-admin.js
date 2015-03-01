@@ -36,23 +36,44 @@ var PagerAdminMaster = function (){
     
     //Récupération de tous les formulaires de la pages /page/create
     $('body').on('click', '.btn-submit-page', function (e) {
-      var forms = $('form');
+      var forms = $('#section-content form');
+
+      //Calculate order of blocks
+      calculBlocksOrder();
 
       //check validation of selects
-      /*$.post('/admin/page', {}, function (data) {
+      $.post('/admin/page', {}, function (data) {
         //use the page_id
-
-        for (var o in forms) {
-          postBlockForm(forms[o]);
-        } 
-      });*/
+        if (data.page_id == 'error') {
+          alert('error');
+        }
+        //console.log(forms);
+        var formsOnly = [];
+        $('#section-content form.page-block').each( function (e) {
+          formsOnly.push($(this));
+          console.log($(this).serialize());
+        });
+        
+        for (var o in formsOnly) {
+          postBlockForm(formsOnly[o], data.page_id);
+        }
+      });
     });
 
-    //Soumition d'un formulaire d'un block
-    var postBlockForm = function (form ) {
-      $.post(WhereWeCreateThis, {}, function (data) {
-        
+    var calculBlocksOrder = function () {
+      var i = 1;
+      $('#section-content form.page-block').each( function (e) {
+        $(this).find('input[name=order]').val(i);
+        i++;
       });
+    }
+
+    //Soumition d'un formulaire d'un block
+    var postBlockForm = function (form, page_id) {
+      $.post('/admin/page-block', form.serialize() + '&page_id=' + page_id, function (data) {
+        console.log(data);
+      });
+      
     }
   }
 

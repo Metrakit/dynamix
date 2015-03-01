@@ -120,6 +120,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//API - AJAX
 	Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
 	Route::post('/page/block/{template}', 'AdminPageController@getBlockTemplate');
+	Route::post('/page-block', 'AdminPageController@store_block');
 
 
 

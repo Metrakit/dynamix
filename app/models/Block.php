@@ -101,7 +101,7 @@ class Block extends Eloquent{
         }
 
         $block->order = $order;
-
+        $block->save();
         return $block;
 
     }

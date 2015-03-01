@@ -1,5 +1,5 @@
 
-<select class="form-control">
+<select name="blockable_data" id="blockable_data" class="form-control">
 	@foreach( BlockType::orderBy('multi', 'ASC')->get() as $block_type)
 		<?php
 		$blockModelName=$block_type->model
