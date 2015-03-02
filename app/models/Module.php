@@ -12,6 +12,7 @@ class Module extends Eloquent{
 	 */
 	protected $table = 'modules';
     public $timestamps = false;
+    public static $blockable_type = 'Module';
 
     /**
      * #Pager method
