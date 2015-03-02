@@ -50,6 +50,9 @@ return array(
 		'tasks'		=>	'Tâches',
 		'task'		=>	'Tâche',
 
+		//usefull links
+		'usefull_link'  => 'Liens utiles',
+
 	
 	//Media
 	'media'				=> 'Média',

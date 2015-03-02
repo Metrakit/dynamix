@@ -132,12 +132,24 @@
                 <i class="fa fa-bar-chart-o fa-fw"></i> {{{ Lang::get('admin.newOnReturningVisitor') }}}
             </div>
             <div class="panel-body">
-                <div id="ga-newOnReturningVisitor"></div>
+                <div id="ga-newOnReturningVisitor"></div>   
             </div>
         </div>
     </div>
     </div>
     @endif
+    <div class="col-lg-4 pull-right">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> {{{ Lang::get('admin.usefull_link') }}}
+            </div>
+            <div class="panel-body">
+                <a href="https://compressor.io/">
+                <img class="img-responsive" src="{{asset('img/compressor-io-logo.png')}}" alt="compressor logo">
+                </a>
+            </div>
+        </div>
+    </div>
    
     <div class="clearfix"></div>
     
