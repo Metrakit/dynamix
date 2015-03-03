@@ -1,6 +1,6 @@
 <?php
 
-class 301 extends Eloquent
+class Reroute extends Eloquent
 {
 	/**
 	 * The database table used by the model.
@@ -8,5 +8,6 @@ class 301 extends Eloquent
 	 * @var string
 	 */
 	protected $table = '301';
+
 
 }

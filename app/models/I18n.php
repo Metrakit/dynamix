@@ -28,7 +28,7 @@ class I18n extends Eloquent{
      * @param Array $data Langs array
      * @param String $type i18n type
      */
-    public static function add($data, $type)
+    public static function add($data, $type, $key = null)
     {
 
         if (!is_array($data)) {
@@ -43,6 +43,9 @@ class I18n extends Eloquent{
 
         $i18n = new self;
         $i18n->i18n_type_id = $i18nType->id;
+
+        if ($key !== null) $i18n->key = $key;
+        
         $i18n->save();
 
         foreach ($data as $lang => $value) {

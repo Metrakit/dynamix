@@ -50,6 +50,14 @@ return array(
 		
 		//'i18n_constant'=>	array(  'key'		=> 'max:255'),
 	
+	/*
+	|	Reroute
+	|
+	| Only regular (-i18n) rules
+	*/
+		'reroute'		=> 		array(	'url_referer'		=> 'min:10',										
+										'url_redirect'	=> 'url|min:10|max:255'),
+	
 
 	/*
 	|	Role / Permission

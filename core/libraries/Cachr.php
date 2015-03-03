@@ -6,6 +6,28 @@
  */
 class Cachr
 {
+	public static function getCache( $cache )
+	{
+		Cache::forget('DB_Nav');
+		Cache::forget('DB_Urls');
+		Cache::forget('DB_Option');
+		Cache::forget('DB_AdminBlockTypes');
+		Cache::forget('DB_AdminResourceName');
+		Cache::forget('DB_AdminResource');
+		Cache::forget('DB_LocaleFrontEnable');
+		Cache::forget('DB_ResourceNavigable');
+		Cache::forget('DB_LocalesEnabled');
+		
+		if(!Cache::has($cache)){
+			$cachr = new Cachr;
+			$cachr->initCache();
+		}
+		if (Cache::get($cache) === null) {
+			$cachr = new Cachr;
+			$cachr->initCache();
+		}
+		return Cache::get($cache);
+	}
 	public function initCache()
 	{
 		// !!! DATABASE CACHE !!!
@@ -103,27 +125,5 @@ class Cachr
 		    }
 		    return $datas;
 		});
-	}
-	public static function getCache( $cache )
-	{
-		Cache::forget('DB_Nav');
-		Cache::forget('DB_Urls');
-		Cache::forget('DB_Option');
-		Cache::forget('DB_AdminBlockTypes');
-		Cache::forget('DB_AdminResourceName');
-		Cache::forget('DB_AdminResource');
-		Cache::forget('DB_LocaleFrontEnable');
-		Cache::forget('DB_ResourceNavigable');
-		Cache::forget('DB_LocalesEnabled');
-		
-		if(!Cache::has($cache)){
-			$cachr = new Cachr;
-			$cachr->initCache();
-		}
-		if (Cache::get($cache) === null) {
-			$cachr = new Cachr;
-			$cachr->initCache();
-		}
-		return Cache::get($cache);
 	}
 }

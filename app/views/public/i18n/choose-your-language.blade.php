@@ -18,5 +18,15 @@ Choose your language | @parent
 
 
 <!-- Liste des langues avec le liens dynam.ix/{locale} -->
+<div class="row">
+@foreach(Cachr::getCache('DB_LocalesEnabled') as $locale)
+	<div class="col-md-4">
+		<a href="{{URL::to($locale->id)}}" style="line-height:48px">
+			<img class="img-circle" height="48px" width="48px" src="{{$locale->flag}}"> {{$locale->name_locale}}
+		</a>
+	</div>
+@endforeach
+	<div class="clearfix"></div>
+</div>
 
 @stop

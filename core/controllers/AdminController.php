@@ -17,27 +17,58 @@ class AdminController extends BaseController {
 		$data['noAriane'] = true;
 
 		//Check if the connection is ok
-
-		//Google Analytics
+		$minutes=60;
 		try{
-			$data['ga_sessionsPerDay'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-			$data['ga_sessionsCount'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsCount();
-			$data['ga_userCount'] 				= App::make('GoogleAnalyticsAPIController')->getUserCount();
-			$data['ga_pageSeenCount'] 			= App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
-			$data['ga_pagesBySession'] 			= round( $data['ga_pageSeenCount'] / $data['ga_sessionsCount'], 2);
-			$data['ga_timeBySession'] 			= round( App::make('GoogleAnalyticsAPIController')->getTimeBySession() / $data['ga_sessionsCount'], 0).'s';
-			$data['ga_rebound'] 				= App::make('GoogleAnalyticsAPIController')->getRebound();
-			$data['ga_newOnReturningVisitor'] 	= App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();
-			$data['ga_googleAnalyticsFound'] = true;
+			$sessionsPerDay = Cache::remember('sessionsPerDay', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
+			});
+			$sessionsCount = Cache::remember('sessionsCount', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getSessionsCount();
+			});
+			$userCount = Cache::remember('userCount', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getUserCount();
+			});
+			$pageSeenCount = Cache::remember('pageSeenCount', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
+			});
+			$timeBySession = Cache::remember('timeBySession', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getTimeBySession();
+			});
+			$rebound = Cache::remember('rebound', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getRebound();
+			});
+			$newOnReturningVisitor = Cache::remember('newOnReturningVisitor', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();			
+			});
 		}catch(Exception $e){
 			Log::error('Google Analytics API not found');
 			$data['ga_googleAnalyticsFound'] = false;
 		}
+
+		$data['ga_sessionsPerDay'] 			= $sessionsPerDay;
+		$data['ga_sessionsCount'] 			= $sessionsCount;
+		$data['ga_userCount'] 				= $userCount;
+		$data['ga_pageSeenCount'] 			= $pageSeenCount;
+		$data['ga_pagesBySession'] 			= round( $pageSeenCount / $sessionsCount, 2);
+		$data['ga_timeBySession'] 			= round( $timeBySession / $sessionsCount, 0).'s';
+		$data['ga_rebound'] 				= $rebound;
+		$data['ga_newOnReturningVisitor'] 	= $newOnReturningVisitor;
+		$data['ga_googleAnalyticsFound'] = true;
+
 		$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
 			return Response::json(View::make( 'admin.index', $data )->renderSections());
 		} else {
 			return View::make('admin.index', $data );
+		}
+	}
+
+	public function tryCatch () {
+		//Google Analytics
+		try{
+		}catch(Exception $e){
+			Log::error('Google Analytics API not found');
+			$data['ga_googleAnalyticsFound'] = false;
 		}
 	}
 
@@ -348,6 +379,65 @@ class AdminController extends BaseController {
         			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
         		}
         	}
+
+        	//if no error when save
+        	if($option->save()) {
+        		Cache::forget('DB_Option'); 
+
+        		//track user
+        		parent::track('update','Option',null);  
+
+          		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
+
+        	} else {
+	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
+	        }
+	    }
+	    
+		// Show the page
+		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
+	}
+
+	/**
+	 * get All Option in base
+	 *
+	 * @return Response
+	 */
+	public function getRerouter()
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		$data['reroutes'] = Reroute::first();
+
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.reroute.index', $data )->renderSections());
+		} else {
+			return View::make('admin.reroute.index', $data);
+		}
+	}
+
+	/**
+	 * post All Option in base
+	 *
+	 * @return Response
+	 */
+	public function postRerouter($id)
+	{
+		// no problem
+		//form for all reroute bim
+
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), Config::get('validator.reroute'));
+
+        // Check if the form validates with success
+        if ($validator->passes())
+        {
+        	//Update the reroute
+        	//
 
         	//if no error when save
         	if($option->save()) {
