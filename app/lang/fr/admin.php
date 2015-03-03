@@ -75,6 +75,7 @@ return array(
 	'put_page_title'			=> 'Saisissez le titre de la page',
 	'page_proprieties'			=> 'Propriétés de la page',
 	'page_contents'			=> 'Contenu de la page',
+	'page_show'			=> 'Vue de la page',
 
 	//Block
 	'block_create'			=> 'Création de bloc',

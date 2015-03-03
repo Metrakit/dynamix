@@ -88,8 +88,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	}
 
 	//Page
-	Route::resource('page','AdminPageController',
-		array('except' => array('show')) );
+	Route::resource('page','AdminPageController');
 	//Tag
 	Route::resource('tag','AdminTagController',
 		array('except' => array('show')) );

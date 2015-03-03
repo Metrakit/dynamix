@@ -143,11 +143,34 @@ class AdminPageController extends BaseController {
 		//block responsive prorieties
 		DB::table('block_responsive')->insert($dataInsert);
 
-
         // Redirect to the blog post create page
        	return Response::json(['status' => 'success']);
 	}
 
+
+	/**
+	 * Show the resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		//User
+		$data['user'] 			= Auth::user();
+
+		//Interface
+		$data['noAriane'] 		= true;
+
+		// get the post
+		$data['page'] = Page::find($id);
+
+		if(empty($data['page'])){
+			return Redirect::back()->with('error', 'Cette page est introuvable !');
+		}
+
+		return View::make('admin.page.show', $data );
+	}
 
 	/**
 	 * Show the form for editing the specified resource.
