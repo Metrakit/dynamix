@@ -87,6 +87,11 @@ class OptionsTableSeeder extends Seeder {
             I18n::add(array('fr'=>'Créer','en'=>'create'), 'key', 'button.create');
             I18n::add(array('fr'=>'Ajouter','en'=>'add'), 'key', 'button.add');
 
+        //Reminder
+            I18n::add(array('fr'=>"Le mot de passe doit être de six caractères et correspondre à la confirmation.",'en' => ''), 'key', "reminder.password");
+            I18n::add(array('fr'=>"Nous ne trouvons pas d'utilisateur avec cette adresse e-mail.",'en' => ''), 'key', "reminder.user");
+            I18n::add(array('fr'=>"Ce reset token est invalide.",'en' => ''), 'key', "reminder.token");
+
         //Auth Constant text
             //General (User)
             I18n::add(array('fr' => 'Connexion', 'en'=>''), 'key', 'auth.connexion');

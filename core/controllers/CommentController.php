@@ -26,9 +26,9 @@ class CommentController extends BaseController {
 		$user = Auth::user();
 		if ( empty($user) ) {
 			if ( Request::ajax() ) {
-				return Response::json(array('status' => 'warning', 'message' => Lang::get('auth.you_must_be_logged')));
+				return Response::json(array('status' => 'warning', 'message' => I18n::get('auth.you_must_be_logged')));
 			} else {
-				return Redirect::to($url)->with('notice_comment', Lang::get('auth.you_must_be_logged'));
+				return Redirect::to($url)->with('notice_comment', I18n::get('auth.you_must_be_logged'));
 			}
 		}
 
@@ -47,19 +47,19 @@ class CommentController extends BaseController {
 			if ( $comment->save() ) {
 				if ( Request::ajax() ) {
 					if (Input::has('reply')) {
-						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.reply-inner', array('child' => $comment))->render(), 'message' => Lang::get('comment.store_success')));
+						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.reply-inner', array('child' => $comment))->render(), 'message' => I18n::get('comment.store_success')));
 					} else {						
-						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.comment', array('comment' => $comment))->render(), 'message' => Lang::get('comment.store_success')));
+						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.comment', array('comment' => $comment))->render(), 'message' => I18n::get('comment.store_success')));
 					}
 				} else {
-					return Redirect::to($url)->with('success', Lang::get('comment.store_success'));
+					return Redirect::to($url)->with('success', I18n::get('comment.store_success'));
 				}
 			}
 
 			if ( Request::ajax() ) {
-				return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.store_fail')));
+				return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.store_fail')));
 			} else {
-				return Redirect::to($url)->with('error', Lang::get('comment.store_fail'));
+				return Redirect::to($url)->with('error', I18n::get('comment.store_fail'));
 			}
 		}
 
@@ -92,25 +92,25 @@ class CommentController extends BaseController {
 							$comment->text = Input::get('message');
 							if ($comment->save()) {
 								//good
-								return Response::json(array('status' => 'success', 'message' => Lang::get('comment.edit_success')));
+								return Response::json(array('status' => 'success', 'message' => I18n::get('comment.edit_success')));
 							}
 							//fail
-							return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.edit_fail')));
+							return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.edit_fail')));
 						}
 						//not authorised
-						App::abort(403, Lang::get('auth.you_are_not_authorized'));
+						App::abort(403, I18n::get('auth.you_are_not_authorized'));
 					}
 					//not found
-					return Response::json(array('status' => 'warning', 'message' => Lang::get('comment.not_found')));
+					return Response::json(array('status' => 'warning', 'message' => I18n::get('comment.not_found')));
 				}
 				//need to be logged
-				return Response::json(array('status' => 'warning', 'message' => Lang::get('auth.you_must_be_logged')));
+				return Response::json(array('status' => 'warning', 'message' => I18n::get('auth.you_must_be_logged')));
 			}
 			//validator fail
 			return Response::json(array('status' => 'danger', 'message' => $validator->messages()->all()));
 		}
 
-		App::abort(405, Lang::get('comment.update_405'));
+		App::abort(405, I18n::get('comment.update_405'));
 	}
 
 
@@ -134,17 +134,17 @@ class CommentController extends BaseController {
 						foreach ($child->votes as $vote) {
 							if (!$vote->delete()) {
 								if (Request::ajax()) {
-									return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.destroy_child_vote_fail')));
+									return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.destroy_child_vote_fail')));
 								} else {
-									return Redirect::back()->with('error_comment', Lang::get('comment.destroy_child_vote_fail'));
+									return Redirect::back()->with('error_comment', I18n::get('comment.destroy_child_vote_fail'));
 								}
 							}
 						}
 						if (!$child->delete()) {
 							if (Request::ajax()) {
-								return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.destroy_child_fail')));
+								return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.destroy_child_fail')));
 							} else {
-								return Redirect::back()->with('error_comment', Lang::get('comment.destroy_child_fail'));
+								return Redirect::back()->with('error_comment', I18n::get('comment.destroy_child_fail'));
 							}
 						}
 					}
@@ -153,9 +153,9 @@ class CommentController extends BaseController {
 					foreach ($comment->votes as $vote) {
 						if (!$vote->delete()) {
 							if (Request::ajax()) {
-								return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.destroy_comment_vote_fail')));
+								return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.destroy_comment_vote_fail')));
 							} else {
-								return Redirect::back()->with('error_comment', Lang::get('comment.destroy_comment_vote_fail'));
+								return Redirect::back()->with('error_comment', I18n::get('comment.destroy_comment_vote_fail'));
 							}
 						}
 					}
@@ -163,28 +163,28 @@ class CommentController extends BaseController {
 					//Remove comment
 					if ($comment->delete()) {
 						if (Request::ajax()) {
-							return Response::json(array('status' => 'success', 'message' => Lang::get('comment.destroy_success')));
+							return Response::json(array('status' => 'success', 'message' => I18n::get('comment.destroy_success')));
 						} else {
-							return Redirect::back()->with('success_comment', Lang::get('comment.destroy_success'));
+							return Redirect::back()->with('success_comment', I18n::get('comment.destroy_success'));
 						}
 					}
 					if (Request::ajax()) {
-						return Response::json(array('status' => 'warning', 'message' => Lang::get('comment.destroy_fail')));
+						return Response::json(array('status' => 'warning', 'message' => I18n::get('comment.destroy_fail')));
 					} else {
-						return Redirect::back()->with('error_comment', Lang::get('comment.destroy_fail'));
+						return Redirect::back()->with('error_comment', I18n::get('comment.destroy_fail'));
 					}
 				}
 				if (Request::ajax()) {
-					return Response::json(array('status' => 'warning', 'message' => Lang::get('comment.destroy_denied')));
+					return Response::json(array('status' => 'warning', 'message' => I18n::get('comment.destroy_denied')));
 				} else {
-					return Redirect::back()->with('error_comment', Lang::get('comment.destroy_denied'));
+					return Redirect::back()->with('error_comment', I18n::get('comment.destroy_denied'));
 				}
 			}
 		}
 		if (Request::ajax()) {
-			return Response::json(array('status' => 'warning', 'message' => Lang::get('auth.you_must_be_logged')));
+			return Response::json(array('status' => 'warning', 'message' => I18n::get('auth.you_must_be_logged')));
 		} else {
-			return Redirect::back()->with('notice_comment', Lang::get('auth.you_must_be_logged'));
+			return Redirect::back()->with('notice_comment', I18n::get('auth.you_must_be_logged'));
 		}
 	}
 
@@ -215,18 +215,18 @@ class CommentController extends BaseController {
 						if ($vote->is_positive == ($bool=='1'?true:false)) {//if vote have same bool = deletion of vote
 							if ($vote->delete()) {
 								if (Request::ajax()) {
-									return Response::json(array('status' => 'success', 'action' => 'destroy', 'message' => Lang::get('comment.vote_canceled_success')));
+									return Response::json(array('status' => 'success', 'action' => 'destroy', 'message' => I18n::get('comment.vote_canceled_success')));
 								} else {
-									return Redirect::back()->with('success_comment', Lang::get('comment.vote_canceled_success'));
+									return Redirect::back()->with('success_comment', I18n::get('comment.vote_canceled_success'));
 								}
 							}
 						} else {//reverse vote
 							$vote->is_positive = $bool;
 							if ($vote->save()) {
 								if (Request::ajax()) {
-									return Response::json(array('status' => 'success', 'action' => 'reverse', 'message' => Lang::get('comment.vote_reverse_success')));
+									return Response::json(array('status' => 'success', 'action' => 'reverse', 'message' => I18n::get('comment.vote_reverse_success')));
 								} else {
-									return Redirect::back()->with('success_comment', Lang::get('comment.vote_reverse_success'));
+									return Redirect::back()->with('success_comment', I18n::get('comment.vote_reverse_success'));
 								}
 							}
 						}
@@ -237,31 +237,31 @@ class CommentController extends BaseController {
 						$vote->comment_id = $id;
 						if ($vote->save()){
 							if (Request::ajax()) {
-								return Response::json(array('status' => 'success', 'action' => 'create', 'message' => Lang::get('comment.vote_success')));
+								return Response::json(array('status' => 'success', 'action' => 'create', 'message' => I18n::get('comment.vote_success')));
 							} else {
-								return Redirect::back()->with('success_comment', Lang::get('comment.vote_success'));
+								return Redirect::back()->with('success_comment', I18n::get('comment.vote_success'));
 							}
 						}
 					}
 					if (Request::ajax()) {
-						return Response::json(array('status' => 'danger', 'message' => Lang::get('comment.vote_fail')));
+						return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.vote_fail')));
 					} else {
-						return Redirect::back()->with('error_comment', Lang::get('comment.vote_fail'));
+						return Redirect::back()->with('error_comment', I18n::get('comment.vote_fail'));
 					}
 				}
 				//not find
 				if (Request::ajax()) {
-					return Response::json(array('status' => 'warning', 'message' => Lang::get('comment.not_find')));
+					return Response::json(array('status' => 'warning', 'message' => I18n::get('comment.not_find')));
 				} else {
-					return Redirect::back()->with('error_comment', Lang::get('comment.not_find'));
+					return Redirect::back()->with('error_comment', I18n::get('comment.not_find'));
 				}
 			}
 		}
 		//denied
 		if (Request::ajax()) {
-			return Response::json(array('status' => 'warning', 'message' => Lang::get('auth.you_must_be_logged')));
+			return Response::json(array('status' => 'warning', 'message' => I18n::get('auth.you_must_be_logged')));
 		} else {
-			return Redirect::back()->with('notice_comment', Lang::get('auth.you_must_be_logged'));
+			return Redirect::back()->with('notice_comment', I18n::get('auth.you_must_be_logged'));
 		}
 	}
 

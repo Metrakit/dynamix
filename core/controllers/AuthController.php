@@ -60,10 +60,10 @@ class AuthController extends BaseController {
 				$user = AuthUser::where('email','=', Input::get( 'email' ) )->first();
 
 				if ( empty($user) || !isset($user) ) {
-					return Redirect::to('/auth/login')->with('error', Lang::get('auth.unknow_email'))->withInput(Input::except('password'));
+					return Redirect::to('/auth/login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
 				}
 
-				return Redirect::to('/auth/login')->with('error', Lang::get('auth.incorrect_password'))->withInput(Input::except('password'));
+				return Redirect::to('/auth/login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
 			}
 
 			$this->user = $user;
@@ -102,9 +102,9 @@ class AuthController extends BaseController {
 				}
 			}
 
-			App::abort(403, Lang::get('auth.you_are_not_authorized'));
+			App::abort(403, I18n::get('auth.you_are_not_authorized'));
 		} else {
-			return Redirect::to('auth/login')->with('notice', Lang::get('auth.you_must_be_logged'));
+			return Redirect::to('auth/login')->with('notice', I18n::get('auth.you_must_be_logged'));
 		}
 	}
 

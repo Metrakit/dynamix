@@ -161,13 +161,13 @@ class I18n extends Eloquent{
         
         $locale = Translation::where('i18n_id', $i18n->id)->where('locale_id', App::getLocale())->first();
         if (!$locale) {
-            return false;
+            return $key;
             Log::error('$locale not found !');
         }
 
         // Try to delete it if not foreign keys are founded
         try {
-            return $locale->text;
+            return ($locale->text==''?$key:$locale->text);
         } catch (Exception $e) {
             Log::error("You cannot get this i18n: " . $e->getMessage(), 1);        
         }

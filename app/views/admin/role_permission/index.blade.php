@@ -43,14 +43,18 @@ masterAdminClass.switchCheckboxInitializr();
             <form class="form-horizontal form-role_permission" method="POST" action="{{ URL::to('admin/permission') }}" accept-charset="UTF-8" autocomplete="off">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="role_id" value="{{ $role->id }}">
-                    @foreach( Cachr::getCache('DB_AdminResource') as $resource )                  
-                    <label class="label-list">
-                        <span class="text-capitalize text-left role-label">
-                            <span class="{{$resource->icon}}"></span> {{{ Lang::get('admin.'.$resource->name) }}}
-                        </span>
-                        <input name="{{$resource->id}}" value="{{$resource->id}}" class="ios-switch" type="checkbox"{{( $role->hasResource($resource->id) ? ' checked="checked"' : '' )}}>
-                        <div class="clearfix"></div>
-                    </label>
+                    @foreach( Cachr::getCache('DB_AdminResource') as $resource )
+                    <div class="list-item">              
+                        <div class="switch">
+                            <input id="{{$role->name}}switch{{$resource->id}}" name="{{$resource->id}}" value="{{$resource->id}}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox"{{( $role->hasResource($resource->id) ? ' checked="checked"' : '' )}}>
+                            <label for="{{$role->name}}switch{{$resource->id}}" class="label-list">
+                            </label>
+                        </div>
+                            <!-- <span class="text-capitalize text-left role-label">
+                                <span class="{{$resource->icon}}"></span> {{{ Lang::get('admin.'.$resource->name) }}}
+                            </span>
+                            <div class="clearfix"></div> -->
+                    </div>
                     @endforeach
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('button.update') }}}</button>

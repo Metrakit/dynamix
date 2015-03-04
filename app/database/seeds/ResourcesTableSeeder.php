@@ -42,7 +42,7 @@ array(
 array(
     'name' => 'rerouter',
     'icon' => 'glyphicon glyphicon-refresh',
-    'model' => 'Rerouter',
+    'model' => 'Reroute',
     'in_admin_ui'   => true,
     'navigable'     => false,
     'group' => 4

@@ -89,14 +89,17 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 	//Page
 	Route::resource('page','AdminPageController');
+	
 	//Tag
 	Route::resource('tag','AdminTagController',
 		array('except' => array('show')) );
+	
 	//Navigation
 	Route::resource('navigation','AdminNavigationController',
 		array('except' => array('show')) );
 	Route::post('navigation/{id}/move','AdminNavigationController@move');
 	Route::get( 'navigation/create-choose','AdminNavigationController@createChoose');
+	
 	//Role / Permission
 		Route::get('/role_permission', array('before' => 'auth.permission_role', 'uses' => 'AdminController@getRolePermission'));
 		//Role RestFull
@@ -104,14 +107,22 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 			array('except' => array('index','show')) );
 		//Permission update
 		Route::post('/permission', 'AdminController@postPermission');
+		
 	//Log
 		Route::get('/log', array('before' => 'auth.permission_log', 'uses' => 'AdminController@getLog'));
+	
 	//Option
 		Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
 		Route::post('/option', 'AdminController@postOption');
+
+	//Reroute
+		Route::get('/reroute', array('uses' => 'AdminController@getReroute'));
+		Route::post('/reroute', 'AdminController@postReroute');
+
 	//I18nConstant
 		Route::get('/i18n-constant', 'AdminController@getI18nConstant');
 		Route::post('/i18n-constant', 'AdminController@postI18nConstant');
+	
 	//Languages
 		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
 		Route::post('/languages', 'AdminController@postLanguages');
