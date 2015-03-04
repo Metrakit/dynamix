@@ -5,64 +5,36 @@ class OptionsTableSeeder extends Seeder {
     public function run()
     {
         DB::table('options')->delete();
-
-        $i18n_site_name = new I18N;
-        $i18n_site_name->i18n_type_id = I18nType::where('name','=','title')->first()->id;
-        $i18n_site_name->save();
-        $i18n_site_name->translate('fr','Dynamix');
-        $i18n_site_name->translate('en','Dynamix');
-
-        //$i18n_site_description       = I18N::create(array())->id;
-            //Translation::create(array('i18n_id' => $i18n_site_description, 'locale_id' => 'fr', 'text' => 'An awesome CMS for developer'));
-            //Translation::create(array('i18n_id' => $i18n_site_description, 'locale_id' => 'en', 'text' => 'An awesome CMS for developer'));
-
-        $i18n_blog_charset = new I18N;
-        $i18n_blog_charset->i18n_type_id = I18nType::where('name','=','title')->first()->id;
-        $i18n_blog_charset->save();
-        $i18n_blog_charset->translate('fr','UTF-8');
-        $i18n_blog_charset->translate('en','UTF-8');
-
-        $i18n_timezone = new I18N;
-        $i18n_timezone->i18n_type_id = I18nType::where('name','=','title')->first()->id;
-        $i18n_timezone->save();
-        $i18n_timezone->translate('fr','Europe/Paris');
-        $i18n_timezone->translate('en','Europe/Paris');
-
-        $i18n_date_format = new I18N;
-        $i18n_date_format->i18n_type_id = I18nType::where('name','=','title')->first()->id;
-        $i18n_date_format->save();
-        $i18n_date_format->translate('fr','j F Y');
-        $i18n_date_format->translate('en','j F Y');
-
-        $i18n_time_format = new I18N;
-        $i18n_time_format->i18n_type_id = I18nType::where('name','=','title')->first()->id;
-        $i18n_time_format->save();
-        $i18n_time_format->translate('fr','G \h i \m\i\n');
-        $i18n_time_format->translate('en','G \h i \m\i\n');
-
-
-
-
-
+        
+        $i18n_site_name = I18n::add(array('fr' => 'Dynamix', 'en'=>'Dynamix'), 'title');
+        $i18n_blog_charset = I18n::add(array('fr' => 'UTF-8', 'en'=>'UTF-8'), 'title');
+        $i18n_timezone = I18n::add(array('fr' => 'Europe/Paris', 'en'=>'Europe/Paris'), 'title');
+        $i18n_date_format = I18n::add(array('fr' => 'j F Y', 'en'=>'j F Y'), 'title');
+        $i18n_time_format = I18n::add(array('fr' => 'G \h i \m\i\n', 'en'=>'G \h i \m\i\n'), 'title');
+        $i18n_social_title = I18n::add(array('fr' => '', 'en'=>''), 'title');
+        $i18n_social_description = I18n::add(array('fr' => '', 'en'=>''), 'title');
 
         DB::table('options')->insert( array(
             array(
                 'site_url'              => 'http://dynam.ix',
-                'i18n_site_name'        => $i18n_site_name->id,
-                //'i18n_site_description' => $i18n_site_description,
-
+                'i18n_site_name'        => $i18n_site_name,              
                 'admin_email'           => 'd.lepaux@gmail.com',
+
+                'cover_path'             => '',
+                'twitter_id'            => '',
+                'i18n_social_title'     => $i18n_social_title,
+                'i18n_social_description'=> $i18n_social_description,
 
                 'mailserver_url'        => '',
                 'mailserver_login'      => '',
                 'mailserver_pass'       => '',
                 'mailserver_port'       => '',
 
-                'i18n_blog_charset'     => $i18n_blog_charset->id,
+                'i18n_blog_charset'     => $i18n_blog_charset,
 
-                'i18n_timezone'         => $i18n_timezone->id,
-                'i18n_date_format'      => $i18n_date_format->id,
-                'i18n_time_format'      => $i18n_time_format->id,
+                'i18n_timezone'         => $i18n_timezone,
+                'i18n_date_format'      => $i18n_date_format,
+                'i18n_time_format'      => $i18n_time_format,
                 
                 'disqus_config'         => '',
                 'analytics'             => '',

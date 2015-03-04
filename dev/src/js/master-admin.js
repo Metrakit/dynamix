@@ -207,28 +207,6 @@ var MasterAdmin = function (){
     });
   }
 
-  this.switchCheckboxInitializr = function () {
-    // JS is only used to add the <div>s
-    var switches = document.querySelectorAll('input[type="checkbox"].ios-switch');
-
-    for (var i=0, sw; sw = switches[i++]; ) {
-      var div = document.createElement('div');
-      div.className = 'switch';
-      sw.parentNode.insertBefore(div, sw.nextSibling);
-    }
-  }
-
-  this.switchRadioInitializr = function () {
-    // JS is only used to add the <div>s
-    var switches = document.querySelectorAll('input[type="radio"].ios-switch');
-
-    for (var i=0, sw; sw = switches[i++]; ) {
-      var div = document.createElement('div');
-      div.className = 'switch';
-      sw.parentNode.insertBefore(div, sw.nextSibling);
-    }
-  }
-
   this.watchMenuObjects = function () {
     var width = 0,
         o = 0,

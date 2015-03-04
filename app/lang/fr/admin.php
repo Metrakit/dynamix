@@ -206,7 +206,22 @@ return array(
 		'option_site_name_update_error'		=> 'Une erreur est survenu lors de la mise à jour du nom du site...',
 		'option_success'			=> 'Les réglages ont été enregistré avec succès !',
 		'option_error'			=> 'Ouuups !!! Les réglages n\'ont pas été enregistré !',
+		'option_image'		=> 'Cover du site',
+		'option_image_help'		=> 'Format imposé : 600px * 315px',
 
+		'option_social_title'		=> 'Titre partage social',
+		'option_social_title_help'		=> 'Ce texte sera utilisé comme titrelors des partages sur les réseaux sociaux.',
+
+		'option_social_description'		=> 'Description partage sociaux',
+		'option_social_description_help'		=> 'Ce texte sera utilisé comme description lors des partages sur les réseaux sociaux.',
+
+//1200 x 630
+
+
+
+	//I18n Constant
+	'rerouter_url_referer'		=> '',
+	'rerouter_url_redirect'		=> '',
 
 	//I18n Constant
 	'i18n-constant' => 'Expression récurrente',

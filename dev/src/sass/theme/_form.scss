@@ -261,6 +261,20 @@ label.label-list:last-of-type {
 /* ============================================================
   COMMON
 ============================================================ */
+.switch {
+	display:block;
+	position:relative;
+	.switch-button {
+		display:block;
+		position:relative;
+		float:right;
+	}
+	.switch-label {
+		display:block;
+		position:relative;
+		float:left;
+	}
+}
 .cmn-toggle {
   position: absolute;
   margin-left: -9999px;
@@ -281,21 +295,23 @@ label.label-list:last-of-type {
  /* ============================================================
   SWITCH 2 - ROUND FLAT
 ============================================================ */
+$switch_width: 36px;
+$switch_anim_duration: .2s;
 
 input.cmn-toggle-round-flat + label {
   padding: 2px;
-  width: 120px;
-  height: 60px;
-  background-color: #dddddd;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  -ms-border-radius: 60px;
-  -o-border-radius: 60px;
-  border-radius: 60px;
-  -webkit-transition: background 0.4s;
-  -moz-transition: background 0.4s;
-  -o-transition: background 0.4s;
-  transition: background 0.4s;
+  width: $switch_width;
+  height: $switch_width*.5;
+  background-color: #bbb;
+  -webkit-border-radius: $switch_width*.5;
+  -moz-border-radius: $switch_width*.5;
+  -ms-border-radius: $switch_width*.5;
+  -o-border-radius: $switch_width*.5;
+  border-radius: $switch_width*.5;
+  -webkit-transition: background $switch_anim_duration;
+  -moz-transition: background $switch_anim_duration;
+  -o-transition: background $switch_anim_duration;
+  transition: background $switch_anim_duration;
 }
 input.cmn-toggle-round-flat + label:before, input.cmn-toggle-round-flat + label:after {
   display: block;
@@ -308,36 +324,36 @@ input.cmn-toggle-round-flat + label:before {
   bottom: 2px;
   right: 2px;
   background-color: #fff;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  -ms-border-radius: 60px;
-  -o-border-radius: 60px;
-  border-radius: 60px;
-  -webkit-transition: background 0.4s;
-  -moz-transition: background 0.4s;
-  -o-transition: background 0.4s;
-  transition: background 0.4s;
+  -webkit-border-radius: $switch_width*.5;
+  -moz-border-radius: $switch_width*.5;
+  -ms-border-radius: $switch_width*.5;
+  -o-border-radius: $switch_width*.5;
+  border-radius: $switch_width*.5;
+  -webkit-transition: background $switch_anim_duration;
+  -moz-transition: background $switch_anim_duration;
+  -o-transition: background $switch_anim_duration;
+  transition: background $switch_anim_duration;
 }
 input.cmn-toggle-round-flat + label:after {
   top: 4px;
   left: 4px;
   bottom: 4px;
-  width: 52px;
-  background-color: #dddddd;
-  -webkit-border-radius: 52px;
-  -moz-border-radius: 52px;
-  -ms-border-radius: 52px;
-  -o-border-radius: 52px;
-  border-radius: 52px;
-  -webkit-transition: margin 0.4s, background 0.4s;
-  -moz-transition: margin 0.4s, background 0.4s;
-  -o-transition: margin 0.4s, background 0.4s;
-  transition: margin 0.4s, background 0.4s;
+  width:  $switch_width*.5 - 8px;
+  background-color: #bbb;
+  -webkit-border-radius: $switch_width*.5 - 8px;
+  -moz-border-radius: $switch_width*.5 - 8px;
+  -ms-border-radius: $switch_width*.5 - 8px;
+  -o-border-radius: $switch_width*.5 - 8px;
+  border-radius: $switch_width*.5 - 8px;
+  -webkit-transition: margin $switch_anim_duration, background $switch_anim_duration;
+  -moz-transition: margin $switch_anim_duration, background $switch_anim_duration;
+  -o-transition: margin $switch_anim_duration, background $switch_anim_duration;
+  transition: margin $switch_anim_duration, background $switch_anim_duration;
 }
 input.cmn-toggle-round-flat:checked + label {
-  background-color: #8ce196;
+  background-color: #3071a9;
 }
 input.cmn-toggle-round-flat:checked + label:after {
-  margin-left: 60px;
-  background-color: #8ce196;
+  margin-left: $switch_width*.5;
+  background-color: #3071a9;
 }

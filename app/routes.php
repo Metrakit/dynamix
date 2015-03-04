@@ -116,8 +116,8 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::post('/option', 'AdminController@postOption');
 
 	//Reroute
-		Route::get('/reroute', array('uses' => 'AdminController@getReroute'));
-		Route::post('/reroute', 'AdminController@postReroute');
+		Route::get('/rerouter', array('uses' => 'AdminController@getRerouter'));
+		Route::post('/rerouter', 'AdminController@postReroute');
 
 	//I18nConstant
 		Route::get('/i18n-constant', 'AdminController@getI18nConstant');

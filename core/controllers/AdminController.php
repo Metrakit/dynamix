@@ -358,7 +358,27 @@ class AdminController extends BaseController {
 			}
 		}
 
-		$rules = array_merge( $site_name_rules, Config::get('validator.admin.option') );
+		//Making adaptive rules for social_title
+		$social_title_rules = array();
+		$social_title_locales = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'social_title_') !== false ) {
+				$social_title_rules[$k] = Config::get('validator.admin.option_social_title');
+				$social_title_locales[] = substr( $k, strlen('social_title_'), (strlen($k) - strpos($k, 'social_title_')));
+			}
+		}
+
+		//Making adaptive rules for social_description
+		$social_description_rules = array();
+		$social_description_locales = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'social_description_') !== false ) {
+				$social_description_rules[$k] = Config::get('validator.admin.option_social_description');
+				$social_description_locales[] = substr( $k, strlen('social_description_'), (strlen($k) - strpos($k, 'social_description_')));
+			}
+		}
+
+		$rules = array_merge( $site_name_rules, $social_title_locales, $social_description_locales, Config::get('validator.admin.option') );
 
 		// Validate the inputs
         $validator = Validator::make(Input::all(), $rules);
@@ -368,8 +388,10 @@ class AdminController extends BaseController {
         if ($validator->passes())
         {
         	$option = Option::first();
+        	//return var_dump($option);
 
         	$option->site_url		= Input::get('site_url');
+        	//$option->cover_path		= Input::get('cover_path');
         	$option->admin_email	= Input::get('admin_email');
         	$option->analytics		= Input::get('analytics');
         	
@@ -379,6 +401,19 @@ class AdminController extends BaseController {
         			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
         		}
         	}
+			//Update translations
+        	foreach ( $social_title_locales as $locale ) {
+        		if ( !I18n::find($option->i18n_social_title)->updateText($locale, Input::get('social_title_'.$locale)) ) {
+        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_title_update_error'));
+        		}
+        	}
+			//Update translations
+        	foreach ( $social_description_locales as $locale ) {
+        		if ( !I18n::find($option->i18n_social_description)->updateText($locale, Input::get('social_description_'.$locale)) ) {
+        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_description_update_error'));
+        		}
+        	}
+        	//
 
         	//if no error when save
         	if($option->save()) {
@@ -388,7 +423,6 @@ class AdminController extends BaseController {
         		parent::track('update','Option',null);  
 
           		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
-
         	} else {
 	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
 	        }
@@ -411,12 +445,12 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		$data['reroutes'] = Reroute::first();
+		$data['reroutes'] = Rerouter::all();
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.reroute.index', $data )->renderSections());
+			return Response::json(View::make( 'admin.rerouter.index', $data )->renderSections());
 		} else {
-			return View::make('admin.reroute.index', $data);
+			return View::make('admin.rerouter.index', $data);
 		}
 	}
 
@@ -446,15 +480,15 @@ class AdminController extends BaseController {
         		//track user
         		parent::track('update','Option',null);  
 
-          		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
+          		return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.option_success') );
 
         	} else {
-	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
+	        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.option_error') );
 	        }
 	    }
 	    
 		// Show the page
-		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
+		return Redirect::to('/admin/rerouter')->withInput()->withErrors($validator);
 	}
 
 

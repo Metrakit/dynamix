@@ -6,10 +6,6 @@
 @parent
 @stop
 
-@section('script')
-masterAdminClass.switchRadioInitializr();
-@stop
-
 @section('page-header')
     <div class="row">
         <h1 class="page-header">{{{ Lang::get('admin.auth_edit_profil') }}}</h1>

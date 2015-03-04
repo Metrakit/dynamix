@@ -28,6 +28,19 @@
         </div>
         <!-- ./ site_url -->
 
+        <div class="form-group {{{ $errors->has('cover_path') ? 'has-error' : '' }}}">
+            <label class="col-md-2 control-label" for="cover_path">{{{Lang::get('admin.option_image')}}}</label>
+            <div class="col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', (isset($option) ? $option->cover_path : '')) }}}" />
+                    <a class="input-group-addon btn-explore iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type=1&amp;field_id=cover_path&amp;akey='.Config::get('app.key')) }}"><span>Explorer</span></a>
+                </div>
+                {{ $errors->first('cover_path', '<div class="alert alert-danger">:message</div>') }}
+                <p class="help-block">{{{Lang::get('admin.option_image_help')}}}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
         <?php
             $data_i18n = array();
             $data_i18n['field_name'] = 'site_name';
@@ -35,6 +48,28 @@
             if(isset($option)){
                 $data_i18n['object'] = $option;
                 $data_i18n['method_locale'] = 'site_name_locale';
+            } 
+        ?>
+        @include('admin.i18n.input_text_4form', $data_i18n)
+
+        <?php
+            $data_i18n = array();
+            $data_i18n['field_name'] = 'social_title';
+            $data_i18n['lang_name'] = 'option_social_title';
+            if(isset($option)){
+                $data_i18n['object'] = $option;
+                $data_i18n['method_locale'] = 'social_title_locale';
+            } 
+        ?>
+        @include('admin.i18n.input_text_4form', $data_i18n)
+
+        <?php
+            $data_i18n = array();
+            $data_i18n['field_name'] = 'social_description';
+            $data_i18n['lang_name'] = 'option_social_description';
+            if(isset($option)){
+                $data_i18n['object'] = $option;
+                $data_i18n['method_locale'] = 'social_description_locale';
             } 
         ?>
         @include('admin.i18n.input_text_4form', $data_i18n)
@@ -74,4 +109,14 @@
 
 </form>
 </div>
+@stop
+
+
+@section('scriptOnReady')
+$('.iframe-filemanager').fancybox({ 
+    'width'     : 900,
+    'height'    : 600,
+    'type'      : 'iframe',
+    'autoScale' : false
+    });
 @stop

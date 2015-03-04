@@ -1,10 +1,12 @@
 @foreach( $langs as $lang )
-	<label class="label-list">
-		<span class="lang-label">
-		    <img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/>
-		    {{$lang['name_locale']}} ({{$lang['name_en']}})
-		</span>
-		<input type="checkbox" name="{{$lang['id']}}" value="{{$lang['id']}}" class="ios-switch" {{( $lang['enable'] == 1 ? ' checked="checked"' : '' )}}>
+	<div class="switch">
+        <div class="text-capitalize switch-label">
+            <img height="19px" src="{{$lang['flag']}}" alt="{{$lang['id']}}"/>{{$lang['name_locale']}} ({{$lang['name_en']}})
+        </div>
+        <div class="switch-button">
+			<input type="checkbox" id="{{$lang['id']}}switch" name="{{$lang['id']}}" value="{{$lang['id']}}" class="cmn-toggle cmn-toggle-round-flat" {{( $lang['enable'] == 1 ? ' checked="checked"' : '' )}}>
+			<label for="{{$lang['id']}}switch" class="label-list"></label>
+        </div>
 		<div class="clearfix"></div>
-	</label>
+	</div>
 @endforeach

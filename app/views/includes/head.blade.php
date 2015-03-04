@@ -13,17 +13,17 @@
 
     <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Vous aussi, Initiez-vous Gratuitement aux RH avec le MOOC EFC !">
-    <meta property="og:description" content="Vous aussi, Initiez-vous Gratuitement en #RH &amp; #Management ! Participez au #MOOC certifiant : Inscrivez-vous sur www.efcmooc.com avec @EFCFormation  !">
+    <meta property="og:title" content="{{ Cachr::getCache('DB_Option')->i18n_social_title }}">
+    <meta property="og:description" content="{{ Cachr::getCache('DB_Option')->i18n_social_description }}">
     <meta property="og:url" content="{{Request::url()}}">
-    <meta property="og:site_name" content="École Française de Comptabilité">
-    <meta property="og:image" content="http://efcmooc.com/img/Mooc-EFC-Ressources-Humaines.jpg">
-            <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="{{ Cachr::getCache('DB_Option')->site_name() }}">
+    <meta property="og:image" content="{{ Cachr::getCache('DB_Option')->cover_path }}">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image:src" content="{{Request::url()}}">
-    <meta name="twitter:site" content="@EFCFormation">
-    <meta name="twitter:url" content="http://efcmooc.com/img/Mooc-EFC-Ressources-Humaines.jpg">
-    <meta name="twitter:description" content="Initiez-vous Gratuitement en #RH &amp; #Management! Participez au #MOOC certifiant: Inscrivez-vous sur http://www.efcmooc.com avec @EFCFormation">
-    <meta name="twitter:title" content="Vous aussi, Initiez-vous Gratuitement aux RH avec le MOOC EFC">
+    <meta name="twitter:site" content="{{ Cachr::getCache('DB_Option')->twitter_id }}">
+    <meta name="twitter:url" content="{{ Cachr::getCache('DB_Option')->cover_path }}">
+    <meta name="twitter:description" content="{{ Cachr::getCache('DB_Option')->i18n_social_description }}">
+    <meta name="twitter:title" content="{{ Cachr::getCache('DB_Option')->i18n_social_title }}">
 
     <link rel="canonical" href="{{Request::url()}}">
 

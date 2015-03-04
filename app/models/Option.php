@@ -50,5 +50,25 @@ class Option extends Eloquent
 		return $this->translate( $this->i18n_site_name );
 	}
 
+	public function social_title_locale( $locale_id )
+	{
+		return $this->translateLocale( $this->i18n_social_title, $locale_id );
+	}
+
+	public function social_title()
+	{
+		return $this->translate( $this->i18n_social_title );
+	}
+
+	public function social_description_locale( $locale_id )
+	{
+		return $this->translateLocale( $this->i18n_social_description, $locale_id );
+	}
+
+	public function social_description()
+	{
+		return $this->translate( $this->i18n_social_description );
+	}
+
 
 }

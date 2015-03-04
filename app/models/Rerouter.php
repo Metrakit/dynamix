@@ -1,6 +1,6 @@
 <?php
 
-class Reroute extends Eloquent
+class Rerouter extends Eloquent
 {
 	/**
 	 * The database table used by the model.
