@@ -411,7 +411,7 @@ module.exports = function(grunt) {
 	// Tâches personnalisées pour le développement
 	grunt.registerTask('dev', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
 	
-	grunt.registerTask('prepod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'hash', 'copy']);
+	grunt.registerTask('prepod', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy']);
 
 	// Tâches personnalisées pour la mise en prod
 	grunt.registerTask('prod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy']);
