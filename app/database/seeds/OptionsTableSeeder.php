@@ -20,7 +20,7 @@ class OptionsTableSeeder extends Seeder {
                 'i18n_site_name'        => $i18n_site_name,              
                 'admin_email'           => 'd.lepaux@gmail.com',
 
-                'cover_path'             => '',
+                'cover_path'             => 'http%3A%2F%2Fdynam.ix%2Fuploads%2Fpictures%2Falbum%2520cute%2520kitten%2Fcute-kitten-1.jpg',
                 'twitter_id'            => '',
                 'i18n_social_title'     => $i18n_social_title,
                 'i18n_social_description'=> $i18n_social_description,

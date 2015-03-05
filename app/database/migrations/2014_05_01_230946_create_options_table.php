@@ -16,6 +16,7 @@ class CreateOptionsTable extends Migration {
 		Schema::create('options', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
 
             //General
 			$table->string('site_url');

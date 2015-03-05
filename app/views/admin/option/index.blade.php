@@ -32,7 +32,7 @@
             <label class="col-md-2 control-label" for="cover_path">{{{Lang::get('admin.option_image')}}}</label>
             <div class="col-md-10 col-lg-8">
                 <div class="input-group">
-                    <input class="form-control" type="text" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', (isset($option) ? $option->cover_path : '')) }}}" />
+                    <input class="form-control" type="url" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', (isset($option) ? $option->cover_path : '')) }}}" />
                     <a class="input-group-addon btn-explore iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type=1&amp;field_id=cover_path&amp;akey='.Config::get('app.key')) }}"><span>Explorer</span></a>
                 </div>
                 {{ $errors->first('cover_path', '<div class="alert alert-danger">:message</div>') }}

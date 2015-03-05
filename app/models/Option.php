@@ -6,7 +6,9 @@ class Option extends Eloquent
 	 * Parameters
 	 */
 	protected $table = 'options';
+	protected $primaryKey = "id";
 	public static $langNav = 'admin.nav_option';
+	public $timestamps = false;
 
 
 	/**
