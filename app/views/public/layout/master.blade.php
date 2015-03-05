@@ -67,6 +67,7 @@
                 @endif
                 </div>
                 <div class="row">
+                    @yield('page-header')
                     @yield('content')
                 </div>
 

@@ -8,6 +8,12 @@ Choose your language | @parent
 @section('meta_description')
 @stop
 
+@section('page-header')
+    <div class="row">
+        <h1 class="page-header">Choose your language</h1>
+    </div>
+@stop
+
 @section('ariane')
 @parent
 &nbsp;<a href="{{ URL::to( 'choose-your-language' ) }}">Choose your language</a>
