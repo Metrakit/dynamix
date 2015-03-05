@@ -388,10 +388,10 @@ class AdminController extends BaseController {
         if ($validator->passes())
         {
         	$option = Option::first();
-        	//return var_dump($option);
+        	//return var_dump(Input::get('cover_path'));
 
         	$option->site_url		= Input::get('site_url');
-        	//$option->cover_path		= Input::get('cover_path');
+        	$option->cover_path		= Input::get('cover_path');
         	$option->admin_email	= Input::get('admin_email');
         	$option->analytics		= Input::get('analytics');
         	
