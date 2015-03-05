@@ -41,7 +41,7 @@ array(
     ),
 array(
     'name' => 'rerouter',
-    'icon' => 'glyphicon glyphicon-refresh',
+    'icon' => 'glyphicon glyphicon-share-alt',
     'model' => 'Rerouter',
     'in_admin_ui'   => true,
     'navigable'     => false,
