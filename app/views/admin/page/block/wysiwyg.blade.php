@@ -1,4 +1,4 @@
-<textarea class="input-block-level tinymce-wysiwyg" name="wysiwyg_{{isset($index)?$index:''}}" value="" rows="5">{{{ Input::old('content'.(isset($index)?$index:''), null) }}}</textarea>
+<textarea class="input-block-level tinymce-wysiwyg" name="i18n_content{{$locale_id}}" value="" rows="5">{{{ Input::old('i18n_content'.$locale_id, $content) }}}</textarea>
 
 @section('scriptOnReady')
   tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";

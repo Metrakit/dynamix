@@ -70,7 +70,7 @@ class Block extends Eloquent{
      * Add a new block
      *
      */
-    public static function add($modelId, $model, $typeId = null, $pageId = null, $order = null)
+    public static function add($modelId, $model, $typeId = null, $pageId = null, $order = null, $class = '')
     {
         if (!$modelId || !$model) {
             return false;
@@ -85,6 +85,7 @@ class Block extends Eloquent{
         $block->blockable_type = $model;
         $block->page_id = $pageId;
         $block->type_id = $typeId;
+        $block->class = $class;
         $block->blockable_id = $modelId;
 
         if (!$order && $pageId) {

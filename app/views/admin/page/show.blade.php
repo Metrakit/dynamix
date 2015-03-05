@@ -16,7 +16,7 @@
 
 @include('includes.session-message')
 
-<ul class="nav nav-tabs" role="tablist" id="tab-page-index">
+<ul class="nav nav-tabs" role="tablist" id="tab-page-show">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
     <li role="presentation"{{($i==0?' class="active"':'')}}>
         <a href="#tab-{{$locales[$i]->id}}" aria-controls="tab-{{$locales[$i]->id}}" role="tab" data-toggle="tab">
@@ -40,7 +40,7 @@
 @stop
 
 @section('scriptOnReady')
-$('body').on('#tab-page-index a','click', function (e) {
+$('body').on('#tab-page-show a','click', function (e) {
   e.preventDefault()
   console.log('tab');
   $(this).tab('show')

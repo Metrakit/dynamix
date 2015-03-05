@@ -13,21 +13,38 @@
 @stop
 
 
+
 @section('content')
 
 @include('includes.session-message')
 
-<div class="col-sm-9">
-{{ Form::model($page, array('route' => array('admin.page.update', $page->id), 'method' => 'POST', 'files' => true, 'id' => 'pageForm', 'class' => 'form-horizontal', 'autocomplete' => 'off' ) ) }}
-        <!-- CSRF Token -->
-        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        <input type="hidden" name="_method" value="put" />
+<ul class="nav nav-tabs" role="tablist" id="tab-page-edit">
+    @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
+    <li role="presentation"{{($i==0?' class="active"':'')}}>
+        <a href="#tab-{{$locales[$i]->id}}" aria-controls="tab-{{$locales[$i]->id}}" role="tab" data-toggle="tab">
+            <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{$locales[$i]->flag}}" alt="{{$locales[$i]->id}}"/></span>
+        </a>
+    </li>
+    @endfor
+</ul>
 
-        @include('admin.page.form', array('page' => $page))
+<fieldset>
 
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
-        <!-- ./ form actions -->
-{{ Form::close() }}
+<div class="tab-content">
+    @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
+    <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="tab-{{$locales[$i]->id}}" data-locale-id="{{$locales[$i]->id}}">
+        {{ Pager::render($page, $locales[$i]->id, true /*admin_display*/) }}
+    </div>
+    @endfor
 </div>
-<div class="clearfix"></div>
+
+</fieldset>
+@stop
+
+@section('scriptOnReady')
+$('body').on('#tab-page-edit a','click', function (e) {
+  e.preventDefault()
+  console.log('tab');
+  $(this).tab('show')
+})
 @stop

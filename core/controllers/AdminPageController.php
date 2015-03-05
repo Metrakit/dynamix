@@ -127,7 +127,8 @@ class AdminPageController extends BaseController {
 		
 		$pageId = Input::get('page_id');
 		$order = Input::get('order');
-		$block = Block::add($modelId, $model, $typeId, $pageId, $order);
+		$class = (Input::has('class')?Input::get('class'):'');
+		$block = Block::add($modelId, $model, $typeId, $pageId, $order, $class);
 		//Data responsive
 		$dataResponsive = $this->getResponsiveDatas();
 

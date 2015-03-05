@@ -89,6 +89,10 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 	//Page
 	Route::resource('page','AdminPageController');
+		//API - AJAX
+		Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
+		Route::post('/page/block/{template}', 'AdminPageController@getBlockTemplate');
+		Route::post('/page-block', 'AdminPageController@store_block');
 	
 	//Tag
 	Route::resource('tag','AdminTagController',
@@ -127,10 +131,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::get('/environment', array('before' => 'auth.permission_environment', 'uses' => 'AdminController@getEnvironnement'));
 		Route::post('/languages', 'AdminController@postLanguages');
 	
-	//API - AJAX
-	Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
-	Route::post('/page/block/{template}', 'AdminPageController@getBlockTemplate');
-	Route::post('/page-block', 'AdminPageController@store_block');
 
 
 

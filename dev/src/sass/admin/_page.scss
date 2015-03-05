@@ -223,8 +223,16 @@ body {
 	}
 }
 
-
-
+// Style edit page
+//Input with same size
+.input-page-lg {
+	border:none;
+	font-size:36px;
+	background:transparent;
+	height:70px;
+	@include border-radius(0px);
+	border: 1px solid #939ba2;
+}
 
 
 
