@@ -8,7 +8,6 @@ var PagerAdminMaster = function (){
   }
 
   var initListeners = function () {
-
     //Add blocks
     $('body').on('click', '.block-template', function (e) {
       e.preventDefault();

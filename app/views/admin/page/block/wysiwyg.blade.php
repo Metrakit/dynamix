@@ -6,7 +6,7 @@
     mode : "specific_textareas",
     editor_selector : "tinymce-wysiwyg",
     plugins: [
-      "table link image visualblocks code media",
+      "autoresize table link image visualblocks code media",
       "contextmenu textcolor responsivefilemanager"
     ],
     toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code ",
