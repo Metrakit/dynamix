@@ -2,9 +2,13 @@
 
 return array(
 
+	'content'			=> 'Contenu',
+
 	'description'		=> 'Description',
 
 	'edit' 				=> 'Modifier',
+
+	'filemanager'		=> 'Gestionnaire de fichiers',
 
 	'yes' 				=> 'Oui',
 	'no'  				=> 'Non',

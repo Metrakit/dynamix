@@ -50,10 +50,17 @@ class BlockContent extends Eloquent{
      *
      * @return mixed
      */
-    public function renderResource()
+    public function renderResource($locale_id = null)
     {
-    	$data['data'] = $this->translate( $this->i18n_content );
+    	$data['data'] = $this->getTranslation( $this->i18n_content, $locale_id );
         return Response::view('public.blockcontent.blockcontent', $data )->getOriginalContent();
+    }
+
+	public function renderResourceAdmin($locale_id = null)
+    {
+    	$data['content'] = $this->getTranslation( $this->i18n_content, $locale_id );
+    	$data['locale_id'] = $locale_id;
+        return Response::view('admin.page.block.wysiwyg', $data )->getOriginalContent();
     }
 
 

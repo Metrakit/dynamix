@@ -7,7 +7,9 @@ class Wysiwyg {
 	 */
 	//Blockable
     public static $blockable_type = 'Wysiwyg';
+    public static $modelBlockableType = 'BlockContent';
 	
+
 	/**
 	 * Relations
 	 *
@@ -43,6 +45,14 @@ class Wysiwyg {
     		if (!in_array($item->id, $block_ids)) $data[] = $item;
     	}
     	return $data;
+    }
+
+    //return id
+    public static function newObject() {
+        $wysiwyg = new BlockContent();
+        $wysiwyg->i18n_content = I18n::add(array('fr'=>'', 'en'=>''), 'content');
+        $wysiwyg->save();
+        return $wysiwyg->id;
     }
 
     /**

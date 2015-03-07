@@ -158,7 +158,7 @@ body {
 	margin-bottom:10px;
 	border:2px solid white;
 
-	&.show-line {
+	&.show-line {	
 		border:2px dashed #d9534f;
 		@include border-radius(7px);
 		@include transition(all .15s ease-in);
@@ -223,8 +223,16 @@ body {
 	}
 }
 
-
-
+// Style edit page
+//Input with same size
+.input-page-lg {
+	border:none;
+	font-size:36px;
+	background:transparent;
+	height:70px;
+	@include border-radius(0px);
+	border: 1px solid #939ba2;
+}
 
 
 

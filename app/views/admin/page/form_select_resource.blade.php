@@ -1,11 +1,11 @@
 
-<select class="form-control">
+<select name="blockable_data" id="blockable_data" class="form-control">
 	@foreach( BlockType::orderBy('multi', 'ASC')->get() as $block_type)
 		<?php
 		$blockModelName=$block_type->model
 		?>
 		@if ($block_type->multi == 0)
-			<option value="{{$block_type->id}}|{{($block_type->linked_on_module==1?'1':'new')}}|{{$blockModelName::$blockable_type}}" selected>{{{Lang::get($block_type->lang)}}}</option>
+			<option value="{{$block_type->id}}|{{($block_type->linked_on_module==1?'1':'new')}}|{{$blockModelName::$blockable_type}}">{{{Lang::get($block_type->lang)}}}</option>
 		@else
 			@if(count($blockModelName::getFreeObjects()) > 0)
 			<optgroup label="{{{ ucfirst($block_type->name) }}}">

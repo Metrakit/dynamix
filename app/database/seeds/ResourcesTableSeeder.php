@@ -39,6 +39,14 @@ array(
     'navigable'     => false,
     'group' => 0
     ),
+array(
+    'name' => 'rerouter',
+    'icon' => 'glyphicon glyphicon-share-alt',
+    'model' => 'Rerouter',
+    'in_admin_ui'   => true,
+    'navigable'     => false,
+    'group' => 4
+    ),
             /*array(
                 'name' => 'image',
                 'icon' => 'glyphicon glyphicon-picture',

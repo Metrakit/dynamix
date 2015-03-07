@@ -6,7 +6,9 @@ class Option extends Eloquent
 	 * Parameters
 	 */
 	protected $table = 'options';
+	protected $primaryKey = "id";
 	public static $langNav = 'admin.nav_option';
+	public $timestamps = false;
 
 
 	/**
@@ -48,6 +50,26 @@ class Option extends Eloquent
 	public function site_name()
 	{
 		return $this->translate( $this->i18n_site_name );
+	}
+
+	public function social_title_locale( $locale_id )
+	{
+		return $this->translateLocale( $this->i18n_social_title, $locale_id );
+	}
+
+	public function social_title()
+	{
+		return $this->translate( $this->i18n_social_title );
+	}
+
+	public function social_description_locale( $locale_id )
+	{
+		return $this->translateLocale( $this->i18n_social_description, $locale_id );
+	}
+
+	public function social_description()
+	{
+		return $this->translate( $this->i18n_social_description );
 	}
 
 

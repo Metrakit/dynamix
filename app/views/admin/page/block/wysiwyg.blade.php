@@ -1,4 +1,4 @@
-<textarea class="input-block-level tinymce-wysiwyg" name="wysiwyg_{{isset($index)?$index:''}}" value="" rows="5">{{{ Input::old('content'.(isset($index)?$index:''), null) }}}</textarea>
+<textarea class="input-block-level tinymce-wysiwyg" name="i18n_content{{$locale_id}}" value="" rows="5">{{{ Input::old('i18n_content'.$locale_id, $content) }}}</textarea>
 
 @section('scriptOnReady')
   tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";
@@ -6,7 +6,7 @@
     mode : "specific_textareas",
     editor_selector : "tinymce-wysiwyg",
     plugins: [
-      "table link image visualblocks code media",
+      "autoresize table link image visualblocks code media",
       "contextmenu textcolor responsivefilemanager"
     ],
     toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code ",

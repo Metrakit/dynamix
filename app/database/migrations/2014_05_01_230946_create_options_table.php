@@ -16,6 +16,7 @@ class CreateOptionsTable extends Migration {
 		Schema::create('options', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
 
             //General
 			$table->string('site_url');
@@ -23,16 +24,18 @@ class CreateOptionsTable extends Migration {
 			$table->integer('i18n_site_name')->unsigned();
 			$table->foreign('i18n_site_name')->references('id')->on('i18n');
 
-			//$table->integer('i18n_site_description')->unsigned();
-			//$table->foreign('i18n_site_description')->references('id')->on('i18n');
-			/*
+			//Open Graph and Twiiter
+			$table->string('cover_path');
+			
+			$table->string('twitter_id');
 
-			twitter:site @effe
-			une image
-			description
-			pi un title
-			pi un site name
-*/
+			$table->integer('i18n_social_title')->unsigned();
+			$table->foreign('i18n_social_title')->references('id')->on('i18n');
+
+			$table->integer('i18n_social_description')->unsigned();
+			$table->foreign('i18n_social_description')->references('id')->on('i18n');
+			
+
 
 			//Admin
 			$table->string('admin_email');

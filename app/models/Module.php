@@ -12,15 +12,16 @@ class Module extends Eloquent{
 	 */
 	protected $table = 'modules';
     public $timestamps = false;
+    public static $blockable_type = 'Module';
 
     /**
      * #Pager method
      *
      * @return mixed
      */
-    public function renderResource()
+    public function renderResource($locale_id)
     {
         $model_name = $this->target_model;
-        return $model_name::deployResource();
+        return $model_name::deployResource($locale_id);
     }
 }

@@ -1,4 +1,4 @@
-<div class="col-md-4">
+
 <div class="panel panel-info panel-page">
   <div class="panel-heading text-center">
       @if(isset($showButton))
@@ -23,5 +23,4 @@
     <h3>{{ $page->title() }}</h3>
     {{ $page->meta_description() }}
   </div>
-</div>
 </div>

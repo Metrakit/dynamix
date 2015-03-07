@@ -4,10 +4,10 @@
 ?>
 <section role="comment" class="comment">
 	<div class="comment-head">
-		<div class="pull-left"><strong>{{ count($object->comments->all()) }} {{{ Lang::get('comment.comment'. (count($object->comments->all()) > 1 ? 's' : '' ) ) }}}</strong></div>
+		<div class="pull-left"><strong>{{ count($object->comments->all()) }} {{{ I18n::get('comment.comment'. (count($object->comments->all()) > 1 ? 's' : '' ) ) }}}</strong></div>
 		<div class="pull-right">
 		@if(!Auth::check())
-			<a href="{{ URL::to('auth/login')}}"><strong>{{{ Lang::get('auth.connexion')}}}</strong></a>
+			<a href="{{ URL::to('auth/login')}}"><strong>{{{ I18n::get('auth.connexion')}}}</strong></a>
 		@else
 			{{Auth::user()->email}}
 		@endif
@@ -19,7 +19,7 @@
 		@include('public.comment.comment-form', array('object' => $object))
 	@else
 	<div class="alert alert-warning">
-		{{{ Lang::get('auth.you_must_be_logged') }}}
+		{{{ I18n::get('auth.you_must_be_logged') }}}
 	</div>
 	@endif
 
@@ -29,7 +29,7 @@
 		$comments = $object->comments()->orderBy('created_at','DESC')->get();
 	?>
 	@if(count($comments) == 0)
-	<p class="text-center"><strong>{{{ Lang::get('comment.be_the_first') }}}</strong>
+	<p class="text-center"><strong>{{{ I18n::get('comment.be_the_first') }}}</strong>
 	@endif
 
 	@foreach ( $comments as $comment ) 
@@ -42,7 +42,7 @@
 		    <input type="hidden" name="_method" value="put">
 		    <div class="input-group">
 			    <textarea class="form-control" rows="3" name="message" id="message"></textarea>
-			    <div class="input-group-addon"><button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('comment.edit')}}}</button></div>
+			    <div class="input-group-addon"><button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span> {{{I18n::get('comment.edit')}}}</button></div>
 		    </div>
 		</form>
 	</div>
@@ -59,8 +59,8 @@
 					<input type="hidden" name="referer" value="{{ Request::url() }}">
 					<input type="hidden" name="commentable_id" value="{{$object->id}}">
 					<input type="hidden" name="commentable_type" value="{{$object->getClassName()}}">
-					<input type="text" autocomplete="off" placeHolder="{{{ Lang::get('comment.placeHolder') }}}" name="message" value="">
-					<button type="submit" class="btn btn-comment-form submit-comment-form pull-right">{{{ Lang::get('comment.submit') }}}</button>
+					<input type="text" autocomplete="off" placeHolder="{{{ I18n::get('comment.placeHolder') }}}" name="message" value="">
+					<button type="submit" class="btn btn-comment-form submit-comment-form pull-right">{{{ I18n::get('comment.submit') }}}</button>
 				</form>
 			</div>
 		</div>

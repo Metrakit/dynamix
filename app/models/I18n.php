@@ -28,7 +28,7 @@ class I18n extends Eloquent{
      * @param Array $data Langs array
      * @param String $type i18n type
      */
-    public static function add($data, $type)
+    public static function add($data, $type, $key = null)
     {
 
         if (!is_array($data)) {
@@ -43,6 +43,9 @@ class I18n extends Eloquent{
 
         $i18n = new self;
         $i18n->i18n_type_id = $i18nType->id;
+
+        if ($key !== null) $i18n->key = $key;
+        
         $i18n->save();
 
         foreach ($data as $lang => $value) {
@@ -158,13 +161,13 @@ class I18n extends Eloquent{
         
         $locale = Translation::where('i18n_id', $i18n->id)->where('locale_id', App::getLocale())->first();
         if (!$locale) {
-            return false;
+            return $key;
             Log::error('$locale not found !');
         }
 
         // Try to delete it if not foreign keys are founded
         try {
-            return $locale->text;
+            return ($locale->text==''?$key:$locale->text);
         } catch (Exception $e) {
             Log::error("You cannot get this i18n: " . $e->getMessage(), 1);        
         }

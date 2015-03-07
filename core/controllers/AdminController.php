@@ -17,27 +17,58 @@ class AdminController extends BaseController {
 		$data['noAriane'] = true;
 
 		//Check if the connection is ok
-
-		//Google Analytics
+		$minutes=60;
 		try{
-			$data['ga_sessionsPerDay'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-			$data['ga_sessionsCount'] 			= App::make('GoogleAnalyticsAPIController')->getSessionsCount();
-			$data['ga_userCount'] 				= App::make('GoogleAnalyticsAPIController')->getUserCount();
-			$data['ga_pageSeenCount'] 			= App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
-			$data['ga_pagesBySession'] 			= round( $data['ga_pageSeenCount'] / $data['ga_sessionsCount'], 2);
-			$data['ga_timeBySession'] 			= round( App::make('GoogleAnalyticsAPIController')->getTimeBySession() / $data['ga_sessionsCount'], 0).'s';
-			$data['ga_rebound'] 				= App::make('GoogleAnalyticsAPIController')->getRebound();
-			$data['ga_newOnReturningVisitor'] 	= App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();
-			$data['ga_googleAnalyticsFound'] = true;
+			$sessionsPerDay = Cache::remember('sessionsPerDay', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
+			});
+			$sessionsCount = Cache::remember('sessionsCount', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getSessionsCount();
+			});
+			$userCount = Cache::remember('userCount', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getUserCount();
+			});
+			$pageSeenCount = Cache::remember('pageSeenCount', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
+			});
+			$timeBySession = Cache::remember('timeBySession', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getTimeBySession();
+			});
+			$rebound = Cache::remember('rebound', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getRebound();
+			});
+			$newOnReturningVisitor = Cache::remember('newOnReturningVisitor', $minutes, function () {
+				return App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();			
+			});
 		}catch(Exception $e){
 			Log::error('Google Analytics API not found');
 			$data['ga_googleAnalyticsFound'] = false;
 		}
+
+		$data['ga_sessionsPerDay'] 			= $sessionsPerDay;
+		$data['ga_sessionsCount'] 			= $sessionsCount;
+		$data['ga_userCount'] 				= $userCount;
+		$data['ga_pageSeenCount'] 			= $pageSeenCount;
+		$data['ga_pagesBySession'] 			= round( $pageSeenCount / $sessionsCount, 2);
+		$data['ga_timeBySession'] 			= round( $timeBySession / $sessionsCount, 0).'s';
+		$data['ga_rebound'] 				= $rebound;
+		$data['ga_newOnReturningVisitor'] 	= $newOnReturningVisitor;
+		$data['ga_googleAnalyticsFound'] = true;
+
 		$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
 			return Response::json(View::make( 'admin.index', $data )->renderSections());
 		} else {
 			return View::make('admin.index', $data );
+		}
+	}
+
+	public function tryCatch () {
+		//Google Analytics
+		try{
+		}catch(Exception $e){
+			Log::error('Google Analytics API not found');
+			$data['ga_googleAnalyticsFound'] = false;
 		}
 	}
 
@@ -327,7 +358,27 @@ class AdminController extends BaseController {
 			}
 		}
 
-		$rules = array_merge( $site_name_rules, Config::get('validator.admin.option') );
+		//Making adaptive rules for social_title
+		$social_title_rules = array();
+		$social_title_locales = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'social_title_') !== false ) {
+				$social_title_rules[$k] = Config::get('validator.admin.option_social_title');
+				$social_title_locales[] = substr( $k, strlen('social_title_'), (strlen($k) - strpos($k, 'social_title_')));
+			}
+		}
+
+		//Making adaptive rules for social_description
+		$social_description_rules = array();
+		$social_description_locales = array();
+		foreach ( Input::all() as $k => $v ) {
+			if ( strpos($k, 'social_description_') !== false ) {
+				$social_description_rules[$k] = Config::get('validator.admin.option_social_description');
+				$social_description_locales[] = substr( $k, strlen('social_description_'), (strlen($k) - strpos($k, 'social_description_')));
+			}
+		}
+
+		$rules = array_merge( $site_name_rules, $social_title_locales, $social_description_locales, Config::get('validator.admin.option') );
 
 		// Validate the inputs
         $validator = Validator::make(Input::all(), $rules);
@@ -337,8 +388,10 @@ class AdminController extends BaseController {
         if ($validator->passes())
         {
         	$option = Option::first();
+        	//return var_dump(Input::get('cover_path'));
 
         	$option->site_url		= Input::get('site_url');
+        	$option->cover_path		= Input::get('cover_path');
         	$option->admin_email	= Input::get('admin_email');
         	$option->analytics		= Input::get('analytics');
         	
@@ -348,6 +401,19 @@ class AdminController extends BaseController {
         			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
         		}
         	}
+			//Update translations
+        	foreach ( $social_title_locales as $locale ) {
+        		if ( !I18n::find($option->i18n_social_title)->updateText($locale, Input::get('social_title_'.$locale)) ) {
+        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_title_update_error'));
+        		}
+        	}
+			//Update translations
+        	foreach ( $social_description_locales as $locale ) {
+        		if ( !I18n::find($option->i18n_social_description)->updateText($locale, Input::get('social_description_'.$locale)) ) {
+        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_description_update_error'));
+        		}
+        	}
+        	//
 
         	//if no error when save
         	if($option->save()) {
@@ -357,7 +423,6 @@ class AdminController extends BaseController {
         		parent::track('update','Option',null);  
 
           		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
-
         	} else {
 	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
 	        }
@@ -365,6 +430,65 @@ class AdminController extends BaseController {
 	    
 		// Show the page
 		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
+	}
+
+	/**
+	 * get All Option in base
+	 *
+	 * @return Response
+	 */
+	public function getRerouter()
+	{
+		//User
+		$data['user'] = Auth::user();
+
+		//Interface
+		$data['noAriane'] = true;
+
+		$data['reroutes'] = Rerouter::all();
+
+		if (Request::ajax()) {
+			return Response::json(View::make( 'admin.rerouter.index', $data )->renderSections());
+		} else {
+			return View::make('admin.rerouter.index', $data);
+		}
+	}
+
+	/**
+	 * post All Option in base
+	 *
+	 * @return Response
+	 */
+	public function postRerouter($id)
+	{
+		// no problem
+		//form for all reroute bim
+
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), Config::get('validator.reroute'));
+
+        // Check if the form validates with success
+        if ($validator->passes())
+        {
+        	//Update the reroute
+        	//
+
+        	//if no error when save
+        	if($option->save()) {
+        		Cache::forget('DB_Option'); 
+
+        		//track user
+        		parent::track('update','Option',null);  
+
+          		return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.option_success') );
+
+        	} else {
+	        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.option_error') );
+	        }
+	    }
+	    
+		// Show the page
+		return Redirect::to('/admin/rerouter')->withInput()->withErrors($validator);
 	}
 
 

@@ -13,11 +13,33 @@
         }
 	],
 	"license": "MIT",
+	"repositories": [
+        {
+            "type": "package",
+            "package": {
+	            "name": "dynamix/dynamix-template-package",
+	            "version": "dev-master",
+	            "source": {
+	                "url": "git@github.com:dlepaux/dynamix-template-package.git",
+	                "type": "git",
+	                "reference": "master"
+	            },
+	            "autoload": {
+	                "psr-0" : {
+	                    "Dynamix\\Template" : "src"
+	                }
+	            }
+	        }
+        }
+    ],
 	"require": {
 		"laravel/framework": "4.2.*",
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
-		"thujohn/analytics": "dev-master"	},
+		"thujohn/analytics": "dev-master",
+		"schickling/backup": "0.6.*",
+		"dynamix/dynamix-template-package": "dev-master"
+	},
 	"autoload": {
 		"classmap": [
 			"app/models",
@@ -26,7 +48,8 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
-			"vendor/dynamix"
+			"vendor/dynamix",
+			"workbench"
 		]
 	},
 	"scripts": {

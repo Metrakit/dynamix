@@ -53,41 +53,125 @@ class AdminPageController extends BaseController {
 	 */
 	public function store()
 	{
+		//only use in js
+		$page = new Page();
 
-		//return var_dump($inputs);
-
-        $validator = Validator::make(Input::all(), Config::get('validator.admin.page'));
-		
-        // Check if the form validates with success
-        if ($validator->passes())
+		//Make empty data
+		$page->i18n_name = I18n::add(array('fr' => '', 'en' => ''), 'name');
+        
+        // Was the blog post created?
+        if($page->save())
         {
-			$page = new Page();
-            $page->title     		= $inputs['title'];
-            $page->url 				= $inputs['url'];
-            $page->content          = $inputs['content'];
+        	 //Structure of mosaic
+        	$dataI18nEmpty = array('fr'=>'', 'en'=>'');
+            $structure = new Structure();
+            $structure->i18n_title = I18n::add($dataI18nEmpty,'title');
+            $structure->i18n_url = I18n::add($dataI18nEmpty,'url');
+            $structure->i18n_meta_title = I18n::add($dataI18nEmpty,'meta_title');
+            $structure->i18n_meta_description = I18n::add($dataI18nEmpty,'meta_description');
+            $structure->structurable_id = $page->id;
+            $structure->structurable_type = 'Page';
+            $structure->save();
 
-            $page->meta_title       = $inputs['meta_title'];
-            $page->meta_description = $inputs['meta_description'];
-
-            $page->created_at    	= new DateTime();
-            $page->updated_at    	= new DateTime();
-
-            // Was the blog post created?
-            if($page->save())
-            {
-            	Cache::forget('DB_Urls');
-                // Redirect to the new blog post page
-                return Redirect::to('admin/page')->with('success','La page à bien été créée !');
-            }
-
-            // Redirect to the blog post create page
-            return Redirect::to('admin/page/create')->with('error', 'La page n\'a pas pu être enregistrée...');
+            // Redirect to the new blog post page
+            return Response::json(['page_id' => $page->id]);
         }
 
-        // Form validation failed
-        return Redirect::to('admin/page/create')->withInput()->withErrors($validator);
+        // Redirect to the blog post create page
+       return Response::json(['page_id' => 'error']);
 	}
 
+	
+	/**
+	 * return the responsive datas, trigger, width
+	 *
+	 * @return Response
+	 */
+	public function getResponsiveDatas () {
+		//sort with trigger
+		$data = array();
+		$countTriggerID = strlen('_trigger_');
+		foreach (Input::all() as $inputKey => $inputValue) {
+			//_trigger_md = value
+			if (strpos($inputKey, '_trigger_') !== false) {
+				$data[substr($inputKey, $countTriggerID, strlen($inputKey) - $countTriggerID)] = $inputValue;
+			}
+		}
+		return $data;
+	}
+
+
+	/**
+	 * Store the new resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store_block()
+	{
+		//only use in js
+		// exctract blockable_data
+		$blockable_datas = explode("|", Input::get('blockable_data'));
+		//1 type_id
+		//2 blockable_id or consigne (new)
+		//3 blockable_type
+
+		$modelId = $blockable_datas[1];
+		$model = $blockable_datas[2];
+		$typeId = $blockable_datas[0];
+
+		//Create block
+		if ($modelId == 'new') {
+			$modelId = $model::newObject();
+			$model = $model::$modelBlockableType;
+		}
+		
+		$pageId = Input::get('page_id');
+		$order = Input::get('order');
+		$class = (Input::has('class')?Input::get('class'):'');
+		$block = Block::add($modelId, $model, $typeId, $pageId, $order, $class);
+		//Data responsive
+		$dataResponsive = $this->getResponsiveDatas();
+
+		//Make data for insertion
+		$dataInsert = array();
+		foreach ( $dataResponsive as $dataKey => $dataValue ) {
+			$dataInsert[] = array(
+				'block_id'      => $block->id,
+                'responsive_width_id'       => $dataValue,
+                'responsive_trigger_id'       => Rtrigger::where('value', $dataKey)->first()->id
+				);
+		}
+		//block responsive prorieties
+		DB::table('block_responsive')->insert($dataInsert);
+
+        // Redirect to the blog post create page
+       	return Response::json(['status' => 'success']);
+	}
+
+
+	/**
+	 * Show the resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		//User
+		$data['user'] 			= Auth::user();
+
+		//Interface
+		$data['noAriane'] 		= true;
+
+		// get the post
+		$data['page'] = Page::find($id);
+
+		if(empty($data['page'])){
+			return Redirect::back()->with('error', 'Cette page est introuvable !');
+		}
+
+		return View::make('admin.page.show', $data );
+	}
 
 	/**
 	 * Show the form for editing the specified resource.

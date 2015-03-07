@@ -1,39 +1,44 @@
 @section('scriptOnReady')
-  tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";
+  tinyMCE.baseURL = "{{ URL::to('/js/tinymce') }}";
+
   tinymce.init({
-    mode : "specific_textareas",
-    editor_selector : "tinymce-wysiwyg",
+
+    selector: "textarea",
+
     plugins: [
       "table link image visualblocks code media",
-      "contextmenu textcolor responsivefilemanager"
+      "contextmenu textcolor responsivefilemanager",
+
+      @if (isset($input->wysiwyg_plugins))
+        "{{ $input->wysiwyg_plugins }}",
+      @endif  
+
+      "preview"
     ],
-    toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code ",
+
+    toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code | preview",
 
     menubar: true,
     statusbar: false,
     toolbar_item_size: "small",
 
-    setup: function (theEditor) {
+    @if (isset($input->wysiwyg_height))
+      height: {{ $input->wysiwyg_height }},
+    @endif
 
-
-      /*theEditor.on('focus', function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").show();
-      });
-      theEditor.on('blur', function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").hide();
-      });*/
-      theEditor.on("init", function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").show();
-      });
-
+    setup: function (editor) {
+        editor.on('change', function () {
+            tinymce.triggerSave();
+        });
     },
    
     external_filemanager_path:"/filemanager/",
-    filemanager_title:"Responsive Filemanager" ,
-    filemanager_access_key:"{{Config::get('app.key')}}",
+    filemanager_title:"{{ Lang::get('general.filemanager') }}" ,
+    filemanager_access_key:"{{ Config::get('app.key') }}",
     external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
   });
-@append
+
+@stop
 
 @if($input->label)
 
@@ -48,17 +53,17 @@
 @endif
 
 @if($input->multiLang)
-  @foreach($locales as $locale)
+
+    @foreach($locales as $locale)
 
     <div class="input-group">
       <div class="input-group-addon">
           <span style="display:inline-block; min-width:40px; text-align:center;"><img height="19px" src="{{ $locale->flag }}" alt="{{ $locale->id }}"/></span>
       </div>
-      <textarea 
+      <textarea
         name="{{ $input->name }}_lang_{{ $locale->id }}" 
         title="{{ $input->title }}" 
-        class="form-control tinymce-wysiwyg" 
-        placeholder="{{ $input->placeholder }}">{{ $input->value[$locale->id] }}</textarea>
+        class="form-control tinymce-wysiwyg">{{ $input->value[$locale->id] }}</textarea>
     </div>
 
     @if($errors->has($input->name . '_lang_' . $locale->id)) 
@@ -70,7 +75,7 @@
 
   @endforeach
 @else 
-  <textarea name="{{ $input->name }}" class="form-control tinymce-wysiwyg" placeholder="{{ $input->placeholder }}">{{ $input->value }}</textarea>
+  <textarea name="{{ $input->name }}" class="form-control tinymce-wysiwyg">{{ $input->value }}</textarea>
 @endif
 
 @if($form->type != 'inline' && !$input->i18nInpError)

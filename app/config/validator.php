@@ -46,9 +46,19 @@ return array(
 		'option'		=> 		array(	'site_url'		=> 'url|min:5',										
 										'admin_email'	=> 'email|min:5|max:55'),
 		
-		'option_site_name'=>	array(  'site_name'		=> 'min:5'),
+		'option_site_name'			=>	array(  'site_name'		=> 'min:5'),
+		'option_social_title'		=>	array(  'social_title'		=> 'min:5'),
+		'option_social_description'	=>	array(  'social_description'		=> 'min:5'),
 		
 		//'i18n_constant'=>	array(  'key'		=> 'max:255'),
+	
+	/*
+	|	Reroute
+	|
+	| Only regular (-i18n) rules
+	*/
+		'reroute'		=> 		array(	'url_referer'		=> 'min:10',										
+										'url_redirect'	=> 'url|min:10|max:255'),
 	
 
 	/*

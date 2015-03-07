@@ -65,6 +65,12 @@ class Eloquentizr extends Model {
  		return \Former::renderByModel(new $model, $modelId, $params);
  	}
 
+	public static function getTranslation($i18n_id, $locale_id = null)
+ 	{
+ 		$locale_id = ($locale_id===null?App::getLocale():$locale_id);
+ 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',$locale_id)->first()->text;
+ 	}
+
  	public static function getNotAllowed () {
         $notAllowed = array();
 

@@ -13,13 +13,13 @@
     <input type="hidden" name="_method" value="put">
     <fieldset>
         <div class="form-group {{{ $errors->has('message') ? 'has-error' : '' }}}">
-		    <label class="control-label" for="message">{{{ Lang::get('input.name') }}}</label>
+		    <label class="control-label" for="message">{{{ I18n::get('input.name') }}}</label>
 		    <textarea class="form-control" name="message" id="message">{{{ Input::old('message', $comment->text) }}}"</textarea>
 		    {{ $errors->first('message', '<div class="alert alert-danger">:message</div>') }}
 		</div>
 		@include('includes.session-message')
 		<div class="form-group">
-		    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('button.update')}}}</button>
+		    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{I18n::get('button.update')}}}</button>
 		</div>
     </fieldset>
 </form>

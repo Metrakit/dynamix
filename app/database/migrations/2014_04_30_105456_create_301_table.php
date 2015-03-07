@@ -18,8 +18,8 @@ class Create301Table extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			
-			$table->string('url_in');
-			$table->string('url_out');
+			$table->string('url_referer');
+			$table->string('url_redirect');
 			
 			$table->boolean('active')->default(true);
 

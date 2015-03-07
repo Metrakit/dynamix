@@ -21,6 +21,7 @@ class CreateBlocksTable extends Migration {
 			$table->integer('blockable_id')->unsigned();
 
 			$table->string('blockable_type',45);
+			$table->string('class',80);
 			
 			$table->integer('page_id')->nullable()->unsigned();
 			$table->foreign('page_id')->references('id')->on('pages');
