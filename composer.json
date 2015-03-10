@@ -17,7 +17,9 @@
 		"laravel/framework": "4.2.*",
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
-		"thujohn/analytics": "dev-master"	},
+		"thujohn/analytics": "dev-master",
+		"dynamix/harnak": "dev-master"	
+	},
 	"autoload": {
 		"classmap": [
 			"app/models",
@@ -26,7 +28,8 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
-			"vendor/dynamix"
+			"vendor/dynamix",
+			"themes"
 		]
 	},
 	"scripts": {
@@ -45,5 +48,16 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"repositories": {
+		"harnak": {
+			"type": "vcs",
+			"url": "http://github.com/dlepaux/harnak"
+		}
+	},
+	"extra": {
+        "installer-paths": {
+            "themes/{$name}": ["dynamix/harnak"]
+        }
+    },
+    "minimum-stability": "dev"
 }
