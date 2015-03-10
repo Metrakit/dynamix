@@ -56,7 +56,7 @@
 	},
 	"extra": {
         "installer-paths": {
-            "themes/{$name}": ["dynamix/harnak"]
+            "theme/{$name}": ["dynamix/harnak"]
         }
     },
     "minimum-stability": "dev"
