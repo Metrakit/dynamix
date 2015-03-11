@@ -1,0 +1,31 @@
+/**
+ * 
+ * Sass to display on public pages
+ *
+ */
+/* line 9, ../../../../../../../../vendor/dynamix/soundcloud/assets/public/sass/soundcloud.scss */
+.td.player .playlist {
+  overflow-y: hidden !important;
+}
+/* line 12, ../../../../../../../../vendor/dynamix/soundcloud/assets/public/sass/soundcloud.scss */
+.td.player.dark {
+  background: rgba(15, 2, 2, 0.85);
+  border: 0;
+}
+/* line 15, ../../../../../../../../vendor/dynamix/soundcloud/assets/public/sass/soundcloud.scss */
+.td.player.dark .controls {
+  border: 0;
+}
+/* line 19, ../../../../../../../../vendor/dynamix/soundcloud/assets/public/sass/soundcloud.scss */
+.td.player .info {
+  border-bottom: 0 !important;
+}
+/* line 22, ../../../../../../../../vendor/dynamix/soundcloud/assets/public/sass/soundcloud.scss */
+.td.player .social {
+  border-bottom: 1px solid #333 !important;
+  display: none !important;
+}
+/* line 26, ../../../../../../../../vendor/dynamix/soundcloud/assets/public/sass/soundcloud.scss */
+.td.player .header, .td.player .cover {
+  height: auto !important;
+}

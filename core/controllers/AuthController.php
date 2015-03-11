@@ -24,7 +24,7 @@ class AuthController extends BaseController {
 			return Redirect::to('/');
 		}
 
-		return View::make('auth.login');
+		return View::make('public.auth.login');
 	}
 
 	/**

@@ -1,0 +1,290 @@
+/**
+ * 
+ * Sass to display on public pages
+ *
+ */
+/* line 7, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider {
+  position: relative;
+  margin: 0 0 10px;
+  overflow: hidden;
+  padding: 40px 0 60px;
+}
+
+/* line 14, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  list-style-type: none;
+}
+
+/* line 21, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  transform: translateZ(0);
+  float: left;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 31, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li > a,
+.cbp-fwslider ul li > div {
+  display: block;
+  text-align: center;
+  outline: none;
+}
+
+/* line 38, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li > a img {
+  border: none;
+  display: block;
+  margin: 0 auto;
+  max-width: 75%;
+}
+
+/* line 45, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider nav span {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 100px;
+  color: grey;
+  font-size: 50px;
+  text-align: center;
+  margin-top: -50px;
+  line-height: 100px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* line 60, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider nav span:hover {
+  color: #fff;
+}
+
+/* line 65, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider nav span.cbp-fwnext {
+  right: 0px;
+}
+
+/* line 69, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider nav span.cbp-fwprev {
+  left: 0px;
+}
+
+/* line 73, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  -moz-transition: left 0.5s ease;
+  -o-transition: left 0.5s ease;
+  -webkit-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+}
+
+/* line 83, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 4px;
+  cursor: pointer;
+}
+
+/* line 91, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image table {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* line 96, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image:hover table {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+
+/* line 100, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image.cbp-fwcurrent table {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-box-shadow: 0 0 0 2px white;
+  -webkit-box-shadow: 0 0 0 2px white;
+  box-shadow: 0 0 0 2px white;
+}
+
+/* line 113, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image .move {
+  color: grey;
+  font-size: 12px;
+  background: #222;
+  vertical-align: middle;
+  text-align: center;
+  border: none;
+}
+/* line 120, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image .move form button {
+  background: #222;
+  vertical-align: middle;
+  text-align: center;
+  border: 0;
+  width: 100%;
+}
+/* line 127, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image .move:hover, .cbp-fwdots div.cbp-image .move:focus {
+  background: #000;
+}
+/* line 129, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwdots div.cbp-image .move:hover form button, .cbp-fwdots div.cbp-image .move:focus form button {
+  background: #000;
+}
+
+/* line 139, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider {
+  position: relative;
+  min-height: 615px;
+  margin: 0;
+  background: transparent;
+  /* 	overflow: visible; */
+  padding: 0 0 138px 0;
+}
+/* line 147, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider nav span {
+  margin-top: -90px;
+}
+/* line 151, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul {
+  height: 100%;
+  white-space: normal;
+}
+/* line 154, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li {
+  position: relative;
+}
+/* line 156, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li > a, .cbp-fwslider ul li li > div {
+  height: 100%;
+}
+/* line 159, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li > a img {
+  max-width: 100%;
+  /* height:100%;
+  width: 98%; */
+}
+/* line 165, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider ul li > a iframe {
+  max-width: 100%;
+  width: 1100px;
+}
+
+/* line 173, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info {
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  bottom: 0;
+  width: 1100px;
+  background: rgba(0, 0, 0, 0.5);
+  margin-left: -550px;
+  padding: 7px;
+  left: 50%;
+  color: #fff;
+}
+/* line 184, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info:hover, .cbp-fwslider-info:focus {
+  color: #fff;
+  text-decoration: none;
+}
+/* line 189, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info h3 {
+  color: white;
+  font-weight: 300;
+  font-size: 24px;
+  background: black;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding-top: 5px;
+}
+/* line 198, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info p {
+  font-size: 14px;
+  color: #ddd;
+  background: black;
+  background: rgba(0, 0, 0, 0.5);
+  padding-bottom: 5px;
+}
+/* line 205, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info h3, .cbp-fwslider-info p {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+/* line 209, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info span.link {
+  color: #aaa;
+}
+/* line 211, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info span.link a {
+  color: #aaa;
+}
+/* line 213, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-fwslider-info span.link a:hover, .cbp-fwslider-info span.link a:focus {
+  color: #aaa;
+}
+
+@media only screen and (max-width: 1100px) {
+  /* line 221, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+  .cbp-fwslider-info {
+    width: 100%;
+    margin-left: 0px;
+    left: 0;
+  }
+
+  /* line 229, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+  .cbp-fwslider ul li > a iframe {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 789px) {
+  /* line 240, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+  .cbp-fwslider ul li > a iframe {
+    height: 350px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  /* line 251, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+  .cbp-fwslider ul li > a iframe {
+    height: 250px;
+  }
+}
+/* line 259, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-image {
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+/* line 263, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-image table {
+  width: 100%;
+  height: 100%;
+}
+/* line 266, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-image table tr {
+  width: 100%;
+  height: 100%;
+}
+/* line 269, ../../../../../../../../vendor/dynamix/mosaic-gallery/assets/public/sass/mosaic-gallery-public.scss */
+.cbp-image table tr td {
+  height: 100%;
+  width: auto;
+}
