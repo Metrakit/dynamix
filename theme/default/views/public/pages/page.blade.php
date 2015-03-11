@@ -7,7 +7,7 @@
 
 
 @section('content')
-@include('includes.session-message')
+@include('public.session.session-message')
 
 {{ Pager::render($page) }}
 

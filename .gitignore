@@ -14,8 +14,8 @@
 /public/js/vendor/jquery.min.map
 /public/js/vendor/head.min.js
 
-theme/*/node_modules
-
+/theme/*/node_modules
+/theme/default/assets/src/_vendor
 composer.lock
 
 *.tmp

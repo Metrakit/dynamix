@@ -23,7 +23,7 @@
 	</div>
 	@endif
 
-	@include('includes.session-message-var', array('var'=>'comment'))
+	@include('public.session.session-message-var', array('var'=>'comment'))
 
 	<?php
 		$comments = $object->comments()->orderBy('created_at','DESC')->get();

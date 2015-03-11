@@ -20,7 +20,7 @@ Choose your language | @parent
 @stop
 
 @section('content')
-@include('includes.session-message')
+@include('public.session.session-message')
 
 
 <!-- Liste des langues avec le liens dynam.ix/{locale} -->

@@ -7,7 +7,7 @@
 
 
 @section('container')
-	@include('includes.session-message')
+	@include('public.session.session-message')
 	@for($i = 0, $parts = $onepage->parts, $parts_count = count($parts->count()) ; $i <= $parts_count ; $i++)
 		{{--Select DOM Node (header, footer, section for sémantqiue--}}
 		<?php

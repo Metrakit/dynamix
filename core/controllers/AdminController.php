@@ -334,6 +334,10 @@ class AdminController extends BaseController {
 
 		$data['option'] = Option::first();
 
+		//Data for themes
+		$data['theme_publics'] = Theme::where('type', 'public')->get();
+		$data['theme_admins'] = Theme::where('type', 'admin')->get();
+
 		if (Request::ajax()) {
 			return Response::json(View::make( 'admin.option.index', $data )->renderSections());
 		} else {
@@ -387,6 +391,28 @@ class AdminController extends BaseController {
         // Check if the form validates with success
         if ($validator->passes())
         {
+        	//Themes
+        	$activeThemePublic = Theme::where('type', 'public')->where('active', 1)->first();
+        	$activeThemeAdmin = Theme::where('type', 'admin')->where('active', 1)->first();
+
+        	//Change or not?
+        	if ( $activeThemePublic->id != Input::get('theme_public')) {
+        		$activeThemePublic->active = false;
+        		$activeThemePublic->save();
+        		$newThemePublic = Theme::find(Input::get('theme_public'));
+        		$newThemePublic->active = true;
+        		$newThemePublic->save();
+        	}
+			if ( $activeThemeAdmin->id == Input::get('theme_admin')) {
+        		$activeThemeAdmin->active = false;
+        		$activeThemeAdmin->save();
+        		$newThemeAdmin = Theme::find(Input::get('theme_public'));
+        		$newThemeAdmin->active = true;
+        		$newThemeAdmin->save();
+        	}
+
+
+        	//Options
         	$option = Option::first();
         	//return var_dump(Input::get('cover_path'));
 

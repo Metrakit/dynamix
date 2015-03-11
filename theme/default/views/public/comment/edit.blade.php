@@ -17,7 +17,7 @@
 		    <textarea class="form-control" name="message" id="message">{{{ Input::old('message', $comment->text) }}}"</textarea>
 		    {{ $errors->first('message', '<div class="alert alert-danger">:message</div>') }}
 		</div>
-		@include('includes.session-message')
+		@include('public.session.session-message')
 		<div class="form-group">
 		    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{I18n::get('button.update')}}}</button>
 		</div>

@@ -32,7 +32,7 @@
             <label class="col-md-2 control-label" for="cover_path">{{{Lang::get('admin.option_image')}}}</label>
             <div class="col-md-10 col-lg-8">
                 <div class="input-group">
-                    <input class="form-control" type="url" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', (isset($option) ? $option->cover_path : '')) }}}" />
+                    <input class="form-control" type="text" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', (isset($option) ? $option->cover_path : '')) }}}" />
                     <a class="input-group-addon btn-explore iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type=1&amp;field_id=cover_path&amp;akey='.Config::get('app.key')) }}"><span>Explorer</span></a>
                 </div>
                 {{ $errors->first('cover_path', '<div class="alert alert-danger">:message</div>') }}
@@ -84,6 +84,36 @@
             </div>
         </div>
         <!-- ./ admin_email -->
+
+        <!-- theme_public -->
+        <div class="form-group {{{ $errors->has('theme_public') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="theme_public">{{{ Lang::get('admin.option_theme_public') }}}</label>
+            <div class="col-md-10 col-lg-8">
+                <select name="theme_public" id="theme_public" class="form-control">
+                  @foreach($theme_publics as $theme)
+                  <option value="{{$theme->id}}">{{$theme->name}}</option>
+                  @endforeach
+                </select>
+                {{ $errors->first('theme_public', '<div class="alert alert-danger">:message</div>') }}
+                <p class="help-block">{{{ Lang::get('admin.option_theme_public_help') }}}</p>
+            </div>
+        </div>
+        <!-- ./ theme_public -->
+        
+        <!-- theme_admin -->
+        <div class="form-group {{{ $errors->has('theme_admin') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="theme_admin">{{{ Lang::get('admin.option_theme_admin') }}}</label>
+            <div class="col-md-10 col-lg-8">
+                <select name="theme_admin" id="theme_admin" class="form-control">
+                  @foreach($theme_admins as $theme)
+                  <option value="{{$theme->id}}">{{$theme->name}}</option>
+                  @endforeach
+                </select>
+                {{ $errors->first('theme_admin', '<div class="alert alert-danger">:message</div>') }}
+                <p class="help-block">{{{ Lang::get('admin.option_theme_admin_help') }}}</p>
+            </div>
+        </div>
+        <!-- ./ theme_admin -->
 
         <!-- analytics -->
         <div class="form-group {{{ $errors->has('analytics') ? 'error' : '' }}}">
