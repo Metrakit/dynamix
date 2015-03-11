@@ -18,7 +18,7 @@
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
 		"thujohn/analytics": "dev-master",
-		"dynamix/harnak": "dev-master"	
+		"dynamix/theme-harnak": "dev-master"	
 	},
 	"autoload": {
 		"classmap": [
@@ -28,8 +28,7 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
-			"vendor/dynamix",
-			"themes"
+			"vendor/dynamix"
 		]
 	},
 	"scripts": {
@@ -49,14 +48,14 @@
 		"preferred-install": "dist"
 	},
 	"repositories": {
-		"harnak": {
+		"theme-harnak": {
 			"type": "vcs",
-			"url": "http://github.com/dlepaux/harnak"
+			"url": "http://github.com/dlepaux/theme-harnak"
 		}
 	},
 	"extra": {
         "installer-paths": {
-            "theme/{$name}": ["dynamix/harnak"]
+            "theme/{$name}": ["dynamix/theme-harnak"]
         }
     },
     "minimum-stability": "dev"
