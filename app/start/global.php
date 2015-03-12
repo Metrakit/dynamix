@@ -8,11 +8,13 @@
 |
 */
 //Get themes
-$themes = Cachr::getCache('DB_ThemeByType');
-if ( Request::segment(1) == "admin" ) {
-	View::addLocation(base_path() . '/theme/' . (isset($themes['admin'])?$themes['admin']:'default') . '/views/');
-} else {
-	View::addLocation(base_path() . '/theme/' . (isset($themes['public'])?$themes['public']:'default') . '/views/');	
+if (Schema::hasTable('themes')) {
+	$themes = Cachr::getCache('DB_ThemeByType');
+	if ( Request::segment(1) == "admin" ) {
+		View::addLocation(base_path() . '/theme/' . (isset($themes['admin'])?$themes['admin']:'default') . '/views/');
+	} else {
+		View::addLocation(base_path() . '/theme/' . (isset($themes['public'])?$themes['public']:'default') . '/views/');	
+	}
 }
 
 /*
