@@ -19,7 +19,8 @@
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
 		"thujohn/analytics": "dev-master",
-		"dynamix/harnak": "dev-master"
+		"dynamix/theme-harnak": "dev-master",
+		"dynamix/module-mosaic-gallery": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -51,12 +52,15 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/dlepaux/harnak"
+			"url": "https://github.com/dlepaux/theme-harnak"
+		} , {
+			"type": "vcs",
+			"url": "https://github.com/dlepaux/module-mosaic-gallery"
 		}
 	],
 	"extra": {
         "installer-paths": {
-            "theme/{$name}": ["dynamix/harnak"]
+            "theme/{$name}": ["type:laravel-library"]
         }
     },
     "minimum-stability": "stable",
