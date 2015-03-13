@@ -6,43 +6,43 @@ exports.config =
     files:
         javascripts:
             joinTo:
-                # here we want all files for front, so :
-                # bootstrap
-                # imageloaded
-                # TODO module js
-                # master
-                'js/front.js': /^(app[\\/]front|bower_components[\/\\]bootstrap-sass-official|bower_components[\/\\]imagesloaded)/
+                # Public vendor[rank:1] & theme[rank:3] 
+                # bootstrap     v
+                # imageloaded   v
+                'public/dist/javascripts/vendor.js': /^(bower_components[\/\\]bootstrap-sass-official|bower_components[\/\\]imagesloaded)/
+                # master        v
+                'public/dist/javascripts/theme.js': /^(public[\\/]src)/
 
-                # here we want all files for back-office, so :
-                # metisMenu
-                # fancyBox
-                # raphaelJS
-                # morris.js
-                # tinyMCE
-                # sb-admin-2
-                # TODO module js
+                # Admin vendor[rank:1] & theme[rank:3] 
+                # bootstrap     v
+                # imageloaded   v
+                # metisMenu     v
+                # fancyBox      v 
+                # raphaelJS     v 
+                # morris.js     X
+                # tinyMCE       v 
+                # sb-admin-2    X
+                'admin/dist/javascripts/vendor.js': /^(bower_components[\/\\]bootstrap-sass-official|bower_components[\/\\]imagesloaded|bower_components[\/\\]metisMenu|bower_components[\/\\]fancybox|bower_components[\/\\]raphael|bower_components[\/\\]tinymce)/
                 # master
-                'js/back.js': /^(app[\\/]back|bower_components[\/\\]metisMenu|bower_components[\/\\]fancybox|bower_components[\/\\]raphael|bower_components[\/\\]tinymce|bower_components[\/\\]tinymce)/
+                'admin/dist/javascripts/theme.js': /^(admin[\\/]src)/
 
         stylesheets:
             joinTo:
-                # Public vendor
-                # bootstrap v
+                # Public vendor[rank:1] & theme[rank:3] 
+                # bootstrap     v
                 'public/dist/steelsheets/vendor.css': /^(bower_components[\/\\]bootstrap-sass-official)/
+                # master        v
+                'public/dist/steelsheets/theme.css': /^(public[\\/]src)/
 
-                # Public theme
-                'public/dist/steelsheets/theme.css': /^(public[\\/]src[\\/]steelsheets)/
-
-                # Admin vendor
-                # bootstrap v
-                # font-awesome v
-                # fancy-box v
-                # morris >
-                # metisMenu v
+                # Admin vendor[rank:1] & theme[rank:3] 
+                # bootstrap     v
+                # font-awesome  v
+                # fancy-box     v
+                # morris        X
+                # metisMenu     v
                 'admin/dist/steelsheets/vendor.css': /^(bower_components[\/\\]bootstrap-sass-official|bower_components[\/\\]fontawesome|bower_components[\/\\]fancybox|bower_components[\/\\]metisMenu)/
-
-                # Admin theme
-                'admin/dist/steelsheets/theme.css': /^(admin[\\/]src[\\/]steelsheets)/	
+                # master        v
+                'admin/dist/steelsheets/theme.css': /^(admin[\\/]src)/	
 
     modules:
         wrapper: false
@@ -60,10 +60,10 @@ exports.config =
         sass:
             debug: 'comments' # or set to 'debug' for the FireSass-style output
 
-    assetsmanager:
-        copyTo:
-            'assets/js' : ['./app/public/assets/js'],
-            'assets/css': ['./app/public/assets/css']
+    #assetsmanager:
+    #    copyTo:
+    #        'assets/js' : ['./app/public/assets/js'],
+    #        'assets/css': ['./app/public/assets/css']
         
     
    
