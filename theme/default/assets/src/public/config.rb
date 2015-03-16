@@ -6,7 +6,7 @@ sass_dir = "sass"
 images_dir = "img"
 javascripts_dir = "js"
 
-sprite_load_path = "img/icon"
+sprite_load_path = "/img/icon"
 
 generated_images_path = "../../dist/public/img"
 
