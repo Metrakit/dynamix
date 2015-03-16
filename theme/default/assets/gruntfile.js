@@ -6,12 +6,9 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		// Paths
-		path: '../',
 		srcPath: 'src/',
 		vendorPath: 'src/vendor/',
-		distPath: '../public/',
-		modulesPath: '../vendor/dynamix/',
-		modulesPathWorkbench: '../workbench/dynamix/',
+		distPath: 'dist/',
 
 
 		/**
@@ -19,43 +16,40 @@ module.exports = function(grunt) {
 		 *  CSS Tasks
 		 *
 		 */
-
 		// Compilation
 		compass: {
-		    dist: {
+		    back: {
 		      options: {
-		        config: '<%= srcPath %>config.rb',
-		        sassDir: '<%= srcPath %>sass',
-        		cssDir: '<%= srcPath %>css'
-		      }
-		    },
-			bootstrap: {
-		      options: {
-		        sassDir: '<%= vendorPath %>bootstrap-sass-twbs/assets/stylesheets/',
-        		cssDir: '<%= srcPath %>css',
+		        config: '<%= srcPath %>admin/config.rb',
+		        sassDir: '<%= srcPath %>admin/scss',
+        		cssDir: '<%= srcPath %>admin/css',
 		      }
 		    },	
-			fontawesome: {
+			front: {
 		      options: {
-		        sassDir: '<%= vendorPath %>font-awesome/scss',
-        		cssDir: '<%= srcPath %>css',
-		      }
-		    },
-		    modulesPublic: {
-		      options: {
-        		basePath: './..',
-		        sassDir: 'vendor/dynamix/*',
-        		cssDir: 'dev/src/css/modules/public/',
-		      }
-		    },
-		    modulesPublicWorkbench: {
-		      options: {
-        		basePath: './..',
-		        sassDir: 'workbench/dynamix/*',
-        		cssDir: 'dev/src/css/modules/public/',
+		        config: '<%= srcPath %>public/config.rb',
+		        sassDir: '<%= srcPath %>public/scss',
+        		cssDir: '<%= srcPath %>public/css',
 		      }
 		    }
 		},
+
+		bower: {
+		  dev: {
+		    dest: 'dest/',
+		    js_dest: 'dest/js',
+		    css_dest: 'dest/styles',
+		    options: {
+		      packageSpecific: {
+		      	ignorePackages: ['jquery'],
+		        bootstrap: {
+		          dest: 'public/fonts',
+		          css_dest: 'public/css/bootstrap'
+		        }
+		      }
+		    }
+		  }
+		}
 
 
 		// Concaténation des feuilles de styles
@@ -65,21 +59,8 @@ module.exports = function(grunt) {
 					// Feuilles de style principale
 					'<%= srcPath %>css/main.min.css':
 					[
-						'<%= srcPath %>css/bootstrap.css',
 						'<%= srcPath %>css/font-awesome.css',
-						'<%= vendorPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
-						'<%= srcPath %>css/core.css',
-						'<%= srcPath %>css/modules/**/public/**/*.css'
-					],
-
-					// Feuilles de style du back office (complete la main)
-					'<%= srcPath %>css/main.back.min.css':
-					[		
-						'<%= vendorPath %>morrisjs/morris.css',
-						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css',
-						'<%= srcPath %>css/core-admin.css',  
-						'<%= srcPath %>css/modules/**/admin/**/*.css'		
+						'<%= srcPath %>css/core.css'
 					]
 				}
 			},
@@ -107,11 +88,8 @@ module.exports = function(grunt) {
 				src: [
 					 '<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 					 '<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
-					 '<%= vendorPath %>moment/min/moment-with-locales.min.js',
-					 '<%= vendorPath %>eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-			         '<%= srcPath %>js/master.js',
-			         '<%= modulesPath %>**/assets/public/js/**/*.js',
-			         '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js'
+					 '<%= srcPath %>js/vendor/jquery.cbpFWSlider.min.js',
+			         	 '<%= srcPath %>js/master.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.min.js'
@@ -119,15 +97,7 @@ module.exports = function(grunt) {
 			back: {
 				// Fichiers à concaténer
 				src: [
-					 '<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
-					 '<%= vendorPath %>fancybox/source/jquery.fancybox.js', 
-					 '<%= vendorPath %>raphael/raphael-min.js',
-					 '<%= vendorPath %>tinymce/tinymce.min.js',
-					 '<%= srcPath %>js/vendor/morris.js',
-					 '<%= srcPath %>js/vendor/sb-admin-2.js',
-					 '<%= srcPath %>js/master-admin.js',
-					 '<%= modulesPath %>**/assets/admin/js/**/*.js',
-					 '<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js'
+					 '<%= srcPath %>js/master-admin.js'
 			    ],
 				// Fichier de destination
 				dest:'<%= srcPath %>js/main.back.min.js'
@@ -234,11 +204,6 @@ module.exports = function(grunt) {
 		      // Media-match
 		      {expand: false, src: ['<%= vendorPath %>media-match/media.match.min.js'], dest: '<%= distPath %>js/vendor/media.match.min.js', filter: 'isFile'},
 
-			  // TinyMCE
-		      {expand: true, cwd: '<%= vendorPath %>tinymce/', src: ['**'], dest: '<%= distPath %>js/tinymce/', filter: 'isFile'},
-		      {expand: true, cwd: '<%= srcPath %>js/vendor/tinymce-skin/light/', src: ['**'], dest: '<%= distPath %>js/tinymce/skins/light/', filter: 'isFile'},
-		      {expand: true, cwd: '<%= distPath %>filemanager/tinymce/plugins', src: ['**'], dest: '<%= distPath %>js/tinymce/plugins/', filter: 'isFile'}
-
 		    ]
 		  },
 		  images: {
@@ -256,9 +221,8 @@ module.exports = function(grunt) {
 				files: [
 						'<%= vendorPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
 						'<%= vendorPath %>imagesloaded/imagesloaded.pkgd.min.js',
-						'<%= srcPath %>js/master.js',
-						'<%= modulesPath %>**/assets/public/js/**/*.js',
-						'<%= modulesPathWorkbench %>**/assets/public/js/**/*.js'
+						'<%= srcPath %>js/vendor/jquery-scrollspy.js',
+						'<%= srcPath %>js/master.js'
 				],
 				tasks:['concat:main', 'clean:js', 'hash:js'],
 				options: {
@@ -269,14 +233,7 @@ module.exports = function(grunt) {
  			backJS: 
 			{
 				files: [
-						'<%= vendorPath %>metisMenu/dist/metisMenu.min.js',
-						'<%= vendorPath %>fancybox/source/jquery.fancybox.js',
-						'<%= vendorPath %>raphael/raphael-min.js',
-						'<%= vendorPath %>morrisjs/morris.js',
-						'<%= srcPath %>js/vendor/sb-admin-2.js',
-						'<%= srcPath %>js/master-admin.js',
-						'<%= modulesPath %>**/assets/admin/js/**/*.js',
-						'<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js'
+						'<%= srcPath %>js/master-admin.js'
 				],
 				tasks:['concat:back', 'clean:js', 'hash:js'],
 				options: {
@@ -296,20 +253,6 @@ module.exports = function(grunt) {
 				options: {
 	              livereload: true
 	          	}	
-          	},  
-
-        	css: 
-			{
-				files: [
-					'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
-					'<%= vendorPath %>morrisjs/morris.css',
-					'<%= vendorPath %>sb-admin-v2/css/sb-admin.css',
-					'<%= vendorPath %>metisMenu/dist/metisMenu.min.css'
-			    ],
-				tasks:['cssmin', 'clean:css', 'hash:css'],
-				options: {
-	              livereload: true
-	          	}	
           	},    	       	
 
 			scss: 
@@ -322,29 +265,6 @@ module.exports = function(grunt) {
 	              livereload: true
 	          	}	
           	}, 
-
-          	modulesPublicScss: 
-			{
-				files: [
-					'vendor/dynamix/**.scss'
-			    ],
-				tasks:['compass:modulesPublic', 'cssmin', 'clean:css', 'hash:css'],
-				options: {
-	              livereload: true
-	          	}	
-          	},
-  
-
-			modulesPublicScssWorkbench: 
-			{
-				files: [
-					'workbench/dynamix/**.scss'
-			    ],
-				tasks:['compass:modulesPublicWorkbench', 'cssmin', 'clean:css', 'hash:css'],
-				options: {
-	              livereload: true
-	          	}	
-          	},
 
 			bootstrap: 
 			{
@@ -386,10 +306,7 @@ module.exports = function(grunt) {
 	              livereload: true
 	          	}	
           	}
-
 		}		
-
-
 	});
 
 	// Chargement des plugins
@@ -398,10 +315,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-hash');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-bower');
 
 
 	// Tâches par défauts
@@ -410,10 +327,8 @@ module.exports = function(grunt) {
 
 	// Tâches personnalisées pour le développement
 	grunt.registerTask('dev', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
-	
-	grunt.registerTask('prepod', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy']);
 
 	// Tâches personnalisées pour la mise en prod
-	grunt.registerTask('prod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy']);
+	grunt.registerTask('prod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy', 'watch']);
 
 }

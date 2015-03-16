@@ -1,47 +1,12 @@
 {
-    "name": "Dynamix",
-    "version": "0.0.1",
-    "authors": [
-        "David Lepaux"
-    ],
-    "license": "MIT",
-    "private": "true",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "headjs": ">= 1.0.3",
-        "media-match": ">= 0.1.0",
-        "responsejs": ">= 0.9.0",
-        "imagesloaded": ">= 3.1.8",        
-        "metisMenu": ">= 1.1.*",
-        "jquery": "1.11.1",
-        "tinymce": ">= 4.*",
-        "fancybox": ">= 2.1.5",
-        "raphael": ">= 2.1.1",
-        "bootstrap-sass-official": "3.2.0+2",
-        "fontawesome": ">= 4.*"
-    },
-    "overrides": {
-        "media-match": {
-            "main": [
-              "bower_components/media-match/media.match.min.js"
-            ]
-        },
-        "responsejs": {
-            "main": [
-              "bower_components/mresponsejs/response.min.js"
-            ]
-        },
-        "fancybox": {
-            "main": [
-              "bower_components/fancybox/source/jquery.fancybox.js",
-              "bower_components/fancybox/source/jquery.fancybox.css"
-            ]
-        }
-    }
+  "name": "Dynamix",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": ">= 2.1.1",
+    "headjs": ">= 1.0.3",
+    "media-match": ">= 0.1.0",
+    "responsejs": ">= 0.9.0",
+    "imagesloaded": ">= 3.1.8",
+    "bootstrap-sass-twbs": ">= 3.2.*"
+  }
 }
