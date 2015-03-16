@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 
 		// Paths
 		srcPath: 'src/',
-		vendorPath: 'src/vendor/',
+		vendorPath: 'bower_components/',
 		distPath: 'dist/',
 
 
@@ -18,38 +18,33 @@ module.exports = function(grunt) {
 		 */
 		// Compilation
 		compass: {
+			//Admin theme.css
 		    back: {
 		      options: {
-		        config: '<%= srcPath %>admin/config.rb',
-		        sassDir: '<%= srcPath %>admin/scss',
-        		cssDir: '<%= srcPath %>admin/css',
+		        config: '<%= srcPath %>admin/config.rb'
 		      }
-		    },	
+		    },
+		    //Public theme.css
 			front: {
 		      options: {
-		        config: '<%= srcPath %>public/config.rb',
-		        sassDir: '<%= srcPath %>public/scss',
-        		cssDir: '<%= srcPath %>public/css',
+		        config: '<%= srcPath %>public/config.rb'
+		    },
+		    //Vendor css
+		    bootstrap: {
+		      options: {
+		        sassDir: '<%= vendorPath %>bootstrap-sass-twbs/assets/stylesheets/',
+        		cssDir: '<%= distPath %>vendor',
 		      }
-		    }
+		    },	
+			fontawesome: {
+		      options: {
+		        sassDir: '<%= vendorPath %>font-awesome/scss',
+        		cssDir: '<%= distPath %>vendor',
+		      }
+		    },
 		},
 
-		bower: {
-		  dev: {
-		    dest: 'dest/',
-		    js_dest: 'dest/js',
-		    css_dest: 'dest/styles',
-		    options: {
-		      packageSpecific: {
-		      	ignorePackages: ['jquery'],
-		        bootstrap: {
-		          dest: 'public/fonts',
-		          css_dest: 'public/css/bootstrap'
-		        }
-		      }
-		    }
-		  }
-		}
+
 
 
 		// Concaténation des feuilles de styles
@@ -59,8 +54,21 @@ module.exports = function(grunt) {
 					// Feuilles de style principale
 					'<%= srcPath %>css/main.min.css':
 					[
+						'<%= srcPath %>css/bootstrap.css',
 						'<%= srcPath %>css/font-awesome.css',
-						'<%= srcPath %>css/core.css'
+						'<%= vendorPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+						'<%= vendorPath %>fancybox/source/jquery.fancybox.css',
+						'<%= srcPath %>css/core.css',
+						'<%= srcPath %>css/modules/**/public/**/*.css'
+					],
+
+					// Feuilles de style du back office (complete la main)
+					'<%= srcPath %>css/main.back.min.css':
+					[		
+						'<%= vendorPath %>morrisjs/morris.css',
+						'<%= vendorPath %>metisMenu/dist/metisMenu.min.css',
+						'<%= srcPath %>css/core-admin.css',  
+						'<%= srcPath %>css/modules/**/admin/**/*.css'		
 					]
 				}
 			},
