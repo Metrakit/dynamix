@@ -1,0 +1,10 @@
+<?php
+ 
+return array(
+ 
+	'DB_HOST'     => 'localhost',
+	'DB_DATABASE' => 'homestead',
+	'DB_USERNAME' => 'homestead',
+	'DB_PASSWORD' => 'secret',
+	
+);
