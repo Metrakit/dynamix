@@ -8,8 +8,9 @@
 
 /bootstrap/compiled.php
 
-/dev/node_modules
-/dev/.sass-cache
+/**/node_modules
+/**/.sass-cache
+/**/bower_components
 
 /dev/src/packages
 /dev/src/css/modules
