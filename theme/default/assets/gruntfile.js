@@ -135,7 +135,7 @@ module.exports = function (grunt) {
                     '<%= srcPath %>admin/js/vendor/sb-admin-2.js',
                 ],
                 // Fichier de destination
-                dest:'<%= srcPath %>admin/js/vendor.js'
+                dest:'<%= distPath %>admin/js/vendor.js'
             },
             themePublic: {
                 // Fichiers à concaténer
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
                     '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js'
                 ],
                 // Fichier de destination
-                dest:'<%= srcPath %>public/js/vendor.js'
+                dest:'<%= distPath %>public/js/vendor.js'
             }
         },
 
