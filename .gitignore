@@ -17,7 +17,6 @@
 /theme/**/node_modules
 /theme/**/bower_components
 /theme/**/.sass-cache
-/theme/**/dist
 /theme/*
 !/theme/default
 

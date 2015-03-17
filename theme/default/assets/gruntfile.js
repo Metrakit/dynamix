@@ -57,7 +57,7 @@ module.exports = function (grunt) {
             		style: 'expanded'
             	},
                 files: {
-                    './dist/vendor/css/bootstrap.css': './bower_components/bootstrap-sass-twbs/assets/stylesheets/_bootstrap.scss'
+                    './dist/vendor/css/bootstrap.css': '<%= srcPath %>vendor/scss/bootstrap.scss'
                 }
             }
         },
