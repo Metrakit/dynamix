@@ -10,6 +10,7 @@ module.exports = function (grunt) {
         bowerPath: './bower_components/',
         vendorPath: './dist/vendor/',
         distPath: './dist/',
+        deployPath: '../../../public/theme/default/',
 
 
         /**
@@ -237,7 +238,7 @@ module.exports = function (grunt) {
 
 
         copy: {
-          jsMap: {
+          main: {
             files: [
               // Modernizr
               {expand: false, src: ['<%= srcPath %>vendor/js/modernizr.min.js'], dest: '<%= distPath %>admin/js/vendor/modernizr.min.js', filter: 'isFile'},
@@ -263,6 +264,17 @@ module.exports = function (grunt) {
               {expand: false, src: ['<%= bowerPath %>media-match/media.match.min.js'], dest: '<%= distPath %>public/js/vendor/media.match.min.js', filter: 'isFile'},
               {expand: false, src: ['<%= bowerPath %>media-match/media.match.min.js'], dest: '<%= distPath %>admin/js/vendor/media.match.min.js', filter: 'isFile'},
 
+              //Fonts
+              {expand: true, src: ['<%= bowerPath %>fontawesome/fonts/*'], dest: '<%= distPath %>admin/fonts/', flatten: true},
+              {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>admin/fonts/bootstrap/', flatten: true},
+              {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>public/fonts/bootstrap/', flatten: true},
+
+            ]
+          },
+          deploy: {
+            files: [
+              {expand: true, cwd: '<%= distPath %>admin/', src: ['**'], dest: '<%= deployPath %>admin/'},            
+              {expand: true, cwd: '<%= distPath %>public/', src: ['**'], dest: '<%= deployPath %>public/'},            
             ]
           }
         },
@@ -337,16 +349,16 @@ module.exports = function (grunt) {
 
 
     // Tâches par défauts
-    grunt.registerTask('default', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
+    grunt.registerTask('default', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy:main', 'watch']);
 
 
     // Tâches personnalisées pour le développement
-    grunt.registerTask('dev', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
+    grunt.registerTask('dev', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy:main', 'watch']);
 
 	// Tâches personnalisées pour le développement
-    grunt.registerTask('sassdebug', ['sass']);
+    grunt.registerTask('deploy', ['copy:deploy']);
 
     // Tâches personnalisées pour la mise en prod
-    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy', 'watch']);
+    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy:main', 'watch']);
 
 }
