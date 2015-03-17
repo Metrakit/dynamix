@@ -31,6 +31,12 @@ class AuthsTableSeeder extends Seeder {
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
                 ),
+            array(
+                'email'     => 'kevin.meissonnier@gmail.com',
+                'password'  => Hash::make('admin'),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime
+                ),
             )
         );
     }

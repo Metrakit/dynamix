@@ -194,23 +194,6 @@ module.exports = function(grunt) {
 		  options: {
 		      force: true
 		  }
-		},
-
-
-		// Compression des images
-		imagemin:{
-			dynamic:{
-				files: [{
-					// Mode de ciblage dynamqiue
-					expand:true,
-					// Dossier contenant les sources
-					cwd:'<%= srcPath %>img/sources',
-					// Fichiers à prendre en compte
-					src:['*.{png,jpg,gif}'],
-					// Dossier de destination
-					dest:'<%= distPath %>img'
-				}]
-			}
 		},		
 
 
@@ -398,7 +381,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-hash');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -414,6 +396,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('prepod', ['clean', 'compass', 'cssmin', 'concat', 'hash', 'copy']);
 
 	// Tâches personnalisées pour la mise en prod
-	grunt.registerTask('prod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy']);
+	grunt.registerTask('prod', ['clean', 'compass', 'cssmin', 'concat', 'uglify', 'hash', 'copy']);
 
 }
