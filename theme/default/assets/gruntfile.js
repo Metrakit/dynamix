@@ -21,24 +21,18 @@ module.exports = function (grunt) {
         compass: {
             //Admin theme.css
             themeAdmin: {
-              options: {
-                //config: '<%= srcPath %>admin/config.rb',
-                sassDir: '<%= srcPath %>admin/scss',
-                cssDir: '<%= distPath %>admin/css',
-                imagesDir: '<%= distPath %>admin/img',
-                spriteLoadPath: '<%= distPath %>admin/img/',
-                debugInfo: true,
-              }
+                options: {
+                    config: '<%= srcPath %>admin/config.rb',
+                    sassDir: '<%= srcPath %>admin/scss',
+                    cssDir: '<%= distPath %>admin/css'
+                }
             },
             //Public theme.css
             themePublic: {
               	options: {
-                	//config: '<%= srcPath %>public/config.rb',
+                	config: '<%= srcPath %>public/config.rb',
                 	sassDir: '<%= srcPath %>public/scss',
-                	cssDir: '<%= distPath %>public/css',
-                	imagesDir: '<%= distPath %>public/img',
-                	spriteLoadPath: '<%= distPath %>public/img/',
-                	debugInfo: true,
+                	cssDir: '<%= distPath %>public/css'
             	}
             },
             //Vendor css
