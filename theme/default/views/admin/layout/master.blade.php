@@ -29,8 +29,7 @@
 
         <link rel="canonical" href="{{Request::url()}}">
 
-        <link rel="stylesheet" href="{{ asset('').Bassets::show('css/main.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('').Bassets::show('css/main.back.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('').Bassets::show('admin/css/main.css') }}">
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -80,7 +79,7 @@
                   } , {
                     test: Modernizr.input.placeholder,
                     nope: ["{{ asset('js/vendor/placehold.min.js') }}"],
-                    load: ["{{asset('').Bassets::show('js/main.min.js')}}","{{asset('').Bassets::show('js/main.back.min.js') }}"],
+                    load: ["{{asset('').Bassets::show('admin/js/main.css')}}"],
                     
                     @yield('load_supp_js')
                     complete: function(){                                        

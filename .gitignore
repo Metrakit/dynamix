@@ -20,6 +20,8 @@
 /theme/*
 !/theme/default
 
+/env/**/node_modules
+
 /theme/default/assets/src/_vendor
 
 

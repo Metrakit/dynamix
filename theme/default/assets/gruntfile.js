@@ -11,6 +11,8 @@ module.exports = function (grunt) {
         vendorPath: './dist/vendor/',
         distPath: './dist/',
         deployPath: '../../../public/theme/default/',
+        modulesPathVendor: './../../../vendor/dynamix/',
+        modulesPathWorkbench: './../../../workbench/dynamix/',
 
 
         /**
@@ -43,6 +45,22 @@ module.exports = function (grunt) {
                 cssDir: '<%= vendorPath %>css',
               }
             },
+
+            //Module css
+            modulesVendor: {
+              options: {
+                basePath: './../../..',
+                sassDir: 'vendor/dynamix/*',
+                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
+              }
+            },
+            modulesWorkbench: {
+              options: {
+                basePath: './../../..',
+                sassDir: 'workbench/dynamix/*',
+                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
+              }
+            }
         },
 
         sass: {
@@ -60,31 +78,35 @@ module.exports = function (grunt) {
         cssmin:{
             combine: {
                 files: {
-                    // Admin theme.css
-                    '<%= distPath %>admin/css/theme.css':
+                    // Main admin CSS
+                    '<%= distPath %>admin/css/main.css':
                     [
-                        '<%= distPath %>admin/css/theme.css',                                                                    
-                    ],
-                    // Admin vendor.css
-                    '<%= distPath %>admin/css/vendor.css':
-                    [    
+                        //Vendor
                         '<%= vendorPath %>css/bootstrap.css',                                                            //1/6
                         '<%= vendorPath %>css/font-awesome.css',                                                        //2/6
                         '<%= bowerPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css', //3/6
                         '<%= bowerPath %>fancybox/source/jquery.fancybox.css',                                            //4/6        
                         '<%= bowerPath %>morrisjs/morris.css',                                                            //5/6
                         '<%= bowerPath %>metisMenu/dist/metisMenu.min.css',                                                //6/6
+
+                        //Modules
+                        '<%= vendorPath %>css/modules/**/admin/**/*.css',
+                    
+                        //Theme
+                        '<%= distPath %>admin/css/theme.css',                                                                    
                     ],
 
-                    // Public theme.css
-                    '<%= distPath %>public/css/theme.css':
+                    // Main public CSS
+                    '<%= distPath %>public/css/main.css':
                     [
+                        //Vendor 
+                        '<%= vendorPath %>css/bootstrap.css',
+                        
+                        //Modules
+                        '<%= vendorPath %>css/modules/**/public/**/*.css',
+                        
+                        //Theme
                         '<%= distPath %>public/css/theme.css',                                                                    
-                    ],
-                    // Public vendor.css
-                    '<%= distPath %>public/css/vendor.css':
-                    [    
-                        '<%= vendorPath %>css/bootstrap.css'
                     ]
                 }
             },
@@ -107,47 +129,47 @@ module.exports = function (grunt) {
             options: {
               separator: ';\n',
             },
-            themeAdmin: {
+            assetAdmin: {
                 // Fichiers à concaténer
                 src: [
-                    '<%= srcPath %>admin/js/theme.js'
-                ],
-                // Fichier de destination
-                dest:'<%= distPath %>admin/js/theme.js'
-            },
-            vendorAdmin: {
-                // Fichiers à concaténer
-                src: [
+                    //Vendor
                     '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',    //1/6
                     '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',                //2/6
-                    '<%= vendorPath %>metisMenu/dist/metisMenu.min.js',                        //3/6
-                    '<%= vendorPath %>fancybox/source/jquery.fancybox.js',                     //4/6
-                    '<%= vendorPath %>raphael/raphael-min.js',                                //5/6
-                    '<%= vendorPath %>tinymce/tinymce.min.js',                                //6/6
+                    '<%= bowerPath %>metisMenu/dist/metisMenu.min.js',                        //3/6
+                    '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                     //4/6
+                    '<%= bowerPath %>raphael/raphael-min.js',                                //5/6
+                    '<%= bowerPath %>tinymce/tinymce.min.js',                                //6/6
 
                     //Local vendor
                     '<%= srcPath %>admin/js/vendor/morris.js',                                    
                     '<%= srcPath %>admin/js/vendor/sb-admin-2.js',
+
+                    //Modules
+                    //'<%= modulesPathVendor %>**/assets/admin/js/**/*.js',
+                    //'<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js',
+
+                    //Theme
+                    '<%= srcPath %>admin/js/theme.js',
                 ],
                 // Fichier de destination
-                dest:'<%= distPath %>admin/js/vendor.js'
+                dest:'<%= distPath %>admin/js/main.js'
             },
-            themePublic: {
+            assetPublic: {
                 // Fichiers à concaténer
                 src: [
-                    '<%= srcPath %>public/js/theme.js'
-                ],
-                // Fichier de destination
-                dest:'<%= distPath %>public/js/theme.js'
-            },
-            vendorPublic: {
-                // Fichiers à concaténer
-                src: [
+                    //Vendor
                     '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
-                    '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js'
+                    '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',
+
+                    //Modules
+                    '<%= modulesPathVendor %>**/assets/public/js/**/*.js',
+                    '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js',
+
+                    //Theme
+                    '<%= srcPath %>public/js/theme.js',
                 ],
                 // Fichier de destination
-                dest:'<%= distPath %>public/js/vendor.js'
+                dest:'<%= distPath %>public/js/main.js'
             }
         },
 
@@ -158,36 +180,20 @@ module.exports = function (grunt) {
                 banner:'/* <%= grunt.template.today("dd-mm-yyyy, HH:MM") %> */\n'
             },
 
-            themeAdmin: {
+            assetAdmin: {
                 files:{
                     // Fichier de destination
-                    '<%= concat.themeAdmin.dest %>':
+                    '<%= concat.assetAdmin.dest %>':
                     // Fichier minifié
-                    ['<%= concat.themeAdmin.dest %>']
+                    ['<%= concat.assetAdmin.dest %>']
                 }
             },
-            vendorAdmin: {
+            assetPublic: {
                 files: {
                     // Fichier de destination
-                    '<%= concat.vendorAdmin.dest %>':
+                    '<%= concat.assetPublic.dest %>':
                     // Fichier minifié
-                    ['<%= concat.vendorAdmin.dest %>']
-                }
-            },
-            themePublic: {
-                files:{
-                    // Fichier de destination
-                    '<%= concat.themePublic.dest %>':
-                    // Fichier minifié
-                    ['<%= concat.themePublic.dest %>']
-                }
-            },
-            vendorPublic: {
-                files: {
-                    // Fichier de destination
-                    '<%= concat.vendorPublic.dest %>':
-                    // Fichier minifié
-                    ['<%= concat.vendorPublic.dest %>']
+                    ['<%= concat.assetPublic.dest %>']
                 }
             }
         },
@@ -203,25 +209,25 @@ module.exports = function (grunt) {
         // Hashage des fichiers minimifié
         hash: {
             options: {
-                mapping: './hash.json', //mapping file so your server can serve the right files
-                srcBasePath: '<%= srcPath %>', // the base Path you want to remove from the `key` string in the mapping file
+                mapping: '../../../app/config/assets/theme/default.json', //mapping file so your server can serve the right files
+                srcBasePath: '<%= distPath %>', // the base Path you want to remove from the `key` string in the mapping file
                 destBasePath: '<%= distPath %>', // the base Path you want to remove from the `value` string in the mapping file
                 flatten: false // Set to true if you don't want to keep folder structure in the `key` value in the mapping file
             },
             jsAdmin: {
-                src: ['<%= distPath %>admin/js/theme.js','<%= distPath %>admin/js/vendor.js'],
+                src: ['<%= distPath %>admin/js/main.js'],
                 dest: '<%= distPath %>admin/js'
             },
             jsPublic: {
-                src: ['<%= distPath %>public/js/theme.js','<%= distPath %>public/js/vendor.js'],
+                src: ['<%= distPath %>public/js/main.js'],
                 dest: '<%= distPath %>public/js'
             },
             cssAdmin: {
-                src: ['<%= distPath %>admin/css/theme.css','<%= distPath %>admin/css/vendor.css'],
+                src: ['<%= distPath %>admin/css/main.css'],
                 dest: '<%= distPath %>admin/css'
             },
             cssPublic: {
-                src: ['<%= distPath %>public/css/theme.css','<%= distPath %>public/css/vendor.css'],
+                src: ['<%= distPath %>public/css/main.css'],
                 dest: '<%= distPath %>public/css'
             }
         },
@@ -229,8 +235,8 @@ module.exports = function (grunt) {
 
         // Nettoyage des dossiers publics
         clean: {
-            js: ["<%= distPath %>*/js/*.js"],
-            css: ["<%= distPath %>*/css*.css"],
+            js: ["<%= distPath %>**.js"],
+            css: ["<%= distPath %>**.css"],
             options: {
                 force: true
             }
@@ -269,6 +275,10 @@ module.exports = function (grunt) {
               {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>admin/fonts/bootstrap/', flatten: true},
               {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>public/fonts/bootstrap/', flatten: true},
 
+              //Images
+              {expand: true, src: ['<%= srcPath %>admin/img/sources/[*.png,*.jpg,*.gif]'], dest: '<%= distPath %>admin/img/', flatten: true},
+              {expand: true, src: ['<%= srcPath %>public/img/sources/[*.png,*.jpg,*.gif]'], dest: '<%= distPath %>public/img/', flatten: true},
+
             ]
           },
           deploy: {
@@ -290,8 +300,8 @@ module.exports = function (grunt) {
                 tasks:['compass:themeAdmin', 'cssmin', 'clean:css', 'hash:cssAdmin'],
                 options: {
                   livereload: true
-                  }    
-              },
+                }    
+            },
 
               themePublicSCSS: 
             {
@@ -324,7 +334,7 @@ module.exports = function (grunt) {
                 options: {
                   livereload: true
                 }    
-              },                   
+            },                   
 
             blade: 
             {
@@ -349,16 +359,16 @@ module.exports = function (grunt) {
 
 
     // Tâches par défauts
-    grunt.registerTask('default', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy:main', 'watch']);
+    grunt.registerTask('default', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
 
 
     // Tâches personnalisées pour le développement
-    grunt.registerTask('dev', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy:main', 'watch']);
+    grunt.registerTask('dev', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
 
 	// Tâches personnalisées pour le développement
     grunt.registerTask('deploy', ['copy:deploy']);
 
     // Tâches personnalisées pour la mise en prod
-    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy:main', 'watch']);
+    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy', 'watch']);
 
 }
