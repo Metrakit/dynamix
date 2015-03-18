@@ -1,3 +1,0 @@
-cd deployr
-grunt
-pause
