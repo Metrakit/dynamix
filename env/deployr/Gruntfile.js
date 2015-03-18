@@ -1,4 +1,7 @@
 module.exports = function (grunt) {
+    // Require
+    require('load-grunt-tasks')(grunt);
+
     // Code grunt
     grunt.initConfig({
 
@@ -8,23 +11,14 @@ module.exports = function (grunt) {
         //Excécution des gruntfile soeur
         grunt: {
             buildsome: {
-                gruntfile: '../../theme/*/assets/Gruntfile.js'
+                gruntfile: '../../theme/default/assets/Gruntfile.js'
             }
         }    
     });
 
     // Chargement des plugins
-    grunt.loadNpmTasks('load-grunt-tasks');
+    grunt.loadNpmTasks('grunt-grunt');
 
     // Tâches par défauts
     grunt.registerTask('default', ['grunt']);
-
-    // Tâches personnalisées pour le développement
-    grunt.registerTask('dev', ['grunt']);
-
-	// Tâches personnalisées pour le développement
-    grunt.registerTask('deploy', ['grunt']);
-
-    // Tâches personnalisées pour la mise en prod
-    grunt.registerTask('prod', ['grunt']);
 }
