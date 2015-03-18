@@ -1,7 +1,7 @@
 language: php
 php:
   - 5.5
-script: php /vendor/phpunit/phpunit.phar --configuration="tests/phpunit.xml" 
+script: .\vendor\bin\phpunit -c tests
 
 notifications:
   email: false
