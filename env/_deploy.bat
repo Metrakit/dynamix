@@ -1,0 +1,3 @@
+cd deployr
+grunt
+pause
