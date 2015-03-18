@@ -2,3 +2,6 @@ language: php
 php:
   - 5.5
 script: php /vendor/phpunit/phpunit.phar --configuration="tests/phpunit.xml" 
+
+notifications:
+  email: false
