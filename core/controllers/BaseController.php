@@ -56,7 +56,7 @@ class BaseController extends Controller {
 	 */
 	public function choose_your_language()
 	{
-		return View::make('public.i18n.choose-your-language');
+		return View::make('theme::' .'public.i18n.choose-your-language');
 	}
 
 
@@ -65,7 +65,7 @@ class BaseController extends Controller {
 	{
 		if ( ! is_null($this->layout))
 		{
-			$this->layout = View::make($this->layout);
+			$this->layout = View::make('theme::' .$this->layout);
 		}
 	}
 

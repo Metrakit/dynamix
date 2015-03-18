@@ -19,9 +19,9 @@ class AdminPageController extends BaseController {
         $data['pages'] 			= Page::all();
 
         if (Request::ajax()) {
-			return Response::json(View::make( 'admin.page.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.page.index', $data )->renderSections());
 		} else {
-			return View::make('admin.page.index', $data);
+			return View::make('theme::' .'admin.page.index', $data);
 		}
 	}
 
@@ -40,10 +40,10 @@ class AdminPageController extends BaseController {
 
 		if (Input::has('template')) {
 			$template = Input::get('template');
-			return View::make('admin.page.template.' . $template, $data);
+			return View::make('theme::' .'admin.page.template.' . $template, $data);
 		}
 
-		return View::make('admin.page.form', $data);
+		return View::make('theme::' .'admin.page.form', $data);
 	}
 
 	/**
@@ -170,7 +170,7 @@ class AdminPageController extends BaseController {
 			return Redirect::back()->with('error', 'Cette page est introuvable !');
 		}
 
-		return View::make('admin.page.show', $data );
+		return View::make('theme::' .'admin.page.show', $data );
 	}
 
 	/**
@@ -191,7 +191,7 @@ class AdminPageController extends BaseController {
 			return Redirect::back()->with('error', 'Cette page est introuvable !');
 		}
 
-		return View::make('admin.page.edit', $data );
+		return View::make('theme::' .'admin.page.edit', $data );
 	}
 
 	/**
@@ -258,7 +258,7 @@ class AdminPageController extends BaseController {
 	public function getBlockTemplate($template)
 	{
 		if (in_array($template, Config::get('display.page-template'))) {
-			return Response::json(View::make('admin.page.block-template.' . $template)->render());
+			return Response::json(View::make('theme::' .'admin.page.block-template.' . $template)->render());
 		}
 
 		return Response::json('caca');

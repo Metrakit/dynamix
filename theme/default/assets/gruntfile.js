@@ -144,12 +144,12 @@ module.exports = function (grunt) {
                     '<%= srcPath %>admin/js/vendor/morris.js',                                    
                     '<%= srcPath %>admin/js/vendor/sb-admin-2.js',
 
+                    //Theme
+                    '<%= srcPath %>admin/js/theme.js',
+
                     //Modules
                     //'<%= modulesPathVendor %>**/assets/admin/js/**/*.js',
                     //'<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js',
-
-                    //Theme
-                    '<%= srcPath %>admin/js/theme.js',
                 ],
                 // Fichier de destination
                 dest:'<%= distPath %>admin/js/main.js'
@@ -161,12 +161,12 @@ module.exports = function (grunt) {
                     '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
                     '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',
 
+                    //Theme
+                    '<%= srcPath %>public/js/theme.js',
+
                     //Modules
                     '<%= modulesPathVendor %>**/assets/public/js/**/*.js',
                     '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js',
-
-                    //Theme
-                    '<%= srcPath %>public/js/theme.js',
                 ],
                 // Fichier de destination
                 dest:'<%= distPath %>public/js/main.js'
@@ -276,8 +276,8 @@ module.exports = function (grunt) {
               {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>public/fonts/bootstrap/', flatten: true},
 
               //Images
-              {expand: true, src: ['<%= srcPath %>admin/img/sources/[*.png,*.jpg,*.gif]'], dest: '<%= distPath %>admin/img/', flatten: true},
-              {expand: true, src: ['<%= srcPath %>public/img/sources/[*.png,*.jpg,*.gif]'], dest: '<%= distPath %>public/img/', flatten: true},
+              {expand: true, cwd: '<%= srcPath %>admin/img/sources/', src: ['**'], dest: '<%= distPath %>admin/img/'},
+              {expand: true, cwd: '<%= srcPath %>public/img/sources/', src: ['**'], dest: '<%= distPath %>public/img/'},
 
             ]
           },

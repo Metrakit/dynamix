@@ -4,7 +4,7 @@
 		$children = $child->children()->orderBy('created_at','DESC')->get();
 	?>
 	@foreach( $children as $child2 )
-		@include('public.comment.reply-inner', array('child' => $child2))
+		@include('theme::public.comment.reply-inner', array('child' => $child2))
 	@endforeach
 </ul>
 @endif

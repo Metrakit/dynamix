@@ -53,14 +53,14 @@ class BlockContent extends Eloquent{
     public function renderResource($locale_id = null)
     {
     	$data['data'] = $this->getTranslation( $this->i18n_content, $locale_id );
-        return Response::view('public.blockcontent.blockcontent', $data )->getOriginalContent();
+        return Response::view('theme::public.blockcontent.blockcontent', $data )->getOriginalContent();
     }
 
 	public function renderResourceAdmin($locale_id = null)
     {
     	$data['content'] = $this->getTranslation( $this->i18n_content, $locale_id );
     	$data['locale_id'] = $locale_id;
-        return Response::view('admin.page.block.wysiwyg', $data )->getOriginalContent();
+        return Response::view('theme::admin.page.block.wysiwyg', $data )->getOriginalContent();
     }
 
 

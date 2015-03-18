@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -33,7 +33,7 @@
 		    </div>
 		</div>
 
-		@include('admin.session.session-message')
+		@include('theme::admin.session.session-message')
 		<div class="form-group">
 		    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-{{ $glyphicon }}"></span> {{ $buttonLabel }}</button>
 		</div>

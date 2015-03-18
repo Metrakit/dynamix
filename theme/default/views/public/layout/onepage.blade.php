@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    @include('includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')) ))
+    @include('theme::includes.head', $data = array( 'load_css' => array( asset(Bassets::show('css/main.min.css')) ), 'load_js' => asset(Bassets::show('js/main.min.js')) ))
     <body id="onepage">
 
         <div id="wrapper">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
-                            @include('public.nav.nav')
+                            @include('theme::public.nav.nav')
                         </ul>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="container-fluid">
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">
-                            @include('public.nav.nav')
+                            @include('theme::public.nav.nav')
                         </ul>
                         @if(Auth::check())
                         <ul class="nav navbar-nav navbar-right">

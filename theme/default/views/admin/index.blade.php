@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -11,9 +11,9 @@
         <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
     </div>
 @stop
-@include('admin.tasks.labels-css', array('labels'=>$labels))
+@include('theme::admin.tasks.labels-css', array('labels'=>$labels))
 @section('content')
-    @include('admin.session.session-message')
+    @include('theme::admin.session.session-message')
     @if($ga_googleAnalyticsFound)
     <div class="row">
     <div class="col-lg-8">
@@ -34,7 +34,7 @@
                 <i class="fa fa-edit fa-fw"></i> {{{ Lang::get('admin.tasks') }}}
             </div>
             <div class="panel-body">
-                @include('admin.tasks.list', array('tasks', $tasks))
+                @include('theme::admin.tasks.list', array('tasks', $tasks))
             </div>
             <div class="panel-footer">
                 <form action="{{URL::route('admin.task.store')}}" method="post">
@@ -145,7 +145,7 @@
             </div>
             <div class="panel-body">
                 <a href="https://compressor.io/">
-                <img class="img-responsive" src="{{asset('img/compressor-io-logo.png')}}" alt="compressor logo">
+                <img class="img-responsive" src="{{asset('theme/default/admin/img/compressor-io-logo.png')}}" alt="compressor logo">
                 </a>
             </div>
         </div>

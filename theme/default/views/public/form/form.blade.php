@@ -31,7 +31,7 @@
 		<div class="form-group @if($form->type == 'horizontal') row @endif ">
 			
 			@if($builder && sizeof($inputs) > 1)
-				@include('public.form.actions')
+				@include('theme::public.form.actions')
 			@endif
 
 			{{ $input->view }}

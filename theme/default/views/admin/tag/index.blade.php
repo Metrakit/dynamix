@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -14,13 +14,13 @@
 @stop
 
 @section('content')
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <div class="alert alert-info" role="alert">{{{ Lang::get('admin.role_help') }}}{{{ Lang::get('admin.permission_help') }}}</div>
 
     <section class="tags">
         @foreach($langsFrontEnd as $lang)
-            @include('admin.tag.presenter_manager', array('lang' => $lang))
+            @include('theme::admin.tag.presenter_manager', array('lang' => $lang))
         @endforeach
     </section>
 @stop

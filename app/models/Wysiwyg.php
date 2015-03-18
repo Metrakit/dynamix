@@ -64,7 +64,7 @@ class Wysiwyg {
     {
     	$data['form'] = $this;
     	$data['inputs'] = Former::render($data['form']);
-        return Response::view('public.form.form', $data )->getOriginalContent();
+        return Response::view('theme::public.form.form', $data )->getOriginalContent();
     }
 
 	/**

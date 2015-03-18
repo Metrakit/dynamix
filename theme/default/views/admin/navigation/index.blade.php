@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -19,7 +19,7 @@ masterAdminClass.watchMenuObjects();
 
 	@section('content')
 
-	@include('admin.session.session-message')
+	@include('theme::admin.session.session-message')
 
 	<div class="alert alert-info alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -42,19 +42,19 @@ masterAdminClass.watchMenuObjects();
 					$order_second = 1;
 					?>
 					@if( count( $nav->children() ) != 0 )
-					@include('admin.navigation.presenter_manager', array( 'nav' => $nav, 'role' => 'parent' ))
+					@include('theme::admin.navigation.presenter_manager', array( 'nav' => $nav, 'role' => 'parent' ))
 					<div class="clearfix"></div>
 					<?php
 					$order_second = 1;
 					?>
 					@foreach( $nav->children() as $child )
-					@include('admin.navigation.presenter_manager', array( 'nav' => $child, 'role' => 'child' ))
+					@include('theme::admin.navigation.presenter_manager', array( 'nav' => $child, 'role' => 'child' ))
 					<?php
 					$order_second++;
 					?>
 					@endforeach
 					@else	
-					@include('admin.navigation.presenter_manager', array( 'nav' => $nav, 'role' => 'parent' ))
+					@include('theme::admin.navigation.presenter_manager', array( 'nav' => $nav, 'role' => 'parent' ))
 					@endif
 					<div class="clearfix"></div>
 					<div class="text-center menu-object-child">
@@ -80,9 +80,9 @@ masterAdminClass.watchMenuObjects();
 	<div class="clearfix"></div>
 
 	@if( count($resource_not_allowed) > 0 )
-	@include('admin.resource.presenter_not_allowed_tile', array('resource_not_allowed' => $resource_not_allowed))
+	@include('theme::admin.resource.presenter_not_allowed_tile', array('resource_not_allowed' => $resource_not_allowed))
 	@else
-	@include('admin.resource.presenter_call_to_create')
+	@include('theme::admin.resource.presenter_call_to_create')
 	@endif
 
 	@stop

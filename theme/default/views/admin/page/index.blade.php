@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -26,11 +26,11 @@
 @section('content')
 <!-- Colonne gauche -->
 <div class="row">
-    @include('admin.session.session-message')
+    @include('theme::admin.session.session-message')
 
     @foreach($pages as $page)
     <div class="col-lg-4">
-        @include('admin.page.presenter', array('page'=>$page, 'showButton'=>true))
+        @include('theme::admin.page.presenter', array('page'=>$page, 'showButton'=>true))
     </div>
     @endforeach
 </div>

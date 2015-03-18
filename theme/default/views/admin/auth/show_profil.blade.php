@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -14,10 +14,10 @@
 
 @section('content')
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <div class="profil">
-	@include('admin.auth.profil', array('user'=>$user, 'btn_name'=>	'<a href="' . URL::to('admin/profil/edit') . '"><span class="glyphicon glyphicon-pencil"></span></a>'))
+	@include('theme::admin.auth.profil', array('user'=>$user, 'btn_name'=>	'<a href="' . URL::to('admin/profil/edit') . '"><span class="glyphicon glyphicon-pencil"></span></a>'))
 </div>
 
 @stop

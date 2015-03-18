@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -10,5 +10,5 @@
 
 
 @section('content')
- @include('admin.tasks.list', array('tasks', $tasks))
+ @include('theme::admin.tasks.list', array('tasks', $tasks))
 @stop

@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -11,9 +11,9 @@
         <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
     </div>
 @stop
-@include('admin.tasks.labels-css', array('labels'=>$labels))
+@include('theme::admin.tasks.labels-css', array('labels'=>$labels))
 @section('content')
-    @include('admin.session.session-message')
+    @include('theme::admin.session.session-message')
     <div class="row head-task">
       <div class="col-md-2"><h3>Tâche</h3></div> 
       <div class="col-md-2">
@@ -49,7 +49,7 @@
               </button>
               <div class="collapse collapse-relative" id="lLabels">
                 <div class="well">
-                  @include('admin.tasks.form-tasks-labels', array('labels' => $labels, 'task_labels' => $idsLabel))
+                  @include('theme::admin.tasks.form-tasks-labels', array('labels' => $labels, 'task_labels' => $idsLabel))
                 </div>
               </div>
             
@@ -66,7 +66,7 @@
               </button>
               <div class="collapse collapse-relative" id="lUsers">
                 <div class="well">
-                  @include('admin.tasks.form-tasks-users', array('users' => $users, 'task_users' => $idsUser))
+                  @include('theme::admin.tasks.form-tasks-users', array('users' => $users, 'task_users' => $idsUser))
                 </div>
               </div>
             </div>

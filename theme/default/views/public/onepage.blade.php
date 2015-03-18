@@ -1,13 +1,13 @@
-@extends('public.layout.onepage')
+@extends('theme::public.layout.onepage')
 
 
-@include('public.includes.meta', array( 'object' => $onepage ))
+@include('theme::public.includes.meta', array( 'object' => $onepage ))
 
-@include('public.includes.ariane', array( 'object' => $onepage ))
+@include('theme::public.includes.ariane', array( 'object' => $onepage ))
 
 
 @section('container')
-	@include('public.session.session-message')
+	@include('theme::public.session.session-message')
 	@for($i = 0, $parts = $onepage->parts, $parts_count = count($parts->count()) ; $i <= $parts_count ; $i++)
 		{{--Select DOM Node (header, footer, section for sémantqiue--}}
 		<?php

@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -14,14 +14,14 @@
 
 @section('content')
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <div class="col-sm-9">
 <form class="form-horizontal" method="POST" action="{{ URL::to('admin/role/'.$role->id ) }}" accept-charset="UTF-8" autocomplete="off">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="_method" value="put">
     <fieldset>
-        @include('admin.role.form')
+        @include('theme::admin.role.form')
     </fieldset>
 </form>
 </div>

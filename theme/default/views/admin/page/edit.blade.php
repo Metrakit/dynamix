@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -16,7 +16,7 @@
 
 @section('content')
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <form class="form-horizontal" method="post" action="{{ URL::to('admin/page') }}"  autocomplete="off">
     <input type="hidden" name="_method" value="put" />

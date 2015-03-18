@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -16,8 +16,8 @@
 
 @section('content')
 
-@include('admin.session.session-message')
-@include('includes.session-message-var', array('var'=>'permissions'))
+@include('theme::admin.session.session-message')
+@include('theme::includes.session-message-var', array('var'=>'permissions'))
 
 <h2>{{{ Lang::get('admin.manage_access_resource') }}}</h2>
 <div class="alert alert-info" role="alert">{{{ Lang::get('admin.role_help') }}}{{{ Lang::get('admin.permission_help') }}}</div>

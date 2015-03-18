@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -50,7 +50,7 @@
                 $data_i18n['method_locale'] = 'site_name_locale';
             } 
         ?>
-        @include('admin.i18n.input_text_4form', $data_i18n)
+        @include('theme::admin.i18n.input_text_4form', $data_i18n)
 
         <?php
             $data_i18n = array();
@@ -61,7 +61,7 @@
                 $data_i18n['method_locale'] = 'social_title_locale';
             } 
         ?>
-        @include('admin.i18n.input_text_4form', $data_i18n)
+        @include('theme::admin.i18n.input_text_4form', $data_i18n)
 
         <?php
             $data_i18n = array();
@@ -72,7 +72,7 @@
                 $data_i18n['method_locale'] = 'social_description_locale';
             } 
         ?>
-        @include('admin.i18n.input_text_4form', $data_i18n)
+        @include('theme::admin.i18n.input_text_4form', $data_i18n)
 
         <!-- admin_email -->
         <div class="form-group {{{ $errors->has('admin_email') ? 'error' : '' }}}">
@@ -126,7 +126,7 @@
         </div>
         <!-- ./ analytics -->
 
-        @include('admin.session.session-message')
+        @include('theme::admin.session.session-message')
 
         <!-- Form Actions -->
         <div class="form-group">

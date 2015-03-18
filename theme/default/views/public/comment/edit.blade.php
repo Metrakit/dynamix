@@ -1,9 +1,9 @@
-@extends('public.layout.master')
+@extends('theme::public.layout.master')
 
 
-@include('public.includes.meta', array( 'object' => $page ))
+@include('theme::public.includes.meta', array( 'object' => $page ))
 
-@include('public.includes.ariane', array( 'object' => $page ))
+@include('theme::public.includes.ariane', array( 'object' => $page ))
 
 
 @section('content')
@@ -17,7 +17,7 @@
 		    <textarea class="form-control" name="message" id="message">{{{ Input::old('message', $comment->text) }}}"</textarea>
 		    {{ $errors->first('message', '<div class="alert alert-danger">:message</div>') }}
 		</div>
-		@include('public.session.session-message')
+		@include('theme::public.session.session-message')
 		<div class="form-group">
 		    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{I18n::get('button.update')}}}</button>
 		</div>

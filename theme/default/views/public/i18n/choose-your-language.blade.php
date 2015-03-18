@@ -1,4 +1,4 @@
-@extends('public.layout.master')
+@extends('theme::public.layout.master')
 
 @section('meta_title')
 Choose your language | @parent
@@ -20,7 +20,7 @@ Choose your language | @parent
 @stop
 
 @section('content')
-@include('public.session.session-message')
+@include('theme::public.session.session-message')
 
 
 <!-- Liste des langues avec le liens dynam.ix/{locale} -->

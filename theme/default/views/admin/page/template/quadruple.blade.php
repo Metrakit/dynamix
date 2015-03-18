@@ -1,7 +1,7 @@
-@extends('admin.page.create')
+@extends('theme::admin.page.create')
 
 @section('template')
 
-@include('admin.page.block-template.quadruple')
+@include('theme::admin.page.block-template.quadruple')
 
 @stop

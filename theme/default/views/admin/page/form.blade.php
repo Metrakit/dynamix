@@ -1,4 +1,4 @@
-@extends('admin.page.' . $action)
+@extends('theme::admin.page.' . $action)
 
 @section('form')
 <ul class="nav nav-tabs" role="tablist" id="myTab">
@@ -48,7 +48,7 @@
 
             <div class="hidden block-presenter-call-to-create">
             <div class="handful handful-left"></div>
-            @include('admin.page.block.presenter_call_to_create_in_block')
+            @include('theme::admin.page.block.presenter_call_to_create_in_block')
             <div class="handful handful-right"></div>
             </div>
         </div>

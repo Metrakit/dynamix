@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -15,7 +15,7 @@
 @section('content')
 <div class="row">
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 @foreach( $reroutes as $reroute) 
     <form class="form-horizontal" method="post" action="{{ URL::to('admin/rerouter') }}"  autocomplete="off">
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -23,11 +23,11 @@
 	<div class="clearfix"></div>
     <fieldset>
         <div class="row">
-            @include('admin.auth.role', array('roles'=> $roles, 'user'=> $u))
+            @include('theme::admin.auth.role', array('roles'=> $roles, 'user'=> $u))
             <div class="clearfix"></div> 
             {{ $errors->first('role', '<div class="alert alert-danger">:message</div>') }}
         </div>
-        @include('admin.session.session-message')
+        @include('theme::admin.session.session-message')
         <div class="form-group col-lg-5 col-md-8 col-sm-12 text-center">
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-{{ $glyphicon }}"></span> {{ $buttonLabel }}</button>
         </div>

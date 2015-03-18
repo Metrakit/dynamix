@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -17,7 +17,7 @@
 <form class="form-horizontal" method="POST" action="{{ URL::to('admin/role') }}" accept-charset="UTF-8" autocomplete="off">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
-        @include('admin.role.form')
+        @include('theme::admin.role.form')
     </fieldset>
 </form>
 </div>

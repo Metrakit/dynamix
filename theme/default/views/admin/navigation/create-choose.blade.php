@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -14,7 +14,7 @@
 @stop
 
 @section('content')
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <div class="col-sm-9">
 
@@ -64,7 +64,7 @@
         </fieldset>
     </form>
     @else
-        @include('admin.resource.presenter_call_to_create')
+        @include('theme::admin.resource.presenter_call_to_create')
     @endif
 
 </div>

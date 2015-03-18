@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 @section('meta_title')
 {{{ Lang::get('admin.page_show') }}} |
@@ -14,7 +14,7 @@
 
 @section('content')
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <ul class="nav nav-tabs" role="tablist" id="tab-page-show">
     @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )

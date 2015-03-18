@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -15,7 +15,7 @@
 
 @section('content')
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 	
 	<div class="page-block-remove">
 	<span class="page-lineblock-remove-btn"></span>

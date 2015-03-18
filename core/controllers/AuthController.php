@@ -24,7 +24,7 @@ class AuthController extends BaseController {
 			return Redirect::to('/');
 		}
 
-		return View::make('admin.login.login');
+		return View::make('theme::' .'admin.login.login');
 	}
 
 	/**
@@ -117,7 +117,7 @@ class AuthController extends BaseController {
 	 */
 	public function choose_your_language()
 	{
-		return View::make('public.i18n.choose-your-language');
+		return View::make('theme::' .'public.i18n.choose-your-language');
 	}
 
 

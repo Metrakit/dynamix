@@ -5,7 +5,7 @@ class Bassets {
     public static function show( $urlKey ) {
     	//Récupération de tous les fichiers .json (theme.json)
     	$themesHash = app_path() . '/config/assets/theme/';
-    	$pathForAssets = '/theme/';
+    	$pathForAssets = 'theme/';
 
     	try{
 			$dir = opendir($themesHash); 
@@ -48,7 +48,7 @@ class Bassets {
     	if(isset($json[$urlKey])){
     		return $pathForAssets . $json[$urlKey];
     	}else{
-    		return var_dump($pathForAssets . $urlKey);
+    		return $pathForAssets . $urlKey;
     		return 'error_assets';
     	}
     }

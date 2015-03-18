@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -13,7 +13,7 @@
 @stop
 
 @section('content')
-    @include('admin.session.session-message')
+    @include('theme::admin.session.session-message')
 
     <!-- Enable / Desable languages on the front ends -->
     @if ( count($langsFrontEnd) == 0 )
@@ -28,7 +28,7 @@
 
         @foreach( $langsFrontEnd as $langPack)
         <div class="col-lg-4 col-md-6 col-sm-12">
-            @include('admin.environment.form', array('langs' => $langPack))
+            @include('theme::admin.environment.form', array('langs' => $langPack))
         </div>
         @endforeach
 

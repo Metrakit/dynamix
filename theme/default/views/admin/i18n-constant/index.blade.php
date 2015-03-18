@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -47,7 +47,7 @@
         @endfor
         </div>
 
-        @include('admin.session.session-message')
+        @include('theme::admin.session.session-message')
 
         <!-- Form Actions -->
         <div class="form-group">

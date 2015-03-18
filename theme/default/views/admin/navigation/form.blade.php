@@ -23,7 +23,7 @@
     <div class="col-md-10 col-lg-8">
         <select class="form-control" name="model_resource_id" id="model_resource_id">
             <option value="">Choisissez une ressource</option>
-            @include('admin.resource.presenter_not_allowed_4form', array(  'resource_not_allowed' => $resource_not_allowed, 'selected' => array('current_resource_id' => (isset($current_resource_id)?$current_resource_id:null), 'current_resource_type' => (isset($current_resource_type)?$current_resource_type:null)) ))
+            @include('theme::admin.resource.presenter_not_allowed_4form', array(  'resource_not_allowed' => $resource_not_allowed, 'selected' => array('current_resource_id' => (isset($current_resource_id)?$current_resource_id:null), 'current_resource_type' => (isset($current_resource_type)?$current_resource_type:null)) ))
         </select>
         <p class="help-block">{{{ Lang::get('admin.navigation_resource_help') }}}</p>
         {{ $errors->first('model_resource_id', '<div class="alert alert-danger">:message</div>') }}

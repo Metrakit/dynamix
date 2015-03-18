@@ -9,13 +9,25 @@
 */
 //Get themes
 if (Schema::hasTable('themes')) {
+	//Get themes from db
 	$themes = Cachr::getCache('DB_ThemeByType');
+
+	//Get themeType
+	$themeType = "public";
 	if ( Request::segment(1) == "admin" ) {
-		View::addLocation(base_path() . '/theme/' . (isset($themes['admin'])?$themes['admin']:'default') . '/views/');
-	} else {
-		View::addLocation(base_path() . '/theme/' . (isset($themes['public'])?$themes['public']:'default') . '/views/');	
+		$themeType = "admin";
 	}
+
+	//Get themeName
+	$themeName = (isset($themes['admin'])?$themes['admin']:'default');
+
+	//Set namespace with override support
+	View::addNamespace('theme', [
+	    base_path().'/theme/default/views',
+	    base_path().'/theme/' . $themeName . '/views'
+	]);
 }
+
 
 /*
 |--------------------------------------------------------------------------

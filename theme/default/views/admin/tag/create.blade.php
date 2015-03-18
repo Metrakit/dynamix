@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('theme::admin.layout.master')
 
 
 @section('meta_title')
@@ -15,13 +15,13 @@
 
 @section('content')
 
-@include('admin.session.session-message')
+@include('theme::admin.session.session-message')
 
 <div class="col-sm-9">
 <form class="form-horizontal" method="POST" action="{{ URL::to('admin/tag') }}" accept-charset="UTF-8" autocomplete="off">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
-        @include('admin.tag.form')
+        @include('theme::admin.tag.form')
     </fieldset>
 </form>
 </div>

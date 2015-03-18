@@ -16,14 +16,14 @@
 	</div>
 
 	@if(Auth::check())
-		@include('public.comment.comment-form', array('object' => $object))
+		@include('theme::public.comment.comment-form', array('object' => $object))
 	@else
 	<div class="alert alert-warning">
 		{{{ I18n::get('auth.you_must_be_logged') }}}
 	</div>
 	@endif
 
-	@include('public.session.session-message-var', array('var'=>'comment'))
+	@include('theme::public.session.session-message-var', array('var'=>'comment'))
 
 	<?php
 		$comments = $object->comments()->orderBy('created_at','DESC')->get();
@@ -33,7 +33,7 @@
 	@endif
 
 	@foreach ( $comments as $comment ) 
-		@include('public.comment.comment', array('comment' => $comment))
+		@include('theme::public.comment.comment', array('comment' => $comment))
 	@endforeach
 	
 	<div id="comment-form-edit-hidden">

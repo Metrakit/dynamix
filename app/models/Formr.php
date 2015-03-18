@@ -175,7 +175,7 @@ class Formr extends Eloquent{
     	$data['inputs'] = Former::render($data['form']);
     	$data['modelId'] = null;
     	$data['builder'] = false;
-        return Response::view('public.form.form', $data )->getOriginalContent();
+        return Response::view('theme::public.form.form', $data )->getOriginalContent();
     }
 
 	/**
