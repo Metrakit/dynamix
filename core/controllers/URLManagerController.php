@@ -11,7 +11,7 @@ class URLManagerController extends BaseController {
         if (Config::get('display.onepage')) {
             $data = array();
             $data['onepage'] = OnePage::first();
-            return View::make('public.onepage', $data);
+            return View::make('theme::' .'public.onepage', $data);
         } else {
             //Find good page
             if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
@@ -19,10 +19,10 @@ class URLManagerController extends BaseController {
             foreach ( $urls as $url ) {
                 if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
                     $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
-                    return View::make( 'public.pages.page' , compact('page') );
+                    return View::make('theme::' . 'public.pages.page' , compact('page') );
                 }
             }
-            return View::make('errors.404');        
+            return View::make('theme::' .'errors.404');        
         }
     }
     
@@ -42,11 +42,11 @@ class URLManagerController extends BaseController {
                     $structure = Structure::where('i18n_url','=',$url['i18n_id'])->first();
                     $resourceName = strtolower ( $structure->structurable_type );
                     $data[ $resourceName ] = $structure->structurable;
-                    return View::make( $resourceName::$blockContentView, $data );
+                    return View::make('theme::' . $resourceName::$blockContentView, $data );
                 }
             }
         }
-        return View::make('errors.404');        
+        return View::make('theme::' .'errors.404');        
     }
     public function translateAndRedirect( $slug_origin, $locale_new )
     {
@@ -61,6 +61,6 @@ class URLManagerController extends BaseController {
                 }
             }
         }
-        return View::make('errors.500');        
+        return View::make('theme::' .'errors.500');        
     }
 }

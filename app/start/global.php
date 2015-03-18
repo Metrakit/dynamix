@@ -2,6 +2,35 @@
 
 /*
 |--------------------------------------------------------------------------
+| Register Theme
+|--------------------------------------------------------------------------
+|
+|
+*/
+//Get themes
+if (Schema::hasTable('themes')) {
+	//Get themes from db
+	$themes = Cachr::getCache('DB_ThemeByType');
+
+	//Get themeType
+	$themeType = "public";
+	if ( Request::segment(1) == "admin" ) {
+		$themeType = "admin";
+	}
+
+	//Get themeName
+	$themeName = (isset($themes['admin'])?$themes['admin']:'default');
+
+	//Set namespace with override support
+	View::addNamespace('theme', [
+	    base_path().'/theme/default/views',
+	    base_path().'/theme/' . $themeName . '/views'
+	]);
+}
+
+
+/*
+|--------------------------------------------------------------------------
 | Register The Laravel Class Loader
 |--------------------------------------------------------------------------
 |

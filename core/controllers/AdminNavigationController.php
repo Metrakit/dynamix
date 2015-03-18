@@ -22,9 +22,9 @@ class AdminNavigationController extends BaseController {
 		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.navigation.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.navigation.index', $data )->renderSections());
 		} else {
-			return View::make('admin.navigation.index', $data );
+			return View::make('theme::' .'admin.navigation.index', $data );
 		}
 	}
 
@@ -45,7 +45,7 @@ class AdminNavigationController extends BaseController {
 		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
 
 		// load the create form (app/views/nerds/create.blade.php)
-		return View::make('admin.navigation.create-choose', $data);
+		return View::make('theme::' .'admin.navigation.create-choose', $data);
 	}
 
 	/**
@@ -75,7 +75,7 @@ class AdminNavigationController extends BaseController {
 		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
 
 		// load the create form (app/views/nerds/create.blade.php)
-		return View::make('admin.navigation.create', $data);
+		return View::make('theme::' .'admin.navigation.create', $data);
 	}
 
 	/**
@@ -203,7 +203,7 @@ class AdminNavigationController extends BaseController {
 		$data['resource_not_allowed']	= parent::getResourceNotAllowed();
 
 		// show the edit form and pass the nerd
-		return View::make('admin.navigation.edit', $data);
+		return View::make('theme::' .'admin.navigation.edit', $data);
 	}
 
 	/**

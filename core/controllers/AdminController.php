@@ -57,9 +57,9 @@ class AdminController extends BaseController {
 
 		$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.index', $data )->renderSections());
 		} else {
-			return View::make('admin.index', $data );
+			return View::make('theme::' .'admin.index', $data );
 		}
 	}
 
@@ -87,9 +87,9 @@ class AdminController extends BaseController {
 		$data['noAriane'] = true;
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.media.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.media.index', $data )->renderSections());
 		} else {
-			return View::make('admin.media.index', $data);
+			return View::make('theme::' .'admin.media.index', $data);
 		}
 	}
 
@@ -104,7 +104,7 @@ class AdminController extends BaseController {
 	{
 		$mosaiques = Mosaique::all();
 
-		return View::make('admin.mosaique.index', compact('mosaiques'));
+		return View::make('theme::' .'admin.mosaique.index', compact('mosaiques'));
 	}*/
 
 
@@ -125,9 +125,9 @@ class AdminController extends BaseController {
 		$data['noAriane'] = true;
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.role_permission.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.role_permission.index', $data )->renderSections());
 		} else {
-			return View::make('admin.role_permission.index', $data);
+			return View::make('theme::' .'admin.role_permission.index', $data);
 		}
 	}
 
@@ -212,9 +212,9 @@ class AdminController extends BaseController {
 		//return var_dump($data['langsFrontEnd']);
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.environment.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.environment.index', $data )->renderSections());
 		} else {
-			return View::make('admin.environment.index', $data);
+			return View::make('theme::' .'admin.environment.index', $data);
 		}
 	}
 
@@ -313,9 +313,9 @@ class AdminController extends BaseController {
 		$data['logs'] = Track::orderBy('date','DESC')->paginate(20);
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.log.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.log.index', $data )->renderSections());
 		} else {
-			return View::make('admin.log.index', $data);
+			return View::make('theme::' .'admin.log.index', $data);
 		}
 	}
 
@@ -334,10 +334,14 @@ class AdminController extends BaseController {
 
 		$data['option'] = Option::first();
 
+		//Data for themes
+		$data['theme_publics'] = Theme::where('type', 'public')->get();
+		$data['theme_admins'] = Theme::where('type', 'admin')->get();
+
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.option.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.option.index', $data )->renderSections());
 		} else {
-			return View::make('admin.option.index', $data);
+			return View::make('theme::' .'admin.option.index', $data);
 		}
 	}
 
@@ -387,6 +391,28 @@ class AdminController extends BaseController {
         // Check if the form validates with success
         if ($validator->passes())
         {
+        	//Themes
+        	$activeThemePublic = Theme::where('type', 'public')->where('active', 1)->first();
+        	$activeThemeAdmin = Theme::where('type', 'admin')->where('active', 1)->first();
+
+        	//Change or not?
+        	if ( $activeThemePublic->id != Input::get('theme_public')) {
+        		$activeThemePublic->active = false;
+        		$activeThemePublic->save();
+        		$newThemePublic = Theme::find(Input::get('theme_public'));
+        		$newThemePublic->active = true;
+        		$newThemePublic->save();
+        	}
+			if ( $activeThemeAdmin->id == Input::get('theme_admin')) {
+        		$activeThemeAdmin->active = false;
+        		$activeThemeAdmin->save();
+        		$newThemeAdmin = Theme::find(Input::get('theme_public'));
+        		$newThemeAdmin->active = true;
+        		$newThemeAdmin->save();
+        	}
+
+
+        	//Options
         	$option = Option::first();
         	//return var_dump(Input::get('cover_path'));
 
@@ -448,9 +474,9 @@ class AdminController extends BaseController {
 		$data['reroutes'] = Rerouter::all();
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.rerouter.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.rerouter.index', $data )->renderSections());
 		} else {
-			return View::make('admin.rerouter.index', $data);
+			return View::make('theme::' .'admin.rerouter.index', $data);
 		}
 	}
 
@@ -502,9 +528,9 @@ class AdminController extends BaseController {
 		$data['i18nConstants'] = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.i18n-constant.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.i18n-constant.index', $data )->renderSections());
 		} else {
-			return View::make('admin.i18n-constant.index', $data);
+			return View::make('theme::' .'admin.i18n-constant.index', $data);
 		}
 	}
 	public function postI18nConstant () {

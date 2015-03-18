@@ -1,0 +1,10 @@
+{
+  "../dist/admin/js/theme.js": "admin/js/theme.1c0b480b.js",
+  "../dist/public/js/theme.js": "public/js/theme.78c9eab5.js",
+  "../dist/admin/css/theme.css": "admin/css/theme.2822bfb6.css",
+  "../dist/public/css/theme.css": "public/css/theme.208c1588.css",
+  "../dist/admin/css/vendor.css": "admin/css/vendor.1dba28c2.css",
+  "../dist/admin/js/vendor.js": "admin/js/vendor.fd36283e.js",
+  "../dist/public/js/vendor.js": "public/js/vendor.7f7d85b4.js",
+  "../dist/public/css/vendor.css": "public/css/vendor.60ebea8c.css"
+}

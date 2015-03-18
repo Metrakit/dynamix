@@ -147,7 +147,7 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
 
 
         //Make Navigation with dropdown
-        //$navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+        //$navigations .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
         $i = 1;
         foreach ($data_temp as $objectKey => $objectValue) {
 
@@ -159,7 +159,7 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
                         'name'  => $objectValue->name,
                         'lang'  => $lang,
                         'icon'  => $objectValue->icon);
-                $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                $navigations .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
             } else if (gettype($objectValue) == "array") {
                 //drop down bitch
                 
@@ -174,13 +174,13 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
                                 'name'  => $resource->name,
                                 'lang'  => $lang,
                                 'icon'  => $resource->icon);
-                        $navigations_temp .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                        $navigations_temp .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
                     }
                 }
                 $dataDropdown['groupKey'] = $objectKey;
                 $dataDropdown['lang'] = Config::get('admin.nav_admin.groups.group' . $i);
                 $dataDropdown['lis'] = $navigations_temp;
-                $navigations .= Response::view('admin.interface.nav-dropdown', $dataDropdown )->getOriginalContent();
+                $navigations .= Response::view('theme::admin.interface.nav-dropdown', $dataDropdown )->getOriginalContent();
                 $i++;
             }
         }
@@ -199,13 +199,13 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
                         'name'  => $resource->name,
                         'lang'  => $lang,
                         'icon'  => $resource->icon);
-                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                    $navigations .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
                 } else if (!Config::get('display.onepage')) {
                     $data = array(
                         'name'  => $resource->name,
                         'lang'  => $lang,
                         'icon'  => $resource->icon);
-                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                    $navigations .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
                 }
             }
         }*/

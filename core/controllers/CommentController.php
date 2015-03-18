@@ -47,9 +47,9 @@ class CommentController extends BaseController {
 			if ( $comment->save() ) {
 				if ( Request::ajax() ) {
 					if (Input::has('reply')) {
-						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.reply-inner', array('child' => $comment))->render(), 'message' => I18n::get('comment.store_success')));
+						return Response::json(array('status' => 'success', 'comment' => View::make('theme::' .'public.comment.reply-inner', array('child' => $comment))->render(), 'message' => I18n::get('comment.store_success')));
 					} else {						
-						return Response::json(array('status' => 'success', 'comment' => View::make('public.comment.comment', array('comment' => $comment))->render(), 'message' => I18n::get('comment.store_success')));
+						return Response::json(array('status' => 'success', 'comment' => View::make('theme::' .'public.comment.comment', array('comment' => $comment))->render(), 'message' => I18n::get('comment.store_success')));
 					}
 				} else {
 					return Redirect::to($url)->with('success', I18n::get('comment.store_success'));

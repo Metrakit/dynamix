@@ -17,6 +17,7 @@ class Cachr
 		Cache::forget('DB_LocaleFrontEnable');
 		Cache::forget('DB_ResourceNavigable');
 		Cache::forget('DB_LocalesEnabled');
+		Cache::forget('DB_ThemeActives');
 		
 		if(!Cache::has($cache)){
 			$cachr = new Cachr;
@@ -124,6 +125,19 @@ class Cachr
 		    					  'locale_id'	=> $d->locale_id );
 		    }
 		    return $datas;
+		});
+
+		//Cache for theme
+		Cache::rememberForever('DB_ThemeByType', function()
+		{
+		    $themes = Theme::where('active', 1)->get();
+
+		    $data = array();
+		    foreach( $themes as $theme ) {
+		    	$data[$theme->type] = $theme->name;
+		    }
+
+		    return $data;
 		});
 	}
 }

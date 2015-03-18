@@ -28,9 +28,9 @@ class AdminOnePageController extends BaseController {
 		$data['ga_newOnReturningVisitor'] 	= App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.index', $data )->renderSections());
 		} else {
-			return View::make('admin.index', $data );
+			return View::make('theme::' .'admin.index', $data );
 		}
 	}
 }

@@ -16,9 +16,9 @@ class AdminTasksController extends BaseController {
 		$datas['labels'] = TasksLabels::all();
 		return $datas;
 		/*if (Request::ajax()) {
-			return Response::json(View::make( 'tasks.list', $datas )->renderSections());
+			return Response::json(View::make('theme::' . 'tasks.list', $datas )->renderSections());
 		} else {
-			return View::make( 'tasks.display', $datas );
+			return View::make('theme::' . 'tasks.display', $datas );
 		}*/
 	}
 
@@ -51,7 +51,7 @@ class AdminTasksController extends BaseController {
 		foreach($task->auths as $user){
 			$idsUser[] = $user->id;
 		}
-		return View::make('admin.tasks.edit', array(
+		return View::make('theme::' .'admin.tasks.edit', array(
 					'task' => $task,
 					'user' => Auth::user(),
 					'noAriane' => true,

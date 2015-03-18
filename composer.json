@@ -15,9 +15,13 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
+		"schickling/backup": "0.6.*",
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
-		"thujohn/analytics": "dev-master"	},
+		"thujohn/analytics": "dev-master",
+		"dynamix/theme-harnak": "dev-master",
+		"dynamix/module-mosaic-gallery": "dev-master"
+	},
 	"autoload": {
 		"classmap": [
 			"app/models",
@@ -26,7 +30,8 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
-			"vendor/dynamix"
+			"vendor/dynamix",
+            "theme"
 		]
 	},
 	"scripts": {
@@ -45,5 +50,20 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/dlepaux/theme-harnak"
+		} , {
+			"type": "vcs",
+			"url": "https://github.com/dlepaux/module-mosaic-gallery"
+		}
+	],
+	"extra": {
+        "installer-paths": {
+            "theme/{$name}": ["type:laravel-library"]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

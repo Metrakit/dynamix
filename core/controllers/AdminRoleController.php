@@ -17,7 +17,7 @@ class AdminRoleController extends BaseController {
 		$data['buttonLabel'] 	= Lang::get('button.add');
 		$data['glyphicon'] 		= 'plus';
 		
-		return View::make('admin.role.create', $data);
+		return View::make('theme::' .'admin.role.create', $data);
 	}
 
 
@@ -86,7 +86,7 @@ class AdminRoleController extends BaseController {
 	    $data['role'] = Role::find($id);
 	    if(empty($data['role'])) return Redirect::back()->with('error', Lang::get('admin.role_empty') );
 
-		return View::make('admin.role.edit', $data);
+		return View::make('theme::' .'admin.role.edit', $data);
 	}
 
 
