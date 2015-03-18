@@ -1,4 +1,4 @@
 language: php
 php:
   - 5.5
-script: php /vendor/php-unit/phpunit.phar test_unitaire/controleur_mongo_test.php
+script: php /vendor/phpunit/phpunit.phar --configuration="tests/phpunit.xml" 
