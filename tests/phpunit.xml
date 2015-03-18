@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit>
-    <testsuite name="AllTests">
-	        <directory>.</directory>
-    </testsuite>
+	<testsuites>
+
+	    <testsuite name="AllTests">
+		        <directory>.</directory>
+	    </testsuite>
+
+	</testsuites>
 </phpunit>
