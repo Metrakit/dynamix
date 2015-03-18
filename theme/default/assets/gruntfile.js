@@ -148,8 +148,8 @@ module.exports = function (grunt) {
                     '<%= srcPath %>admin/js/theme.js',
 
                     //Modules
-                    //'<%= modulesPathVendor %>**/assets/admin/js/**/*.js',
-                    //'<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js',
+                    '<%= modulesPathVendor %>**/assets/admin/js/**/*.js',
+                    '<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js',
                 ],
                 // Fichier de destination
                 dest:'<%= distPath %>admin/js/main.js'

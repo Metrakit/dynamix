@@ -111,7 +111,6 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Dynamix packages
-
 		//'Dynamix\Template\TemplateServiceProvider',
 		//'Dynamix\BlogModule\BlogServiceProvider',
 		//'Dynamix\UserManager\UserServiceProvider',
@@ -122,6 +121,7 @@ return array(
 		'PagerServiceProvider',
 		'FormerServiceProvider',
 		'Thujohn\Analytics\AnalyticsServiceProvider',
+		'Schickling\Backup\BackupServiceProvider',
 
 
 	),
