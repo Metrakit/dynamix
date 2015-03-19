@@ -134,7 +134,7 @@ module.exports = function (grunt) {
                 src: [
                     //Vendor
                     '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',    //1/6
-                    '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',                //2/6
+                    //'<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',                //2/6
                     '<%= bowerPath %>metisMenu/dist/metisMenu.min.js',                        //3/6
                     '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                     //4/6
                     '<%= bowerPath %>raphael/raphael-min.js',                                //5/6
@@ -159,7 +159,7 @@ module.exports = function (grunt) {
                 src: [
                     //Vendor
                     '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',
-                    '<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',
+                    //'<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',
 
                     //Theme
                     '<%= srcPath %>public/js/theme.js',
