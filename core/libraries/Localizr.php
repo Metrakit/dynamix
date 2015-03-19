@@ -27,14 +27,14 @@ class Localizr
 							$locale = Config::get('app.locale');
 						}
 						Session::put('lang',$locale);
-						App::setLocale($locale);
+						App::setLocale($locale . '.UTF8');
 						return null;
 					} 
 					if ( Session::has('lang') ) {//For return visit
 						$locale = Session::get('lang');
 					} else {
 						//if not, search a lang in server datas and if is valid
-						$browser_lang = substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
+						$browser_lang = mb_substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
 					    // Check the browser request langugae is support in app?
 					    if(!empty($browser_lang) AND in_array($browser_lang, Cachr::getCache('DB_LocaleFrontEnable')))
 					    {
@@ -57,7 +57,7 @@ class Localizr
 					Session::put('translate_request',1);
 				}
 				Session::put('lang', $locale);
-				App::setLocale($locale);
+				App::setLocale($locale . '.UTF8');
 			} else {
 				$locale = null;
 			}

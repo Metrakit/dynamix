@@ -29,6 +29,7 @@ class Cachr
 		}
 		return Cache::get($cache);
 	}
+
 	public function initCache()
 	{
 		// !!! DATABASE CACHE !!!
