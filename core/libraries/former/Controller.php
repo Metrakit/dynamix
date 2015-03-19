@@ -252,7 +252,7 @@ class Former extends \Controller {
             }
 
             // Génération des vues
-            $data['inputs'][$key]->view = \Response::view( $data['inputs'][$key]->viewPath, array(
+            $data['inputs'][$key]->view = \Response::view( 'theme::' . $data['inputs'][$key]->viewPath, array(
                 'form' => $form,
                 'input' => $data['inputs'][$key],
                 'locales' => $data['locales']
@@ -325,7 +325,7 @@ class Former extends \Controller {
 
             // Getting path
             $inputView = $input->getView()->path;
-            $inputs[$key]->view = \Response::view($inputView, array(
+            $inputs[$key]->view = \Response::view( 'theme::' . $inputView, array(
                 'form' => $form,
                 'input' => $inputs[$key]
             ))->getOriginalContent();
@@ -458,7 +458,7 @@ class Former extends \Controller {
             $data['inputs'] = $this->setLastInput($data['inputs']);
         }
 
-        return \Response::view('public.form.form', $data)->getOriginalContent();
+        return \Response::view('theme::public.form.form', $data)->getOriginalContent();
     }
 
     /**
@@ -483,7 +483,7 @@ class Former extends \Controller {
         }
 
 
-        return \Response::view('public.form.form', $data)->getOriginalContent();
+        return \Response::view('theme::public.form.form', $data)->getOriginalContent();
     }
 
 }
