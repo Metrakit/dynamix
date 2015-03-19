@@ -91,7 +91,7 @@
             <div class="col-md-10 col-lg-8">
                 <select name="theme_public" id="theme_public" class="form-control">
                   @foreach($theme_publics as $theme)
-                  <option value="{{$theme->id}}">{{$theme->name}}</option>
+                  <option value="{{$theme->id}}"{{($theme->active?'selected="selected"':'')}}>{{$theme->name}}</option>
                   @endforeach
                 </select>
                 {{ $errors->first('theme_public', '<div class="alert alert-danger">:message</div>') }}
@@ -106,7 +106,7 @@
             <div class="col-md-10 col-lg-8">
                 <select name="theme_admin" id="theme_admin" class="form-control">
                   @foreach($theme_admins as $theme)
-                  <option value="{{$theme->id}}">{{$theme->name}}</option>
+                  <option value="{{$theme->id}}"{{($theme->active?'selected="selected"':'')}}>{{$theme->name}}</option>
                   @endforeach
                 </select>
                 {{ $errors->first('theme_admin', '<div class="alert alert-danger">:message</div>') }}
