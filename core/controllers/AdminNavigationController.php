@@ -90,7 +90,7 @@ class AdminNavigationController extends BaseController {
 		foreach ( Input::except('_token') as $k => $v ) {
 			if ( strpos($k, 'navigation_title_') !== false ) {
 				$rules[$k] = Config::get('validator.admin.navigation_title.title');
-				$navigation_title_datas[substr( $k, strlen('navigation_title_'), (strlen($k) - strpos($k, 'navigation_title_')))] = $v;
+				$navigation_title_datas[mb_substr( $k, strlen('navigation_title_'), (strlen($k) - strpos($k, 'navigation_title_')))] = $v;
 			}
 		}
 
@@ -223,7 +223,7 @@ class AdminNavigationController extends BaseController {
 		foreach ( Input::except('_token') as $k => $v ) {
 			if ( strpos($k, 'navigation_title_') !== false ) {
 				$rules[$k] = Config::get('validator.admin.navigation_title.title');
-				$navigation_name_locales[] = substr( $k, strlen('navigation_title_'), (strlen($k) - strpos($k, 'navigation_title_')));
+				$navigation_name_locales[] = mb_substr( $k, strlen('navigation_title_'), (strlen($k) - strpos($k, 'navigation_title_')));
 			}
 		}
 

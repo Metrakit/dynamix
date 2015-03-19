@@ -216,6 +216,6 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
         foreach ( $this->roles as $role ) {
             $str .= ' '.$role->name.',';
         }
-        return substr ($str, 1, strlen($str) - 2);
+        return mb_substr ($str, 1, strlen($str) - 2);
     }
 }

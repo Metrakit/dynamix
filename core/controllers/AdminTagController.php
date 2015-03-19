@@ -56,7 +56,7 @@ class AdminTagController extends BaseController {
 		foreach ( Input::except('_token') as $k => $v ) {
 			if ( strpos($k, 'tag_name_') !== false ) {
 				$rules[$k] = Config::get('validator.admin.tag.name');
-				$tag_name_datas[substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')))] = $v;
+				$tag_name_datas[mb_substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')))] = $v;
 			}
 		}
 		//return var_dump($tag_name_datas);
@@ -130,7 +130,7 @@ class AdminTagController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'tag_name_') !== false ) {
 				$rules[$k] = Config::get('validator.admin.option_site_name');
-				$tag_name_locales[] = substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')));
+				$tag_name_locales[] = mb_substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')));
 			}
 		}
 

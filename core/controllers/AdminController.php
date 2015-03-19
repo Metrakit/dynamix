@@ -358,7 +358,7 @@ class AdminController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'site_name_') !== false ) {
 				$site_name_rules[$k] = Config::get('validator.admin.option_site_name');
-				$site_name_locales[] = substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
+				$site_name_locales[] = mb_substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
 			}
 		}
 
@@ -368,7 +368,7 @@ class AdminController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'social_title_') !== false ) {
 				$social_title_rules[$k] = Config::get('validator.admin.option_social_title');
-				$social_title_locales[] = substr( $k, strlen('social_title_'), (strlen($k) - strpos($k, 'social_title_')));
+				$social_title_locales[] = mb_substr( $k, strlen('social_title_'), (strlen($k) - strpos($k, 'social_title_')));
 			}
 		}
 
@@ -378,7 +378,7 @@ class AdminController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'social_description_') !== false ) {
 				$social_description_rules[$k] = Config::get('validator.admin.option_social_description');
-				$social_description_locales[] = substr( $k, strlen('social_description_'), (strlen($k) - strpos($k, 'social_description_')));
+				$social_description_locales[] = mb_substr( $k, strlen('social_description_'), (strlen($k) - strpos($k, 'social_description_')));
 			}
 		}
 
@@ -403,13 +403,15 @@ class AdminController extends BaseController {
         		$newThemePublic->active = true;
         		$newThemePublic->save();
         	}
-			if ( $activeThemeAdmin->id == Input::get('theme_admin')) {
+			if ( $activeThemeAdmin->id != Input::get('theme_admin')) {
         		$activeThemeAdmin->active = false;
         		$activeThemeAdmin->save();
         		$newThemeAdmin = Theme::find(Input::get('theme_public'));
         		$newThemeAdmin->active = true;
         		$newThemeAdmin->save();
         	}
+        	//Delete Cache
+        	Cache::forget('DB_ThemeByType');
 
 
         	//Options
@@ -543,7 +545,7 @@ class AdminController extends BaseController {
 		foreach( Input::all() as $name => $value ) {
 			if (strpos($name, 'key_') !== false) {
 				//subvision of 'key_'
-				$name = substr($name, 4, strlen($name)-4);
+				$name = mb_substr($name, 4, strlen($name)-4);
 
 				//explode key and locale_id
 				$data = explode("_", $name);

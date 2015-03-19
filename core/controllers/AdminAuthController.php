@@ -122,7 +122,7 @@ class AdminAuthController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'role_') !== false ) {
 				$role_rules[$k] = Config::get('validator.admin.auth_role.role');
-				$roles[] = substr( $k, strlen('role_'), (strlen($k) - strpos($k, 'role_')));
+				$roles[] = mb_substr( $k, strlen('role_'), (strlen($k) - strpos($k, 'role_')));
 			}
 		}
 

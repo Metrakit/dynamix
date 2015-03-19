@@ -281,7 +281,7 @@ class InputView extends Eloquent{
             $rules .= $rule . '|';
         }
 
-        return substr($rules, 0 , -1);
+        return mb_substr($rules, 0 , -1);
     }
 
     /**

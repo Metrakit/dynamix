@@ -94,7 +94,7 @@ class AdminPageController extends BaseController {
 		foreach (Input::all() as $inputKey => $inputValue) {
 			//_trigger_md = value
 			if (strpos($inputKey, '_trigger_') !== false) {
-				$data[substr($inputKey, $countTriggerID, strlen($inputKey) - $countTriggerID)] = $inputValue;
+				$data[mb_substr($inputKey, $countTriggerID, strlen($inputKey) - $countTriggerID)] = $inputValue;
 			}
 		}
 		return $data;
