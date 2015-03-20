@@ -27,7 +27,7 @@ class Localizr
 							$locale = Config::get('app.locale');
 						}
 						Session::put('lang',$locale);
-						App::setLocale($locale . '.UTF8');
+						App::setLocale($locale);
 						return null;
 					} 
 					if ( Session::has('lang') ) {//For return visit
@@ -57,7 +57,7 @@ class Localizr
 					Session::put('translate_request',1);
 				}
 				Session::put('lang', $locale);
-				App::setLocale($locale . '.UTF8');
+				App::setLocale($locale);
 			} else {
 				$locale = null;
 			}
