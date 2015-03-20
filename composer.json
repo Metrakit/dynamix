@@ -18,7 +18,8 @@
 		"schickling/backup": "0.6.*",
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
-		"thujohn/analytics": "dev-master"
+		"thujohn/analytics": "dev-master",
+		"phpunit/phpunit": "4.5.*"    
 	},
 	"autoload": {
 		"classmap": [
