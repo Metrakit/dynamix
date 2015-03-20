@@ -92,21 +92,17 @@ class Page extends Eloquent {
 	}
 
 
-    //i18n
-    public function translateLocale( $i18n_id, $locale_id ) {
-        return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
-    }
-    
+    //i18n   
     public function page_title_locale( $locale_id ) {
-        return $this->translateLocale( $this->structure->first()->i18n_title , $locale_id );
+        return parent::getTranslation( $this->structure->first()->i18n_title , $locale_id );
     }
     public function page_url_locale( $locale_id ) {
-        return $this->translateLocale( $this->structure->first()->i18n_url , $locale_id );
+        return parent::getTranslation( $this->structure->first()->i18n_url , $locale_id );
     }
     public function page_meta_title_locale( $locale_id ) {
-        return $this->translateLocale( $this->structure->first()->i18n_meta_title , $locale_id );
+        return parent::getTranslation( $this->structure->first()->i18n_meta_title , $locale_id );
     }
     public function page_meta_description_locale( $locale_id ) {
-        return $this->translateLocale( $this->structure->first()->i18n_meta_description , $locale_id );
+        return parent::getTranslation( $this->structure->first()->i18n_meta_description , $locale_id );
     }
 }
