@@ -197,6 +197,7 @@ return array(
 		//'BlogModule'        => 'Dynamix\BlogModule\BlogFacade',
 		//'UserManager'        => 'Dynamix\UserManager\UserFacade',
 
+
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 	),
