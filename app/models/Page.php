@@ -6,7 +6,7 @@ class Page extends Eloquent {
 	 * Table name
 	 */
 	protected $table = 'pages';
-	public static $presenter = 'admin.page.presenter';
+	public static $presenter = 'theme::admin.page.presenter';
 	public static $rscName = 'admin.rscPage';
 	public static $blockContentView = 'public.pages.page';
 	public static $langNav = 'admin.nav_page';
