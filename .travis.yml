@@ -1,7 +1,0 @@
-language: php
-php:
-  - 5.5
-script: .\vendor\bin\phpunit -c tests
-
-notifications:
-  email: false
