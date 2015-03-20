@@ -17,7 +17,7 @@
 @section('content')
 
 @include('theme::admin.session.session-message')
-@include('theme::includes.session-message-var', array('var'=>'permissions'))
+@include('theme::admin.session.session-message-var', array('var'=>'permissions'))
 
 <h2>{{{ Lang::get('admin.manage_access_resource') }}}</h2>
 <div class="alert alert-info" role="alert">{{{ Lang::get('admin.role_help') }}}{{{ Lang::get('admin.permission_help') }}}</div>
