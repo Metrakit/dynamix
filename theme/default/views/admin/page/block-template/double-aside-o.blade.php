@@ -18,6 +18,7 @@
 	<input type="hidden" name="_trigger_md" value="8">
 	<input type="hidden" name="order" value="3">
 	<input type="hidden" name="class" value="pull-right">
+	<input type="hidden" name="'is_clearfixed' => true" value="1">
 @include('theme::admin.page.form_select_resource')
 {{ Form::close() }}
 <div class="clearfix"></div>
