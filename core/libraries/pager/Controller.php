@@ -73,13 +73,21 @@ class Pager {
             } else {
                 $content = 'You must do the \'renderResource\' function in ' . $block->blockable_type . ' model';
             }
+
+            //Clearfix support
+            $clearfix = '';
+            if ($block->is_clearfixed) {
+                $clearfix = 'div class="clearfix"></div>';
+            }
             
             //Fusiiion
             if ($admin_display && method_exists ($block->blockable, 'renderResourceAdmin')) {
-                return '<div class="'.$css.' '.$block->class_css.'"><div class="row">'.$content.'</div></div>';
+                return '<div class="'.$css.' '.$block->class_css.'"><div class="row">'.$content.'</div></div>' . $clearfix;
             } else {
-                return '<div class="'.$css.' '.$block->class_css.'">'.$content.'</div>';
+                return '<div class="'.$css.' '.$block->class_css.'">'.$content.'</div>' . $clearfix;
             }
+
+
         //});
         //return $content;
     }
