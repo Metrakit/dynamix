@@ -41,18 +41,7 @@
                 </li>
                 @if (Config::get('display.onepage') && $user->hasPermission('manage','page'))
                     <li {{(Request::is( 'admin/onepage' ) ? 'class="active"' : '')}}>
-                        <a href="" data-toggle="collapse" data-target="#onepage-dropdown"><i class="fa fa-align-justify"></i> {{{Lang::get('admin.onepage')}}} <i class="fa fa-fw fa-caret-down"></i></a>
-                        
-                        <ul id="onepage-dropdown" class="collapse">
-                            <li>
-                                <a href="{{URL::to('admin/onepage')}}"><i class="fa fa-cog"></i> {{{Lang::get('admin.onepage_manage')}}}</a>
-                            </li>
-                            @foreach(Onepage::first()->parts as $page)
-                            <li>
-                                <a href="{{URL::to('admin/onepage/' . $page->id . '/edit')}}" class="text-capitalise"><span class="glyphicon glyphicon-book"></span> {{$page->name}}</a>
-                            </li>
-                            @endforeach
-                        </ul>
+                        <a href="{{ URL::to('/admin/onepage') }}"><i class="fa fa-align-justify"></i> {{{Lang::get('admin.onepage')}}} </a>                        
                     </li>
                 @endif
                 {{ $user->getAuthorizedNavigations() }}

@@ -10,6 +10,7 @@ module.exports = function (grunt) {
         bowerPath: './bower_components/',
         vendorPath: './dist/vendor/',
         distPath: './dist/',
+        deployPublicPath:'../../../public/',
         deployPath: '../../../public/theme/default/',
         modulesPathVendor: './../../../vendor/dynamix/',
         modulesPathWorkbench: './../../../workbench/dynamix/',
@@ -235,8 +236,10 @@ module.exports = function (grunt) {
 
         // Nettoyage des dossiers publics
         clean: {
-            js: ["<%= distPath %>**.js"],
-            css: ["<%= distPath %>**.css"],
+            jsadmin: ["<%= distPath %>admin/css/*.js"],
+            jspublic: ["<%= distPath %>public/css/*.js"],
+            cssadmin: ["<%= distPath %>admin/css/*.css"],
+            csspublic: ["<%= distPath %>public/css/*.css"],
             options: {
                 force: true
             }
@@ -270,6 +273,11 @@ module.exports = function (grunt) {
               {expand: false, src: ['<%= bowerPath %>media-match/media.match.min.js'], dest: '<%= distPath %>public/js/vendor/media.match.min.js', filter: 'isFile'},
               {expand: false, src: ['<%= bowerPath %>media-match/media.match.min.js'], dest: '<%= distPath %>admin/js/vendor/media.match.min.js', filter: 'isFile'},
 
+              // Tiny MCE
+              {expand: true, cwd: '<%= bowerPath %>tinymce/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/'},
+              {expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/plugins/responsivefilemanager/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/plugins/responsivefilemanager/'},
+              {expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/skins/light/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/skins/light/'},
+              
               //Fonts
               {expand: true, src: ['<%= bowerPath %>fontawesome/fonts/*'], dest: '<%= distPath %>admin/fonts/', flatten: true},
               {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>admin/fonts/bootstrap/', flatten: true},
@@ -297,7 +305,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>admin/scss/**'
                 ],
-                tasks:['compass:themeAdmin', 'cssmin', 'clean:css', 'hash:cssAdmin'],
+                tasks:['clean:cssadmin', 'compass:themeAdmin', 'cssmin', 'hash:cssAdmin'],
                 options: {
                   livereload: true
                 }    
@@ -308,7 +316,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>public/scss/**'
                 ],
-                tasks:['compass:themePublic', 'cssmin', 'clean:css', 'hash:cssPublic'],
+                tasks:['clean:csspublic', 'compass:themePublic', 'cssmin', 'hash:cssPublic'],
                 options: {
                   livereload: true
                 }    
@@ -319,7 +327,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>admin/js/**'
                 ],
-                tasks:['concat:themeAdmin', 'clean:js', 'hash:jsAdmin'],
+                tasks:['concat:assetAdmin', 'clean:jsadmin', 'hash:jsAdmin'],
                 options: {
                   livereload: true
                 }    
@@ -330,7 +338,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>public/js/**'
                 ],
-                tasks:['concat:themePublic', 'clean:js', 'hash:jsPublic'],
+                tasks:['concat:assetPublic', 'clean:jspublic', 'hash:jsPublic'],
                 options: {
                   livereload: true
                 }    
