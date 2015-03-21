@@ -34,8 +34,12 @@ var PagerAdminMaster = function (){
     });
     
     //Récupération de tous les formulaires de la pages /page/create
+    var countForms = 0;
     $('body').on('click', '.btn-submit-page', function (e) {
       var forms = $('#section-content form');
+
+      //Disbale btn for suit
+      $(this).attr('disabled','disabled');
 
       //Calculate order of blocks
       calculBlocksOrder();
@@ -48,8 +52,10 @@ var PagerAdminMaster = function (){
         }
         //console.log(forms);
         var formsOnly = [];
+        
         $('#section-content form.page-block').each( function (e) {
           formsOnly.push($(this));
+          countForms++;
           console.log($(this).serialize());
         });
         
@@ -67,12 +73,40 @@ var PagerAdminMaster = function (){
       });
     }
 
+    var progression = 0;
+    var updateProgression = function () {
+      progression = progression + (100/countForms);
+      console.log(progression);
+    }
+    var getProgression = function () {
+      return progression;
+    }
+
     //Soumition d'un formulaire d'un block
+    var blockPosted = 0;
+    var blockPostTry = 0;
     var postBlockForm = function (form, page_id) {
       $.post('/admin/page-block', form.serialize() + '&page_id=' + page_id, function (data) {
         console.log(data);
-      });
-      
+        blockPostTry++;
+      }).fail(function() {
+        console.log('retry');
+        postBlockForm(form, page_id);
+        //put progression in red (danger)
+      }).done(function() {
+        console.log( "done" );
+        //Add one
+        updateProgression();
+        blockPosted++;
+        //check if is last
+        if (countForms == blockPosted) {
+          console.log( "redirect to edit" );
+          windows.location = '/admin/page/' + page_id + '/edit';
+        } else if (blockPostTry == countForms) {
+          console.log( "show errors" );
+          //show errors
+        }
+      });      
     }
   }
 
