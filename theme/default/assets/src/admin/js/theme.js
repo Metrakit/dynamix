@@ -160,6 +160,9 @@ var NavigationAdminMaster = function (){
 
 //Object MasterAdmin
 var MasterAdmin = function (){
+  // Variables
+  var queue = [];
+  
   this.start = function (){
     var pagerService = new PagerAdminMaster();
     pagerService.start();
@@ -169,6 +172,9 @@ var MasterAdmin = function (){
 
     var speedNavigationAdminService = new SpeedNavigationAdminMaster();
     //speedNavigationAdminService.start();
+
+    //Exec queue script (for module)
+    execQueueScripts();
 
     initListeners();
   }
@@ -220,6 +226,32 @@ var MasterAdmin = function (){
     
 
     $('#navigation').width(width + 1);
+  }
+
+  //Queue Script system
+  var execQueueScripts = function () {
+    var q = getQueue();
+    for( var o in q ) {
+      console.log(q[o]);
+      eval(q[o]);
+    }
+  }
+  //Add a script to exec at masterClass.start()
+  this.addQueue = function ( script ) {
+    var q = getQueue();
+    //console.log(q);
+    
+    q.push(script + ';');
+    //console.log(q);
+  }
+
+  //return void
+  var setQueue = function (a) {
+    queue = a;
+  }
+  //return queue
+  var getQueue = function () {
+    return queue;
   }
 }
 var masterAdminClass = new MasterAdmin();
