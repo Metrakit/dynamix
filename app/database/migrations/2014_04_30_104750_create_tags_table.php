@@ -18,7 +18,7 @@ class CreateTagsTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->integer('i18n_name')->unsigned();
+			$table->integer('i18n_name')->unsigned()->index();
 			$table->foreign('i18n_name')->references('id')->on('i18n');
 
 			$table->timestamps();

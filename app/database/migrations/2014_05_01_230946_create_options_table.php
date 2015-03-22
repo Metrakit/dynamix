@@ -21,7 +21,7 @@ class CreateOptionsTable extends Migration {
             //General
 			$table->string('site_url');
 
-			$table->integer('i18n_site_name')->unsigned();
+			$table->integer('i18n_site_name')->unsigned()->index();
 			$table->foreign('i18n_site_name')->references('id')->on('i18n');
 
 			//Open Graph and Twiiter
@@ -29,10 +29,10 @@ class CreateOptionsTable extends Migration {
 			
 			$table->string('twitter_id');
 
-			$table->integer('i18n_social_title')->unsigned();
+			$table->integer('i18n_social_title')->unsigned()->index();
 			$table->foreign('i18n_social_title')->references('id')->on('i18n');
 
-			$table->integer('i18n_social_description')->unsigned();
+			$table->integer('i18n_social_description')->unsigned()->index();
 			$table->foreign('i18n_social_description')->references('id')->on('i18n');
 			
 
