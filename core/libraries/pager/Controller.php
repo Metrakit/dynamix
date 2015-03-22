@@ -68,6 +68,8 @@ class Pager {
             //Block Content
             if ($admin_display && method_exists ($block->blockable, 'renderResourceAdmin')) {
                 $content = $block->blockable->renderResourceAdmin($locale_id);
+            } elseif ($admin_display && $block->blockable_type != 'BlockContent') {
+                $content = View::make('theme::admin.page.components.page-edit-block', array('block' => $block ))->render();
             } elseif (method_exists ($block->blockable, 'renderResource')) {
         	    $content = $block->blockable->renderResource($locale_id);
             } else {
@@ -77,7 +79,7 @@ class Pager {
             //Clearfix support
             $clearfix = '';
             if ($block->is_clearfixed) {
-                $clearfix = 'div class="clearfix"></div>';
+                $clearfix = '<div class="clearfix"></div>';
             }
             
             //Fusiiion

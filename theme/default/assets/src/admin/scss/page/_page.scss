@@ -63,6 +63,23 @@ body {
 	}
 }
 
+.page-edit-block {
+	position:relative;
+	display:block;
+	background:#eee;
+	font-size:48px;
+	color:#666;
+	min-height:100px;
+	margin: 3px 0;
+	a {
+		color:#666;
+		font-size:12px;
+		&:hover, &:focus {
+			text-decoration:none;
+			color:#666;
+		}
+	}
+}
 .page-template {
 	background:url('../img/page-template.gif') no-repeat;
 	width:150px;
