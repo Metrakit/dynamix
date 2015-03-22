@@ -18,17 +18,17 @@ class CreateStructuresTable extends Migration {
 			$table->increments('id')->unsigned();
 
 			//For the title (h1) of the page
-			$table->integer('i18n_title')->unsigned();
-			$table->foreign('i18n_title')->references('id')->on('i18n')->index();
+			$table->integer('i18n_title')->unsigned()->index()->index();
+			$table->foreign('i18n_title')->references('id')->on('i18n');
 
-			$table->integer('i18n_url')->unsigned();
-			$table->foreign('i18n_url')->references('id')->on('i18n')->index();
+			$table->integer('i18n_url')->unsigned()->index();
+			$table->foreign('i18n_url')->references('id')->on('i18n');
 			
-			$table->integer('i18n_meta_title')->unsigned();
-			$table->foreign('i18n_meta_title')->references('id')->on('i18n')->index();
+			$table->integer('i18n_meta_title')->unsigned()->index();
+			$table->foreign('i18n_meta_title')->references('id')->on('i18n');
 
-			$table->integer('i18n_meta_description')->unsigned();
-			$table->foreign('i18n_meta_description')->references('id')->on('i18n')->index();
+			$table->integer('i18n_meta_description')->unsigned()->index();
+			$table->foreign('i18n_meta_description')->references('id')->on('i18n');
 
 			$table->integer('structurable_id')->unsigned();
 
