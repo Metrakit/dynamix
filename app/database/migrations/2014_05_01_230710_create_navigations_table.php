@@ -17,7 +17,7 @@ class CreateNavigationsTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->integer('i18n_title')->unsigned();
+			$table->integer('i18n_title')->unsigned()->index();
 			$table->foreign('i18n_title')->references('id')->on('i18n');
 
 			$table->integer('parent_id')->unsigned();

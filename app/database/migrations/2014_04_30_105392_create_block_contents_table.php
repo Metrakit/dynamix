@@ -18,7 +18,7 @@ class CreateBlockContentsTable extends Migration {
             $table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->integer('i18n_content')->unsigned();
+			$table->integer('i18n_content')->unsigned()->index();
 			$table->foreign('i18n_content')->references('id')->on('i18n');
 
 			$table->timestamps();
