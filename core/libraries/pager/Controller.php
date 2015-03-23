@@ -83,11 +83,9 @@ class Pager {
             }
             
             //Fusiiion
-            if ($admin_display && method_exists ($block->blockable, 'renderResourceAdmin')) {
-                return '<div class="'.$css.' '.$block->class_css.'"><div class="row">'.$content.'</div></div>' . $clearfix;
-            } else {
-                return '<div class="'.$css.' '.$block->class_css.'">'.$content.'</div>' . $clearfix;
-            }
+
+                return '<div data-block-id="' . $block->id . '" class="'.$css.' '.$block->class_css.'">'.$content.'</div>' . $clearfix;
+
 
 
         //});

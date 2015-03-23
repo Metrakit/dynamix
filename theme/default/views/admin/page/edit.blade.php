@@ -43,7 +43,7 @@
     </div>
 
     <!-- Form Actions -->
-    <div class="form-group col-md-12">
+    <div class="form-group">
         <button type="submit" class="width100 btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('button.update')}}}</button>
     </div>
     <!-- ./ form actions -->

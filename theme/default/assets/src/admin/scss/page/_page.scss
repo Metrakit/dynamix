@@ -69,11 +69,20 @@ body {
 	background:#eee;
 	font-size:48px;
 	color:#666;
-	min-height:100px;
+	height:100px;
+	line-height:100px;
+	vertical-align:middle;
 	margin: 3px 0;
+	text-align:center;
 	a {
+		position:absolute;
+		width:100%;
+		bottom:5px;
+		right:5px;
 		color:#666;
 		font-size:12px;
+		line-height: normal;
+  		text-align: right;
 		&:hover, &:focus {
 			text-decoration:none;
 			color:#666;
@@ -248,7 +257,7 @@ body {
 	background:transparent;
 	height:70px;
 	@include border-radius(0px);
-	border: 1px solid #939ba2;
+	//border: 1px solid #939ba2;
 }
 
 
