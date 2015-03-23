@@ -59,7 +59,8 @@ class BlockContent extends Eloquent{
 	public function renderResourceAdmin($locale_id = null)
     {
     	$data['content'] = $this->getTranslation( $this->i18n_content, $locale_id );
-    	$data['locale_id'] = $locale_id;
+        $data['locale_id'] = $locale_id;
+    	$data['block_id'] = $this->block()->first()->id;
         return Response::view('theme::admin.page.block.wysiwyg', $data )->getOriginalContent();
     }
 
