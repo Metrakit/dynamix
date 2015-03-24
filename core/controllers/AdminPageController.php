@@ -43,7 +43,7 @@ class AdminPageController extends BaseController {
 			return View::make('theme::' .'admin.page.template.' . $template, $data);
 		}
 
-		return View::make('theme::' .'admin.page.form', $data);
+		return View::make('theme::' .'admin.page.create', $data);
 	}
 
 	/**
