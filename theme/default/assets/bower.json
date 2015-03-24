@@ -11,7 +11,7 @@
     "fancybox": ">= 2.1.5",
     "raphael": ">= 2.1.1",
     "metisMenu": ">= 1.1.*",
-    "tinymce": ">= 4.*",
+    "ckeditor": ">= 4.*",
     "eonasdan-bootstrap-datetimepicker": ">= 4.*",
         
     "fontawesome": ">= 4.*",

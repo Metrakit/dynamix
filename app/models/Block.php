@@ -114,4 +114,19 @@ class Block extends Eloquent{
      *
      * @return mixed
      */
+    public function getTypeLang () {
+        $type = BlockType::find($this->type_id);
+        if (!empty($type)) {
+            return $type->lang;
+        }
+        return 'notfind';
+    }
+
+    public function getTypeName () {
+        $type = BlockType::find($this->type_id);
+        if (!empty($type)) {
+            return $type->name;
+        }
+        return 'notfind';
+    }
 }

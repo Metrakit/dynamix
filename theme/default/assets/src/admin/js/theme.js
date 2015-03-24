@@ -76,7 +76,7 @@ var PagerAdminMaster = function (){
     var progression = 0;
     var updateProgression = function () {
       progression = progression + (100/countForms);
-      console.log(progression);
+      $('#progression-percent').text(progression + '%');
     }
     var getProgression = function () {
       return progression;
@@ -101,10 +101,10 @@ var PagerAdminMaster = function (){
         //check if is last
         if (countForms == blockPosted) {
           console.log( "redirect to edit" );
-          windows.location = '/admin/page/' + page_id + '/edit';
+          document.location.href = '/admin/page/' + page_id + '/edit';
         } else if (blockPostTry == countForms) {
           console.log( "show errors" );
-          //show errors
+          form.find('.btn-submit-page').removeAttr('disabled');
         }
       });      
     }

@@ -36,7 +36,8 @@ class Pager {
         //return var_dump( $page->blocks->first()->blockable->render );
         //$view = '<div class="row"><h1 class="page-header">' . $page::getTranslation($page->structure->first()->i18n_title, $locale_id) . '</h1></div>';
         if ($admin_display) {
-            $view = View::make('theme::admin.page.components.page-header-input', array('page' => $page, 'locale_id' => $locale_id ))->render();
+            $view = View::make('theme::admin.page.components.page-properties', array('page' => $page, 'locale_id' => $locale_id ))->render();
+            $view .= View::make('theme::admin.page.components.page-header-input', array('page' => $page, 'locale_id' => $locale_id ))->render();
         } else {
             $view = View::make('theme::public.pages.components.page-header-type', array('content' => $page::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
         }
@@ -68,6 +69,8 @@ class Pager {
             //Block Content
             if ($admin_display && method_exists ($block->blockable, 'renderResourceAdmin')) {
                 $content = $block->blockable->renderResourceAdmin($locale_id);
+            } elseif ($admin_display && $block->blockable_type != 'BlockContent') {
+                $content = View::make('theme::admin.page.components.page-edit-block', array('block' => $block ))->render();
             } elseif (method_exists ($block->blockable, 'renderResource')) {
         	    $content = $block->blockable->renderResource($locale_id);
             } else {
@@ -77,15 +80,13 @@ class Pager {
             //Clearfix support
             $clearfix = '';
             if ($block->is_clearfixed) {
-                $clearfix = 'div class="clearfix"></div>';
+                $clearfix = '<div class="clearfix"></div>';
             }
             
             //Fusiiion
-            if ($admin_display && method_exists ($block->blockable, 'renderResourceAdmin')) {
-                return '<div class="'.$css.' '.$block->class_css.'"><div class="row">'.$content.'</div></div>' . $clearfix;
-            } else {
-                return '<div class="'.$css.' '.$block->class_css.'">'.$content.'</div>' . $clearfix;
-            }
+
+                return '<div data-block-id="' . $block->id . '" class="'.$css.' '.$block->class.'">'.$content.'</div>' . $clearfix;
+
 
 
         //});

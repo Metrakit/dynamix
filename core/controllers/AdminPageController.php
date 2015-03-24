@@ -43,7 +43,7 @@ class AdminPageController extends BaseController {
 			return View::make('theme::' .'admin.page.template.' . $template, $data);
 		}
 
-		return View::make('theme::' .'admin.page.form', $data);
+		return View::make('theme::' .'admin.page.create', $data);
 	}
 
 	/**
@@ -195,6 +195,25 @@ class AdminPageController extends BaseController {
 	}
 
 	/**
+	 * Make $rules for i18n_field
+	 *
+	 * @return Array
+	 */
+	public function makingAdaptativeRules() {
+		$rules = array();
+		foreach( Config::get('validator.page-edit') as $ruleKey => $ruleValue ) {
+			if (strpos($ruleKey, 'i18n') !== false) {
+				foreach( Cachr::getCache('DB_LocaleFrontEnable') as $locale ) {
+					$rules[$ruleKey.'_'.$locale] = $ruleValue;
+				}
+			} else {
+				$rules[$ruleKey] = $ruleValue;
+			}
+		}
+		return $rules;
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
@@ -210,10 +229,10 @@ class AdminPageController extends BaseController {
 
 		// Validate the inputs
 		$validator = null;
-		if(!$page->is_deletable){
-        	$validator = Validator::make(Input::all(), Config::get('validator.page.no-deletable'));
+		if(!$page->deletable){
+        	$validator = Validator::make(Input::all(), Config::get('validator.page-no-deletable'));
 		}else{			
-        	$validator = Validator::make(Input::all(), Config::get('validator.page.deletable'));
+        	$validator = Validator::make(Input::all(), Config::get('validator.page-deletable'));
 		}
 		
         // Check if the form validates with success

@@ -1,38 +1,20 @@
-<textarea class="input-block-level tinymce-wysiwyg" name="i18n_content{{$locale_id}}" value="" rows="5">{{{ Input::old('i18n_content'.$locale_id, $content) }}}</textarea>
+<textarea class="input-block-level ckeditor-wysiwyg" name="i18n_content_{{$block_id}}_{{$locale_id}}" id="i18n_content_{{$block_id}}_{{$locale_id}}" value="" rows="5">{{{ Input::old('i18n_content'.$locale_id, $content) }}}</textarea>
+
+
+@section ('head')
+<script>
+  window.CKEDITOR_BASEPATH = '/js/ckeditor/';
+</script>
+@stop
 
 @section('scriptOnReady')
-  tinyMCE.baseURL = "{{URL::to('/js/tinymce')}}";
-  tinymce.init({
-    mode : "specific_textareas",
-    editor_selector : "tinymce-wysiwyg",
-    plugins: [
-      "autoresize table link image visualblocks code media",
-      "contextmenu textcolor responsivefilemanager"
-    ],
-    toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code ",
-
-    menubar: false,
-    statusbar: false,
-    toolbar_item_size: "small",
-
-    setup: function (theEditor) {
-
-
-      theEditor.on('focus', function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").show();
-      });
-      theEditor.on('blur', function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").hide();
-      });
-      theEditor.on("init", function () {
-          $(this.contentAreaContainer.parentElement).find("div.mce-toolbar-grp").hide();
-      });
-
-    },
-   
-    external_filemanager_path:"/filemanager/",
-    filemanager_title:"Responsive Filemanager" ,
-    filemanager_access_key:"{{Config::get('app.key')}}",
-    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
+  $('.ckeditor-wysiwyg').each( function () {
+    var id = $(this).attr('id');
+    CKEDITOR.disableAutoInline = true;
+    CKEDITOR.inline( id ,{
+      filebrowserBrowseUrl : '/filemanager/dialog.php?type=2&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}',
+      filebrowserUploadUrl : '/filemanager/dialog.php?type=2&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}',
+      filebrowserImageBrowseUrl : '/filemanager/dialog.php?type=1&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}'
+    });
   });
-@stop
+@append

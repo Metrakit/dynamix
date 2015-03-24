@@ -75,6 +75,9 @@ return array(
 	|
 	*/
 		'page'		=> 		array(	'required'			=> 'required|min:2|max:200'),
+		'page-edit'		=> 		array(),
+		'page-deletable'		=> 		array(	'required'			=> 'required|min:2|max:200'),
+		'page-no-deletable'		=> 		array(	'required'			=> 'required|min:2|max:200'),
 		
 	/*
 	|	Tag

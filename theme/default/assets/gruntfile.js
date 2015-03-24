@@ -139,7 +139,7 @@ module.exports = function (grunt) {
                     '<%= bowerPath %>metisMenu/dist/metisMenu.min.js',                        //3/6
                     '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                     //4/6
                     '<%= bowerPath %>raphael/raphael-min.js',                                //5/6
-                    '<%= bowerPath %>tinymce/tinymce.min.js',                                //6/6
+                    '<%= bowerPath %>ckeditor/ckeditor.js',                                //6/6
 
                     //Local vendor
                     '<%= srcPath %>admin/js/vendor/morris.js',                                    
@@ -273,10 +273,10 @@ module.exports = function (grunt) {
               {expand: false, src: ['<%= bowerPath %>media-match/media.match.min.js'], dest: '<%= distPath %>public/js/vendor/media.match.min.js', filter: 'isFile'},
               {expand: false, src: ['<%= bowerPath %>media-match/media.match.min.js'], dest: '<%= distPath %>admin/js/vendor/media.match.min.js', filter: 'isFile'},
 
-              // Tiny MCE
-              {expand: true, cwd: '<%= bowerPath %>tinymce/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/'},
-              {expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/plugins/responsivefilemanager/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/plugins/responsivefilemanager/'},
-              {expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/skins/light/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/skins/light/'},
+              // CKEditor
+              {expand: true, cwd: '<%= bowerPath %>ckeditor/', src: ['**'], dest: '<%= deployPublicPath %>js/ckeditor/'},
+              //{expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/plugins/responsivefilemanager/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/plugins/responsivefilemanager/'},
+              //{expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/skins/light/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/skins/light/'},
               
               //Fonts
               {expand: true, src: ['<%= bowerPath %>fontawesome/fonts/*'], dest: '<%= distPath %>admin/fonts/', flatten: true},
