@@ -118,6 +118,5 @@ App::down(function()
 |
 */
 
-require app_path().'/modules.php';
 require app_path().'/filters.php';
 require app_path().'/blade.php';
