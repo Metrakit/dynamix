@@ -17,4 +17,4 @@
       filebrowserImageBrowseUrl : '/filemanager/dialog.php?type=1&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}'
     });
   });
-@stop
+@append
