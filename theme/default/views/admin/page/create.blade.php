@@ -40,7 +40,7 @@
     </div>
 
 	<p class="text-center">
-		<span class="btn-submit-page btn btn-lg width100 btn-primary">{{{ Lang::get('admin.page_add') }}}</span>
+		<span class="btn-submit-page btn btn-lg width100 btn-primary">{{{ Lang::get('admin.page_add') }}} <span id="progression-percent"></span></span>
 	</p>
 
 @stop
