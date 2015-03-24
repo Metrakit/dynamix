@@ -377,6 +377,6 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', ['copy:deploy']);
 
     // Tâches personnalisées pour la mise en prod
-    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy', 'watch']);
+    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'hash', 'copy']);
 
 }
