@@ -3,6 +3,7 @@
 use App;
 use Cache;
 use View;
+use Eloquentizr;
 
 class Pager {
 
@@ -32,6 +33,9 @@ class Pager {
 	 */
     public function render( $page, $locale_id = null, $admin_display = false )
     {
+        if (gettype($page) != "object" && gettype($page) != "array") {
+            return 'it\'s not a page bitch';
+        }
         $locale_id = ($locale_id===null?App::getLocale():$locale_id);
         //return var_dump( $page->blocks->first()->blockable->render );
         //$view = '<div class="row"><h1 class="page-header">' . $page::getTranslation($page->structure->first()->i18n_title, $locale_id) . '</h1></div>';
@@ -39,7 +43,7 @@ class Pager {
             $view = View::make('theme::admin.page.components.page-properties', array('page' => $page, 'locale_id' => $locale_id ))->render();
             $view .= View::make('theme::admin.page.components.page-header-input', array('page' => $page, 'locale_id' => $locale_id ))->render();
         } else {
-            $view = View::make('theme::public.pages.components.page-header-type', array('content' => $page::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
+            $view = View::make('theme::public.pages.components.page-header-type', array('content' => Eloquentizr::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
         }
         
         //for all blocks show the content

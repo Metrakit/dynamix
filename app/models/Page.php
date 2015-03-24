@@ -18,6 +18,12 @@ class Page extends Eloquent {
 	public function blocks() {
         return $this->hasMany('Block')->orderBy('order','ASC');
     }
+    public function onepage() {
+        return $this->hasOne('OnePage');
+    }
+	public function background() {
+        return $this->belongsTo('Background');
+    }
 
 
 	/**
@@ -69,6 +75,14 @@ class Page extends Eloquent {
 	public function name() {
 		return $this->i18n_name;
 	}
+	public function isOnePagePart() {
+		return $this->i18n_name;
+	}
+	public function getOnePagePart() {
+		return $this->i18n_name;
+	}
+	
+	
 
 	/**
      * Herited attributes
@@ -105,4 +119,9 @@ class Page extends Eloquent {
     public function page_meta_description_locale( $locale_id ) {
         return parent::getTranslation( $this->structure->first()->i18n_meta_description , $locale_id );
     }
+
+    public function render () {
+    	return Pager::render($this);
+		return '';//
+	}
 }

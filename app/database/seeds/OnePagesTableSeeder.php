@@ -87,28 +87,7 @@ class OnePagesTableSeeder extends Seeder {
 
         DB::table('onepage')->insert( array(
             array(),
-        ));
-
-
-        //OnePage Parts
-        DB::table('onepage_parts')->delete();
-
-        DB::table('onepage_parts')->insert( array(
-            array(
-                'order'             => 1,
-                'name'              => 'Home',
-                'onepage_id'        => 1,
-                'background_id'     => 1,
-                'page_id'      => 1
-            ),
-            array(
-                'order'             => 2,
-                'name'              => 'Content',
-                'onepage_id'        => 1,
-                'background_id'     => 2,
-                'page_id'      => 2
-            )
-        ));    
+        ));   
     }
 
 }

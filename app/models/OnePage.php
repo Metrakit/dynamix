@@ -13,7 +13,7 @@ class OnePage extends Eloquent {
 	 * @var string
 	 */
 	public function parts() {
-        return $this->hasMany('Part', 'onepage_id')->orderBy('order','ASC');
+        return $this->hasMany('Page', 'onepage_id')->orderBy('order','ASC');
     }
 
 

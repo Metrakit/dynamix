@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder {
         //$this->call('ArticleCategoryTableSeeder');
         $this->call('TaggablesTableSeeder');
         
+        //OnePage
+        $this->call('OnePagesTableSeeder');
 
         //Pages
         $this->call('PagesTableSeeder');
@@ -44,8 +46,6 @@ class DatabaseSeeder extends Seeder {
         $this->call('BlockContentsTableSeeder');
         $this->call('BlockResponsiveTableSeeder');
 
-        //OnePage
-        $this->call('OnePagesTableSeeder');
 
 
         //Forms

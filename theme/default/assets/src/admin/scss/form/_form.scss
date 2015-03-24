@@ -274,6 +274,17 @@ label.label-list:last-of-type {
 		position:relative;
 		float:left;
 	}
+
+	&.switch-inline {
+		display:inline-block;
+		margin-right: 10px;
+		.switch-label {
+			margin-right: 5px;
+		}
+	}
+}
+.switch-container {
+	padding-top: 7px;
 }
 .cmn-toggle {
   position: absolute;

@@ -163,7 +163,7 @@ class AdminPageController extends BaseController {
 		//Interface
 		$data['noAriane'] 		= true;
 
-		// get the post
+		// get the page
 		$data['page'] = Page::find($id);
 
 		if(empty($data['page'])){
@@ -184,11 +184,19 @@ class AdminPageController extends BaseController {
 		//User
 		$data['user'] 			= Auth::user();
 
-		// get the post
+		// get the page
 		$data['page'] = Page::find($id);
 
 		if(empty($data['page'])){
 			return Redirect::back()->with('error', 'Cette page est introuvable !');
+		}
+
+		//get his $background, if exist
+		if ($data['page']->isOnePagePart()) {
+			$data['onepage_part'] = $data['page']->getOnePagePart();
+
+
+
 		}
 
 		return View::make('theme::' .'admin.page.edit', $data );
