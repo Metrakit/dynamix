@@ -253,13 +253,13 @@ body {
 //Input with same size
 .input-page-lg {
 	border:none;
-	padding: 0;
+	padding-bottom: 3px;
 	font-size:36px;
 	background:transparent;
 	height:48px;
 	@include border-radius(0px);
 	@include box-shadow(none);
-	border: 1px solid #ddd;
+	//border: 1px solid #ddd;
 }
 
 .padding-0 {
@@ -272,6 +272,17 @@ body {
 
 .page-properties{
 	margin-top:5px;
+
+	> span {
+
+	}
+}
+
+.page-properties-hr {
+	display:none;
+}
+.collapse.in + .page-properties-hr {
+	display:block;
 }
 
 .cke_textarea_inline {
