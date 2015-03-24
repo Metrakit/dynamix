@@ -36,7 +36,7 @@ if (Schema::hasTable('themes')) {
 |
 */
 foreach (Config::get('module') as $module) {
-	App::register('Dynamix\\ ' . $module . ' \\' . $module . 'Provider');
+	App::register('Dynamix\/' . $module . '\/' . $module . 'Provider');
 }
 
 
