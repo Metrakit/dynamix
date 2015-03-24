@@ -14,7 +14,8 @@
     "eonasdan-bootstrap-datetimepicker": ">= 4.*",
         
     "fontawesome": ">= 4.*",
-    "bootstrap-sass-twbs": ">= 3.2.*"
+    "bootstrap-sass-twbs": ">= 3.2.*",
+    "bootstrapcolorpicker": ">= 2.*"
 
   }
 }
