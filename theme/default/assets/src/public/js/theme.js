@@ -19,13 +19,50 @@ var CommentMaster = function () {
 		$('section.comment .data-created-at').each( function (i, element) {
 			//2014-12-12 14:21:24
 			var created_at 	= $(element).attr('data-created-at'),
-				date 		= new Date( created_at );
-			$(element).text(diffForHuman(dateDiff(date, new Date())));
+				date 		=  moment(created_at);
+			console.log(getDiffDate(date));
+			$(element).text(getDiffDate(date));
 		});
 
 		var wait = window.setTimeout(function (e){
             refreshCommentDate();
-        },59000);
+        },1000);
+	}
+
+	//Retourne la différences entre la date du jour et la date en paramètre.
+	var getDiffDate = function(date) {
+		var maDate = moment().diff(moment(date),'years',true);
+		if (maDate >= 1) {
+			return moment().diff(moment(date),'years') + ' years ago';
+		}
+
+		maDate = moment().diff(moment(date),'months',true);
+		if (maDate >= 1) {
+			return moment().diff(moment(date),'months') + ' months ago';
+		}
+
+		maDate = moment().diff(moment(date),'days',true);
+		if (maDate >= 1) {
+			return moment().diff(moment(date),'days') + ' days ago';
+		}
+
+		maDate = moment().diff(moment(date),'hours',true);
+		if (maDate >= 1) {
+			return moment().diff(moment(date),'hours') + ' hours ago';
+		}
+
+		maDate = moment().diff(moment(date),'minutes',true);
+		if (maDate >= 1) {
+			return moment().diff(moment(date),'minutes') + ' minutes ago';
+		}
+
+		maDate = moment().diff(moment(date),'seconds',true);
+		if (maDate >= 1) {
+			return moment().diff(moment(date),'seconds') + ' seconds ago';
+		}
+
+
+		
 	}
 
 	var diffForHuman = function (diff) {

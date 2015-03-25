@@ -141,6 +141,7 @@ module.exports = function (grunt) {
                     '<%= bowerPath %>raphael/raphael-min.js',                                //5/6
                     '<%= bowerPath %>ckeditor/ckeditor.js',                                //6/6
 
+
                     //Local vendor
                     '<%= srcPath %>admin/js/vendor/morris.js',                                    
                     '<%= srcPath %>admin/js/vendor/sb-admin-2.js',
@@ -168,6 +169,8 @@ module.exports = function (grunt) {
                     //Modules
                     '<%= modulesPathVendor %>**/assets/public/js/**/*.js',
                     '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js',
+
+                    '<%= bowerPath %>moment/moment.js',
                 ],
                 // Fichier de destination
                 dest:'<%= distPath %>public/js/main.js'
