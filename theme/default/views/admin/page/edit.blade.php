@@ -22,6 +22,8 @@
     <input type="hidden" name="_method" value="put" />
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
+    @include('theme::admin.page.components.page-parameters')
+
     <ul class="nav nav-tabs" role="tablist" id="tab-page-edit">
         @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
         <li role="presentation"{{($i==0?' class="active"':'')}}>
@@ -33,6 +35,7 @@
     </ul>
 
     <fieldset>
+    
 
     <div class="tab-content">
         @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
@@ -42,6 +45,9 @@
         @endfor
     </div>
 
+    <!-- After content -->
+    @include('theme::admin.page.components.page-background')
+    
     <!-- Form Actions -->
     <div class="form-group">
         <button type="submit" class="width100 btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok"></span> {{{Lang::get('button.update')}}}</button>
