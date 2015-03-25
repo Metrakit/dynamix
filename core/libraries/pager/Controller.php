@@ -39,6 +39,8 @@ class Pager {
         $locale_id = ($locale_id===null?App::getLocale():$locale_id);
         //return var_dump( $page->blocks->first()->blockable->render );
         //$view = '<div class="row"><h1 class="page-header">' . $page::getTranslation($page->structure->first()->i18n_title, $locale_id) . '</h1></div>';
+
+        //Before content
         if ($admin_display) {
             $view = View::make('theme::admin.page.components.page-properties', array('page' => $page, 'locale_id' => $locale_id ))->render();
             $view .= View::make('theme::admin.page.components.page-header-input', array('page' => $page, 'locale_id' => $locale_id ))->render();
@@ -46,10 +48,13 @@ class Pager {
             $view = View::make('theme::public.pages.components.page-header-type', array('content' => Eloquentizr::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
         }
         
-        //for all blocks show the content
-    	foreach ( $page->blocks as $block ) {
-    		$view .= $this->blockable( $block, $locale_id, $admin_display );
-		}
+        //Content of page
+        foreach ( $page->blocks as $block ) {
+            $view .= $this->blockable( $block, $locale_id, $admin_display );
+        }
+
+        //After content
+        //if ($admin_display) {
 
         return $view.'<div class="clearfix"></div>';;
     }

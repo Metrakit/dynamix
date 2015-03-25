@@ -74,6 +74,7 @@ return array(
 	'page_title'			=> 'Titre de la page',
 	'put_page_title'			=> 'Saisissez le titre de la page',
 	'page_proprieties'			=> 'Propriétés de la page',
+	'page_parameters'			=> 'Paramètres de la page',
 	'page_contents'			=> 'Contenu de la page',
 	'page_show'			=> 'Vue de la page',
 	'page_backgrounds' => 'Fond de la page',
