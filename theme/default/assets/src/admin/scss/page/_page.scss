@@ -256,7 +256,7 @@ body {
 	padding-bottom: 3px;
 	font-size:36px;
 	background:transparent;
-	height:48px;
+	height:51px;
 	@include border-radius(0px);
 	@include box-shadow(none);
 	//border: 1px solid #ddd;
@@ -286,7 +286,7 @@ body {
 }
 
 .cke_textarea_inline {
-	border:1px solid #ddd;
+	border-bottom:1px solid #ddd;
 }
 
 

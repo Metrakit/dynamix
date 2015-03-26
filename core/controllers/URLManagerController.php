@@ -7,6 +7,10 @@ class URLManagerController extends BaseController {
     public function getHome()
     {
         Session::put('old_RequestSegment2', '');
+        
+        //is root?
+        if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
+        
         //is OnePage?
         if (Config::get('display.onepage')) {
             $data = array();
@@ -14,7 +18,6 @@ class URLManagerController extends BaseController {
             return View::make('theme::' .'public.onepage', $data);
         } else {
             //Find good page
-            if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
             $urls = Cachr::getCache( 'DB_Urls' );
             foreach ( $urls as $url ) {
                 if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {

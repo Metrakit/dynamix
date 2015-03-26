@@ -23,7 +23,7 @@ class CreatePagesTable extends Migration {
 
 			$table->boolean('is_published')->default(false);
 			$table->boolean('is_commentable')->default(false);
-			$table->boolean('deletable')->default(true);
+			//$table->boolean('deletable')->default(true);
 
 			//OnePage part
 			$table->integer('order')->unsigned()->nullable();
