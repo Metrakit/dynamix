@@ -33,6 +33,7 @@ class Pager {
 	 */
     public function render( $page, $locale_id = null, $admin_display = false )
     {
+        //return var_dump( $page);
         if (gettype($page) != "object" && gettype($page) != "array") {
             return 'it\'s not a page bitch';
         }
@@ -47,7 +48,6 @@ class Pager {
         } else {
             $view = View::make('theme::public.pages.components.page-header-type', array('content' => Eloquentizr::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
         }
-        
         //Content of page
         foreach ( $page->blocks as $block ) {
             $view .= $this->blockable( $block, $locale_id, $admin_display );

@@ -209,7 +209,7 @@ class AdminPageController extends BaseController {
 	 */
 	public function makingAdaptativeRules() {
 		$rules = array();
-		foreach( Config::get('validator.page-edit') as $ruleKey => $ruleValue ) {
+		foreach( Config::get('validator.admin.page-edit') as $ruleKey => $ruleValue ) {
 			if (strpos($ruleKey, 'i18n') !== false) {
 				foreach( Cachr::getCache('DB_LocaleFrontEnable') as $locale ) {
 					$rules[$ruleKey.'_'.$locale] = $ruleValue;
@@ -222,6 +222,29 @@ class AdminPageController extends BaseController {
 	}
 
 	/**
+	 * Form Input::all(), make i18n data skeleton 
+	 *
+	 * @return Array
+	 */
+	public function buildI18nData() {
+		$dataI18n = array();
+        foreach (Input::all() as $inputKey => $inputValue) {
+        	if (strpos($inputKey, 'i18n') !== false) {
+        		$position = strripos($inputKey, '_');
+        		if($position !== false) {            			
+            		$keyI18n = mb_substr($inputKey, 0, $position);
+            		$locale = mb_substr($inputKey, $position+1, strlen($inputKey)-($position+1));
+
+            		$dataI18n[$keyI18n][$locale] = ($keyI18n=='i18n_url'?'/':'').$inputValue;
+        		}
+        	}
+        }
+        return $dataI18n;
+	}
+
+
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
@@ -229,38 +252,77 @@ class AdminPageController extends BaseController {
 	 */
 	public function update($id)
 	{
+		//Get page model
 		$page = Page::find($id);
+		if(empty($page)) return Redirect::to('admin/page')->with('error','Cette page est introuvable !');
 
-		if(empty($page)){
-			return Redirect::to('admin/page')->with('error','Cette page est introuvable !');
-		}
+		//Making adaptative rules
+		$rules = $this->makingAdaptativeRules();
 
-		// Validate the inputs
-		$validator = null;
-		if(!$page->deletable){
-        	$validator = Validator::make(Input::all(), Config::get('validator.page-no-deletable'));
-		}else{			
-        	$validator = Validator::make(Input::all(), Config::get('validator.page-deletable'));
-		}
-		
-        // Check if the form validates with success
-        if ($validator->passes())
-        {
-            // Update the page data
-            $page->title            = Input::get('title');
-            // If is not index
-            if($page->url != '/'){
-            	$url = Str::slug(Input::get('url'));
-            	$page->url          = '/'.$url;
+        $validator = Validator::make(Input::all(), $rules);
+
+        //return var_dump(Input::all());
+        //return var_dump($validator->messages()->all());
+		// Validate
+		if ($validator->passes()) {
+            //Build data i18n
+            $dataI18n = $this->buildI18nData();
+            //return var_dump($dataI18n);
+
+            //Page background
+            $background = null;
+            if (!empty($page->background_id) && is_integer($page->background_id)) {
+            	$background = Background::find($page->background_id);
+            } else {
+            	$background = new Background;
+            }
+        	$background->background_type_id = (!empty(Input::get('background_type'))?Input::get('background_type'):null);
+        	$background->background_position_id = (!empty(Input::get('background_position'))?Input::get('background_position'):null);
+        	$background->background_color = Input::get('background_color');
+        	$background->url = Input::get('background_url');
+        	if (!$background->save()) return Redirect::to('admin/page/' . $page->id . '/edit')->with('error','La sauvegarde du background a échoué...');
+			
+			//Page direct datas
+            I18n::change($page->i18n_name, $dataI18n['i18n_name']);
+            
+            //Page parameters
+            if (Input::has('is_commentable'))  {
+            	$page->is_commentable = true;
+            } else {
+            	$page->is_commentable = false;
+            }
+        	if (Input::has('is_published'))  {
+        		$page->is_published = true;
+        	} else {
+        		$page->is_published = false;
         	}
-            $page->content          = Input::get('content');
 
-            $page->meta_title       = Input::get('meta_title');
-            $page->meta_description = Input::get('meta_description');
+        	//Structure of page
+        	$structure = $page->structure()->first();
+            I18n::change($structure->i18n_title, $dataI18n['i18n_title']);
+            I18n::change($structure->i18n_url, $dataI18n['i18n_url']);
+            I18n::change($structure->i18n_meta_title, $dataI18n['i18n_meta_title']);
+            I18n::change($structure->i18n_meta_description, $dataI18n['i18n_meta_description']);
 
-            $page->updated_at    	= new DateTime();
-
-            // Was the blog post created?
+            //Page Block - find and update
+            // On va identifier les ids des blocks que l'on a dans les inputs passés
+            // On va ensuite chercher le block utiliser sa clé i18n et mettre à jour le contenu
+            $blockIdentifier = 'i18n_content_';
+            $blockIdentifierLength = strlen($blockIdentifier);
+            foreach (Input::all() as $inputKey => $inputValue) {
+            	//If input key has the identifier
+            	if (strpos($inputKey, 'i18n_content_') !== false) {
+            		$blockId = substr($inputKey,$blockIdentifierLength,strlen($inputKey)-$blockIdentifierLength-3);
+            		//echo $blockId . '<br>';
+            		//return var_dump($blockIdentifier . $blockId);
+            		if (!empty($blockId) && is_integer(intval($blockId))) {
+            			$blockContent = BlockContent::find($blockId);
+            			///return var_dump($blockContent->i18n_content);
+            			I18n::change($blockContent->i18n_content, (isset($dataI18n[$blockIdentifier . $blockId])?$dataI18n[$blockIdentifier . $blockId]:array()));
+            		}
+            	}
+            }
+        
             if($page->save())
             {
             	Cache::forget('DB_Urls');

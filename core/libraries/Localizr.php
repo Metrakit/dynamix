@@ -19,7 +19,7 @@ class Localizr
 		if ($db_is_ok) {
 			if (Schema::hasTable('locales')){
 				//Test if segment 1 isnt here, and if is valid
-				if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){
+				if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){					
 					if (Request::is('/') ) {
 						if ( Session::has('lang') ) {
 							$locale = Session::get('lang');
@@ -53,8 +53,17 @@ class Localizr
 				}
 				Log::info('Session::get(\'old_RequestSegment2\')   :'.Session::get('old_RequestSegment2'));
 				Log::info('Request::segment(2)                     :'.Request::segment(2));
+
+
+
 				if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
-					Session::put('translate_request',1);
+					//if it's a manual changement of locale_id in segment 1
+					if ( Request::segment(2) == '' && Session::get('old_RequestSegment2') == '' ) {
+						Session::put('lang', $locale);
+					} else {
+						Log::info('put translate_request');
+						Session::put('translate_request',1);
+					}
 				}
 				Session::put('lang', $locale);
 				App::setLocale($locale);

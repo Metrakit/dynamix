@@ -77,8 +77,8 @@ return array(
 		'page'		=> 		array(	'required'			=> 'required|min:2|max:200'),
 
 		'page-edit'		=> 		array(
-										'is_commentable'		=> 'boolean|required',
-										'is_published'		=> 'boolean|required',
+										//'is_commentable'		=> 'boolean',
+										//'is_published'			=> 'boolean',
 
 										'i18n_name'				=> 'min:3',
 										'i18n_title'			=> 'required|min:3',
@@ -89,7 +89,7 @@ return array(
 										//'i18n_content'			=> '',
 										'background_type'			=> 'integer',
 										'background_position'		=> 'integer',
-										'background_url'			=> 'required|min:3|url',
+										'background_url'			=> 'min:3|url',
 										//'background_color'			=> '',
 									),
 

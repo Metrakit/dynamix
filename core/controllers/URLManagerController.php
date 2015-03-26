@@ -7,6 +7,10 @@ class URLManagerController extends BaseController {
     public function getHome()
     {
         Session::put('old_RequestSegment2', '');
+        
+        //is root?
+        if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
+        
         //is OnePage?
         if (Config::get('display.onepage')) {
             $data = array();
@@ -14,12 +18,16 @@ class URLManagerController extends BaseController {
             return View::make('theme::' .'public.onepage', $data);
         } else {
             //Find good page
-            if(Request::is('/')) return Redirect::to('/'.App::getLocale(),301);
             $urls = Cachr::getCache( 'DB_Urls' );
             foreach ( $urls as $url ) {
                 if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
-                    $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
-                    return View::make('theme::' . 'public.pages.page' , compact('page') );
+                    $structure = Structure::where('i18n_url',$url['i18n_id'])->first();
+                    if (!empty($structure)) {
+                        if ($structure->structurable_type != 'OnePage') {
+                            $page = $structure->structurable;
+                            return View::make('theme::' . 'public.pages.page' , compact('page') );
+                        }
+                    }
                 }
             }
             return View::make('theme::' .'errors.404');        

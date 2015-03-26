@@ -60,7 +60,7 @@ class BlockContent extends Eloquent{
     {
     	$data['content'] = $this->getTranslation( $this->i18n_content, $locale_id );
         $data['locale_id'] = $locale_id;
-    	$data['block_id'] = $this->block()->first()->id;
+    	$data['blockable_id'] = $this->block()->first()->blockable_id;
         return Response::view('theme::admin.page.block.wysiwyg', $data )->getOriginalContent();
     }
 
