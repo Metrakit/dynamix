@@ -11,8 +11,8 @@
 		<div class="col-md-10 col-lg-8 switch-container">
 		    <div class="switch switch-inline">
 		        <div class="switch-button">
-		            <input id="is_not_commentable" name="is_commentable" value="is_commentable" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" {{($page->is_commentable==1?'checked="checked"':'')}}>
-		            <label for="is_not_commentable" class="label-list"></label>
+		            <input id="is_commentable" name="is_commentable" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" {{($page->is_commentable==1?'checked="checked"':'')}}>
+		            <label for="is_commentable" class="label-list"></label>
 		        </div>
 		        <div class="clearfix"></div>
 		    </div>
@@ -26,8 +26,8 @@
 		<div class="col-md-10 col-lg-8 switch-container">
 		    <div class="switch switch-inline">
 		        <div class="switch-button">
-		            <input id="is_not_published" name="is_published" value="is_published" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" {{($page->is_published==1?'checked="checked"':'')}}>
-		            <label for="is_not_published" class="label-list"></label>
+		            <input id="is_published" name="is_published" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" {{($page->is_published==1?'checked="checked"':'')}}>
+		            <label for="is_published" class="label-list"></label>
 		        </div>
 		        <div class="clearfix"></div>
 		    </div>
