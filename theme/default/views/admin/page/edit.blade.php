@@ -18,7 +18,7 @@
 
 @include('theme::admin.session.session-message')
 
-<form class="form-horizontal" method="post" action="{{ URL::to('admin/page') }}"  autocomplete="off">
+<form class="form-horizontal" method="post" action="{{ URL::to('admin/page/' . $page->id) }}"  autocomplete="off">
     <input type="hidden" name="_method" value="put" />
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 

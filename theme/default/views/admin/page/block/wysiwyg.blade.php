@@ -1,4 +1,4 @@
-<textarea class="input-block-level ckeditor-wysiwyg" name="i18n_content_{{$block_id}}_{{$locale_id}}" id="i18n_content_{{$block_id}}_{{$locale_id}}" value="" rows="5">{{{ Input::old('i18n_content'.$locale_id, $content) }}}</textarea>
+<textarea class="input-block-level ckeditor-wysiwyg" name="i18n_content_{{$blockable_id}}_{{$locale_id}}" id="i18n_content_{{$blockable_id}}_{{$locale_id}}" rows="5">{{{ Input::old('i18n_content_' . $blockable_id . '_' . $locale_id, $content) }}}</textarea>
 
 
 @section ('head')
