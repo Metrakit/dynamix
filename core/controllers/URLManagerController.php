@@ -20,9 +20,16 @@ class URLManagerController extends BaseController {
             //Find good page
             $urls = Cachr::getCache( 'DB_Urls' );
             foreach ( $urls as $url ) {
+
+
                 if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
-                    $page = Structure::where('i18n_url','=',$url['i18n_id'])->first()->structurable;
-                    return View::make('theme::' . 'public.pages.page' , compact('page') );
+                    $structure = Structure::where('i18n_url',$url['i18n_id'])->first();
+                    if (!empty($structure)) {
+                        if ($structure->structurable_type != 'OnePage') {
+                            $page = $structure->structurable;
+                            return View::make('theme::' . 'public.pages.page' , compact('page') );
+                        }
+                    }
                 }
             }
             return View::make('theme::' .'errors.404');        
