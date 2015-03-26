@@ -251,6 +251,12 @@ class Former extends \Controller {
                 $data['inputs'][$key]->typeFilemanager = 0;
             }
 
+            // Set the height of the wysiwyg if undefined
+            if ($data['inputs'][$key]->type == "wysiwyg" && !isset($data['inputs'][$key]->height)) {
+                // Set to 300 if the height is undefined
+                $data['inputs'][$key]->height = 300;
+            }
+
             // Génération des vues
             $data['inputs'][$key]->view = \Response::view( 'theme::' . $data['inputs'][$key]->viewPath, array(
                 'form' => $form,
