@@ -2,6 +2,8 @@
 
 return array(
 
+	'list_of'			=> ':items list',
+
 	'description'		=> 'Description',
 
 	'edit' 				=> 'Edit',

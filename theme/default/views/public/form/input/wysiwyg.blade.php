@@ -1,43 +1,7 @@
-@section('scriptOnReady')
-  tinyMCE.baseURL = "{{ URL::to('/js/tinymce') }}";
-
-  tinymce.init({
-
-    selector: "textarea",
-
-    plugins: [
-      "table link image visualblocks code media",
-      "contextmenu textcolor responsivefilemanager",
-
-      @if (isset($input->wysiwyg_plugins))
-        "{{ $input->wysiwyg_plugins }}",
-      @endif  
-
-      "preview"
-    ],
-
-    toolbar1: "bold italic underline | forecolor backcolor table | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | link unlink | image media | code | preview",
-
-    menubar: true,
-    statusbar: false,
-    toolbar_item_size: "small",
-
-    @if (isset($input->wysiwyg_height))
-      height: {{ $input->wysiwyg_height }},
-    @endif
-
-    setup: function (editor) {
-        editor.on('change', function () {
-            tinymce.triggerSave();
-        });
-    },
-   
-    external_filemanager_path:"/filemanager/",
-    filemanager_title:"{{ Lang::get('general.filemanager') }}" ,
-    filemanager_access_key:"{{ Config::get('app.key') }}",
-    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
-  });
-
+@section ('head')
+<script>
+  window.CKEDITOR_BASEPATH = '/js/ckeditor/';
+</script>
 @stop
 
 @if($input->label)
@@ -54,6 +18,26 @@
 
 @if($input->multiLang)
 
+    {{-- To change --}}
+    <?php
+      $jsToAppend = "";
+      foreach($locales as $locale) {
+        $jsToAppend .= " 
+            CKEDITOR.replace( '" . $input->name . "_lang_" . $locale->id . "' ,{
+              filebrowserBrowseUrl : '/filemanager/dialog.php?type=2&editor=ckeditor&fldr=&akey=" . Config::get('app.key') . "',
+              filebrowserUploadUrl : '/filemanager/dialog.php?type=2&editor=ckeditor&fldr=&akey=" . Config::get('app.key') . "',
+              filebrowserImageBrowseUrl : '/filemanager/dialog.php?type=1&editor=ckeditor&fldr=&akey=" . Config::get('app.key') . "',
+              extraPlugins : 'autogrow',
+              height : " . $input->height . ",
+              autoGrow_minHeight : " . $input->height . ",
+            }); ";
+      }
+    ?>
+
+    @section('scriptOnReady')
+      {{ $jsToAppend }}
+    @stop
+
     @foreach($locales as $locale)
 
     <div class="input-group">
@@ -63,7 +47,7 @@
       <textarea
         name="{{ $input->name }}_lang_{{ $locale->id }}" 
         title="{{ $input->title }}" 
-        class="form-control tinymce-wysiwyg">{{ $input->value[$locale->id] }}</textarea>
+        class="form-control ckeditor-wysiwyg" id="{{ $input->name }}_lang_{{ $locale->id }}">{{ $input->value[$locale->id] }}</textarea>
     </div>
 
     @if($errors->has($input->name . '_lang_' . $locale->id)) 
@@ -75,7 +59,19 @@
 
   @endforeach
 @else 
-  <textarea name="{{ $input->name }}" class="form-control tinymce-wysiwyg">{{ $input->value }}</textarea>
+
+  @section('scriptOnReady')
+      CKEDITOR.replace( '{{ $input->name }}' ,{
+        filebrowserBrowseUrl : '/filemanager/dialog.php?type=2&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}',
+        filebrowserUploadUrl : '/filemanager/dialog.php?type=2&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}',
+        filebrowserImageBrowseUrl : '/filemanager/dialog.php?type=1&editor=ckeditor&fldr=&akey={{Config::get('app.key')}}',
+        extraPlugins : 'autogrow',
+        height : {{ $input->height }},
+        autoGrow_minHeight : {{ $input->height }},
+      });
+  @append
+
+  <textarea name="{{ $input->name }}" class="form-control ckeditor-wysiwyg" id="{{ $input->name }}">{{ $input->value }}</textarea>
 @endif
 
 @if($form->type != 'inline' && !$input->i18nInpError)
