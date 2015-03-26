@@ -14,7 +14,7 @@
 		            {{$type->name}}
 		        </div>
 		        <div class="switch-button">
-		            <input type="radio" id="{{$type->name}}" name="background_type" value="{{{ $type->id }}}" class="cmn-toggle cmn-toggle-round-flat" {{($page->background->background_type_id==$type->id?'checked="checked"':'')}}><label for="{{$type->name}}" class="label-list"></label>
+		            <input type="radio" id="{{$type->name}}" name="background_type" value="{{{ $type->id }}}" class="cmn-toggle cmn-toggle-round-flat" {{(!empty($page->background)?($page->background->background_type_id==$type->id?'checked="checked"':''):'')}}><label for="{{$type->name}}" class="label-list"></label>
 		        </div>
 		        <div class="clearfix"></div>
 		    </div>
@@ -30,7 +30,7 @@
 		            {{$position->name}}
 		        </div>
 		        <div class="switch-button">
-		            <input id="{{$position->name}}" name="background_position" value="{{{ $position->id }}}" class="cmn-toggle cmn-toggle-round-flat" type="radio" {{($page->background->background_position_id==$position->id?'checked="checked"':'')}}>
+		            <input id="{{$position->name}}" name="background_position" value="{{{ $position->id }}}" class="cmn-toggle cmn-toggle-round-flat" type="radio" {{(!empty($page->background)?($page->background->background_position_id==$position->id?'checked="checked"':''):'')}}>
 		            <label for="{{$position->name}}" class="label-list"></label>
 		        </div>
 		        <div class="clearfix"></div>

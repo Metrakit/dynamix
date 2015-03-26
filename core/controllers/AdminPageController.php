@@ -286,8 +286,16 @@ class AdminPageController extends BaseController {
             I18n::change($page->i18n_name, $dataI18n['i18n_name']);
             
             //Page parameters
-            if (Input::has('is_commentable')) $page->is_commentable = true;
-        	if (Input::has('is_published')) $page->is_published = true;
+            if (Input::has('is_commentable'))  {
+            	$page->is_commentable = true;
+            } else {
+            	$page->is_commentable = false;
+            }
+        	if (Input::has('is_published'))  {
+        		$page->is_published = true;
+        	} else {
+        		$page->is_published = false;
+        	}
 
         	//Structure of page
         	$structure = $page->structure()->first();
@@ -305,9 +313,11 @@ class AdminPageController extends BaseController {
             	//If input key has the identifier
             	if (strpos($inputKey, 'i18n_content_') !== false) {
             		$blockId = substr($inputKey,$blockIdentifierLength,strlen($inputKey)-$blockIdentifierLength-3);
+            		//echo $blockId . '<br>';
             		//return var_dump($blockIdentifier . $blockId);
             		if (!empty($blockId) && is_integer(intval($blockId))) {
             			$blockContent = BlockContent::find($blockId);
+            			///return var_dump($blockContent->i18n_content);
             			I18n::change($blockContent->i18n_content, (isset($dataI18n[$blockIdentifier . $blockId])?$dataI18n[$blockIdentifier . $blockId]:array()));
             		}
             	}
