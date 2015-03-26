@@ -20,8 +20,6 @@ class URLManagerController extends BaseController {
             //Find good page
             $urls = Cachr::getCache( 'DB_Urls' );
             foreach ( $urls as $url ) {
-
-
                 if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
                     $structure = Structure::where('i18n_url',$url['i18n_id'])->first();
                     if (!empty($structure)) {
