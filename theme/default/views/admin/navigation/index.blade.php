@@ -14,10 +14,10 @@ masterAdminClass.watchMenuObjects();
 <div class="row">
 	<h1 class="page-header">{{{ Lang::get('admin.navigations') }}}
 		<a href="{{URL::to('admin/navigation/create-choose')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {{{ Lang::get('button.new') }}}</a></h1>
-	</div>
-	@stop
+</div>
+@stop
 
-	@section('content')
+@section('content')
 
 	@include('theme::admin.session.session-message')
 

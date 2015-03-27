@@ -170,13 +170,16 @@ footer{
 	margin-left: -50%;
 	background: black;
 	background-size: cover;
-	z-index: -5;
+	z-index: 0;
 	&.video-fixed {
 		position: fixed;
 
 	}
 }
-
+.video ~ * {
+	z-index:1;
+	position: relative;
+}
 
 
 //onepage specific

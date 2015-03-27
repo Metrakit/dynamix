@@ -22,7 +22,19 @@ class CreatePagesTable extends Migration {
 			$table->foreign('i18n_name')->references('id')->on('i18n');
 
 			$table->boolean('is_published')->default(false);
-			$table->boolean('deletable')->default(true);
+			$table->boolean('is_commentable')->default(false);
+			//$table->boolean('deletable')->default(true);
+
+			//OnePage part
+			$table->integer('order')->unsigned()->nullable();
+			
+			$table->string('ancor')->nullable();
+
+			$table->integer('background_id')->unsigned()->nullable();
+			$table->foreign('background_id')->references('id')->on('backgrounds');
+
+			$table->integer('onepage_id')->unsigned()->nullable();
+			$table->foreign('onepage_id')->references('id')->on('onepage');
 
 			$table->timestamps();
 		});

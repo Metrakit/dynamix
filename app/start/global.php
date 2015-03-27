@@ -36,7 +36,7 @@ if (Schema::hasTable('themes')) {
 |
 */
 foreach (Config::get('module') as $module) {
-	App::register('Dynamix\\ ' . $module . ' \\' . $module . 'Provider');
+	App::register('Dynamix\\' . $module . '\\' . $module . 'ServiceProvider');
 }
 
 
@@ -118,6 +118,5 @@ App::down(function()
 |
 */
 
-require app_path().'/modules.php';
 require app_path().'/filters.php';
 require app_path().'/blade.php';

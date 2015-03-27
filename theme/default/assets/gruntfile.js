@@ -89,6 +89,7 @@ module.exports = function (grunt) {
                         '<%= bowerPath %>fancybox/source/jquery.fancybox.css',                                            //4/6        
                         '<%= bowerPath %>morrisjs/morris.css',                                                            //5/6
                         '<%= bowerPath %>metisMenu/dist/metisMenu.min.css',                                                //6/6
+                        '<%= bowerPath %>bootstrapcolorpicker/dist/css/bootstrap-colorpicker.min.css',                                                //7/7
 
                         //Modules
                         '<%= vendorPath %>css/modules/**/admin/**/*.css',
@@ -140,6 +141,7 @@ module.exports = function (grunt) {
                     '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                     //4/6
                     '<%= bowerPath %>raphael/raphael-min.js',                                //5/6
                     '<%= bowerPath %>ckeditor/ckeditor.js',                                //6/6
+                    '<%= bowerPath %>bootstrapcolorpicker/dist/js/bootstrap-colorpicker.min.js',                                //7/7
 
 
                     //Local vendor
@@ -278,9 +280,10 @@ module.exports = function (grunt) {
 
               // CKEditor
               {expand: true, cwd: '<%= bowerPath %>ckeditor/', src: ['**'], dest: '<%= deployPublicPath %>js/ckeditor/'},
-              //{expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/plugins/responsivefilemanager/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/plugins/responsivefilemanager/'},
-              //{expand: true, cwd: '<%= srcPath %>vendor/js/tinymce/skins/light/', src: ['**'], dest: '<%= deployPublicPath %>js/tinymce/skins/light/'},
               
+              //ColorPicker
+              {expand: true, cwd: '<%= bowerPath %>bootstrapcolorpicker/dist/img/', src: ['**'], dest: '<%= distPath %>admin/img/'},
+
               //Fonts
               {expand: true, src: ['<%= bowerPath %>fontawesome/fonts/*'], dest: '<%= distPath %>admin/fonts/', flatten: true},
               {expand: true, src: ['<%= bowerPath %>bootstrap-sass-twbs/assets/fonts/bootstrap/*'], dest: '<%= distPath %>admin/fonts/bootstrap/', flatten: true},
@@ -380,6 +383,6 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', ['copy:deploy']);
 
     // Tâches personnalisées pour la mise en prod
-    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'uglify', 'imagemin', 'hash', 'copy', 'watch']);
+    grunt.registerTask('prod', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy']);
 
 }

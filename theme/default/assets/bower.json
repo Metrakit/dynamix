@@ -2,7 +2,6 @@
   "name": "Dynamix",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": ">= 2.1.1",
     "headjs": ">= 1.0.3",
     "media-match": ">= 0.1.0",
     "responsejs": ">= 0.9.0",
@@ -15,7 +14,8 @@
     "eonasdan-bootstrap-datetimepicker": ">= 4.*",
         
     "fontawesome": ">= 4.*",
-    "bootstrap-sass-twbs": ">= 3.2.*"
+    "bootstrap-sass-twbs": ">= 3.2.*",
+    "bootstrapcolorpicker": ">= 2.*"
 
   }
 }

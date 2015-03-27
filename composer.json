@@ -29,8 +29,7 @@
 			"core/libraries",
 			"app/database/migrations",
 			"app/database/seeds",
-			"vendor/dynamix",
-            "theme"
+            		"theme"
 		]
 	},
 	"scripts": {

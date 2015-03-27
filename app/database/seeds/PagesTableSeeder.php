@@ -186,25 +186,37 @@ class PagesTableSeeder extends Seeder {
         DB::table('pages')->insert( array(
             array(
                 'i18n_name'                 => $name1->id,
-                'deletable'                 => 1,
+                'order'             => 1,
+                'ancor'              => 'Home',
+                'onepage_id'        => 1,
+                'background_id'     => 1,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
                 'i18n_name'                 => $name2->id,
-                'deletable'                 => 1,
+                'order'             => 2,
+                'ancor'              => 'Content',
+                'onepage_id'        => 1,
+                'background_id'     => 2,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
                 'i18n_name'                 => $name2->id,
-                'deletable'                 => 1,
+                'order'             => null,
+                'ancor'              => null,
+                'onepage_id'        => null,
+                'background_id'     => null,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ),
             array(
                 'i18n_name'                 => $name3->id,
-                'deletable'                 => 1,
+                'order'             => null,
+                'ancor'              => null,
+                'onepage_id'        => null,
+                'background_id'     => null,
                 'created_at'                => new DateTime,
                 'updated_at'                => new DateTime
             ))

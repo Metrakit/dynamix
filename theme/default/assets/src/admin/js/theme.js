@@ -108,6 +108,16 @@ var PagerAdminMaster = function (){
         }
       });      
     }
+
+
+    //Check uncked radios
+   /* setTimeout(function(){
+      $("input[type=radio]").each(function () {
+        //if($(this).prop('checked')) $(this).attr('checked','checked');
+        if($(this).prop('checked')) $(this).trigger('click');
+      });
+    },100);*/
+
   }
 
 

@@ -13,5 +13,7 @@
 
 {{-- To surcharge for comment module --}}
 <hr>
-@include('theme::public.comment.index', array('object' => $page))
+@if($page->is_commentable)
+	@include('theme::public.comment.index', array('object' => $page))
+@endif
 @stop

@@ -384,6 +384,13 @@ var Master = function (){
 
 	//Start
 	this.start = function (){
+		//get locale_id
+		var localeDefault = 'fr';
+		if (arguments[0]) {
+			localeDefault = argument[0];
+		}
+		//moment.initLocale(localeDefault);
+
 		//Comment System
 		var commentService = new CommentMaster();
 		commentService.start();
