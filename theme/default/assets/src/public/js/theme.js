@@ -1,7 +1,6 @@
 var CommentMaster = function () {
 	//Attribut 
 	var isPosting = null;
-
 	this.start = function () {
 		//INPUT MESSAGE (CREATE MESSAGE)
 		var form = $('#comment-form'),
@@ -9,10 +8,10 @@ var CommentMaster = function () {
 			formEdit = $('#comment-form-edit-hidden form'),
 			formReply = $('#comment-form-reply-hidden > div');
 
-
 		//initMethod
 		refreshCommentDate();
 		initListener(form, action, formEdit, formReply);
+
 	}
 
 	var refreshCommentDate = function () {
@@ -20,11 +19,16 @@ var CommentMaster = function () {
 			//2014-12-12 14:21:24
 			var created_at 	= $(element).attr('data-created-at'),
 				date 		=  moment(created_at);
-			console.log(getDiffDate(date));
+
+			var locale = 'fr';
+			moment.locale('fr');
+			console.log(moment.duration(moment().diff(date)).humanize());
+			console.log(moment());
 			$(element).text(getDiffDate(date));
 		});
 
 		var wait = window.setTimeout(function (e){
+
             refreshCommentDate();
         },1000);
 	}
