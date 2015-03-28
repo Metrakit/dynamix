@@ -50,13 +50,6 @@ Route::get('choose-your-language', array ('uses' => 'BaseController@choose_your_
 |
 */
 
-$locale = Localizr::initLocale();
-Route::group(array('prefix' => $locale), function() 
-{
-	Route::get('/', array('uses' => 'URLManagerController@getHome'));
-	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
-});
-
 /*
 |--------------------------------------------------------------------------
 | Admin
@@ -177,6 +170,25 @@ Route::post('formr/{modelId?}', array('as' => 'formr', 'uses' => 'FormerControll
 Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
 Route::resource('comment','CommentController', array('only' => array('destroy','update')) );
 Route::post('comment/{id}/vote/{bool}', array('as' => 'comment-vote', 'uses' => 'CommentController@vote'));
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Router in the end
+|--------------------------------------------------------------------------
+|
+|
+*/
+$locale = Localizr::initLocale();
+Route::group(array('prefix' => $locale), function() 
+{
+	Route::get('/', array('uses' => 'URLManagerController@getHome'));
+	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
+});
+
 
 /*
 |--------------------------------------------------------------------------
