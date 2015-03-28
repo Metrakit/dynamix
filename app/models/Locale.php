@@ -43,12 +43,14 @@ class Locale extends Eloquent{
      * Count the active locales
      *
      */
-    public static function countEnable()
+    public static function countEnable($clear = false)
     {
+        if ($clear) {
+            Cache::forget('count_enable_locales');
+        }
         return Cache::rememberForever('count_enable_locales', function() {
             return self::where('enable', true)->count();
         });
     }
-
 
 }

@@ -289,6 +289,8 @@ class AdminController extends BaseController {
 				parent::track('create','Locale', $locale->id);
         	}
 
+        	Locale::countEnable(true);
+
 			return Redirect::to('/admin/environment')->with('success', Lang::get('admin.language_success'));
 	    }
 	    
