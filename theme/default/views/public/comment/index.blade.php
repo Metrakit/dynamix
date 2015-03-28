@@ -7,7 +7,7 @@
 		<div class="pull-left"><strong>{{ count($object->comments->all()) }} {{{ I18n::get('comment.comment'. (count($object->comments->all()) > 1 ? 's' : '' ) ) }}}</strong></div>
 		<div class="pull-right">
 		@if(!Auth::check())
-			<a href="{{ URL::to('auth/login')}}"><strong>{{{ I18n::get('auth.connexion')}}}</strong></a>
+			<a href="{{ URL::route('public.login')}}"><strong>{{{ I18n::get('auth.connexion')}}}</strong></a>
 		@else
 			{{Auth::user()->email}}
 		@endif
