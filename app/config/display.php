@@ -9,7 +9,7 @@ return array(
 	|
 	*/
 
-	'onepage' => true,
+	'onepage' => false,
 
 
 	/*
