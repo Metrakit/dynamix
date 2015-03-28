@@ -139,11 +139,19 @@
                         <ul class="nav navbar-nav">
                             @include('theme::public.nav.nav')
                         </ul>
-                        @if(Auth::check())
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
+                            @if(Auth::check())
+                                @if(Auth::user()->hasRole('admin'))
+                                    <li><a href="{{URL::to('admin')}}">Tableau de bord</a></li>
+                                @endif
+                                <li><a href="{{ URL::route('logout') }}">Logout</a></li>
+                            @else
+                                @if(Route::has('registration'))
+                                    <li><a href="{{ URL::route('registration') }}">Register</a></li>
+                                @endif
+                                <li><a href="{{ URL::route('public.login') }}">Login</a></li>
+                            @endif
                         </ul>
-                        @endif
                     </div>
                 </div>
             </div>

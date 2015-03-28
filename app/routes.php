@@ -145,11 +145,18 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 |	Auth
 |
 */
-Route::get('auth/login', 'AuthController@login');
-Route::post('auth/login', 'AuthController@post_login');
-Route::get('auth/logout', 'AuthController@logout');
-Route::get('auth/remind', 'RemindersController@getRemind');
-Route::post('auth/remind', 'RemindersController@postRemind');
+Route::group(array('prefix' => 'admin'), function() 
+{
+	Route::get('login', array('as' => 'admin.login', 'uses' => 'AuthController@adminLogin'));
+	Route::post('login', array('as' => 'admin.login.post', 'uses' => 'AuthController@postAdminLogin'));
+});
+
+Route::get('login', array('as' => 'public.login', 'uses' => 'AuthController@publicLogin'));
+Route::post('login', array('as' => 'public.login.post', 'uses' => 'AuthController@postPublicLogin'));
+
+Route::get('logout', array('as' => 'logout', 'uses' => 'AuthController@logout'));
+Route::get('remind', array('as' => 'reminder', 'uses' => 'RemindersController@getRemind'));
+Route::post('remind', 'RemindersController@postRemind');
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset','as' => 'password.reset'));
 Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset','as' => 'password.update'));
 

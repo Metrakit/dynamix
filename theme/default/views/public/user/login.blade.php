@@ -17,7 +17,7 @@
 <div class="page-header">
     <h1>{{{ I18n::get('auth.login') }}}</h1>
 </div>
-<form class="form-horizontal" method="POST" action="{{ URL::route('admin.login.post') }}" accept-charset="UTF-8">
+<form class="form-horizontal" method="POST" action="{{ URL::route('public.login.post') }}" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
         <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
