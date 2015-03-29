@@ -11,7 +11,7 @@
         <h1 class="page-header">{{{ Lang::get('admin.dashboard') }}}</h1>
     </div>
 @stop
-@include('theme::admin.tasks.labels-css', array('labels'=>$labels))
+
 @section('content')
     @include('theme::admin.session.session-message')
     @if($ga_googleAnalyticsFound)
@@ -28,26 +28,7 @@
     </div>
     @endif
 
-    <div class="col-lg-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-edit fa-fw"></i> {{{ Lang::get('admin.tasks') }}}
-            </div>
-            <div class="panel-body">
-                @include('theme::admin.tasks.list', array('tasks', $tasks))
-            </div>
-            <div class="panel-footer">
-                <form action="{{URL::route('admin.task.store')}}" method="post">
-                    <div class="input-group task-input">
-                        <input class="form-control" name="task_label" type="text">
-                        <div class="input-group-addon task-addon btn-primary">
-                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+   
     @if($ga_googleAnalyticsFound)
     <div class="col-lg-8">
         <div class="row">
