@@ -16,18 +16,13 @@ var CommentMaster = function () {
 
 	var refreshCommentDate = function () {
 		$('section.comment .data-created-at').each( function (i, element) {
-			//2014-12-12 14:21:24
+		
 			var created_at 	= $(element).attr('data-created-at'),
 				date 		=  moment(created_at);
 
-			
-			//console.log(moment.duration(moment().diff(date)).humanize());
-			var localeData = moment.localeData('en');
-
 			//console.log(localeData.relativeTime(1,false,'s',true));
-			console.log('Gloum233');
-			
-			$(element).text(getDiffDate(date));
+			console.log(moment(date));
+			$(element).text(moment.duration(moment().diff(date)).humanize());
 		});
 
 		var wait = window.setTimeout(function (e){
@@ -395,7 +390,6 @@ var Master = function (){
 			localeDefault = arguments[0];
 		}
 		moment.locale(localeDefault);
-
 		
 
 		//Comment System
