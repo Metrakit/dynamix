@@ -21,19 +21,30 @@ class Option extends Eloquent
         return $this->morphTo();
     }
 
+
+	public static function get($key)
+	{
+		return Config::get('option.' . $key);
+	}
+
 	/**
 	 * Additional Method
 	 *
 	 * @var string
 	 */
-	public function translate( $i18n_id )
+	public static function translate($key, $locale_id = null)
 	{
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
-	}
+		$i18n_id = Config::get('option.i18n_' . $key);
+		if ($locale_id === null) {
+			$locale_id  = App::getLocale();
+		}
 
-	public function translateLocale( $i18n_id, $locale_id )
-	{
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
+		$translation = Translation::where('i18n_id', '=', $i18n_id)->where('locale_id', '=', $locale_id)->first();
+
+		if ($translation) {
+			return $translation->text;
+		}
+		return null;
 	}
 
 
@@ -42,34 +53,29 @@ class Option extends Eloquent
      *
      * @return mixed
      */
-	public function site_name_locale( $locale_id )
+	public function site_name_locale($locale_id)
 	{
-		return $this->translateLocale( $this->i18n_site_name, $locale_id );
+		return self::translate('site_name', $locale_id);
 	}
-
 	public function site_name()
 	{
-		return $this->translate( $this->i18n_site_name );
+		return self::translate('site_name');
 	}
-
-	public function social_title_locale( $locale_id )
+	public function social_title_locale($locale_id)
 	{
-		return $this->translateLocale( $this->i18n_social_title, $locale_id );
+		return self::translate('social_title', $locale_id);
 	}
-
 	public function social_title()
 	{
-		return $this->translate( $this->i18n_social_title );
+		return self::translate('social_title');
 	}
-
-	public function social_description_locale( $locale_id )
+	public function social_description_locale($locale_id)
 	{
-		return $this->translateLocale( $this->i18n_social_description, $locale_id );
+		return self::translate('social_description', $locale_id);
 	}
-
 	public function social_description()
 	{
-		return $this->translate( $this->i18n_social_description );
+		return self::translate('social_description');
 	}
 
 

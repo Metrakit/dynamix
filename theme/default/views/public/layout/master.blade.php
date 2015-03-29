@@ -5,29 +5,29 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
         @section('meta_title')
-    {{ Cachr::getCache('DB_Option')->site_name() }}
+    {{ Option::translate('site_name') }}
         @show
         </title>
-        <meta name="author" content="{{Config::get('app.author')}}">
+        <meta name="author" content="{{ Config::get('app.author') }}">
         <meta name="description" content="@yield('meta_description')">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
         <meta property="og:locale" content="fr_FR">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ Cachr::getCache('DB_Option')->i18n_social_title }}">
-        <meta property="og:description" content="{{ Cachr::getCache('DB_Option')->i18n_social_description }}">
-        <meta property="og:url" content="{{Request::url()}}">
-        <meta property="og:site_name" content="{{ Cachr::getCache('DB_Option')->site_name() }}">
-        <meta property="og:image" content="{{ Cachr::getCache('DB_Option')->cover_path }}">
+        <meta property="og:title" content="{{ Option::translate('social_title') }}">
+        <meta property="og:description" content="{{ Option::translate('social_description') }}">
+        <meta property="og:url" content="{{ Request::url() }}">
+        <meta property="og:site_name" content="{{ Option::translate('site_name') }}">
+        <meta property="og:image" content="{{ Option::get('cover_path') }}">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image:src" content="{{Request::url()}}">
-        <meta name="twitter:site" content="{{ Cachr::getCache('DB_Option')->twitter_id }}">
-        <meta name="twitter:url" content="{{ Cachr::getCache('DB_Option')->cover_path }}">
-        <meta name="twitter:description" content="{{ Cachr::getCache('DB_Option')->i18n_social_description }}">
-        <meta name="twitter:title" content="{{ Cachr::getCache('DB_Option')->i18n_social_title }}">
+        <meta name="twitter:site" content="{{ Option::get('twitter_id') }}">
+        <meta name="twitter:url" content="{{ Option::get('cover_path') }}">
+        <meta name="twitter:description" content="{{ Option::translate('social_description') }}">
+        <meta name="twitter:title" content="{{ Option::translate('social_title') }}">
 
-        <link rel="canonical" href="{{Request::url()}}">
+        <link rel="canonical" href="{{ Request::url() }}">
 
         <link rel="stylesheet" href="{{ asset('').Bassets::show('public/css/main.css') }}">
         
@@ -112,7 +112,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">{{Cachr::getCache('DB_Option')->site_name()}}</a>
+                        <a class="navbar-brand" href="#">{{ Option::translate('site_name') }}</a>
                     </div>
                     <div class="navbar-collapse navbar-top collapse">
                         <ul class="nav navbar-nav">

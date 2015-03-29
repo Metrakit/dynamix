@@ -8,16 +8,18 @@ class Cachr
 {
 	public static function getCache( $cache )
 	{
-		Cache::forget('DB_Nav');
-		Cache::forget('DB_Urls');
-		Cache::forget('DB_Option');
-		Cache::forget('DB_AdminBlockTypes');
-		Cache::forget('DB_AdminResourceName');
-		Cache::forget('DB_AdminResource');
-		Cache::forget('DB_LocaleFrontEnable');
-		Cache::forget('DB_ResourceNavigable');
-		Cache::forget('DB_LocalesEnabled');
-		Cache::forget('DB_ThemeActives');
+		if (App::isLocal()) {
+			Cache::forget('DB_Nav');
+			Cache::forget('DB_Urls');
+			Cache::forget('DB_Option');
+			Cache::forget('DB_AdminBlockTypes');
+			Cache::forget('DB_AdminResourceName');
+			Cache::forget('DB_AdminResource');
+			Cache::forget('DB_LocaleFrontEnable');
+			Cache::forget('DB_ResourceNavigable');
+			Cache::forget('DB_LocalesEnabled');
+			Cache::forget('DB_ThemeActives');			
+		}
 		
 		if(!Cache::has($cache)){
 			$cachr = new Cachr;
@@ -106,8 +108,9 @@ class Cachr
 		//Cache Model::Option
 		Cache::rememberForever('DB_Option', function()
 		{
-		    return Option::first();
+		    return Option::all();
 		});
+
 		//Cache Model::Urls
 		Cache::rememberForever('DB_Urls', function()
 		{
