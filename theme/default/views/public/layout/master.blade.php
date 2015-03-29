@@ -85,7 +85,7 @@
                     complete: function(){                                        
                         @yield('script')
                         $(document).ready( function(){   
-                            masterClass.start({{App::getLocale()}});            
+                            masterClass.start('{{App::getLocale()}}');            
                             @yield('scriptOnReady')
                         });
                     }

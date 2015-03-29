@@ -83,13 +83,13 @@ module.exports = function (grunt) {
                     '<%= distPath %>admin/css/main.css':
                     [
                         //Vendor
-                        '<%= vendorPath %>css/bootstrap.css',                                                            //1/6
-                        '<%= vendorPath %>css/font-awesome.css',                                                        //2/6
-                        '<%= bowerPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css', //3/6
-                        '<%= bowerPath %>fancybox/source/jquery.fancybox.css',                                            //4/6        
-                        '<%= bowerPath %>morrisjs/morris.css',                                                            //5/6
+                        '<%= vendorPath %>css/bootstrap.css',                                                              //1/6
+                        '<%= vendorPath %>css/font-awesome.css',                                                           //2/6
+                        '<%= bowerPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',    //3/6
+                        '<%= bowerPath %>fancybox/source/jquery.fancybox.css',                                             //4/6        
+                        '<%= bowerPath %>morrisjs/morris.css',                                                             //5/6
                         '<%= bowerPath %>metisMenu/dist/metisMenu.min.css',                                                //6/6
-                        '<%= bowerPath %>bootstrapcolorpicker/dist/css/bootstrap-colorpicker.min.css',                                                //7/7
+                        '<%= bowerPath %>bootstrapcolorpicker/dist/css/bootstrap-colorpicker.min.css',                     //7/7
 
                         //Modules
                         '<%= vendorPath %>css/modules/**/admin/**/*.css',
@@ -135,12 +135,12 @@ module.exports = function (grunt) {
                 // Fichiers à concaténer
                 src: [
                     //Vendor
-                    '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',    //1/6
-                    //'<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',                //2/6
-                    '<%= bowerPath %>metisMenu/dist/metisMenu.min.js',                        //3/6
-                    '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                     //4/6
-                    '<%= bowerPath %>raphael/raphael-min.js',                                //5/6
-                    '<%= bowerPath %>ckeditor/ckeditor.js',                                //6/6
+                    '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',                                      //1/6
+                    //'<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',                                                  //2/6
+                    '<%= bowerPath %>metisMenu/dist/metisMenu.min.js',                                                          //3/6
+                    '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                                                       //4/6
+                    '<%= bowerPath %>raphael/raphael-min.js',                                                                   //5/6
+                    '<%= bowerPath %>ckeditor/ckeditor.js',                                                                     //6/6
                     '<%= bowerPath %>bootstrapcolorpicker/dist/js/bootstrap-colorpicker.min.js',                                //7/7
 
 
@@ -241,8 +241,8 @@ module.exports = function (grunt) {
 
         // Nettoyage des dossiers publics
         clean: {
-            jsadmin: ["<%= distPath %>admin/css/*.js"],
-            jspublic: ["<%= distPath %>public/css/*.js"],
+            jsadmin: ["<%= distPath %>admin/js/main.*.js"],
+            jspublic: ["<%= distPath %>public/js/main.*.js"],
             cssadmin: ["<%= distPath %>admin/css/*.css"],
             csspublic: ["<%= distPath %>public/css/*.css"],
             options: {
@@ -343,8 +343,9 @@ module.exports = function (grunt) {
             {
                 files: [
                         '<%= srcPath %>public/js/**'
+
                 ],
-                tasks:['concat:assetPublic', 'clean:jspublic', 'hash:jsPublic'],
+                tasks:['clean:jspublic','concat:assetPublic', 'hash:jsPublic'],
                 options: {
                   livereload: true
                 }    
@@ -352,7 +353,7 @@ module.exports = function (grunt) {
 
             blade: 
             {
-                files: ['<%= path %>app/**/*.blade.php'],
+                files: ['<%= path %>theme/**/*.blade.php'],
                 options: {
                   livereload: true
                 }    

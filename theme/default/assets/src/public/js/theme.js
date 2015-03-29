@@ -11,7 +11,7 @@ var CommentMaster = function () {
 		//initMethod
 		refreshCommentDate();
 		initListener(form, action, formEdit, formReply);
-
+      
 	}
 
 	var refreshCommentDate = function () {
@@ -20,15 +20,18 @@ var CommentMaster = function () {
 			var created_at 	= $(element).attr('data-created-at'),
 				date 		=  moment(created_at);
 
-			var locale = 'fr';
-			moment.locale('fr');
-			console.log(moment.duration(moment().diff(date)).humanize());
-			console.log(moment());
+			
+			//console.log(moment.duration(moment().diff(date)).humanize());
+			var localeData = moment.localeData('en');
+
+			//console.log(localeData.relativeTime(1,false,'s',true));
+			console.log('Gloum2');
+			
 			$(element).text(getDiffDate(date));
 		});
 
 		var wait = window.setTimeout(function (e){
-
+ 
             refreshCommentDate();
         },1000);
 	}
@@ -385,11 +388,15 @@ var Master = function (){
 	//Start
 	this.start = function (){
 		//get locale_id
+		
+		//Set default moment language
 		var localeDefault = 'fr';
 		if (arguments[0]) {
-			localeDefault = argument[0];
+			localeDefault = arguments[0];
 		}
-		//moment.initLocale(localeDefault);
+		moment.locale(localeDefault);
+
+		
 
 		//Comment System
 		var commentService = new CommentMaster();
