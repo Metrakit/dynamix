@@ -334,7 +334,9 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		$data['option'] = Option::first();
+		$data['option'] = new Option;
+
+		$data['options'] = Option::all();
 
 		//Data for themes
 		$data['theme_publics'] = Theme::where('type', 'public')->get();
@@ -417,45 +419,66 @@ class AdminController extends BaseController {
 
 
         	//Options
-        	$option = Option::first();
-        	//return var_dump(Input::get('cover_path'));
+        	$options = Option::all();
 
-        	$option->site_url		= Input::get('site_url');
-        	$option->cover_path		= Input::get('cover_path');
-        	$option->admin_email	= Input::get('admin_email');
-        	$option->analytics		= Input::get('analytics');
-        	
-        	//Update translations
-        	foreach ( $site_name_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_site_name)->updateText($locale, Input::get('site_name_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
+        	foreach ($options as $option) {
+
+        		if ($option->key == "site_url") {
+        			$option->value		= Input::get('site_url');
         		}
-        	}
-			//Update translations
-        	foreach ( $social_title_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_social_title)->updateText($locale, Input::get('social_title_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_title_update_error'));
+
+        		if ($option->key == "cover_path") {
+        			$option->value		= Input::get('cover_path');
         		}
-        	}
-			//Update translations
-        	foreach ( $social_description_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_social_description)->updateText($locale, Input::get('social_description_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_description_update_error'));
+
+        		if ($option->key == "admin_email") {
+        			$option->value		= Input::get('admin_email');
         		}
+
+        		if ($option->key == "analytics") {
+        			$option->value		= Input::get('analytics');
+        		}
+
+        		if ($option->key == "i18n_site_name") {
+
+		        	//Update translations
+		        	foreach ( $site_name_locales as $locale ) {
+		        		if ( !I18n::find($option->value)->updateText($locale, Input::get('site_name_'.$locale)) ) {
+		        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
+		        		}
+		        	}
+		        }
+
+		        if ($option->key == "i18n_social_title") {
+
+					//Update translations
+		        	foreach ( $social_title_locales as $locale ) {
+		        		if ( !I18n::find($option->value)->updateText($locale, Input::get('social_title_'.$locale)) ) {
+		        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_title_update_error'));
+		        		}
+		        	}
+		        }
+
+	        	if ($option->key == "i18n_social_description") {
+
+					//Update translations
+		        	foreach ( $social_description_locales as $locale ) {
+		        		if ( !I18n::find($option->value)->updateText($locale, Input::get('social_description_'.$locale)) ) {
+		        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_description_update_error'));
+		        		}
+		        	}
+		        }
+
+        		$option->save();
         	}
-        	//
 
-        	//if no error when save
-        	if($option->save()) {
-        		Cache::forget('DB_Option'); 
+        	// Clear cache
+        	Cache::forget('options'); 
 
-        		//track user
-        		parent::track('update','Option',null);  
+    		//track user
+    		parent::track('update', 'Option', null);  
 
-          		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
-        	} else {
-	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
-	        }
+          	return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
 	    }
 	    
 		// Show the page

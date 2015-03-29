@@ -22,7 +22,7 @@
         <div class="form-group {{{ $errors->has('site_url') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="site_url">{{{ Lang::get('admin.option_site_url') }}}</label>
             <div class="col-md-10 col-lg-8">
-                <input class="form-control" type="text" name="site_url" id="site_url" value="{{{ Input::old('site_url', $option->site_url) }}}" />
+                <input class="form-control" type="text" name="site_url" id="site_url" value="{{{ Input::old('site_url', Option::obtain('site_url')) }}}" />
                 {{ $errors->first('site_url', '<div class="alert alert-danger">:message</div>') }}
             </div>
         </div>
@@ -32,7 +32,7 @@
             <label class="col-md-2 control-label" for="cover_path">{{{Lang::get('admin.option_image')}}}</label>
             <div class="col-md-10 col-lg-8">
                 <div class="input-group">
-                    <input class="form-control" type="text" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', (isset($option) ? $option->cover_path : '')) }}}" />
+                    <input class="form-control" type="text" name="cover_path" id="cover_path" value="{{{ Input::old('cover_path', Option::obtain('cover_path')) }}}" />
                     <a class="input-group-addon btn-explore iframe-filemanager" href="{{ URL::to('filemanager/dialog.php?type=1&amp;field_id=cover_path&amp;akey='.Config::get('app.key')) }}"><span>Explorer</span></a>
                 </div>
                 {{ $errors->first('cover_path', '<div class="alert alert-danger">:message</div>') }}
@@ -78,7 +78,7 @@
         <div class="form-group {{{ $errors->has('admin_email') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="admin_email">{{{ Lang::get('admin.option_admin_email') }}}</label>
             <div class="col-md-10 col-lg-8">
-                <input class="form-control" type="email" name="admin_email" id="admin_email" value="{{{ Input::old('admin_email', $option->admin_email) }}}" />
+                <input class="form-control" type="email" name="admin_email" id="admin_email" value="{{{ Input::old('admin_email', Option::obtain('admin_email')) }}}" />
                 {{ $errors->first('admin_email', '<div class="alert alert-danger">:message</div>') }}
                 <p class="help-block">{{{ Lang::get('admin.option_admin_email_help') }}}</p>
             </div>
@@ -119,7 +119,7 @@
         <div class="form-group {{{ $errors->has('analytics') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="analytics">{{{ Lang::get('admin.option_analytics') }}}</label>
             <div class="col-md-10 col-lg-8">
-                <textarea class="form-control" name="analytics" id="analytics" rows="10">{{{ Input::old('admin_email', $option->analytics) }}}</textarea>
+                <textarea class="form-control" name="analytics" id="analytics" rows="10">{{{ Input::old('admin_email', Option::obtain('analytics')) }}}</textarea>
                 {{ $errors->first('analytics', '<div class="alert alert-danger">:message</div>') }}
                 <p class="help-block">{{{ Lang::get('admin.option_analytics_help') }}}<br>{{{ Lang::get('admin.option_analytics_help_recommand') }}}</p>
             </div>
