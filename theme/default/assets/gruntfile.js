@@ -33,11 +33,11 @@ module.exports = function (grunt) {
             },
             //Public theme.css
             themePublic: {
-              	options: {
-                	config: '<%= srcPath %>public/config.rb',
-                	sassDir: '<%= srcPath %>public/scss',
-                	cssDir: '<%= distPath %>public/css'
-            	}
+                options: {
+                    config: '<%= srcPath %>public/config.rb',
+                    sassDir: '<%= srcPath %>public/scss',
+                    cssDir: '<%= distPath %>public/css'
+                }
             },
             //Vendor css
             vendorFontawesome: {
@@ -67,9 +67,9 @@ module.exports = function (grunt) {
         sass: {
             //Vendor css
             vendor: {
-            	options: {
-            		style: 'expanded'
-            	},
+                options: {
+                    style: 'expanded'
+                },
                 files: {
                     './dist/vendor/css/bootstrap.css': '<%= srcPath %>vendor/scss/bootstrap.scss'
                 }
@@ -380,7 +380,7 @@ module.exports = function (grunt) {
     // Tâches personnalisées pour le développement
     grunt.registerTask('dev', ['clean', 'sass', 'compass', 'cssmin', 'concat', 'hash', 'copy', 'watch']);
 
-	// Tâches personnalisées pour le développement
+    // Tâches personnalisées pour le développement
     grunt.registerTask('deploy', ['copy:deploy']);
 
     // Tâches personnalisées pour la mise en prod
