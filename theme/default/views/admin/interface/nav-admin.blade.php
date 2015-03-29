@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand favicon" href="{{URL::to('/')}}"><img class="inline-block" src="{{asset('uploads/system/favicon/favicon32.png')}}" alt="Logo"> <span>{{ Cachr::getCache('DB_Option')->site_name() }}</span></a>
+        <a class="navbar-brand favicon" href="{{URL::to('/')}}"><img class="inline-block" src="{{asset('uploads/system/favicon/favicon32.png')}}" alt="Logo"> <span>{{ Option::translate('site_name') }}</span></a>
     </div>
     <!-- /.navbar-header -->
 
