@@ -22,7 +22,7 @@ class Option extends Eloquent
     }
 
 
-	public static function obtain($key)
+	public static function get($key)
 	{
 		return Config::get('option.' . $key);
 	}
