@@ -55,7 +55,7 @@ class AdminController extends BaseController {
 		$data['ga_newOnReturningVisitor'] 	= $newOnReturningVisitor;
 		$data['ga_googleAnalyticsFound'] = true;
 
-		$data = array_merge($data,App::make('AdminTasksController')->generateShow());
+		//$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.index', $data )->renderSections());
 		} else {
