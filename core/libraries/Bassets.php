@@ -26,13 +26,14 @@ class Bassets {
 
 		//Identify if is asset admin or public
 		$assetType = 'public';
-		if (strpos('admin', $urlKey) !== false) {
-			$assetType = 'admin';
+		if ( Request::segment(1) == "admin" ) {
+			$assetType = "admin";
 		}
 
 		//Get theme name
 		$themeName = (isset($themesActive[$assetType])?$themesActive[$assetType]:'default');
 		$pathForAssets .= $themeName . '/';
+		//Log::info(print_r($themesActive));
 
 		$fcontent = null;
 	    try{
