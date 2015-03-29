@@ -25,7 +25,7 @@ var CommentMaster = function () {
 			var localeData = moment.localeData('en');
 
 			//console.log(localeData.relativeTime(1,false,'s',true));
-			console.log('Gloum2');
+			console.log('Gloum233');
 			
 			$(element).text(getDiffDate(date));
 		});

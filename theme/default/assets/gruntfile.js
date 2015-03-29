@@ -333,7 +333,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>admin/js/**'
                 ],
-                tasks:['concat:assetAdmin', 'clean:jsadmin', 'hash:jsAdmin'],
+                tasks:['concat:assetAdmin', 'clean:jsadmin', 'hash:jsAdmin', 'copy:deploy'],
                 options: {
                   livereload: true
                 }    
@@ -345,7 +345,7 @@ module.exports = function (grunt) {
                         '<%= srcPath %>public/js/**'
 
                 ],
-                tasks:['clean:jspublic','concat:assetPublic', 'hash:jsPublic'],
+                tasks:['clean:jspublic','concat:assetPublic', 'hash:jsPublic', 'copy:deploy'],
                 options: {
                   livereload: true
                 }    
