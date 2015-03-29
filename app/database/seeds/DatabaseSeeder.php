@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder {
         //$this->call('FilesTableSeeder');
         $this->call('ResponsiveWidthsTableSeeder');
         $this->call('ResponsiveTriggersTableSeeder');
-        $this->call('SocialsTableSeeder');
+        //$this->call('SocialsTableSeeder');
         $this->call('ImagesTableSeeder');
 
 
@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('NavigationsTableSeeder');//Need Page module OK
 
         //Task
-        $this->call('TasksTableSeeder');
+        //$this->call('TasksTableSeeder');
 
 
         //Autonomous
