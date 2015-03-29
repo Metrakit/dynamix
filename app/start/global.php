@@ -19,12 +19,12 @@ if (Schema::hasTable('themes')) {
 	}
 
 	//Get themeName
-	$themeName = (isset($themes['admin'])?$themes['admin']:'default');
+	$themeName = (isset($themes[$themeType])?$themes[$themeType]:'default');
 
 	//Set namespace with override support
 	View::addNamespace('theme', [
-	    base_path().'/theme/default/views',
-	    base_path().'/theme/' . $themeName . '/views'
+	    base_path().'/theme/' . $themeName . '/views',
+	    base_path().'/theme/default/views'
 	]);
 }
 
