@@ -173,6 +173,8 @@ module.exports = function (grunt) {
                     '<%= modulesPathWorkbench %>**/assets/public/js/**/*.js',
 
                     '<%= bowerPath %>moment/moment.js',
+                    '<%= bowerPath %>moment/locale/fr.js',
+
                 ],
                 // Fichier de destination
                 dest:'<%= distPath %>public/js/main.js'
