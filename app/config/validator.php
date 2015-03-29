@@ -11,8 +11,8 @@ return array(
 	|
 	*/
 
-	'login'			=>		array(	'email'		=> 'required|email|max:225',
-									'password'	=> 'required|max:225'),
+	'login'			=>		array(	'email'		=> array('required', 'email', 'max:225'),
+									'password'	=> array('required', 'max:225')),
 
 
 	'forgot'		=>		array(	'email'		=> 'required|email|max:225'),

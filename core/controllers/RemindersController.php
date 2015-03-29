@@ -9,7 +9,7 @@ class RemindersController extends Controller {
 	 */
 	public function getRemind()
 	{
-		return View::make('theme::' .'admin.login.password.remind');
+		return View::make('theme::' .'public.user.password.remind');
 	}
 
 	/**
@@ -19,7 +19,7 @@ class RemindersController extends Controller {
 	 */
 	public function postRemind()
 	{
-		switch ($response = Password::remind(Input::only('email'),function($message){$message->from('reminder@relooking-coiffure-lyon.com','Stéphane G')->subject('Password Reminder');}))
+		switch ($response = Password::remind(Input::only('email'),function($message){$message->from('contact@dynamixcms.org','Dynamix')->subject('Password Reminder');}))
 		{
 			case Password::INVALID_USER:
 				return Redirect::back()->with('error', I18n::get($response));
@@ -39,7 +39,7 @@ class RemindersController extends Controller {
 	{
 		if (is_null($token)) App::abort(404);
 
-		return View::make('theme::' .'admin.login.password.reset')->with('token', $token);
+		return View::make('theme::' .'public.user.password.reset')->with('token', $token);
 	}
 
 	/**

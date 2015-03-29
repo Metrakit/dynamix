@@ -18,6 +18,12 @@ class Localizr
 		
 		if ($db_is_ok) {
 			if (Schema::hasTable('locales')){
+				
+				// If only one lang is enable we dont need to set a Locale
+				if (Locale::countEnable() <= 1) {
+					return null;
+				}
+
 				//Test if segment 1 isnt here, and if is valid
 				if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){					
 					if (Request::is('/') ) {
