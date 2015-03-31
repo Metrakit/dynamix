@@ -22,10 +22,25 @@ class Option extends Eloquent
     }
 
 
+    /**
+     * Get an option
+     * @param  string $key
+     * @return string
+     */
 	public static function get($key)
 	{
 		return Config::get('option.' . $key);
 	}
+
+	/**
+	 * Check if the option exist
+	 * @param  string  $key
+	 * @return boolean
+	 */
+	public static function has($key)
+	{
+		return Config::has('option.' . $key);
+	}	
 
 	/**
 	 * Additional Method
