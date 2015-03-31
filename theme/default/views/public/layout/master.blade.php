@@ -146,7 +146,7 @@
                                 @endif
                                 <li><a href="{{ URL::route('logout') }}">Logout</a></li>
                             @else
-                                @if(Route::has('registration'))
+                                @if(Option::get('enable_registration') == true)
                                     <li><a href="{{ URL::route('registration') }}">Register</a></li>
                                 @endif
                                 <li><a href="{{ URL::route('public.login') }}">Login</a></li>
