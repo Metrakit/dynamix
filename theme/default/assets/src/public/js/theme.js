@@ -29,6 +29,9 @@ var CommentMaster = function () {
 
 		var dateDiff = getDiff(date);
 		$(element).text(dateDiff.value);
+		
+
+		//console.log(moment.duration('e').humanize());
 
 		});
 
@@ -70,7 +73,7 @@ var CommentMaster = function () {
 			unit = 'minutes';
 
 		
-		return {unit : unit, diff : moment().diff(date), value : moment.duration(moment().diff(date)).humanize()};
+		return {unit : unit, diff : moment().diff(date), value : locale.pastFuture('Past',moment.duration(moment().diff(date)).humanize())};
 	}
 
 	var initListener = function (form, action, formEdit, formReply) {
@@ -87,7 +90,6 @@ var CommentMaster = function () {
 						var element = document.createElement('template');
 						element.innerHTML = data.comment;
 						element.content.getElementById('data-created-at').innerHTML = getDiff(moment()).value;
-
 						$(element.content).insertAfter('.comment-form');
 
 					} else {
