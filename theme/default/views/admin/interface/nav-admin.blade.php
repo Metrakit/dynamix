@@ -23,7 +23,7 @@
                 <li><a href="{{ URL::to('/admin/profil' ) }}"><i class="fa fa-user fa-fw"></i> {{{ Lang::get('auth.show_profil') }}}</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="{{ URL::to('/auth/logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{{ Lang::get('auth.logout') }}}</a>
+                <li><a href="{{ URL::route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> {{{ Lang::get('auth.logout') }}}</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
