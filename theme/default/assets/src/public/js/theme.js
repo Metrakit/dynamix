@@ -84,13 +84,11 @@ var CommentMaster = function () {
 					if ( data.status == "success" ) {
 						showAlertInputMessage(data.status, data.message);
 						form.find('input[name=message]').val('');
-						var fragment = document.createElement('template');
-						fragment.innerHTML = data.comment;
+						var element = document.createElement('template');
+						element.innerHTML = data.comment;
+						element.content.getElementById('data-created-at').innerHTML = getDiff(moment()).value;
 
-						var content = data.comment;
-						content = content.replace("###time###",getDiff(moment()).value);
-
-						$(content).insertAfter('.comment-form');
+						$(element.content).insertAfter('.comment-form');
 
 					} else {
 						showAlertInputMessage(data.status, data.message);

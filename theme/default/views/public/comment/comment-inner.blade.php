@@ -1,5 +1,5 @@
 <div class="comment-user-header">{{ $comment->user()->email }} 
-	&bull; <span class="data-created-at" data-created-at="{{$comment->created_at}}" >###time###</span>
+	&bull; <span class="data-created-at" data-created-at="{{$comment->created_at}}" id="data-created-at" ></span>
 	@if (Auth::check())
 	@if ($comment->user_id == Auth::user()->id)
 	{{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
