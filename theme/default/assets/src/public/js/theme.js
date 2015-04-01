@@ -1,6 +1,8 @@
 var CommentMaster = function () {
 	//Attribut 
 	var isPosting = null;
+	var localeDefault = '';
+
 	this.start = function () {
 		//INPUT MESSAGE (CREATE MESSAGE)
 		var form = $('#comment-form'),
@@ -11,91 +13,64 @@ var CommentMaster = function () {
 		//initMethod
 		refreshCommentDate();
 		initListener(form, action, formEdit, formReply);
-      
-	}
+      	
+      	//init localeDefault for monent.js
+		if (arguments[0]) { 
+			localeDefault = arguments[0]; 
+		}
 
+	}
+  
 	var refreshCommentDate = function () {
 		$('section.comment .data-created-at').each( function (i, element) {
 		
-			var created_at 	= $(element).attr('data-created-at'),
-				date 		=  moment(created_at);
+		var created_at 	= $(element).attr('data-created-at'),
+	    date = moment(created_at);
 
-			//console.log(localeData.relativeTime(1,false,'s',true));
-			console.log(moment(date));
-			$(element).text(moment.duration(moment().diff(date)).humanize());
+		var dateDiff = getDiff(date);
+		$(element).text(dateDiff.value);
+
 		});
 
 		var wait = window.setTimeout(function (e){
- 
+
             refreshCommentDate();
-        },1000);
+        },9000);
 	}
 
-	//Retourne la différences entre la date du jour et la date en paramètre.
-	var getDiffDate = function(date) {
+
+	var getDiff = function (date) {
+
+		var locale = moment.localeData(localeDefault);
+		var unit = 'seconds';
+
+
 		var maDate = moment().diff(moment(date),'years',true);
-		if (maDate >= 1) {
-			return moment().diff(moment(date),'years') + ' years ago';
-		}
+		if (maDate >= 1) 
+			unit = 'years';
+		
 
 		maDate = moment().diff(moment(date),'months',true);
-		if (maDate >= 1) {
-			return moment().diff(moment(date),'months') + ' months ago';
-		}
+		if (maDate >= 1) 
+			unit = 'months';
+		
 
 		maDate = moment().diff(moment(date),'days',true);
-		if (maDate >= 1) {
-			return moment().diff(moment(date),'days') + ' days ago';
-		}
+		if (maDate >= 1) 
+			unit = 'days';
+		
 
 		maDate = moment().diff(moment(date),'hours',true);
-		if (maDate >= 1) {
-			return moment().diff(moment(date),'hours') + ' hours ago';
-		}
+		if (maDate >= 1) 
+			unit = 'hours';
+		
 
 		maDate = moment().diff(moment(date),'minutes',true);
-		if (maDate >= 1) {
-			return moment().diff(moment(date),'minutes') + ' minutes ago';
-		}
-
-		maDate = moment().diff(moment(date),'seconds',true);
-		if (maDate >= 1) {
-			return moment().diff(moment(date),'seconds') + ' seconds ago';
-		}
-
+		if (maDate >= 1) 
+			unit = 'minutes';
 
 		
-	}
-
-	var diffForHuman = function (diff) {
-		if (diff.day === 0 && diff.hour === 0 && diff.min === 0) {
-			return diff.sec + ' seconds ago';
-		} else if (diff.day === 0 && diff.hour === 0) {
-			return diff.min + ' minutes ago';
-		} else if (diff.day === 0){
-			return diff.hour + ' hours ago';
-		} else {
-			return diff.day + ' days ago';
-		}
-	}
-
-	var dateDiff = function (date1, date2) {
-	    var diff = {}                           // Initialisation du retour
-	    var tmp = date2 - date1;
-	 
-	    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
-	    diff.sec = tmp % 60;                    // Extraction du nombre de secondes
-	 
-	    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
-	    diff.min = tmp % 60;                    // Extraction du nombre de minutes
-	 
-	    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
-	    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
-	     
-	    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
-	    diff.day = tmp;
-	     
-	    return diff;
+		return {unit : unit, diff : moment().diff(date), value : moment.duration(moment().diff(date)).humanize()};
 	}
 
 	var initListener = function (form, action, formEdit, formReply) {
@@ -109,13 +84,22 @@ var CommentMaster = function () {
 					if ( data.status == "success" ) {
 						showAlertInputMessage(data.status, data.message);
 						form.find('input[name=message]').val('');
-						$(data.comment).insertAfter('.comment-form');
+						var fragment = document.createElement('template');
+						fragment.innerHTML = data.comment;
+
+						var content = data.comment;
+						content = content.replace("###time###",getDiff(moment()).value);
+
+						$(content).insertAfter('.comment-form');
+
 					} else {
 						showAlertInputMessage(data.status, data.message);
 					}
 					isPosting = null;
 				});
+				
 			}
+
 		});
 
 		//FORM DELETE (DELETE MESSAGE)
@@ -134,7 +118,11 @@ var CommentMaster = function () {
 						showAlertAfterForm(data.status, data.message);
 					}
 					isPosting = null;
+
+				
+
 				});
+
 			}
 		});
 
@@ -248,6 +236,7 @@ var CommentMaster = function () {
 						showAlertInputReplyMessage(containerForm, data.status, data.message);//Set error message fine
 					}
 					isPosting = null;
+
 				});
 			}
 		});
@@ -394,7 +383,7 @@ var Master = function (){
 
 		//Comment System
 		var commentService = new CommentMaster();
-		commentService.start();
+		commentService.start(localeDefault);
 
 		//Exec queue script (for module)
 		execQueueScripts();
