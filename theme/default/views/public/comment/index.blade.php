@@ -50,7 +50,7 @@
 	<div id="comment-form-reply-hidden">
 		<div class="comment-form-reply comment-reply">
 			<div class="img-comment">
-				<img class="img-circle" height="36px" width="36px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( Auth::user()->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=36px"}}" alt="gravatar" />
+				<img class="img-circle" height="36px" width="36px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( Auth::user()->email ) ) ) . "?d=" . 'mm'. "&s=36px"}}" alt="gravatar" />
 			</div>
 			<div class="input-comment-form">
 				<form class="comment-form-reply" method="POST" action="{{ action('CommentController@store') }}" accept-charset="UTF-8">

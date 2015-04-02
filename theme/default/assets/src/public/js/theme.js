@@ -29,16 +29,13 @@ var CommentMaster = function () {
 
 		var dateDiff = getDiff(date);
 		$(element).text(dateDiff.value);
-		
-
-		//console.log(moment.duration('e').humanize());
 
 		});
 
 		var wait = window.setTimeout(function (e){
 
             refreshCommentDate();
-        },9000);
+        },60000);
 	}
 
 
