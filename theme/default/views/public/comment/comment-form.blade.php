@@ -1,6 +1,6 @@
 <div class="comment-form">
 	<div class="img-comment">
-		<img class="img-circle" height="48px" width="48px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( Auth::user()->email ) ) ) . "?d=" . urlencode( URL::to('/img/gravatar/default.jpg') ) . "&s=48px"}}" alt="gravatar" />
+		<img class="img-circle" height="48px" width="48px" src="{{$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( Auth::user()->email ) ) ) . "?d=" . 'mm' . "&s=48px"}}" alt="gravatar" />
 	</div>
 	<div class="input-comment-form">
 		<form id="comment-form" method="POST" action="{{ action('CommentController@store') }}" accept-charset="UTF-8">
