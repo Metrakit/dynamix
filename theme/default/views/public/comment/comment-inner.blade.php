@@ -7,10 +7,14 @@
             <button type="submit" class="button-transparent"><span class="glyphicon glyphicon-remove"></span></button>
             {{ Form::close() }}
         @else
-        {{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
-        {{ Form::hidden('_method', 'DELETE') }}
-        <button type="submit" class="button-transparent"><span class="glyphicon glyphicon-chevron-down"></span></button>
-        {{ Form::close() }}
+            {{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
+            
+            <button type="submit" class="button-transparent button-signal"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <div>
+                <h1 class="comment-signal"> Signaler comme abus </h1>
+            </div>
+            
+            {{ Form::close() }}
         @endif
 
     @endif

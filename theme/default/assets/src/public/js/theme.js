@@ -99,6 +99,13 @@ var CommentMaster = function () {
 
 		});
 
+
+		// ClICK : SIGNAL
+		$('body').on('click', '.button-signal', function (e) {
+
+			console.log('wesh');
+	});
+
 		//FORM DELETE (DELETE MESSAGE)
 		//Listen
 		$('body').on('submit', '.comment-user form.author-remove', function (e) {

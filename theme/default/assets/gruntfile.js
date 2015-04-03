@@ -313,7 +313,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>admin/scss/**'
                 ],
-                tasks:['clean:cssadmin', 'compass:themeAdmin', 'cssmin', 'hash:cssAdmin'],
+                tasks:['clean:cssadmin', 'compass:themeAdmin', 'cssmin', 'hash:cssAdmin', 'copy:deploy'],
                 options: {
                   livereload: true
                 }    
@@ -324,7 +324,7 @@ module.exports = function (grunt) {
                 files: [
                         '<%= srcPath %>public/scss/**'
                 ],
-                tasks:['clean:csspublic', 'compass:themePublic', 'cssmin', 'hash:cssPublic'],
+                tasks:['clean:csspublic', 'compass:themePublic', 'cssmin', 'hash:cssPublic', 'copy:deploy'],
                 options: {
                   livereload: true
                 }    
