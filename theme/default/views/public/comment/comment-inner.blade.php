@@ -1,12 +1,18 @@
 <div class="comment-user-header">{{ $comment->user()->email }} 
 	&bull; <span class="data-created-at" data-created-at="{{$comment->created_at}}" id="data-created-at" ></span>
 	@if (Auth::check())
-	@if ($comment->user_id == Auth::user()->id)
-	{{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
+    	@if ($comment->user_id == Auth::user()->id)
+    	    {{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
+            {{ Form::hidden('_method', 'DELETE') }}
+            <button type="submit" class="button-transparent"><span class="glyphicon glyphicon-remove"></span></button>
+            {{ Form::close() }}
+        @else
+        {{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
         {{ Form::hidden('_method', 'DELETE') }}
-        <button type="submit" class="button-transparent"><span class="glyphicon glyphicon-remove"></span></button>
-    {{ Form::close() }}
-    @endif
+        <button type="submit" class="button-transparent"><span class="glyphicon glyphicon-chevron-down"></span></button>
+        {{ Form::close() }}
+        @endif
+
     @endif
     <div class="clearfix"></div>
 </div>		
