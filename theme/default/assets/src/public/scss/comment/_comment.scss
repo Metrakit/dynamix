@@ -200,27 +200,32 @@
 	color:lighten(#a94442,20%);
 }
 
-.comment-signal { 
+.comment-menu { 
    display: none;
    top : inherit !important;
    padding : 0px !important;
 
 
-   ul {
-   margin : 9px 0;
-   padding : 1px 10px !important;
-   }
+	ul {
+	margin : 9px 0;
+	padding : 1px 10px !important;
+	}
 
    a {
-   color : #333;
+   	color : #333;
+   }
+
+   a:hover {
+   	 color : #333;
    }
 
    ul:hover {
    background-color : #e6e6e6;
    }
 
-   a:hover {
-   	 color : #333;
+   .comment-menu-icon {
+   	 color : #666;
+   	 margin-right : 5px;
    }
 
 } 

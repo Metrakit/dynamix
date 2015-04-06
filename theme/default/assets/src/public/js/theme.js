@@ -100,11 +100,11 @@ var CommentMaster = function () {
 		});
 
 	        $('body').on('click', '.button-signal', function (e) {
-	        	$('.comment-signal').css( "display", "inline" );
+	        	$('.comment-menu').css( "display", "inline" );
 	        });
 
-	         $('body').on('mouseleave', '.comment-user-header', function (e) {
-	        //	$('.comment-signal').css( "display", "none" );
+	        $('body').on('mouseleave', '.comment-user', function (e) {
+	        	$('.comment-menu').css( "display", "none" );
 	        });
 
 
