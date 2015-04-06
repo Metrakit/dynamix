@@ -104,7 +104,7 @@ var CommentMaster = function () {
 	        });
 
 	         $('body').on('mouseleave', '.comment-user-header', function (e) {
-	        	$('.comment-signal').css( "display", "none" );
+	        //	$('.comment-signal').css( "display", "none" );
 	        });
 
 

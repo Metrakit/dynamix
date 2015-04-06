@@ -11,10 +11,9 @@
        
                 <button type="submit" class="button-transparent button-signal dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <div class="comment-signal">
-                        <p>Signaler un contenu indésirable</p>
-                </div>
-   
+                <li class = "comment-signal dropdown-menu dropdown-menu-left" role="menu"> 
+                    <ul><a role="menuitem" href="#">Signaler comme commentaire indésirable</a></ul>
+                </li>
             {{ Form::close() }}
         @endif
 

@@ -200,23 +200,28 @@
 	color:lighten(#a94442,20%);
 }
 
-//NB : Reprendre avec David.
 .comment-signal { 
    display: none;
-   position : absolute; 
-   right : 1px;
-   border-style: solid;
-   border-width: 1px;
-   background-color:#fff;
-   @include border-radius(4px 4px 4px 4px);
+   top : inherit !important;
+   padding : 0px !important;
 
 
-   p {
-   	color : #333;
-    margin : 10px;
-
+   ul {
+   margin : 9px 0;
+   padding : 1px 10px !important;
    }
 
+   a {
+   color : #333;
+   }
+
+   ul:hover {
+   background-color : #e6e6e6;
+   }
+
+   a:hover {
+   	 color : #333;
+   }
 
 } 
 
