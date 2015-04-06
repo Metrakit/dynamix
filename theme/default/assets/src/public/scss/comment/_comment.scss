@@ -200,7 +200,23 @@
 	color:lighten(#a94442,20%);
 }
 
-	.commenta-signal { 
-		color : green;
-	} 
+//NB : Reprendre avec David.
+.comment-signal { 
+   display: none;
+   position : absolute; 
+   right : 1px;
+   border-style: solid;
+   border-width: 1px;
+   background-color:#fff;
+   @include border-radius(4px 4px 4px 4px);
+
+
+   p {
+   	color : #333;
+    margin : 10px;
+
+   }
+
+
+} 
 

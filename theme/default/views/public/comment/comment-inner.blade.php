@@ -8,18 +8,21 @@
             {{ Form::close() }}
         @else
             {{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
-            
-            <button type="submit" class="button-transparent button-signal"><span class="glyphicon glyphicon-chevron-down"></span></button>
-            <div>
-                <h1 class="comment-signal"> Signaler comme abus </h1>
-            </div>
-            
+       
+                <button type="submit" class="button-transparent button-signal dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <div class="comment-signal">
+                        <p>Signaler un contenu indésirable</p>
+                </div>
+   
             {{ Form::close() }}
         @endif
 
     @endif
+
+
     <div class="clearfix"></div>
-</div>		
+</div>	
 <div class="comment-user-body">
 	<p>{{ $comment->text }}</p>
 </div>

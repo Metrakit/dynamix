@@ -99,12 +99,14 @@ var CommentMaster = function () {
 
 		});
 
+	        $('body').on('click', '.button-signal', function (e) {
+	        	$('.comment-signal').css( "display", "inline" );
+	        });
 
-		// ClICK : SIGNAL
-		$('body').on('click', '.button-signal', function (e) {
+	         $('body').on('mouseleave', '.comment-user-header', function (e) {
+	        	$('.comment-signal').css( "display", "none" );
+	        });
 
-			console.log('wesh');
-	});
 
 		//FORM DELETE (DELETE MESSAGE)
 		//Listen
