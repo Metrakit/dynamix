@@ -95,6 +95,7 @@
 		.comment-user-header{
 			color:#bbb;
 			font-size:85%;
+			position: relative;
 		}
 
 		//Body of comment user
@@ -174,6 +175,7 @@
 		border-width: 2px;
 		border-top: 0;
 		@include border-radius(0 0 4px 4px);
+
 	}
 }
 
@@ -202,30 +204,16 @@
 
 .comment-menu { 
    display: none;
-   top : inherit !important;
-   padding : 0px !important;
-
-
-	ul {
-	margin : 9px 0;
-	padding : 1px 10px !important;
-	}
 
    a {
+   	padding-left : 0px !important;
    	color : #333;
    }
 
-   a:hover {
-   	 color : #333;
-   }
-
-   ul:hover {
-   background-color : #e6e6e6;
-   }
-
    .comment-menu-icon {
-   	 color : #666;
-   	 margin-right : 5px;
+   	color : #666;
+   	margin-right: 10px;
+   	margin-left: 13px;
    }
 
 } 

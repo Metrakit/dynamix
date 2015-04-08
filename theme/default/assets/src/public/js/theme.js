@@ -107,6 +107,10 @@ var CommentMaster = function () {
 	        	$('.comment-menu').css( "display", "none" );
 	        });
 
+	        $('body').on('mouseenter', '.comment-user', function (e) {
+	        	$('.comment-menu').css( "display", "none" );
+	        });
+
 
 		//FORM DELETE (DELETE MESSAGE)
 		//Listen

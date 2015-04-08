@@ -7,16 +7,15 @@
             <button type="submit" class="button-transparent"><span class="glyphicon glyphicon-remove"></span></button>
             {{ Form::close() }}
         @else
-            {{ Form::open(array('url' => 'comment/' . $comment->id, 'class' => 'author-remove pull-right')) }}
-       
-                <button type="submit" class="button-transparent button-signal dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span>
+            {{ Form::open(array('route' => array('comment.report', $comment->id),'class' => 'author-remove pull-right')) }}
+                <button class="button-transparent button-signal"><span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <li class = "comment-menu dropdown-menu dropdown-menu-left" role="menu"> 
-                    <ul class ="wesh">
-                        <span class="glyphicon glyphicon-alert comment-menu-icon"></span>
-                        <a role="menuitem" href="#">Signaler comme commentaire indésirable</a>
-                    </ul>
-                </li>
+                <ul class = "comment-menu dropdown-menu dropdown-menu-left" role="menu"> 
+                    <li>
+                        
+                        <a role="menuitem" href="#"><span class="glyphicon glyphicon-alert comment-menu-icon"></span>Signaler comme commentaire indésirable</a>
+                    </li>
+                </ul>
             {{ Form::close() }}
         @endif
 

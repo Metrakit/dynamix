@@ -265,5 +265,9 @@ class CommentController extends BaseController {
 		}
 	}
 
+	public function report($id)
+	{
+	}
+
 
 }
