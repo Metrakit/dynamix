@@ -98,18 +98,29 @@ var CommentMaster = function () {
 			}
 
 		});
-
+			//-- Refacto CSS
 	        $('body').on('click', '.button-signal', function (e) {
-	        	$('.comment-menu').css( "display", "inline" );
+	        	$('.comment-menu-dropdown').css( "display", "inline" );
 	        });
 
 	        $('body').on('mouseleave', '.comment-user', function (e) {
-	        	$('.comment-menu').css( "display", "none" );
+	        	$('.comment-menu-dropdown').css( "display", "none" );
 	        });
 
 	        $('body').on('mouseenter', '.comment-user', function (e) {
-	        	$('.comment-menu').css( "display", "none" );
+	        	$('.comment-menu-dropdown').css( "display", "none" );
 	        });
+
+	        $('body').on('click','.comment-menu-report', function (e){
+	        	$('#report').submit();
+
+	        });
+	        //--
+
+	     //FORM REPORT
+	     $('body').on('submit', '.comment-user form.comment-menu', function (e) {
+			e.preventDefault();
+		});
 
 
 		//FORM DELETE (DELETE MESSAGE)
@@ -118,7 +129,7 @@ var CommentMaster = function () {
 			e.preventDefault();
 			var formDelete = $(this).closest('form'),
 				actionDelete = formDelete.attr('action');
-				
+
 			//post
 			if (isPosting === null) {
 				isPosting = $.post(actionDelete, formDelete.serializeArray(), function (data) {

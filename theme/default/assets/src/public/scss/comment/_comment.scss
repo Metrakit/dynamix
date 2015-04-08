@@ -155,9 +155,16 @@
 		}
 	}
 }
+
+//Action Modifier
+
 .comment-reply-inner, .comment-user-inner {
 	&:hover, &:focus {
 		.author-remove{
+			display:inline;
+		}
+
+		.comment-menu{
 			display:inline;
 		}
 	}
@@ -202,7 +209,9 @@
 	color:lighten(#a94442,20%);
 }
 
-.comment-menu { 
+
+//MENU COMMENT
+.comment-menu-dropdown { 
    display: none;
 
    a {
@@ -218,3 +227,13 @@
 
 } 
 
+.comment-menu{
+	display:none;
+	a {
+		color:#bbb;
+		&:hover, &:focus{
+			color:#bbb;
+			text-decoration: none;
+		}
+	}
+}
