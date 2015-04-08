@@ -85,7 +85,7 @@
                     complete: function(){                                        
                         @yield('script')
                         $(document).ready( function(){   
-                            masterClass.start({{App::getLocale()}});            
+                            masterClass.start();            
                             @yield('scriptOnReady')
                         });
                     }
@@ -95,7 +95,6 @@
         </script>
     </head>
     <body>
-    
         <div id="wrapper">
         
             <!--[if lt IE 8]>

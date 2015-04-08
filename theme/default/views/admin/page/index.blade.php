@@ -14,7 +14,7 @@
         <div class="create-page collapse" id="page-template">
             <h4>Choisissez un modèle de page</h4>
             <div class="text-center">
-                @foreach( Config::get('display.page-template') as $template)
+                @foreach( Config::get('pager.page-template') as $template)
                 <a href="{{ URL::to('admin/page/create?template=' . $template)}}" class="page-template {{$template}}"></a>
                 @endforeach
             </div>

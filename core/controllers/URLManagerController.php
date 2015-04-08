@@ -12,10 +12,10 @@ class URLManagerController extends BaseController {
         if (Request::is('/') && Locale::countEnable() > 1) return Redirect::to('/' . App::getLocale(), 301);
         
         //is OnePage?
-        if (Config::get('display.onepage')) {
+        if (Config::get('core::display.onepage')) {
             $data = array();
             $data['onepage'] = OnePage::first();
-            return View::make('theme::' .'public.onepage', $data);
+            return View::make('theme::public.onepage', $data);
         } else {
             //Find good page
             $urls = Cachr::getCache( 'DB_Urls' );
@@ -25,12 +25,12 @@ class URLManagerController extends BaseController {
                     if (!empty($structure)) {
                         if ($structure->structurable_type != 'OnePage') {
                             $page = $structure->structurable;
-                            return View::make('theme::' . 'public.pages.page' , compact('page') );
+                            return View::make('theme::public.pages.page' , compact('page') );
                         }
                     }
                 }
             }
-            return View::make('theme::' .'errors.404');        
+            return View::make('theme::public.errors.404');        
         }
     }
     
@@ -54,7 +54,7 @@ class URLManagerController extends BaseController {
                 }
             }
         }
-        return View::make('theme::' .'errors.404');        
+        return View::make('theme::public.errors.404');        
     }
     public function translateAndRedirect( $slug_origin, $locale_new )
     {
@@ -69,6 +69,6 @@ class URLManagerController extends BaseController {
                 }
             }
         }
-        return View::make('theme::' .'errors.500');        
+        return View::make('theme::public.errors.500');        
     }
 }
