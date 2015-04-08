@@ -109,6 +109,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		
+		// Dynamix Core 
+		'Dynamix\Core\CoreServiceProvider',
 
 		// Dynamix packages
 		//'Dynamix\Template\TemplateServiceProvider',

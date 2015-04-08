@@ -346,7 +346,7 @@ class AdminPageController extends BaseController {
 	 */
 	public function getBlockTemplate($template)
 	{
-		if (in_array($template, Config::get('display.page-template'))) {
+		if (in_array($template, Config::get('pager.page-template'))) {
 			return Response::json(View::make('theme::' .'admin.page.block-template.' . $template)->render());
 		}
 

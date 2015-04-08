@@ -75,7 +75,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::get('/media', array('before' => 'auth.permission_media', 'uses' => 'AdminController@getMedia'));
 	
 	//OnePage
-	if (Config::get('display.onepage')) {		
+	if (Config::get('theme::core::display.onepage')) {		
 		Route::resource('onepage','AdminOnePageController',
 			array('except' => array('show')) );
 	}
@@ -192,7 +192,7 @@ Route::post('comment/{id}/vote/{bool}', array('as' => 'comment-vote', 'uses' => 
 $locale = Localizr::initLocale();
 Route::group(array('prefix' => $locale), function() 
 {
-	Route::get('/', array('uses' => 'URLManagerController@getHome'));
+	Route::get('/', array('uses' => Config::get('core::route.root')));
 	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 });
 
