@@ -19,7 +19,8 @@
 		"nesbot/Carbon": "*",
 		"google/apiclient": "1.1.*@dev",
 		"thujohn/analytics": "dev-master",
-		"phpunit/phpunit": "4.5.*"
+		"phpunit/phpunit": "4.5.*",
+		"dynamix/core": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

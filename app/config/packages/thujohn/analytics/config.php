@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'client_id'        => '246128526605-sv68q5u54cavcgfasda27s8qm4k5skbv.apps.googleusercontent.com',
+	'client_id'        => $_ENV['GA_CLIENT_ID'],
 
 
 	/*
@@ -40,7 +40,7 @@ return array(
 	| xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@developer.gserviceaccount.com
 	|
 	*/
-	'service_email'    => '246128526605-sv68q5u54cavcgfasda27s8qm4k5skbv@developer.gserviceaccount.com',
+	'service_email'    => $_ENV['GA_SERVICE_EMAIL'],
 
 
 	/*
@@ -56,7 +56,7 @@ return array(
 	|
 	*/
 
-	'certificate_path' => __DIR__ . '/google-analytics-api.p12',
+	'certificate_path' => $_ENV['GA_CERTIFICATE_PATH'],
 
 
 	/*
@@ -68,5 +68,5 @@ return array(
 	|
 	*/
 
-	'use_objects'      => true,
+	'use_objects'      => $_ENV['GA_USE_OBJECTS'],
 );
