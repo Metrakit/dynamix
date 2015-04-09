@@ -120,8 +120,17 @@ var CommentMaster = function () {
 	     //FORM REPORT
 	     $('body').on('submit', '.comment-user form.comment-menu', function (e) {
 			e.preventDefault();
-		});
+				var formReport = $(this).closest('form'),
+				actionReport = formReport.attr('action');
+		
 
+	     if (isPosting === null) {
+				isPosting = $.post(actionReport, formReport.serializeArray(), function (data) {
+					isPosting = null;
+				});
+
+			}
+		});
 
 		//FORM DELETE (DELETE MESSAGE)
 		//Listen
