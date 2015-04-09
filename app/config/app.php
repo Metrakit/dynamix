@@ -123,7 +123,6 @@ return array(
 		// External packages
 		'PagerServiceProvider',
 		'FormerServiceProvider',
-		'Thujohn\Analytics\AnalyticsServiceProvider',
 		'Schickling\Backup\BackupServiceProvider',
 
 

@@ -16,59 +16,11 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		//Check if the connection is ok
-		$minutes=60;
-		try{
-			$sessionsPerDay = Cache::remember('sessionsPerDay', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-			});
-			$sessionsCount = Cache::remember('sessionsCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getSessionsCount();
-			});
-			$userCount = Cache::remember('userCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getUserCount();
-			});
-			$pageSeenCount = Cache::remember('pageSeenCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
-			});
-			$timeBySession = Cache::remember('timeBySession', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getTimeBySession();
-			});
-			$rebound = Cache::remember('rebound', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getRebound();
-			});
-			$newOnReturningVisitor = Cache::remember('newOnReturningVisitor', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();			
-			});
-		}catch(Exception $e){
-			Log::error('Google Analytics API not found');
-			$data['ga_googleAnalyticsFound'] = false;
-		}
-
-		$data['ga_sessionsPerDay'] 			= $sessionsPerDay;
-		$data['ga_sessionsCount'] 			= $sessionsCount;
-		$data['ga_userCount'] 				= $userCount;
-		$data['ga_pageSeenCount'] 			= $pageSeenCount;
-		$data['ga_pagesBySession'] 			= round( $pageSeenCount / $sessionsCount, 2);
-		$data['ga_timeBySession'] 			= round( $timeBySession / $sessionsCount, 0).'s';
-		$data['ga_rebound'] 				= $rebound;
-		$data['ga_newOnReturningVisitor'] 	= $newOnReturningVisitor;
-		$data['ga_googleAnalyticsFound'] = true;
-
 		//$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.index', $data )->renderSections());
 		} else {
 			return View::make('theme::' .'admin.index', $data );
-		}
-	}
-
-	public function tryCatch () {
-		//Google Analytics
-		try{
-		}catch(Exception $e){
-			Log::error('Google Analytics API not found');
-			$data['ga_googleAnalyticsFound'] = false;
 		}
 	}
 
