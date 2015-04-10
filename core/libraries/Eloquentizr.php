@@ -68,7 +68,13 @@ class Eloquentizr extends Model {
 	public static function getTranslation($i18n_id, $locale_id = null)
  	{
  		$locale_id = ($locale_id===null?App::getLocale():$locale_id);
- 		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',$locale_id)->first()->text;
+ 		$cachePrefix = 'Eloquentizr::getTranslation:' . $locale_id . ':';
+ 		if (Cache::has($cachePrefix . $i18n_id)) {
+ 			return Cache::get($cachePrefix . $i18n_id);
+ 		}
+ 		$text = Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',$locale_id)->first()->text;
+ 		Cache::put($cachePrefix . $i18n_id, $text, 60);
+ 		return $text;
  	}
 
  	public static function getNotAllowed () {
