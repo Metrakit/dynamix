@@ -102,4 +102,11 @@ class Localizr
 
 		return $locale;
 	}
+
+
+	// Get locale with an URL sensitive
+	public static function getURLLocale ($locale = null) {
+		if ($locale===null) $locale = App::getLocale();
+		return (Config::get('app.locale_default') == $locale?'':$locale);
+	}
 }
