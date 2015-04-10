@@ -46,7 +46,7 @@ class Cachr
 		Cache::rememberForever('DB_LocaleFrontEnable', function()
 		{
 			//Get all data in database
-		    $locales = Locale::where('enable','=',1)->get();
+		    $locales = Locale::where('enable','=',1)->where('is_publish','=',1)->get();
 		    //Preapre data to extract by id
 		    $data = array();
 		    foreach( $locales as $l )
@@ -87,7 +87,7 @@ class Cachr
 		// Get all Locales enableds in the table
 		Cache::rememberForever('DB_LocalesEnabled', function()
 		{	
-		    return Locale::where('enable', 1)->get();
+		    return Locale::where('enable', 1)->where('is_publish', 1)->get();
 		});
 
 

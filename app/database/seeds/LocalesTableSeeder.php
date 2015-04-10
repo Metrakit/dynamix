@@ -14,6 +14,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/52/D-A-CH_Flag.svg/200px-D-A-CH_Flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -25,6 +26,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/200px-Flag_of_Catalonia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -36,6 +38,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/200px-Flag_of_France.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => true,
                 'enable'        => 1,
                 'on_admin'      => 1
             ),
@@ -47,6 +50,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/200px-English_language.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '105',
+                'is_publish'    => true,
                 'enable'        => 1,
                 'on_admin'      => 1
             ),
@@ -58,6 +62,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/4/4c/Flag_of_Sweden.svg/200px-Flag_of_Sweden.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '125',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -69,6 +74,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/200px-Flag_of_Italy.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -80,6 +86,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Spain_%28Civil%29.svg/200px-Flag_of_Spain_%28Civil%29.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 1
             ),
@@ -91,6 +98,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flags_of_Brazil_and_Portugal.svg/200px-Flags_of_Brazil_and_Portugal.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '140',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 1
             ),
@@ -102,6 +110,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -113,6 +122,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/95/Flag_of_Dutch_language.svg/200px-Flag_of_Dutch_language.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -124,6 +134,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/1/12/Flag_of_Poland.svg/200px-Flag_of_Poland.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '125',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -135,6 +146,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/200px-Flag_of_Esperanto.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -146,6 +158,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/00/Afrikaner_Vryheidsvlag.svg/200px-Afrikaner_Vryheidsvlag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -157,6 +170,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/200px-Flag_of_Norway.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '145',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -168,6 +182,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_the_Basque_Country_alternative_proportions.svg/200px-Flag_of_the_Basque_Country_alternative_proportions.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -179,6 +194,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_Azerbaijan.svg/200px-Flag_of_Azerbaijan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -190,6 +206,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/200px-Flag_of_Denmark.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '151',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -201,6 +218,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Finland.svg/200px-Flag_of_Finland.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '122',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -212,6 +230,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Civil_Ensign_of_Slovenia.svg/200px-Civil_Ensign_of_Slovenia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -223,6 +242,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/200px-Flag_of_the_Czech_Republic.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -234,6 +254,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/83/Vexilloid_of_the_Roman_Empire.svg/120px-Vexilloid_of_the_Roman_Empire.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '168',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -245,6 +266,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/94/Flag_of_Assam.svg/200px-Flag_of_Assam.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -256,6 +278,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Flag_of_Bashkortostan.svg/200px-Flag_of_Bashkortostan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -267,6 +290,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Hausa_people.svg/200px-Flag_of_the_Hausa_people.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -278,6 +302,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Flag_of_Kazakhstan.svg/200px-Flag_of_Kazakhstan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -289,6 +314,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/200px-Flag_of_Cambodia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '128',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -300,6 +326,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/17/Flag_of_Rwanda.svg/200px-Flag_of_Rwanda.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -311,6 +338,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Flag_of_Kyrgyzstan.svg/200px-Flag_of_Kyrgyzstan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -322,6 +350,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Flag_of_Nepal.svg/120px-Flag_of_Nepal.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '146',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -333,6 +362,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nishan_Sahib.svg/200px-Nishan_Sahib.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '122',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -344,6 +374,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flag_of_Estonia.svg/200px-Flag_of_Estonia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '127',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -355,6 +386,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/200px-Flag_of_Japan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -366,6 +398,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -377,6 +410,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/04/Flag_of_the_Yoruba_people.svg/200px-Flag_of_the_Yoruba_people.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -389,6 +423,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Han_Chinese_flag.svg/120px-Han_Chinese_flag.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '130',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -400,6 +435,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Flag_of_Myanmar.svg/200px-Flag_of_Myanmar.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -411,6 +447,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/200px-Flag_of_Malaysia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -422,6 +459,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/200px-Flag_of_Vietnam.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -432,6 +470,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Flag_of_Greece_%281822-1978%29.svg/200px-Flag_of_Greece_%281822-1978%29.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -443,6 +482,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flag_of_the_Oromia_Region.svg/200px-Flag_of_the_Oromia_Region.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -454,6 +494,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/200px-Flag_of_Turkey.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -465,6 +506,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Bosniak_national_flag.svg/200px-Bosniak_national_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -476,6 +518,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Flag_of_the_Amhara_Region.svg/200px-Flag_of_the_Amhara_Region.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -486,6 +529,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/74/Malayali_flag.svg/200px-Malayali_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -497,6 +541,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Flag_of_the_Kingdom_of_Yugoslavia.svg/200px-Flag_of_the_Kingdom_of_Yugoslavia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -508,6 +553,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_Lithuania.svg/200px-Flag_of_Lithuania.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -519,6 +565,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/da/Flag_of_the_Sultanate_of_Mataram.svg/200px-Flag_of_the_Sultanate_of_Mataram.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '101',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -530,6 +577,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_Croatia_%28white_chequy%29.svg/200px-Flag_of_Croatia_%28white_chequy%29.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -541,6 +589,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/11/Civil_Flag_of_Serbia.svg/200px-Civil_Flag_of_Serbia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -552,6 +601,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Seal_of_Bihar.svg/101px-Seal_of_Bihar.svg.png',
                 'flag_w'        => '101',
                 'flag_h'        => '121',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -563,6 +613,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Bandeira_galega_civil.svg/200px-Bandeira_galega_civil.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -574,6 +625,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_Wales_2.svg/200px-Flag_of_Wales_2.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -585,6 +637,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_Thailand.svg/200px-Flag_of_Thailand.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -596,6 +649,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_EAC.svg/200px-Flag_of_EAC.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '110',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -607,6 +661,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Taiwan_proposed_1996.svg/200px-Flag_of_Taiwan_proposed_1996.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -618,6 +673,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Maharashtradhvaj.png/200px-Maharashtradhvaj.png',
                 'flag_w'        => '200',
                 'flag_h'        => '94',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -629,6 +685,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/200px-Flag_of_Indonesia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -640,6 +697,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_Georgia.svg/200px-Flag_of_Georgia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -651,6 +709,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Latvia.svg/200px-Flag_of_Latvia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -662,6 +721,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/45/Flag_of_Ireland.svg/200px-Flag_of_Ireland.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -673,6 +733,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flag_of_Romania.svg/200px-Flag_of_Romania.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -684,6 +745,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Karnataka.svg/200px-Flag_of_Karnataka.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -695,6 +757,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/99/Guarani_flag.svg/200px-Guarani_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '110',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -706,6 +769,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/200px-Flag_of_Senegal.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -717,6 +781,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Civil_Ensign_of_Hungary.svg/200px-Civil_Ensign_of_Hungary.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -727,6 +792,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/200px-Flag_of_Israel.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '145',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -738,6 +804,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Arabic-Language-Flag.svg/200px-Arabic-Language-Flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -749,6 +816,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/200px-Flag_of_India.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -761,6 +829,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Laos.svg/200px-Flag_of_Laos.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -772,6 +841,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Vanuatu.svg/200px-Flag_of_Vanuatu.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -783,6 +853,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_Wallonia.svg/200px-Flag_of_Wallonia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -794,6 +865,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/200px-Flag_of_Mexico.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '114',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -805,6 +877,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_Macedonia_-_ethnic.svg/200px-Flag_of_Macedonia_-_ethnic.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -816,6 +889,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Flag_of_Lesotho.svg/200px-Flag_of_Lesotho.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -827,6 +901,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Isle_of_Mann.svg/200px-Flag_of_the_Isle_of_Mann.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -838,6 +913,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Slovakia.svg/200px-Flag_of_Slovakia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -849,6 +925,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Moldova.svg/200px-Flag_of_Moldova.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -860,6 +937,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/36/Flag_of_Albania.svg/200px-Flag_of_Albania.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '143',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -871,6 +949,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Abkhazia.svg/200px-Flag_of_Abkhazia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -882,6 +961,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/45/Flag_of_Occitania.svg/200px-Flag_of_Occitania.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -893,6 +973,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_West_Java.svg/200px-Flag_of_West_Java.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -904,6 +985,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Flag_of_Cusco.svg/200px-Flag_of_Cusco.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '114',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -915,6 +997,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Flag_of_Ashanti.svg/120px-Flag_of_Ashanti.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '80',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -926,6 +1009,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Proposed_Alemannic_flag.svg/200px-Proposed_Alemannic_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '127',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -937,6 +1021,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/30/Tino_Rangatiratanga_Maori_sovereignty_movement_flag.svg/200px-Tino_Rangatiratanga_Maori_sovereignty_movement_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '111',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -948,6 +1033,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Banner_of_the_Qulla_Suyu.svg/120px-Banner_of_the_Qulla_Suyu.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -959,6 +1045,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/97/Ethnic_Persian_flag.svg/200px-Ethnic_Persian_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '114',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -970,6 +1057,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Bohol_Province%2C_Philippines.svg/200px-Flag_of_Bohol_Province%2C_Philippines.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -981,6 +1069,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Flag_of_the_Tagalog_people.svg/200px-Flag_of_the_Tagalog_people.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '115',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -992,6 +1081,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/200px-Flag_of_Iceland.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '144',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1003,6 +1093,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Bulgaria.svg/200px-Flag_of_Bulgaria.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1014,6 +1105,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/70/Flag_of_Telangana.svg/200px-Flag_of_Telangana.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1026,6 +1118,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Kokbayraq_flag.svg/200px-Kokbayraq_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1037,6 +1130,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Om.svg/120px-Om.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '124',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1048,6 +1142,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/200px-Flag_of_Uzbekistan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1059,6 +1154,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flag_of_Tibet.svg/200px-Flag_of_Tibet.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '125',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1070,6 +1166,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/98/Proposed_Flag_of_Romanchia.svg/120px-Proposed_Flag_of_Romanchia.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1081,6 +1178,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Sindhudesh.svg/200px-Flag_of_Sindhudesh.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1092,6 +1190,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Flag_of_Ido.svg/200px-Flag_of_Ido.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '108',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1103,6 +1202,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Pakistan.svg/200px-Flag_of_Pakistan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1113,6 +1213,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/35/Flag_of_Kurdistan.svg/200px-Flag_of_Kurdistan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1124,6 +1225,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Volapuk_symbol.svg/120px-Volapuk_symbol.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1135,6 +1237,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Flag_of_Tajikistan.svg/200px-Flag_of_Tajikistan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1146,6 +1249,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/200px-Flag_of_Ukraine.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1157,6 +1261,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Proposed_Yiddish_flag.svg/200px-Proposed_Yiddish_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '145',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1168,6 +1273,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/97/Aromanian_flag.svg/200px-Aromanian_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1179,6 +1285,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Flag_of_the_Cherokee_Nation.svg/200px-Flag_of_the_Cherokee_Nation.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1190,6 +1297,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Sami_flag.svg/200px-Sami_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '149',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1201,6 +1309,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/bc/EstreladaAragonesa.svg/200px-EstreladaAragonesa.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1212,6 +1321,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/38/Civil_Ensign_of_Luxembourg.svg/200px-Civil_Ensign_of_Luxembourg.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '143',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1223,6 +1333,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Civil_Ensign_of_Malta.svg/200px-Civil_Ensign_of_Malta.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1234,6 +1345,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Flag_of_the_Ewe_people.svg/200px-Flag_of_the_Ewe_people.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1245,6 +1357,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Flag_of_the_Assyrian_people.svg/200px-Flag_of_the_Assyrian_people.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1256,6 +1369,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Sawndip.svg/200px-Sawndip.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1266,6 +1380,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Flag_of_the_Northern_Mariana_Islands.svg/200px-Flag_of_the_Northern_Mariana_Islands.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1277,6 +1392,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/da/Flag_of_Vestlandet.svg/200px-Flag_of_Vestlandet.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '144',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1288,6 +1404,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_Asturias.svg/200px-Flag_of_Asturias.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1299,6 +1416,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Flag_of_Ashanti.svg/200px-Flag_of_Ashanti.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1310,6 +1428,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/48/Lojban_logo.svg/200px-Lojban_logo.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1321,6 +1440,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/85/Flag_of_Belarus.svg/200px-Flag_of_Belarus.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1332,6 +1452,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_the_Creek_Nation.svg/200px-Flag_of_the_Creek_Nation.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1342,6 +1463,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Navajo_flag.svg/200px-Navajo_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1353,6 +1475,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_Maldives.svg/200px-Flag_of_Maldives.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1364,6 +1487,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Flag_of_Venda.svg/200px-Flag_of_Venda.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1375,6 +1499,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Flag_of_Musikongo.svg/200px-Flag_of_Musikongo.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '130',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1385,6 +1510,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Biafra.svg/200px-Flag_of_Biafra.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '114',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1396,6 +1522,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Flag_of_Guinea.svg/200px-Flag_of_Guinea.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1407,6 +1534,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Ouj%C3%A9-Bougoumou.svg/200px-Flag_of_Ouj%C3%A9-Bougoumou.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '128',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1417,6 +1545,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/92/Flag_of_Mali.svg/200px-Flag_of_Mali.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1428,6 +1557,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/77/Khunz_Wolf_3b.svg/200px-Khunz_Wolf_3b.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '99',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1439,6 +1569,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Tahiti.svg/200px-Flag_of_Tahiti.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1450,6 +1581,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Buddhism.svg/200px-Flag_of_Buddhism.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1461,6 +1593,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Flag_of_Malawi.svg/200px-Flag_of_Malawi.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1472,6 +1605,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Flag_of_the_Marshall_Islands.svg/200px-Flag_of_the_Marshall_Islands.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '105',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1483,6 +1617,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Komi.svg/200px-Flag_of_Komi.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1494,6 +1629,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Ovamboland_flag.svg/120px-Ovamboland_flag.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '80',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1505,6 +1641,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Flag_of_Chuvashia.svg/200px-Flag_of_Chuvashia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '125',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1516,6 +1653,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/53/NL-LimburgVlag.svg/200px-NL-LimburgVlag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1527,6 +1665,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Proposed_Yi_flag.svg/200px-Proposed_Yi_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1538,6 +1677,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Flag_of_Haiti_%28civil%29.svg/200px-Flag_of_Haiti_%28civil%29.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1549,6 +1689,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Choctaw_seal.svg/120px-Choctaw_seal.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1560,6 +1701,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Kanaka_Maoli_flag.svg/200px-Kanaka_Maoli_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '111',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1571,6 +1713,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Flag_of_Sicily.svg/200px-Flag_of_Sicily.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1582,6 +1725,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/White_Dragon_Flag_of_England.svg/200px-White_Dragon_Flag_of_England.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1593,6 +1737,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bandiere_dal_Fri%C3%BBl.svg/200px-Bandiere_dal_Fri%C3%BBl.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '134',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1604,6 +1749,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_Armenia.svg/200px-Flag_of_Armenia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1615,6 +1761,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_Of_Zazaistan.svg/200px-Flag_Of_Zazaistan.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1625,6 +1772,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Flag_of_V%C3%B5ro.svg/200px-Flag_of_V%C3%B5ro.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '128',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1636,6 +1784,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Proposed_Kapampangan_flag.svg/200px-Proposed_Kapampangan_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '132',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1647,6 +1796,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/48/Lionrampant.svg/200px-Lionrampant.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '119',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1658,6 +1808,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Lombardy.svg/200px-Flag_of_Lombardy.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1669,6 +1820,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flag_of_Naples.svg/200px-Flag_of_Naples.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1680,6 +1832,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Isla.svg/120px-Isla.svg.png',
                 'flag_w'        => '120',
                 'flag_h'        => '120',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1691,6 +1844,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Jewish_Merchant_Flag_1453-1793.svg/200px-Jewish_Merchant_Flag_1453-1793.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1701,6 +1855,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Ilocos_Sur.svg/200px-Ilocos_Sur.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '134',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1712,6 +1867,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/c2/South_Sulawesi_coa.png/120px-South_Sulawesi_coa.png',
                 'flag_w'        => '120',
                 'flag_h'        => '119',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1723,6 +1879,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Norfolk_Island.svg/200px-Flag_of_Norfolk_Island.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1734,6 +1891,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Flag_of_Udmurtia.svg/200px-Flag_of_Udmurtia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1745,6 +1903,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/05/Intersaksische_vlagge_3.svg/200px-Intersaksische_vlagge_3.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1756,6 +1915,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_the_Romani_people.svg/200px-Flag_of_the_Romani_people.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1767,6 +1927,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Lambang_Kabupaten_Banyumas.png/120px-Lambang_Kabupaten_Banyumas.png',
                 'flag_w'        => '120',
                 'flag_h'        => '122',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1778,6 +1939,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Flag_of_West_Flanders.svg/200px-Flag_of_West_Flanders.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1789,6 +1951,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Flag_of_Arpitania.svg/200px-Flag_of_Arpitania.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '114',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1800,6 +1963,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/8/87/Flag_of_the_City_of_Guangzhou.svg/200px-Flag_of_the_City_of_Guangzhou.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '118',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1811,6 +1975,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Kalmykia.svg/200px-Flag_of_Kalmykia.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '100',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
@@ -1822,6 +1987,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_the_Netherlands_Antilles_%281959-1986%29.svg/200px-Flag_of_the_Netherlands_Antilles_%281959-1986%29.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1833,6 +1999,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Piedmont.svg/200px-Flag_of_Piedmont.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1844,6 +2011,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Berber_flag.svg/200px-Berber_flag.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '133',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
@@ -1855,6 +2023,7 @@ class LocalesTableSeeder extends Seeder {
                 'flag'          => '//upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Flag_of_Kathmandu.svg/200px-Flag_of_Kathmandu.svg.png',
                 'flag_w'        => '200',
                 'flag_h'        => '135',
+                'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
             )*/)

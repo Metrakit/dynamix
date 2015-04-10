@@ -86,8 +86,7 @@ module.exports = function (grunt) {
                         '<%= vendorPath %>css/bootstrap.css',                                                              //1/6
                         '<%= vendorPath %>css/font-awesome.css',                                                           //2/6
                         '<%= bowerPath %>eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',    //3/6
-                        '<%= bowerPath %>fancybox/source/jquery.fancybox.css',                                             //4/6        
-                        '<%= bowerPath %>morrisjs/morris.css',                                                             //5/6
+                        '<%= bowerPath %>fancybox/source/jquery.fancybox.css',                                             //4/6                                                                   //5/6
                         '<%= bowerPath %>metisMenu/dist/metisMenu.min.css',                                                //6/6
                         '<%= bowerPath %>bootstrapcolorpicker/dist/css/bootstrap-colorpicker.min.css',                     //7/7
 
@@ -138,14 +137,12 @@ module.exports = function (grunt) {
                     '<%= bowerPath %>bootstrap-sass-twbs/assets/javascripts/bootstrap.js',                                      //1/6
                     //'<%= bowerPath %>imagesloaded/imagesloaded.pkgd.min.js',                                                  //2/6
                     '<%= bowerPath %>metisMenu/dist/metisMenu.min.js',                                                          //3/6
-                    '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                                                       //4/6
-                    '<%= bowerPath %>raphael/raphael-min.js',                                                                   //5/6
+                    '<%= bowerPath %>fancybox/source/jquery.fancybox.js',                                                                //5/6
                     '<%= bowerPath %>ckeditor/ckeditor.js',                                                                     //6/6
                     '<%= bowerPath %>bootstrapcolorpicker/dist/js/bootstrap-colorpicker.min.js',                                //7/7
 
 
-                    //Local vendor
-                    '<%= srcPath %>admin/js/vendor/morris.js',                                    
+                    //Local vendor                                   
                     '<%= srcPath %>admin/js/vendor/sb-admin-2.js',
 
                     //Theme

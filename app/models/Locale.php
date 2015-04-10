@@ -49,7 +49,7 @@ class Locale extends Eloquent{
             Cache::forget('count_enable_locales');
         }
         return Cache::rememberForever('count_enable_locales', function() {
-            return self::where('enable', true)->count();
+            return self::where('enable', true)->where('is_publish', true)->count();
         });
     }
 
