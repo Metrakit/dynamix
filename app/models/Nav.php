@@ -95,6 +95,6 @@ class Nav extends Eloquent{
 	}
 
 	public function url(){
-		return ( $this->navigable_type !=  'NavLink' && Locale::countEnable() > 1 ? App::getLocale() : '') . $this->navigable->url();
+		return ( $this->navigable_type !=  'NavLink' && Locale::countEnable() > 1 ? (App::getLocale()!=Config::get('app.locale_default')?App::getLocale():'') : '') . $this->navigable->url();
 	}
 }
