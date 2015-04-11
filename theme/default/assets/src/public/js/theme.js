@@ -113,8 +113,13 @@ var CommentMaster = function () {
 
 	        $('body').on('click','.comment-menu-report', function (e){
 
-	        	
-
+	        	//$('.comment-modal-content').html($('.comment-user'));
+	        	var comment = $(this).closest(".comment-user").clone();
+	        	$(comment).contents().remove(".comment-reply");
+	        	$(comment).contents().contents().remove(".comment-user-footer");
+	        	var wesh = $(comment).contents().children('.img-comment');
+	        	console.log(wesh);
+	        	$('.comment-modal-content').html(comment);
 	        	$('#report').submit();
 
 	        });

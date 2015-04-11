@@ -7,7 +7,7 @@
         <h4 class="modal-title">Signaler un commentaire</h4>
       </div>
       <div class="modal-body modal-comment-user">
-       
+         <div class="comment-modal-content"></div>
          <label for="message-text" class="control-label">Pourquoi signaler ce commentaire ?</label>
          <textarea class="form-control" id="message-text"></textarea>
       </div>
@@ -17,4 +17,4 @@
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal --> 
