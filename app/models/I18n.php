@@ -22,6 +22,12 @@ class I18n extends Eloquent{
         return $this->hasOne('I18nType');
     }
 
+    public function translate( $locale_id, $text ) {
+        if( Translation::add( $this->id, $locale_id, $text ) ) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Add a new text with translations
@@ -186,6 +192,12 @@ class I18n extends Eloquent{
      *
      * @var string
      */
+	public function translate( $locale_id, $text ) {
+        if( Translation::add( $this->id, $locale_id, $text ) ) {
+            return true;
+        }
+        return false;
+    }
     
     public function updateText( $locale_id, $newText ) {
         $translation = Translation::where( 'i18n_id', '=', $this->id )->where( 'locale_id', '=', $locale_id )->first();
