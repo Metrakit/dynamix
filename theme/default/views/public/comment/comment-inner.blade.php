@@ -11,7 +11,7 @@
                 <button type="button" class="button-transparent button-signal"><span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
                 <ul class = "comment-menu-dropdown dropdown-menu dropdown-menu-left" role="menu"> 
-                    <li class="comment-menu-report">
+                    <li class="comment-menu-report" data-toggle="modal" data-target="#modal-comment">
                         <a role="menuitem" href="#"><span class="glyphicon glyphicon-alert comment-menu-icon"></span>Signaler comme commentaire indésirable</a>
                     </li>
                 </ul>

@@ -65,5 +65,7 @@
 			</div>
 		</div>
 	</div>
+
+	@include('theme::public.comment.comment-modal');
 	@endif
 </section>

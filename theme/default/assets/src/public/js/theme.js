@@ -112,9 +112,15 @@ var CommentMaster = function () {
 	        });
 
 	        $('body').on('click','.comment-menu-report', function (e){
+
+	        	
+
 	        	$('#report').submit();
 
 	        });
+
+
+
 	        //--
 
 	     //FORM REPORT
