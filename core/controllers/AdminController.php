@@ -16,59 +16,11 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		//Check if the connection is ok
-		$minutes=60;
-		try{
-			$sessionsPerDay = Cache::remember('sessionsPerDay', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-			});
-			$sessionsCount = Cache::remember('sessionsCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getSessionsCount();
-			});
-			$userCount = Cache::remember('userCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getUserCount();
-			});
-			$pageSeenCount = Cache::remember('pageSeenCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
-			});
-			$timeBySession = Cache::remember('timeBySession', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getTimeBySession();
-			});
-			$rebound = Cache::remember('rebound', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getRebound();
-			});
-			$newOnReturningVisitor = Cache::remember('newOnReturningVisitor', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();			
-			});
-		}catch(Exception $e){
-			Log::error('Google Analytics API not found');
-			$data['ga_googleAnalyticsFound'] = false;
-		}
-
-		$data['ga_sessionsPerDay'] 			= $sessionsPerDay;
-		$data['ga_sessionsCount'] 			= $sessionsCount;
-		$data['ga_userCount'] 				= $userCount;
-		$data['ga_pageSeenCount'] 			= $pageSeenCount;
-		$data['ga_pagesBySession'] 			= round( $pageSeenCount / $sessionsCount, 2);
-		$data['ga_timeBySession'] 			= round( $timeBySession / $sessionsCount, 0).'s';
-		$data['ga_rebound'] 				= $rebound;
-		$data['ga_newOnReturningVisitor'] 	= $newOnReturningVisitor;
-		$data['ga_googleAnalyticsFound'] = true;
-
 		//$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.index', $data )->renderSections());
 		} else {
 			return View::make('theme::' .'admin.index', $data );
-		}
-	}
-
-	public function tryCatch () {
-		//Google Analytics
-		try{
-		}catch(Exception $e){
-			Log::error('Google Analytics API not found');
-			$data['ga_googleAnalyticsFound'] = false;
 		}
 	}
 
@@ -231,39 +183,57 @@ class AdminController extends BaseController {
         // Check if the form validates with success
         if ($validator->passes()) {
 			
-			$activeLang = Locale::where('enable','=',1)->get();
+			$activeLang = Locale::where('enable', 1)->get();
 
         	//Identify new languages
         	$newLang = array();
-        	foreach ( Input::all() as $lang ) {
-        		if ( Translation::where('locale_id','=',$lang)->count() == 0 ) {
-        			$newLang[] = $lang;
+        	$langToPublish = array();
+        	foreach ( Input::all() as $langKey => $langValue ) {
+        		if (strpos($langKey, 'is_publish_') !== false) {
+        			$langToPublish[] = substr($langKey, strlen('is_publish_'), strlen($langKey)-strlen('is_publish_'));
+        		} else {    			
+	        		if ( Translation::where('locale_id','=',$langKey)->count() == 0 ) {
+	        			$newLang[] = Input::get($langKey);
+	        		}
         		}
         	}
+        	//var_dump($langToPublish);
+        	//var_dump($newLang);
+
 
         	//Identify old languages
         	foreach ( $activeLang as $lang ) {
+        		//Check if new lang
         		if ( !array_search($lang->id, Input::all()) ){
         			//Si on trouve rien
-        			foreach ( $activeLang as $lang ) {
-		        		if ( !array_search($lang->id, Input::all()) ){
-		        			//Si on trouve rien
-		        			foreach ( Translation::where('locale_id','=',$lang->id)->get() as $translation ) {
-		        				if (!$translation->delete() ) {
-									return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_delete_error'));
-		        				}
-		        			}
-		        			//set locale disabled
-		        			$locale = Locale::find($lang->id);
-		        			$locale->enable = false;
-		        			$locale->save();
+        			foreach ( Translation::where('locale_id','=',$lang->id)->get() as $translation ) {
+        				if (!$translation->delete() ) {
+							return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_delete_error'));
+        				}
+        			}
+        			//set locale disabled
+        			$lang->enable = false;
+        			$lang->is_publish = false;
+        			$lang->save();
 
-		        			//track user
-		        			parent::track('delete','Locale',$locale->id);
-		        		}
-		        	}
+        			//track user
+        			parent::track('delete','Locale',$locale->id);
+        		} else {
+        			//Ancienne langue détecté !, 
+        			// CHeck is ispublish is true in db, and if not find in array(= must be unpublish)
+        			//echo $lang->id;
+        			//var_dump($langToPublish);
+        			//echo $lang->id . '<br>';
+        			//echo (in_array($lang->id, $langToPublish)?'1':'0');
+        			if (!in_array($lang->id, $langToPublish)) {
+        				$lang->is_publish = false;
+        			} else {
+        				$lang->is_publish = true;
+        			}
+        			$lang->save();
         		}
         	}
+        	//die;
 
         	//get all i18n IDs to create all translation with the new locale ID
         	$i18ns = I18n::all();
@@ -282,12 +252,20 @@ class AdminController extends BaseController {
         		}
 				$locale = Locale::find( $lang );
 				$locale->enable = 1;
+				if (!array_search($locale->id, $langToPublish)) {
+    				$locale->is_publish = false;
+    			} else {
+    				$locale->is_publish = true;    				
+    			}
+
 				if ( ! $locale->save() ) {
 					return Redirect::to('/admin/environment')->with('error', Lang::get('admin.languauge_save_error'));
 				}
 				//track user
 				parent::track('create','Locale', $locale->id);
         	}
+
+        	//Publish or unpublish locale
 
         	Locale::countEnable(true);
 

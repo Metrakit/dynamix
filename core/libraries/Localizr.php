@@ -16,24 +16,34 @@ class Localizr
 			Log::info($e);
 		}
 		
+		Log::info('Config::get(\'app.locale\') : ' . Config::get('app.locale'));
 		if ($db_is_ok) {
 			if (Schema::hasTable('locales')){
 				
 				// If only one lang is enable we dont need to set a Locale
 				if (Locale::countEnable() <= 1) {
+					Log::info('$locale choose for this load : null - Locale::countEnable() <= 1');
 					return null;
 				}
 
 				//Test if segment 1 isnt here, and if is valid
 				if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){					
 					if (Request::is('/') ) {
-						if ( Session::has('lang') ) {
-							$locale = Session::get('lang');
-						} else {
-							$locale = Config::get('app.locale');
-						}
+						/*if (Session::has('lang')) {
+							if (Config::get('app.locale_default') != Session::get('lang')) {
+								$locale = Session::get('lang');
+							} else {
+								$locale = Config::get('app.locale_default');
+							}
+						} else {*/
+						$locale = Config::get('app.locale_default');
+						//}
+						//Log::info('Config::get(\'app.locale_default\') : '.Config::get('app.locale_default'));
+						//Log::info('$locale : '.$locale);
+						//Log::info('Session::get(\'lang\') : '.Session::get('lang'));
 						Session::put('lang',$locale);
 						App::setLocale($locale);
+						//Log::info('$locale choose for this load : Request::is(\'/\')');
 						return null;
 					} 
 					if ( Session::has('lang') ) {//For return visit
@@ -79,6 +89,24 @@ class Localizr
 		} else {
 			$locale = null;
 		}
+
+		//Test if locale is the default locale of app
+		if (Config::get('app.locale_default') == $locale) {
+			Session::put('lang', $locale);
+			App::setLocale($locale);
+			Log::info('$locale : ' . $locale);
+			Log::info('$locale choose for this load : null - Config::get(\'app.locale\') == $locale');
+			return null;
+		}
+		Log::info('$locale choose for this load : '. $locale);
+
 		return $locale;
+	}
+
+
+	// Get locale with an URL sensitive
+	public static function getURLLocale ($locale = null) {
+		if ($locale===null) $locale = App::getLocale();
+		return (Config::get('app.locale_default') == $locale?'':$locale);
 	}
 }

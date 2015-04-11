@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
         $this->call('I18nTypesTableSeeder');
+        $this->call('I18nSeeder');
         //$this->call('FileTypesTableSeeder');
         //$this->call('FilesTableSeeder');
         $this->call('ResponsiveWidthsTableSeeder');

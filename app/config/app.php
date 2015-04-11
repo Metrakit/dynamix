@@ -56,6 +56,7 @@ return array(
 	*/
 
 	'locale' => 'fr',
+	'locale_default' => 'fr',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -109,6 +110,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		
+		// Dynamix Core 
+		'Dynamix\Core\CoreServiceProvider',
 
 		// Dynamix packages
 		//'Dynamix\Template\TemplateServiceProvider',
@@ -120,7 +124,6 @@ return array(
 		// External packages
 		'PagerServiceProvider',
 		'FormerServiceProvider',
-		'Thujohn\Analytics\AnalyticsServiceProvider',
 		'Schickling\Backup\BackupServiceProvider',
 
 

@@ -3,6 +3,14 @@
 Dynamix is private CMS for developer. The concept is to make a solid core with User/Role, Multilingual and Page/Block system.
 And private package for anything we can have to need for customers. For exemple, a Mosaic/Gallery/Image module, a Slider/Slide/Image module, a Blog/Category/Article/Tag module...
 
+## Requisite
+  * Compass (http://compass-style.org/)
+  * Grunt (http://gruntjs.com/getting-started)
+  * Bower (http://bower.io/)
+  * Composer (https://getcomposer.org/)
+  * Oracle VM virtualBox (https://www.virtualbox.org/wiki/Downloads)
+  * Vagrant (https://www.vagrantup.com/)
+
 ## Installation (local)
 1. Homestead installation (VM Vagrant)
   * Add the homestead box to our local environment : vagrant box add laravel/homestead
@@ -18,7 +26,7 @@ $env = $app->detectEnvironment(array(
 ));
 ```     
      
-2. Composer Instgallation : composer install
+2. Composer Installation : composer install
 
 3. Run Configuration Module
 
@@ -30,8 +38,15 @@ Run `php artisan config:publish thujohn/analytics` and modify the config file wi
 4. Migrates
 
 For Test the Former you should user the example Form seeder :
+`php artisan migrate`
 `php artisan db:seed --class=FullFormSeeder`
 
+5. Grunt
+
+In the assets folder (dynamix\theme\default\assets) run :
+`npm install`
+`bower install`
+`grunt` or execute the .bat file (_grunt)
 
 ## Module
 

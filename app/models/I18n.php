@@ -22,7 +22,6 @@ class I18n extends Eloquent{
         return $this->hasOne('I18nType');
     }
 
-
     /**
      * Add a new text with translations
      * @param Array $data Langs array
@@ -148,6 +147,11 @@ class I18n extends Eloquent{
      */
     public static function get($key)
     {
+        $cachePrefix = 'I18n::get.key:'.App::getLocale().':';
+        if (Cache::has($cachePrefix . $key)) {
+            return Cache::get($cachePrefix . $key);
+        }
+
 
         if (!is_string($key)) {
             throw new InvalidArgumentException('$key should be a string !', 1);          
@@ -167,7 +171,9 @@ class I18n extends Eloquent{
 
         // Try to delete it if not foreign keys are founded
         try {
-            return ($locale->text==''?$key:$locale->text);
+            $text = ($locale->text==''?$key:$locale->text);
+            Cache::put($cachePrefix . $key, $text, 60);
+            return $text;
         } catch (Exception $e) {
             Log::error("You cannot get this i18n: " . $e->getMessage(), 1);        
         }
@@ -179,12 +185,12 @@ class I18n extends Eloquent{
      *
      * @var string
      */
-	public function translate( $locale_id, $text ) {
+	/*public function translate( $locale_id, $text ) {
         if( Translation::add( $this->id, $locale_id, $text ) ) {
             return true;
         }
         return false;
-    }
+    }*/
     
     public function updateText( $locale_id, $newText ) {
         $translation = Translation::where( 'i18n_id', '=', $this->id )->where( 'locale_id', '=', $locale_id )->first();

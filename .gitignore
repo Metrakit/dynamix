@@ -24,5 +24,8 @@
 /env/**/node_modules
 
 composer.lock
+.env.php
+.env.exemple.php
 
 *.tmp
+.env.local.php

@@ -33,7 +33,7 @@
 	<div class="create-page">
         <h4>Ajouter des blocks</h4>
         <div class="text-center">
-            @foreach( Config::get('display.page-template') as $template)
+            @foreach( Config::get('pager.page-template') as $template)
             <a href="{{ URL::to('admin/page/block/' . $template)}}" class="block-template {{$template}}"></a>
             @endforeach
         </div>

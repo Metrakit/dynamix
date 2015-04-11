@@ -25,10 +25,6 @@ class Structure extends Eloquent {
 	 *
 	 * @var string
 	 */
-	public function translate( $i18n_id )
-	{
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
-	}
 
 	public function deleteI18nAndMe()
 	{
@@ -48,21 +44,21 @@ class Structure extends Eloquent {
 	 */
 	public function title()
 	{
-		return $this->translate( $this->i18n_title );
+		return Eloquentizr::getTranslation( $this->i18n_title );
 	}
 
 	public function url()
 	{
-		return $this->translate( $this->i18n_url );
+		return Eloquentizr::getTranslation( $this->i18n_url );
 	}
 
 	public function meta_title()
 	{
-		return $this->translate( $this->i18n_meta_title );
+		return Eloquentizr::getTranslation( $this->i18n_meta_title );
 	}
 
 	public function meta_description()
 	{
-		return $this->translate( $this->i18n_meta_description );
+		return Eloquentizr::getTranslation( $this->i18n_meta_description );
 	}
 }

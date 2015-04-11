@@ -27,7 +27,9 @@
         <meta name="twitter:description" content="{{ Option::translate('social_description') }}">
         <meta name="twitter:title" content="{{ Option::translate('social_title') }}">
 
-        <link rel="canonical" href="{{ Request::url() }}">
+        @foreach(Cachr::getCache('DB_LocalesEnabled') as $locale)
+        <link rel="alternate" hreflang="{{$locale}}" href="{{ URL::to(Localizr::getURLLocale($locale)) }}" />
+        @endforeach
 
         <link rel="stylesheet" href="{{ asset('').Bassets::show('public/css/main.css') }}">
         
@@ -95,7 +97,6 @@
         </script>
     </head>
     <body>
-    
         <div id="wrapper">
         
             <!--[if lt IE 8]>

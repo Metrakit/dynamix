@@ -194,13 +194,13 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
                 $model_name = ucfirst ($resource->model);
                 Log::info($model_name);
                 $lang = ($resource->model!=''?$model_name::$langNav:'admin.nav_' . $resource->name);
-                if(Config::get('display.onepage') && $resource->navigable != 1) {
+                if(Config::get('core::display.onepage') && $resource->navigable != 1) {
                     $data = array(
                         'name'  => $resource->name,
                         'lang'  => $lang,
                         'icon'  => $resource->icon);
                     $navigations .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
-                } else if (!Config::get('display.onepage')) {
+                } else if (!Config::get('core::display.onepage')) {
                     $data = array(
                         'name'  => $resource->name,
                         'lang'  => $lang,

@@ -22,6 +22,7 @@ class CreateLocalesTable extends Migration {
 			$table->string('flag_w', 5);
 			$table->string('flag_h', 5);
 
+			$table->boolean('is_publish')->default(false);		
 			$table->boolean('enable')->default(false);		
 			$table->boolean('on_admin')->default(false);		
 

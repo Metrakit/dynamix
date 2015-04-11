@@ -6,7 +6,7 @@ class NavigationsTableSeeder extends Seeder {
     {
         DB::table('navigations')->delete();
 
-        $title1 = new I18N;
+        $title1 = new I18n;
         $title1->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title1->save();
         $title1->translate('fr','Accueil');
@@ -54,7 +54,7 @@ class NavigationsTableSeeder extends Seeder {
         $title61->translate('fr','Article 2');
         $title61->translate('en','Article 2');*/
 
-        $title7 = new I18N;
+        $title7 = new I18n;
         $title7->i18n_type_id = I18nType::where('name','=','title')->first()->id;
         $title7->save();
         $title7->translate('fr','Contact');
