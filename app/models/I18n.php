@@ -22,13 +22,6 @@ class I18n extends Eloquent{
         return $this->hasOne('I18nType');
     }
 
-    public function translate( $locale_id, $text ) {
-        if( Translation::add( $this->id, $locale_id, $text ) ) {
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Add a new text with translations
      * @param Array $data Langs array
