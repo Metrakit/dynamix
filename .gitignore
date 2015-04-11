@@ -28,3 +28,4 @@ composer.lock
 .env.exemple.php
 
 *.tmp
+.env.local.php
