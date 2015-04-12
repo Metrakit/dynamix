@@ -43,3 +43,20 @@
     @endif
 
 @stop
+
+@section('scriptOnReady')
+
+    $('body').on('change', 'input[name*=is_publish_]', function (e) {
+        var inputIsEnable = $(this).parent().parent().find('.input-is_enable');
+        if ($(this).prop('checked')) {
+            inputIsEnable.prop('checked',true);
+        }
+    });
+    $('body').on('change', 'input.input-is_enable', function (e) {
+        var inputIsPublish = $(this).parent().parent().find('input[name*=is_publish_]');
+        console.log(inputIsPublish);
+        if (!$(this).prop('checked')) {
+            inputIsPublish.prop('checked',false);
+        }
+    });
+@stop
