@@ -177,7 +177,7 @@ Route::post('formr/{modelId?}', array('as' => 'formr', 'uses' => 'FormerControll
 Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
 Route::resource('comment','CommentController', array('only' => array('destroy','update')) );
 Route::post('comment/{id}/vote/{bool}', array('as' => 'comment-vote', 'uses' => 'CommentController@vote'));
-Route::post('comment/{id}', array('as' =>'comment.report', 'uses' => 'CommentController@report'));
+Route::post('comment/{id}/{message}/{idUser}', array('as' =>'comment.report', 'uses' => 'CommentController@report'));
 
 
 
