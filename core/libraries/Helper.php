@@ -24,8 +24,6 @@ class Helper {
 
     public static function getDomain()
     {
-        Route::pattern('top', '^((?!www).)*$');
-
         return substr(Config::get('app.url'), 7);
     }
 
