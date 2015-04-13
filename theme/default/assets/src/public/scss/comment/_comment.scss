@@ -231,12 +231,21 @@
 	display:none;
 	a {
 		color:#bbb;
+		
 		&:hover, &:focus{
 			color:#bbb;
 			text-decoration: none;
 		}
 	}
+
+	button:focus ~ .comment-menu-dropdown {
+		//	display:inline;
+	}
+
 }
+
+
+
 
 .comment-modal-content {
 	li {
@@ -244,5 +253,6 @@
 	}
 	margin-bottom: 35px;
 
-
 }
+
+// :not ?

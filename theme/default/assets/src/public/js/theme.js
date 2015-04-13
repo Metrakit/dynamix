@@ -98,10 +98,11 @@ var CommentMaster = function () {
 			}
 
 		});
-			//-- Refacto CSS
-	        $('body').on('click', '.button-signal', function (e) {
-	        	$('.comment-menu-dropdown').css( "display", "inline" );
-	        });
+
+			            $('body').on('click', '.button-signal', function (e) {
+                $('.comment-menu-dropdown').css( "display", "inline" );
+            });
+
 
 	        $('body').on('mouseleave', '.comment-user', function (e) {
 	        	$('.comment-menu-dropdown').css( "display", "none" );
@@ -111,24 +112,14 @@ var CommentMaster = function () {
 	        	$('.comment-menu-dropdown').css( "display", "none" );
 	        });
 
+	        //On déplace le commentaire report dans comment-modal 
 	        $('body').on('click','.comment-menu-report', function (e){
 	        	var comment = $(this).closest(".comment-user").clone();
 	        	$(comment).contents().remove(".comment-reply");
 	        	$(comment).contents().contents().remove(".comment-user-footer");
+	        	$(comment).contents().contents().contents().remove(".comment-menu");
 	        	$('.comment-modal-content').html(comment);
-	        	var postContent = $('.form-comment-report').attr('action');
-	        	$(postContent).html("ok");
 	        });
-
-
-	         $('body').on('click','.btn-comment-report', function (e){
-	        	var postContent = $('.form-comment-report').attr('action');
-	        	$(postContent).html("ok");
-	        });
-
-
-
-	        //--
 
 	     //FORM REPORT
 	     $('body').on('submit', '.comment-user form.comment-menu', function (e) {

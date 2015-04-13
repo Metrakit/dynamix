@@ -8,7 +8,7 @@
             {{ Form::close() }}
         @else
                 <div class ="comment-menu pull-right">
-                    <button type="button" class="button-transparent button-signal"><span class="glyphicon glyphicon-chevron-down"></span>
+                    <button type="button" class="button-transparent button-menu-comment"><span class="glyphicon glyphicon-chevron-down"></span>
                     </button>
                     <ul class = "comment-menu-dropdown dropdown-menu dropdown-menu-left" role="menu"> 
                         <li class="comment-menu-report" data-toggle="modal" data-target="#modal-comment">
@@ -44,3 +44,6 @@
     @endif
 	 &bull; <a class="comment-add-reply" href="#" title="{{{ I18n::get('comment.reply') }}}">{{{ I18n::get('comment.reply') }}}</a>
 </div>
+
+@include('theme::public.comment.comment-modal',array('comment' => $comment))
+
