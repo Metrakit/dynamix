@@ -217,7 +217,7 @@ class AdminController extends BaseController {
         			$lang->save();
 
         			//track user
-        			parent::track('delete','Locale',$lang->id);
+        			parent::track('delete','Locale',$locale->id);
         		} else {
         			//Ancienne langue détecté !, 
         			// CHeck is ispublish is true in db, and if not find in array(= must be unpublish)

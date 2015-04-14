@@ -95,7 +95,7 @@ class Former extends \Controller {
     {
         $data = array();
 
-        $data['locales'] = \Cache::get('DB_LocalesEnabled');
+        $data['locales'] = \Cachr::getCache('DB_LocalesEnabled');
 
 
         if (is_null($data['locales'])) {
