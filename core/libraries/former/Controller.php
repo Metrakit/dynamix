@@ -97,6 +97,13 @@ class Former extends \Controller {
 
         $data['locales'] = \Cache::get('DB_LocalesEnabled');
 
+
+        if (is_null($data['locales'])) {
+            $data['locales'][0] = (object) array(
+                'id'   => Config::get('app.locale'),
+                'flag' => null);
+        }
+
         if (null != $modelId && is_int($modelId)) {
             $modelData = $form->find($modelId);
         
