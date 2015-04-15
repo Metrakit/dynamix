@@ -99,7 +99,7 @@ var CommentMaster = function () {
 
 		});
 
-			            $('body').on('click', '.button-signal', function (e) {
+            $('body').on('click', '.button-menu-comment', function (e) {
                 $('.comment-menu-dropdown').css( "display", "inline" );
             });
 
