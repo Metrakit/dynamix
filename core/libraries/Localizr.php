@@ -16,7 +16,7 @@ class Localizr
 			Log::info($e);
 		}
 		
-		Log::info('Config::get(\'app.locale\') : ' . Config::get('app.locale'));
+		//Log::info('Config::get(\'app.locale\') : ' . Config::get('app.locale'));
 		if ($db_is_ok) {
 			if (Schema::hasTable('locales')){
 				

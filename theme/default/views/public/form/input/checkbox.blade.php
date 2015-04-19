@@ -10,7 +10,7 @@
 
 @endif
 
-<input name="{{ $input->name }}" title="{{ $input->title }}" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" @if($input->value) checked @endif />
+<input class="checkbox" name="{{ $input->name }}" title="{{ $input->title }}" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" @if($input->value) checked @endif />
 
 @if($form->type != 'inline')
 

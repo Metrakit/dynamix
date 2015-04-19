@@ -72,7 +72,14 @@ class Eloquentizr extends Model {
  		if (Cache::has($cachePrefix . $i18n_id)) {
  			return Cache::get($cachePrefix . $i18n_id);
  		}
- 		$text = Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',$locale_id)->first()->text;
+ 		$translation = Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',$locale_id)->first();
+
+ 		if (empty($translation)) {
+ 			$text = null;
+ 		} else {
+ 			$text = $translation->text;
+ 		}
+ 		
  		Cache::put($cachePrefix . $i18n_id, $text, 60);
  		return $text;
  	}

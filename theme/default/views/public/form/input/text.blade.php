@@ -26,6 +26,13 @@
 				placeholder="{{ $input->placeholder }}" 
 				value="{{ $input->value[$locale->id] }}" 
 			/>
+
+			@if (isset($input->group))
+				<div class="input-group-addon">
+	               {{ $input->group }}
+	            </div>
+			@endif
+
         </div>
 
         @if($errors->has($input->name . '_lang_' . $locale->id)) 
@@ -37,7 +44,28 @@
 
 	@endforeach
 @else	
-	<input name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" />
+
+	@if (isset($input->group))
+		<div class="input-group">
+	@endif
+			<input name="{{ $input->name }}" title="{{ $input->title }}" class="form-control" type="{{ $input->type }}" placeholder="{{ $input->placeholder }}" value="{{ $input->value }}" 
+				@if (isset($input->range) && $input->type == "number")
+					@if (isset($input->range['min']))
+						 min={{ $input->range['min'] }} 
+					@endif
+					@if (isset($input->range['max']))
+						 max={{ $input->range['max'] }} 
+					@endif
+				@endif
+			/>
+	@if (isset($input->group))
+			<div class="input-group-addon">
+	           {{ $input->group }}
+	        </div>
+        </div>
+	@endif
+
+
 @endif
 
 @if($form->type != 'inline' && !$input->i18nInpError)

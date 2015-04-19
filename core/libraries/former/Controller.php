@@ -323,7 +323,12 @@ class Former extends \Controller {
                 $inputs[$key]->value = $inputType->defaultValue;
             } else {
                 $inputs[$key]->value = null;
-            }                  
+            }  
+
+            // Set a range if defined
+            if (isset($input->range) && $input->type === "number") {
+                $inputs[$key]->range = $input->range;
+            }        
 
             // If the input type is "Radio" we get the select options
             if ($inputs[$key]->type == "select") {
