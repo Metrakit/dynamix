@@ -22,7 +22,7 @@ class Localizr
 				
 				// If only one lang is enable we dont need to set a Locale
 				if (Locale::countEnable() <= 1) {
-					Log::info('$locale choose for this load : null - Locale::countEnable() <= 1');
+					//Log::info('$locale choose for this load : null - Locale::countEnable() <= 1');
 					return null;
 				}
 
@@ -94,11 +94,11 @@ class Localizr
 		if (Config::get('app.locale_default') == $locale) {
 			Session::put('lang', $locale);
 			App::setLocale($locale);
-			Log::info('$locale : ' . $locale);
-			Log::info('$locale choose for this load : null - Config::get(\'app.locale\') == $locale');
+			//Log::info('$locale : ' . $locale);
+			//Log::info('$locale choose for this load : null - Config::get(\'app.locale\') == $locale');
 			return null;
 		}
-		Log::info('$locale choose for this load : '. $locale);
+		//Log::info('$locale choose for this load : '. $locale);
 
 		return $locale;
 	}
