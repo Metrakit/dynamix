@@ -119,11 +119,6 @@ return array(
 		//'Dynamix\UserManager\UserServiceProvider',
 		//'Dynamix\Crew\CrewModuleServiceProvider',
 		//'Dynamix\MosaicGallery\MosaicGalleryServiceProvider',
-		
-		'Dynamix\Minetop\MinetopServiceProvider',
-		'Dynamix\Registration\RegistrationServiceProvider',		
-		'Dynamix\Top\TopServiceProvider',
-		'Dynamix\TopServer\TopServerServiceProvider',
 
 		// External packages
 		'PagerServiceProvider',
