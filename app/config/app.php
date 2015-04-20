@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://dynam.ix',
+	'url' => 'http://' . $_ENV['DOMAIN'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,7 +56,6 @@ return array(
 	*/
 
 	'locale' => 'fr',
-	'locale_default' => 'fr',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -69,7 +68,7 @@ return array(
 	|
 	*/
 
-	'key' => 'Bhvs1QjP1zse2sCwJmWvTndnbg6cjrTT',
+	'key' => $_ENV['KEY'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -120,6 +119,11 @@ return array(
 		//'Dynamix\UserManager\UserServiceProvider',
 		//'Dynamix\Crew\CrewModuleServiceProvider',
 		//'Dynamix\MosaicGallery\MosaicGalleryServiceProvider',
+		
+		'Dynamix\Minetop\MinetopServiceProvider',
+		'Dynamix\Registration\RegistrationServiceProvider',		
+		'Dynamix\Top\TopServiceProvider',
+		'Dynamix\TopServer\TopServerServiceProvider',
 
 		// External packages
 		'PagerServiceProvider',
@@ -202,6 +206,9 @@ return array(
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
+
+
+		'Minetop' => 'Dynamix\Minetop\MinetopFacade',
 	),
 
 
