@@ -18,7 +18,7 @@ class URLManagerController extends BaseController {
             return View::make('theme::public.onepage', $data);
         } else {
             //Find good page
-            $urls = Cachr::getCache( 'DB_Urls' );
+            $urls = Urls::getRoutes();
             foreach ( $urls as $url ) {
                 if ( $url['url'] == '/' && $url['locale_id'] == App::getLocale()) {
                     $structure = Structure::where('i18n_url',$url['i18n_id'])->first();
@@ -41,7 +41,7 @@ class URLManagerController extends BaseController {
             Session::forget('translate_request');
             return $this->translateAndRedirect(Request::segment(2), Request::segment(1));
         } else {
-            foreach ( Cachr::getCache( 'DB_Urls' ) as $url ) {
+            foreach ( Urls::getRoutes() as $url ) {
                 if ( $url['url'] == '/' . $slug ) {
                     //Check current locale
                     if ( App::getLocale() != $url['locale_id'] ) {
@@ -59,10 +59,10 @@ class URLManagerController extends BaseController {
     public function translateAndRedirect( $slug_origin, $locale_new )
     {
         Log::info('translate');
-        foreach ( Cachr::getCache( 'DB_Urls' ) as $url ) {
+        foreach ( Urls::getRoutes() as $url ) {
             if ( $url['url'] == '/' . $slug_origin ) {
                 //Search route with the same i18n_id and with the new locale
-                foreach ( Cachr::getCache( 'DB_Urls' ) as $url_translated ) {
+                foreach ( Urls::getRoutes() as $url_translated ) {
                     if ( $url_translated['i18n_id'] == $url['i18n_id'] && $url_translated['locale_id'] == $locale_new && $url_translated['url'] != $url['url'] ) {               
                         return Redirect::to('/' . $url_translated['locale_id'] . $url_translated['url'] );
                     }

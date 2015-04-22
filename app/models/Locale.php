@@ -52,5 +52,8 @@ class Locale extends Eloquent{
             return self::where('enable', true)->where('is_publish', true)->count();
         });
     }
+    public static function getEnabled () {
+        return Locale::where('enable', 1)->where('is_publish', 1)->get();
+    }
 
 }

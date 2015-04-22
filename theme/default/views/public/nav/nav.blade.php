@@ -1,5 +1,5 @@
 <?php
-	$navigations = Cachr::getCache('DB_Nav');
+	$navigations = Nav::getNavigations();
 ?>
 @foreach( $navigations as $nav )
 		@if( count( $nav->children() ) != 0 )
