@@ -9,7 +9,7 @@ class URLManagerController extends BaseController {
         Session::put('old_RequestSegment2', '');
         
         //is root?
-        if (Request::is('/') && Locale::countEnable() > 1) return Redirect::to('/' . App::getLocale(), 301);
+        //if (Request::is('/') && Locale::countEnable() > 1) return Redirect::to('/' . App::getLocale(), 301);
         
         //is OnePage?
         if (Config::get('core::display.onepage')) {
