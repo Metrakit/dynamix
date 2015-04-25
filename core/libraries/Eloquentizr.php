@@ -107,4 +107,17 @@ class Eloquentizr extends Model {
         return $notAllowed;
     }
 
+    /**
+     * Simple relation for translate a text
+     * @param  string $name key name
+     * @param  string $lang lang
+     * @return query
+     */
+    public function getText($name, $lang = null)
+    {
+    	if (is_null($lang)) {
+    		$lang = App::getLocale();
+    	}
+    	return $this->hasOne('Translation', 'i18n_id', 'i18n_' . $name)->where('locale_id', '=', $lang);
+    }
 }
