@@ -46,23 +46,45 @@ class Eloquentizr extends Model {
  	/**
  	 * Get settings of a Formr
  	 * @return Array
- 	 * @todo  Modifier le 'view' (éclaircir ce point avec David)
  	 */
- 	public function formr()
+ 	public function formr($combine)
  	{
  		if (method_exists(get_called_class(), 'formParams')) {
 	 		$data = $this->formParams();
 	 		$data['model'] = get_class($this);
+
+	 		if ($combine && isset($data['combine']) && is_array($data['combine'])) {
+
+				$data['data']['combine_form'] = array(
+                    'name'        => 'combine_form',
+                    'type'        => 'hidden',
+                    'rules'       => 'required',
+                    'value'       => true,
+                    'viewPath'    => 'public.form.input.hidden'
+                );
+
+	 			foreach ($data['combine'] as $model_name) {
+	 				$form_model = $model_name::formParams();
+	 				$inputs = $form_model['data'];
+	 			
+ 					if (isset($inputs['send'])) {
+ 						unset($inputs['send']);
+ 					}
+
+	 				$data['data'] = array_merge($inputs, $data['data']);
+	 			}
+	 		}
+
 	 		return $data;
  		} else {
  			return null;
  		}
  	}
 
- 	public static function generateForm($modelId = null, $params = null)
+ 	public static function generateForm($modelId = null, $params = null, $combine = false)
  	{
  		$model = get_called_class();
- 		return \Former::renderByModel(new $model, $modelId, $params);
+ 		return \Former::renderByModel(new $model, $modelId, $params, $combine);
  	}
 
 	public static function getTranslation($i18n_id, $locale_id = null)

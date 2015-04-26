@@ -91,12 +91,11 @@ class Former extends \Controller {
      * @param  Object $form
      * @return Array
      */
-    public function generateByModel($form, $modelId)
+    public function generateByModel($model, $modelId, $combine)
     {
         $data = array();
 
         $data['locales'] = \Cachr::getCache('DB_LocalesEnabled');
-
 
         if (is_null($data['locales'])) {
             $data['locales'][0] = (object) array(
@@ -104,11 +103,30 @@ class Former extends \Controller {
                 'flag' => null);
         }
 
+        // Cast l'array en objet
+        $data['form'] = (object) $model;
+ 
+        $form = $model->formr($combine);
+        if ($form) {
+            // Cast l'array en objet
+            $form = (object) $form;
+        } else {
+            return false;
+        }
+
         if (null != $modelId && is_int($modelId)) {
-            $modelData = $form->find($modelId);
+
+            $modelData = $model->find($modelId)->getAttributes();
+
+            if ($combine && is_array($combine)) {
+                foreach ($combine as $new_model_name => $value) {
+                    $combine_model = $new_model_name::find($value)->getAttributes();
+                    $modelData = array_merge($modelData, $combine_model);
+                }
+            }
         
             // Boucle sur les champs pour trouver les champs i18n
-            foreach ($modelData->getAttributes() as $key => $value) {
+            foreach ($modelData as $key => $value) {
                 
                 if (strpos($key, 'i18n_') !== false) {
                     $splitModel = explode('_', $key);
@@ -116,17 +134,6 @@ class Former extends \Controller {
                     unset($modelData[$key]);
                 }
             }
-        }
-
-        // Cast l'array en objet
-        $data['form'] = (object) $form;
- 
-        $form = $form->formr();
-        if ($form) {
-            // Cast l'array en objet
-            $form = (object) $form;
-        } else {
-            return false;
         }
 
         $data['form']->id = $form->model;
@@ -162,14 +169,16 @@ class Former extends \Controller {
                     $localModel = $data['inputs'][$key]->foreign_local_model;
                     $foreignColumn = $data['inputs'][$key]->foreign_column;
                     $foreign = $localModel->hasMany($data['inputs'][$key]->foreign)
-                                ->where($data['inputs'][$key]->foreign_column_id, $modelData->id)
+                                ->where($data['inputs'][$key]->foreign_column_id, $modelData['id'])
                                 ->first();
                     if ($foreign == null) {
                         $data['inputs'][$key]->value = null;
                     } else {
                         $data['inputs'][$key]->value = $foreign->$foreignColumn;
                     }
-                }         
+
+
+                }                         
             }
             // Set the input value if defined
             else if (null == $data['inputs'][$key]->value) {
@@ -371,20 +380,48 @@ class Former extends \Controller {
         return $rules;
     }
 
-    public function getRulesByModel($modelName)
+    public function getRulesByModel($modelName, $combine, $model_id)
     {
 
-        $inputs = $modelName::formParams()['data'];
+        $formr = $modelName::formParams();
+
+        $inputs = $formr['data'];
 
         foreach ($inputs as $key => $input) {
             if (isset($input['rules'])) {
-                $data[$key] = $input['rules'];
+                if (is_string($input['rules'])) {
+                    $data[$key] = str_replace('{id}', $model_id, $input['rules']);    
+                } else {
+                    $data[$key] = $input['rules']; 
+                }
             } else {
                 $data[$key] = array();
-            }
-            
+            }  
         }
 
+        if ($combine && isset($formr['combine']) && is_array($formr['combine'])) {
+            foreach ($formr['combine'] as $model_name) {
+                $form_model = $model_name::formParams();
+                $inputs = $form_model['data'];
+            
+                if (isset($inputs['send'])) {
+                    unset($inputs['send']);
+                }
+
+                foreach ($inputs as $key => $input) {
+                    if (isset($input['rules'])) {
+                        if (is_string($input['rules'])) {
+                            $data[$key] = str_replace('{id}', $model_id, $input['rules']);
+                        } else {
+                            $data[$key] = $input['rules']; 
+                        }
+                    } else {
+                        $data[$key] = array();
+                    }  
+                }
+
+            }
+        }
         return $data;
     }
 
@@ -484,9 +521,9 @@ class Former extends \Controller {
      * @param  Integer $formId
      * @return Response
      */
-    public function renderByModel($model, $modelId, $params)
+    public function renderByModel($model, $modelId, $params, $combine)
     {
-        $data = self::generateByModel($model, $modelId);
+        $data = self::generateByModel($model, $modelId, $combine);
         if (!$data) {
             \Log::info('Form unexist !');
             return false;

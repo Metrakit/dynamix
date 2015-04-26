@@ -43,7 +43,12 @@ class FormerController extends Controller {
             if (is_int(Input::get('form'))) {
                 $rules = Former::getRules(Input::get('form'));   
             } else {
-                $rules = Former::getRulesByModel(Input::get('form'));   
+                if (Input::has('combine_form')) {
+                    $combine = true;
+                } else {
+                    $combine = false;
+                }
+                $rules = Former::getRulesByModel(Input::get('form'), $combine, $modelId);   
             }
 
             $unsets = array();
@@ -89,7 +94,12 @@ class FormerController extends Controller {
             $modelName = Input::get('form');
             $model = new $modelName;
             if (isset($model)) {
-                $formParams = $model->formParams();
+                if (Input::has('combine_form')) {
+                    $combine = true;
+                } else {
+                    $combine = false;
+                }
+                $formParams = $model->formParams($combine);
             }
             if ($formParams['method'] == "email") {
                 // Send a mail
