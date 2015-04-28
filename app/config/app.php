@@ -202,9 +202,9 @@ return array(
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
-
-
-		'Minetop' => 'Dynamix\Minetop\MinetopFacade',
+		
+		'Carbon'    => 'Carbon\Carbon',
+		
 	),
 
 
