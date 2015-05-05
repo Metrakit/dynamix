@@ -124,7 +124,6 @@ return array(
 		// External packages
 		'PagerServiceProvider',
 		'FormerServiceProvider',
-		'Schickling\Backup\BackupServiceProvider',
 
 
 	),
