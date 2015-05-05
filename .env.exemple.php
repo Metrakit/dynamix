@@ -1,6 +1,10 @@
 <?php
 
 return array(
+	'DOMAIN'              => 'dynam.ix',
+	'DRIVER_CACHE'        => 'file',//file, memcach
+	'DRIVER_SESSION'      => 'file',//file, memcach
+	'KEY'				  => 'make php artisan key:generate to get a fucking key to your app',
 
 	// Database Datas
 	'DB_HOST'     => 'localhost',
