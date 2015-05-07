@@ -217,7 +217,7 @@ class AdminController extends BaseController {
         			$lang->save();
 
         			//track user
-        			parent::track('delete','Locale',$locale->id);
+        			parent::track('delete','Locale',$lang->id);
         		} else {
         			//Ancienne langue détecté !, 
         			// CHeck is ispublish is true in db, and if not find in array(= must be unpublish)
@@ -241,7 +241,7 @@ class AdminController extends BaseController {
         	foreach ( $newLang as $lang ) {
         		//Create each i18n ID
         		foreach ( $i18ns as $i18n ) {
-        			$text = Translation::where('i18n_id','=',$i18n->id)->where('locale_id','en')->first()->text;
+        			$text = Translation::where('i18n_id','=',$i18n->id)->where('locale_id', Config::get('app.locale_default'))->first()->text;
         			//Si on trouve pas de traduction
         			if ( Translation::where('i18n_id','=',$i18n->id)->where('locale_id','=',$lang)->first() === null ) {
         				//On la crée

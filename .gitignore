@@ -29,3 +29,6 @@ composer.lock
 
 *.tmp
 .env.local.php
+
+dynamix.sublime-project
+dynamix.sublime-workspace

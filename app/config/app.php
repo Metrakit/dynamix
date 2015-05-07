@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://dynam.ix',
+	'url' => 'http://' . $_ENV['DOMAIN'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return array(
 	|
 	*/
 
-	'key' => 'Bhvs1QjP1zse2sCwJmWvTndnbg6cjrTT',
+	'key' => $_ENV['KEY'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -124,7 +124,6 @@ return array(
 		// External packages
 		'PagerServiceProvider',
 		'FormerServiceProvider',
-		'Schickling\Backup\BackupServiceProvider',
 
 
 	),
@@ -202,6 +201,9 @@ return array(
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
+		
+		'Carbon'    => 'Carbon\Carbon',
+		
 	),
 
 

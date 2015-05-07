@@ -52,5 +52,20 @@ class Locale extends Eloquent{
             return self::where('enable', true)->where('is_publish', true)->count();
         });
     }
+    public static function getEnabled () {
+        return Locale::where('enable', 1)->where('is_publish', 1)->get();
+    }
+
+    public static function getFrontEnabled () {
+        //Get all data in database
+        $locales = Locale::where('enable','=',1)->where('is_publish','=',1)->get();
+        //Preapre data to extract by id
+        $data = array();
+        foreach( $locales as $l )
+        {
+            $data[] = $l->id;
+        }
+        return $data;
+    }
 
 }

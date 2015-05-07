@@ -27,7 +27,7 @@
         <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
             <label class="col-sm-2 control-label" for="email">{{{ I18n::get('auth.email') }}}</label>
             <div class="col-sm-10">
-                <input class="form-control" tabindex="1" placeholder="{{ I18n::get('auth.email') }}" type="text" name="email" id="email" value="{{ Input::old('email', Session::get('email') ) }}">
+                <input class="form-control" tabindex="1" placeholder="{{ I18n::get('auth.email') }}" type="email" name="email" id="email" value="{{ Input::old('email', Session::get('email') ) }}">
                 {{ $errors->first('email', '<div class="alert alert-danger">:message</div>') }}
             </div>
         </div>

@@ -3,6 +3,13 @@
 class BaseController extends Controller {
 
 
+	public function __construct()
+	{
+		if (Config::get('core::extend.base_controller')) {
+			View::share('global', Config::get('core::extend.base_controller'));
+		}		
+	}
+
 
 
 	/**

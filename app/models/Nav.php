@@ -85,4 +85,8 @@ class Nav extends Eloquent{
 	public function url(){
 		return ( $this->navigable_type !=  'NavLink' && Locale::countEnable() > 1 ? Localizr::getURLLocale() : '') . $this->navigable->url();
 	}
+
+	public static function getNavigations () {
+		return self::where('parent_id','=',0)->orderBy('order','ASC')->get();
+	}
 }

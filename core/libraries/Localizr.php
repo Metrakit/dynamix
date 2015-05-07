@@ -22,12 +22,12 @@ class Localizr
 				
 				// If only one lang is enable we dont need to set a Locale
 				if (Locale::countEnable() <= 1) {
-					Log::info('$locale choose for this load : null - Locale::countEnable() <= 1');
+					//Log::info('$locale choose for this load : null - Locale::countEnable() <= 1');
 					return null;
 				}
 
 				//Test if segment 1 isnt here, and if is valid
-				if(!in_array($locale, Cachr::getCache('DB_LocaleFrontEnable'))){					
+				if(!in_array($locale, Locale::getFrontEnabled())){					
 					if (Request::is('/') ) {
 						/*if (Session::has('lang')) {
 							if (Config::get('app.locale_default') != Session::get('lang')) {
@@ -52,7 +52,7 @@ class Localizr
 						//if not, search a lang in server datas and if is valid
 						$browser_lang = mb_substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
 					    // Check the browser request langugae is support in app?
-					    if(!empty($browser_lang) AND in_array($browser_lang, Cachr::getCache('DB_LocaleFrontEnable')))
+					    if(!empty($browser_lang) AND in_array($browser_lang, Locale::getFrontEnabled()))
 					    {
 					        $locale = $browser_lang;
 					    }
@@ -72,7 +72,7 @@ class Localizr
 
 
 
-				if ( in_array($locale, Cachr::getCache('DB_LocaleFrontEnable')) && $locale != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
+				if ( in_array($locale, Locale::getFrontEnabled()) && $locale != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
 					//if it's a manual changement of locale_id in segment 1
 					if ( Request::segment(2) == '' && Session::get('old_RequestSegment2') == '' ) {
 						Session::put('lang', $locale);
@@ -94,11 +94,11 @@ class Localizr
 		if (Config::get('app.locale_default') == $locale) {
 			Session::put('lang', $locale);
 			App::setLocale($locale);
-			Log::info('$locale : ' . $locale);
-			Log::info('$locale choose for this load : null - Config::get(\'app.locale\') == $locale');
+			//Log::info('$locale : ' . $locale);
+			//Log::info('$locale choose for this load : null - Config::get(\'app.locale\') == $locale');
 			return null;
 		}
-		Log::info('$locale choose for this load : '. $locale);
+		//Log::info('$locale choose for this load : '. $locale);
 
 		return $locale;
 	}

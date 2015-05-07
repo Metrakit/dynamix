@@ -185,12 +185,12 @@ class I18n extends Eloquent{
      *
      * @var string
      */
-	/*public function translate( $locale_id, $text ) {
+	public function translate( $locale_id, $text ) {
         if( Translation::add( $this->id, $locale_id, $text ) ) {
             return true;
         }
         return false;
-    }*/
+    }
     
     public function updateText( $locale_id, $newText ) {
         $translation = Translation::where( 'i18n_id', '=', $this->id )->where( 'locale_id', '=', $locale_id )->first();

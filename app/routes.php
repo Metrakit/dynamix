@@ -193,7 +193,7 @@ Route::post('comment/report/{id}', array('as' =>'comment.report', 'uses' => 'Com
 $locale = Localizr::initLocale();
 Route::group(array('prefix' => $locale), function() 
 {
-	Route::get('/', array('uses' => Config::get('core::route.root')));
+	Route::get('/', array('as' => 'home', 'uses' => Config::get('core::route.root')));
 	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
 });
 
