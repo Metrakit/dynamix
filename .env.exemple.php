@@ -1,6 +1,9 @@
 <?php
 
 return array(
+
+	'DEBUG'				  => true,
+
 	'DOMAIN'              => 'dynam.ix',
 	'DRIVER_CACHE'        => 'file',//file, memcach
 	'DRIVER_SESSION'      => 'file',//file, memcach
