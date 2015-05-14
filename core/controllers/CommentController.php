@@ -267,7 +267,34 @@ class CommentController extends BaseController {
 
 	public function report($id)
 	{
+		$user = Auth::user();
+		$comment = Comment::find($id);
+		$commentReport = new CommentReport;
+		$commentReport->text = Input::get('message');
+		$commentReport->user_id = $user->id;
+		$commentReport->comment_id = $id;
+
+		//Check auth
+		if ( empty($user) ) {
+			if ( Request::ajax() ) {
+				return Response::json(array('status' => 'warning', 'message' => I18n::get('auth.you_must_be_logged')));
+			} else {
+				return Redirect::to($url)->with('notice_comment', I18n::get('auth.you_must_be_logged'));
+			}
+		}
+
+		if ($user->id == $comment->user_id) {
+			return Response::json(array('status' => $id , 'message' => I18n::get('comment.signal_fail')));
+		}
+
+		if ($commentReport->save()) {
+			return Response::json(array('status' => 'success', 'message' => I18n::get('comment.edit_success')));
+		}
+		return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.edit_fail')));
+
+
 	}
 
 
 }
+

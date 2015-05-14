@@ -118,7 +118,7 @@ var CommentMaster = function () {
 	        	$(comment).contents().remove(".comment-reply");
 	        	$(comment).contents().contents().remove(".comment-user-footer");
 	        	$(comment).contents().contents().contents().remove(".comment-menu");
-	        	$('.comment-modal-content').html(comment);
+	        	$('.comment-modal-content').html(comment); 
 	        });
 
 	     //FORM REPORT

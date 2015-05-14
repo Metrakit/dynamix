@@ -69,6 +69,7 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr'=>'Commentaire modifié avec succès !', 'en'=>''), 'key', 'comment.edit_success');
             I18n::add(array('fr'=>'Le commentaire n\'a pas pu être modifié... Veuillez réessayer !', 'en'=>''), 'key', 'comment.edit_fail');
             I18n::add(array('fr'=>'Méthode de requête non autorisée', 'en'=>''), 'key', 'comment.update_405');
+            I18n::add(array('fr'=>'Impossible de signaler votre commentaire', 'en'=>''), 'key', 'comment.signal_fail');
 
             //vote
             I18n::add(array('fr'=>'+1', 'en'=>''), 'key', 'comment.vote_up');
