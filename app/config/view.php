@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'paths' => array('/theme/default/views'),
+	'paths' => array(base_path() . '/theme/default/views'),
 
 	/*
 	|--------------------------------------------------------------------------
