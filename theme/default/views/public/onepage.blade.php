@@ -34,7 +34,7 @@
 			<{{$dom_node}} {{$in_style?'style="background: url(\''.$parts[$i]->background->url.'\') '.($parts[$i]->background->is_fixed()?' fixed':'').' no-repeat center center '.$parts[$i]->background->background_color.'; background-size: cover;"':''}}>
 				<div class="container">
 
-					{{$in_style?'':'<video autoplay loop class="video'.($parts[$i]->background->is_fixed()?' video-fixed':'').'"><source src="'.URL::to($parts[$i]->background->url).'" type="video/mp4"></video>'}}
+					{{$in_style?'':'<video autoplay loop class="background-video'.($parts[$i]->background->is_fixed()?' background-video-fixed':'').'"><source src="'.URL::to($parts[$i]->background->url).'" type="video/mp4"></video>'}}
 		@endif
 					{{$parts[$i]->render()}}
 				</div>

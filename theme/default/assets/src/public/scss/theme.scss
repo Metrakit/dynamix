@@ -160,7 +160,7 @@ footer{
 }
 
 //Video, relative or fixed
-.video {
+.background-video {
 	position: absolute;
 	min-width: 100%; 
 	min-height: 100%;
@@ -171,12 +171,12 @@ footer{
 	background: black;
 	background-size: cover;
 	z-index: 0;
-	&.video-fixed {
+	&.background-video-fixed {
 		position: fixed;
 
 	}
 }
-.video ~ * {
+.background-video ~ * {
 	z-index:1;
 	position: relative;
 }
