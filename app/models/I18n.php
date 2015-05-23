@@ -159,7 +159,7 @@ class I18n extends Eloquent{
 
         $i18n = self::where('key', $key)->first();
         if (!$i18n) {
-            return false;
+            return $key;
             Log::error('$i18n not found !');
         }
         
