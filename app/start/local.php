@@ -1,5 +1,5 @@
 <?php
-
+/*
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -17,4 +17,4 @@ DB::listen(function($query, $bindings, $time) use($sql_log) {
 	$sql_log->addInfo($query);
 	$sql_log->addInfo('Request executed in ' . $time . ' milliseconds.');
 	
-});
+});*/
