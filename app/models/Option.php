@@ -33,6 +33,29 @@ class Option extends Eloquent
 	}
 
 	/**
+     * Set an option
+     * @param  string $key, string $value
+     * @return boolean
+     */
+	public static function set($key,$value) 
+	{
+		if (self::has($key)) {
+
+			$option = Option::where('key','=',$key)->first();
+			if (!empty($option)) {
+
+				$option->value = $value;
+				if ($option->save()) {
+
+					Cache::forget('options');
+					return true;
+				} 
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Check if the option exist
 	 * @param  string  $key
 	 * @return boolean
