@@ -21,7 +21,6 @@ class I18nSeeder extends Seeder {
         //Auth Constant text
             //General (User)
             I18n::add(array('fr' => 'Connexion', 'en'=>''), 'key', 'auth.connexion');
-            I18n::add(array('fr' => 'Vous devez être connecté !', 'en'=>''), 'key', 'auth.you_must_be_logged');
             I18n::add(array('fr' => "Authorisation refusé !", 'en'=>''), 'key', 'auth.you_are_not_authorized');
             
             //Login
@@ -38,6 +37,7 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr' => 'Compte mis à jour', 'en'=>''), 'key', 'auth.account_updated');
             I18n::add(array('fr' => 'Il y a eu un problème lors de l\'inscription... Veuillez, s\'il vous plaît, recommencer.', 'en'=>''), 'key', 'auth.error_saving');
             I18n::add(array('fr' => 'Votre compte a bien été créé.', 'en'=>''), 'key', 'auth.account_created');
+            I18n::add(array('fr' => 'Cette utilisateur n\'existe pas !.', 'en'=>'User not exist !'), 'key', 'auth.user_unexisted');
             I18n::add(array('fr' => 'Vous devez être connecté !', 'en'=>''), 'key', 'auth.you_must_be_logged');
             I18n::add(array('fr' => 'Rôle utilisateur', 'en'=>''), 'key', 'auth.role');
 
