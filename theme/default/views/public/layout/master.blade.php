@@ -77,11 +77,11 @@
                     , yep: [ '{{ asset("theme/default/public/js/vendor/response.min.js") }}' ]
                   } , {
                     test: window.matchMedia,
-                    nope: ["{{ asset('theme/default/public/js/vendor/media.match.min.js') }}"]
+                    nope: [ "{{ asset('theme/default/public/js/vendor/media.match.min.js') }}" ]
                   } , {
                     test: Modernizr.input.placeholder,
-                    nope: ["{{ asset('theme/default/public/js/vendor/placehold.min.js') }}"],
-                    load: ["{{asset('').Bassets::show('public/js/main.js')}}"],
+                    nope: [ "{{ asset('theme/default/public/js/vendor/placehold.min.js') }}" ],
+                    load: [ "{{asset('').Bassets::show('public/js/main.js')}}" ],
                     
                     @yield('load_supp_js')
                     complete: function(){                                        
