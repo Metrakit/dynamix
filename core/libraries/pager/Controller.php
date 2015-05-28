@@ -42,10 +42,11 @@ class Pager {
         //$view = '<div class="row"><h1 class="page-header">' . $page::getTranslation($page->structure->first()->i18n_title, $locale_id) . '</h1></div>';
 
         //Before content
+        $view = '';
         if ($admin_display) {
             $view = View::make('theme::admin.page.components.page-properties', array('page' => $page, 'locale_id' => $locale_id ))->render();
             $view .= View::make('theme::admin.page.components.page-header-input', array('page' => $page, 'locale_id' => $locale_id ))->render();
-        } else {
+        } else if ($page->show_title) {
             $view = View::make('theme::public.pages.components.page-header-type', array('content' => Eloquentizr::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
         }
         //Content of page
