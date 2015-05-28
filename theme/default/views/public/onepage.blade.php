@@ -13,23 +13,19 @@
 		$parts_count = count($parts->toArray())-1;
 	?>
 
-	@foreach($parts as $part)
+	@foreach($parts as $key => $part)
 		{{--Select DOM Node (header, footer, section for sémantqiue--}}
 		<?php
 			$dom_node = 'section';
+			if($key == 0) {
+				$dom_node = 'header';
+			} else if ($key == $parts_count) {
+				$dom_node = 'footer';
+			}
 		?>
-		@if($part === reset($parts))
-		<?php
-			$dom_node = 'header';
-		?>
-		@elseif($part === end($parts))
-		<?php
-			$dom_node = 'footer';
-		?>
-		@endif
 		
 		{{-- Select background type --}}
-	
+		
 		@if(gettype($part->background) != 'object' || ($part->background->background_type_id == null || $part->background->background_position_id == null)) 
 			<{{$dom_node}}>
 				<div class="container">
