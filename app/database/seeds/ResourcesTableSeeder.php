@@ -118,7 +118,7 @@ array(
     'name' => 'tag',
     'icon' => 'glyphicon glyphicon-tag',
     'model' => 'Tag',
-    'in_admin_ui'   => true,
+    'in_admin_ui'   => false,
     'navigable'     => false,
     'group'     => 1
     ),
