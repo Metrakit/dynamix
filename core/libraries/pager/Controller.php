@@ -56,7 +56,7 @@ class Pager {
         //After content
         //if ($admin_display) {
 
-        return $view.'<div class="clearfix"></div>';;
+        return $view;
     }
 
 
