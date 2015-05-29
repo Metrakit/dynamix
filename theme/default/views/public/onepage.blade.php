@@ -23,7 +23,6 @@
 				$dom_node = 'footer';
 			}
 		?>
-		
 		{{-- Select background type --}}
 		
 		@if(gettype($part->background) != 'object' || ($part->background->background_type_id == null || $part->background->background_position_id == null)) 
@@ -42,13 +41,4 @@
 				</div>
 			</{{$dom_node}}>
 	@endforeach
-
-
-
-	
-
 @stop
-
-
-
-

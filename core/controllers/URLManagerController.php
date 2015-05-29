@@ -30,7 +30,7 @@ class URLManagerController extends BaseController {
                     }
                 }
             }
-            return View::make('theme::public.errors.404');        
+            return View::make('theme::public.errors.404');
         }
     }
     

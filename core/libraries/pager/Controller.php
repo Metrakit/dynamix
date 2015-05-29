@@ -2,6 +2,7 @@
 
 use App;
 use Cache;
+use Config;
 use View;
 use Eloquentizr;
 
@@ -47,7 +48,9 @@ class Pager {
             $view = View::make('theme::admin.page.components.page-properties', array('page' => $page, 'locale_id' => $locale_id ))->render();
             $view .= View::make('theme::admin.page.components.page-header-input', array('page' => $page, 'locale_id' => $locale_id ))->render();
         } else if ($page->show_title) {
-            $view = View::make('theme::public.pages.components.page-header-type', array('content' => Eloquentizr::getTranslation($page->structure->first()->i18n_title, $locale_id)))->render();
+            $view = View::make('theme::public.pages.components.page-header-type', array('content' => Eloquentizr::getTranslation($page->structure->first()->i18n_title, $locale_id), 'ancor' => $page->ancor))->render();
+        } else if (Config::get('core::display.onepage')) {
+            $view = '<a href="#" id="' . $page->ancor . '"></a>';
         }
         //Content of page
         foreach ( $page->blocks as $block ) {
