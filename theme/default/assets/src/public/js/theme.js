@@ -100,7 +100,7 @@ var CommentMaster = function () {
 		});
 
             $('body').on('click', '.button-menu-comment', function (e) {
-                $('.comment-menu-dropdown').css( "display", "inline" );
+                ('.comment-menu-dropdown').css( "display", "inline" );
             });
 
 
@@ -117,12 +117,18 @@ var CommentMaster = function () {
 	        	var comment = $(this).closest(".comment-user").clone();
 	        	$(comment).contents().remove(".comment-reply");
 	        	$(comment).contents().contents().remove(".comment-user-footer");
+	        	$(comment).contents().contents().remove("#modal-comment");
 	        	$(comment).contents().contents().contents().remove(".comment-menu");
 	        	$('.comment-modal-content').html(comment); 
+	        	//parents();
 	        });
 
+	        $('#modal-comment').on('show.bs.modal', function (event) {
+  			var button = $(event.relatedTarget);
+			});
+
 	     //FORM REPORT
-	     $('body').on('submit', '.comment-user form.comment-menu', function (e) {
+	    /* $('body').on('submit', '.comment-user form.comment-menu', function (e) {
 			e.preventDefault();
 				var formReport = $(this).closest('form'),
 				actionReport = formReport.attr('action');
@@ -134,7 +140,7 @@ var CommentMaster = function () {
 				});
 
 			}
-		});
+		});*/
 
 		//FORM DELETE (DELETE MESSAGE)
 		//Listen
