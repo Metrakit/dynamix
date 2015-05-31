@@ -265,9 +265,9 @@ class CommentController extends BaseController {
 		}
 	}
 
-	public function report($id)
+	public function report()
 	{
-		return var_dump($id);
+		$id =  Input::get('comment-report-id');
 		$user = Auth::user();
 		$comment = Comment::find($id);
 		$commentReport = new CommentReport;
@@ -285,17 +285,13 @@ class CommentController extends BaseController {
 		}
 
 		if ($user->id == $comment->user_id) {
-			//return Response::json(array('status' => 'danger' , 'message' => I18n::get('comment.signal_fail')));
-			return Response::json(array('status' => 'danger' , 'message' => I18n::get('what ?!')));
+			return Response::json(array('status' => 'danger' , 'message' => I18n::get('comment.signal_fail')));
 		}
 
 		if ($commentReport->save()) {
-			//return Response::json(array('status' => 'success', 'message' => I18n::get('comment.edit_success')));
 			return Response::json(array('status' => 'success', 'message' =>$id));
 		}
 		return Response::json(array('status' => 'danger', 'message' => I18n::get('comment.edit_fail')));
-
-
 	}
 
 

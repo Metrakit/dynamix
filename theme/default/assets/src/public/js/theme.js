@@ -100,7 +100,7 @@ var CommentMaster = function () {
 		});
 
             $('body').on('click', '.button-menu-comment', function (e) {
-                ('.comment-menu-dropdown').css( "display", "inline" );
+                $('.comment-menu-dropdown').css( "display", "inline" );
             });
 
 
@@ -112,20 +112,22 @@ var CommentMaster = function () {
 	        	$('.comment-menu-dropdown').css( "display", "none" );
 	        });
 
-	        //On déplace le commentaire report dans comment-modal 
+	        /*
+	        * Déplace une copie du commentaire dans la modal de report
+	        */
 	        $('body').on('click','.comment-menu-report', function (e){
 	        	var comment = $(this).closest(".comment-user").clone();
-	        	$(comment).contents().remove(".comment-reply");
+	        	var id = $(comment).attr('data-comment-id');
+
+	        	$(comment).parents().remove(".comment-reply");
 	        	$(comment).contents().contents().remove(".comment-user-footer");
 	        	$(comment).contents().contents().remove("#modal-comment");
 	        	$(comment).contents().contents().contents().remove(".comment-menu");
+	        	$('#comment-report-id').val(id);
 	        	$('.comment-modal-content').html(comment); 
-	        	//parents();
 	        });
 
-	        $('#modal-comment').on('show.bs.modal', function (event) {
-  			var button = $(event.relatedTarget);
-			});
+
 
 	     //FORM REPORT
 	    /* $('body').on('submit', '.comment-user form.comment-menu', function (e) {

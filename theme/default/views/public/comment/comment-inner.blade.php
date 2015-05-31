@@ -45,5 +45,5 @@
 	 &bull; <a class="comment-add-reply" href="#" title="{{{ I18n::get('comment.reply') }}}">{{{ I18n::get('comment.reply') }}}</a>
 </div>
 
-@include('theme::public.comment.comment-modal',array('comment' => $comment))
+
 
