@@ -99,7 +99,7 @@ website : http://www.responsivefilemanager.com
 
 | ![David Lepaux avatar](http://www.gravatar.com/avatar/06bb57add8f45127272699923ee05edc.png?s=60) | ![Jordane Jouffroy avatar](http://www.gravatar.com/avatar/b60c83acfb5649cea0435ba8d6845659.png?s=60)
 |---|---|
-| [Addy Osmani](https://github.com/dlepaux) | [Jordane Jouffroy](https://github.com/Metrakit)
+| [David Lepaux](https://github.com/dlepaux) | [Jordane Jouffroy](https://github.com/Metrakit)
 
 ## License
 
