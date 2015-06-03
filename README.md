@@ -46,6 +46,8 @@ For Test the Former you should user the example Form seeder :
 In the assets folder (dynamix\theme\default\assets) run :
 `npm install`
 `bower install`
+You will must choose between four option, choose the second.
+![](doc/bower-choice.png)
 `grunt` or execute the .bat file (_grunt)
 
 ## Module
