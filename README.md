@@ -95,58 +95,15 @@ github : https://github.com/trippo/ResponsiveFilemanager
 website : http://www.responsivefilemanager.com
 
 
-## TODO List
-    
-    Facade::Pager
-       Ready to use with simple Page / Block
-       Add form (or Slider, Resource) as Block with Polymorphic relation...
-       
-    Facade::Former
-       Concept : use view file width each form input, select and textera possibilities
-       See migration files for more info
-       
-       OR
-       
-       use package !
-       
-    Grunt Config with new :
-       LiveReload, 
-       Separated task (optimisation) for front and back end,
-       Clear
-       Compass
-    
-    Module:Slider
-    Module:Tracker
-    
-    Modify RoleBasedAuthority
-       http://packalyst.com/packages/package/mnshankar/role-based-authority
-       use Resource and Action IN DATABASE not in text... (see Permission Table)
-       
+## Team
 
-## Native functionality
+| ![David Lepaux avatar](http://www.gravatar.com/avatar/06bb57add8f45127272699923ee05edc.png?s=60) | ![Jordane Jouffroy avatar](http://www.gravatar.com/avatar/b60c83acfb5649cea0435ba8d6845659.png?s=60)
+|---|---|
+| [Addy Osmani](https://github.com/dlepaux) | [Jordane Jouffroy](https://github.com/Metrakit)
 
-    Multilingual (119 languages)
-    
-    Page / Block
-       Facade:Pager
-       
-    Form (comming soon)
-       Facade:Former
-       
-    User Management
+## License
 
-## Module 
-
-    Mosaic
-       @ imported to an older project
-       
-    Slider / Slide / Image
-    
-    Gallery / Image
-       @ imported to an older project
-       
-    Blog / Category / Article / Tag
-       Migration & Seed OK
+MIT © DynamixCMS team
        
 ## Credit
 Inspirate by :
