@@ -99,10 +99,13 @@ var CommentMaster = function () {
 
 		});
 
+            $('body').on('click', '.comment-report-cancel', function (e) {
+              	$('#comment-report-message').val('');
+            });
+
             $('body').on('click', '.button-menu-comment', function (e) {
                 $('.comment-menu-dropdown').css( "display", "inline" );
             });
-
 
 	        $('body').on('mouseleave', '.comment-user', function (e) {
 	        	$('.comment-menu-dropdown').css( "display", "none" );
@@ -112,37 +115,35 @@ var CommentMaster = function () {
 	        	$('.comment-menu-dropdown').css( "display", "none" );
 	        });
 
-	        /*
-	        * Déplace une copie du commentaire dans la modal de report
-	        */
+	        
+	        // Déplace une copie du commentaire dans la modal de report
 	        $('body').on('click','.comment-menu-report', function (e){
-	        	var comment = $(this).closest(".comment-user").clone();
+	        	var comment = $(this).closest('.comment-user').clone();
 	        	var id = $(comment).attr('data-comment-id');
-
-	        	$(comment).parents().remove(".comment-reply");
-	        	$(comment).contents().contents().remove(".comment-user-footer");
-	        	$(comment).contents().contents().remove("#modal-comment");
-	        	$(comment).contents().contents().contents().remove(".comment-menu");
+	        	$(comment).contents().remove('.comment-reply');
+	        	$(comment).contents().contents().remove('.comment-user-footer');
+	        	$(comment).contents().contents().remove('#modal-comment');
+	        	$(comment).contents().contents().contents().remove('.comment-menu');
 	        	$('#comment-report-id').val(id);
 	        	$('.comment-modal-content').html(comment); 
 	        });
 
-
-
-	     //FORM REPORT
-	    /* $('body').on('submit', '.comment-user form.comment-menu', function (e) {
-			e.preventDefault();
-				var formReport = $(this).closest('form'),
+	        //FORM REPORT
+	        
+	        $('body').on('submit','.form-comment-report', function (e){
+	        	e.preventDefault();
+	        	var formReport = $(this).closest('form'),
 				actionReport = formReport.attr('action');
-		
 
-	     if (isPosting === null) {
-				isPosting = $.post(actionReport, formReport.serializeArray(), function (data) {
-					isPosting = null;
-				});
+				if (isPosting === null) {
+					isPosting = $.post(actionReport, formReport.serializeArray(), function (data) {
+						isPosting = null;
+					});
+				}
 
-			}
-		});*/
+				$('#modal-comment').modal('hide');
+				$('#comment-report-message').val('');
+	        });
 
 		//FORM DELETE (DELETE MESSAGE)
 		//Listen

@@ -12,6 +12,7 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr'=>'Nouveau','en'=>'new'), 'key', 'button.new');
             I18n::add(array('fr'=>'Créer','en'=>'create'), 'key', 'button.create');
             I18n::add(array('fr'=>'Ajouter','en'=>'add'), 'key', 'button.add');
+            I18n::add(array('fr'=>'Fermer','en'=>'Close'), 'key', 'button.close');
 
         //Reminder
             I18n::add(array('fr'=>"Le mot de passe doit être de six caractères et correspondre à la confirmation.",'en' => ''), 'key', "reminder.password");
@@ -70,6 +71,14 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr'=>'Le commentaire n\'a pas pu être modifié... Veuillez réessayer !', 'en'=>''), 'key', 'comment.edit_fail');
             I18n::add(array('fr'=>'Méthode de requête non autorisée', 'en'=>''), 'key', 'comment.update_405');
             I18n::add(array('fr'=>'Impossible de signaler votre commentaire', 'en'=>''), 'key', 'comment.signal_fail');
+            I18n::add(array('fr'=>'Signaler comme commentaire indésirable', 'en'=>''), 'key', 'comment.report_long');
+            I18n::add(array('fr'=>'Signaler un commentaire', 'en'=>''), 'key', 'comment.report_short');
+            I18n::add(array('fr'=>'Pourquoi signaler ce commentaire ?', 'en'=>''), 'key', 'comment.report_why');
+            I18n::add(array('fr'=>'Signaler', 'en'=>'Report'), 'key', 'comment.report');
+            I18n::add(array('fr'=>'Vous avez déjà signaler ce commentaire', 'en'=>'Report'), 'key', 'comment.already_report');
+
+
+
 
             //vote
             I18n::add(array('fr'=>'+1', 'en'=>''), 'key', 'comment.vote_up');

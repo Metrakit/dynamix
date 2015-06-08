@@ -270,12 +270,18 @@ class CommentController extends BaseController {
 		$id =  Input::get('comment-report-id');
 		$user = Auth::user();
 		$comment = Comment::find($id);
+
+		$testCommentReport = CommentReport::where('user_id', $user->id)->where('comment_id', $id)->first();
+		if ( !empty($testCommentReport) )
+		{
+			return Response::json(array('status' => 'danger' , 'message' => I18n::get('comment.already_report')));
+		} 
+
 		$commentReport = new CommentReport;
 		$commentReport->text = Input::get('message');
 		$commentReport->user_id = $user->id;
 		$commentReport->comment_id = $id;
 
-		//Check auth
 		if ( empty($user) ) {
 			if ( Request::ajax() ) {
 				return Response::json(array('status' => 'warning', 'message' => I18n::get('auth.you_must_be_logged')));
