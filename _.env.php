@@ -2,14 +2,17 @@
 // .env file for production
 return array(
 
-	'DEBUG'				  => false,
-
-	'DOMAIN'              => 'dynam.ix',
 	
+	
+	'DOMAIN'              => 'dynam.ix',
+	// Debug
+	'DEBUG'		      => false,
+	// Cache (file, memcached)
 	'DRIVER_CACHE'        => 'memcached',
+	// Cache (file, memcached)
 	'DRIVER_SESSION'      => 'memcached',
-
-	'KEY'				  => 'Bhvs1QjP1zse2sCwJmWvTndnbg6cjrTT',
+	//App key ! php artisan key:generate
+	'KEY'		      => 'Bhvs1QjP1zse2sCwJmWvTndnbg6cjrTT',
 	
 	
 	// Database Datas
