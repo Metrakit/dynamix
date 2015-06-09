@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'previous' => '&laquo; Anterior',
+    'previous' => '&laquo; A in antis',
 
-    'next'     => 'Próxima &raquo;',
+    'next'     => 'A pustis &raquo;',
 
 ];

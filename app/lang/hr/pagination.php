@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Pagination Language Lines
     |--------------------------------------------------------------------------
@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'previous' => '&laquo; Anterior',
+    'previous' => '&laquo; Prethodna',
 
-    'next'     => 'Próxima &raquo;',
+    'next'     => 'Sljedeća &raquo;',
 
 ];

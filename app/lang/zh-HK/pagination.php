@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'previous' => '&laquo; Anterior',
+    'previous' => '&laquo; 上一頁',
 
-    'next'     => 'Próxima &raquo;',
+    'next'     => '下一頁 &raquo;',
 
 ];
