@@ -490,13 +490,13 @@ class AdminController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function postRerouter($id)
+	public function postRerouter()
 	{
 		// no problem
 		//form for all reroute bim
 
 		// Validate the inputs
-        $validator = Validator::make(Input::all(), Config::get('validator.reroute'));
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.reroute'));
 
         // Check if the form validates with success
         if ($validator->passes())

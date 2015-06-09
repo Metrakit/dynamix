@@ -223,8 +223,9 @@ return array(
 
 
 	//I18n Constant
-	'rerouter_url_referer'		=> '',
-	'rerouter_url_redirect'		=> '',
+	'rerouter' => 'Rerouteur (301)',
+	'rerouter_url_referer'		=> 'URL d\'entrée',
+	'rerouter_url_redirect'		=> 'URL de sortie',
 
 	//I18n Constant
 	'i18n-constant' => 'Expression récurrente',
