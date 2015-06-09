@@ -323,7 +323,7 @@ class AdminController extends BaseController {
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.option.index', $data )->renderSections());
 		} else {
-			return View::make('theme::' .'admin.option.index', $data);
+			return View::make('theme::admin.option.index', $data);
 		}
 	}
 
@@ -568,4 +568,14 @@ class AdminController extends BaseController {
 
       	return Redirect::to('admin/i18n-constant')->with( 'success', Lang::get('admin.i18n_constant_success') );
 	}
+	
+
+	// Clear cache methods
+	public function clearcache () {
+		Cache::flush();
+		return Redirect::back();
+	}
+
+
+
 }

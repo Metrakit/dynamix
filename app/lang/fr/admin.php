@@ -52,6 +52,7 @@ return array(
 
 		//usefull links
 		'usefull_link'  => 'Liens utiles',
+		'dangerous_zone' => 'Zone dangeureuse',
 
 	
 	//Media
