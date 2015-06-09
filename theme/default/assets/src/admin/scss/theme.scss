@@ -28,6 +28,9 @@
 	@include border-bottom-right-radius(0px);
 	@include border-bottom-left-radius(0px);
 }
+.btn-submit-external{
+	position:absolute;
+}
 
 @include keyframes(loader) {
   0% {
