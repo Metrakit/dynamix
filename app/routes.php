@@ -205,6 +205,28 @@ Route::group(array('prefix' => $locale), function()
 
 /*
 |--------------------------------------------------------------------------
+| Rerouter
+|--------------------------------------------------------------------------
+|
+|	Catch 404 try to match and redirect if finded :)
+|
+*/
+App::missing(function($exception)
+{
+  Log::info('Error 404 : '. Request::url());
+  $path = Request::path();
+  if($_SERVER['QUERY_STRING']) {
+    $path .= '?' . $_SERVER['QUERY_STRING'];
+  }
+  $route = Rerouter::get($path);
+  if(!empty($route)){
+    return Redirect::to($route, 301);
+  } else {
+    return Response::view('errors.missing', array(), 404);
+  }
+});
+/*
+|--------------------------------------------------------------------------
 | Composer before errors
 |--------------------------------------------------------------------------
 |
@@ -216,6 +238,7 @@ Route::group(array('prefix' => $locale), function()
 {
 	$view->with( 'isError' , true );
 });*/
+
 /*
 |--------------------------------------------------------------------------
 | Error...
