@@ -30,6 +30,11 @@
 }
 .btn-submit-external{
 	position:absolute;
+	left: 100%;
+  	white-space: nowrap;
+}
+fieldset {
+	position:relative;
 }
 
 @include keyframes(loader) {

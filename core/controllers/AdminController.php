@@ -556,7 +556,16 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		$data['i18nConstants'] = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
+		$i18nConstants = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
+
+		$data['i18nConstantGroups'] = array();
+		foreach ($i18nConstants as $i18n) {
+			if (strpos($i18n->key, '.') !== false) {
+				//Si on trouve un point, on explode
+				$group = explode(".", $i18n->key);
+				$data['i18nConstantGroups'][$group[0]][] = $i18n;
+			}
+		}
 
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.i18n-constant.index', $data )->renderSections());

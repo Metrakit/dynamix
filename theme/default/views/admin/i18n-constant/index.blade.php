@@ -32,15 +32,18 @@
         @for( $locales = Locale::where('enable','=',1)->get(), $countLocales = count($locales), $i = 0 ; $i < $countLocales ; $i++ )
             <div role="tabpanel" class="tab-pane fade{{($i==0?' in active':'')}}" id="tab-{{$locales[$i]->id}}" data-locale-id="{{$locales[$i]->id}}">
                 
+                @foreach( $i18nConstantGroups as $groupName => $i18nConstants )
+                <h2>{{I18n::get($groupName)}}</h2>
                 @foreach( $i18nConstants as $i18n )
                 <div class="form-group {{{ $errors->has('key_'.$i18n->key.'_'.$locales[$i]->id) ? 'error' : '' }}}">
-                    <label class="col-md-2 control-label" for="key_{{$i18n->key}}_{{$locales[$i]->id}}">{{{ Lang::get($i18n->lang_key) }}}</label>
+                    <label class="col-md-2 control-label" for="key_{{$i18n->key}}_{{$locales[$i]->id}}">{{{ I18n::get($i18n->key) }}}</label>
                     <div class="col-md-10 col-lg-8">
                         <input class="form-control" type="text" name="key_{{$i18n->key}}_{{$locales[$i]->id}}" id="key_{{$i18n->key}}_{{$locales[$i]->id}}" value="{{{ Input::old($i18n->key . '_' . $locales[$i]->id, $i18n->getLocale($locales[$i]->id) ) }}}" />
                         {{ $errors->first('key_'.$i18n->key.'_'.$locales[$i]->id, '<div class="alert alert-danger">:message</div>') }}
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                @endforeach
                 @endforeach
 
             </div>
