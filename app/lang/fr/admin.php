@@ -226,6 +226,13 @@ return array(
 	'rerouter' => 'Rerouteur (301)',
 	'rerouter_url_referer'		=> 'URL d\'entrée',
 	'rerouter_url_redirect'		=> 'URL de sortie',
+	'rerouter_store_success' 	=> 'La redirection a été enregistrée avec succès !',
+	'rerouter_store_error' 		=> 'La redirection n\'a pas été enregistré...',
+	'rerouter_update_success' 	=> 'La redirection a été modifiée avec succès !',
+	'rerouter_update_error' 	=> 'La redirection n\'a pas été modifié...',
+	'reroute_dont_exist' 		=> 'La redirection n\'existe pas !',
+	'rerouter_destroy_success' 	=> 'La redirection a été supprimée avec succès !',
+	'rerouter_destroy_error' 	=> 'La redirection n\'a pas été supprimée...',
 
 	//I18n Constant
 	'i18n-constant' => 'Expression récurrente',

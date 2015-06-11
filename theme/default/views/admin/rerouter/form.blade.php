@@ -1,4 +1,8 @@
-<form class="form-horizontal" method="post" action="{{ URL::route('rerouter') }}"  autocomplete="off">
+@if(isset($reroute))
+<form class="form-horizontal" method="post" action="{{ URL::route('rerouter-update', $reroute->id) }}"  autocomplete="off">
+@else
+<form class="form-horizontal" method="post" action="{{ URL::route('rerouter-store') }}"  autocomplete="off">
+@endif
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
     <fieldset>
         <!-- url_referer -->
@@ -20,7 +24,12 @@
         <!-- ./ url_redirect -->
 
         <!-- Form Actions -->
-        <button type="submit" class="btn btn-primary btn-submit-external"><span class="glyphicon glyphicon-{{$glyphicon}}"></span></button>
+        <div class="btn-submit-external">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-{{$glyphicon}}"></span></button>
+            @if(isset($reroute))
+                <a href="{{URL::route('rerouter-delete', $reroute->id)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+            @endif
+        </div>
         <!-- ./ form actions -->
     </div>
     <div class="clearfix">

@@ -13,4 +13,14 @@ class Rerouter extends Eloquent
 	public static $blockContentView = 'public.pages.page';
 	public static $langNav = 'admin.nav_page';
 
+
+	public static function allCached () {
+		if (Cache::has('DB_Reroutes')) {
+			return Cache::get('DB_Reroutes');
+		}
+		$reroutes = self::all();
+		Cache::forever('DB_Reroutes', $reroutes);
+		return $reroutes;
+	}
+
 }
