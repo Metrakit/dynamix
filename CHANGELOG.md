@@ -1,9 +1,13 @@
 # CHANGELOGDB
 
 v1.0.0.0000
-First digit  : Laravel Version (4.2)
+
+First digit  : Laravel Version (current 4.2)
+
 Second digit : DB version
+
 Third digit  : Feature
+
 Fourth digit : BugFix
 
 ## v1.0.0.0000

@@ -36,7 +36,9 @@ class OnePage extends Eloquent {
 	 *
 	 * @var string
 	 */
-
+	public static function getNavs() {
+		return 'todo';
+	}
 	public static function getClassName () {
 		return get_class();
 	}

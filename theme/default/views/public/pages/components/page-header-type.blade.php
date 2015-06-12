@@ -1,1 +1,1 @@
-<h1 class="page-header">{{ isset($content)?$content:'' }}</h1>
+<h1 class="page-header" id="{{$ancor}}">{{ isset($content)?$content:'' }}</h1>

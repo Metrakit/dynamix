@@ -40,6 +40,16 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> {{{ Lang::get('admin.dangerous_zone') }}}
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-danger remove" href="{{ URL::route('admin-clearcache') }}">Vider le cache</a>
+            </div>
+        </div>
+    </div>
     <div class="clearfix"></div>
     
 @stop

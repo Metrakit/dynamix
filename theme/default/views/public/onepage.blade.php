@@ -8,41 +8,37 @@
 
 @section('container')
 	@include('theme::public.session.session-message')
-	@for($i = 0, $parts = $onepage->parts, $parts_count = count($parts->count()) ; $i <= $parts_count ; $i++)
+	<?php
+		$parts = $onepage->parts()->get();
+		$parts_count = count($parts->toArray())-1;
+	?>
+
+	@foreach($parts as $key => $part)
 		{{--Select DOM Node (header, footer, section for sémantqiue--}}
 		<?php
 			$dom_node = 'section';
+			if($key == 0) {
+				$dom_node = 'header';
+			} else if ($key == $parts_count) {
+				$dom_node = 'footer';
+			}
 		?>
-		@if($i == 0)
-		<?php
-			$dom_node = 'header';
-		?>
-		@elseif($i = $parts_count)
-		<?php
-			$dom_node = 'footer';
-		?>
-		@endif
-		
 		{{-- Select background type --}}
-		@if($parts[$i]->background->background_type_id == null || $parts[$i]->background->background_position_id == null) 
+		
+		@if(gettype($part->background) != 'object' || ($part->background->background_type_id == null || $part->background->background_position_id == null)) 
 			<{{$dom_node}}>
 				<div class="container">
 		@else
 			<?php
-				$in_style = $parts[$i]->background->is_image();//boolean
+				$in_style = $part->background->is_image();//boolean
 			?>
-			<{{$dom_node}} {{$in_style?'style="background: url(\''.$parts[$i]->background->url.'\') '.($parts[$i]->background->is_fixed()?' fixed':'').' no-repeat center center '.$parts[$i]->background->background_color.'; background-size: cover;"':''}}>
+			<{{$dom_node}} {{$in_style?'style="background: url(\''.$part->background->url.'\') '.($part->background->is_fixed()?' fixed':'').' no-repeat center center '.$part->background->background_color.'; background-size: cover;"':''}}>
 				<div class="container">
 
-					{{$in_style?'':'<video autoplay loop class="background-video'.($parts[$i]->background->is_fixed()?' background-video-fixed':'').'"><source src="'.URL::to($parts[$i]->background->url).'" type="video/mp4"></video>'}}
+					{{$in_style?'':'<video autoplay loop class="background-video'.($part->background->is_fixed()?' background-video-fixed':'').'"><source src="'.URL::to($part->background->url).'" type="video/mp4"></video>'}}
 		@endif
-					{{$parts[$i]->render()}}
+					{{$part->render()}}
 				</div>
 			</{{$dom_node}}>
-	@endfor
-
+	@endforeach
 @stop
-
-
-
-

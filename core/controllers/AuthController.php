@@ -49,7 +49,7 @@ class AuthController extends BaseController {
 
 				return Redirect::intended('index_admin');
 			} else {
-				$user = AuthUser::where('email','=', Input::get( 'email' ) )->first();
+				$user = AuthUser::where('email','=', Input::get( 'email' ) )->max('order')->first();
 
 				if ( empty($user) || !isset($user) ) {
 					return Redirect::route('admin.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
@@ -99,7 +99,7 @@ class AuthController extends BaseController {
 
 				return Redirect::intended('/');
 			} else {
-				$user = AuthUser::where('email','=', Input::get( 'email' ) )->first();
+				$user = AuthUser::where('email','=', Input::get( 'email' ) )->max('order')->first();
 
 				if ( empty($user) || !isset($user) ) {
 					return Redirect::route('public.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));

@@ -114,7 +114,9 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 
 	//Reroute
 		Route::get('/rerouter', array('uses' => 'AdminController@getRerouter'));
-		Route::post('/rerouter', 'AdminController@postReroute');
+		Route::post('/rerouter', array('as' => 'rerouter-store', 'uses' => 'AdminController@storeRerouter'));
+		Route::post('/rerouter/{id}', array('as' => 'rerouter-update', 'uses' => 'AdminController@updateRerouter'));
+		Route::get('/rerouter/{id}/delete', array('as' => 'rerouter-delete', 'uses' => 'AdminController@destroyRerouter'));
 
 	//I18nConstant
 		Route::get('/i18n-constant', 'AdminController@getI18nConstant');
@@ -135,6 +137,10 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	Route::get('/formr/{formId}/input/add', array('as' => 'add-input', 'uses' => 'InputController@add'));
 	Route::get('/formr/{formId}/input/{inputId}/{move}', array('as' => 'move-input', 'uses' => 'InputController@move'));
 	//Route::get('/form/{formId}/create-input', array('as'=>'create-input', 'uses'=>'InputController@create'));
+
+
+	// Clear route
+	Route::get('/clearcache', array('as' => 'admin-clearcache', 'uses' => 'AdminController@clearcache'));
 });
 
 /*
@@ -200,6 +206,28 @@ Route::group(array('prefix' => $locale), function()
 
 /*
 |--------------------------------------------------------------------------
+| Rerouter
+|--------------------------------------------------------------------------
+|
+|	Catch 404 try to match and redirect if finded :)
+|
+*/
+App::missing(function($exception)
+{
+  Log::info('Error 404 : '. Request::url());
+  $path = Request::path();
+  if($_SERVER['QUERY_STRING']) {
+    $path .= '?' . $_SERVER['QUERY_STRING'];
+  }
+  $route = Rerouter::get($path);
+  if(!empty($route)){
+    return Redirect::to($route, 301);
+  } else {
+    return Response::view('errors.missing', array(), 404);
+  }
+});
+/*
+|--------------------------------------------------------------------------
 | Composer before errors
 |--------------------------------------------------------------------------
 |
@@ -211,6 +239,7 @@ Route::group(array('prefix' => $locale), function()
 {
 	$view->with( 'isError' , true );
 });*/
+
 /*
 |--------------------------------------------------------------------------
 | Error...

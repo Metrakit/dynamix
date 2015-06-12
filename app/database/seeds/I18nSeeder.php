@@ -5,6 +5,7 @@ class I18nSeeder extends Seeder {
     public function run()
     {
         //Button Constant text
+            I18n::add(array('fr'=>'Boutons','en'=>'Buttons'), 'key', 'button');
             I18n::add(array('fr'=>'Sauvegarder','en'=>'save'), 'key', 'button.save');
             I18n::add(array('fr'=>'Éditer','en'=>'edit'), 'key', 'button.edit');
             I18n::add(array('fr'=>'Mettre à jour','en'=>'update'), 'key', 'button.update');
@@ -15,12 +16,14 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr'=>'Fermer','en'=>'Close'), 'key', 'button.close');
 
         //Reminder
+            I18n::add(array('fr'=>"Remémoration",'en' => 'Reminder'), 'key', "reminder");
             I18n::add(array('fr'=>"Le mot de passe doit être de six caractères et correspondre à la confirmation.",'en' => ''), 'key', "reminder.password");
             I18n::add(array('fr'=>"Nous ne trouvons pas d'utilisateur avec cette adresse e-mail.",'en' => ''), 'key', "reminder.user");
             I18n::add(array('fr'=>"Ce reset token est invalide.",'en' => ''), 'key', "reminder.token");
 
         //Auth Constant text
             //General (User)
+            I18n::add(array('fr' => 'Authentification', 'en'=>'Authentification'), 'key', 'auth');
             I18n::add(array('fr' => 'Connexion', 'en'=>''), 'key', 'auth.connexion');
             I18n::add(array('fr' => "Authorisation refusé !", 'en'=>''), 'key', 'auth.you_are_not_authorized');
             
@@ -52,6 +55,7 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr' => 'Votre nouveau mot de passe a été enregistré avec succès !', 'en'=>''), 'key', 'auth.your_password_succes_save');
 
         //Comment Constant text
+            I18n::add(array('fr'=>'Module commentraire', 'en'=>'Comment Module'), 'key', 'comment');
             I18n::add(array('fr'=>'commentaire', 'en'=>''), 'key', 'comment.comment');
             I18n::add(array('fr'=>'commentaires', 'en'=>''), 'key', 'comment.comments');
             I18n::add(array('fr'=>'Laissez un message', 'en'=>''), 'key', 'comment.placeHolder');

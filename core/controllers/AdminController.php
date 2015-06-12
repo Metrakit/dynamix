@@ -323,7 +323,7 @@ class AdminController extends BaseController {
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.option.index', $data )->renderSections());
 		} else {
-			return View::make('theme::' .'admin.option.index', $data);
+			return View::make('theme::admin.option.index', $data);
 		}
 	}
 
@@ -468,8 +468,7 @@ class AdminController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function getRerouter()
-	{
+	public function getRerouter() {
 		//User
 		$data['user'] = Auth::user();
 
@@ -490,36 +489,63 @@ class AdminController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function postRerouter($id)
-	{
-		// no problem
-		//form for all reroute bim
-
+	public function storeRerouter() {
 		// Validate the inputs
-        $validator = Validator::make(Input::all(), Config::get('validator.reroute'));
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.reroute'));
 
         // Check if the form validates with success
         if ($validator->passes())
         {
-        	//Update the reroute
-        	//
+        	$reroute = new Rerouter;
+        	$reroute->url_referer = Input::get('url_referer');
+        	$reroute->url_redirect = Input::get('url_redirect');
 
         	//if no error when save
-        	if($option->save()) {
-        		Cache::forget('DB_Option'); 
-
-        		//track user
-        		parent::track('update','Option',null);  
-
-          		return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.option_success') );
-
+        	if($reroute->save()) {
+        		Cache::forget('DB_Reroutes'); 
+          		return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.rerouter_store_success') );
         	} else {
-	        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.option_error') );
+	        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.rerouter_store_error') );
 	        }
 	    }
 	    
 		// Show the page
 		return Redirect::to('/admin/rerouter')->withInput()->withErrors($validator);
+	}
+	public function updateRerouter($id) {
+		// Validate the inputs
+        $validator = Validator::make(Input::all(), Config::get('validator.admin.reroute'));
+
+        // Check if the form validates with success
+        if ($validator->passes())
+        {
+        	$reroute = Rerouter::find($id);
+        	if (empty($reroute)) return Redirect::to('admin/rerouter')->with( 'notice', Lang::get('admin.reroute_dont_exist') );
+        	$reroute->url_referer = Input::get('url_referer');
+        	$reroute->url_redirect = Input::get('url_redirect');
+
+        	//if no error when save
+        	if($reroute->save()) {
+        		Cache::forget('DB_Reroutes'); 
+          		return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.rerouter_update_success') );
+        	} else {
+	        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.rerouter_update_error') );
+	        }
+	    }
+	    
+		// Show the page
+		return Redirect::to('/admin/rerouter')->withInput()->withErrors($validator);
+	}
+	public function destroyRerouter($id) {
+		$reroute = Rerouter::find($id);
+        if (empty($reroute)) return Redirect::to('admin/rerouter')->with( 'notice', Lang::get('admin.reroute_dont_exist') );
+
+        if ($reroute->delete()) {
+        	Cache::forget('DB_Reroutes');
+        	return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.rerouter_destroy_success') );
+    	} else {
+        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.rerouter_destroy_error') );
+        }
 	}
 
 
@@ -530,7 +556,16 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		$data['i18nConstants'] = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
+		$i18nConstants = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
+
+		$data['i18nConstantGroups'] = array();
+		foreach ($i18nConstants as $i18n) {
+			if (strpos($i18n->key, '.') !== false) {
+				//Si on trouve un point, on explode
+				$group = explode(".", $i18n->key);
+				$data['i18nConstantGroups'][$group[0]][] = $i18n;
+			}
+		}
 
 		if (Request::ajax()) {
 			return Response::json(View::make('theme::' . 'admin.i18n-constant.index', $data )->renderSections());
@@ -568,4 +603,14 @@ class AdminController extends BaseController {
 
       	return Redirect::to('admin/i18n-constant')->with( 'success', Lang::get('admin.i18n_constant_success') );
 	}
+	
+
+	// Clear cache methods
+	public function clearcache () {
+		Cache::flush();
+		return Redirect::back();
+	}
+
+
+
 }

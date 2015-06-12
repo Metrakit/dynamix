@@ -20,6 +20,7 @@ class CreateAuthsTable extends Migration {
 
 			$table->string('email');
 			$table->string('password');
+			$table->integer('order')->unsigned()->default(1);
 			$table->string('remember_token')->nullable();
 
 			$table->timestamps();

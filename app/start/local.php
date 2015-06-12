@@ -1,4 +1,9 @@
 <?php
+
+if (!Schema::hasTable('migrations')) {
+    return 'You must migrate ! Make php artisan migrate';
+}
+
 /*
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;

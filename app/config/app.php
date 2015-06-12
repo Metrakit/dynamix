@@ -111,6 +111,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		
+		// ClockWork
+		'Clockwork\Support\Laravel\ClockworkServiceProvider',
+		
 		// Dynamix Core 
 		'Dynamix\Core\CoreServiceProvider',
 
