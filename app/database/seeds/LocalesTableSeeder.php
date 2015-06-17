@@ -19,7 +19,7 @@ class LocalesTableSeeder extends Seeder {
                 'on_admin'      => 0
             ),
 
-            /*array(
+            array(
                 'id'            => 'ca',
                 'name_en'       => 'Catalan',
                 'name_locale'   => 'Català',
@@ -30,7 +30,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-*/
+
             array(
                 'id'            => 'fr',
                 'name_en'       => 'French',
@@ -55,7 +55,7 @@ class LocalesTableSeeder extends Seeder {
                 'on_admin'      => 1
             ),
 
-/*            array(
+            array(
                 'id'            => 'sv',
                 'name_en'       => 'Swedish',
                 'name_locale'   => 'Svenska',
@@ -65,7 +65,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
             array(
                 'id'            => 'it',
@@ -114,7 +114,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-/*
+
             array(
                 'id'            => 'nl',
                 'name_en'       => 'Dutch',
@@ -137,9 +137,9 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
-
-           /* array(
+            ),
+/*
+            array(
                 'id'            => 'eo',
                 'name_en'       => 'Esperanto',
                 'name_locale'   => 'Esperanto',
@@ -199,7 +199,7 @@ class LocalesTableSeeder extends Seeder {
                 'on_admin'      => 0
             ),*/
 
-/*            array(
+            array(
                 'id'            => 'da',
                 'name_en'       => 'Danish',
                 'name_locale'   => 'Dansk',
@@ -245,7 +245,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
 /*            array(
                 'id'            => 'la',
@@ -305,7 +305,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'km',
@@ -318,7 +318,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+/*
             array(
                 'id'            => 'rw',
                 'name_en'       => 'Kinyarwanda',
@@ -379,7 +379,7 @@ class LocalesTableSeeder extends Seeder {
                 'on_admin'      => 0
             ),*/
 
-/*            array(
+            array(
                 'id'            => 'ja',
                 'name_en'       => 'Japanese',
                 'name_locale'   => '日本語',
@@ -402,7 +402,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+/*
             array(
                 'id'            => 'yo',
                 'name_en'       => 'Yoruba',
@@ -451,7 +451,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+*/
             array(
                 'id'            => 'vi',
                 'name_en'       => 'Vietnamese',
@@ -462,8 +462,8 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
-/*            array(
+            ),
+            array(
                 'id'            => 'el',
                 'name_en'       => 'Greek',
                 'name_locale'   => 'Ελληνικά',
@@ -473,7 +473,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
 /*            array(
                 'id'            => 'om',
@@ -487,7 +487,7 @@ class LocalesTableSeeder extends Seeder {
                 'on_admin'      => 0
             ),*/
 
-/*            array(
+            array(
                 'id'            => 'tr',
                 'name_en'       => 'Turkish',
                 'name_locale'   => 'Türkçe',
@@ -509,7 +509,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
 /*            array(
                 'id'            => 'am',
@@ -545,7 +545,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+*/
             array(
                 'id'            => 'lt',
                 'name_en'       => 'Lithuanian',
@@ -557,7 +557,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-*/
+
 /*            array(
                 'id'            => 'jv',
                 'name_en'       => 'Javanese',
@@ -569,7 +569,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),*/
-/*
+
             array(
                 'id'            => 'hr',
                 'name_en'       => 'Croatian',
@@ -592,7 +592,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
 /*            array(
                 'id'            => 'bh',
@@ -616,7 +616,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'cy',
@@ -641,7 +641,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+/*
             array(
                 'id'            => 'sw',
                 'name_en'       => 'Swahili',
@@ -724,7 +724,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'ro',
@@ -736,7 +736,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
 /*            array(
                 'id'            => 'kn',
@@ -772,7 +772,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'hu',
@@ -796,7 +796,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+/*
             array(
                 'id'            => 'ar',
                 'name_en'       => 'Arabic',
@@ -868,7 +868,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'mk',
@@ -881,7 +881,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+/*
             array(
                 'id'            => 'st',
                 'name_en'       => 'Sesotho',
@@ -906,7 +906,7 @@ class LocalesTableSeeder extends Seeder {
                 'on_admin'      => 0
             ),
 */
-          /*  array(
+            array(
                 'id'            => 'sk',
                 'name_en'       => 'Slovak',
                 'name_locale'   => 'Slovenči',
@@ -917,7 +917,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+/*
             array(
                 'id'            => 'mo',
                 'name_en'       => 'Moldovan',
@@ -929,7 +929,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-
+*/
             array(
                 'id'            => 'sq',
                 'name_en'       => 'Albanian',
@@ -941,7 +941,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-*/
+
 /*            array(
                 'id'            => 'ab',
                 'name_en'       => 'Abkhazian',
@@ -1036,7 +1036,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'fa',
@@ -1048,7 +1048,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),/*
 
             array(
                 'id'            => 'ceb',
@@ -1072,7 +1072,7 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),
+            ),*/
 
             array(
                 'id'            => 'is',
@@ -1084,9 +1084,9 @@ class LocalesTableSeeder extends Seeder {
                 'is_publish'    => false,
                 'enable'        => 0,
                 'on_admin'      => 0
-            ),*/
+            ),
 
-/*            array(
+            array(
                 'id'            => 'bg',
                 'name_en'       => 'Bulgarian',
                 'name_locale'   => 'Български',
@@ -1097,7 +1097,7 @@ class LocalesTableSeeder extends Seeder {
                 'enable'        => 0,
                 'on_admin'      => 0
             ),
-*/
+
 /*            array(
                 'id'            => 'te',
                 'name_en'       => 'Telugu',
