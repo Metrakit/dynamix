@@ -1,4 +1,4 @@
-<div class="page-block-remove">
+<div class="page-block-create">
 <span class="page-lineblock-remove-btn"></span>
 <span class="page-lineblock-confirm-remove-btn"></span>
 <span class="page-lineblock-edit-btn"></span>

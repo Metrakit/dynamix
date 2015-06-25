@@ -179,7 +179,7 @@ body {
 .margin-bottom-10 {
 	margin-bottom:10px !important;
 }
-.page-block-remove {
+.page-block-create {
 	position: relative;
 	margin-bottom:10px;
 	border:2px solid white;
@@ -210,8 +210,10 @@ body {
 	> form {
 		margin-bottom:0px;
 	}
-
-	.page-lineblock-confirm-remove-btn, .page-lineblock-remove-btn, .page-lineblock-edit-btn, .page-lineblock-order-up-btn, .page-lineblock-order-down-btn {
+	.page-lineblock-edit-btn, .page-lineblock-order-up-btn, .page-lineblock-order-down-btn {
+		display:none;
+	}
+	.page-lineblock-confirm-remove-btn, .page-lineblock-remove-btn {
 		position:absolute;
 		display: inline-block;
 		z-index: 2;
