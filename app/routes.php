@@ -169,18 +169,6 @@ Route::post('password/reset/{token}', array('uses' => 'RemindersController@postR
 */
 Route::post('formr/{modelId?}', array('as' => 'formr', 'uses' => 'FormerController@storeResult'));
 
-/*
-|--------------------------------------------------------------------------
-| Comment
-|--------------------------------------------------------------------------
-|
-*/
-Route::post('comment', array('as' => 'comment', 'uses' => 'CommentController@store'));
-Route::resource('comment','CommentController', array('only' => array('destroy','update')) );
-Route::post('comment/{id}/vote/{bool}', array('as' => 'comment-vote', 'uses' => 'CommentController@vote'));
-Route::post('comment/report', array('as' =>'comment.report', 'uses' => 'CommentController@report'));
-
-
 
 
 
@@ -199,28 +187,7 @@ Route::group(array('prefix' => $locale), function()
 });
 
 
-/*
-|--------------------------------------------------------------------------
-| Rerouter
-|--------------------------------------------------------------------------
-|
-|	Catch 404 try to match and redirect if finded :)
-|
-*/
-App::missing(function($exception)
-{
-  Log::info('Error 404 : '. Request::url());
-  $path = Request::path();
-  if($_SERVER['QUERY_STRING']) {
-    $path .= '?' . $_SERVER['QUERY_STRING'];
-  }
-  $route = Rerouter::get($path);
-  if(!empty($route)){
-    return Redirect::to($route, 301);
-  } else {
-    return Response::view('errors.missing', array(), 404);
-  }
-});
+
 /*
 |--------------------------------------------------------------------------
 | Composer before errors

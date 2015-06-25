@@ -54,44 +54,7 @@ class I18nSeeder extends Seeder {
             I18n::add(array('fr' => 'Veuillez saisir votre adresse email, nous pourrons ensuite vous envoyer par mail votre nouveau mot de passe !', 'en'=>''), 'key', 'auth.forgot_password_message');
             I18n::add(array('fr' => 'Votre nouveau mot de passe a été enregistré avec succès !', 'en'=>''), 'key', 'auth.your_password_succes_save');
 
-        //Comment Constant text
-            I18n::add(array('fr'=>'Module commentraire', 'en'=>'Comment Module'), 'key', 'comment');
-            I18n::add(array('fr'=>'commentaire', 'en'=>''), 'key', 'comment.comment');
-            I18n::add(array('fr'=>'commentaires', 'en'=>''), 'key', 'comment.comments');
-            I18n::add(array('fr'=>'Laissez un message', 'en'=>''), 'key', 'comment.placeHolder');
-            I18n::add(array('fr'=>'Répondre', 'en'=>''), 'key', 'comment.reply');
-            I18n::add(array('fr'=>'Modifier', 'en'=>''), 'key', 'comment.edit');
-            I18n::add(array('fr'=>'Poster votre message', 'en'=>''), 'key', 'comment.submit');
-            I18n::add(array('fr'=>'Commentaire introuvable !', 'en'=>''), 'key', 'comment.not_find');
-            I18n::add(array('fr'=>'Soyez le premier à laisser votre avis !', 'en'=>''), 'key', 'comment.be_the_first');
-            I18n::add(array('fr'=>'Merci pour votre  message ! :)', 'en'=>''), 'key', 'comment.store_success');
-            I18n::add(array('fr'=>'Message supprimé !', 'en'=>''), 'key', 'comment.destroy_success');
-            I18n::add(array('fr'=>'Le message n\'a pas pu être supprimé... Veuillez réessayer !', 'en'=>''), 'key', 'comment.destroy_fail');
-            I18n::add(array('fr'=>'Vous ne pouvez pas supprimer ce message !', 'en'=>''), 'key', 'comment.destroy_denied');
-            I18n::add(array('fr'=>'La suppression des votes du message n\'ont pas pu être supprimés... Veuillez réessayer !', 'en'=>''), 'key', 'comment.destroy_comment_vote_fail');
-            I18n::add(array('fr'=>'La suppression des réponses du message n\'ont pas pu être supprimées... Veuillez réessayer !', 'en'=>''), 'key', 'comment.destroy_child_fail');
-            I18n::add(array('fr'=>'La suppression des votes des réponses n\'ont pas pu être supprimés... Veuillez réessayer !', 'en'=>''), 'key', 'comment.destroy_child_vote_fail');
-            I18n::add(array('fr'=>'Commentaire modifié avec succès !', 'en'=>''), 'key', 'comment.edit_success');
-            I18n::add(array('fr'=>'Le commentaire n\'a pas pu être modifié... Veuillez réessayer !', 'en'=>''), 'key', 'comment.edit_fail');
-            I18n::add(array('fr'=>'Méthode de requête non autorisée', 'en'=>''), 'key', 'comment.update_405');
-            I18n::add(array('fr'=>'Impossible de signaler votre commentaire', 'en'=>''), 'key', 'comment.signal_fail');
-            I18n::add(array('fr'=>'Signaler comme commentaire indésirable', 'en'=>''), 'key', 'comment.report_long');
-            I18n::add(array('fr'=>'Signaler un commentaire', 'en'=>''), 'key', 'comment.report_short');
-            I18n::add(array('fr'=>'Pourquoi signaler ce commentaire ?', 'en'=>''), 'key', 'comment.report_why');
-            I18n::add(array('fr'=>'Signaler', 'en'=>'Report'), 'key', 'comment.report');
-            I18n::add(array('fr'=>'Vous avez déjà signaler ce commentaire', 'en'=>'Report'), 'key', 'comment.already_report');
-
-
-
-
-            //vote
-            I18n::add(array('fr'=>'+1', 'en'=>''), 'key', 'comment.vote_up');
-            I18n::add(array('fr'=>'-1', 'en'=>''), 'key', 'comment.vote_down');
-            I18n::add(array('fr'=>'Vote annulé !', 'en'=>''), 'key', 'comment.vote_canceled_success');
-            I18n::add(array('fr'=>'Vote inversé !', 'en'=>''), 'key', 'comment.vote_reverse_success');
-            I18n::add(array('fr'=>'Vote enregistré avec succès !', 'en'=>''), 'key', 'comment.vote_success');
-            I18n::add(array('fr'=>'Ce vote n\'a pass pu être enregistré... Veuillez réessayer !', 'en'=>''), 'key', 'comment.vote_fail');
-
+        
 
         //see action in public and controller...
         //lang.comment 
