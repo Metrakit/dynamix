@@ -50,15 +50,6 @@ return array(
 		'option_social_title'		=>	array(  'social_title'		=> 'min:5'),
 		'option_social_description'	=>	array(  'social_description'		=> 'min:5'),
 		
-		//'i18n_constant'=>	array(  'key'		=> 'max:255'),
-	
-	/*
-	|	Reroute
-	|
-	| Only regular (-i18n) rules
-	*/
-		'reroute'		=> 		array(	'url_referer'		=> 'min:10',										
-										'url_redirect'	=> 'url|min:10|max:255'),
 	
 
 	/*

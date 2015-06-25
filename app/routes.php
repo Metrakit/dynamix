@@ -112,12 +112,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
 		Route::post('/option', 'AdminController@postOption');
 
-	//Reroute
-		Route::get('/rerouter', array('uses' => 'AdminController@getRerouter'));
-		Route::post('/rerouter', array('as' => 'rerouter-store', 'uses' => 'AdminController@storeRerouter'));
-		Route::post('/rerouter/{id}', array('as' => 'rerouter-update', 'uses' => 'AdminController@updateRerouter'));
-		Route::get('/rerouter/{id}/delete', array('as' => 'rerouter-delete', 'uses' => 'AdminController@destroyRerouter'));
-
+	
 	//I18nConstant
 		Route::get('/i18n-constant', 'AdminController@getI18nConstant');
 		Route::post('/i18n-constant', 'AdminController@postI18nConstant');
