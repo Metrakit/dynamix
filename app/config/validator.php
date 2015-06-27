@@ -51,31 +51,7 @@ return array(
 		'permission'=> 		array(	'resource_id'	=> 'exists:resources,id',
 									'role_id'		=> 'required|exists:roles,id'),
 		
-	/*
-	|	Page
-	|
-	*/
-		'page'		=> 		array(	'required'			=> 'required|min:2|max:200'),
 
-		'page-edit'		=> 		array(
-										//'is_commentable'		=> 'boolean',
-										//'is_published'			=> 'boolean',
-
-										'i18n_name'				=> 'min:3',
-										'i18n_title'			=> 'required|min:3',
-										'i18n_description'		=> 'max:5000',
-										'i18n_url'				=> 'max:255',
-										'i18n_meta_title'		=> 'max:255',
-										'i18n_meta_description'	=> 'max:255',
-										//'i18n_content'			=> '',
-										'background_type'			=> 'integer',
-										'background_position'		=> 'integer',
-										'background_url'			=> 'min:3|url',
-										//'background_color'			=> '',
-									),
-
-		'page-deletable'		=> 		array(	'required'			=> 'required|min:2|max:200'),
-		'page-no-deletable'		=> 		array(	'required'			=> 'required|min:2|max:200'),
 		
 	/*
 	|	Tag

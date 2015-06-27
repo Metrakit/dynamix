@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('I18nSeeder');
         //$this->call('FileTypesTableSeeder');
         //$this->call('FilesTableSeeder');
-        $this->call('ResponsiveWidthsTableSeeder');
-        $this->call('ResponsiveTriggersTableSeeder');
+        
         //$this->call('SocialsTableSeeder');
         $this->call('ImagesTableSeeder');
 
@@ -41,11 +40,7 @@ class DatabaseSeeder extends Seeder {
         //OnePage
         $this->call('OnePagesTableSeeder');
 
-        //Pages
-        $this->call('PagesTableSeeder');
-        $this->call('BlocksTableSeeder');
-        $this->call('BlockContentsTableSeeder');
-        $this->call('BlockResponsiveTableSeeder');
+        
 
 
 

@@ -79,32 +79,7 @@ array(
                 ),*/
 
             //Page
-array(
-    'name' => 'page',
-    'icon' => 'glyphicon glyphicon-book',
-    'model' => 'Page',
-    'in_admin_ui'   => true,
-    'navigable'     => true,
-    'group'     => 1
-    ),
-array(
-    'name' => 'block',
-    'icon' => 'glyphicon glyphicon-book',
-    'model' => 'Block',
-    'in_admin_ui'   => false,
-    'navigable'     => false,
-    'group' => null
 
-    ),
-array(
-    'name' => 'block_content',
-    'icon' => 'glyphicon glyphicon-book',
-    'model' => 'BlockContent',
-    'in_admin_ui'   => false,
-    'navigable'     => false,
-    'group' => null
-
-    ),
 
             //Conector
 array(
