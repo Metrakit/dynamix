@@ -4,6 +4,10 @@
 - [Requisite](#requisites)
 - [Configuration](#configuration)
 - [Installation](#installations)
+- [Dependencies](#dependencies)
+- [Team](#team)
+- [Licence](#licence)
+- [Credit](#credit)
 
 ## <a name="presentation"></a> Presentation
 Dynamix is open-source CMS for Laravel developer's. The concept is to make a solid core with User/Role, Multilingual and Page/Block system.
@@ -57,17 +61,21 @@ In the assets folder (dynamix\theme\default\assets) run `npm install && bower in
 You will must choose between four option, please choose the second (`2`).
 ![](doc/bower-choice.png)
 
-## Team
+## <a name="dependencies"></a> Dependencies
+ - https://github.com/DynamixCMS/core
+ - https://github.com/DynamixCMS/pager
+
+## <a name="team"></a> Team
 
 | ![David Lepaux avatar](http://www.gravatar.com/avatar/06bb57add8f45127272699923ee05edc.png?s=60) | ![Jordane Jouffroy avatar](http://www.gravatar.com/avatar/b60c83acfb5649cea0435ba8d6845659.png?s=60)
 |---|---|
 | [David Lepaux](https://github.com/dlepaux) | [Jordane Jouffroy](https://github.com/Metrakit)
 
-## License
+## <a name="license"></a> License
 
 MIT © DynamixCMS team
        
-## Credit
+## <a name="credit"></a> Credit
 Inspirate by :
 https://github.com/andrewelkins/Laravel-4-Bootstrap-Starter-Site
     
