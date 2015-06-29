@@ -20,22 +20,6 @@ class CreateOnepageTable extends Migration {
 
 			$table->timestamps();
 		});
-
-		// Override pages TABLE !!!
-		Schema::table('pages', function($table)
-		{
-			$table->boolean('show_title')->default(true);
-
-			$table->integer('order')->unsigned()->nullable();
-			
-			$table->string('ancor')->nullable();
-
-			$table->integer('background_id')->unsigned()->nullable();
-			$table->foreign('background_id')->references('id')->on('backgrounds');
-
-			$table->integer('onepage_id')->unsigned()->nullable();
-			$table->foreign('onepage_id')->references('id')->on('onepage');
-		});
 	}
 
 	/**

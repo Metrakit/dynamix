@@ -198,6 +198,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		// Dynamix packages
+		'Pager'            => 'Dynamix\Pager\PagerFacade',
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
