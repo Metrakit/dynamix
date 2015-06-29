@@ -25,7 +25,7 @@ class URLManagerController extends BaseController {
                     if (!empty($structure)) {
                         if ($structure->structurable_type != 'OnePage') {
                             $page = $structure->structurable;
-                            return View::make('theme::public.pages.page' , compact('page') );
+                            return View::make('pager::public.pages.page' , compact('page') );
                         }
                     }
                 }
