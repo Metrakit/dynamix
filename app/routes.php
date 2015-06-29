@@ -79,13 +79,6 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 		Route::resource('onepage','AdminOnePageController',
 			array('except' => array('show')) );
 	}
-
-	//Page
-	Route::resource('page','AdminPageController');
-		//API - AJAX
-		Route::get('/page/block-type/{name}', 'AdminBlockTypeController@getBlockType');
-		Route::post('/page/block/{template}', 'AdminPageController@getBlockTemplate');
-		Route::post('/page-block', 'AdminPageController@store_block');
 	
 	//Tag
 	Route::resource('tag','AdminTagController',
