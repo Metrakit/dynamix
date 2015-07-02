@@ -22,7 +22,7 @@ class CreateResourcesTable extends Migration {
 			$table->string('model',45)->unique()->nullable();
 			$table->boolean('in_admin_ui');
 			$table->boolean('navigable');
-			$table->integer('group')->nullable()->default(0);
+			$table->integer('admin_navigation_group_id')->nullable()->default(1);
 		});
 	}
 
