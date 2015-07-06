@@ -43,6 +43,9 @@ class DatabaseSeeder extends Seeder {
         // Option
         $this->call('OptionsTableSeeder');
 
+        // ========================
+        //Packages
+        $this->call('PagerDatabaseSeeder');
     }
 
 }
