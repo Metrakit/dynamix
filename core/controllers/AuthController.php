@@ -28,7 +28,7 @@ class AuthController extends BaseController {
 			return Redirect::to('/');
 		}
 
-		return View::make('theme::' .'admin.login.login');
+		return View::make('theme::admin.login.login');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class AuthController extends BaseController {
 	{
         // Check if the form validates with success
 		if ( $this->checkLogin() ){
-
+			
 			// redirect the user back to the intended page
 			// or defaultpage if there isn't one
 			if (Auth::attempt($this->credentials, true)) {
@@ -49,7 +49,7 @@ class AuthController extends BaseController {
 
 				return Redirect::intended('index_admin');
 			} else {
-				$user = AuthUser::where('email','=', Input::get( 'email' ) )->max('order')->first();
+				$user = AuthUser::where('email', Input::get('email'))->first();
 
 				if ( empty($user) || !isset($user) ) {
 					return Redirect::route('admin.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
@@ -78,7 +78,7 @@ class AuthController extends BaseController {
 			return Redirect::to('/');
 		}
 
-		return View::make('theme::' .'public.user.login');
+		return View::make('theme::public.user.login');
 	}
 
 	/**
@@ -90,7 +90,7 @@ class AuthController extends BaseController {
 	{
         // Check if the form validates with success
 		if ( $this->checkLogin() ){
-
+			// return var_dump($this->credentials);
 			// redirect the user back to the intended page
 			// or defaultpage if there isn't one
 			if (Auth::attempt($this->credentials, true)) {
@@ -99,12 +99,11 @@ class AuthController extends BaseController {
 
 				return Redirect::intended('/');
 			} else {
-				$user = AuthUser::where('email','=', Input::get( 'email' ) )->max('order')->first();
+				$user = AuthUser::where('email', Input::get('email'))->first();
 
 				if ( empty($user) || !isset($user) ) {
 					return Redirect::route('public.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
 				}
-
 				return Redirect::route('public.login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
 			}
 
@@ -175,7 +174,7 @@ class AuthController extends BaseController {
 	 */
 	public function choose_your_language()
 	{
-		return View::make('theme::' .'public.i18n.choose-your-language');
+		return View::make('theme::public.i18n.choose-your-language');
 	}
 
 
