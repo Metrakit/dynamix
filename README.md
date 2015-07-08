@@ -41,11 +41,13 @@ Into dynamix root, there is a `_.env.php`. Configure them, and duplicate to `.en
      
 ### <a name="installation-backend"></a> Requisite for backend
 
+*Quick install* `composer install && php artisan migrate && php artisan db:seed`
+
 1. Install composer vendors with `composer install`.
 
-2. Migrate core with `php artisan migrate && php artisan migrate --package="dynamix/pager"`
+2. Migrate core with `php artisan migrate`
 
-3. Seed data with `php artisan db:seed && php artisan db:seed --class=PagerDatabaseSeeder`
+3. Seed data with `php artisan db:seed`
 
 4. Test seeder for Former `php artisan db:seed --class=FullFormSeeder`
 
