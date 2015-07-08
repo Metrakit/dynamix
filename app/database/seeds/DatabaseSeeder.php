@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder {
 
         //Task
         //$this->call('TasksTableSeeder');
+        $this->call('I18nDatabaseSeeder');
 
 
         //Autonomous

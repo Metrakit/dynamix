@@ -462,63 +462,6 @@ class AdminController extends BaseController {
 		// Show the page
 		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
 	}
-
-	
-
-	public function getI18nConstant () {
-		//User
-		$data['user'] = Auth::user();
-
-		//Interface
-		$data['noAriane'] = true;
-
-		$i18nConstants = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
-
-		$data['i18nConstantGroups'] = array();
-		foreach ($i18nConstants as $i18n) {
-			if (strpos($i18n->key, '.') !== false) {
-				//Si on trouve un point, on explode
-				$group = explode(".", $i18n->key);
-				$data['i18nConstantGroups'][$group[0]][] = $i18n;
-			}
-		}
-
-		if (Request::ajax()) {
-			return Response::json(View::make('theme::' . 'admin.i18n-constant.index', $data )->renderSections());
-		} else {
-			return View::make('theme::' .'admin.i18n-constant.index', $data);
-		}
-	}
-	public function postI18nConstant () {
-		//Récupération des inputs
-		//key_[key]_[locale_id] = value
-
-		$i18n_datas = array();
-
-		//build i18n_data for update
-		foreach( Input::all() as $name => $value ) {
-			if (strpos($name, 'key_') !== false) {
-				//subvision of 'key_'
-				$name = mb_substr($name, 4, strlen($name)-4);
-
-				//explode key and locale_id
-				$data = explode("_", $name);
-				$key = $data[0]; // piece1
-				$locale_id = $data[1]; // piece2
-
-				//put data in array i18n_datas				
-				$i18n_datas[$key][$locale_id] = $value;
-			}
-		}
-
-		//update i18ns
-		foreach( $i18n_datas as $key => $value ) {
-			$id = I18n::where('key', $key)->first()->id;
-			I18n::change($id, $value);
-		}
-
-      	return Redirect::to('admin/i18n-constant')->with( 'success', Lang::get('admin.i18n_constant_success') );
-	}
 	
 
 	// Clear cache methods
