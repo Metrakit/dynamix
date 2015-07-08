@@ -54,19 +54,6 @@ class BaseController extends Controller {
 		return $notAllowed;
 	}
 
-	
-
-	/**
-	 * get the page with all langue activated
-	 *
-	 * @return Response
-	 */
-	public function choose_your_language()
-	{
-		return View::make('theme::' .'public.i18n.choose-your-language');
-	}
-
-
 
 	/*protected function setupLayout()
 	{
