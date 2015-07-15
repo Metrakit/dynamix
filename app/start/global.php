@@ -9,21 +9,9 @@
 */
 //Get themes
 if (Schema::hasTable('themes')) {
-	//Get themes from db
-	$themes = Cachr::getCache('DB_ThemeByType');
-
-	//Get themeType
-	$themeType = "public";
-	if ( Request::segment(1) == "admin" ) {
-		$themeType = "admin";
-	}
-
-	//Get themeName
-	$themeName = (isset($themes[$themeType])?$themes[$themeType]:'default');
-
 	//Set namespace with override support
 	View::addNamespace('theme', [
-	    base_path().'/theme/' . $themeName . '/views',
+	    base_path().'/theme/' . Theme::getThemeName() . '/views',
 	    base_path().'/theme/default/views'
 	]);
 }

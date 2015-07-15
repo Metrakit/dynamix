@@ -6,42 +6,45 @@ class DatabaseSeeder extends Seeder {
     {
         Eloquent::unguard();
 
-        // Static Resources
-        $this->call('LocalesTableSeeder');
-        $this->call('ActionsTableSeeder');
-        $this->call('ResourcesTableSeeder');
+            // Static Resources
+            $this->call('LocalesTableSeeder');
+            $this->call('ActionsTableSeeder');
+            $this->call('ResourcesTableSeeder');
 
-        // Dependencies
-        $this->call('I18nDatabaseSeeder');
 
-        // Medias
-        $this->call('ImagesTableSeeder');
+            // ========================
+            // High Dependencies (package)
+            $this->call('I18nDatabaseSeeder');
 
-        // Auth
-        $this->call('AuthsTableSeeder');
-        
-        // Role & Permission
-        $this->call('RolesTableSeeder');
-        $this->call('PermissionsTableSeeder');
-        $this->call('AuthRoleTableSeeder');
 
-        // Tag
-        $this->call('TaggablesTableSeeder');
-        
-        // OnePage (go to pager)
-        $this->call('OnePagesTableSeeder');
+            // Medias
+            $this->call('ImagesTableSeeder');
 
-        // Forms
-        $this->call('ViewsTableSeeder');
+            // Auth
+            $this->call('AuthsTableSeeder');
+            
+            // Role & Permission
+            $this->call('RolesTableSeeder');
+            $this->call('PermissionsTableSeeder');
+            $this->call('AuthRoleTableSeeder');
 
-        // Navigation
-        $this->call('NavigationsTableSeeder');//Need Page module OK
+            // Tag
+            $this->call('TaggablesTableSeeder');
+            
+            // OnePage (go to pager)
+            $this->call('OnePagesTableSeeder');
 
-        // Theme
-        $this->call('ThemesTableSeeder');
+            // Forms
+            $this->call('ViewsTableSeeder');
 
-        // Option
-        $this->call('OptionsTableSeeder');
+            // Navigation
+            $this->call('NavigationsTableSeeder');//Need Page module OK
+
+            // Theme
+            $this->call('ThemesTableSeeder');
+
+            // Option
+            $this->call('OptionsTableSeeder');
 
         // ========================
         //Packages
