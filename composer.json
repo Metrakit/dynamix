@@ -17,8 +17,8 @@
 		"laravel/framework": "4.2.*",
 		"nesbot/Carbon": "*",
 		"phpunit/phpunit": "4.5.*",
-		"dynamix/core": "dev-master",
-		"dynamix/i18n": "dev-master",
+		"dynamix/core": "1.*",
+		"dynamix/i18n": "1.*",
 		"dynamix/pager": "1.*"
 	},
 	"autoload": {

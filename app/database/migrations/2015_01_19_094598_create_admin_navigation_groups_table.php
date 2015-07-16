@@ -12,10 +12,6 @@ class CreateAdminNavigationGroupsTable extends Migration {
 	 */
 	public function up()
 	{
-		Artisan::call('migrate', [
-        	'--package'=>'dynamix/pager'
-        ]);
-
 		// Create the `modules` table
 		Schema::create('admin_navigation_groups', function(Blueprint $table)
 		{
