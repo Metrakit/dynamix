@@ -21,20 +21,11 @@ class Bassets {
 		    echo 'Exception reçue : ',  $e->getMessage(), "\n";
 		}
 
-		//Lecture de la base de données
-		$themesActive = Cachr::getCache('DB_ThemeByType');
-
-		//Identify if is asset admin or public
-		$assetType = 'public';
-		if ( Request::segment(1) == "admin" ) {
-			$assetType = "admin";
-		}
-
-		//Get theme name
-		$themeName = (isset($themesActive[$assetType])?$themesActive[$assetType]:'default');
+		// Get theme name
+		$themeName = Theme::getThemeName();
 		$pathForAssets .= $themeName . '/';
-		//Log::info(print_r($themesActive));
 
+		// Get file content 
 		$fcontent = null;
 	    try{
 			//Lecture du fichier
