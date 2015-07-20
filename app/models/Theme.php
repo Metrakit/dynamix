@@ -10,15 +10,18 @@ class Theme extends Eloquent{
 
 
     public static function getThemeName () {
-		// Set themeType
-		$themeType = "public";
-		if ( Request::segment(1) == "admin" ) $themeType = "admin";
+    	if (Schema::hasTable('themes')) {
+			// Set themeType
+			$themeType = "public";
+			if ( Request::segment(1) == "admin" ) $themeType = "admin";
 
-		// Get Theme name with type
-		$themeName = self::getThemeByType($themeType);
+			// Get Theme name with type
+			$themeName = self::getThemeByType($themeType);
 
-		// Return themeName
-		return $themeName;
+			// Return themeName
+			return $themeName;
+		}
+		return 'default';
     }
 
     public static function getThemeByType($type) {

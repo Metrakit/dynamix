@@ -8,13 +8,13 @@
 |
 */
 //Get themes
-if (Schema::hasTable('themes')) {
-	//Set namespace with override support
-	View::addNamespace('theme', [
-	    base_path().'/theme/' . Theme::getThemeName() . '/views',
-	    base_path().'/theme/default/views'
-	]);
-}
+//Set namespace with override support
+View::addNamespace('theme', [
+    base_path().'/theme/' . Theme::getThemeName() . '/views',
+    base_path().'/theme/default/views'
+]);
+
+
 
 /*
 |--------------------------------------------------------------------------
