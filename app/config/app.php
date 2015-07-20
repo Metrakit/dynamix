@@ -117,6 +117,7 @@ return array(
 		// Dynamix Core 
 		'Dynamix\Core\CoreServiceProvider',
 		'Dynamix\Pager\PagerServiceProvider',
+		'Dynamix\I18n\I18nServiceProvider',
 
 		// Dynamix packages
 		//'Dynamix\Template\TemplateServiceProvider',
