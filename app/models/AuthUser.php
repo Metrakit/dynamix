@@ -111,7 +111,7 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
     public static function add ($email, $password) {
         $auth = new self;
         $auth->email = $email;
-        $auth->password = Crypt::encrypt($password);
+        $auth->password = Hash::make($password);
         if ($auth->save()) {
             return $auth;
         }
