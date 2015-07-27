@@ -12,12 +12,6 @@ class CreateAuthsTable extends Migration {
 	 */
 	public function up()
 	{
-		//First migration file exec
-		//Run i18n before
-		Artisan::call('migrate', [
-        	'--package'=>'dynamix/i18n'
-        ]);
-
 		// Create the `Comments` table
 		Schema::create('auths', function(Blueprint $table)
 		{
