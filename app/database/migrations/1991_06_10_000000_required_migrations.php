@@ -14,9 +14,7 @@ class RequiredMigrations extends Migration {
 	{
 		//First migration file exec
 		//Run i18n before
-		Artisan::call('migrate', [
-        	'--package'=>'dynamix/i18n'
-        ]);
+		Artisan::call('migrate', ['--quiet' => true, '--force' => true, '--package'=>'dynamix/i18n']);
 	}
 
 	/**
