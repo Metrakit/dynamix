@@ -45,7 +45,7 @@ Into dynamix root, there is a `_.env.php`. Configure them, and duplicate to `.en
 
 1. Install composer vendors with `composer install`.
 
-2. Migrate core with `php artisan migrate`
+2. Migrate core with `php artisan migrate --package="dynamix/i18n" && php artisan migrate && php artisan migrate --package="dynamix/pager"`
 
 3. Seed data with `php artisan db:seed`
 
