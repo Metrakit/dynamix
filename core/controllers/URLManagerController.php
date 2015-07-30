@@ -30,7 +30,7 @@ class URLManagerController extends BaseController {
                     }
                 }
             }
-            return View::make('theme::public.errors.404');
+            return App::abort(404);
         }
     }
     
@@ -56,6 +56,8 @@ class URLManagerController extends BaseController {
         }
         return View::make('theme::public.errors.404');        
     }
+
+    
     public function translateAndRedirect( $slug_origin, $locale_new )
     {
         Log::info('translate');

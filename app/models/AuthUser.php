@@ -21,10 +21,6 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Role', 'auth_role', 'auth_id', 'role_id');
     }
 
-    public function articles() {
-        return $this->hasMany('Article');
-    }
-
     public function tracks() {
         return $this->hasMany('Track');
     }
@@ -116,6 +112,13 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
             return $auth;
         }
         return false;
+    }
+
+    public function remove () {
+        foreach ($this->roles() as $role) {
+            if (!$role->delete()) return false;
+        }
+        return true;
     }
 
     public function getAuthorizedNavigations () {
