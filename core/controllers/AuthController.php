@@ -98,20 +98,35 @@ class AuthController extends BaseController {
 				parent::track('loggin', 'Auth', Auth::user()->id);
 
 				return Redirect::intended('/');
+				if (Request::ajax()) {
+					return Response::json(array('statut' => 'success', 'message' => I18n::get('auth.login-success'), 'user_id' => User::getIdByAuth(Auth::user()->id)));
+				} else {
+					return Redirect::route('public.login')->with('error', I18n::get('auth.login-success'))->withInput(Input::except('password'));
+				}
 			} else {
 				$user = AuthUser::where('email', Input::get('email'))->first();
 
 				if ( empty($user) || !isset($user) ) {
-					return Redirect::route('public.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
+					if (Request::ajax()) {
+						return Response::json(array('statut' => 'danger', 'message' => I18n::get('auth.unknow_email')));
+					} else {
+						return Redirect::route('public.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
+					}
 				}
-				return Redirect::route('public.login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
+				if (Request::ajax()) {
+						return Response::json(array('statut' => 'danger', 'message' => I18n::get('auth.incorrect_password')));
+					} else {
+						return Redirect::route('public.login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
+					}
 			}
-
 			$this->user = $user;
 			return Redirect::to('/');
 		}
-
-		return Redirect::route('public.login')->withInput()->withErrors($this->validator);
+		if (Request::ajax()) {
+				return Response::json(array('statut' => 'danger', 'message' => I18n::get('auth.incorrect_password')));
+			} else {
+				return Redirect::route('public.login')->withInput()->withErrors($this->validator);
+			}
 	}
 
 
