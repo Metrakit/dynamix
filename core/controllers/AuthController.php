@@ -97,7 +97,7 @@ class AuthController extends BaseController {
 				//track user
 				parent::track('loggin', 'Auth', Auth::user()->id);
 
-				return Redirect::intended('/');
+				//return Redirect::intended('/');
 				if (Request::ajax()) {
 					return Response::json(array('statut' => 'success', 'message' => I18n::get('auth.login-success'), 'user_id' => User::getIdByAuth(Auth::user()->id)));
 				} else {
