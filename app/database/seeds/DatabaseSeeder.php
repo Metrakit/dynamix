@@ -7,7 +7,6 @@ class DatabaseSeeder extends Seeder {
         Eloquent::unguard();
 
             // Static Resources
-            $this->call('LocalesTableSeeder');
             $this->call('ActionsTableSeeder');
             $this->call('ResourcesTableSeeder');
 
