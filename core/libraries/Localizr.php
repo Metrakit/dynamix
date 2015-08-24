@@ -69,6 +69,7 @@ class Localizr
 				}
 				Log::info('Session::get(\'old_RequestSegment2\')   :'.Session::get('old_RequestSegment2'));
 				Log::info('Request::segment(2)                     :'.Request::segment(2));
+				Log::info('Request::url                     :'.Request::url());
 
 
 
