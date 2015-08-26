@@ -1,107 +1,121 @@
 <?php
+
 /**
- * Localizr - 
+ * Localizr - Detection of locale
  * @version 1.0
  * @author David LEPAUX <d.lepaux@gmail.com>
  */
+
 class Localizr
 {
 	//get the locale id in url, if exist is it setted else default locale is setted
 	public static function initLocale () {
-		$locale = Request::segment(1);
+		$segmentOne = Request::segment(1);
 		$db_is_ok = false;
 		try {
 			$db_is_ok = DB::connection();
 		} catch (Exception $e) {
-			Log::info($e);
+			//Log::info($e);
 		}
-		
-		Log::info('Config::get(\'app.locale\') : ' . Config::get('app.locale'));
-		if ($db_is_ok) {
-			if (Schema::hasTable('locales')){
-				
-				// If only one lang is enable we dont need to set a Locale
-				if (Locale::countEnable() <= 1) {
-					//Log::info('$locale choose for this load : null - Locale::countEnable() <= 1');
-					return null;
-				}
 
-				//Test if segment 1 isnt here, and if is valid
-				if(!in_array($locale, Locale::getFrontEnabled())){					
+		/*Log::info('=================');
+		Log::info('===== DEBUG =====');
+		Log::info('=================');
+		Log::info('');
+		Log::info('//Variables states');
+		Log::info('  Config::get(\'app.locale\') : ' . Config::get('app.locale'));
+		Log::info('       Session::get(\'lang\') : ' . Session::get('lang'));
+		Log::info('             Request::url() : ' . Request::url());
+		Log::info('           App::getLocale() : ' . App::getLocale());
+		Log::info('      Locale::countEnable() : ' . Locale::countEnable());
+		Log::info('                $segmentOne : ' . $segmentOne);
+		Log::info('================= END START');*/
+
+		if ($db_is_ok) {
+			if (Schema::hasTable('locales')) {
+				// If only one lang is enable we dont need to set a Locale
+				if (Locale::countEnable() <= 1) return null;
+
+				//Test if segmentOne isnt in enabledLocale (because the first segment is not an enable locale, the locale is deductably the default)
+				if(!in_array($segmentOne, Locale::getFrontEnabled())){					
+					// Only for root
 					if (Request::is('/') ) {
-						/*if (Session::has('lang')) {
-							if (Config::get('app.locale_default') != Session::get('lang')) {
-								$locale = Session::get('lang');
-							} else {
-								$locale = Config::get('app.locale_default');
-							}
-						} else {*/
-						$locale = Config::get('app.locale_default');
-						//}
-						//Log::info('Config::get(\'app.locale_default\') : '.Config::get('app.locale_default'));
-						//Log::info('$locale : '.$locale);
-						//Log::info('Session::get(\'lang\') : '.Session::get('lang'));
-						Session::put('lang',$locale);
-						App::setLocale($locale);
-						//Log::info('$locale choose for this load : Request::is(\'/\')');
+						$segmentOne = Config::get('app.locale_default');
+						Session::put('lang',$segmentOne);
+						App::setLocale($segmentOne);
 						return null;
-					} 
-					if ( Session::has('lang') ) {//For return visit
-						$locale = Session::get('lang');
+					}
+					
+					// For return visit
+					if ( Session::has('lang') ) {
+						// If locale in Session is same as Default (see up comment to know) Reset auto to default (return null)
+						if (Session::get('lang') != Config::get('app.locale_default')) {
+							Session::put('lang', Config::get('app.locale_default'));
+							App::setLocale(Config::get('app.locale_default'));
+							return null;
+						}
+						$segmentOne = Session::get('lang');
 					} else {
 						//if not, search a lang in server datas and if is valid
 						$browser_lang = mb_substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
 					    // Check the browser request langugae is support in app?
 					    if(!empty($browser_lang) AND in_array($browser_lang, Locale::getFrontEnabled()))
 					    {
-					        $locale = $browser_lang;
+					        $segmentOne = $browser_lang;
 					    }
 					    else
 					    {
 					        // Default Application Setting Language
-					        $locale = Config::get('app.locale');
+					        $segmentOne = Config::get('app.locale');
 					    }	
 						//if no valid lang is in server set default
-						if($locale===null) {
+						if($segmentOne===null) {
 							Session::put('lang',Config::get('app.locale'));
 						}
 					}
 				}
-				Log::info('Session::get(\'old_RequestSegment2\')   :'.Session::get('old_RequestSegment2'));
-				Log::info('Request::segment(2)                     :'.Request::segment(2));
-				Log::info('Request::url                     :'.Request::url());
 
 
 
-				if ( in_array($locale, Locale::getFrontEnabled()) && $locale != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
+				if ( in_array($segmentOne, Locale::getFrontEnabled()) && $segmentOne != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
 					//if it's a manual changement of locale_id in segment 1
 					if ( Request::segment(2) == '' && Session::get('old_RequestSegment2') == '' ) {
-						Session::put('lang', $locale);
+						Session::put('lang', $segmentOne);
 					} else {
 						Log::info('put translate_request');
 						Session::put('translate_request',1);
 					}
 				}
-				Session::put('lang', $locale);
-				App::setLocale($locale);
+				Session::put('lang', $segmentOne);
+				App::setLocale($segmentOne);
 			} else {
-				$locale = null;
+				$segmentOne = null;
 			}
 		} else {
-			$locale = null;
+			$segmentOne = null;
 		}
 
 		//Test if locale is the default locale of app
-		if (Config::get('app.locale_default') == $locale) {
-			Session::put('lang', $locale);
-			App::setLocale($locale);
-			//Log::info('$locale : ' . $locale);
-			//Log::info('$locale choose for this load : null - Config::get(\'app.locale\') == $locale');
+		if (Config::get('app.locale_default') == $segmentOne) {
+			Session::put('lang', $segmentOne);
+			App::setLocale($segmentOne);
 			return null;
 		}
-		//Log::info('$locale choose for this load : '. $locale);
 
-		return $locale;
+		/*Log::info('=================');
+		Log::info('===== DEBUG =====');
+		Log::info('=================');
+		Log::info('');
+		Log::info('//Variables states');
+		Log::info('  Config::get(\'app.locale\') : ' . Config::get('app.locale'));
+		Log::info('       Session::get(\'lang\') : ' . Session::get('lang'));
+		Log::info('             Request::url() : ' . Request::url());
+		Log::info('           App::getLocale() : ' . App::getLocale());
+		Log::info('      Locale::countEnable() : ' . Locale::countEnable());
+		Log::info('                $segmentOne : ' . $segmentOne);
+		Log::info('================= END END');*/
+
+		return $segmentOne;
 	}
 
 
