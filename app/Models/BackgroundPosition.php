@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class BackgroundPosition extends Eloquent{
+class BackgroundPosition extends Model {
 	
 	/**
 	 * Parameters

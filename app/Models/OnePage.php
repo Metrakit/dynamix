@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class OnePage extends Eloquent {
+class OnePage extends Model {
 
 	/**
 	 * Table name

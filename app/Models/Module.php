@@ -5,7 +5,7 @@ namespace Dynamix\Models;
 /**
  * Use to manage simple module for rendering in Block
  */
-class Module extends Eloquent {
+class Module extends Model {
 	/**
 	 * The database table used by the model.
 	 *

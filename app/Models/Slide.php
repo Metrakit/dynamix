@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Slide extends Eloquent {
+class Slide extends Model {
     
 	/**
      * Parameters

@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Video extends Eloquent {
+class Video extends Model {
 	
 	/**
 	 * Parameters

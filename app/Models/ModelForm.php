@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class ModelForm extends Eloquent {
+class ModelForm extends Model {
 	/**
 	 * The database table used by the model.
 	 *

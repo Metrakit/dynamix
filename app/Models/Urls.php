@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Urls extends Eloquent {
+class Urls extends Model {
 	/**
 	 * The database table used by the model.
 	 *

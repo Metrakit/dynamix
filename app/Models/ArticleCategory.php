@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class ArticleCategory extends Eloquent {
+class ArticleCategory extends Model {
 
 	/**
 	 * Parameters

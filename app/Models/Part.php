@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Part extends Eloquent {
+class Part extends Model {
 
 	/**
 	 * Table name

@@ -4,7 +4,7 @@ namespace Dynamix\Models;
 
 use Dynamix\Models\I18n;
 
-class Structure extends Eloquent {
+class Structure extends Model {
 	
 	/**
 	 * Parameters

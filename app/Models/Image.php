@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Image extends Eloquent{
+class Image extends Model {
 	
 	/**
 	 * Parameters

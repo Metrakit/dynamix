@@ -6,7 +6,7 @@ use Dynamix\Models\I18n;
 use Dynamix\Models\Taggable;
 use Dynamix\Models\Translation;
 
-class Tag extends Eloquent {
+class Tag extends Model {
 	
 	/**
 	 * Parameters

@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Resource extends Eloquent {
+class Resource extends Model {
 
 	/**
 	 * The database table used by the model.

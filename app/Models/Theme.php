@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Theme extends Eloquent {
+class Theme extends Model {
 
 	/**
      * Parameters

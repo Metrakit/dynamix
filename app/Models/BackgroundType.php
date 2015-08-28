@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class BackgroundType extends Eloquent{
+class BackgroundType extends Model {
 	
 	/**
 	 * Parameters

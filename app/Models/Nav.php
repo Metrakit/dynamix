@@ -4,7 +4,7 @@ namespace Dynamix\Models;
 
 use Dynamix\Models\I18n;
 
-class Nav extends Eloquent {
+class Nav extends Model {
 
 	/**
 	 * Parameters

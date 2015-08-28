@@ -8,7 +8,7 @@ use Dynamix\Models\InputType;
 use Dynamix\Models\SelectOption;
 use Dynamix\Models\Translation;
 
-class InputView extends Eloquent {
+class InputView extends Model {
 	/**
 	 * The database table used by the model.
 	 *

@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class AdminNavigationGroup extends Eloquent {
+class AdminNavigationGroup extends Model {
 
 	/**
 	 * Parameters

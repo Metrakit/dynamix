@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Task extends Eloquent {
+class Task extends Model {
 	/**
 	 * The database table used by the model.
 	 *

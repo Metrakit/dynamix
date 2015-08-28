@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Taggable extends Eloquent {
+class Taggable extends Model {
 	
 	/**
 	 * Parameters

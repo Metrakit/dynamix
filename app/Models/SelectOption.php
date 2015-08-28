@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class SelectOption extends Eloquent {
+class SelectOption extends Model {
 
 	public $timestamps = false;
 	protected $fillable = ['input_id', 'i18n_key', 'i18n_value'];

@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class NavLink extends Eloquent {
+class NavLink extends Model {
 
 	/**
 	 * Parameters

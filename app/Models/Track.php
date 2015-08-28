@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Track extends Eloquent {
+class Track extends Model {
 
 	/**
      * Parameters

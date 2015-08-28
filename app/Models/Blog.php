@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class Blog extends Eloquent{
+class Blog extends Model {
 	
     /**
      * Parameters

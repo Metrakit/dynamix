@@ -2,7 +2,7 @@
 
 namespace Dynamix\Models;
 
-class FormMap extends Eloquent{
+class FormMap extends Model {
 	
 	/**
 	 * Parameters

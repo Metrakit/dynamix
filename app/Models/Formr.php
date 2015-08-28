@@ -10,7 +10,7 @@ use Dynamix\Models\FormMap;
 use Dynamix\Models\BlockResponsive;
 use Dynamix\Models\ModelForm;
 
-class Formr extends Eloquent {
+class Formr extends Model {
 	
 	/**
 	 * Parameters

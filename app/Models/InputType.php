@@ -4,7 +4,7 @@ namespace Dynamix\Models;
 
 use Dynamix\Models;
 
-class InputType extends Eloquent {
+class InputType extends Model {
 
 	public $timestamps = false;
 	protected $fillable = ['name', 'rules', 'defaultValue', 'i18n_title'];
