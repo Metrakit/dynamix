@@ -2,6 +2,8 @@
 
 namespace Dynamix\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 use Dynamix\Models\I18n;
 use Dynamix\Models\FormMap;
 use Dynamix\Models\InputType;

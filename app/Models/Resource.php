@@ -2,6 +2,8 @@
 
 namespace Dynamix\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 class Resource extends Model {
 
 	/**

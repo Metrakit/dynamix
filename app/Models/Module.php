@@ -2,6 +2,8 @@
 
 namespace Dynamix\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Use to manage simple module for rendering in Block
  */

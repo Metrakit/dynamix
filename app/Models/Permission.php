@@ -2,6 +2,8 @@
 
 namespace Dynamix\Models;
 
+use Illuminate\Database\Eloquent\Model;xml_set_start_namespace_decl_handler(parser, handler)
+
 class Permission extends Eloquent
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace Dynamix\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 class TasksLabels extends Model {
 	/**
 	 * The database table used by the model.
