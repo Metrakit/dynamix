@@ -1,27 +1,83 @@
-## Laravel PHP Framework
+# Dynamix
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+- [Presentation](#presentation)
+- [Requisite](#requisites)
+- [Configuration](#configuration)
+- [Installation](#installations)
+- [Dependencies](#dependencies)
+- [Team](#team)
+- [Licence](#licence)
+- [Credit](#credit)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## <a name="presentation"></a> Presentation
+Dynamix is open-source CMS for Laravel developer's. The concept is to make a solid core with User/Role, Multilingual and Page/Block system.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
+## <a name="requisites"></a> Requisites
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+- [Fontend](#requisite-fontend)
+- [Backend](#requisite-backend)
 
-## Contributing
+### <a name="requisite-fontend"></a> Requisite for frontend
+  * Compass (http://compass-style.org/)
+  * Grunt (http://gruntjs.com/getting-started)
+  * Bower (http://bower.io/)
+  * Oracle VM virtualBox (https://www.virtualbox.org/wiki/Downloads)
+  * Vagrant (https://www.vagrantup.com/)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### <a name="requisite-backend"></a> Requisite for backend
+  * Laravel Homestead (http://laravel.com/docs/5.1/homestead)
+  * Putty (http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## <a name="configuration"></a> Configuration
+Into dynamix root, there is a `_.env.php`. Configure them, and duplicate to `.env.php` and `.env.local.php`
 
-### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+## <a name="installations"></a> Installations (env:local, start only)
+
+- [Fontend](#installation-fontend)
+- [Backend](#installation-backend)
+     
+### <a name="installation-backend"></a> Requisite for backend
+
+*Quick install* `composer install && php artisan migrate && php artisan db:seed`
+
+1. Install composer vendors with `composer install`.
+
+2. Migrate core with `php artisan migrate --package="dynamix/i18n" && php artisan migrate && php artisan migrate --package="dynamix/pager"`
+
+3. Seed data with `php artisan db:seed`
+
+4. Test seeder for Former `php artisan db:seed --class=FullFormSeeder`
+
+
+### <a name="installation-fontend"></a> Requisite for fontend
+
+1. Grunt
+
+In the assets folder (dynamix\theme\default\assets) run `npm install && bower install && grunt`
+
+**jQuery choice**
+
+You will must choose between four option, please choose the second (`2`).
+![](doc/bower-choice.png)
+
+## <a name="dependencies"></a> Dependencies
+ - https://github.com/DynamixCMS/core
+ - https://github.com/DynamixCMS/pager
+
+## <a name="team"></a> Team
+
+| ![David Lepaux avatar](http://www.gravatar.com/avatar/06bb57add8f45127272699923ee05edc.png?s=60) | ![Jordane Jouffroy avatar](http://www.gravatar.com/avatar/b60c83acfb5649cea0435ba8d6845659.png?s=60)
+|---|---|
+| [David Lepaux](https://github.com/dlepaux) | [Jordane Jouffroy](https://github.com/Metrakit)
+
+## <a name="license"></a> License
+
+MIT © DynamixCMS team
+       
+## <a name="credit"></a> Credit
+Inspirate by :
+https://github.com/andrewelkins/Laravel-4-Bootstrap-Starter-Site
+    
