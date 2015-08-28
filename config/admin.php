@@ -13,6 +13,7 @@ return array(
 	|
 	*/
 
+	// Changer le systeme
 	/*'nav_admin' => array(	
 		'groups' => array(
 			'group0' => '',
