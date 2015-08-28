@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Dynamix\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

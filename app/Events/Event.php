@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Dynamix\Events;
 
 abstract class Event
 {

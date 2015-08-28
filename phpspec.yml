@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Dynamix
+        psr4_prefix: Dynamix
         src_path: app
