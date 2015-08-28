@@ -1,0 +1,33 @@
+[2015-08-28 16:36:59] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php:6693
+Stack trace:
+#0 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1068): Illuminate\Encryption\EncryptionServiceProvider->Illuminate\Encryption\{closure}(Object(Illuminate\Foundation\Application), Array)
+#1 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1021): Illuminate\Container\Container->build(Object(Closure), Array)
+#2 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1559): Illuminate\Container\Container->make('encrypter', Array)
+#3 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1113): Illuminate\Foundation\Application->make('Illuminate\\Cont...')
+#4 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1097): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#5 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1083): Illuminate\Container\Container->getDependencies(Array, Array)
+#6 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1021): Illuminate\Container\Container->build('App\\Http\\Middle...', Array)
+#7 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1559): Illuminate\Container\Container->make('App\\Http\\Middle...', Array)
+#8 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(9188): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
+#9 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(2758): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#11 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(9188): call_user_func_array(Array, Array)
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(9178): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(2035): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(2018): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#16 /var/www/dynamix-v2/dynamixl5/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#17 {main}  
+[2015-08-28 16:36:59] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php:6693
+Stack trace:
+#0 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1068): Illuminate\Encryption\EncryptionServiceProvider->Illuminate\Encryption\{closure}(Object(Illuminate\Foundation\Application), Array)
+#1 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1021): Illuminate\Container\Container->build(Object(Closure), Array)
+#2 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1559): Illuminate\Container\Container->make('encrypter', Array)
+#3 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1113): Illuminate\Foundation\Application->make('Illuminate\\Cont...')
+#4 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1097): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#5 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1083): Illuminate\Container\Container->getDependencies(Array, Array)
+#6 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1021): Illuminate\Container\Container->build('App\\Http\\Middle...', Array)
+#7 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(1559): Illuminate\Container\Container->make('App\\Http\\Middle...', Array)
+#8 /var/www/dynamix-v2/dynamixl5/bootstrap/cache/compiled.php(2042): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
+#9 /var/www/dynamix-v2/dynamixl5/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#10 {main}  
