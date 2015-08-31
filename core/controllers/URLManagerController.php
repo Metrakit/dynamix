@@ -33,44 +33,4 @@ class URLManagerController extends BaseController {
             return App::abort(404);
         }
     }
-    
-    public function getSlug( $slug )
-    {
-        Session::put('old_RequestSegment2', Request::segment(2));
-        if( Session::has('translate_request') ) {
-            Session::forget('translate_request');
-            return $this->translateAndRedirect(Request::segment(2), Request::segment(1));
-        } else {
-            foreach ( Urls::getRoutes() as $url ) {
-                if ( $url['url'] == '/' . $slug ) {
-                    //Check current locale
-                    if ( App::getLocale() != $url['locale_id'] ) {
-                        App::setLocale($url['locale_id']);
-                    }
-                    $structure = Structure::where('i18n_url','=',$url['i18n_id'])->first();
-                    $resourceName = strtolower ( $structure->structurable_type );
-                    $data[ $resourceName ] = $structure->structurable;
-                    return View::make('theme::' . $resourceName::$blockContentView, $data );
-                }
-            }
-        }
-        return View::make('theme::public.errors.404');        
-    }
-
-    
-    public function translateAndRedirect( $slug_origin, $locale_new )
-    {
-        Log::info('translate');
-        foreach ( Urls::getRoutes() as $url ) {
-            if ( $url['url'] == '/' . $slug_origin ) {
-                //Search route with the same i18n_id and with the new locale
-                foreach ( Urls::getRoutes() as $url_translated ) {
-                    if ( $url_translated['i18n_id'] == $url['i18n_id'] && $url_translated['locale_id'] == $locale_new && $url_translated['url'] != $url['url'] ) {               
-                        return Redirect::to('/' . $url_translated['locale_id'] . $url_translated['url'] );
-                    }
-                }
-            }
-        }
-        return View::make('theme::public.errors.500');        
-    }
 }

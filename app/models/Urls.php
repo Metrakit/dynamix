@@ -33,7 +33,10 @@ class Urls extends Eloquent{
      * @return mixed
      */
     public static function getRoutes () {
-        
+        $cachePrefix = 'Urls::getRoutes';
+        if (Cache::has($cachePrefix)) {
+            return Cache::get($cachePrefix);
+        }
         $data = DB::select('
                 SELECT translations.i18n_id , translations.text , translations.locale_id 
                 FROM translations
@@ -48,6 +51,7 @@ class Urls extends Eloquent{
                               'url'         => $d->text,
                               'locale_id'   => $d->locale_id );
         }
+        Cache::put($cachePrefix, $datas, 60);
         return $datas;
     }
 

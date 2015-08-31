@@ -77,12 +77,7 @@ class Option extends Eloquent
 			$locale_id  = App::getLocale();
 		}
 
-		$translation = Translation::where('i18n_id', '=', $i18n_id)->where('locale_id', '=', $locale_id)->first();
-
-		if ($translation) {
-			return $translation->text;
-		}
-		return null;
+		return I18n::getTranslation($i18n_id, $locale_id);
 	}
 
 

@@ -25,17 +25,17 @@ class Theme extends Eloquent{
     }
 
     public static function getThemeByType($type) {
-    	/*$cacheKey = 'Theme:ByType:' . $type;
+    	$cacheKey = 'Theme:ByType:' . $type;
     	if (Cache::has($cacheKey)) {
     		return Cache::get($cacheKey);
-    	}*/
+    	}
     	$themes = self::where('active', 1)->get();
     	$data = array();
 	    foreach( $themes as $theme ) {
 	    	$data[$theme->type] = $theme->name;
 	    }
 	    $themeName = (isset($data[$type])?$data[$type]:'default');
-	    //Cache::put($cacheKey, $themeName, 10080);
+	    Cache::put($cacheKey, $themeName, 480);
 	    return $themeName;
     }
 }

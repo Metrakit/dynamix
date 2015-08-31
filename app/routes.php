@@ -5,7 +5,7 @@
 |--------------------------------------------------------------------------
 |
 */
-Route::get('/migrate', function(){
+/*Route::get('/migrate', function(){
 	define('STDIN',fopen("php://stdin","r"));
 	Artisan::call("migrate:reset");
 	Artisan::call("migrate", ['--quiet' => true, '--force' => true]);
@@ -29,7 +29,7 @@ Route::get('/dump-autoload', function(){
 	define('STDIN',fopen("php://stdin","r"));
 	Artisan::call("dump-autoload");
 	return "dumpé!";
-});
+});*/
 
 
 
@@ -157,7 +157,7 @@ $locale = Localizr::initLocale();
 Route::group(array('prefix' => $locale), function() 
 {
 	Route::get('/', array('as' => 'home', 'uses' => Config::get('core::route.root')));
-	Route::get('{slug}', array('uses' => 'URLManagerController@getSlug'));
+	Route::get('{slug}', array('uses' => 'PagerController@getSlug'));
 });
 
 
