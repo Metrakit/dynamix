@@ -14,3 +14,6 @@ composer.lock
 *.tmp
 dynamix.sublime-project
 dynamix.sublime-workspace
+packages
+config/core/*
+config/module/*
