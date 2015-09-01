@@ -19,11 +19,11 @@
         <meta property="og:description" content="{{ Option::translate('social_description') }}">
         <meta property="og:url" content="{{ Request::url() }}">
         <meta property="og:site_name" content="{{ Option::translate('site_name') }}">
-        <meta property="og:image" content="{{ Option::get('cover_path') }}">
+        <meta property="og:image" content="@yield('cover_path', Option::get('cover_path'))">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image:src" content="{{Request::url()}}">
         <meta name="twitter:site" content="{{ Option::get('twitter_id') }}">
-        <meta name="twitter:url" content="{{ Option::get('cover_path') }}">
+        <meta name="twitter:url" content="@yield('cover_path', Option::get('cover_path'))">
         <meta name="twitter:description" content="{{ Option::translate('social_description') }}">
         <meta name="twitter:title" content="{{ Option::translate('social_title') }}">
 
