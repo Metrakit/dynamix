@@ -1,5 +1,11 @@
 <?php
 
+use Illuminate\Database\Seeder;
+
+use Dynamix\Models\Role;
+use Dynamix\Models\Action;
+use Dynamix\Models\Resource;
+
 class PermissionsTableSeeder extends Seeder {
 
     public function run()

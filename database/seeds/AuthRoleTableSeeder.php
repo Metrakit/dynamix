@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Database\Seeder;
+
+use Dynamix\Models\AuthUser;
+use Dynamix\Models\Role;
+
 class AuthRoleTableSeeder extends Seeder {
 
 

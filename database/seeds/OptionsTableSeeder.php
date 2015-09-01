@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+
+use Dynamix\I18n\Models\I18n;
+
 class OptionsTableSeeder extends Seeder {
 
     public function run()

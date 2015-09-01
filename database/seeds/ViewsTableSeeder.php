@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+
+use Dynamix\Models\Viewr;
+
 class ViewsTableSeeder extends Seeder {
 
     public function run()

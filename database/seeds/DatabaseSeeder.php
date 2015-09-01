@@ -18,12 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call('ActionsTableSeeder');
         $this->call('ResourcesTableSeeder');
 
-
-        // ========================
-        // High Dependencies (package)
-        //$this->call('I18nDatabaseSeeder');
-
-
         // Medias
         $this->call('ImagesTableSeeder');
 
@@ -55,7 +49,7 @@ class DatabaseSeeder extends Seeder
 
         // ========================
         //Packages
-        $this->call('PagerDatabaseSeeder');
+        //$this->call('PagerDatabaseSeeder');
 
         Model::reguard();
     }

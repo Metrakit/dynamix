@@ -17,3 +17,4 @@ dynamix.sublime-workspace
 packages
 config/core/*
 config/module/*
+database/seeds/module/*

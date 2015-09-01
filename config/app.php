@@ -144,6 +144,13 @@ return [
         Dynamix\Providers\EventServiceProvider::class,
         Dynamix\Providers\RouteServiceProvider::class,
 
+        /**
+         * Dynamix providers
+         */
+        Dynamix\Core\CoreServiceProvider::class,
+        Dynamix\I18n\I18nServiceProvider::class,
+        Dynamix\Pager\PagerServiceProvider::class,
+
     ],
 
     /*

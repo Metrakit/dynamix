@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Seeder;
+
 class ImagesTableSeeder extends Seeder {
 
     public function run()
@@ -10,14 +12,14 @@ class ImagesTableSeeder extends Seeder {
             array(
                 'file_name'  => 'pictures/album cute kitten/cute-kitten-1',
                 'file_ext'   => 'jpg',
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
             ),
             array(
                 'file_name'  => 'pictures/album cute kitten/cute-kitten-2',
                 'file_ext'   => 'jpg',
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
             ))
         );
     }

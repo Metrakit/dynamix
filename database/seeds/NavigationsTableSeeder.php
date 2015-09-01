@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Dynamix\I18n\Models\I18n;
+use Dynamix\I18n\Models\I18nType;
+
 class NavigationsTableSeeder extends Seeder {
 
     public function run()
