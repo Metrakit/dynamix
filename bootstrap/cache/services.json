@@ -25,7 +25,10 @@
         "Illuminate\\View\\ViewServiceProvider",
         "Dynamix\\Providers\\AppServiceProvider",
         "Dynamix\\Providers\\EventServiceProvider",
-        "Dynamix\\Providers\\RouteServiceProvider"
+        "Dynamix\\Providers\\RouteServiceProvider",
+        "Dynamix\\Core\\CoreServiceProvider",
+        "Dynamix\\I18n\\I18nServiceProvider",
+        "Dynamix\\Pager\\PagerServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -41,7 +44,10 @@
         "Illuminate\\View\\ViewServiceProvider",
         "Dynamix\\Providers\\AppServiceProvider",
         "Dynamix\\Providers\\EventServiceProvider",
-        "Dynamix\\Providers\\RouteServiceProvider"
+        "Dynamix\\Providers\\RouteServiceProvider",
+        "Dynamix\\Core\\CoreServiceProvider",
+        "Dynamix\\I18n\\I18nServiceProvider",
+        "Dynamix\\Pager\\PagerServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
@@ -61,6 +67,7 @@
         "command.listener.make": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.model.make": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.optimize": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
+        "command.policy.make": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.provider.make": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.request.make": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.route.cache": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Viewr extends Model {
 	
 	protected $table = "views";
-	protected $fillable = ['path'];
+	protected $fillable = ['name', 'path'];
 
 }

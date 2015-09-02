@@ -4,14 +4,11 @@ namespace Dynamix\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-
 use Dynamix\Models\Action;
 use Dynamix\Models\Resource;
 use Dynamix\Models\AdminNavigationGroup;
 
-class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
+class AuthUser extends Model {
 
 	/**
      * Parameters

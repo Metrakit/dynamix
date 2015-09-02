@@ -1,0 +1,1 @@
+<input name="{{ $input->name }}" type="{{ $input->type }}" value="{{ $input->value }}"/>

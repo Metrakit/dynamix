@@ -4,8 +4,7 @@ namespace Dynamix\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Eloquent
-{
+class Role extends Model {
 	/**
      * Parameters
      */

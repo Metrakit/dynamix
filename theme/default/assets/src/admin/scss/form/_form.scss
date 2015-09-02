@@ -1,0 +1,370 @@
+/* //========== Form Plugin ==========*
+.checkbox-button, .radio-button {    
+	margin:0 !important;
+	width:100% !important;
+	label{
+	  width:inherit !important;
+	  span {
+	    width:inherit !important;
+	    display:inline-block !important; 
+	    min-width:40px !important; 
+	    text-align:center !important;
+	    img {
+	      display:block !important;
+	      margin: 0 auto !important;
+	    }
+	  }
+	}
+}
+.checkbox.checkbox-button, .radio.radio-button {
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    float:left;
+    padding: 0;
+}
+
+.checkbox.checkbox-button label, .radio.radio-button label {
+    padding: 0;
+}
+
+.checkbox.checkbox-button label span, .radio.radio-button label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+}
+
+.checkbox.checkbox-button label input, .radio.radio-button label input {
+    position:absolute;
+    top:-20px;
+}
+
+//State = enable
+.checkbox.checkbox-button .enable + span, .radio.radio-button .enable + span {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.checkbox.checkbox-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span, .radio.radio-button:hover .enable + span, .checkbox.checkbox-button:focus .enable + span {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.checkbox.checkbox-button .enable.disabled + span, .radio.radio-button .enable.disabled + span {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+//State = disable
+.checkbox.checkbox-button .disable + span, .radio.radio-button .disable + span {
+  color: #333;
+  background-color: #f1f1f1;
+  border-color: #ccc;
+}
+.checkbox.checkbox-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span, .radio.radio-button:hover .disable + span, .checkbox.checkbox-button:focus .disable + span {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.checkbox.checkbox-button .disable.enabled + span, .radio.radio-button .disable.enabled + span {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+
+//
+// * iOS 6 style switch checkboxes
+// * by Lea Verou http://lea.verou.me
+//
+:root input[type="checkbox"] { // :root here acting as a filter for older browsers
+	position: absolute;
+	opacity: 0;
+}
+
+:root input[type="checkbox"].ios-switch + div {
+	display: inline-block;
+	vertical-align: middle;
+	width: 3em;	height: 1em;
+	border: 1px solid rgba(0,0,0,.3);
+	border-radius: 999px;
+	margin: 0 .5em;
+	background: white;
+	background-image: linear-gradient(rgba(0,0,0,.1), transparent),
+	                  linear-gradient(90deg, hsl(210, 90%, 60%) 50%, transparent 50%);
+	background-size: 200% 100%;
+	background-position: 100% 0;
+	background-origin: border-box;
+	background-clip: border-box;
+	overflow: hidden;
+	transition-duration: .4s;
+	transition-property: padding, width, background-position, text-indent;
+	box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+	            0 .45em 0 .1em rgba(0,0,0,.05) inset;
+	font-size: 150%; 
+}
+
+:root input[type="checkbox"].ios-switch:checked + div {
+	padding-left: 2em;
+	background-position: 0 0;
+}
+
+:root input[type="checkbox"].ios-switch + div:before {
+	content: 'On';
+	float: left;
+	width: 1.65em; height: 1.65em;
+	margin: -.1em;
+	border: 1px solid rgba(0,0,0,.35);
+	border-radius: inherit;
+	background: white;
+	background-image: linear-gradient(rgba(0,0,0,.2), transparent);
+	box-shadow: 0 .1em .1em .1em hsla(0,0%,100%,.8) inset,
+	            0 0 .5em rgba(0,0,0,.3);
+	color: white;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.3);
+	text-indent: -2.5em;
+}
+
+:root input[type="checkbox"].ios-switch:active + div:before {
+	background-color: #eee;
+}
+
+// :root input[type="checkbox"].ios-switch:focus + div {
+//	box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+//	            0 .45em 0 .1em rgba(0,0,0,.05) inset,
+//	            0 0 .4em 1px rgba(255,0,0,.5);
+//} 
+
+:root input[type="checkbox"].ios-switch + div:before,
+:root input[type="checkbox"].ios-switch + div:after {
+	font: bold 60%/1.9 sans-serif;
+	text-transform: uppercase;
+	line-height: 23px;
+}
+
+:root input[type="checkbox"].ios-switch + div:after {
+	content: 'Off';
+	float: left;
+	text-indent: .5em;
+	color: rgba(0,0,0,.45);
+	text-shadow: none;
+
+}
+
+//radio
+:root input[type="radio"] { 
+	position: absolute;
+	opacity: 0;
+}
+
+:root input[type="radio"].ios-switch + div {
+	display: inline-block;
+	vertical-align: middle;
+	width: 3em;	height: 1em;
+	border: 1px solid rgba(0,0,0,.3);
+	border-radius: 999px;
+	margin: 0 .5em;
+	background: white;
+	background-image: linear-gradient(rgba(0,0,0,.1), transparent),
+	                  linear-gradient(90deg, hsl(210, 90%, 60%) 50%, transparent 50%);
+	background-size: 200% 100%;
+	background-position: 100% 0;
+	background-origin: border-box;
+	background-clip: border-box;
+	overflow: hidden;
+	transition-duration: .4s;
+	transition-property: padding, width, background-position, text-indent;
+	box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+	            0 .45em 0 .1em rgba(0,0,0,.05) inset;
+	font-size: 150%; 
+}
+
+:root input[type="radio"].ios-switch:checked + div {
+	padding-left: 2em;
+	background-position: 0 0;
+}
+
+:root input[type="radio"].ios-switch + div:before {
+	content: 'On';
+	float: left;
+	width: 1.65em; height: 1.65em;
+	margin: -.1em;
+	border: 1px solid rgba(0,0,0,.35);
+	border-radius: inherit;
+	background: white;
+	background-image: linear-gradient(rgba(0,0,0,.2), transparent);
+	box-shadow: 0 .1em .1em .1em hsla(0,0%,100%,.8) inset,
+	            0 0 .5em rgba(0,0,0,.3);
+	color: white;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.3);
+	text-indent: -2.5em;
+}
+
+:root input[type="radio"].ios-switch:active + div:before {
+	background-color: #eee;
+}
+
+// :root input[type="radio"].ios-switch:focus + div {
+//	box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+//	            0 .45em 0 .1em rgba(0,0,0,.05) inset,
+//	            0 0 .4em 1px rgba(255,0,0,.5);
+//} 
+
+:root input[type="radio"].ios-switch + div:before,
+:root input[type="radio"].ios-switch + div:after {
+	font: bold 60%/1.9 sans-serif;
+	text-transform: uppercase;
+	line-height: 23px;
+}
+
+:root input[type="radio"].ios-switch + div:after {
+	content: 'Off';
+	float: left;
+	text-indent: .5em;
+	color: rgba(0,0,0,.45);
+	text-shadow: none;
+
+}
+
+:root .switch {
+	float:right;
+}
+
+
+// Switch code ends here, from now on it’s just bling for the demo page
+
+label.label-list {
+	position: relative;
+	display: block;
+	padding: .8em;
+	border: 1px solid silver;
+	border-top-width: 0;
+	background: white;
+	font: bold 110% sans-serif;
+	font-weight: 400;
+    margin-bottom:0;
+}
+
+label.label-list:first-of-type {
+	border-top-width: 1px;
+	border-radius: .6em .6em 0 0;
+}
+
+label.label-list:last-of-type {
+	border-radius: 0 0 .6em .6em;
+	box-shadow: 0 1px hsla(0,0%,100%,.8);
+}
+ */
+/* ============================================================
+  COMMON
+============================================================ */
+.switch {
+	display:block;
+	position:relative;
+	.switch-button {
+		display:block;
+		position:relative;
+		float:right;
+	}
+	.switch-label {
+		display:block;
+		position:relative;
+		float:left;
+	}
+
+	&.switch-inline {
+		display:inline-block;
+		margin-right: 10px;
+		.switch-label {
+			margin-right: 5px;
+		}
+	}
+}
+.switch-container {
+	padding-top: 7px;
+}
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+ /* ============================================================
+  SWITCH 2 - ROUND FLAT
+============================================================ */
+$switch_width: 36px;
+$switch_anim_duration: .2s;
+
+input.cmn-toggle-round-flat + label {
+  padding: 2px;
+  width: $switch_width;
+  height: $switch_width*.5;
+  background-color: #bbb;
+  -webkit-border-radius: $switch_width*.5;
+  -moz-border-radius: $switch_width*.5;
+  -ms-border-radius: $switch_width*.5;
+  -o-border-radius: $switch_width*.5;
+  border-radius: $switch_width*.5;
+  -webkit-transition: background $switch_anim_duration;
+  -moz-transition: background $switch_anim_duration;
+  -o-transition: background $switch_anim_duration;
+  transition: background $switch_anim_duration;
+}
+input.cmn-toggle-round-flat + label:before, input.cmn-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+input.cmn-toggle-round-flat + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #fff;
+  -webkit-border-radius: $switch_width*.5;
+  -moz-border-radius: $switch_width*.5;
+  -ms-border-radius: $switch_width*.5;
+  -o-border-radius: $switch_width*.5;
+  border-radius: $switch_width*.5;
+  -webkit-transition: background $switch_anim_duration;
+  -moz-transition: background $switch_anim_duration;
+  -o-transition: background $switch_anim_duration;
+  transition: background $switch_anim_duration;
+}
+input.cmn-toggle-round-flat + label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width:  $switch_width*.5 - 8px;
+  background-color: #bbb;
+  -webkit-border-radius: $switch_width*.5 - 8px;
+  -moz-border-radius: $switch_width*.5 - 8px;
+  -ms-border-radius: $switch_width*.5 - 8px;
+  -o-border-radius: $switch_width*.5 - 8px;
+  border-radius: $switch_width*.5 - 8px;
+  -webkit-transition: margin $switch_anim_duration, background $switch_anim_duration;
+  -moz-transition: margin $switch_anim_duration, background $switch_anim_duration;
+  -o-transition: margin $switch_anim_duration, background $switch_anim_duration;
+  transition: margin $switch_anim_duration, background $switch_anim_duration;
+}
+input.cmn-toggle-round-flat:checked + label {
+  background-color: #3071a9;
+}
+input.cmn-toggle-round-flat:checked + label:after {
+  margin-left: $switch_width*.5;
+  background-color: #3071a9;
+}
