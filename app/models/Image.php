@@ -29,6 +29,6 @@ class Image extends Eloquent{
     }
 
     public function description () {
-        return Eloquentizr::getTranslation($this->i18n_description);
+        return I18n::getTranslation($this->i18n_description);
     }
 }

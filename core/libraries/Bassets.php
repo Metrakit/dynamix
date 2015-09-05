@@ -3,6 +3,7 @@
 class Bassets {
 
     public static function show( $urlKey ) {
+    	// App::isLocal()
     	//Récupération de tous les fichiers .json (theme.json)
     	$themesHash = app_path() . '/config/assets/theme/';
     	$pathForAssets = 'theme/';

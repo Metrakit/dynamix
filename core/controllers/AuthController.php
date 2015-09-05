@@ -47,7 +47,11 @@ class AuthController extends BaseController {
 				//track user
 				parent::track('loggin', 'Auth', Auth::user()->id);
 
-				return Redirect::intended('index_admin');
+				if (Request::ajax()) {
+					return Response::json(array('statut' => 'success', 'message' => I18n::get('auth.login-success'), 'user_id' => User::getIdByAuth(Auth::user()->id)));
+				} else {
+					return Redirect::route('admin.login')->with('success', I18n::get('auth.login-success'))->withInput(Input::except('password'));
+				}
 			} else {
 				$user = AuthUser::where('email', Input::get('email'))->first();
 
@@ -101,7 +105,7 @@ class AuthController extends BaseController {
 				if (Request::ajax()) {
 					return Response::json(array('statut' => 'success', 'message' => I18n::get('auth.login-success'), 'user_id' => User::getIdByAuth(Auth::user()->id)));
 				} else {
-					return Redirect::route('public.login')->with('error', I18n::get('auth.login-success'))->withInput(Input::except('password'));
+					return Redirect::route('public.login')->with('success', I18n::get('auth.login-success'))->withInput(Input::except('password'));
 				}
 			} else {
 				$user = AuthUser::where('email', Input::get('email'))->first();
