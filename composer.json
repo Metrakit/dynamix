@@ -16,10 +16,12 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"nesbot/Carbon": "*",
-		"phpunit/phpunit": "4.5.*",
 		"dynamix/core": "1.*",
 		"dynamix/i18n": "1.*",
 		"dynamix/pager": "1.*"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "4.5.*"
 	},
 	"autoload": {
 		"classmap": [
