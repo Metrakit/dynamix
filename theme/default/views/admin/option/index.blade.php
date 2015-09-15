@@ -40,7 +40,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-
+        {{-- I18n::getFormInput('site_name', )--}}
         <?php
             $data_i18n = array();
             $data_i18n['field_name'] = 'site_name';
@@ -50,7 +50,7 @@
                 $data_i18n['method_locale'] = 'site_name_locale';
             } 
         ?>
-        @include('theme::admin.i18n.input_text_4form', $data_i18n)
+        @include('i18n::admin.i18n.input_text_4form', $data_i18n)
 
         <?php
             $data_i18n = array();
@@ -61,7 +61,7 @@
                 $data_i18n['method_locale'] = 'social_title_locale';
             } 
         ?>
-        @include('theme::admin.i18n.input_text_4form', $data_i18n)
+        @include('i18n::admin.i18n.input_text_4form', $data_i18n)
 
         <?php
             $data_i18n = array();
@@ -72,7 +72,7 @@
                 $data_i18n['method_locale'] = 'social_description_locale';
             } 
         ?>
-        @include('theme::admin.i18n.input_text_4form', $data_i18n)
+        @include('i18n::admin.i18n.input_text_4form', $data_i18n)
 
         <!-- admin_email -->
         <div class="form-group {{{ $errors->has('admin_email') ? 'error' : '' }}}">
