@@ -24,7 +24,7 @@ exports.config =
       joinTo:
         '/css/master.css': [
           'bower_components/bootstrap/**',
-          '../../../../*/dynamix/*/assets/public/**',
+          /^(?:\.\.\/)(?:\.\.\/)(?:\.\.\/)(?:\.\.\/)[a-zA-Z]+\/dynamix\/[a-zA-Z\-]+\/assets[/\/]public/,
           'app/**'
         ]
 
