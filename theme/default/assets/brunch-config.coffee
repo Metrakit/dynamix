@@ -1,6 +1,6 @@
 exports.config =
   paths:
-    public: './../../../public'
+    public: './../../../public/theme/default'
     compass: './config.rb'
     watched: ['app']
 

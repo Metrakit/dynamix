@@ -129,7 +129,6 @@ return array(
 		// External packages
 		'FormerServiceProvider',
 
-
 	),
 
 	/*

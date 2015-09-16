@@ -1,0 +1,688 @@
+@import "compass";
+
+//Base Theme admin
+@import "navigation/sb-admin-2";
+
+@import "../../bower_components/bootstrap-sass-twbs/assets/stylesheets/bootstrap/_variables.scss";
+@import "../../bower_components/bootstrap-sass-twbs/assets/stylesheets/bootstrap/_mixins.scss";
+
+
+//Task module (dashboard)
+@import "task/task";
+
+//Common
+@import "common/helper";
+@import "common/sprites";
+
+//Helper
+.fixed-bottom {
+	position:fixed;
+	bottom:0;
+	right:0;
+	left:0; 
+	z-index:9999;
+}
+.btn-border-top {
+	@include border-bottom-right-radius(0px);
+	@include border-bottom-left-radius(0px);
+}
+.btn-submit-external{
+	position:absolute;
+	left: 100%;
+  	white-space: nowrap;
+}
+fieldset {
+	position:relative;
+}
+
+@include keyframes(loader) {
+  0% {
+    @include rotate(0deg);
+  }
+  
+  25% {
+    @include rotate(180deg);
+  }
+  
+  50% {
+    @include rotate(180deg);
+  }
+  
+  75% {
+    @include rotate(360deg);
+  }
+  
+  100% {
+    @include rotate(360deg);
+  }
+}
+
+@include keyframes(loader-inner) {
+  0% {
+    height: 0%;
+  }
+  
+  25% {
+    height: 0%;
+  }
+  
+  50% {
+    height: 100%;
+  }
+  
+  75% {
+    height: 100%;
+  }
+  
+  100% {
+    height: 0%;
+  }
+}
+
+//Loader
+.loader {
+	//display: none;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	height: 100%;
+	//background: rgba(0,0,0,.5);
+	width: 100%;
+	z-index: 9999;
+	
+	> div {
+		display: inline-block;
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		border: 16px solid white;
+		@include border-radius(7%);
+		@include box-shadow(0 0 15px white);
+		top: 50%;
+		z-index: 999;
+		margin-left: -108px;
+		margin-top: -108px;
+		@include animation( loader 3s infinite ease);
+		
+		.loader-inner {
+			vertical-align: top;
+			display: inline-block;
+			width: 100%;
+			background-color: rgba(255,255,255,.75);
+			@include animation( loader-inner 3s infinite ease-in);
+		}
+	}
+}
+
+.scrollHorizontalBox {
+
+	background:
+	linear-gradient(90deg, white 0%, rgba(255,255,255,0)),
+	linear-gradient(-90deg, white 0%, rgba(255,255,255,0)) 100% 0,
+	radial-gradient(
+		farthest-side at 0% 50%,
+		rgba(0,0,0,.2),
+		rgba(0,0,0,0)
+		),
+	radial-gradient(
+		farthest-side at 100% 50%,
+		rgba(0,0,0,.2),
+		rgba(0,0,0,0)
+		) 100% 0%;
+	background-repeat: no-repeat;
+	background-color: #fff;
+	background-size: 100px 100%, 100px 100%, 14px 100%, 14px 100%;
+	background-attachment: local, local, scroll, scroll;
+}
+
+
+//NAV Interface
+.nav-user{
+	padding:8px !important;
+	color:#333 !important;
+}
+.navbar-brand.favicon{
+	padding:9px !important;
+	span{
+		line-height: 32px;
+		display: inline-block;
+		height: 32px;
+		vertical-align: middle;
+	}
+}
+
+//Log
+table.log{
+	//h:34px
+	tr td{
+		line-height:34px !important;
+	}
+}
+
+//BTN Admin
+.btn-transparent {
+	color:grey;
+	background-color: transparent;
+	border:0px;
+	&:hover, &:focus {
+		color:darken(grey, 15%) !important;
+	}
+}
+.btn-transparent-white {
+	color:white;
+	background-color: transparent;
+	border:0px;
+	&:hover, &:focus {
+		color:darken(white, 15%) !important;
+	}
+}
+.btn-absolute {
+	position:absolute;
+	display:block;
+	top:6px;
+	right: 22px;
+	z-index: 10;
+}
+
+//Page
+.panel-page {
+	i.fa {
+		font-size:72px;	
+	}
+	.help-block {
+		display:inline-block;
+	}
+	.buttons{
+		position:absolute;
+		top:0;
+		right:15px;
+	}
+}
+
+//Helper
+.margin-top-md {
+	margin-top:10px;
+}
+.margin-top-lg {
+	margin-top:15px;
+}
+
+
+//Navigations
+.btn-nav-left{
+	display:none;
+}
+@media only screen and (min-width : 768px) {
+@import "navigation/navigation-admin";
+}
+//+ navbar black for left nav
+#wrapper {
+	background:#222;
+}
+.sidebar.sidebar-inverse {
+	background-color: $navbar-inverse-bg;
+	border-color: $navbar-inverse-border;
+
+	.nav {
+		> li > a {
+			color: $navbar-inverse-link-color;
+			&:hover, &:focus {
+				color: $navbar-inverse-link-hover-color;
+				background-color: $navbar-inverse-link-hover-bg;
+			}
+		}
+		> .active > a {
+	  		&, &:hover, &:focus {
+	    	color: $navbar-inverse-link-active-color;
+	   		background-color: $navbar-inverse-link-active-bg;
+		  	}
+		}
+		> .disabled > a {
+		  	&, &:hover, &:focus {
+		    	color: $navbar-inverse-link-disabled-color;
+		    	background-color: $navbar-inverse-link-disabled-bg;
+		  	}
+		}
+	}
+
+	// Dropdowns
+	.navbar-nav {
+	> .open > a {
+	  &,
+	  &:hover,
+	  &:focus {
+	    background-color: $navbar-inverse-link-active-bg;
+	    color: $navbar-inverse-link-active-color;
+	  }
+	}
+	}
+}
+.sidebar ul li {
+    border-bottom: 1px solid #353535
+}
+
+
+/* 
+//Blocks
+$block-create-height : 75px;
+Standard syntax 
+@keyframes bounce {
+    0%   {margin-top: 0px;}
+    12%  {margin-top: $block-create-height + 10px ;}
+    25%  {margin-top: ($block-create-height + 10px)*.85;}
+    37%  {margin-top: $block-create-height + 10px ;}
+    50% {margin-top: ($block-create-height + 10px)*.93;}
+    62%  {margin-top: $block-create-height + 10px ;}
+    75% {margin-top: ($block-create-height + 10px)*.97;}
+    87%, 100%  {margin-top: $block-create-height + 10px ;}
+}
+@-webkit-keyframes bounce {
+    0%   {margin-top: 0px;}
+    12%  {margin-top: $block-create-height + 10px ;}
+    25%  {margin-top: ($block-create-height + 10px)*.85;}
+    37%  {margin-top: $block-create-height + 10px ;}
+    50% {margin-top: ($block-create-height + 10px)*.93;}
+    62%  {margin-top: $block-create-height + 10px ;}
+    75% {margin-top: ($block-create-height + 10px)*.97;}
+    87%, 100%  {margin-top: $block-create-height + 10px ;}
+}
+
+
+.block-map-border{
+	position:absolute;
+	display:none;
+	z-index: 10;
+	@include border-radius(4px);
+	border:4px dashed #333;
+	height:100%;
+	padding:0 !important;
+}
+
+.block-create {
+	position: relative;
+	background-color: white;
+	background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%);
+	background-size: 16px 16px;
+	background-position: 0 0, 8px 8px;
+	min-height:300px;
+	padding-top:15px;
+	
+	.container {
+		position:relative;
+		padding:0;
+		&:hover {
+			.block-map-border {display:block}
+		}
+	}
+	
+	&:hover .call-to-create, &:focus .call-to-create{
+		display:none;
+	}
+	
+	.call-to-create{
+		position:absolute;
+		z-index:20;
+		color:white;
+		text-align:center;
+		line-height:$block-create-height;
+		background:rgba(0,0,0,0.5);
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		@include text-shadow(white 0 0 5px);
+		
+	}
+
+	&.step-1-ok {
+		padding-bottom:$block-create-height + 2px;
+		.call-to-create {
+			display:none;
+		}
+		.block-map{
+			display:none;
+			&.hover {
+				display:block;
+				//background:#333;
+			}
+		}
+		.block-type-btns {
+			height:auto;
+			@include animation(bounce .5s forwards);
+		}
+		.block-map-border{
+			display:block;
+		}
+	}
+
+	&.step-2-ok{
+		.block-type-btns{
+			display:none;
+		}
+		.block-map-border{
+			position:relative;
+			height:auto;
+		}
+		.block-map.hover{
+			display:none;
+		}
+	}
+}
+.block-type-btns{
+	position:absolute;
+	display:block;
+	width:100%;
+	height:0px;
+	margin-top:0;
+	z-index: 40;
+	//@include transition(all .25s ease);
+	
+	overflow:hidden;
+}
+.block-map{
+	height: $block-create-height;
+	position:relative;
+	//@include opacity(.5);
+	@include transform(all .2s ease);
+	text-align: center;
+	line-height:$block-create-height;
+	font-weight:700;
+	vertical-align: middle;
+	color:#333;
+	z-index: 15;
+	//background:rgba(0,0,0,0.3);
+	cursor:pointer;
+	border-right:1px #4affff solid;
+	
+	&::last-child {
+		border-right:none;
+	}
+	&.hover {
+		//@include opacity(1);
+		border-top: 4px dashed #333;
+		border-bottom: 4px dashed #333;	
+		&:first-of-type {
+			//whaaaaaaaaaaaaaaaaaaaat it don't fucking woooooork
+			border-left: 4px dashed #333;
+		}
+		&:last-of-type {
+			//whaaaaaaaaaaaaaaaaaaaat it don't fucking woooooork
+			border-right: 4px dashed #333;
+		}
+	}
+	&:hover, &:focus {
+	}
+
+
+}
+.block-map:before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	width: 90%;
+	background: rgba(255,0,0,.3);
+	padding: 5px;
+	height: 300px;
+	margin: 0 5%;
+	cursor:normal;
+}
+
+.ul-block-types{
+	text-align:center;
+	padding:0;
+	li {
+		cursor:pointer;
+		display:inline-block;
+		margin: 0 2px;
+	}
+}
+ */
+
+
+
+
+
+
+
+
+//Chips
+.chip{
+	position:relative;
+	display:inline-block;
+	text-align:center;
+	border:1px solid;
+	
+	//Style
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+	&:hover, &:focus {
+		color: #333;
+		background-color: #e6e6e6;
+		border-color: #adadad;
+	}
+
+	&.chip-blue {
+		color: #fff;
+		background-color: #3071a9;
+		border-color: #285e8e;
+		&:hover, &:focus {
+			color: #fff;
+			background-color: #3071a9;
+			border-color: #285e8e;
+		}
+	}
+	//Size
+	&.chip-md {
+		font-size:12px;
+		width:24px;
+		height:24px;
+		line-height:24px;
+		@include border-radius(12px);
+	}
+	&.chip-lg {
+		font-size:20px;
+		width:32px;
+		height:32px;
+		line-height:32px;
+		@include border-radius(16px);
+	}
+}
+
+/* .block-map-fake-1{
+	@include opacity(.5);
+}
+.block-map-fake-2{
+	@include opacity(.1);
+} */
+
+//Menus
+@import "navigation/menus-admin";
+
+/*========== Media ==========*/ 
+#section-filemanager {
+}
+
+.filemanager-container{
+	min-height: inherit;
+	height:99%;
+	height: calc( 100% - 4px);
+	> iframe {
+		min-height: inherit;
+		border:none;
+	}	
+	//Fix on line 1090 for responsive
+}
+@media only screen and (max-width : 768px) {
+	.filemanager-container{
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+
+
+/*========== Fix bootstrap ==========*/ 
+.img-center .img-responsive {
+	margin: 0 auto;
+}
+
+
+
+
+/*========== User ==========*/ 
+.profil {
+	padding-top:30px;
+}
+
+
+
+@import "form/form";
+
+
+//Environnement module
+.form-lang {
+	.form-group {
+		padding:5px;
+	}
+}
+
+
+@media only screen and (max-width : 1920px) {
+	.lang-label {
+		max-width: 140px;
+		max-width: calc(100% - 95px);
+		display: inline-block;
+	}
+}
+@media only screen and (max-width : 1200px) {
+	.lang-label {
+		max-width: 180px;
+		max-width: calc(100% - 95px);
+		display: inline-block;
+	}
+}
+/* Medium Devices, Desktops */ 
+@media only screen and (max-width : 992px) {
+	.lang-label {
+		max-width: 300px;
+		max-width: calc(100% - 95px);
+		display: inline-block;
+	}
+} 
+/* Small Devices, Tablets */ 
+@media only screen and (max-width : 778px) {
+	.lang-label {
+		max-width: 295px;
+		max-width: calc(100% - 95px);
+		display: inline-block;
+	}
+} 
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 490px) {
+	.lang-label {
+		max-width: 135px;
+		max-width: calc(100% - 95px);
+		display: inline-block;
+	}
+} 
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 330px) {
+	.lang-label {
+		max-width: 130px;
+		max-width: calc(100% - 95px);
+		display: inline-block;
+	}
+}
+
+
+
+
+
+//Role & Permission
+.role{
+	margin-top:20px;
+
+	h3{
+		margin-top:0px;
+	}
+}
+.form-role_permission {
+	.form-group {
+		padding:5px;
+	}
+}
+@media only screen and (max-width : 390px) {
+	.role-label {
+		max-width: 190px;
+		display: inline-block;
+	}
+} 
+
+
+
+
+/* //Custom, scroll
+&::-webkit-scrollbar {
+	width: 10px;
+}
+
+// Track
+&::-webkit-scrollbar-track {
+	background: none; 
+}
+
+// Handle 
+&::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, .25); 
+	@include border-radius(5px);
+}
+
+&::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255, 255, 255, .25); 
+} */
+
+
+
+/*========== Mobile First Method ==========*/ 
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+} 
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+} 
+/* Small Devices, Tablets */ 
+@media only screen and (min-width : 768px) {
+
+} 
+/* Medium Devices, Desktops */ 
+@media only screen and (min-width : 992px) {
+
+} 
+/* Large Devices, Wide Screens */ 
+@media only screen and (min-width : 1200px) {
+
+} 
+/*========== Non-Mobile First Method ==========*/ 
+/* Large Devices, Wide Screens */ 
+@media only screen and (max-width : 1200px) {
+
+} 
+/* Medium Devices, Desktops */ 
+@media only screen and (max-width : 992px) {
+
+} 
+/* Small Devices, Tablets */ 
+@media only screen and (max-width : 768px) {
+
+} 
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+} 
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+}
+
+
