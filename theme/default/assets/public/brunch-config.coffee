@@ -5,11 +5,8 @@ exports.config =
     watched: [
       'app', 
       './../../../../workbench/dynamix/i18n/public/public',
-      './../../../../vendor/dynamix/i18n/public/public',
       './../../../../workbench/dynamix/pager/public/public',
-      './../../../../vendor/dynamix/pager/public/public',
       './../../../../workbench/dynamix/core/public/public',
-      './../../../../vendor/dynamix/core/public/public',
     ]
 
   files:
@@ -19,11 +16,8 @@ exports.config =
         '/js/master.js': [
           'bower_components/bootstrap/**',
           '../../../../vendor/dynamix/i18n/public/public/**',
-          '../../../../workbench/dynamix/i18n/public/public/**',
           '../../../../vendor/dynamix/pager/public/public/**',
-          '../../../../workbench/dynamix/pager/public/public/**',
           '../../../../vendor/dynamix/core/public/public/**',
-          '../../../../workbench/dynamix/core/public/public/**',
           'app/**'
         ]
 
@@ -38,11 +32,8 @@ exports.config =
         '/css/master.css': [
           'bower_components/bootstrap/**',
           '../../../../vendor/dynamix/i18n/public/public/**',
-          '../../../../workbench/dynamix/i18n/public/public/**',
           '../../../../vendor/dynamix/pager/public/public/**',
-          '../../../../workbench/dynamix/pager/public/public/**',
           '../../../../vendor/dynamix/core/public/public/**',
-          '../../../../workbench/dynamix/core/public/public/**',
           'app/**'
         ]
 

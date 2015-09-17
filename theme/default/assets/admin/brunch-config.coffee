@@ -4,12 +4,9 @@ exports.config =
     compass: './config.rb'
     watched: [
       'app', 
-      './../../../../workbench/dynamix/i18n/public/admin',
-      './../../../../vendor/dynamix/i18n/public/admin',
+      './../../../../workbench/dynamix/module-comment/public/admin',
       './../../../../workbench/dynamix/pager/public/admin',
-      './../../../../vendor/dynamix/pager/public/admin',
       './../../../../workbench/dynamix/core/public/admin',
-      './../../../../vendor/dynamix/core/public/admin',
     ]
 
   files:
@@ -23,11 +20,8 @@ exports.config =
           'bower_components/metisMenu/**',
           'bower_components/bootstrapcolorpicker/**',
           '../../../../vendor/dynamix/i18n/public/admin/**',
-          '../../../../workbench/dynamix/i18n/public/admin/**',
           '../../../../vendor/dynamix/pager/public/admin/**',
-          '../../../../workbench/dynamix/pager/public/admin/**',
           '../../../../vendor/dynamix/core/public/admin/**',
-          '../../../../workbench/dynamix/core/public/admin/**',
           'app/**'
         ]
 
@@ -47,11 +41,8 @@ exports.config =
           'bower_components/metisMenu/**',
           'bower_components/bootstrapcolorpicker/**',
           '../../../../vendor/dynamix/i18n/public/admin/**',
-          '../../../../workbench/dynamix/i18n/public/admin/**',
           '../../../../vendor/dynamix/pager/public/admin/**',
-          '../../../../workbench/dynamix/pager/public/admin/**',
           '../../../../vendor/dynamix/core/public/admin/**',
-          '../../../../workbench/dynamix/core/public/admin/**',
           'app/**'
         ]
 
