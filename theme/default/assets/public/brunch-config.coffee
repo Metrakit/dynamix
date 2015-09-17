@@ -2,7 +2,15 @@ exports.config =
   paths:
     public: '../../../../public/theme/default/public'
     compass: './config.rb'
-    watched: ['app', '../../../../*/dynamix/*/assets/public']
+    watched: [
+      'app', 
+      './../../../../workbench/dynamix/i18n/public/public',
+      './../../../../vendor/dynamix/i18n/public/public',
+      './../../../../workbench/dynamix/pager/public/public',
+      './../../../../vendor/dynamix/pager/public/public',
+      './../../../../workbench/dynamix/core/public/public',
+      './../../../../vendor/dynamix/core/public/public',
+    ]
 
   files:
     javascripts:
@@ -10,7 +18,12 @@ exports.config =
         # Main
         '/js/master.js': [
           'bower_components/bootstrap/**',
-          '../../../../*/dynamix/*/assets/public/**',
+          '../../../../vendor/dynamix/i18n/public/public/**',
+          '../../../../workbench/dynamix/i18n/public/public/**',
+          '../../../../vendor/dynamix/pager/public/public/**',
+          '../../../../workbench/dynamix/pager/public/public/**',
+          '../../../../vendor/dynamix/core/public/public/**',
+          '../../../../workbench/dynamix/core/public/public/**',
           'app/**'
         ]
 
@@ -24,7 +37,12 @@ exports.config =
       joinTo:
         '/css/master.css': [
           'bower_components/bootstrap/**',
-          /^(?:\.\.\/)(?:\.\.\/)(?:\.\.\/)(?:\.\.\/)[a-zA-Z]+\/dynamix\/[a-zA-Z\-]+\/assets[/\/]public/,
+          '../../../../vendor/dynamix/i18n/public/public/**',
+          '../../../../workbench/dynamix/i18n/public/public/**',
+          '../../../../vendor/dynamix/pager/public/public/**',
+          '../../../../workbench/dynamix/pager/public/public/**',
+          '../../../../vendor/dynamix/core/public/public/**',
+          '../../../../workbench/dynamix/core/public/public/**',
           'app/**'
         ]
 
@@ -50,3 +68,5 @@ exports.config =
       destBasePath: '../public/'
       autoClearOldFiles: true
       targets: ['master.js','master.css']
+      environments: ['production']
+      alwaysRun: false

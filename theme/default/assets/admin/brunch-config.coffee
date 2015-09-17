@@ -2,7 +2,15 @@ exports.config =
   paths:
     public: './../../../../public/theme/default/admin'
     compass: './config.rb'
-    watched: ['app', './../../../../*/dynamix/*/assets/admin']
+    watched: [
+      'app', 
+      './../../../../workbench/dynamix/i18n/public/admin',
+      './../../../../vendor/dynamix/i18n/public/admin',
+      './../../../../workbench/dynamix/pager/public/admin',
+      './../../../../vendor/dynamix/pager/public/admin',
+      './../../../../workbench/dynamix/core/public/admin',
+      './../../../../vendor/dynamix/core/public/admin',
+    ]
 
   files:
     javascripts:
@@ -14,7 +22,12 @@ exports.config =
           'bower_components/ckeditor/**',
           'bower_components/metisMenu/**',
           'bower_components/bootstrapcolorpicker/**',
-          './../../../../*/dynamix/*/assets/admin/**',
+          '../../../../vendor/dynamix/i18n/public/admin/**',
+          '../../../../workbench/dynamix/i18n/public/admin/**',
+          '../../../../vendor/dynamix/pager/public/admin/**',
+          '../../../../workbench/dynamix/pager/public/admin/**',
+          '../../../../vendor/dynamix/core/public/admin/**',
+          '../../../../workbench/dynamix/core/public/admin/**',
           'app/**'
         ]
 
@@ -33,7 +46,12 @@ exports.config =
           'bower_components/fancybox/**',
           'bower_components/metisMenu/**',
           'bower_components/bootstrapcolorpicker/**',
-          './../../../../*/dynamix/*/assets/admin/**',
+          '../../../../vendor/dynamix/i18n/public/admin/**',
+          '../../../../workbench/dynamix/i18n/public/admin/**',
+          '../../../../vendor/dynamix/pager/public/admin/**',
+          '../../../../workbench/dynamix/pager/public/admin/**',
+          '../../../../vendor/dynamix/core/public/admin/**',
+          '../../../../workbench/dynamix/core/public/admin/**',
           'app/**'
         ]
 
@@ -59,6 +77,8 @@ exports.config =
       destBasePath: '../public/'
       autoClearOldFiles: true
       targets: ['master.js','master.css']
+      environments: ['production']
+      alwaysRun: false
     assetsmanager:
       copyTo:
         '../../../js' : ['bower_components/ckeditor']
