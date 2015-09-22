@@ -30,7 +30,7 @@ class Bassets {
 		$fcontent = null;
 	    try{
 			//Lecture du fichier
-		    $fcontent = file_get_contents ($themesHash . $themeName . '.json');  
+		    $fcontent = file_get_contents ($themesHash . Theme::getThemeName() . '-' . $themeName . '.json');  
 			$json = json_decode ($fcontent);
 			$json = (array) $json;
 	    } catch (Exception $e) {

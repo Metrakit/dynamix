@@ -1,16 +1,14 @@
 # Require any additional compass plugins here.
 
 http_path = "/"
-css_dir = "../../../../public/theme/default/admin/css"
-sass_dir = "app/scss"
-images_dir = "app/img"
-javascripts_dir = "app/js"
-fonts_dir = "app/fonts"
-sourcemap = true
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "../img"
+javascripts_dir = "js"
 
-sprite_load_path = "app/img"
+sprite_load_path = "src/admin/img"
 
-generated_images_path = "../../../../public/theme/default/admin/img"
+generated_images_path = "dist/admin/img"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

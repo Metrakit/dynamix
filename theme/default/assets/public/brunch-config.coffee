@@ -54,7 +54,7 @@ exports.config =
       debug: 'comments'
       allowCache: true
     fingerprint:
-      manifest: './../../../../app/config/assets/theme/default.json'
+      manifest: './../../../../app/config/assets/theme/public-default.json'
       srcBasePath: '../public/'
       destBasePath: '../public/'
       autoClearOldFiles: true

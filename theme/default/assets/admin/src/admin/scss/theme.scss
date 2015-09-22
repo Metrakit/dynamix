@@ -3,9 +3,11 @@
 //Base Theme admin
 @import "navigation/sb-admin-2";
 
-@import "../../bower_components/bootstrap-sass-twbs/assets/stylesheets/bootstrap/_variables.scss";
-@import "../../bower_components/bootstrap-sass-twbs/assets/stylesheets/bootstrap/_mixins.scss";
+@import "../../../bower_components/bootstrap-sass-twbs/assets/stylesheets/bootstrap/_variables.scss";
+@import "../../../bower_components/bootstrap-sass-twbs/assets/stylesheets/bootstrap/_mixins.scss";
 
+//Theme tinyMCE herit of light theme
+@import "tinymce/tinymce";
 
 //Task module (dashboard)
 @import "task/task";

@@ -12,11 +12,9 @@
 /**/.sass-cache
 /**/bower_components
 
-/public/css/**
-/public/js/**
-/public/js/vendor/jquery.min.js
-/public/js/vendor/jquery.min.map
-/public/js/vendor/head.min.js
+
+/public/**
+!/public/filemanager
 
 /theme/*
 !/theme/default
