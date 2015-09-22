@@ -55,8 +55,8 @@ exports.config =
       allowCache: true
     fingerprint:
       manifest: './../../../../app/config/assets/theme/public-default.json'
-      srcBasePath: '../public/'
-      destBasePath: '../public/'
+      srcBasePath: '../../../../public/theme/default/'
+      destBasePath: '../../../../public/theme/default/'
       autoClearOldFiles: true
       targets: ['master.js','master.css']
       environments: ['production']

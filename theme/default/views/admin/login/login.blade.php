@@ -1,4 +1,4 @@
-@extends('theme::public.layout.master')
+@extends('theme::admin.layout.login')
 
 
 @section('meta_title')

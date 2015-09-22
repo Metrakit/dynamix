@@ -10,10 +10,10 @@ module.exports = function (grunt) {
         bowerPath: './bower_components/',
         vendorPath: './dist/vendor/',
         distPath: './dist/',
-        deployPublicPath:'../../../public/',
-        deployPath: '../../../public/theme/default/',
-        modulesPathVendor: './../../../vendor/dynamix/',
-        modulesPathWorkbench: './../../../workbench/dynamix/',
+        deployPublicPath:'../../../../public/',
+        deployPath: '../../../../public/theme/default/',
+        modulesPathVendor: './../../../../vendor/dynamix/',
+        modulesPathWorkbench: './../../../../workbench/dynamix/',
 
 
         /**
@@ -42,14 +42,14 @@ module.exports = function (grunt) {
             //Module css
             modulesVendor: {
               options: {
-                basePath: './../../..',
+                basePath: './../../../..',
                 sassDir: 'vendor/dynamix/*',
                 cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
               }
             },
             modulesWorkbench: {
               options: {
-                basePath: './../../..',
+                basePath: './../../../..',
                 sassDir: 'workbench/dynamix/*',
                 cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
               }
@@ -164,7 +164,7 @@ module.exports = function (grunt) {
         // Hashage des fichiers minimifié
         hash: {
             options: {
-                mapping: '../../../app/config/assets/theme/admin-default.json', //mapping file so your server can serve the right files
+                mapping: '../../../../app/config/assets/theme/admin-default.json', //mapping file so your server can serve the right files
                 srcBasePath: '<%= distPath %>', // the base Path you want to remove from the `key` string in the mapping file
                 destBasePath: '<%= distPath %>', // the base Path you want to remove from the `value` string in the mapping file
                 flatten: false // Set to true if you don't want to keep folder structure in the `key` value in the mapping file
