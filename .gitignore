@@ -1,17 +1,11 @@
 /vendor
 
 /app/storage
-/app/config/assets/assets.json
-
-/app/views/packages/dynamix
-/app/config/packages/dynamix
-
 /bootstrap/compiled.php
 
 /**/node_modules
 /**/.sass-cache
 /**/bower_components
-
 
 /public/**
 !/public/filemanager
@@ -19,14 +13,11 @@
 /theme/*
 !/theme/default
 
-/env/**/node_modules
-
 composer.lock
 .env.php
-.env.exemple.php
+.env.local.php
 
 *.tmp
-.env.local.php
 
 dynamix.sublime-project
 dynamix.sublime-workspace
