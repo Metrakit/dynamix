@@ -33,14 +33,14 @@
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon.ico')}}" sizes="16x16 32x32" type="image/vnd.microsoft.icon">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon16.png')}}" sizes="16x16" type="image/png">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon32.png')}}" sizes="32x32" type="image/png">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon128.png')}}" sizes="128x128" type="image/png">
-        <link rel="icon" href="{{asset('uploads/system/favicon/favicon.svg')}}" sizes="any" type="image/svg+xml">
+        <link rel="icon" href="{{asset('uploads/system/public-favicon/favicon.ico')}}" sizes="16x16 32x32" type="image/vnd.microsoft.icon">
+        <link rel="icon" href="{{asset('uploads/system/public-favicon/favicon16.png')}}" sizes="16x16" type="image/png">
+        <link rel="icon" href="{{asset('uploads/system/public-favicon/favicon32.png')}}" sizes="32x32" type="image/png">
+        <link rel="icon" href="{{asset('uploads/system/public-favicon/favicon128.png')}}" sizes="128x128" type="image/png">
+        <link rel="icon" href="{{asset('uploads/system/public-favicon/favicon.svg')}}" sizes="any" type="image/svg+xml">
 
-        <link rel="icon" href="{{asset('uploads/system/favicon/apple-touch-icon.png')}}" sizes="57x57" type="image/png">
-        <link rel="apple-touch-icon" href="{{asset('uploads/system/favicon/apple-touch-icon.png')}}" />
+        <link rel="icon" href="{{asset('uploads/system/public-favicon/apple-touch-icon.png')}}" sizes="57x57" type="image/png">
+        <link rel="apple-touch-icon" href="{{asset('uploads/system/public-favicon/apple-touch-icon.png')}}" />
         @yield('css')
         <!--[if IE]><link rel="shortcut icon" href="{{URL::to('../favicon/favicon.ico')}}"/><![endif]-->
 

@@ -222,6 +222,7 @@ module.exports = function (grunt) {
 
               //Images
               {expand: true, cwd: '<%= srcPath %>admin/img/sources/', src: ['**'], dest: '<%= distPath %>admin/img/'},
+              {expand: true, cwd: '<%= srcPath %>admin/img/favicon/', src: ['**'], dest: '<%= deployPublicPath %>uploads/system/admin-favicon/'},
 
             ]
           },

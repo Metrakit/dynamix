@@ -61,3 +61,6 @@ exports.config =
       targets: ['master.js','master.css']
       environments: ['production']
       alwaysRun: false
+    assetsmanager:
+      copyTo:
+        '../../../uploads/system/public-favicon' : ['app/img/favicon/*']
