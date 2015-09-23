@@ -12,22 +12,21 @@
 /**/.sass-cache
 /**/bower_components
 
-/dev/src/packages
-/dev/src/css/modules
-/dev/src/vendor
-/dev/src/js/main.back.min.js
-/dev/src/js/main.min.js
-/dev/src/css/main.back.min.css
-/dev/src/css/core-admin.css
-/dev/src/css/core.css
-/dev/src/css/main.min.css
 
-/public/css/**
-/public/js/**
-/public/js/vendor/jquery.min.js
-/public/js/vendor/jquery.min.map
-/public/js/vendor/head.min.js
+/public/**
+!/public/filemanager
+
+/theme/*
+!/theme/default
+
+/env/**/node_modules
 
 composer.lock
+.env.php
+.env.exemple.php
 
 *.tmp
+.env.local.php
+
+dynamix.sublime-project
+dynamix.sublime-workspace

@@ -90,8 +90,8 @@ class Migrator
 	public function updateFile($content)
 	{
 		$countChars = $this->findEmplacement($content);
-		$before = substr($content, 0, $countChars);
-		$after = substr($content, $countChars);
+		$before = mb_substr($content, 0, $countChars);
+		$after = mb_substr($content, $countChars);
 
 		try {
 			$file = fopen($this->migratePath . $this->fileName, 'w+'); 

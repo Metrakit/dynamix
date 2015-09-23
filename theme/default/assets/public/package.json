@@ -1,0 +1,23 @@
+{
+  "name": "DynamixDefaultTheme",
+  "version": "0.1.0",
+  "description": "Default theme for Dynamix CMS",
+  "author": "David Lepaux <d.lepaux@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "brunch watch"
+  },
+  "devDependencies": {
+    "brunch": "^1.8.3",
+    "assetsmanager-brunch": "~1.8.1",
+    "clean-css-brunch": ">= 1.0 < 1.8",
+    "compass-brunch": "*",
+    "css-brunch": ">= 1.0 < 1.8",
+    "fingerprint-brunch": "~1.0.11",
+    "javascript-brunch": "^1.7.1",
+    "less-brunch": "^1.8.1",
+    "sass-brunch": "^1.8.6",
+    "uglify-js-brunch": ">= 1.0 < 1.8",
+    "sprite-brunch": ">= 0.0.3"
+  }
+}

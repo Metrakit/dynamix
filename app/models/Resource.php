@@ -8,7 +8,7 @@ class Resource extends Eloquent{
 	 */
 	protected $table = 'resources';
     public $timestamps = false;
-    protected $fillable = ['name','icon','model','in_admin_ui','navigable'];
+    protected $fillable = ['name', 'icon', 'model', 'in_admin_ui', 'navigable', 'group'];
 
 	/**
      * A Resource is on many Permission

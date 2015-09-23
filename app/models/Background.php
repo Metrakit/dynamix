@@ -14,11 +14,10 @@ class Background extends Eloquent{
 	 * @var string
 	 */
 	public function parts() {
-        return $this->hasMany('Part');
+        return $this->hasMany('Page');
     }
 
-    public function background_type()
-    {
+    public function background_type() {
     	return $this->hasOne('BackgroundType', 'id');
 	}
 

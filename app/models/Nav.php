@@ -40,20 +40,12 @@ class Nav extends Eloquent{
  		return I18n::find($this->i18n_title);
  	}
 
- 	public function translateLocale( $i18n_id, $locale_id ) {
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=', $locale_id)->first()->text;
-	}
-
-	public function navigation_title_locale( $locale_id ) {
-		return $this->translateLocale( $this->i18n_title, $locale_id );
-	}
-
 	public function children() {
         return Nav::where('parent_id','=',$this->id)->orderBy('order','ASC')->get();
     }
 
 	public function title() {
-		return $this->translate( $this->i18n_title );
+		return Eloquentizr::getTranslation( $this->i18n_title );
 	}
 
 	public function trackable() {
@@ -90,11 +82,11 @@ class Nav extends Eloquent{
 	 *
 	 * @var string
 	 */
-	public function translate( $i18n_id ){
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
+	public function url(){
+		return ( $this->navigable_type !=  'NavLink' && Locale::countEnable() > 1 ? Localizr::getURLLocale() : '') . $this->navigable->url();
 	}
 
-	public function url(){
-		return ( $this->navigable_type !=  'NavLink' ? App::getLocale() : '') . $this->navigable->url();
+	public static function getNavigations () {
+		return self::where('parent_id','=',0)->orderBy('order','ASC')->get();
 	}
 }

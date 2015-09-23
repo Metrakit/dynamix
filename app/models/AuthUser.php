@@ -21,10 +21,6 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Role', 'auth_role', 'auth_id', 'role_id');
     }
 
-    public function articles() {
-        return $this->hasMany('Article');
-    }
-
     public function tracks() {
         return $this->hasMany('Track');
     }
@@ -108,6 +104,23 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
      * Additionnal method
      *
      */
+    public static function add ($email, $password) {
+        $auth = new self;
+        $auth->email = $email;
+        $auth->password = Hash::make($password);
+        if ($auth->save()) {
+            return $auth;
+        }
+        return false;
+    }
+
+    public function remove () {
+        foreach ($this->roles() as $role) {
+            if (!$role->delete()) return false;
+        }
+        return true;
+    }
+
     public function getAuthorizedNavigations () {
         $resources = array();
         $navigations = '';
@@ -120,13 +133,13 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
 
         $resources = array_unique($resources);
 
-        //order resources
+        // Get all resource in the good group
         $data_by_group = array();
-        foreach ( Config::get('admin.nav_admin.groups') as $groupKey => $groupValue) {
+        foreach ( AdminNavigationGroup::allCached() as $group) {
             foreach ( $resources as $resource_id ) {
-                $resource = Resource::find($resource_id);
+                $resource = Resource::findCached($resource_id);
                 if ($resource->in_admin_ui == 1) {                    
-                    if ('group'.$resource->group == $groupKey) $data_by_group[$groupKey][] = $resource;
+                    if ($resource->admin_navigation_group_id == $group->id) $data_by_group['group:' . $group->id][] = $resource;
                 }
             }
         }
@@ -135,80 +148,51 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
 
         //Make data
         $data_temp = array();
-        $data_temp = $data_by_group['group0'];
+        // Pu in the root of array, well resources
+        $data_temp = $data_by_group['group:1'];
+        // Dispatch other
         foreach ($data_by_group as $groupKey => $groupValue) {
-            if ($groupKey != 'group0') {
+            if ($groupKey != 'group:1') {
                 $data_temp[] = $data_by_group[$groupKey];
             }
         }
 
-        //return $data_temp;
-        //return var_dump($data_temp);
-
 
         //Make Navigation with dropdown
-        //$navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+        //$navigations .= Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
         $i = 1;
         foreach ($data_temp as $objectKey => $objectValue) {
 
             if(gettype($objectValue) == "object") {
-                //is a resource
-                $model_name = ucfirst ($objectValue->model);
-                $lang = ($objectValue->model!=''?$model_name::$langNav:'admin.nav_' . $objectValue->name);
-                $data = array(
-                        'name'  => $objectValue->name,
-                        'lang'  => $lang,
-                        'icon'  => $objectValue->icon);
-                $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                // Add directly to ul(s)
+                $navigations .= self::getResponseAdminLi($objectValue);
             } else if (gettype($objectValue) == "array") {
                 //drop down bitch
-                
-                //$data !!!
                 $navigations_temp = '';
                 foreach ($objectValue as $resource) {                
                     if(gettype($resource) == "object") {
-                        //is a resource
-                        $model_name = ucfirst ($resource->model);
-                        $lang = ($resource->model!=''?$model_name::$langNav:'admin.nav_' . $resource->name);
-                        $data = array(
-                                'name'  => $resource->name,
-                                'lang'  => $lang,
-                                'icon'  => $resource->icon);
-                        $navigations_temp .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
+                        $navigations_temp .= self::getResponseAdminLi($resource);
                     }
                 }
                 $dataDropdown['groupKey'] = $objectKey;
                 $dataDropdown['lang'] = Config::get('admin.nav_admin.groups.group' . $i);
                 $dataDropdown['lis'] = $navigations_temp;
-                $navigations .= Response::view('admin.interface.nav-dropdown', $dataDropdown )->getOriginalContent();
+                $navigations .= Response::view('theme::admin.interface.nav-dropdown', $dataDropdown )->getOriginalContent();
                 $i++;
             }
         }
 
         return $navigations;
+    }
 
-
-        /*foreach ( $resources as $resource_id ) {
-            $resource = Resource::find($resource_id);
-            if ($resource->in_admin_ui == 1) {
-                $model_name = ucfirst ($resource->model);
-                Log::info($model_name);
-                $lang = ($resource->model!=''?$model_name::$langNav:'admin.nav_' . $resource->name);
-                if(Config::get('display.onepage') && $resource->navigable != 1) {
-                    $data = array(
-                        'name'  => $resource->name,
-                        'lang'  => $lang,
-                        'icon'  => $resource->icon);
-                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
-                } else if (!Config::get('display.onepage')) {
-                    $data = array(
-                        'name'  => $resource->name,
-                        'lang'  => $lang,
-                        'icon'  => $resource->icon);
-                    $navigations .= Response::view('admin.interface.nav-li', $data )->getOriginalContent();
-                }
-            }
-        }*/
+    public static function getResponseAdminLi ($object) {
+        $model_name = ucfirst ($object->model);
+        $lang = ($object->model!=''?$model_name::$langNav:'admin.nav_' . $object->name);
+        $data = array(
+                'name'  => $object->name,
+                'lang'  => $lang,
+                'icon'  => $object->icon);
+        return Response::view('theme::admin.interface.nav-li', $data )->getOriginalContent();
     }
 
     public function rolesList () {
@@ -216,6 +200,6 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
         foreach ( $this->roles as $role ) {
             $str .= ' '.$role->name.',';
         }
-        return substr ($str, 1, strlen($str) - 2);
+        return mb_substr ($str, 1, strlen($str) - 2);
     }
 }

@@ -8,15 +8,17 @@ class Cachr
 {
 	public static function getCache( $cache )
 	{
-		Cache::forget('DB_Nav');
-		Cache::forget('DB_Urls');
-		Cache::forget('DB_Option');
-		Cache::forget('DB_AdminBlockTypes');
-		Cache::forget('DB_AdminResourceName');
-		Cache::forget('DB_AdminResource');
-		Cache::forget('DB_LocaleFrontEnable');
-		Cache::forget('DB_ResourceNavigable');
-		Cache::forget('DB_LocalesEnabled');
+		if (App::isLocal()) {
+			Cache::forget('DB_Nav');
+			Cache::forget('DB_Urls');
+			Cache::forget('DB_Option');
+			Cache::forget('DB_AdminBlockTypes');
+			Cache::forget('DB_AdminResourceName');
+			Cache::forget('DB_AdminResource');
+			Cache::forget('DB_LocaleFrontEnable');
+			Cache::forget('DB_ResourceNavigable');
+			Cache::forget('DB_LocalesEnabled');
+		}
 		
 		if(!Cache::has($cache)){
 			$cachr = new Cachr;
@@ -28,6 +30,7 @@ class Cachr
 		}
 		return Cache::get($cache);
 	}
+
 	public function initCache()
 	{
 		// !!! DATABASE CACHE !!!
@@ -42,7 +45,7 @@ class Cachr
 		Cache::rememberForever('DB_LocaleFrontEnable', function()
 		{
 			//Get all data in database
-		    $locales = Locale::where('enable','=',1)->get();
+		    $locales = Locale::where('enable','=',1)->where('is_publish','=',1)->get();
 		    //Preapre data to extract by id
 		    $data = array();
 		    foreach( $locales as $l )
@@ -83,7 +86,7 @@ class Cachr
 		// Get all Locales enableds in the table
 		Cache::rememberForever('DB_LocalesEnabled', function()
 		{	
-		    return Locale::where('enable', 1)->get();
+		    return Locale::where('enable', 1)->where('is_publish', 1)->get();
 		});
 
 
@@ -104,8 +107,9 @@ class Cachr
 		//Cache Model::Option
 		Cache::rememberForever('DB_Option', function()
 		{
-		    return Option::first();
+		    return Option::all();
 		});
+
 		//Cache Model::Urls
 		Cache::rememberForever('DB_Urls', function()
 		{

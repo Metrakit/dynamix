@@ -2,6 +2,10 @@
 
 class AuthController extends BaseController {
 
+	private $credentials;
+
+	private $validator;
+
 	/**
 	 * Constructor
 	 *
@@ -17,14 +21,14 @@ class AuthController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function login()
+	public function adminLogin()
 	{
 		$user = Auth::user();
 		if ( !empty($user->id) ) {
 			return Redirect::to('/');
 		}
 
-		return View::make('auth.login');
+		return View::make('theme::admin.login.login');
 	}
 
 	/**
@@ -32,53 +36,125 @@ class AuthController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function post_login()
+	public function postAdminLogin()
 	{
-		//Login the user
-		$credentials = array(
-			'email'    => Input::get( 'email' ),
-			'password' => Input::get( 'password' ));
-
-		// Validate the inputs
-		$validator = Validator::make(Input::all(), Config::get('validator.login'));
-
         // Check if the form validates with success
-		if ( $validator->passes() ){
-
+		if ( $this->checkLogin() ){
+			
 			// redirect the user back to the intended page
 			// or defaultpage if there isn't one
-			if (Auth::attempt($credentials,true)) {
+			if (Auth::attempt($this->credentials, true)) {
 				//track user
-				parent::track('loggin','Auth',Auth::user()->id);
+				parent::track('loggin', 'Auth', Auth::user()->id);
 
-				/*$user = Auth::user();
-				$user->last_visit_at = new Datetime;
-				$user->save();*/
-
-				return Redirect::intended('/');
+				if (Request::ajax()) {
+					return Response::json(array('statut' => 'success', 'message' => I18n::get('auth.login-success'), 'user_id' => User::getIdByAuth(Auth::user()->id)));
+				} else {
+					return Redirect::route('admin.login')->with('success', I18n::get('auth.login-success'))->withInput(Input::except('password'));
+				}
 			} else {
-				$user = AuthUser::where('email','=', Input::get( 'email' ) )->first();
+				$user = AuthUser::where('email', Input::get('email'))->first();
 
 				if ( empty($user) || !isset($user) ) {
-					return Redirect::to('/auth/login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
+					return Redirect::route('admin.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
 				}
 
-				return Redirect::to('/auth/login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
+				return Redirect::route('admin.login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
 			}
 
 			$this->user = $user;
 			return Redirect::to('/');
 		}
 
-		return Redirect::to('/auth/login')->withInput()->withErrors($validator);
+		return Redirect::route('admin.login')->withInput()->withErrors($this->validator);
 	}
 
+
 	/**
-	 * Loggout an user
+	 * Show the display for logging
 	 *
 	 * @return Response
 	 */
-	public function logout(){
+	public function publicLogin()
+	{
+		$user = Auth::user();
+		if ( !empty($user->id) ) {
+			return Redirect::to('/');
+		}
+
+		return View::make('theme::public.user.login');
+	}
+
+	/**
+	 * Log an user
+	 *
+	 * @return Response
+	 */
+	public function postPublicLogin()
+	{
+        // Check if the form validates with success
+		if ( $this->checkLogin() ){
+			// return var_dump($this->credentials);
+			// redirect the user back to the intended page
+			// or defaultpage if there isn't one
+			if (Auth::attempt($this->credentials, true)) {
+				//track user
+				parent::track('loggin', 'Auth', Auth::user()->id);
+
+				//return Redirect::intended('/');
+				if (Request::ajax()) {
+					return Response::json(array('statut' => 'success', 'message' => I18n::get('auth.login-success'), 'user_id' => User::getIdByAuth(Auth::user()->id)));
+				} else {
+					return Redirect::route('public.login')->with('success', I18n::get('auth.login-success'))->withInput(Input::except('password'));
+				}
+			} else {
+				$user = AuthUser::where('email', Input::get('email'))->first();
+
+				if ( empty($user) || !isset($user) ) {
+					if (Request::ajax()) {
+						return Response::json(array('statut' => 'danger', 'message' => I18n::get('auth.unknow_email')));
+					} else {
+						return Redirect::route('public.login')->with('error', I18n::get('auth.unknow_email'))->withInput(Input::except('password'));
+					}
+				}
+				if (Request::ajax()) {
+						return Response::json(array('statut' => 'danger', 'message' => I18n::get('auth.incorrect_password')));
+					} else {
+						return Redirect::route('public.login')->with('error', I18n::get('auth.incorrect_password'))->withInput(Input::except('password'));
+					}
+			}
+			$this->user = $user;
+			return Redirect::to('/');
+		}
+		if (Request::ajax()) {
+				return Response::json(array('statut' => 'danger', 'message' => I18n::get('auth.incorrect_password')));
+			} else {
+				return Redirect::route('public.login')->withInput()->withErrors($this->validator);
+			}
+	}
+
+
+	public function checkLogin()
+	{
+		//Login the user
+		$this->credentials = array(
+			'email'    => Input::get( 'email' ),
+			'password' => Input::get( 'password' ));
+
+		// Validate the inputs
+		$this->validator = Validator::make(Input::all(), Config::get('validator.login'));
+
+        // Check if the form validates with success
+		return $this->validator->passes();
+	}
+
+	/**
+	 * Loggout an user (admin or simple)
+	 *
+	 * @return Response
+	 */
+	public function logout()
+	{
 		Auth::logout();
 		return Redirect::to('/');
 	}
@@ -104,7 +180,7 @@ class AuthController extends BaseController {
 
 			App::abort(403, I18n::get('auth.you_are_not_authorized'));
 		} else {
-			return Redirect::to('auth/login')->with('notice', I18n::get('auth.you_must_be_logged'));
+			return Redirect::route('admin.login')->with('notice', I18n::get('auth.you_must_be_logged'));
 		}
 	}
 
@@ -117,7 +193,7 @@ class AuthController extends BaseController {
 	 */
 	public function choose_your_language()
 	{
-		return View::make('public.i18n.choose-your-language');
+		return View::make('theme::public.i18n.choose-your-language');
 	}
 
 

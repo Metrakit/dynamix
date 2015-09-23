@@ -21,9 +21,9 @@ class AdminAuthController extends BaseController {
 		$data['noAriane'] = true;
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.auth.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.auth.index', $data )->renderSections());
 		} else {
-			return View::make('admin.auth.index', $data);
+			return View::make('theme::' .'admin.auth.index', $data);
 		}
 	}
 
@@ -35,7 +35,7 @@ class AdminAuthController extends BaseController {
 		//Interface
 		$data['noAriane'] 		= true;
 
-		return View::make('admin.auth.show_profil', $data);
+		return View::make('theme::' .'admin.auth.show_profil', $data);
 	}
 
 	public function editProfil () {
@@ -50,7 +50,7 @@ class AdminAuthController extends BaseController {
 		//langsBackend
 		$data['langsBackend'] = Locale::where('on_admin','=',1)->orderBy('enable', 'DESC')->orderBy('id')->get();
 
-		return View::make('admin.auth.edit_profil', $data);
+		return View::make('theme::' .'admin.auth.edit_profil', $data);
 	}
 
 	public function updateProfil () {
@@ -105,7 +105,7 @@ class AdminAuthController extends BaseController {
 
 		if(empty($data['u'])) return Redirect::back()->with('error', Lang::get('admin.auth_empty') );
 
-		return View::make('admin.auth.edit_role', $data);
+		return View::make('theme::' .'admin.auth.edit_role', $data);
 	}
 
 	/**
@@ -122,7 +122,7 @@ class AdminAuthController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'role_') !== false ) {
 				$role_rules[$k] = Config::get('validator.admin.auth_role.role');
-				$roles[] = substr( $k, strlen('role_'), (strlen($k) - strpos($k, 'role_')));
+				$roles[] = mb_substr( $k, strlen('role_'), (strlen($k) - strpos($k, 'role_')));
 			}
 		}
 

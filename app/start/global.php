@@ -2,6 +2,34 @@
 
 /*
 |--------------------------------------------------------------------------
+| Register Theme
+|--------------------------------------------------------------------------
+|
+|
+*/
+//Get themes
+//Set namespace with override support
+View::addNamespace('theme', [
+    base_path().'/theme/' . Theme::getThemeName() . '/views',
+    base_path().'/theme/default/views'
+]);
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Register The Modules Providers
+|--------------------------------------------------------------------------
+|
+|
+*/
+foreach (Config::get('module') as $module) {
+	App::register('Dynamix\\' . $module . '\\' . $module . 'ServiceProvider');
+}
+
+
+/*
+|--------------------------------------------------------------------------
 | Register The Laravel Class Loader
 |--------------------------------------------------------------------------
 |

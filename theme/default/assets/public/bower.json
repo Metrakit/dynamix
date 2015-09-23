@@ -1,0 +1,22 @@
+{
+    "name": "DynamixPublic",
+    "version": "0.0.1",
+    "dependencies": {
+        "headjs": ">= 1.0.3",
+        "media-match": ">= 0.1.0",
+        "responsejs": ">= 0.9.0",
+        "bootstrap": ">= 3.3.*"
+    },
+    "overrides": {
+        "media-match": {
+            "main": [
+              "media.match.min.js"
+            ]
+        },
+        "responsejs": {
+            "main": [
+              "response.min.js"
+            ]
+        }
+    }
+}

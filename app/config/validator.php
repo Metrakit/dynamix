@@ -11,22 +11,12 @@ return array(
 	|
 	*/
 
-	'login'			=>		array(	'email'		=> 'required|email|max:225',
-									'password'	=> 'required|max:225'),
+	'login'			=>		array(	'email'		=> array('required', 'email', 'max:225'),
+									'password'	=> array('required', 'max:225')),
 
 
 	'forgot'		=>		array(	'email'		=> 'required|email|max:225'),
 
-
-	/*
-	|	Commentaire
-	|
-	*/
-	
-	'comment'		=>		array(	'commentable_id'	=> 'required|integer',
-									'commentable_type'	=> 'required',
-									'message'			=> 'required|min:3'),
-	'comment_edit'	=>		array(	'message'			=> 'required|min:3'),
 
 	/*
 	|	Admin
@@ -50,15 +40,6 @@ return array(
 		'option_social_title'		=>	array(  'social_title'		=> 'min:5'),
 		'option_social_description'	=>	array(  'social_description'		=> 'min:5'),
 		
-		//'i18n_constant'=>	array(  'key'		=> 'max:255'),
-	
-	/*
-	|	Reroute
-	|
-	| Only regular (-i18n) rules
-	*/
-		'reroute'		=> 		array(	'url_referer'		=> 'min:10',										
-										'url_redirect'	=> 'url|min:10|max:255'),
 	
 
 	/*
@@ -70,11 +51,7 @@ return array(
 		'permission'=> 		array(	'resource_id'	=> 'exists:resources,id',
 									'role_id'		=> 'required|exists:roles,id'),
 		
-	/*
-	|	Page
-	|
-	*/
-		'page'		=> 		array(	'required'			=> 'required|min:2|max:200'),
+
 		
 	/*
 	|	Tag

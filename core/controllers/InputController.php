@@ -14,7 +14,7 @@ class InputController extends Controller {
 
         $this->data['params']['formId'] = $formId;
 
-        return View::make('admin.formr.inputs.create', $this->data);
+        return View::make('theme::' .'admin.formr.inputs.create', $this->data);
     }
 
     /**

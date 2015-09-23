@@ -52,6 +52,7 @@ return array(
 
 		//usefull links
 		'usefull_link'  => 'Liens utiles',
+		'dangerous_zone' => 'Zone dangeureuse',
 
 	
 	//Media
@@ -74,8 +75,10 @@ return array(
 	'page_title'			=> 'Titre de la page',
 	'put_page_title'			=> 'Saisissez le titre de la page',
 	'page_proprieties'			=> 'Propriétés de la page',
+	'page_parameters'			=> 'Paramètres de la page',
 	'page_contents'			=> 'Contenu de la page',
 	'page_show'			=> 'Vue de la page',
+	'page_backgrounds' => 'Fond de la page',
 
 	//Block
 	'block_create'			=> 'Création de bloc',
@@ -216,12 +219,6 @@ return array(
 		'option_social_description_help'		=> 'Ce texte sera utilisé comme description lors des partages sur les réseaux sociaux.',
 
 //1200 x 630
-
-
-
-	//I18n Constant
-	'rerouter_url_referer'		=> '',
-	'rerouter_url_redirect'		=> '',
 
 	//I18n Constant
 	'i18n-constant' => 'Expression récurrente',

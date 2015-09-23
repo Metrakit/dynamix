@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => $_ENV['DEBUG'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://dynam.ix',
+	'url' => 'http://' . $_ENV['DOMAIN'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,6 +56,7 @@ return array(
 	*/
 
 	'locale' => 'fr',
+	'locale_default' => 'fr',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -68,7 +69,7 @@ return array(
 	|
 	*/
 
-	'key' => 'Bhvs1QjP1zse2sCwJmWvTndnbg6cjrTT',
+	'key' => $_ENV['KEY'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -109,9 +110,16 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		
+		// ClockWork
+		//'Clockwork\Support\Laravel\ClockworkServiceProvider',
+		
+		// Dynamix Core 
+		'Dynamix\Core\CoreServiceProvider',
+		'Dynamix\Pager\PagerServiceProvider',
+		'Dynamix\I18n\I18nServiceProvider',
 
 		// Dynamix packages
-
 		//'Dynamix\Template\TemplateServiceProvider',
 		//'Dynamix\BlogModule\BlogServiceProvider',
 		//'Dynamix\UserManager\UserServiceProvider',
@@ -119,10 +127,7 @@ return array(
 		//'Dynamix\MosaicGallery\MosaicGalleryServiceProvider',
 
 		// External packages
-		'PagerServiceProvider',
 		'FormerServiceProvider',
-		'Thujohn\Analytics\AnalyticsServiceProvider',
-
 
 	),
 
@@ -193,15 +198,16 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		// Dynamix packages
-		//'Template'        => 'Dynamix\Template\TemplateFacade',
-		//'BlogModule'        => 'Dynamix\BlogModule\BlogFacade',
-		//'UserManager'        => 'Dynamix\UserManager\UserFacade',
+		'Pager'            => 'Dynamix\Pager\PagerFacade',
 
 		// External packages
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
+		
+		'Carbon'    => 'Carbon\Carbon',
+		
 	),
 
 
 	'author'			=> 'David Lepaux',
-	'contributor'		=> 'Jordane Jouffroy',
+	'fondator'			=> 'Jordane Jouffroy',
 );

@@ -175,7 +175,7 @@ class Formr extends Eloquent{
     	$data['inputs'] = Former::render($data['form']);
     	$data['modelId'] = null;
     	$data['builder'] = false;
-        return Response::view('public.form.form', $data )->getOriginalContent();
+        return Response::view('theme::public.form.form', $data )->getOriginalContent();
     }
 
 	/**
@@ -183,19 +183,15 @@ class Formr extends Eloquent{
 	 *
 	 * @var string
 	 */
-	public function translate( $i18n_id )
-	{
-		return Translation::where('i18n_id','=',$i18n_id)->where('locale_id','=',App::getLocale())->first()->text;
-	}
 
 	public function title()
 	{
-		return $this->translate($this->i18n_title);
+		return Eloquentizr::getTranslation($this->i18n_title);
 	}
 
 	public function description()
 	{
-		return $this->translate($this->i18n_description);
+		return Eloquentizr::getTranslation($this->i18n_description);
 	}
 
 

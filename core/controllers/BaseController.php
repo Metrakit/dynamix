@@ -3,6 +3,13 @@
 class BaseController extends Controller {
 
 
+	public function __construct()
+	{
+		if (Config::get('core::extend.base_controller')) {
+			View::share('global', Config::get('core::extend.base_controller'));
+		}		
+	}
+
 
 
 	/**
@@ -47,25 +54,12 @@ class BaseController extends Controller {
 		return $notAllowed;
 	}
 
-	
-
-	/**
-	 * get the page with all langue activated
-	 *
-	 * @return Response
-	 */
-	public function choose_your_language()
-	{
-		return View::make('public.i18n.choose-your-language');
-	}
-
-
 
 	/*protected function setupLayout()
 	{
 		if ( ! is_null($this->layout))
 		{
-			$this->layout = View::make($this->layout);
+			$this->layout = View::make('theme::' .$this->layout);
 		}
 	}
 

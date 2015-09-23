@@ -19,9 +19,9 @@ class AdminTagController extends BaseController {
 		$data['langsFrontEnd'] = Locale::where('enable','=',1)->orderBy('enable', 'DESC')->orderBy('id')->get();
 		
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.tag.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.tag.index', $data )->renderSections());
 		} else {
-			return View::make('admin.tag.index', $data);
+			return View::make('theme::' .'admin.tag.index', $data);
 		}
 	}
 
@@ -40,7 +40,7 @@ class AdminTagController extends BaseController {
 		$data['buttonLabel'] 	= Lang::get('button.add');
 		$data['glyphicon'] 		= 'plus';
 		
-		return View::make('admin.tag.create', $data);
+		return View::make('theme::' .'admin.tag.create', $data);
 	}
 
 
@@ -56,7 +56,7 @@ class AdminTagController extends BaseController {
 		foreach ( Input::except('_token') as $k => $v ) {
 			if ( strpos($k, 'tag_name_') !== false ) {
 				$rules[$k] = Config::get('validator.admin.tag.name');
-				$tag_name_datas[substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')))] = $v;
+				$tag_name_datas[mb_substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')))] = $v;
 			}
 		}
 		//return var_dump($tag_name_datas);
@@ -113,7 +113,7 @@ class AdminTagController extends BaseController {
 	    $data['tag'] = Tag::find($id);
 	    if(empty($data['tag'])) return Redirect::back()->with('error', Lang::get('admin.tag_empty') );
 
-		return View::make('admin.tag.edit', $data);
+		return View::make('theme::' .'admin.tag.edit', $data);
 	}
 
 
@@ -130,7 +130,7 @@ class AdminTagController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'tag_name_') !== false ) {
 				$rules[$k] = Config::get('validator.admin.option_site_name');
-				$tag_name_locales[] = substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')));
+				$tag_name_locales[] = mb_substr( $k, strlen('tag_name_'), (strlen($k) - strpos($k, 'tag_name_')));
 			}
 		}
 

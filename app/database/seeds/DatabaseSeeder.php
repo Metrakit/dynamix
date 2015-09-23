@@ -6,75 +6,48 @@ class DatabaseSeeder extends Seeder {
     {
         Eloquent::unguard();
 
-        //Resources
-        $this->call('LocalesTableSeeder');
-        $this->call('ActionsTableSeeder');
-        $this->call('ResourcesTableSeeder');
-        $this->call('I18nTypesTableSeeder');
-        //$this->call('FileTypesTableSeeder');
-        //$this->call('FilesTableSeeder');
-        $this->call('ResponsiveWidthsTableSeeder');
-        $this->call('ResponsiveTriggersTableSeeder');
-        $this->call('SocialsTableSeeder');
-        $this->call('ImagesTableSeeder');
+            // Static Resources
+            $this->call('ActionsTableSeeder');
+            $this->call('ResourcesTableSeeder');
 
 
-        //Users
-        $this->call('AuthsTableSeeder');
-        $this->call('RolesTableSeeder');
-
-        $this->call('AuthRoleTableSeeder');
-        $this->call('PermissionsTableSeeder');
+            // ========================
+            // High Dependencies (package)
+            $this->call('I18nDatabaseSeeder');
 
 
-        //Blogs
-        //$this->call('BlogsTableSeeder');
-        //$this->call('ArticlesTableSeeder');
-        //$this->call('TagsTableSeeder');
-        //$this->call('ArticleCategoriesTableSeeder');
+            // Medias
+            $this->call('ImagesTableSeeder');
 
-        //$this->call('ArticleBlogTableSeeder');
-        //$this->call('ArticleCategoryTableSeeder');
-        $this->call('TaggablesTableSeeder');
-        
+            // Auth
+            $this->call('AuthsTableSeeder');
+            
+            // Role & Permission
+            $this->call('RolesTableSeeder');
+            $this->call('PermissionsTableSeeder');
+            $this->call('AuthRoleTableSeeder');
 
-        //Pages
-        $this->call('PagesTableSeeder');
-        $this->call('BlocksTableSeeder');
-        $this->call('BlockContentsTableSeeder');
-        $this->call('BlockResponsiveTableSeeder');
+            // Tag
+            $this->call('TaggablesTableSeeder');
+            
+            // OnePage (go to pager)
+            $this->call('OnePagesTableSeeder');
 
-        //OnePage
-        $this->call('OnePagesTableSeeder');
+            // Forms
+            $this->call('ViewsTableSeeder');
 
+            // Navigation
+            $this->call('NavigationsTableSeeder');//Need Page module OK
 
-        //Forms
-        //$this->call('PagesTableSeeder');
-        $this->call('ViewsTableSeeder');
-        //$this->call('DatasTableSeeder');
-        //$this->call('DataViewTableSeeder');
-        //$this->call('MapsTableSeeder');
-        
-        // ONLY FOR DEVELOPMENT
-        $this->call('FullFormSeeder');
-        $this->call('CommentsTableSeeder');
+            // Theme
+            $this->call('ThemesTableSeeder');
 
+            // Option
+            $this->call('OptionsTableSeeder');
 
-        //Sliders
-        //$this->call('SlidersTableSeeder');
-        //$this->call('SlidesTableSeeder');
-
-        //Menu
-        $this->call('NavigationsTableSeeder');//Need Page module OK
-
-        //Task
-        $this->call('TasksTableSeeder');
-
-
-        //Autonomous
-        //$this->call('ThemesTableSeeder');
-        $this->call('OptionsTableSeeder');
-
+        // ========================
+        //Packages
+        $this->call('PagerDatabaseSeeder');
     }
 
 }

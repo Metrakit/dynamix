@@ -16,59 +16,11 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		//Check if the connection is ok
-		$minutes=60;
-		try{
-			$sessionsPerDay = Cache::remember('sessionsPerDay', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getSessionsPerDay();
-			});
-			$sessionsCount = Cache::remember('sessionsCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getSessionsCount();
-			});
-			$userCount = Cache::remember('userCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getUserCount();
-			});
-			$pageSeenCount = Cache::remember('pageSeenCount', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getPageSeenCount();
-			});
-			$timeBySession = Cache::remember('timeBySession', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getTimeBySession();
-			});
-			$rebound = Cache::remember('rebound', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getRebound();
-			});
-			$newOnReturningVisitor = Cache::remember('newOnReturningVisitor', $minutes, function () {
-				return App::make('GoogleAnalyticsAPIController')->getNewOnReturningVisitor();			
-			});
-		}catch(Exception $e){
-			Log::error('Google Analytics API not found');
-			$data['ga_googleAnalyticsFound'] = false;
-		}
-
-		$data['ga_sessionsPerDay'] 			= $sessionsPerDay;
-		$data['ga_sessionsCount'] 			= $sessionsCount;
-		$data['ga_userCount'] 				= $userCount;
-		$data['ga_pageSeenCount'] 			= $pageSeenCount;
-		$data['ga_pagesBySession'] 			= round( $pageSeenCount / $sessionsCount, 2);
-		$data['ga_timeBySession'] 			= round( $timeBySession / $sessionsCount, 0).'s';
-		$data['ga_rebound'] 				= $rebound;
-		$data['ga_newOnReturningVisitor'] 	= $newOnReturningVisitor;
-		$data['ga_googleAnalyticsFound'] = true;
-
-		$data = array_merge($data,App::make('AdminTasksController')->generateShow());
+		//$data = array_merge($data,App::make('AdminTasksController')->generateShow());
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.index', $data )->renderSections());
 		} else {
-			return View::make('admin.index', $data );
-		}
-	}
-
-	public function tryCatch () {
-		//Google Analytics
-		try{
-		}catch(Exception $e){
-			Log::error('Google Analytics API not found');
-			$data['ga_googleAnalyticsFound'] = false;
+			return View::make('theme::' .'admin.index', $data );
 		}
 	}
 
@@ -87,9 +39,9 @@ class AdminController extends BaseController {
 		$data['noAriane'] = true;
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.media.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.media.index', $data )->renderSections());
 		} else {
-			return View::make('admin.media.index', $data);
+			return View::make('theme::' .'admin.media.index', $data);
 		}
 	}
 
@@ -104,7 +56,7 @@ class AdminController extends BaseController {
 	{
 		$mosaiques = Mosaique::all();
 
-		return View::make('admin.mosaique.index', compact('mosaiques'));
+		return View::make('theme::' .'admin.mosaique.index', compact('mosaiques'));
 	}*/
 
 
@@ -125,9 +77,9 @@ class AdminController extends BaseController {
 		$data['noAriane'] = true;
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.role_permission.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.role_permission.index', $data )->renderSections());
 		} else {
-			return View::make('admin.role_permission.index', $data);
+			return View::make('theme::' .'admin.role_permission.index', $data);
 		}
 	}
 
@@ -193,109 +145,6 @@ class AdminController extends BaseController {
 	}
 
 
-	/**
-	 * get All Option in base
-	 *
-	 * @return Response
-	 */
-	public function getEnvironnement()
-	{
-		//User
-		$data['user'] = Auth::user();
-
-		//Interface
-		$data['noAriane'] = true;
-
-		//Datas
-		$data['langsFrontEnd'] = Locale::orderBy('enable', 'DESC')->orderBy('id')->get();
-		$data['langsFrontEnd'] = array_chunk($data['langsFrontEnd']->toArray(), round(count($data['langsFrontEnd']->toArray())/3+1));
-		//return var_dump($data['langsFrontEnd']);
-
-		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.environment.index', $data )->renderSections());
-		} else {
-			return View::make('admin.environment.index', $data);
-		}
-	}
-
-	/**
-	 * post All Option in base
-	 *
-	 * @return Response
-	 */
-	public function postLanguages()
-	{
-		// Validate the inputs
-        $validator = Validator::make(Input::all(), Config::get('validator.admin.languages'));
-
-        // Check if the form validates with success
-        if ($validator->passes()) {
-			
-			$activeLang = Locale::where('enable','=',1)->get();
-
-        	//Identify new languages
-        	$newLang = array();
-        	foreach ( Input::all() as $lang ) {
-        		if ( Translation::where('locale_id','=',$lang)->count() == 0 ) {
-        			$newLang[] = $lang;
-        		}
-        	}
-
-        	//Identify old languages
-        	foreach ( $activeLang as $lang ) {
-        		if ( !array_search($lang->id, Input::all()) ){
-        			//Si on trouve rien
-        			foreach ( $activeLang as $lang ) {
-		        		if ( !array_search($lang->id, Input::all()) ){
-		        			//Si on trouve rien
-		        			foreach ( Translation::where('locale_id','=',$lang->id)->get() as $translation ) {
-		        				if (!$translation->delete() ) {
-									return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_delete_error'));
-		        				}
-		        			}
-		        			//set locale disabled
-		        			$locale = Locale::find($lang->id);
-		        			$locale->enable = false;
-		        			$locale->save();
-
-		        			//track user
-		        			parent::track('delete','Locale',$locale->id);
-		        		}
-		        	}
-        		}
-        	}
-
-        	//get all i18n IDs to create all translation with the new locale ID
-        	$i18ns = I18n::all();
-        	//For each lang
-        	foreach ( $newLang as $lang ) {
-        		//Create each i18n ID
-        		foreach ( $i18ns as $i18n ) {
-        			$text = Translation::where('i18n_id','=',$i18n->id)->where('locale_id','en')->first()->text;
-        			//Si on trouve pas de traduction
-        			if ( Translation::where('i18n_id','=',$i18n->id)->where('locale_id','=',$lang)->first() === null ) {
-        				//On la crée
-	        			if ( !Translation::create( array('i18n_id' => $i18n->id, 'locale_id' => $lang, 'text' => $text . '-' . $lang) ) ) {
-	        				return Redirect::to('/admin/environment')->with('error', Lang::get('admin.translate_create_error'));
-	        			}
-        			}
-        		}
-				$locale = Locale::find( $lang );
-				$locale->enable = 1;
-				if ( ! $locale->save() ) {
-					return Redirect::to('/admin/environment')->with('error', Lang::get('admin.languauge_save_error'));
-				}
-				//track user
-				parent::track('create','Locale', $locale->id);
-        	}
-
-			return Redirect::to('/admin/environment')->with('success', Lang::get('admin.language_success'));
-	    }
-	    
-		// Show the page
-		return Redirect::to('/admin/environment')->withInput()->withErrors($validator);
-	}
-
 
 	/**
 	 * get All Option in base
@@ -313,9 +162,9 @@ class AdminController extends BaseController {
 		$data['logs'] = Track::orderBy('date','DESC')->paginate(20);
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.log.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.log.index', $data )->renderSections());
 		} else {
-			return View::make('admin.log.index', $data);
+			return View::make('theme::' .'admin.log.index', $data);
 		}
 	}
 
@@ -332,12 +181,18 @@ class AdminController extends BaseController {
 		//Interface
 		$data['noAriane'] = true;
 
-		$data['option'] = Option::first();
+		$data['option'] = new Option;
+
+		$data['options'] = Option::all();
+
+		//Data for themes
+		$data['theme_publics'] = Theme::where('type', 'public')->get();
+		$data['theme_admins'] = Theme::where('type', 'admin')->get();
 
 		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.option.index', $data )->renderSections());
+			return Response::json(View::make('theme::' . 'admin.option.index', $data )->renderSections());
 		} else {
-			return View::make('admin.option.index', $data);
+			return View::make('theme::admin.option.index', $data);
 		}
 	}
 
@@ -354,7 +209,7 @@ class AdminController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'site_name_') !== false ) {
 				$site_name_rules[$k] = Config::get('validator.admin.option_site_name');
-				$site_name_locales[] = substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
+				$site_name_locales[] = mb_substr( $k, strlen('site_name_'), (strlen($k) - strpos($k, 'site_name_')));
 			}
 		}
 
@@ -364,7 +219,7 @@ class AdminController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'social_title_') !== false ) {
 				$social_title_rules[$k] = Config::get('validator.admin.option_social_title');
-				$social_title_locales[] = substr( $k, strlen('social_title_'), (strlen($k) - strpos($k, 'social_title_')));
+				$social_title_locales[] = mb_substr( $k, strlen('social_title_'), (strlen($k) - strpos($k, 'social_title_')));
 			}
 		}
 
@@ -374,7 +229,7 @@ class AdminController extends BaseController {
 		foreach ( Input::all() as $k => $v ) {
 			if ( strpos($k, 'social_description_') !== false ) {
 				$social_description_rules[$k] = Config::get('validator.admin.option_social_description');
-				$social_description_locales[] = substr( $k, strlen('social_description_'), (strlen($k) - strpos($k, 'social_description_')));
+				$social_description_locales[] = mb_substr( $k, strlen('social_description_'), (strlen($k) - strpos($k, 'social_description_')));
 			}
 		}
 
@@ -387,154 +242,103 @@ class AdminController extends BaseController {
         // Check if the form validates with success
         if ($validator->passes())
         {
-        	$option = Option::first();
-        	//return var_dump(Input::get('cover_path'));
+        	//Themes
+        	$activeThemePublic = Theme::where('type', 'public')->where('active', 1)->first();
+        	$activeThemeAdmin = Theme::where('type', 'admin')->where('active', 1)->first();
 
-        	$option->site_url		= Input::get('site_url');
-        	$option->cover_path		= Input::get('cover_path');
-        	$option->admin_email	= Input::get('admin_email');
-        	$option->analytics		= Input::get('analytics');
-        	
-        	//Update translations
-        	foreach ( $site_name_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_site_name)->updateText($locale, Input::get('site_name_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
-        		}
+        	//Change or not?
+        	if ( $activeThemePublic->id != Input::get('theme_public')) {
+        		$activeThemePublic->active = false;
+        		$activeThemePublic->save();
+        		$newThemePublic = Theme::find(Input::get('theme_public'));
+        		$newThemePublic->active = true;
+        		$newThemePublic->save();
         	}
-			//Update translations
-        	foreach ( $social_title_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_social_title)->updateText($locale, Input::get('social_title_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_title_update_error'));
-        		}
+			if ( $activeThemeAdmin->id != Input::get('theme_admin')) {
+        		$activeThemeAdmin->active = false;
+        		$activeThemeAdmin->save();
+        		$newThemeAdmin = Theme::find(Input::get('theme_public'));
+        		$newThemeAdmin->active = true;
+        		$newThemeAdmin->save();
         	}
-			//Update translations
-        	foreach ( $social_description_locales as $locale ) {
-        		if ( !I18n::find($option->i18n_social_description)->updateText($locale, Input::get('social_description_'.$locale)) ) {
-        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_description_update_error'));
+        	//Delete Cache
+        	Cache::forget('DB_ThemeByType');
+
+
+        	//Options
+        	$options = Option::all();
+
+        	foreach ($options as $option) {
+
+        		if ($option->key == "site_url") {
+        			$option->value		= Input::get('site_url');
         		}
+
+        		if ($option->key == "cover_path") {
+        			$option->value		= Input::get('cover_path');
+        		}
+
+        		if ($option->key == "admin_email") {
+        			$option->value		= Input::get('admin_email');
+        		}
+
+        		if ($option->key == "analytics") {
+        			$option->value		= Input::get('analytics');
+        		}
+
+        		if ($option->key == "i18n_site_name") {
+
+		        	//Update translations
+		        	foreach ( $site_name_locales as $locale ) {
+		        		if ( !I18n::find($option->value)->updateText($locale, Input::get('site_name_'.$locale)) ) {
+		        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_site_name_update_error'));
+		        		}
+		        	}
+		        }
+
+		        if ($option->key == "i18n_social_title") {
+
+					//Update translations
+		        	foreach ( $social_title_locales as $locale ) {
+		        		if ( !I18n::find($option->value)->updateText($locale, Input::get('social_title_'.$locale)) ) {
+		        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_title_update_error'));
+		        		}
+		        	}
+		        }
+
+	        	if ($option->key == "i18n_social_description") {
+
+					//Update translations
+		        	foreach ( $social_description_locales as $locale ) {
+		        		if ( !I18n::find($option->value)->updateText($locale, Input::get('social_description_'.$locale)) ) {
+		        			return Redirect::to('admin/option')->with('error', Lang::get('admin.option_social_description_update_error'));
+		        		}
+		        	}
+		        }
+
+        		$option->save();
         	}
-        	//
 
-        	//if no error when save
-        	if($option->save()) {
-        		Cache::forget('DB_Option'); 
+        	// Clear cache
+        	Cache::forget('options'); 
 
-        		//track user
-        		parent::track('update','Option',null);  
+    		//track user
+    		parent::track('update', 'Option', null);  
 
-          		return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
-        	} else {
-	        	return Redirect::to('admin/option')->with( 'error', Lang::get('admin.option_error') );
-	        }
+          	return Redirect::to('admin/option')->with( 'success', Lang::get('admin.option_success') );
 	    }
 	    
 		// Show the page
 		return Redirect::to('/admin/option')->withInput()->withErrors($validator);
 	}
+	
 
-	/**
-	 * get All Option in base
-	 *
-	 * @return Response
-	 */
-	public function getRerouter()
-	{
-		//User
-		$data['user'] = Auth::user();
-
-		//Interface
-		$data['noAriane'] = true;
-
-		$data['reroutes'] = Rerouter::all();
-
-		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.rerouter.index', $data )->renderSections());
-		} else {
-			return View::make('admin.rerouter.index', $data);
-		}
-	}
-
-	/**
-	 * post All Option in base
-	 *
-	 * @return Response
-	 */
-	public function postRerouter($id)
-	{
-		// no problem
-		//form for all reroute bim
-
-		// Validate the inputs
-        $validator = Validator::make(Input::all(), Config::get('validator.reroute'));
-
-        // Check if the form validates with success
-        if ($validator->passes())
-        {
-        	//Update the reroute
-        	//
-
-        	//if no error when save
-        	if($option->save()) {
-        		Cache::forget('DB_Option'); 
-
-        		//track user
-        		parent::track('update','Option',null);  
-
-          		return Redirect::to('admin/rerouter')->with( 'success', Lang::get('admin.option_success') );
-
-        	} else {
-	        	return Redirect::to('admin/rerouter')->with( 'error', Lang::get('admin.option_error') );
-	        }
-	    }
-	    
-		// Show the page
-		return Redirect::to('/admin/rerouter')->withInput()->withErrors($validator);
+	// Clear cache methods
+	public function clearcache () {
+		Cache::flush();
+		return Redirect::back();
 	}
 
 
-	public function getI18nConstant () {
-		//User
-		$data['user'] = Auth::user();
 
-		//Interface
-		$data['noAriane'] = true;
-
-		$data['i18nConstants'] = I18n::where('i18n_type_id', I18nType::where('name', 'key')->first()->id)->get();
-
-		if (Request::ajax()) {
-			return Response::json(View::make( 'admin.i18n-constant.index', $data )->renderSections());
-		} else {
-			return View::make('admin.i18n-constant.index', $data);
-		}
-	}
-	public function postI18nConstant () {
-		//Récupération des inputs
-		//key_[key]_[locale_id] = value
-
-		$i18n_datas = array();
-
-		//build i18n_data for update
-		foreach( Input::all() as $name => $value ) {
-			if (strpos($name, 'key_') !== false) {
-				//subvision of 'key_'
-				$name = substr($name, 4, strlen($name)-4);
-
-				//explode key and locale_id
-				$data = explode("_", $name);
-				$key = $data[0]; // piece1
-				$locale_id = $data[1]; // piece2
-
-				//put data in array i18n_datas				
-				$i18n_datas[$key][$locale_id] = $value;
-			}
-		}
-
-		//update i18ns
-		foreach( $i18n_datas as $key => $value ) {
-			$id = I18n::where('key', $key)->first()->id;
-			I18n::change($id, $value);
-		}
-
-      	return Redirect::to('admin/i18n-constant')->with( 'success', Lang::get('admin.i18n_constant_success') );
-	}
 }

@@ -11,13 +11,13 @@ class FormerController extends Controller {
     public function index()
     {
         $this->data['forms'] = Formr::all();
-        return View::make('admin.formr.index', $this->data);
+        return View::make('theme::' .'admin.formr.index', $this->data);
     }
 
 
     public function create()
     {
-        return View::make('admin.formr.create', $this->data);
+        return View::make('theme::' .'admin.formr.create', $this->data);
     }
 
     public function show($formID)
@@ -26,14 +26,14 @@ class FormerController extends Controller {
 
         $this->data['displayInputs'] =  Former::getForm($formID, true);
 
-        return View::make('admin.formr.show', $this->data);
+        return View::make('theme::' .'admin.formr.show', $this->data);
     } 
 
     public function edit($formID)
     {
         $this->data['form'] = Formr::findOrFail($formID);
 
-        return View::make('admin.formr.edit', $this->data);
+        return View::make('theme::' .'admin.formr.edit', $this->data);
     }   
 
 
@@ -43,7 +43,12 @@ class FormerController extends Controller {
             if (is_int(Input::get('form'))) {
                 $rules = Former::getRules(Input::get('form'));   
             } else {
-                $rules = Former::getRulesByModel(Input::get('form'));   
+                if (Input::has('combine_form')) {
+                    $combine = true;
+                } else {
+                    $combine = false;
+                }
+                $rules = Former::getRulesByModel(Input::get('form'), $combine, $modelId);   
             }
 
             $unsets = array();
@@ -89,7 +94,12 @@ class FormerController extends Controller {
             $modelName = Input::get('form');
             $model = new $modelName;
             if (isset($model)) {
-                $formParams = $model->formParams();
+                if (Input::has('combine_form')) {
+                    $combine = true;
+                } else {
+                    $combine = false;
+                }
+                $formParams = $model->formParams($combine);
             }
             if ($formParams['method'] == "email") {
                 // Send a mail

@@ -21,4 +21,10 @@ class Helper {
         }
         return $data;
     }
+
+    public static function getDomain()
+    {
+        return substr(Config::get('app.url'), 7);
+    }
+
 }
