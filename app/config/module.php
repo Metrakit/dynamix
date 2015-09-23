@@ -1,1 +1,8 @@
-<?php return array();
+<?php return array(
+	'MosaicGallery',
+	'SocialArtist',
+	'Artist',
+	'EventBasic',
+	'Soundcloud',
+	'Harnak',
+);

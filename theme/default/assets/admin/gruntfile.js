@@ -44,14 +44,14 @@ module.exports = function (grunt) {
               options: {
                 basePath: './../../../..',
                 sassDir: 'vendor/dynamix/*',
-                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
+                cssDir: 'theme/default/assets/admin/dist/vendor/css/modules/modules',
               }
             },
             modulesWorkbench: {
               options: {
                 basePath: './../../../..',
                 sassDir: 'workbench/dynamix/*',
-                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
+                cssDir: 'theme/default/assets/admin/dist/vendor/css/modules/modules',
               }
             }
         },
