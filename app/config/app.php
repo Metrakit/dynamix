@@ -118,17 +118,7 @@ return array(
 		'Dynamix\Core\CoreServiceProvider',
 		'Dynamix\Pager\PagerServiceProvider',
 		'Dynamix\I18n\I18nServiceProvider',
-
-		// Dynamix packages
-		//'Dynamix\Template\TemplateServiceProvider',
-		//'Dynamix\BlogModule\BlogServiceProvider',
-		//'Dynamix\UserManager\UserServiceProvider',
-		//'Dynamix\Crew\CrewModuleServiceProvider',
-		//'Dynamix\MosaicGallery\MosaicGalleryServiceProvider',
-
-		// External packages
-		'FormerServiceProvider',
-
+		'Dynamix\Formr\FormrServiceProvider',
 	),
 
 	/*
@@ -196,14 +186,11 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		
+		'Carbon'    	  => 'Carbon\Carbon',
 
 		// Dynamix packages
 		'Pager'            => 'Dynamix\Pager\PagerFacade',
-
-		// External packages
-		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
-		
-		'Carbon'    => 'Carbon\Carbon',
 		
 	),
 

@@ -97,17 +97,7 @@ Route::group( array('before' => 'auth.admin', 'prefix' => 'admin') , function ()
 	//Option
 		Route::get('/option', array('before' => 'auth.permission_option', 'uses' => 'AdminController@getOption'));
 		Route::post('/option', 'AdminController@postOption');
-
-	// Formr
-	Route::resource('form', 'FormerController');
-	// Inputs
-	Route::resource('input', 'InputController');
-
-	Route::get('/formr/{formId}/input/add', array('as' => 'add-input', 'uses' => 'InputController@add'));
-	Route::get('/formr/{formId}/input/{inputId}/{move}', array('as' => 'move-input', 'uses' => 'InputController@move'));
-	//Route::get('/form/{formId}/create-input', array('as'=>'create-input', 'uses'=>'InputController@create'));
-
-
+		
 	// Clear route
 	Route::get('/clearcache', array('as' => 'admin-clearcache', 'uses' => 'AdminController@clearcache'));
 });
