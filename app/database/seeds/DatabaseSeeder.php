@@ -26,9 +26,6 @@ class DatabaseSeeder extends Seeder {
             $this->call('RolesTableSeeder');
             $this->call('PermissionsTableSeeder');
             $this->call('AuthRoleTableSeeder');
-
-            // Tag
-            $this->call('TaggablesTableSeeder');
             
             // OnePage (go to pager)
             $this->call('OnePagesTableSeeder');
