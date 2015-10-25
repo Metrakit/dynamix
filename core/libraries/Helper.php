@@ -27,4 +27,31 @@ class Helper {
         return substr(Config::get('app.url'), 7);
     }
 
+    public static function autoResponse ($url = 'back', $statut = 'error', $message = '', $options = array()) {
+        if (Request::ajax()) {
+            $data = array();
+            // Options
+            if (!empty($options)) $data = $options;
+            // Statut
+            if ($statut == 'error') $statut = 'danger';
+            $data['statut'] = $statut;
+            $data['message'] = $message;
+            // Response
+            return Response::json($data);
+        } else {
+            if ($url == 'back') {
+                if ($statut == 'validator') {
+                    return Redirect::back()->withInput()->withErrors($message);
+                } else {
+                    return Redirect::back()->with($statut, $message);
+                }
+            } else {
+                if ($statut == 'validator') {
+                    return Redirect::to($url)->withInput()->withErrors($message);
+                } else {
+                    return Redirect::to($url)->with($statut, $message);
+                }
+            }
+        }
+    }
 }
