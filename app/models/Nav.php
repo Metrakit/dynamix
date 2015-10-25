@@ -89,4 +89,10 @@ class Nav extends Eloquent{
 	public static function getNavigations () {
 		return self::where('parent_id','=',0)->orderBy('order','ASC')->get();
 	}
+
+	public function deleteI18nAndMe () {
+		$this->delete();
+		if (!I18n::remove($this->i18n_title)) return false;
+		return true;
+	}
 }
