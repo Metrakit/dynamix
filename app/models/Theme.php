@@ -47,4 +47,8 @@ class Theme extends Eloquent{
 	    Cache::put($cacheKey, $themeName, 480);
 	    return $themeName;
     }
+
+    public static function asset($path) {
+    	return '/theme/' . self::getThemeName() . '/' . self::getThemeType() . '/' . $path;
+    }
 }
