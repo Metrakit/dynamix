@@ -43,14 +43,14 @@ module.exports = function (grunt) {
             modulesVendor: {
               options: {
                 basePath: './../../../..',
-                sassDir: 'vendor/dynamix/*',
+                sassDir: 'vendor/dynamix/public/admin/*',
                 cssDir: 'theme/default/assets/admin/dist/vendor/css/modules/modules',
               }
             },
             modulesWorkbench: {
               options: {
                 basePath: './../../../..',
-                sassDir: 'workbench/dynamix/*',
+                sassDir: 'workbench/dynamix/public/admin/*',
                 cssDir: 'theme/default/assets/admin/dist/vendor/css/modules/modules',
               }
             }
@@ -128,8 +128,8 @@ module.exports = function (grunt) {
                     '<%= srcPath %>admin/js/theme.js',
 
                     //Modules
-                    '<%= modulesPathVendor %>**/assets/admin/js/**/*.js',
-                    '<%= modulesPathWorkbench %>**/assets/admin/js/**/*.js',
+                    '<%= modulesPathVendor %>**/public/admin/js/**/*.js',
+                    '<%= modulesPathWorkbench %>**/public/admin/js/**/*.js',
                 ],
                 // Fichier de destination
                 dest:'<%= distPath %>admin/js/main.js'
