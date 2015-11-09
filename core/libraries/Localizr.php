@@ -47,7 +47,7 @@ class Localizr
 					}
 					
 					// For return visit
-					if ( Session::has('lang') ) {
+					if (Session::has('lang')) {
 						// If locale in Session is same as Default (see up comment to know) Reset auto to default (return null)
 						if (Session::get('lang') != Config::get('app.locale_default')) {
 							Session::put('lang', Config::get('app.locale_default'));
@@ -59,17 +59,14 @@ class Localizr
 						//if not, search a lang in server datas and if is valid
 						$browser_lang = mb_substr(Request::server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
 					    // Check the browser request langugae is support in app?
-					    if(!empty($browser_lang) AND in_array($browser_lang, Locale::getFrontEnabled()))
-					    {
+					    if (!empty($browser_lang) && in_array($browser_lang, Locale::getFrontEnabled())) {
 					        $segmentOne = $browser_lang;
-					    }
-					    else
-					    {
+					    } else {
 					        // Default Application Setting Language
 					        $segmentOne = Config::get('app.locale');
 					    }	
 						//if no valid lang is in server set default
-						if($segmentOne===null) {
+						if ($segmentOne === null) {
 							Session::put('lang',Config::get('app.locale'));
 						}
 					}
@@ -79,7 +76,7 @@ class Localizr
 
 				if ( in_array($segmentOne, Locale::getFrontEnabled()) && $segmentOne != Session::get('lang') && Session::get('old_RequestSegment2') == Request::segment(2)) {
 					//if it's a manual changement of locale_id in segment 1
-					if ( Request::segment(2) == '' && Session::get('old_RequestSegment2') == '' ) {
+					if (Request::segment(2) == '' && Session::get('old_RequestSegment2') == '') {
 						Session::put('lang', $segmentOne);
 					} else {
 						Log::info('put translate_request');
@@ -94,13 +91,14 @@ class Localizr
 		} else {
 			$segmentOne = null;
 		}
-
+		
 		//Test if locale is the default locale of app
 		if (Config::get('app.locale_default') == $segmentOne) {
 			Session::put('lang', $segmentOne);
 			App::setLocale($segmentOne);
 			return null;
 		}
+
 
 		/*Log::info('=================');
 		Log::info('===== DEBUG =====');
