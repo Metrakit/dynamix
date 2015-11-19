@@ -23,7 +23,7 @@ class CreateImagesTable extends Migration {
 			$table->string('file_name');
 			$table->string('file_ext');
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

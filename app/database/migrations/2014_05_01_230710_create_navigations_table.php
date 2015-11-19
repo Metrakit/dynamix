@@ -28,7 +28,7 @@ class CreateNavigationsTable extends Migration {
 			$table->integer('navigable_id')->nullable()->unsigned();
 			$table->string('navigable_type')->nullable();
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

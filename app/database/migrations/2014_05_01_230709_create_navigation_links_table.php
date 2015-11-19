@@ -19,7 +19,7 @@ class CreateNavigationLinksTable extends Migration {
 			
 			$table->string('url');
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

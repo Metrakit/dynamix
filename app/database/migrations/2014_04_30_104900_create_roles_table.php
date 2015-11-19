@@ -24,7 +24,7 @@ class CreateRolesTable extends Migration {
 			
 			$table->boolean('deletable');
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

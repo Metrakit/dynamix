@@ -20,7 +20,7 @@ class CreateViewsTable extends Migration {
 			$table->string('name');	
 			$table->string('path');
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

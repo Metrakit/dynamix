@@ -20,7 +20,7 @@ class CreateVideosTable extends Migration {
 			
 			$table->string('code');
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

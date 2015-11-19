@@ -27,7 +27,7 @@ class CreateBackgroundsTable extends Migration {
 			$table->integer('background_position_id')->unsigned()->nullable();
 			$table->foreign('background_position_id')->references('id')->on('background_positions');
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

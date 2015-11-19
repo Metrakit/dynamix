@@ -18,7 +18,7 @@ class CreateOnepageTable extends Migration {
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 

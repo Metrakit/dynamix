@@ -23,7 +23,7 @@ class CreateAuthsTable extends Migration {
 			$table->integer('order')->unsigned()->default(1);
 			$table->string('remember_token')->nullable();
 
-			$table->timestamps();
+			$table->nullableTimestamps();
 		});
 	}
 
