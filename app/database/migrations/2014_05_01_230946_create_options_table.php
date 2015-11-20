@@ -18,7 +18,7 @@ class CreateOptionsTable extends Migration {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
 			$table->string('key');
-			$table->string('value')->default(null);
+			$table->text('value')->default(null)->nullable();
 		});
 	}
 
