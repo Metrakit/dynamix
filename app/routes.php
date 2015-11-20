@@ -42,6 +42,12 @@ Route::get('/dump-autoload', function(){
 |
 |
 */
+Route::get('test-session', function () {
+	Session::put('foo','bar');
+});
+Route::get('read-session', function () {
+	return var_dump(Session::get('foo'));
+});
 
 /*
 |--------------------------------------------------------------------------
