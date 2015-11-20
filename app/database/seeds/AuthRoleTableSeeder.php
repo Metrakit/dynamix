@@ -7,12 +7,12 @@ class AuthRoleTableSeeder extends Seeder {
     {
         DB::table('auth_role')->delete();
 
-        $auth_id1 = AuthUser::find(1)->id;
-        $auth_id2 = AuthUser::find(2)->id;
-        $auth_id3 = AuthUser::find(3)->id;
-        $auth_id4 = AuthUser::find(4)->id;
-        $auth_id5 = AuthUser::find(5)->id;
-        $auth_id6 = AuthUser::find(6)->id;
+        $auth_id1 = AuthUser::find(1)->auth_id;
+        $auth_id2 = AuthUser::find(2)->auth_id;
+        $auth_id3 = AuthUser::find(3)->auth_id;
+        $auth_id4 = AuthUser::find(4)->auth_id;
+        $auth_id5 = AuthUser::find(5)->auth_id;
+        $auth_id6 = AuthUser::find(6)->auth_id;
         $role_id1 = Role::where('name','=','admin')->first()->id;
         $role_id2 = Role::where('name','=','moderator')->first()->id;
 
