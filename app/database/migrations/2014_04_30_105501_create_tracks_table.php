@@ -19,7 +19,7 @@ class CreateTracksTable extends Migration {
 			$table->increments('id')->unsigned();
 			
 			$table->integer('auth_id')->unsigned();
-			$table->foreign('auth_id')->references('auth_id')->on('auths');//For menu
+			$table->foreign('auth_id')->references('id')->on('auths');//For menu
 
 			$table->datetime('date');
 
