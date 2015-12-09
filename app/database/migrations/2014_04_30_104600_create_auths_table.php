@@ -16,7 +16,7 @@ class CreateAuthsTable extends Migration {
 		Schema::create('auths', function(Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
-			$table->increments('auth_id')->unsigned();
+			$table->increments('id')->unsigned();
 
 			$table->string('email');
 			$table->string('password');

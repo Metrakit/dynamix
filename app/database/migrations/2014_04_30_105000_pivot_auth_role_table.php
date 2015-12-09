@@ -22,7 +22,7 @@ class PivotAuthRoleTable extends Migration {
 			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
 			$table->integer('auth_id')->unsigned()->index();
-			$table->foreign('auth_id')->references('auth_id')->on('auths')->onDelete('cascade');
+			$table->foreign('auth_id')->references('id')->on('auths')->onDelete('cascade');
 		});
 	}
 

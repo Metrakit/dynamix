@@ -9,7 +9,7 @@ class AuthUser extends Eloquent implements UserInterface, RemindableInterface {
      * Parameters
      */    
 	protected $table = 'auths';
-    protected $primaryKey = 'auth_id';
+    protected $primaryKey = 'id';
     public static $langNav = 'admin.nav_auth';
 
 
