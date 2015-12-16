@@ -12,8 +12,8 @@ module.exports = function (grunt) {
         distPath: './dist/',
         deployPublicPath:'../../../../public/',
         deployPath: '../../../../public/theme/default/',
-        modulesPathVendor: './../../../../vendor/dynamix/',
-        modulesPathWorkbench: './../../../../workbench/dynamix/',
+        modulesPathVendor: './../../../vendor/dynamix/',
+        modulesPathWorkbench: './../../../workbench/dynamix/',
 
 
         /**
@@ -42,16 +42,18 @@ module.exports = function (grunt) {
             //Module css
             modulesVendor: {
               options: {
-                basePath: './../../../..',
-                sassDir: 'vendor/dynamix/public/admin/*',
-                cssDir: 'theme/default/assets/admin/dist/vendor/css/modules/modules',
+                basePath: './../../..',
+                sassDir: 'vendor/dynamix/*/public/admin/*',
+                //sassDir: /vendor[\/]dynamix[\/][a-z\-]*[\/]public[\/]admin/,
+                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
               }
             },
             modulesWorkbench: {
               options: {
-                basePath: './../../../..',
-                sassDir: 'workbench/dynamix/public/admin/*',
-                cssDir: 'theme/default/assets/admin/dist/vendor/css/modules/modules',
+                basePath: './../../..',
+                sassDir: 'workbench/dynamix/*/public/admin/*',
+                //sassDir: /vendor[\/]dynamix[\/][a-z\-]*[\/]public[\/]admin/,
+                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
               }
             }
         },
@@ -164,7 +166,7 @@ module.exports = function (grunt) {
         // Hashage des fichiers minimifié
         hash: {
             options: {
-                mapping: '../../../../app/config/assets/theme/admin-default.json', //mapping file so your server can serve the right files
+                mapping: '../../../app/config/assets/theme/admin-default.json', //mapping file so your server can serve the right files
                 srcBasePath: '<%= distPath %>', // the base Path you want to remove from the `key` string in the mapping file
                 destBasePath: '<%= distPath %>', // the base Path you want to remove from the `value` string in the mapping file
                 flatten: false // Set to true if you don't want to keep folder structure in the `key` value in the mapping file
