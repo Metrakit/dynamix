@@ -12,8 +12,8 @@ module.exports = function (grunt) {
         distPath: './dist/',
         deployPublicPath:'../../../public/',
         deployPath: '../../../public/theme/default/',
-        modulesPathVendor: './../../vendor/dynamix/',
-        modulesPathWorkbench: './../../workbench/dynamix/',
+        modulesPathVendor: '../../../vendor/dynamix/',
+        modulesPathWorkbench: '../../../workbench/dynamix/',
 
 
         /**
