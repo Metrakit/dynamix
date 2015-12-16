@@ -10,10 +10,10 @@ module.exports = function (grunt) {
         bowerPath: './bower_components/',
         vendorPath: './dist/vendor/',
         distPath: './dist/',
-        deployPublicPath:'../../../../public/',
-        deployPath: '../../../../public/theme/default/',
-        modulesPathVendor: './../../../vendor/dynamix/',
-        modulesPathWorkbench: './../../../workbench/dynamix/',
+        deployPublicPath:'../../../public/',
+        deployPath: '../../../public/theme/default/',
+        modulesPathVendor: './../../vendor/dynamix/',
+        modulesPathWorkbench: './../../workbench/dynamix/',
 
 
         /**
