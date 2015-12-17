@@ -45,7 +45,7 @@ module.exports = function (grunt) {
                 basePath: './../../..',
                 sassDir: 'vendor/dynamix/*/public/admin/*',
                 //sassDir: /vendor[\/]dynamix[\/][a-z\-]*[\/]public[\/]admin/,
-                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
+                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules/modules/modules/modules',
               }
             },
             modulesWorkbench: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                 basePath: './../../..',
                 sassDir: 'workbench/dynamix/*/public/admin/*',
                 //sassDir: /vendor[\/]dynamix[\/][a-z\-]*[\/]public[\/]admin/,
-                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules',
+                cssDir: 'theme/default/assets/dist/vendor/css/modules/modules/modules/modules/modules',
               }
             }
         },
