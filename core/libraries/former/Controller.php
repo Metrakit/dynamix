@@ -114,7 +114,7 @@ class Former extends \Controller {
             return false;
         }
 
-        if (null != $modelId && is_int($modelId)) {
+        if (null != $modelId) {
 
             $modelData = $model->find($modelId)->getAttributes();
 
